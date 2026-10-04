@@ -1,0 +1,1414 @@
+model,slice,variant,feature,coefficient,note
+infantry,imperial,final,size,n,models = men_raw/2
+infantry,imperial,final,size power p,1.1,price ∝ size^p
+infantry,imperial,final,stat power accuracy,0.25,the β column is stat^power
+infantry,imperial,final,stat power ammo,0.25,the β column is stat^power
+infantry,imperial,final,stat power charge_bonus,0.25,the β column is stat^power
+infantry,imperial,final,stat power melee_attack,1.5,the β column is stat^power
+infantry,imperial,final,stat power melee_defense,1.25,the β column is stat^power
+infantry,imperial,final,stat power morale,2,the β column is stat^power
+infantry,imperial,final,stat power range,3,the β column is stat^power
+infantry,imperial,final,stat power reload_skill,3,the β column is stat^power
+infantry,imperial,final,(intercept: per-size constant b0),0.8110562421,"β·x + [—] × models^1.1 × rating stat powers: accuracy^0.25, ammo^0.25, charge_bonus^0.25, melee_attack^1.5, melee_defense^1.25, morale^2, range^3, reload_skill^3 | reference levels: unit_class=infantry_line; speed=L4"
+infantry,imperial,final,accuracy,0.2469304321,gold per size unit^p
+infantry,imperial,final,reload_skill,1.2792153e-06,gold per size unit^p
+infantry,imperial,final,ammo,0.0001965728355,gold per size unit^p
+infantry,imperial,final,morale,0.006190391542,gold per size unit^p
+infantry,imperial,final,melee_attack,0.01614181235,gold per size unit^p
+infantry,imperial,final,melee_defense,0.005030462549,gold per size unit^p
+infantry,imperial,final,charge_bonus,-0.4778846866,gold per size unit^p
+infantry,imperial,final,range,-2.598963246e-07,gold per size unit^p
+infantry,imperial,final,can_form_square,0.297807648,gold per size unit^p
+infantry,imperial,final,has_stamina,0.1302429316,gold per size unit^p
+infantry,imperial,final,is_shock_resistant,0.1764937546,gold per size unit^p
+infantry,imperial,final,can_inspire,0.5112295673,gold per size unit^p
+infantry,imperial,final,can_place_stakes,0.221614729,gold per size unit^p
+infantry,imperial,final,guard_mode,-0.1100115474,gold per size unit^p
+infantry,imperial,final,can_snipe,3.676757019,gold per size unit^p
+infantry,imperial,final,unit_class=infantry_grenadiers,0.1150670099,gold per size unit^p
+infantry,imperial,final,unit_class=infantry_irregulars,0.4652493706,gold per size unit^p
+infantry,imperial,final,unit_class=infantry_light,-0.01349436916,gold per size unit^p
+infantry,imperial,final,unit_class=infantry_militia,-0.18962251,gold per size unit^p
+infantry,imperial,final,speed=G2,-0.2797083316,gold per size unit^p
+infantry,imperial,final,speed=G3,-0.1657393935,gold per size unit^p
+infantry,imperial,final,speed=G4,0.1087122258,gold per size unit^p
+infantry,imperial,final,speed=G5,0.4674205657,gold per size unit^p
+infantry,imperial,final,speed=G6,0.7699401286,gold per size unit^p
+infantry,imperial,final,speed=L1,-0.2847949029,gold per size unit^p
+infantry,imperial,final,speed=L2,-0.1871588721,gold per size unit^p
+infantry,imperial,final,speed=L3,-0.103422668,gold per size unit^p
+infantry,imperial,final,speed=L5,0.1733552981,gold per size unit^p
+infantry,imperial,final,speed=L6,0.2967809736,gold per size unit^p
+infantry,imperial,final,speed=S1,-2.596565298,gold per size unit^p
+infantry,imperial,final,speed=S2,-1.730663429,gold per size unit^p
+infantry,imperial,final,multiplier rating=10,0.832745708,reference 8
+infantry,imperial,final,multiplier rating=11,0.7675896451,reference 8
+infantry,imperial,final,multiplier rating=12,0.6776658786,reference 8
+infantry,imperial,final,multiplier rating=5,1.622573294,reference 8
+infantry,imperial,final,multiplier rating=6,1.37478012,reference 8
+infantry,imperial,final,multiplier rating=7,1.198162706,reference 8
+infantry,imperial,final,multiplier rating=8,1,reference 8
+infantry,imperial,final,multiplier rating=9,0.9221791779,reference 8
+infantry,imperial,RF,size,n,models = men_raw/2
+infantry,imperial,RF,size power p,1.1,price ∝ size^p
+infantry,imperial,RF,stat power accuracy,0.25,the β column is stat^power
+infantry,imperial,RF,stat power ammo,0.25,the β column is stat^power
+infantry,imperial,RF,stat power charge_bonus,0.25,the β column is stat^power
+infantry,imperial,RF,stat power melee_attack,1.5,the β column is stat^power
+infantry,imperial,RF,stat power melee_defense,1.25,the β column is stat^power
+infantry,imperial,RF,stat power morale,2,the β column is stat^power
+infantry,imperial,RF,stat power range,3,the β column is stat^power
+infantry,imperial,RF,stat power reload_skill,3,the β column is stat^power
+infantry,imperial,RF,(intercept: per-size constant b0),0.8110562421,"β·x + [—] × models^1.1 × rating stat powers: accuracy^0.25, ammo^0.25, charge_bonus^0.25, melee_attack^1.5, melee_defense^1.25, morale^2, range^3, reload_skill^3 | reference levels: unit_class=infantry_line; speed=L4"
+infantry,imperial,RF,accuracy,0.2469304321,gold per size unit^p
+infantry,imperial,RF,reload_skill,1.2792153e-06,gold per size unit^p
+infantry,imperial,RF,ammo,0.0001965728355,gold per size unit^p
+infantry,imperial,RF,morale,0.006190391542,gold per size unit^p
+infantry,imperial,RF,melee_attack,0.01614181235,gold per size unit^p
+infantry,imperial,RF,melee_defense,0.005030462549,gold per size unit^p
+infantry,imperial,RF,charge_bonus,-0.4778846866,gold per size unit^p
+infantry,imperial,RF,range,-2.598963246e-07,gold per size unit^p
+infantry,imperial,RF,can_form_square,0.297807648,gold per size unit^p
+infantry,imperial,RF,has_stamina,0.1302429316,gold per size unit^p
+infantry,imperial,RF,is_shock_resistant,0.1764937546,gold per size unit^p
+infantry,imperial,RF,can_inspire,0.5112295673,gold per size unit^p
+infantry,imperial,RF,can_place_stakes,0.221614729,gold per size unit^p
+infantry,imperial,RF,guard_mode,-0.1100115474,gold per size unit^p
+infantry,imperial,RF,can_snipe,3.676757019,gold per size unit^p
+infantry,imperial,RF,unit_class=infantry_grenadiers,0.1150670099,gold per size unit^p
+infantry,imperial,RF,unit_class=infantry_irregulars,0.4652493706,gold per size unit^p
+infantry,imperial,RF,unit_class=infantry_light,-0.01349436916,gold per size unit^p
+infantry,imperial,RF,unit_class=infantry_militia,-0.18962251,gold per size unit^p
+infantry,imperial,RF,speed=G2,-0.2797083316,gold per size unit^p
+infantry,imperial,RF,speed=G3,-0.1657393935,gold per size unit^p
+infantry,imperial,RF,speed=G4,0.1087122258,gold per size unit^p
+infantry,imperial,RF,speed=G5,0.4674205657,gold per size unit^p
+infantry,imperial,RF,speed=G6,0.7699401286,gold per size unit^p
+infantry,imperial,RF,speed=L1,-0.2847949029,gold per size unit^p
+infantry,imperial,RF,speed=L2,-0.1871588721,gold per size unit^p
+infantry,imperial,RF,speed=L3,-0.103422668,gold per size unit^p
+infantry,imperial,RF,speed=L5,0.1733552981,gold per size unit^p
+infantry,imperial,RF,speed=L6,0.2967809736,gold per size unit^p
+infantry,imperial,RF,speed=S1,-2.596565298,gold per size unit^p
+infantry,imperial,RF,speed=S2,-1.730663429,gold per size unit^p
+infantry,imperial,RF,multiplier rating=10,0.832745708,reference 8
+infantry,imperial,RF,multiplier rating=11,0.7675896451,reference 8
+infantry,imperial,RF,multiplier rating=12,0.6776658786,reference 8
+infantry,imperial,RF,multiplier rating=5,1.622573294,reference 8
+infantry,imperial,RF,multiplier rating=6,1.37478012,reference 8
+infantry,imperial,RF,multiplier rating=7,1.198162706,reference 8
+infantry,imperial,RF,multiplier rating=8,1,reference 8
+infantry,imperial,RF,multiplier rating=9,0.9221791779,reference 8
+infantry,imperial,RF,faction modifier denmark,0.9567424055,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier france,1.008829226,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a03_x8_032,0.9744925934,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a03_x8_033,1.03443712,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a03_x8_038,1,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a03_x8_040,0.9973434113,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a04_x8_005,0.9916965525,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a05_x8_001,0.9873655337,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a05_x8_004,0.9970977846,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a06_x8_002,1,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a08_x8_047,1.005814875,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a09_x8_021,0.9945964569,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a11_x8_027,0.9988401029,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a11_x8_028,1.007168761,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a11_x8_029,1.010649365,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a12_x8_003,0.9979309776,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a13_x8_022,1.021950366,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_a17_x8_054,0.9504688281,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_c07_x8_017,1.054267264,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_c08_x8_048,0.9822862793,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_c10_x8_025,1.003844676,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_c14_x8_030,1.017431455,per-arm; multiplies the scaled part
+infantry,imperial,RF,faction modifier ntw3_tow_c15_x8_051,1.017451937,per-arm; multiplies the scaled part
+infantry,coalition,final,size,n,models = men_raw/2
+infantry,coalition,final,size power p,1.1,price ∝ size^p
+infantry,coalition,final,stat power accuracy,0.25,the β column is stat^power
+infantry,coalition,final,stat power ammo,0.25,the β column is stat^power
+infantry,coalition,final,stat power charge_bonus,0.25,the β column is stat^power
+infantry,coalition,final,stat power melee_attack,1.5,the β column is stat^power
+infantry,coalition,final,stat power melee_defense,1.25,the β column is stat^power
+infantry,coalition,final,stat power morale,2,the β column is stat^power
+infantry,coalition,final,stat power range,3,the β column is stat^power
+infantry,coalition,final,stat power reload_skill,3,the β column is stat^power
+infantry,coalition,final,(intercept: per-size constant b0),1.061216216,"β·x + [—] × models^1.1 × rating stat powers: accuracy^0.25, ammo^0.25, charge_bonus^0.25, melee_attack^1.5, melee_defense^1.25, morale^2, range^3, reload_skill^3 | reference levels: unit_class=infantry_line; speed=L3"
+infantry,coalition,final,accuracy,1.086371904,gold per size unit^p
+infantry,coalition,final,reload_skill,1.307753262e-06,gold per size unit^p
+infantry,coalition,final,ammo,0.02304687887,gold per size unit^p
+infantry,coalition,final,morale,0.00590981891,gold per size unit^p
+infantry,coalition,final,melee_attack,0.01674545406,gold per size unit^p
+infantry,coalition,final,melee_defense,0.01776675579,gold per size unit^p
+infantry,coalition,final,charge_bonus,-0.5409745609,gold per size unit^p
+infantry,coalition,final,range,1.763231358e-07,gold per size unit^p
+infantry,coalition,final,has_range,-2.121531819,gold per size unit^p
+infantry,coalition,final,can_form_square,0.2963154014,gold per size unit^p
+infantry,coalition,final,has_stamina,0.1641767956,gold per size unit^p
+infantry,coalition,final,is_shock_resistant,0.2105215813,gold per size unit^p
+infantry,coalition,final,can_inspire,0.5099127279,gold per size unit^p
+infantry,coalition,final,has_guerrilla_deployment,1.734541206,gold per size unit^p
+infantry,coalition,final,can_place_stakes,0.1103012902,gold per size unit^p
+infantry,coalition,final,can_place_mines,-0.4249553319,gold per size unit^p
+infantry,coalition,final,guard_mode,-0.04324942958,gold per size unit^p
+infantry,coalition,final,can_snipe,2.211513328,gold per size unit^p
+infantry,coalition,final,unit_class=infantry_grenadiers,0.09944966613,gold per size unit^p
+infantry,coalition,final,unit_class=infantry_irregulars,-0.224357094,gold per size unit^p
+infantry,coalition,final,unit_class=infantry_light,-0.04745635193,gold per size unit^p
+infantry,coalition,final,unit_class=infantry_militia,0.001201378184,gold per size unit^p
+infantry,coalition,final,speed=G1,-0.2729651306,gold per size unit^p
+infantry,coalition,final,speed=G2,-0.01606656353,gold per size unit^p
+infantry,coalition,final,speed=G3,0.1336270168,gold per size unit^p
+infantry,coalition,final,speed=G4,0.4049502471,gold per size unit^p
+infantry,coalition,final,speed=G5,0.7722259245,gold per size unit^p
+infantry,coalition,final,speed=G6,0.9510985061,gold per size unit^p
+infantry,coalition,final,speed=L1,-0.1669361799,gold per size unit^p
+infantry,coalition,final,speed=L2,-0.1288511036,gold per size unit^p
+infantry,coalition,final,speed=L4,0.1700394668,gold per size unit^p
+infantry,coalition,final,speed=L5,0.4214597283,gold per size unit^p
+infantry,coalition,final,speed=L6,0.6596870832,gold per size unit^p
+infantry,coalition,final,speed=S1,-1.31884982,gold per size unit^p
+infantry,coalition,final,speed=S2,-0.3027056045,gold per size unit^p
+infantry,coalition,final,speed=S3,1.738665534,gold per size unit^p
+infantry,coalition,final,multiplier rating=10,0.8001190436,reference 8
+infantry,coalition,final,multiplier rating=5,1.474898199,reference 8
+infantry,coalition,final,multiplier rating=6,1.29521822,reference 8
+infantry,coalition,final,multiplier rating=7,1.131567683,reference 8
+infantry,coalition,final,multiplier rating=8,1,reference 8
+infantry,coalition,final,multiplier rating=9,0.8843981628,reference 8
+infantry,coalition,RF,size,n,models = men_raw/2
+infantry,coalition,RF,size power p,1.1,price ∝ size^p
+infantry,coalition,RF,stat power accuracy,0.25,the β column is stat^power
+infantry,coalition,RF,stat power ammo,0.25,the β column is stat^power
+infantry,coalition,RF,stat power charge_bonus,0.25,the β column is stat^power
+infantry,coalition,RF,stat power melee_attack,1.5,the β column is stat^power
+infantry,coalition,RF,stat power melee_defense,1.25,the β column is stat^power
+infantry,coalition,RF,stat power morale,2,the β column is stat^power
+infantry,coalition,RF,stat power range,3,the β column is stat^power
+infantry,coalition,RF,stat power reload_skill,3,the β column is stat^power
+infantry,coalition,RF,(intercept: per-size constant b0),1.061216216,"β·x + [—] × models^1.1 × rating stat powers: accuracy^0.25, ammo^0.25, charge_bonus^0.25, melee_attack^1.5, melee_defense^1.25, morale^2, range^3, reload_skill^3 | reference levels: unit_class=infantry_line; speed=L3"
+infantry,coalition,RF,accuracy,1.086371904,gold per size unit^p
+infantry,coalition,RF,reload_skill,1.307753262e-06,gold per size unit^p
+infantry,coalition,RF,ammo,0.02304687887,gold per size unit^p
+infantry,coalition,RF,morale,0.00590981891,gold per size unit^p
+infantry,coalition,RF,melee_attack,0.01674545406,gold per size unit^p
+infantry,coalition,RF,melee_defense,0.01776675579,gold per size unit^p
+infantry,coalition,RF,charge_bonus,-0.5409745609,gold per size unit^p
+infantry,coalition,RF,range,1.763231358e-07,gold per size unit^p
+infantry,coalition,RF,has_range,-2.121531819,gold per size unit^p
+infantry,coalition,RF,can_form_square,0.2963154014,gold per size unit^p
+infantry,coalition,RF,has_stamina,0.1641767956,gold per size unit^p
+infantry,coalition,RF,is_shock_resistant,0.2105215813,gold per size unit^p
+infantry,coalition,RF,can_inspire,0.5099127279,gold per size unit^p
+infantry,coalition,RF,has_guerrilla_deployment,1.734541206,gold per size unit^p
+infantry,coalition,RF,can_place_stakes,0.1103012902,gold per size unit^p
+infantry,coalition,RF,can_place_mines,-0.4249553319,gold per size unit^p
+infantry,coalition,RF,guard_mode,-0.04324942958,gold per size unit^p
+infantry,coalition,RF,can_snipe,2.211513328,gold per size unit^p
+infantry,coalition,RF,unit_class=infantry_grenadiers,0.09944966613,gold per size unit^p
+infantry,coalition,RF,unit_class=infantry_irregulars,-0.224357094,gold per size unit^p
+infantry,coalition,RF,unit_class=infantry_light,-0.04745635193,gold per size unit^p
+infantry,coalition,RF,unit_class=infantry_militia,0.001201378184,gold per size unit^p
+infantry,coalition,RF,speed=G1,-0.2729651306,gold per size unit^p
+infantry,coalition,RF,speed=G2,-0.01606656353,gold per size unit^p
+infantry,coalition,RF,speed=G3,0.1336270168,gold per size unit^p
+infantry,coalition,RF,speed=G4,0.4049502471,gold per size unit^p
+infantry,coalition,RF,speed=G5,0.7722259245,gold per size unit^p
+infantry,coalition,RF,speed=G6,0.9510985061,gold per size unit^p
+infantry,coalition,RF,speed=L1,-0.1669361799,gold per size unit^p
+infantry,coalition,RF,speed=L2,-0.1288511036,gold per size unit^p
+infantry,coalition,RF,speed=L4,0.1700394668,gold per size unit^p
+infantry,coalition,RF,speed=L5,0.4214597283,gold per size unit^p
+infantry,coalition,RF,speed=L6,0.6596870832,gold per size unit^p
+infantry,coalition,RF,speed=S1,-1.31884982,gold per size unit^p
+infantry,coalition,RF,speed=S2,-0.3027056045,gold per size unit^p
+infantry,coalition,RF,speed=S3,1.738665534,gold per size unit^p
+infantry,coalition,RF,multiplier rating=10,0.8001190436,reference 8
+infantry,coalition,RF,multiplier rating=5,1.474898199,reference 8
+infantry,coalition,RF,multiplier rating=6,1.29521822,reference 8
+infantry,coalition,RF,multiplier rating=7,1.131567683,reference 8
+infantry,coalition,RF,multiplier rating=8,1,reference 8
+infantry,coalition,RF,multiplier rating=9,0.8843981628,reference 8
+infantry,coalition,RF,faction modifier britain,1.007724366,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_hre,1.096026534,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b03_x8_039,0.9789186597,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b03_x8_041,1,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b03_x8_042,1.012103512,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b03_x8_043,1.023151647,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b04_x8_015,0.8065919219,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b04_x8_016,0.9759818369,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b05_x8_006,1.023502408,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b05_x8_007,1.017216571,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b06_x8_008,1.006082919,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b06_x8_009,1.069136946,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b07_x8_018,1.038144926,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b08_x8_044,0.9658482485,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b08_x8_045,1.018545681,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b08_x8_046,1.088269344,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b09_x8_019,0.9901200127,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b09_x8_020,0.9523884901,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b10_x8_026,0.9694924554,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b11_x8_013,1.00871803,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b11_x8_014,0.9607134455,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b12_x8_011,0.9680550125,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b12_x8_012,1.037500826,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b13_x8_049,0.9046688353,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b13_x8_050,1.006984103,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b14_x8_031,0.9888053708,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b15_x8_052,1.064975352,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b15_x8_053,0.9357289699,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b17_x8_055,1.001221993,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b17_x8_056,0.967602771,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier ntw3_tow_b17_x8_057,1.036077562,per-arm; multiplies the scaled part
+infantry,coalition,RF,faction modifier piedmont_savoy,0.9708693119,per-arm; multiplies the scaled part
+infantry,merged,final,size,n,models = men_raw/2
+infantry,merged,final,size power p,1.1,price ∝ size^p
+infantry,merged,final,stat power accuracy,0.25,the β column is stat^power
+infantry,merged,final,stat power ammo,0.25,the β column is stat^power
+infantry,merged,final,stat power charge_bonus,0.25,the β column is stat^power
+infantry,merged,final,stat power melee_attack,1.5,the β column is stat^power
+infantry,merged,final,stat power melee_defense,1.25,the β column is stat^power
+infantry,merged,final,stat power morale,2,the β column is stat^power
+infantry,merged,final,stat power range,3,the β column is stat^power
+infantry,merged,final,stat power reload_skill,3,the β column is stat^power
+infantry,merged,final,(intercept: per-size constant b0),1.161463369,"β·x + [—] × models^1.1 × rating × side stat powers: accuracy^0.25, ammo^0.25, charge_bonus^0.25, melee_attack^1.5, melee_defense^1.25, morale^2, range^3, reload_skill^3 | reference levels: unit_class=infantry_line; speed=L3"
+infantry,merged,final,accuracy,0.8682454074,gold per size unit^p
+infantry,merged,final,reload_skill,1.332925249e-06,gold per size unit^p
+infantry,merged,final,ammo,0.0149485484,gold per size unit^p
+infantry,merged,final,morale,0.006262382941,gold per size unit^p
+infantry,merged,final,melee_attack,0.0169757772,gold per size unit^p
+infantry,merged,final,melee_defense,0.01338216704,gold per size unit^p
+infantry,merged,final,charge_bonus,-0.5365430559,gold per size unit^p
+infantry,merged,final,range,1.120278612e-07,gold per size unit^p
+infantry,merged,final,has_range,-1.73258488,gold per size unit^p
+infantry,merged,final,can_form_square,0.3114338531,gold per size unit^p
+infantry,merged,final,has_stamina,0.1660548007,gold per size unit^p
+infantry,merged,final,is_shock_resistant,0.20912321,gold per size unit^p
+infantry,merged,final,can_inspire,0.5459737504,gold per size unit^p
+infantry,merged,final,has_guerrilla_deployment,1.761534866,gold per size unit^p
+infantry,merged,final,can_place_stakes,0.1400841558,gold per size unit^p
+infantry,merged,final,can_place_mines,-0.4474371693,gold per size unit^p
+infantry,merged,final,guard_mode,-0.07795830416,gold per size unit^p
+infantry,merged,final,can_snipe,2.209503218,gold per size unit^p
+infantry,merged,final,unit_class=infantry_grenadiers,0.1306059038,gold per size unit^p
+infantry,merged,final,unit_class=infantry_irregulars,-0.1872106454,gold per size unit^p
+infantry,merged,final,unit_class=infantry_light,-0.03473364332,gold per size unit^p
+infantry,merged,final,unit_class=infantry_militia,-0.04964499204,gold per size unit^p
+infantry,merged,final,speed=G1,-0.3156509933,gold per size unit^p
+infantry,merged,final,speed=G2,-0.08227155033,gold per size unit^p
+infantry,merged,final,speed=G3,0.06060232006,gold per size unit^p
+infantry,merged,final,speed=G4,0.3455515039,gold per size unit^p
+infantry,merged,final,speed=G5,0.7045861009,gold per size unit^p
+infantry,merged,final,speed=G6,1.0065547,gold per size unit^p
+infantry,merged,final,speed=L1,-0.1619508854,gold per size unit^p
+infantry,merged,final,speed=L2,-0.1159703186,gold per size unit^p
+infantry,merged,final,speed=L4,0.1436828522,gold per size unit^p
+infantry,merged,final,speed=L5,0.3554237642,gold per size unit^p
+infantry,merged,final,speed=L6,0.53469396,gold per size unit^p
+infantry,merged,final,speed=S1,-1.262546191,gold per size unit^p
+infantry,merged,final,speed=S2,-0.2216204422,gold per size unit^p
+infantry,merged,final,speed=S3,1.786845685,gold per size unit^p
+infantry,merged,final,multiplier rating=10,0.8124221659,reference 8
+infantry,merged,final,multiplier rating=11,0.7518626418,reference 8
+infantry,merged,final,multiplier rating=12,0.6624655551,reference 8
+infantry,merged,final,multiplier rating=5,1.560876842,reference 8
+infantry,merged,final,multiplier rating=6,1.334366298,reference 8
+infantry,merged,final,multiplier rating=7,1.148745681,reference 8
+infantry,merged,final,multiplier rating=8,1,reference 8
+infantry,merged,final,multiplier rating=9,0.9000838858,reference 8
+infantry,merged,final,multiplier side=coalition,1,reference coalition
+infantry,merged,final,multiplier side=imperial,0.8797130673,reference coalition
+infantry,merged,RF,size,n,models = men_raw/2
+infantry,merged,RF,size power p,1.1,price ∝ size^p
+infantry,merged,RF,stat power accuracy,0.25,the β column is stat^power
+infantry,merged,RF,stat power ammo,0.25,the β column is stat^power
+infantry,merged,RF,stat power charge_bonus,0.25,the β column is stat^power
+infantry,merged,RF,stat power melee_attack,1.5,the β column is stat^power
+infantry,merged,RF,stat power melee_defense,1.25,the β column is stat^power
+infantry,merged,RF,stat power morale,2,the β column is stat^power
+infantry,merged,RF,stat power range,3,the β column is stat^power
+infantry,merged,RF,stat power reload_skill,3,the β column is stat^power
+infantry,merged,RF,(intercept: per-size constant b0),1.161463369,"β·x + [—] × models^1.1 × rating × side stat powers: accuracy^0.25, ammo^0.25, charge_bonus^0.25, melee_attack^1.5, melee_defense^1.25, morale^2, range^3, reload_skill^3 | reference levels: unit_class=infantry_line; speed=L3"
+infantry,merged,RF,accuracy,0.8682454074,gold per size unit^p
+infantry,merged,RF,reload_skill,1.332925249e-06,gold per size unit^p
+infantry,merged,RF,ammo,0.0149485484,gold per size unit^p
+infantry,merged,RF,morale,0.006262382941,gold per size unit^p
+infantry,merged,RF,melee_attack,0.0169757772,gold per size unit^p
+infantry,merged,RF,melee_defense,0.01338216704,gold per size unit^p
+infantry,merged,RF,charge_bonus,-0.5365430559,gold per size unit^p
+infantry,merged,RF,range,1.120278612e-07,gold per size unit^p
+infantry,merged,RF,has_range,-1.73258488,gold per size unit^p
+infantry,merged,RF,can_form_square,0.3114338531,gold per size unit^p
+infantry,merged,RF,has_stamina,0.1660548007,gold per size unit^p
+infantry,merged,RF,is_shock_resistant,0.20912321,gold per size unit^p
+infantry,merged,RF,can_inspire,0.5459737504,gold per size unit^p
+infantry,merged,RF,has_guerrilla_deployment,1.761534866,gold per size unit^p
+infantry,merged,RF,can_place_stakes,0.1400841558,gold per size unit^p
+infantry,merged,RF,can_place_mines,-0.4474371693,gold per size unit^p
+infantry,merged,RF,guard_mode,-0.07795830416,gold per size unit^p
+infantry,merged,RF,can_snipe,2.209503218,gold per size unit^p
+infantry,merged,RF,unit_class=infantry_grenadiers,0.1306059038,gold per size unit^p
+infantry,merged,RF,unit_class=infantry_irregulars,-0.1872106454,gold per size unit^p
+infantry,merged,RF,unit_class=infantry_light,-0.03473364332,gold per size unit^p
+infantry,merged,RF,unit_class=infantry_militia,-0.04964499204,gold per size unit^p
+infantry,merged,RF,speed=G1,-0.3156509933,gold per size unit^p
+infantry,merged,RF,speed=G2,-0.08227155033,gold per size unit^p
+infantry,merged,RF,speed=G3,0.06060232006,gold per size unit^p
+infantry,merged,RF,speed=G4,0.3455515039,gold per size unit^p
+infantry,merged,RF,speed=G5,0.7045861009,gold per size unit^p
+infantry,merged,RF,speed=G6,1.0065547,gold per size unit^p
+infantry,merged,RF,speed=L1,-0.1619508854,gold per size unit^p
+infantry,merged,RF,speed=L2,-0.1159703186,gold per size unit^p
+infantry,merged,RF,speed=L4,0.1436828522,gold per size unit^p
+infantry,merged,RF,speed=L5,0.3554237642,gold per size unit^p
+infantry,merged,RF,speed=L6,0.53469396,gold per size unit^p
+infantry,merged,RF,speed=S1,-1.262546191,gold per size unit^p
+infantry,merged,RF,speed=S2,-0.2216204422,gold per size unit^p
+infantry,merged,RF,speed=S3,1.786845685,gold per size unit^p
+infantry,merged,RF,multiplier rating=10,0.8124221659,reference 8
+infantry,merged,RF,multiplier rating=11,0.7518626418,reference 8
+infantry,merged,RF,multiplier rating=12,0.6624655551,reference 8
+infantry,merged,RF,multiplier rating=5,1.560876842,reference 8
+infantry,merged,RF,multiplier rating=6,1.334366298,reference 8
+infantry,merged,RF,multiplier rating=7,1.148745681,reference 8
+infantry,merged,RF,multiplier rating=8,1,reference 8
+infantry,merged,RF,multiplier rating=9,0.9000838858,reference 8
+infantry,merged,RF,multiplier side=coalition,1,reference coalition
+infantry,merged,RF,multiplier side=imperial,0.8797130673,reference coalition
+infantry,merged,RF,faction modifier britain,1.022232614,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier denmark,0.9423599336,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier france,1.020074034,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_hre,1.091843233,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a03_x8_032,0.985680241,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a03_x8_033,1.053965056,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a03_x8_038,1.025366568,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a03_x8_040,1.01991403,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a04_x8_005,0.9777070152,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a05_x8_001,0.9874616652,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a05_x8_004,1.004293616,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a06_x8_002,1.000000456,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a08_x8_047,1.006146598,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a09_x8_021,0.9979193358,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a11_x8_027,1.006989334,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a11_x8_028,1.007108361,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a11_x8_029,1.027071352,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a12_x8_003,1.003409497,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a13_x8_022,1.002781095,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_a17_x8_054,0.9360825017,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b03_x8_039,0.9719523739,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b03_x8_041,0.9665741162,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b03_x8_042,1.015003746,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b03_x8_043,1.021399832,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b04_x8_015,0.8144799216,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b04_x8_016,0.9929118201,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b05_x8_006,1.019665074,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b05_x8_007,1.029994923,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b06_x8_008,1.002830323,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b06_x8_009,1.0703027,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b07_x8_018,1.042143318,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b08_x8_044,0.9644278994,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b08_x8_045,1.008587263,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b08_x8_046,1.096528423,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b09_x8_019,0.9875707402,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b09_x8_020,0.9512458547,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b10_x8_026,0.9607238125,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b11_x8_013,1.007168816,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b11_x8_014,0.949510428,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b12_x8_011,0.9604277011,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b12_x8_012,1.033056918,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b13_x8_049,0.9015927777,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b13_x8_050,1.004160428,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b14_x8_031,0.977662006,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b15_x8_052,1.066407757,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b15_x8_053,0.934643002,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b17_x8_055,1.0154122,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b17_x8_056,0.9788752481,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_b17_x8_057,1.03534696,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_c07_x8_017,1.067566829,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_c08_x8_048,1.00025466,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_c10_x8_025,1.00270326,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_c14_x8_030,1.019197198,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier ntw3_tow_c15_x8_051,0.98672322,per-arm; multiplies the scaled part
+infantry,merged,RF,faction modifier piedmont_savoy,0.9807068919,per-arm; multiplies the scaled part
+cavalry,imperial,final,size,n,models = men_raw/2
+cavalry,imperial,final,size power p,0.75,price ∝ size^p
+cavalry,imperial,final,(intercept: per-size constant b0),5.250636553,β·x + [—] × models^0.75 × rank_depth × rating | reference levels: unit_class=cavalry_light; speed=C4
+cavalry,imperial,final,accuracy,0.2240038099,gold per size unit^p
+cavalry,imperial,final,morale,1.082896678,gold per size unit^p
+cavalry,imperial,final,melee_attack,-0.1096530596,gold per size unit^p
+cavalry,imperial,final,melee_defense,0.6290628591,gold per size unit^p
+cavalry,imperial,final,charge_bonus,1.099191536,gold per size unit^p
+cavalry,imperial,final,has_stamina,7.40098231,gold per size unit^p
+cavalry,imperial,final,is_shock_resistant,10.57642853,gold per size unit^p
+cavalry,imperial,final,can_inspire,8.494002052,gold per size unit^p
+cavalry,imperial,final,has_guerrilla_deployment,19.90591671,gold per size unit^p
+cavalry,imperial,final,is_camel,-24.46296837,gold per size unit^p
+cavalry,imperial,final,unit_class=cavalry_heavy,-0.9922295158,gold per size unit^p
+cavalry,imperial,final,unit_class=cavalry_lancers,-3.291130974,gold per size unit^p
+cavalry,imperial,final,unit_class=cavalry_standard,-1.399978408,gold per size unit^p
+cavalry,imperial,final,speed=C1,-7.068223174,gold per size unit^p
+cavalry,imperial,final,speed=C3,-3.808623974,gold per size unit^p
+cavalry,imperial,final,speed=C5,-5.948372478,gold per size unit^p
+cavalry,imperial,final,multiplier rank_depth δ,-0.02143758414,m = 1 + δ·(rank_depth − 10)
+cavalry,imperial,final,multiplier rating=10,0.7933109741,reference 8
+cavalry,imperial,final,multiplier rating=11,0.7459130944,reference 8
+cavalry,imperial,final,multiplier rating=12,0.6486640537,reference 8
+cavalry,imperial,final,multiplier rating=5,1.783889949,reference 8
+cavalry,imperial,final,multiplier rating=6,1.333899298,reference 8
+cavalry,imperial,final,multiplier rating=7,1.108584288,reference 8
+cavalry,imperial,final,multiplier rating=8,1,reference 8
+cavalry,imperial,final,multiplier rating=9,0.8849649249,reference 8
+cavalry,imperial,RF,size,n,models = men_raw/2
+cavalry,imperial,RF,size power p,0.75,price ∝ size^p
+cavalry,imperial,RF,(intercept: per-size constant b0),5.250636553,β·x + [—] × models^0.75 × rank_depth × rating | reference levels: unit_class=cavalry_light; speed=C4
+cavalry,imperial,RF,accuracy,0.2240038099,gold per size unit^p
+cavalry,imperial,RF,morale,1.082896678,gold per size unit^p
+cavalry,imperial,RF,melee_attack,-0.1096530596,gold per size unit^p
+cavalry,imperial,RF,melee_defense,0.6290628591,gold per size unit^p
+cavalry,imperial,RF,charge_bonus,1.099191536,gold per size unit^p
+cavalry,imperial,RF,has_stamina,7.40098231,gold per size unit^p
+cavalry,imperial,RF,is_shock_resistant,10.57642853,gold per size unit^p
+cavalry,imperial,RF,can_inspire,8.494002052,gold per size unit^p
+cavalry,imperial,RF,has_guerrilla_deployment,19.90591671,gold per size unit^p
+cavalry,imperial,RF,is_camel,-24.46296837,gold per size unit^p
+cavalry,imperial,RF,unit_class=cavalry_heavy,-0.9922295158,gold per size unit^p
+cavalry,imperial,RF,unit_class=cavalry_lancers,-3.291130974,gold per size unit^p
+cavalry,imperial,RF,unit_class=cavalry_standard,-1.399978408,gold per size unit^p
+cavalry,imperial,RF,speed=C1,-7.068223174,gold per size unit^p
+cavalry,imperial,RF,speed=C3,-3.808623974,gold per size unit^p
+cavalry,imperial,RF,speed=C5,-5.948372478,gold per size unit^p
+cavalry,imperial,RF,multiplier rank_depth δ,-0.02143758414,m = 1 + δ·(rank_depth − 10)
+cavalry,imperial,RF,multiplier rating=10,0.7933109741,reference 8
+cavalry,imperial,RF,multiplier rating=11,0.7459130944,reference 8
+cavalry,imperial,RF,multiplier rating=12,0.6486640537,reference 8
+cavalry,imperial,RF,multiplier rating=5,1.783889949,reference 8
+cavalry,imperial,RF,multiplier rating=6,1.333899298,reference 8
+cavalry,imperial,RF,multiplier rating=7,1.108584288,reference 8
+cavalry,imperial,RF,multiplier rating=8,1,reference 8
+cavalry,imperial,RF,multiplier rating=9,0.8849649249,reference 8
+cavalry,imperial,RF,faction modifier denmark,0.8963266191,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier france,1.028248166,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a03_x8_032,1.02243249,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a03_x8_033,1.036711786,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a03_x8_038,1,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a03_x8_040,0.9976936018,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a04_x8_005,0.9786997815,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a05_x8_001,1.02200226,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a05_x8_004,0.9965374102,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a06_x8_002,1,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a08_x8_047,1.01493782,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a09_x8_021,0.9788271413,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a11_x8_027,0.9935230634,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a11_x8_028,0.9872832949,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a11_x8_029,1.017723521,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a12_x8_003,0.9476916377,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a13_x8_022,0.9838514609,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_a17_x8_054,1.006442265,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_c07_x8_017,1.014592898,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_c08_x8_048,0.9849220102,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_c10_x8_025,1.099179984,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_c14_x8_030,1.039797564,per-arm; multiplies the scaled part
+cavalry,imperial,RF,faction modifier ntw3_tow_c15_x8_051,1.03078496,per-arm; multiplies the scaled part
+cavalry,coalition,final,size,n,models = men_raw/2
+cavalry,coalition,final,size power p,0.75,price ∝ size^p
+cavalry,coalition,final,(intercept: per-size constant b0),9.068622522,β·x + [—] × models^0.75 × rank_depth × rating | reference levels: unit_class=cavalry_light; speed=C4
+cavalry,coalition,final,accuracy,-0.03201176761,gold per size unit^p
+cavalry,coalition,final,reload_skill,-0.05054239488,gold per size unit^p
+cavalry,coalition,final,ammo,-0.153872054,gold per size unit^p
+cavalry,coalition,final,morale,0.7394167835,gold per size unit^p
+cavalry,coalition,final,melee_attack,-0.2660569712,gold per size unit^p
+cavalry,coalition,final,melee_defense,0.5059558075,gold per size unit^p
+cavalry,coalition,final,charge_bonus,1.460281373,gold per size unit^p
+cavalry,coalition,final,range,0.09798682833,gold per size unit^p
+cavalry,coalition,final,has_range,2.347160375,gold per size unit^p
+cavalry,coalition,final,has_stamina,7.188065139,gold per size unit^p
+cavalry,coalition,final,is_shock_resistant,10.05903741,gold per size unit^p
+cavalry,coalition,final,can_inspire,8.569098555,gold per size unit^p
+cavalry,coalition,final,has_guerrilla_deployment,6.71124337,gold per size unit^p
+cavalry,coalition,final,is_camel,-15.39045575,gold per size unit^p
+cavalry,coalition,final,unit_class=cavalry_heavy,-2.299947477,gold per size unit^p
+cavalry,coalition,final,unit_class=cavalry_lancers,-2.445412106,gold per size unit^p
+cavalry,coalition,final,unit_class=cavalry_missile,2.712856152,gold per size unit^p
+cavalry,coalition,final,unit_class=cavalry_standard,-2.176406007,gold per size unit^p
+cavalry,coalition,final,speed=C1,-5.253468667,gold per size unit^p
+cavalry,coalition,final,speed=C3,-2.255956782,gold per size unit^p
+cavalry,coalition,final,speed=C5,-4.526582043,gold per size unit^p
+cavalry,coalition,final,multiplier rank_depth δ,-0.02258232722,m = 1 + δ·(rank_depth − 11)
+cavalry,coalition,final,multiplier rating=10,0.8864514895,reference 8
+cavalry,coalition,final,multiplier rating=5,1.671082934,reference 8
+cavalry,coalition,final,multiplier rating=6,1.455819336,reference 8
+cavalry,coalition,final,multiplier rating=7,1.199473083,reference 8
+cavalry,coalition,final,multiplier rating=8,1,reference 8
+cavalry,coalition,final,multiplier rating=9,0.9643225223,reference 8
+cavalry,coalition,RF,size,n,models = men_raw/2
+cavalry,coalition,RF,size power p,0.75,price ∝ size^p
+cavalry,coalition,RF,(intercept: per-size constant b0),9.068622522,β·x + [—] × models^0.75 × rank_depth × rating | reference levels: unit_class=cavalry_light; speed=C4
+cavalry,coalition,RF,accuracy,-0.03201176761,gold per size unit^p
+cavalry,coalition,RF,reload_skill,-0.05054239488,gold per size unit^p
+cavalry,coalition,RF,ammo,-0.153872054,gold per size unit^p
+cavalry,coalition,RF,morale,0.7394167835,gold per size unit^p
+cavalry,coalition,RF,melee_attack,-0.2660569712,gold per size unit^p
+cavalry,coalition,RF,melee_defense,0.5059558075,gold per size unit^p
+cavalry,coalition,RF,charge_bonus,1.460281373,gold per size unit^p
+cavalry,coalition,RF,range,0.09798682833,gold per size unit^p
+cavalry,coalition,RF,has_range,2.347160375,gold per size unit^p
+cavalry,coalition,RF,has_stamina,7.188065139,gold per size unit^p
+cavalry,coalition,RF,is_shock_resistant,10.05903741,gold per size unit^p
+cavalry,coalition,RF,can_inspire,8.569098555,gold per size unit^p
+cavalry,coalition,RF,has_guerrilla_deployment,6.71124337,gold per size unit^p
+cavalry,coalition,RF,is_camel,-15.39045575,gold per size unit^p
+cavalry,coalition,RF,unit_class=cavalry_heavy,-2.299947477,gold per size unit^p
+cavalry,coalition,RF,unit_class=cavalry_lancers,-2.445412106,gold per size unit^p
+cavalry,coalition,RF,unit_class=cavalry_missile,2.712856152,gold per size unit^p
+cavalry,coalition,RF,unit_class=cavalry_standard,-2.176406007,gold per size unit^p
+cavalry,coalition,RF,speed=C1,-5.253468667,gold per size unit^p
+cavalry,coalition,RF,speed=C3,-2.255956782,gold per size unit^p
+cavalry,coalition,RF,speed=C5,-4.526582043,gold per size unit^p
+cavalry,coalition,RF,multiplier rank_depth δ,-0.02258232722,m = 1 + δ·(rank_depth − 11)
+cavalry,coalition,RF,multiplier rating=10,0.8864514895,reference 8
+cavalry,coalition,RF,multiplier rating=5,1.671082934,reference 8
+cavalry,coalition,RF,multiplier rating=6,1.455819336,reference 8
+cavalry,coalition,RF,multiplier rating=7,1.199473083,reference 8
+cavalry,coalition,RF,multiplier rating=8,1,reference 8
+cavalry,coalition,RF,multiplier rating=9,0.9643225223,reference 8
+cavalry,coalition,RF,faction modifier britain,1.076015197,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_hre,1.137425363,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b03_x8_039,0.961228716,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b03_x8_041,1,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b03_x8_042,0.9055151461,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b03_x8_043,1.023600618,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b04_x8_015,1.00182224,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b04_x8_016,1.05038059,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b05_x8_006,1.019046134,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b05_x8_007,1.033956254,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b06_x8_008,1.041576353,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b06_x8_009,0.9370332568,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b07_x8_018,1.023828215,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b08_x8_044,0.9540844502,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b08_x8_045,0.9654354563,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b08_x8_046,1.129462675,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b09_x8_019,1.004614601,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b09_x8_020,1.095440351,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b10_x8_026,1.051533788,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b11_x8_013,1.005252562,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b11_x8_014,0.9481094496,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b12_x8_011,0.964644415,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b12_x8_012,0.9035942511,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b13_x8_049,1.019605691,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b13_x8_050,1.067477057,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b14_x8_031,1.011004864,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b15_x8_052,0.950228389,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b15_x8_053,1.014164643,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b17_x8_055,0.9339132558,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b17_x8_056,1.058837072,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier ntw3_tow_b17_x8_057,0.9892467852,per-arm; multiplies the scaled part
+cavalry,coalition,RF,faction modifier piedmont_savoy,1.037529902,per-arm; multiplies the scaled part
+cavalry,merged,final,size,n,models = men_raw/2
+cavalry,merged,final,size power p,0.75,price ∝ size^p
+cavalry,merged,final,(intercept: per-size constant b0),7.935824182,β·x + [—] × models^0.75 × rank_depth × rating | reference levels: unit_class=cavalry_light; speed=C4
+cavalry,merged,final,accuracy,0.009339271834,gold per size unit^p
+cavalry,merged,final,reload_skill,-0.08051551391,gold per size unit^p
+cavalry,merged,final,ammo,-0.1200146271,gold per size unit^p
+cavalry,merged,final,morale,0.7886053004,gold per size unit^p
+cavalry,merged,final,melee_attack,-0.1654031654,gold per size unit^p
+cavalry,merged,final,melee_defense,0.5395839193,gold per size unit^p
+cavalry,merged,final,charge_bonus,1.332748492,gold per size unit^p
+cavalry,merged,final,range,0.1796364367,gold per size unit^p
+cavalry,merged,final,has_range,-4.46879571,gold per size unit^p
+cavalry,merged,final,has_stamina,7.340139085,gold per size unit^p
+cavalry,merged,final,is_shock_resistant,9.896263081,gold per size unit^p
+cavalry,merged,final,can_inspire,9.128936827,gold per size unit^p
+cavalry,merged,final,has_guerrilla_deployment,7.919329238,gold per size unit^p
+cavalry,merged,final,is_camel,-19.06378604,gold per size unit^p
+cavalry,merged,final,unit_class=cavalry_heavy,-1.865595036,gold per size unit^p
+cavalry,merged,final,unit_class=cavalry_lancers,-2.570136865,gold per size unit^p
+cavalry,merged,final,unit_class=cavalry_missile,1.991954215,gold per size unit^p
+cavalry,merged,final,unit_class=cavalry_standard,-1.923495792,gold per size unit^p
+cavalry,merged,final,speed=C1,-5.894494133,gold per size unit^p
+cavalry,merged,final,speed=C3,-2.681160947,gold per size unit^p
+cavalry,merged,final,speed=C5,-4.220773064,gold per size unit^p
+cavalry,merged,final,multiplier rank_depth δ,-0.02138463054,m = 1 + δ·(rank_depth − 11)
+cavalry,merged,final,multiplier rating=10,0.8487522894,reference 8
+cavalry,merged,final,multiplier rating=11,0.7631137698,reference 8
+cavalry,merged,final,multiplier rating=12,0.6667600086,reference 8
+cavalry,merged,final,multiplier rating=5,1.688757964,reference 8
+cavalry,merged,final,multiplier rating=6,1.375348871,reference 8
+cavalry,merged,final,multiplier rating=7,1.152859648,reference 8
+cavalry,merged,final,multiplier rating=8,1,reference 8
+cavalry,merged,final,multiplier rating=9,0.9326963192,reference 8
+cavalry,merged,RF,size,n,models = men_raw/2
+cavalry,merged,RF,size power p,0.75,price ∝ size^p
+cavalry,merged,RF,(intercept: per-size constant b0),7.935824182,β·x + [—] × models^0.75 × rank_depth × rating | reference levels: unit_class=cavalry_light; speed=C4
+cavalry,merged,RF,accuracy,0.009339271834,gold per size unit^p
+cavalry,merged,RF,reload_skill,-0.08051551391,gold per size unit^p
+cavalry,merged,RF,ammo,-0.1200146271,gold per size unit^p
+cavalry,merged,RF,morale,0.7886053004,gold per size unit^p
+cavalry,merged,RF,melee_attack,-0.1654031654,gold per size unit^p
+cavalry,merged,RF,melee_defense,0.5395839193,gold per size unit^p
+cavalry,merged,RF,charge_bonus,1.332748492,gold per size unit^p
+cavalry,merged,RF,range,0.1796364367,gold per size unit^p
+cavalry,merged,RF,has_range,-4.46879571,gold per size unit^p
+cavalry,merged,RF,has_stamina,7.340139085,gold per size unit^p
+cavalry,merged,RF,is_shock_resistant,9.896263081,gold per size unit^p
+cavalry,merged,RF,can_inspire,9.128936827,gold per size unit^p
+cavalry,merged,RF,has_guerrilla_deployment,7.919329238,gold per size unit^p
+cavalry,merged,RF,is_camel,-19.06378604,gold per size unit^p
+cavalry,merged,RF,unit_class=cavalry_heavy,-1.865595036,gold per size unit^p
+cavalry,merged,RF,unit_class=cavalry_lancers,-2.570136865,gold per size unit^p
+cavalry,merged,RF,unit_class=cavalry_missile,1.991954215,gold per size unit^p
+cavalry,merged,RF,unit_class=cavalry_standard,-1.923495792,gold per size unit^p
+cavalry,merged,RF,speed=C1,-5.894494133,gold per size unit^p
+cavalry,merged,RF,speed=C3,-2.681160947,gold per size unit^p
+cavalry,merged,RF,speed=C5,-4.220773064,gold per size unit^p
+cavalry,merged,RF,multiplier rank_depth δ,-0.02138463054,m = 1 + δ·(rank_depth − 11)
+cavalry,merged,RF,multiplier rating=10,0.8487522894,reference 8
+cavalry,merged,RF,multiplier rating=11,0.7631137698,reference 8
+cavalry,merged,RF,multiplier rating=12,0.6667600086,reference 8
+cavalry,merged,RF,multiplier rating=5,1.688757964,reference 8
+cavalry,merged,RF,multiplier rating=6,1.375348871,reference 8
+cavalry,merged,RF,multiplier rating=7,1.152859648,reference 8
+cavalry,merged,RF,multiplier rating=8,1,reference 8
+cavalry,merged,RF,multiplier rating=9,0.9326963192,reference 8
+cavalry,merged,RF,faction modifier britain,1.055733741,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier denmark,0.8879897114,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier france,1.008922692,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_hre,1.15803137,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a03_x8_032,1.002041953,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a03_x8_033,1.011945314,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a03_x8_038,1.063194535,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a03_x8_040,0.9933962047,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a04_x8_005,1.008217475,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a05_x8_001,1.02888001,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a05_x8_004,0.9893281261,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a06_x8_002,1,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a08_x8_047,0.9735097975,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a09_x8_021,0.9378100586,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a11_x8_027,0.9832297257,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a11_x8_028,0.9836746953,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a11_x8_029,1.007698177,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a12_x8_003,0.9173482401,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a13_x8_022,1.005751249,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_a17_x8_054,1.023210128,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b03_x8_039,0.9789924759,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b03_x8_041,0.9706017553,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b03_x8_042,0.9267177318,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b03_x8_043,1.047859331,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b04_x8_015,0.9877254205,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b04_x8_016,1.033699663,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b05_x8_006,1.034297603,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b05_x8_007,1.018046228,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b06_x8_008,1.052581641,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b06_x8_009,0.9556759412,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b07_x8_018,1.041325399,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b08_x8_044,0.976939973,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b08_x8_045,1.00046144,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b08_x8_046,1.102244144,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b09_x8_019,1.022434302,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b09_x8_020,1.125796865,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b10_x8_026,1.069258256,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b11_x8_013,1.034441759,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b11_x8_014,0.920482866,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b12_x8_011,0.9870606951,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b12_x8_012,0.9141945156,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b13_x8_049,1.034728405,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b13_x8_050,1.08519886,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b14_x8_031,1.046669486,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b15_x8_052,0.9651710032,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b15_x8_053,1.041457097,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b17_x8_055,0.9178904194,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b17_x8_056,1.040061388,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_b17_x8_057,1.007952314,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_c07_x8_017,0.9738821038,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_c08_x8_048,0.950068083,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_c10_x8_025,1.078189034,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_c14_x8_030,1.012154653,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier ntw3_tow_c15_x8_051,1.08970082,per-arm; multiplies the scaled part
+cavalry,merged,RF,faction modifier piedmont_savoy,1.013072755,per-arm; multiplies the scaled part
+artillery,imperial,final,size,guns,guns
+artillery,imperial,final,size power p,1.25,price ∝ size^p
+artillery,imperial,final,stat power accuracy,3,the β column is stat^power
+artillery,imperial,final,stat power charge_bonus,3,the β column is stat^power
+artillery,imperial,final,stat power melee_attack,3,the β column is stat^power
+artillery,imperial,final,stat power melee_defense,3,the β column is stat^power
+artillery,imperial,final,stat power morale,3,the β column is stat^power
+artillery,imperial,final,stat power range,0.25,the β column is stat^power
+artillery,imperial,final,stat power reload_skill,1.25,the β column is stat^power
+artillery,imperial,final,(intercept: per-size constant b0),-483.7831831,"β·x + [—] × guns^1.25 × rating + c extras: damage, proj_reload stat powers: accuracy^3, charge_bonus^3, melee_attack^3, melee_defense^3, morale^3, range^0.25, reload_skill^1.25 | reference levels: unit_class=artillery_foot; speed=F4; shot=cannon_round_shot"
+artillery,imperial,final,accuracy,7.453988325e-05,gold per size unit^p
+artillery,imperial,final,reload_skill,0.2394232404,gold per size unit^p
+artillery,imperial,final,morale,0.03593410849,gold per size unit^p
+artillery,imperial,final,melee_attack,0.1775076985,gold per size unit^p
+artillery,imperial,final,melee_defense,0.02144103706,gold per size unit^p
+artillery,imperial,final,charge_bonus,1.839756684,gold per size unit^p
+artillery,imperial,final,range,128.4951635,gold per size unit^p
+artillery,imperial,final,has_stamina,37.20364108,gold per size unit^p
+artillery,imperial,final,can_inspire,33.61212367,gold per size unit^p
+artillery,imperial,final,unit_class=artillery_horse,146.5953169,gold per size unit^p
+artillery,imperial,final,speed=F1,-66.45904586,gold per size unit^p
+artillery,imperial,final,speed=F2,-50.17904831,gold per size unit^p
+artillery,imperial,final,speed=F3,-28.85008644,gold per size unit^p
+artillery,imperial,final,speed=F5,44.19204121,gold per size unit^p
+artillery,imperial,final,speed=F6,76.234042,gold per size unit^p
+artillery,imperial,final,speed=H1,-138.9408643,gold per size unit^p
+artillery,imperial,final,speed=H2,-69.04987969,gold per size unit^p
+artillery,imperial,final,shot=howitzer_shell,75.88661236,gold per size unit^p
+artillery,imperial,final,shot=unicorn_shell,60.78864931,gold per size unit^p
+artillery,imperial,final,projectile_damage,-1.065875824,gold per size unit^p
+artillery,imperial,final,projectile_reload_time,3.165150685,gold per size unit^p
+artillery,imperial,final,"c (per unit, outside the multiplier)",-199.2382253,gold per unit
+artillery,imperial,final,multiplier rating=10,0.8836078598,reference 8
+artillery,imperial,final,multiplier rating=11,0.7944066982,reference 8
+artillery,imperial,final,multiplier rating=12,0.7397736854,reference 8
+artillery,imperial,final,multiplier rating=5,1.496702956,reference 8
+artillery,imperial,final,multiplier rating=6,1.333625093,reference 8
+artillery,imperial,final,multiplier rating=7,1.118333239,reference 8
+artillery,imperial,final,multiplier rating=8,1,reference 8
+artillery,imperial,final,multiplier rating=9,0.9365548407,reference 8
+artillery,imperial,RF,size,guns,guns
+artillery,imperial,RF,size power p,1.25,price ∝ size^p
+artillery,imperial,RF,stat power accuracy,3,the β column is stat^power
+artillery,imperial,RF,stat power charge_bonus,3,the β column is stat^power
+artillery,imperial,RF,stat power melee_attack,3,the β column is stat^power
+artillery,imperial,RF,stat power melee_defense,3,the β column is stat^power
+artillery,imperial,RF,stat power morale,3,the β column is stat^power
+artillery,imperial,RF,stat power range,0.25,the β column is stat^power
+artillery,imperial,RF,stat power reload_skill,1.25,the β column is stat^power
+artillery,imperial,RF,(intercept: per-size constant b0),-483.7831831,"β·x + [—] × guns^1.25 × rating + c extras: damage, proj_reload stat powers: accuracy^3, charge_bonus^3, melee_attack^3, melee_defense^3, morale^3, range^0.25, reload_skill^1.25 | reference levels: unit_class=artillery_foot; speed=F4; shot=cannon_round_shot"
+artillery,imperial,RF,accuracy,7.453988325e-05,gold per size unit^p
+artillery,imperial,RF,reload_skill,0.2394232404,gold per size unit^p
+artillery,imperial,RF,morale,0.03593410849,gold per size unit^p
+artillery,imperial,RF,melee_attack,0.1775076985,gold per size unit^p
+artillery,imperial,RF,melee_defense,0.02144103706,gold per size unit^p
+artillery,imperial,RF,charge_bonus,1.839756684,gold per size unit^p
+artillery,imperial,RF,range,128.4951635,gold per size unit^p
+artillery,imperial,RF,has_stamina,37.20364108,gold per size unit^p
+artillery,imperial,RF,can_inspire,33.61212367,gold per size unit^p
+artillery,imperial,RF,unit_class=artillery_horse,146.5953169,gold per size unit^p
+artillery,imperial,RF,speed=F1,-66.45904586,gold per size unit^p
+artillery,imperial,RF,speed=F2,-50.17904831,gold per size unit^p
+artillery,imperial,RF,speed=F3,-28.85008644,gold per size unit^p
+artillery,imperial,RF,speed=F5,44.19204121,gold per size unit^p
+artillery,imperial,RF,speed=F6,76.234042,gold per size unit^p
+artillery,imperial,RF,speed=H1,-138.9408643,gold per size unit^p
+artillery,imperial,RF,speed=H2,-69.04987969,gold per size unit^p
+artillery,imperial,RF,shot=howitzer_shell,75.88661236,gold per size unit^p
+artillery,imperial,RF,shot=unicorn_shell,60.78864931,gold per size unit^p
+artillery,imperial,RF,projectile_damage,-1.065875824,gold per size unit^p
+artillery,imperial,RF,projectile_reload_time,3.165150685,gold per size unit^p
+artillery,imperial,RF,"c (per unit, outside the multiplier)",-199.2382253,gold per unit
+artillery,imperial,RF,multiplier rating=10,0.8836078598,reference 8
+artillery,imperial,RF,multiplier rating=11,0.7944066982,reference 8
+artillery,imperial,RF,multiplier rating=12,0.7397736854,reference 8
+artillery,imperial,RF,multiplier rating=5,1.496702956,reference 8
+artillery,imperial,RF,multiplier rating=6,1.333625093,reference 8
+artillery,imperial,RF,multiplier rating=7,1.118333239,reference 8
+artillery,imperial,RF,multiplier rating=8,1,reference 8
+artillery,imperial,RF,multiplier rating=9,0.9365548407,reference 8
+artillery,imperial,RF,faction modifier denmark,0.7158362156,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier france,1.042790358,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a03_x8_032,0.9143854436,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a03_x8_033,1.047164651,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a03_x8_038,1,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a03_x8_040,0.996323087,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a04_x8_005,0.9761082794,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a05_x8_001,1.01236576,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a05_x8_004,1.008665604,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a06_x8_002,1,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a08_x8_047,1.021886287,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a09_x8_021,0.9781639307,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a11_x8_027,0.9933243577,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a11_x8_028,0.9961387501,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a11_x8_029,1.019360588,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a12_x8_003,1.005305784,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a13_x8_022,1.020449188,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_a17_x8_054,0.9798073482,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_c07_x8_017,0.9667713178,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_c08_x8_048,1.077395416,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_c10_x8_025,1.020968375,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_c14_x8_030,1.0036728,per-arm; multiplies the scaled part
+artillery,imperial,RF,faction modifier ntw3_tow_c15_x8_051,0.9938879295,per-arm; multiplies the scaled part
+artillery,coalition,final,size,guns,guns
+artillery,coalition,final,size power p,1.25,price ∝ size^p
+artillery,coalition,final,stat power accuracy,3,the β column is stat^power
+artillery,coalition,final,stat power charge_bonus,3,the β column is stat^power
+artillery,coalition,final,stat power melee_attack,3,the β column is stat^power
+artillery,coalition,final,stat power melee_defense,3,the β column is stat^power
+artillery,coalition,final,stat power morale,3,the β column is stat^power
+artillery,coalition,final,stat power range,0.25,the β column is stat^power
+artillery,coalition,final,stat power reload_skill,1.25,the β column is stat^power
+artillery,coalition,final,(intercept: per-size constant b0),-394.5663208,"β·x + [—] × guns^1.25 × rating + c extras: damage, proj_reload stat powers: accuracy^3, charge_bonus^3, melee_attack^3, melee_defense^3, morale^3, range^0.25, reload_skill^1.25 | reference levels: unit_class=artillery_foot; speed=F3; shot=cannon_round_shot"
+artillery,coalition,final,accuracy,9.555740547e-05,gold per size unit^p
+artillery,coalition,final,reload_skill,0.1737362336,gold per size unit^p
+artillery,coalition,final,morale,0.04966234699,gold per size unit^p
+artillery,coalition,final,melee_attack,0.1807748474,gold per size unit^p
+artillery,coalition,final,melee_defense,-0.03960043943,gold per size unit^p
+artillery,coalition,final,charge_bonus,0.9699534513,gold per size unit^p
+artillery,coalition,final,range,105.0113755,gold per size unit^p
+artillery,coalition,final,has_stamina,40.19548329,gold per size unit^p
+artillery,coalition,final,can_inspire,47.50346504,gold per size unit^p
+artillery,coalition,final,has_guerrilla_deployment,25.82669517,gold per size unit^p
+artillery,coalition,final,unit_class=artillery_horse,145.6674404,gold per size unit^p
+artillery,coalition,final,speed=F1,-56.70830376,gold per size unit^p
+artillery,coalition,final,speed=F2,-27.53365935,gold per size unit^p
+artillery,coalition,final,speed=F4,42.8745161,gold per size unit^p
+artillery,coalition,final,speed=F5,61.60187733,gold per size unit^p
+artillery,coalition,final,speed=F6,104.9671167,gold per size unit^p
+artillery,coalition,final,speed=H1,-91.61375917,gold per size unit^p
+artillery,coalition,final,speed=H2,-33.23589274,gold per size unit^p
+artillery,coalition,final,shot=howitzer_shell,15.79117849,gold per size unit^p
+artillery,coalition,final,shot=unicorn_shell,-5.396029508,gold per size unit^p
+artillery,coalition,final,projectile_damage,-0.2605227204,gold per size unit^p
+artillery,coalition,final,projectile_reload_time,1.99324965,gold per size unit^p
+artillery,coalition,final,"c (per unit, outside the multiplier)",-160.8158095,gold per unit
+artillery,coalition,final,multiplier rating=10,0.8651363911,reference 8
+artillery,coalition,final,multiplier rating=5,1.456745099,reference 8
+artillery,coalition,final,multiplier rating=6,1.22810396,reference 8
+artillery,coalition,final,multiplier rating=7,1.105633181,reference 8
+artillery,coalition,final,multiplier rating=8,1,reference 8
+artillery,coalition,final,multiplier rating=9,0.9342995783,reference 8
+artillery,coalition,RF,size,guns,guns
+artillery,coalition,RF,size power p,1.25,price ∝ size^p
+artillery,coalition,RF,stat power accuracy,3,the β column is stat^power
+artillery,coalition,RF,stat power charge_bonus,3,the β column is stat^power
+artillery,coalition,RF,stat power melee_attack,3,the β column is stat^power
+artillery,coalition,RF,stat power melee_defense,3,the β column is stat^power
+artillery,coalition,RF,stat power morale,3,the β column is stat^power
+artillery,coalition,RF,stat power range,0.25,the β column is stat^power
+artillery,coalition,RF,stat power reload_skill,1.25,the β column is stat^power
+artillery,coalition,RF,(intercept: per-size constant b0),-394.5663208,"β·x + [—] × guns^1.25 × rating + c extras: damage, proj_reload stat powers: accuracy^3, charge_bonus^3, melee_attack^3, melee_defense^3, morale^3, range^0.25, reload_skill^1.25 | reference levels: unit_class=artillery_foot; speed=F3; shot=cannon_round_shot"
+artillery,coalition,RF,accuracy,9.555740547e-05,gold per size unit^p
+artillery,coalition,RF,reload_skill,0.1737362336,gold per size unit^p
+artillery,coalition,RF,morale,0.04966234699,gold per size unit^p
+artillery,coalition,RF,melee_attack,0.1807748474,gold per size unit^p
+artillery,coalition,RF,melee_defense,-0.03960043943,gold per size unit^p
+artillery,coalition,RF,charge_bonus,0.9699534513,gold per size unit^p
+artillery,coalition,RF,range,105.0113755,gold per size unit^p
+artillery,coalition,RF,has_stamina,40.19548329,gold per size unit^p
+artillery,coalition,RF,can_inspire,47.50346504,gold per size unit^p
+artillery,coalition,RF,has_guerrilla_deployment,25.82669517,gold per size unit^p
+artillery,coalition,RF,unit_class=artillery_horse,145.6674404,gold per size unit^p
+artillery,coalition,RF,speed=F1,-56.70830376,gold per size unit^p
+artillery,coalition,RF,speed=F2,-27.53365935,gold per size unit^p
+artillery,coalition,RF,speed=F4,42.8745161,gold per size unit^p
+artillery,coalition,RF,speed=F5,61.60187733,gold per size unit^p
+artillery,coalition,RF,speed=F6,104.9671167,gold per size unit^p
+artillery,coalition,RF,speed=H1,-91.61375917,gold per size unit^p
+artillery,coalition,RF,speed=H2,-33.23589274,gold per size unit^p
+artillery,coalition,RF,shot=howitzer_shell,15.79117849,gold per size unit^p
+artillery,coalition,RF,shot=unicorn_shell,-5.396029508,gold per size unit^p
+artillery,coalition,RF,projectile_damage,-0.2605227204,gold per size unit^p
+artillery,coalition,RF,projectile_reload_time,1.99324965,gold per size unit^p
+artillery,coalition,RF,"c (per unit, outside the multiplier)",-160.8158095,gold per unit
+artillery,coalition,RF,multiplier rating=10,0.8651363911,reference 8
+artillery,coalition,RF,multiplier rating=5,1.456745099,reference 8
+artillery,coalition,RF,multiplier rating=6,1.22810396,reference 8
+artillery,coalition,RF,multiplier rating=7,1.105633181,reference 8
+artillery,coalition,RF,multiplier rating=8,1,reference 8
+artillery,coalition,RF,multiplier rating=9,0.9342995783,reference 8
+artillery,coalition,RF,faction modifier britain,1.011524888,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_hre,1.079687007,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b03_x8_039,0.9813882854,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b03_x8_041,1,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b03_x8_042,1.013023954,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b03_x8_043,1.020740798,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b04_x8_015,1.011673447,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b04_x8_016,0.9850618756,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b05_x8_006,0.989532237,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b05_x8_007,0.9866400795,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b06_x8_008,0.9658868462,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b06_x8_009,0.9897200874,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b07_x8_018,1.064838247,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b08_x8_044,0.9836349575,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b08_x8_045,0.9309515343,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b08_x8_046,0.9935518282,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b09_x8_019,0.9735697806,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b09_x8_020,1.038804774,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b10_x8_026,1.025496945,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b11_x8_013,1.002869109,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b11_x8_014,0.8600819701,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b12_x8_011,0.9762634738,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b12_x8_012,1.029765722,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b13_x8_049,1.002080746,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b13_x8_050,1.001056914,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b14_x8_031,1.053870366,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b15_x8_052,1.01849117,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b15_x8_053,0.9308889306,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b17_x8_055,1.028016197,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b17_x8_056,1.028408386,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier ntw3_tow_b17_x8_057,1.011259127,per-arm; multiplies the scaled part
+artillery,coalition,RF,faction modifier piedmont_savoy,1.016778478,per-arm; multiplies the scaled part
+artillery,merged,final,size,guns,guns
+artillery,merged,final,size power p,1.25,price ∝ size^p
+artillery,merged,final,stat power accuracy,3,the β column is stat^power
+artillery,merged,final,stat power charge_bonus,3,the β column is stat^power
+artillery,merged,final,stat power melee_attack,3,the β column is stat^power
+artillery,merged,final,stat power melee_defense,3,the β column is stat^power
+artillery,merged,final,stat power morale,3,the β column is stat^power
+artillery,merged,final,stat power range,0.25,the β column is stat^power
+artillery,merged,final,stat power reload_skill,1.25,the β column is stat^power
+artillery,merged,final,(intercept: per-size constant b0),-371.0728875,"β·x + [—] × guns^1.25 × rating + c extras: damage, proj_reload stat powers: accuracy^3, charge_bonus^3, melee_attack^3, melee_defense^3, morale^3, range^0.25, reload_skill^1.25 | reference levels: unit_class=artillery_foot; speed=F3; shot=cannon_round_shot"
+artillery,merged,final,accuracy,9.097130799e-05,gold per size unit^p
+artillery,merged,final,reload_skill,0.2067673157,gold per size unit^p
+artillery,merged,final,morale,0.03825791007,gold per size unit^p
+artillery,merged,final,melee_attack,0.1276492464,gold per size unit^p
+artillery,merged,final,melee_defense,0.01341646646,gold per size unit^p
+artillery,merged,final,charge_bonus,1.116554425,gold per size unit^p
+artillery,merged,final,range,96.88420064,gold per size unit^p
+artillery,merged,final,has_stamina,38.94407771,gold per size unit^p
+artillery,merged,final,can_inspire,37.77465295,gold per size unit^p
+artillery,merged,final,has_guerrilla_deployment,27.89264027,gold per size unit^p
+artillery,merged,final,unit_class=artillery_horse,157.8459115,gold per size unit^p
+artillery,merged,final,speed=F1,-58.86874717,gold per size unit^p
+artillery,merged,final,speed=F2,-28.12195147,gold per size unit^p
+artillery,merged,final,speed=F4,35.1154746,gold per size unit^p
+artillery,merged,final,speed=F5,65.41184412,gold per size unit^p
+artillery,merged,final,speed=F6,97.61609116,gold per size unit^p
+artillery,merged,final,speed=H1,-118.4327168,gold per size unit^p
+artillery,merged,final,speed=H2,-50.48884076,gold per size unit^p
+artillery,merged,final,shot=howitzer_shell,0.8948656218,gold per size unit^p
+artillery,merged,final,shot=unicorn_shell,-19.87918104,gold per size unit^p
+artillery,merged,final,projectile_damage,-0.2060753433,gold per size unit^p
+artillery,merged,final,projectile_reload_time,2.511375926,gold per size unit^p
+artillery,merged,final,"c (per unit, outside the multiplier)",-180.372618,gold per unit
+artillery,merged,final,multiplier rating=10,0.8746215084,reference 8
+artillery,merged,final,multiplier rating=11,0.7811150034,reference 8
+artillery,merged,final,multiplier rating=12,0.7252822766,reference 8
+artillery,merged,final,multiplier rating=5,1.515352709,reference 8
+artillery,merged,final,multiplier rating=6,1.291502225,reference 8
+artillery,merged,final,multiplier rating=7,1.115804721,reference 8
+artillery,merged,final,multiplier rating=8,1,reference 8
+artillery,merged,final,multiplier rating=9,0.9397661503,reference 8
+artillery,merged,RF,size,guns,guns
+artillery,merged,RF,size power p,1.25,price ∝ size^p
+artillery,merged,RF,stat power accuracy,3,the β column is stat^power
+artillery,merged,RF,stat power charge_bonus,3,the β column is stat^power
+artillery,merged,RF,stat power melee_attack,3,the β column is stat^power
+artillery,merged,RF,stat power melee_defense,3,the β column is stat^power
+artillery,merged,RF,stat power morale,3,the β column is stat^power
+artillery,merged,RF,stat power range,0.25,the β column is stat^power
+artillery,merged,RF,stat power reload_skill,1.25,the β column is stat^power
+artillery,merged,RF,(intercept: per-size constant b0),-371.0728875,"β·x + [—] × guns^1.25 × rating + c extras: damage, proj_reload stat powers: accuracy^3, charge_bonus^3, melee_attack^3, melee_defense^3, morale^3, range^0.25, reload_skill^1.25 | reference levels: unit_class=artillery_foot; speed=F3; shot=cannon_round_shot"
+artillery,merged,RF,accuracy,9.097130799e-05,gold per size unit^p
+artillery,merged,RF,reload_skill,0.2067673157,gold per size unit^p
+artillery,merged,RF,morale,0.03825791007,gold per size unit^p
+artillery,merged,RF,melee_attack,0.1276492464,gold per size unit^p
+artillery,merged,RF,melee_defense,0.01341646646,gold per size unit^p
+artillery,merged,RF,charge_bonus,1.116554425,gold per size unit^p
+artillery,merged,RF,range,96.88420064,gold per size unit^p
+artillery,merged,RF,has_stamina,38.94407771,gold per size unit^p
+artillery,merged,RF,can_inspire,37.77465295,gold per size unit^p
+artillery,merged,RF,has_guerrilla_deployment,27.89264027,gold per size unit^p
+artillery,merged,RF,unit_class=artillery_horse,157.8459115,gold per size unit^p
+artillery,merged,RF,speed=F1,-58.86874717,gold per size unit^p
+artillery,merged,RF,speed=F2,-28.12195147,gold per size unit^p
+artillery,merged,RF,speed=F4,35.1154746,gold per size unit^p
+artillery,merged,RF,speed=F5,65.41184412,gold per size unit^p
+artillery,merged,RF,speed=F6,97.61609116,gold per size unit^p
+artillery,merged,RF,speed=H1,-118.4327168,gold per size unit^p
+artillery,merged,RF,speed=H2,-50.48884076,gold per size unit^p
+artillery,merged,RF,shot=howitzer_shell,0.8948656218,gold per size unit^p
+artillery,merged,RF,shot=unicorn_shell,-19.87918104,gold per size unit^p
+artillery,merged,RF,projectile_damage,-0.2060753433,gold per size unit^p
+artillery,merged,RF,projectile_reload_time,2.511375926,gold per size unit^p
+artillery,merged,RF,"c (per unit, outside the multiplier)",-180.372618,gold per unit
+artillery,merged,RF,multiplier rating=10,0.8746215084,reference 8
+artillery,merged,RF,multiplier rating=11,0.7811150034,reference 8
+artillery,merged,RF,multiplier rating=12,0.7252822766,reference 8
+artillery,merged,RF,multiplier rating=5,1.515352709,reference 8
+artillery,merged,RF,multiplier rating=6,1.291502225,reference 8
+artillery,merged,RF,multiplier rating=7,1.115804721,reference 8
+artillery,merged,RF,multiplier rating=8,1,reference 8
+artillery,merged,RF,multiplier rating=9,0.9397661503,reference 8
+artillery,merged,RF,faction modifier britain,1.037359958,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier denmark,0.6843412029,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier france,1.039384661,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_hre,1.088715407,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a03_x8_032,0.9010300117,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a03_x8_033,1.040019929,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a03_x8_038,1.001881283,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a03_x8_040,0.9907767228,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a04_x8_005,0.9752795132,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a05_x8_001,1.016512827,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a05_x8_004,1.031616308,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a06_x8_002,1,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a08_x8_047,1.018714527,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a09_x8_021,0.9665276531,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a11_x8_027,1.004468973,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a11_x8_028,0.9949242262,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a11_x8_029,0.992361308,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a12_x8_003,0.9877189713,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a13_x8_022,1.009688219,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_a17_x8_054,0.953921679,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b03_x8_039,0.9923384099,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b03_x8_041,0.9924513554,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b03_x8_042,1.008614878,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b03_x8_043,1.021155168,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b04_x8_015,1.0059114,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b04_x8_016,0.9979664262,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b05_x8_006,0.9935013133,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b05_x8_007,0.9946309329,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b06_x8_008,0.9598038793,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b06_x8_009,1.009233332,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b07_x8_018,1.088726207,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b08_x8_044,0.9947453892,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b08_x8_045,0.8978090373,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b08_x8_046,1.011320623,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b09_x8_019,0.9735437289,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b09_x8_020,1.050278765,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b10_x8_026,1.034645956,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b11_x8_013,0.9969987339,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b11_x8_014,0.8655850808,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b12_x8_011,0.9839641316,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b12_x8_012,1.052388401,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b13_x8_049,1.013956427,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b13_x8_050,1.001545542,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b14_x8_031,1.023830847,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b15_x8_052,1.029493704,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b15_x8_053,0.9811918763,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b17_x8_055,1.050708345,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b17_x8_056,1.051664943,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_b17_x8_057,1.01754869,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_c07_x8_017,0.9902845569,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_c08_x8_048,1.067906332,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_c10_x8_025,1.012045105,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_c14_x8_030,1.009571745,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier ntw3_tow_c15_x8_051,0.9877301441,per-arm; multiplies the scaled part
+artillery,merged,RF,faction modifier piedmont_savoy,1.015491834,per-arm; multiplies the scaled part
+all arms,imperial,RFs,faction modifier denmark,0.9221712206,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier france,1.030674082,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a03_x8_032,0.9919273783,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a03_x8_033,1.044671724,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a03_x8_038,0.9821734762,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a03_x8_040,0.9938084294,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a04_x8_005,0.9611109454,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a05_x8_001,1.019781109,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a05_x8_004,1.014366969,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a06_x8_002,0.9994619452,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a08_x8_047,1.026388367,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a09_x8_021,0.9710312802,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a11_x8_027,1.013033159,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a11_x8_028,0.9763436007,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a11_x8_029,1.018872697,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a12_x8_003,0.9758631432,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a13_x8_022,1.02493326,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_a17_x8_054,0.9862601738,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_c07_x8_017,1.020934658,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_c08_x8_048,0.987129921,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_c10_x8_025,1.051123112,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_c14_x8_030,1.021974017,one per corps across arms; multiplies each arm's scaled part
+all arms,imperial,RFs,faction modifier ntw3_tow_c15_x8_051,1.024788539,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier britain,1.05050294,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_hre,1.100519049,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b03_x8_039,0.982771271,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b03_x8_041,1.002580523,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b03_x8_042,0.9748591586,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b03_x8_043,1.021490536,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b04_x8_015,0.9416051343,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b04_x8_016,0.9812775355,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b05_x8_006,1.000667274,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b05_x8_007,1.030492119,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b06_x8_008,0.9690810319,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b06_x8_009,0.9876969672,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b07_x8_018,1.028041677,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b08_x8_044,0.973860133,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b08_x8_045,0.9906926973,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b08_x8_046,1.014969104,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b09_x8_019,0.9844604343,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b09_x8_020,1.031416821,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b10_x8_026,1.000634332,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b11_x8_013,0.9929048874,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b11_x8_014,0.871976992,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b12_x8_011,0.9686147774,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b12_x8_012,0.9538063786,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b13_x8_049,0.9422193706,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b13_x8_050,1.018448023,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b14_x8_031,0.9881675068,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b15_x8_052,0.9641511165,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b15_x8_053,1.006599053,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b17_x8_055,0.9844299441,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b17_x8_056,1.030728705,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier ntw3_tow_b17_x8_057,1.008281516,one per corps across arms; multiplies each arm's scaled part
+all arms,coalition,RFs,faction modifier piedmont_savoy,0.9561040953,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier britain,1.058516892,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier denmark,0.9133949185,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier france,1.021105341,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_hre,1.108929708,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a03_x8_032,0.9857960313,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a03_x8_033,1.033725124,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a03_x8_038,1.001483152,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a03_x8_040,0.9960235602,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a04_x8_005,0.9622740509,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a05_x8_001,1.022773891,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a05_x8_004,1.01567913,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a06_x8_002,0.9979767407,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a08_x8_047,1.003084571,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a09_x8_021,0.9522821011,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a11_x8_027,1.015700837,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a11_x8_028,0.9764282727,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a11_x8_029,1.012049289,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a12_x8_003,0.9529690322,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a13_x8_022,1.025939601,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_a17_x8_054,0.9833255301,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b03_x8_039,0.9872748291,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b03_x8_041,0.9730237636,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b03_x8_042,0.9901717588,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b03_x8_043,1.022581835,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b04_x8_015,0.9318765481,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b04_x8_016,0.9851180328,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b05_x8_006,1.002710031,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b05_x8_007,1.032914543,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b06_x8_008,0.9602131546,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b06_x8_009,0.9992031635,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b07_x8_018,1.04181831,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b08_x8_044,0.9857481374,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b08_x8_045,0.98503812,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b08_x8_046,1.015749951,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b09_x8_019,0.9866881806,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b09_x8_020,1.042224996,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b10_x8_026,1.003187124,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b11_x8_013,0.997105395,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b11_x8_014,0.8449301849,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b12_x8_011,0.9786951238,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b12_x8_012,0.9610153652,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b13_x8_049,0.9438010527,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b13_x8_050,1.02401972,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b14_x8_031,0.9895053939,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b15_x8_052,0.9742935595,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b15_x8_053,1.020355028,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b17_x8_055,0.9807021744,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b17_x8_056,1.031741551,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_b17_x8_057,1.017528358,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_c07_x8_017,1.017019969,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_c08_x8_048,0.9694752718,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_c10_x8_025,1.037834316,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_c14_x8_030,1.010428214,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier ntw3_tow_c15_x8_051,1.040903513,one per corps across arms; multiplies each arm's scaled part
+all arms,merged,RFs,faction modifier piedmont_savoy,0.9496561497,one per corps across arms; multiplies each arm's scaled part
+staff,imperial,T1,b (per star),96.05621061,cost = 1 + …; r − 8
+staff,imperial,T1,γ (per star per rating point),-14.78373511,cost = 1 + …; r − 8
+staff,imperial,T1,q (per star²),8.9114789,cost = 1 + …; r − 8
+staff,imperial,TF1,faction modifier denmark,0.9318584676,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier france,1.000693924,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a03_x8_032,0.9642389737,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a03_x8_033,0.989313286,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a03_x8_038,1.095516118,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a03_x8_040,1.02398961,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a04_x8_005,0.9634733207,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a05_x8_001,0.9900710543,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a05_x8_004,1.054458739,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a06_x8_002,0.997493914,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a08_x8_047,1.00354311,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a09_x8_021,1.020108234,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a11_x8_027,1.007411165,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a11_x8_028,1.070477972,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a11_x8_029,1.011727468,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a12_x8_003,0.9911245772,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a13_x8_022,0.999230542,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_a17_x8_054,1.008916429,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_c07_x8_017,0.9318584676,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_c08_x8_048,1.046277893,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_c10_x8_025,1.008409473,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_c14_x8_030,1.096245383,multiplies (cost − 1)
+staff,imperial,TF1,faction modifier ntw3_tow_c15_x8_051,1.019326079,multiplies (cost − 1)
+staff,imperial,T2,b (per star),93.7429758,cost = 1 + …; r − 8
+staff,imperial,T2,q (per star²),9.388089749,cost = 1 + …; r − 8
+staff,imperial,T2,γ (per star per rating point),-12.24079065,cost = 1 + …; r − 8
+staff,imperial,T2,κ (per star² per rating point),-0.4329099083,cost = 1 + …; r − 8
+staff,imperial,TF2,faction modifier denmark,0.949840428,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier france,0.9969688616,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a03_x8_032,0.9606290233,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a03_x8_033,0.9858825064,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a03_x8_038,1.12979434,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a03_x8_040,1.032575946,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a04_x8_005,0.9544450596,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a05_x8_001,0.9952944946,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a05_x8_004,1.073221451,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a06_x8_002,1.012107342,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a08_x8_047,1.004866332,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a09_x8_021,1.011043526,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a11_x8_027,1.032213049,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a11_x8_028,1.057910091,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a11_x8_029,1.021499593,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a12_x8_003,0.9875388311,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a13_x8_022,0.9999565052,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_a17_x8_054,1.002249174,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_c07_x8_017,0.949840428,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_c08_x8_048,1.049329196,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_c10_x8_025,1.017173824,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_c14_x8_030,1.105587822,multiplies (cost − 1)
+staff,imperial,TF2,faction modifier ntw3_tow_c15_x8_051,1.015168288,multiplies (cost − 1)
+staff,coalition,T1,b (per star),77.18742237,cost = 1 + …; r − 8
+staff,coalition,T1,γ (per star per rating point),-13.34545914,cost = 1 + …; r − 8
+staff,coalition,T1,q (per star²),13.3798355,cost = 1 + …; r − 8
+staff,coalition,TF1,faction modifier britain,0.9904408431,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_hre,1.102875779,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b03_x8_039,0.9040274088,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b03_x8_042,0.827617663,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b04_x8_015,0.997091082,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b04_x8_016,0.993069458,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b05_x8_006,0.9363316296,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b05_x8_007,0.9928233808,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b06_x8_008,0.9550664394,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b06_x8_009,0.9824095236,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b07_x8_018,1.033581321,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b08_x8_044,0.9645723214,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b08_x8_045,1.083199083,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b09_x8_019,0.9819649744,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b09_x8_020,1.388392636,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b10_x8_026,1.032355048,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b11_x8_013,0.964927697,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b11_x8_014,1.00415614,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b12_x8_011,1.015480083,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b12_x8_012,0.9476199727,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b13_x8_049,0.8540715606,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b13_x8_050,1.01281584,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b14_x8_031,1.102569348,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b15_x8_052,0.9845414443,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b15_x8_053,0.9966149441,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b17_x8_055,0.9963263981,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b17_x8_056,1.019152679,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier ntw3_tow_b17_x8_057,1.000120849,multiplies (cost − 1)
+staff,coalition,TF1,faction modifier piedmont_savoy,0.9073146423,multiplies (cost − 1)
+staff,coalition,T2,b (per star),88.48874608,cost = 1 + …; r − 8
+staff,coalition,T2,q (per star²),10.2167761,cost = 1 + …; r − 8
+staff,coalition,T2,γ (per star per rating point),-26.42618247,cost = 1 + …; r − 8
+staff,coalition,T2,κ (per star² per rating point),3.150779094,cost = 1 + …; r − 8
+staff,coalition,TF2,faction modifier britain,1.006013709,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_hre,1.120406895,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b03_x8_039,0.9144500647,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b03_x8_042,0.7050282624,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b04_x8_015,0.9987222385,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b04_x8_016,0.9830014416,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b05_x8_006,0.9481790549,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b05_x8_007,0.9915593251,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b06_x8_008,0.9686504402,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b06_x8_009,1.143381173,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b07_x8_018,1.057805575,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b08_x8_044,0.9553001167,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b08_x8_045,1.019029961,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b09_x8_019,1.000630477,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b09_x8_020,1.306837047,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b10_x8_026,1.050305444,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b11_x8_013,0.9533617172,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b11_x8_014,1.014642936,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b12_x8_011,0.980832321,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b12_x8_012,0.9600807876,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b13_x8_049,0.8639243675,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b13_x8_050,0.9763446818,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b14_x8_031,1.104221489,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b15_x8_052,1.00294208,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b15_x8_053,0.9379996994,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b17_x8_055,0.9931055243,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b17_x8_056,1.021311125,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier ntw3_tow_b17_x8_057,1.015315467,multiplies (cost − 1)
+staff,coalition,TF2,faction modifier piedmont_savoy,0.8520871896,multiplies (cost − 1)
+staff,merged,T1,b (per star),91.10134749,cost = 1 + …; r − 8
+staff,merged,T1,γ (per star per rating point),-14.81923948,cost = 1 + …; r − 8
+staff,merged,T1,q (per star²),10.01925277,cost = 1 + …; r − 8
+staff,merged,TF1,faction modifier britain,0.9925197758,multiplies (cost − 1)
+staff,merged,TF1,faction modifier denmark,0.9466309107,multiplies (cost − 1)
+staff,merged,TF1,faction modifier france,0.9809242383,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_hre,1.108459112,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a03_x8_032,0.943519381,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a03_x8_033,0.9921402387,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a03_x8_038,1.107409564,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a03_x8_040,1.027414163,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a04_x8_005,0.9404297766,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a05_x8_001,0.9654571684,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a05_x8_004,1.061492864,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a06_x8_002,0.9675889378,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a08_x8_047,0.9787476757,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a09_x8_021,1.018765748,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a11_x8_027,1.019360857,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a11_x8_028,1.063976283,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a11_x8_029,1.016582385,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a12_x8_003,0.9804526303,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a13_x8_022,0.9977700869,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_a17_x8_054,0.9907945666,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b03_x8_039,0.9789818318,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b03_x8_042,0.7417640062,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b04_x8_015,0.9838435582,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b04_x8_016,0.9671123959,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b05_x8_006,0.9948822776,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b05_x8_007,0.9764512095,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b06_x8_008,0.9870195654,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b06_x8_009,0.9067309141,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b07_x8_018,1.029997243,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b08_x8_044,1.014568165,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b08_x8_045,1.034499327,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b09_x8_019,0.9415511422,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b09_x8_020,1.538248881,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b10_x8_026,1.025470377,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b11_x8_013,1.018445415,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b11_x8_014,1.000546138,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b12_x8_011,0.9797590345,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b12_x8_012,0.9982557428,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b13_x8_049,0.9249722476,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b13_x8_050,0.9762261224,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b14_x8_031,1.079859364,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b15_x8_052,0.9486357938,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b15_x8_053,0.9473374116,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b17_x8_055,0.9777930178,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b17_x8_056,1.006181102,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_b17_x8_057,1.017750571,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_c07_x8_017,0.9466309107,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_c08_x8_048,1.04322747,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_c10_x8_025,1.012121219,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_c14_x8_030,1.095814929,multiplies (cost − 1)
+staff,merged,TF1,faction modifier ntw3_tow_c15_x8_051,1.00684221,multiplies (cost − 1)
+staff,merged,TF1,faction modifier piedmont_savoy,0.8336644956,multiplies (cost − 1)
+staff,merged,T2,b (per star),89.37090659,cost = 1 + …; r − 8
+staff,merged,T2,q (per star²),10.41205683,cost = 1 + …; r − 8
+staff,merged,T2,γ (per star per rating point),-12.73339182,cost = 1 + …; r − 8
+staff,merged,T2,κ (per star² per rating point),-0.3757442013,cost = 1 + …; r − 8
+staff,merged,TF2,faction modifier britain,0.9931497172,multiplies (cost − 1)
+staff,merged,TF2,faction modifier denmark,0.9600916807,multiplies (cost − 1)
+staff,merged,TF2,faction modifier france,0.9777711058,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_hre,1.104399806,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a03_x8_032,0.9405119885,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a03_x8_033,0.9885756057,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a03_x8_038,1.133479357,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a03_x8_040,1.032663117,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a04_x8_005,0.9323607072,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a05_x8_001,0.9719533311,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a05_x8_004,1.07478889,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a06_x8_002,0.9832637861,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a08_x8_047,0.9808280621,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a09_x8_021,1.011631705,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a11_x8_027,1.038031117,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a11_x8_028,1.055623745,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a11_x8_029,1.022809057,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a12_x8_003,0.9771564165,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a13_x8_022,0.9969913512,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_a17_x8_054,0.9842210535,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b03_x8_039,0.9758512316,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b03_x8_042,0.7617893583,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b04_x8_015,0.9862308458,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b04_x8_016,0.9709413089,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b05_x8_006,0.9915844596,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b05_x8_007,0.9792202491,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b06_x8_008,0.9835720379,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b06_x8_009,0.8846594735,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b07_x8_018,1.032963837,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b08_x8_044,1.008388506,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b08_x8_045,1.051720897,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b09_x8_019,0.9378568033,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b09_x8_020,1.541686267,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b10_x8_026,1.029214057,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b11_x8_013,1.012880027,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b11_x8_014,1.001762079,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b12_x8_011,0.989986793,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b12_x8_012,0.9948925959,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b13_x8_049,0.9220161643,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b13_x8_050,0.9866679643,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b14_x8_031,1.088736941,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b15_x8_052,0.944939746,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b15_x8_053,0.9604478648,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b17_x8_055,0.9807819204,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b17_x8_056,1.008521893,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_b17_x8_057,1.014104347,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_c07_x8_017,0.9600916807,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_c08_x8_048,1.043804307,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_c10_x8_025,1.017404105,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_c14_x8_030,1.100912272,multiplies (cost − 1)
+staff,merged,TF2,faction modifier ntw3_tow_c15_x8_051,1.002245674,multiplies (cost − 1)
+staff,merged,TF2,faction modifier piedmont_savoy,0.8425162099,multiplies (cost − 1)

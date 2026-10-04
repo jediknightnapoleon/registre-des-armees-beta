@@ -1,0 +1,811 @@
+arm,rank,size,p,linear,multiplicative,const_c,params,mae_mean,mae_sd,mape_mean,r2_mean,best,headline
+infantry,1,n,1.0,drill,rating side training,1,53,38.3616,1.5699,10.7076,0.93852,1,0
+infantry,2,n,1.0,,rating side training,1,50,38.4011,1.4340,10.8122,0.93897,0,0
+infantry,3,n,1.0,drill,rating side,1,49,38.4333,1.5609,10.6901,0.93661,0,0
+infantry,4,n,1.0,drill training,rating side,1,53,38.4852,1.5125,10.7416,0.93748,0,0
+infantry,5,n,1.0,,drill rating side training,1,53,38.4910,1.4641,10.8244,0.93861,0,0
+infantry,6,n,1.0,,rating side,1,46,38.4983,1.4942,10.7951,0.93734,0,1
+infantry,7,n,1.0,training,rating side,1,50,38.5203,1.4442,10.8093,0.93794,0,0
+infantry,8,n,1.0,training,drill rating side,1,53,38.5661,1.4567,10.8058,0.93815,0,0
+infantry,9,n,1.0,,drill rating side,1,49,38.5854,1.4507,10.8215,0.93756,0,0
+infantry,10,n,1.0,drill,rank_depth rating side training,0,53,38.6036,1.6387,10.8493,0.93177,0,0
+infantry,11,n,1.0,,rank_depth rating side training,0,50,38.6120,1.4536,10.9389,0.93269,0,0
+infantry,12,n,1.0,drill,rank_depth rating side training,1,54,38.6270,1.5502,10.8527,0.93189,0,0
+infantry,13,n,1.0,drill,rank_depth rating side,0,49,38.6442,1.6267,10.8360,0.92933,0,0
+infantry,14,n,1.0,,rank_depth rating side training,1,51,38.6604,1.3650,10.9505,0.93258,0,0
+infantry,15,n,1.0,drill,rank_depth rating side,1,50,38.6702,1.5518,10.8432,0.92949,0,0
+infantry,16,n,1.0,,drill rank_depth rating side training,0,53,38.6844,1.4300,10.9470,0.93283,0,0
+infantry,17,n,1.0,drill training,rank_depth rating side,0,53,38.7024,1.5607,10.8864,0.93046,0,0
+infantry,18,n,1.0,training,rank_depth rating side,0,50,38.7103,1.4575,10.9340,0.93131,0,0
+infantry,19,n,1.0,training,drill rank_depth rating side,0,53,38.7111,1.4125,10.9032,0.93232,0,0
+infantry,20,n,1.0,,rank_depth rating side,0,46,38.7200,1.4983,10.9427,0.93060,0,0
+infantry,21,n,1.0,drill training,rank_depth rating side,1,54,38.7510,1.4815,10.8998,0.93040,0,0
+infantry,22,n,1.0,,rank_depth rating side,1,47,38.7519,1.4253,10.9510,0.93068,0,0
+infantry,23,n,1.0,,drill rank_depth rating side training,1,54,38.7660,1.3373,10.9645,0.93256,0,0
+infantry,24,n,1.0,training,rank_depth rating side,1,51,38.7726,1.3839,10.9499,0.93109,0,0
+infantry,25,n,1.0,,drill rank_depth rating side,0,49,38.8014,1.4178,10.9631,0.93170,0,0
+infantry,26,n,1.0,training,drill rank_depth rating side,1,54,38.8439,1.3392,10.9321,0.93166,0,0
+infantry,27,n,1.0,,drill rank_depth rating side,1,50,38.9001,1.3391,10.9871,0.93129,0,0
+infantry,28,n,1.0,drill rank_depth,rating side training,1,54,39.2089,1.7063,11.0088,0.93172,0,0
+infantry,29,n,1.0,drill rank_depth,rating side,1,50,39.2507,1.7337,11.0036,0.92977,0,0
+infantry,30,n,1.0,rank_depth,rating side training,1,51,39.2529,1.6289,11.0886,0.93195,0,0
+infantry,31,n,1.0,drill rank_depth training,rating side,1,54,39.2657,1.6721,11.0186,0.93067,0,0
+infantry,32,n,1.0,drill,rating side training,0,52,39.2796,1.6516,10.8820,0.93699,0,0
+infantry,33,n,1.0,,rating side training,0,49,39.2796,1.5396,10.9595,0.93734,0,0
+infantry,34,n,1.0,rank_depth training,rating side,1,51,39.2927,1.6102,11.0759,0.93109,0,0
+infantry,35,n,1.0,rank_depth,rating side,1,47,39.3042,1.6839,11.0701,0.93043,0,0
+infantry,36,n,1.0,,drill rating side training,0,52,39.3369,1.5471,10.9633,0.93742,0,0
+infantry,37,n,1.0,rank_depth,drill rating side training,1,54,39.3472,1.6433,11.0999,0.93170,0,0
+infantry,38,n,1.0,rank_depth,rating side training,0,50,39.3474,1.6836,11.1121,0.93133,0,0
+infantry,39,n,1.0,drill rank_depth,rating side training,0,53,39.3661,1.7754,11.0541,0.93073,0,0
+infantry,40,n,1.0,training,drill rating side,0,52,39.3768,1.5091,10.9371,0.93723,0,0
+infantry,41,n,1.0,drill,rating side,0,48,39.3950,1.5865,10.8707,0.93506,0,0
+infantry,42,n,1.0,rank_depth,drill rating side training,0,53,39.4035,1.6908,11.1152,0.93128,0,0
+infantry,43,n,1.0,training,rating side,0,49,39.4068,1.5213,10.9650,0.93646,0,0
+infantry,44,n,1.0,drill training,rating side,0,52,39.4153,1.5766,10.9215,0.93610,0,0
+infantry,45,n,1.0,rank_depth training,drill rating side,1,54,39.4238,1.5824,11.1013,0.93130,0,0
+infantry,46,n,1.0,rank_depth training,rating side,0,50,39.4350,1.6552,11.1134,0.93018,0,0
+infantry,47,n,1.0,,rating side,0,45,39.4409,1.5143,10.9592,0.93561,0,0
+infantry,48,n,1.0,drill rank_depth training,rating side,0,53,39.4423,1.7269,11.0674,0.92951,0,0
+infantry,49,n,1.0,rank_depth training,drill rating side,0,53,39.4466,1.6118,11.1080,0.93105,0,0
+infantry,50,n,1.0,drill side,rating training,1,53,39.4504,1.8499,11.0544,0.93527,0,0
+infantry,51,n,1.0,,drill rating side,0,48,39.4621,1.4475,10.9687,0.93641,0,0
+infantry,52,n,1.0,side,rating training,1,50,39.4678,1.7906,11.1189,0.93567,0,0
+infantry,53,n,1.0,drill side,rating,1,49,39.4838,1.7058,11.0341,0.93350,0,0
+infantry,54,n,1.0,drill rank_depth,rating side,0,49,39.4873,1.8062,11.0741,0.92820,0,0
+infantry,55,n,1.0,rank_depth,drill rating side,1,50,39.5004,1.6240,11.1291,0.93066,0,0
+infantry,56,n,1.0,side,drill rating training,1,53,39.5030,1.8085,11.1150,0.93571,0,0
+infantry,57,n,1.0,rank_depth,rating side,0,46,39.5106,1.7434,11.1288,0.92909,0,0
+infantry,58,n,1.0,drill side,rank_depth rating training,0,53,39.5385,1.8625,11.1244,0.92842,0,0
+infantry,59,n,1.0,side,rating,1,46,39.5472,1.6683,11.1090,0.93419,0,0
+infantry,60,n,1.0,drill side,rank_depth rating,0,49,39.5534,1.7703,11.1133,0.92618,0,0
+infantry,61,n,1.0,drill side training,rating,1,53,39.5577,1.7746,11.0687,0.93417,0,0
+infantry,62,n,1.0,side training,drill rank_depth rating,0,53,39.5708,1.6730,11.1403,0.92939,0,0
+infantry,63,n,1.0,side,drill rank_depth rating training,0,53,39.5755,1.7320,11.1816,0.92997,0,0
+infantry,64,n,1.0,side,drill rating,1,49,39.5775,1.5918,11.1119,0.93471,0,0
+infantry,65,n,1.0,rank_depth,drill rating side,0,49,39.5797,1.6696,11.1511,0.93010,0,0
+infantry,66,n,1.0,drill side training,rank_depth rating,0,53,39.5866,1.7904,11.1167,0.92702,0,0
+infantry,67,n,1.0,side training,drill rating,1,53,39.5938,1.7464,11.1249,0.93521,0,0
+infantry,68,n,1.0,side,rank_depth rating training,0,50,39.5954,1.7438,11.2009,0.92925,0,0
+infantry,69,n,1.0,drill side,rank_depth rating training,1,54,39.5969,1.8036,11.1350,0.92802,0,0
+infantry,70,n,1.0,side training,rating,1,50,39.6068,1.7717,11.1341,0.93463,0,0
+infantry,71,n,1.0,side,rank_depth rating,0,46,39.6217,1.6917,11.1812,0.92737,0,0
+infantry,72,n,1.0,drill side,rank_depth rating,1,50,39.6226,1.7009,11.1309,0.92590,0,0
+infantry,73,n,1.0,side training,rank_depth rating,0,50,39.6316,1.7383,11.1702,0.92784,0,0
+infantry,74,n,1.0,side,drill rank_depth rating,0,49,39.6391,1.5958,11.1790,0.92889,0,0
+infantry,75,n,1.0,drill side training,rank_depth rating,1,54,39.6713,1.7222,11.1377,0.92649,0,0
+infantry,76,n,1.0,side,rank_depth rating training,1,51,39.6757,1.6616,11.2204,0.92875,0,0
+infantry,77,n,1.0,side,rank_depth rating,1,47,39.6907,1.6146,11.2002,0.92708,0,0
+infantry,78,n,1.0,side,drill rank_depth rating training,1,54,39.7184,1.6229,11.2098,0.92907,0,0
+infantry,79,n,1.0,side training,rank_depth rating,1,51,39.7221,1.6641,11.1901,0.92723,0,0
+infantry,80,n,1.0,side training,drill rank_depth rating,1,54,39.7630,1.5667,11.1735,0.92820,0,0
+infantry,81,n,1.0,side,drill rank_depth rating,1,50,39.8085,1.4875,11.2154,0.92801,0,0
+infantry,82,n,1.0,drill rank_depth side,rating training,1,54,40.1712,2.0619,11.3139,0.92770,0,0
+infantry,83,n,1.0,rank_depth side,drill rating training,0,53,40.1869,2.0705,11.3598,0.92845,0,0
+infantry,84,n,1.0,drill rank_depth side,rating training,0,53,40.1975,2.0859,11.3169,0.92753,0,0
+infantry,85,n,1.0,rank_depth side,rating training,0,50,40.1981,2.0647,11.3685,0.92809,0,0
+infantry,86,n,1.0,rank_depth side,rating training,1,51,40.2017,2.0572,11.3715,0.92800,0,0
+infantry,87,n,1.0,drill rank_depth side,rating,1,50,40.2135,1.9460,11.3048,0.92594,0,0
+infantry,88,n,1.0,rank_depth side,rating,1,47,40.2686,1.9260,11.3683,0.92664,0,0
+infantry,89,n,1.0,drill rank_depth side training,rating,1,54,40.2718,1.9938,11.3416,0.92653,0,0
+infantry,90,n,1.0,rank_depth side,drill rating training,1,54,40.2796,2.0576,11.3825,0.92788,0,0
+infantry,91,n,1.0,rank_depth side training,drill rating,0,53,40.3004,1.9286,11.4053,0.92812,0,0
+infantry,92,n,1.0,drill rank_depth side,rating,0,49,40.3056,1.9795,11.3252,0.92526,0,0
+infantry,93,n,1.0,side,drill rating training,0,52,40.3103,1.8380,11.2166,0.93455,0,0
+infantry,94,n,1.0,drill rank_depth side training,rating,0,53,40.3157,2.0159,11.3496,0.92624,0,0
+infantry,95,n,1.0,rank_depth side training,rating,1,51,40.3191,2.0024,11.4078,0.92704,0,0
+infantry,96,n,1.0,rank_depth side,drill rating,0,49,40.3446,1.8475,11.3835,0.92736,0,0
+infantry,97,n,1.0,rank_depth side training,rating,0,50,40.3485,2.0112,11.4130,0.92691,0,0
+infantry,98,n,1.0,rank_depth side,rating,0,46,40.3494,1.9501,11.3855,0.92610,0,0
+infantry,99,n,1.0,drill side,rating training,0,52,40.3534,1.9404,11.1802,0.93370,0,0
+infantry,100,n,1.0,side,rating training,0,49,40.3562,1.8353,11.2372,0.93401,0,0
+infantry,101,n,1.0,side training,drill rating,0,52,40.3792,1.7353,11.2225,0.93428,0,0
+infantry,102,n,1.0,rank_depth side,drill rating,1,50,40.4232,1.8259,11.4045,0.92703,0,0
+infantry,103,n,1.0,side,drill rating,0,48,40.4260,1.5861,11.2183,0.93353,0,0
+infantry,104,n,1.0,rank_depth side training,drill rating,1,54,40.4321,1.9118,11.4401,0.92743,0,0
+infantry,105,n,1.0,drill side,rating,0,48,40.4653,1.7349,11.1840,0.93189,0,0
+infantry,106,n,1.0,drill side training,rating,0,52,40.4670,1.8120,11.2041,0.93270,0,0
+infantry,107,n,1.0,side,rating,0,45,40.4872,1.6850,11.2351,0.93242,0,0
+infantry,108,n,1.0,side training,rating,0,49,40.4930,1.7984,11.2511,0.93307,0,0
+infantry,109,n,1.0,training,drill rank_depth rating,0,52,43.7069,2.1270,12.2502,0.92018,0,0
+infantry,110,n,1.0,drill,rank_depth rating,0,48,43.7320,2.0461,12.2258,0.91745,0,0
+infantry,111,n,1.0,,drill rank_depth rating,0,48,43.7467,1.9717,12.3006,0.91983,0,0
+infantry,112,n,1.0,drill training,rating,1,52,43.7629,2.2105,12.1235,0.92626,0,0
+infantry,113,n,1.0,training,drill rating,1,52,43.7649,2.1901,12.1661,0.92685,0,0
+infantry,114,n,1.0,drill,rating,1,48,43.7951,1.9281,12.1150,0.92583,0,0
+infantry,115,n,1.0,drill training,rank_depth rating,0,52,43.8074,2.1886,12.2553,0.91824,0,0
+infantry,116,n,1.0,,drill rating,1,48,43.8337,1.9024,12.2033,0.92657,0,0
+infantry,117,n,1.0,training,rating,1,49,43.8485,2.2986,12.2051,0.92633,0,0
+infantry,118,n,1.0,,rank_depth rating,0,45,43.8695,2.0619,12.3343,0.91826,0,0
+infantry,119,n,1.0,drill,rating training,1,52,43.8896,2.2042,12.2057,0.92676,0,0
+infantry,120,n,1.0,,rating,1,45,43.8948,2.0300,12.2181,0.92612,0,0
+infantry,121,n,1.0,drill,rank_depth rating,1,49,43.9043,1.9714,12.2855,0.91593,0,0
+infantry,122,n,1.0,training,rank_depth rating,0,49,43.9055,2.2270,12.3276,0.91863,0,0
+infantry,123,n,1.0,,drill rating training,1,52,43.9212,2.1997,12.2822,0.92698,0,0
+infantry,124,n,1.0,,drill rank_depth rating training,0,52,43.9248,2.1744,12.3939,0.92035,0,0
+infantry,125,n,1.0,drill,rank_depth rating training,0,52,43.9472,2.2345,12.3351,0.91884,0,0
+infantry,126,n,1.0,training,drill rank_depth rating,1,53,43.9496,2.0400,12.3025,0.91810,0,0
+infantry,127,n,1.0,drill training,rank_depth rating,1,53,43.9809,2.1106,12.3134,0.91656,0,0
+infantry,128,n,1.0,,rating training,1,49,43.9837,2.2199,12.3091,0.92690,0,0
+infantry,129,n,1.0,,drill rank_depth rating,1,49,44.0054,1.8345,12.3764,0.91806,0,0
+infantry,130,n,1.0,,rank_depth rating,1,46,44.0143,1.9810,12.3800,0.91694,0,0
+infantry,131,n,1.0,training,rank_depth rating,1,50,44.0654,2.1457,12.3729,0.91704,0,0
+infantry,132,n,1.0,,rank_depth rating training,0,49,44.0980,2.2022,12.4475,0.91946,0,0
+infantry,133,n,1.0,drill,rank_depth rating training,1,53,44.1055,2.1493,12.3882,0.91742,0,0
+infantry,134,n,1.0,,drill rank_depth rating training,1,53,44.1596,2.0234,12.4657,0.91858,0,0
+infantry,135,n,1.0,,rank_depth rating training,1,50,44.2378,2.1118,12.4918,0.91817,0,0
+infantry,136,n,1.0,training,drill rating,0,51,44.5050,2.2592,12.2608,0.92549,0,0
+infantry,137,n,1.0,drill training,rating,0,51,44.6379,2.3332,12.2615,0.92435,0,0
+infantry,138,n,1.0,rank_depth training,drill rating,0,52,44.6497,2.3230,12.5655,0.91831,0,0
+infantry,139,n,1.0,,drill rating,0,47,44.6628,1.9001,12.3121,0.92484,0,0
+infantry,140,n,1.0,drill,rating,0,47,44.6852,2.0015,12.2538,0.92365,0,0
+infantry,141,n,1.0,drill rank_depth training,rating,0,52,44.6982,2.3594,12.5312,0.91687,0,0
+infantry,142,n,1.0,,drill rating training,0,51,44.7210,2.2197,12.3866,0.92530,0,0
+infantry,143,n,1.0,training,rating,0,48,44.7320,2.4403,12.3244,0.92431,0,0
+infantry,144,n,1.0,rank_depth,drill rating,0,48,44.7433,2.1336,12.5991,0.91742,0,0
+infantry,145,n,1.0,drill rank_depth,rating,0,48,44.7595,2.1587,12.5581,0.91575,0,0
+infantry,146,n,1.0,drill,rating training,0,51,44.7770,2.2910,12.3419,0.92461,0,0
+infantry,147,n,1.0,drill rank_depth training,rating,1,53,44.7920,2.3459,12.5647,0.91631,0,0
+infantry,148,n,1.0,rank_depth training,rating,0,49,44.7952,2.4163,12.6008,0.91706,0,0
+infantry,149,n,1.0,rank_depth,drill rating training,0,52,44.8040,2.3807,12.6386,0.91810,0,0
+infantry,150,n,1.0,,rating,0,44,44.8144,2.1122,12.3463,0.92374,0,0
+infantry,151,n,1.0,drill rank_depth,rating,1,49,44.8199,2.1500,12.5809,0.91540,0,0
+infantry,152,n,1.0,drill rank_depth,rating training,0,52,44.8456,2.3610,12.5988,0.91736,0,0
+infantry,153,n,1.0,rank_depth training,rating,1,50,44.8654,2.4223,12.6233,0.91653,0,0
+infantry,154,n,1.0,rank_depth,rating,0,45,44.8694,2.2410,12.6306,0.91610,0,0
+infantry,155,n,1.0,drill rank_depth,rating training,1,53,44.9012,2.3345,12.6194,0.91707,0,0
+infantry,156,n,1.0,rank_depth,rating,1,46,44.9090,2.2483,12.6439,0.91581,0,0
+infantry,157,n,1.0,,rating training,0,48,44.9115,2.3161,12.4428,0.92461,0,0
+infantry,158,n,1.0,rank_depth training,drill rating,1,53,44.9347,2.3057,12.6510,0.91665,0,0
+infantry,159,n,1.0,rank_depth,rating training,0,49,44.9437,2.3842,12.6729,0.91761,0,0
+infantry,160,n,1.0,rank_depth,rating training,1,50,44.9914,2.3798,12.6870,0.91727,0,0
+infantry,161,n,1.0,rank_depth,drill rating,1,49,44.9915,2.1247,12.6688,0.91599,0,0
+infantry,162,n,1.0,rank_depth,drill rating training,1,53,45.0098,2.3636,12.6970,0.91684,0,0
+infantry,163,n,1.0,drill rating,side training,1,53,45.3783,1.6152,13.9127,0.91477,0,0
+infantry,164,n,1.0,drill rating,side,1,49,45.4273,1.5801,13.9193,0.91382,0,0
+infantry,165,n,1.0,rating,drill side training,1,53,45.5142,1.6909,14.0462,0.91634,0,0
+infantry,166,n,1.0,drill rating,rank_depth side training,1,54,45.5557,1.6820,14.0112,0.91117,0,0
+infantry,167,n,1.0,rating,side training,1,50,45.5602,1.6812,14.0886,0.91520,0,0
+infantry,168,n,1.0,drill rating training,side,1,53,45.5641,1.5774,13.9489,0.91377,0,0
+infantry,169,n,1.0,rating,drill side,1,49,45.6197,1.6529,14.0803,0.91604,0,0
+infantry,170,n,1.0,rating,side,1,46,45.6361,1.6511,14.1097,0.91454,0,0
+infantry,171,n,1.0,drill rating,rank_depth side,1,50,45.6433,1.6350,14.0321,0.91021,0,0
+infantry,172,n,1.0,rating training,drill side,1,53,45.6756,1.6726,14.0664,0.91577,0,0
+infantry,173,n,1.0,rating training,side,1,50,45.7239,1.6389,14.1103,0.91408,0,0
+infantry,174,n,1.0,rating,rank_depth side training,1,51,45.7385,1.7340,14.1884,0.91205,0,0
+infantry,175,n,1.0,rating,drill rank_depth side training,1,54,45.7486,1.7684,14.1636,0.91290,0,0
+infantry,176,n,1.0,drill rating training,rank_depth side,1,54,45.7599,1.6185,14.0497,0.91035,0,0
+infantry,177,n,1.0,drill rating,rank_depth side training,0,53,45.8028,1.8036,14.0907,0.90871,0,0
+infantry,178,n,1.0,rating,rank_depth side,1,47,45.8403,1.6946,14.2175,0.91152,0,0
+infantry,179,n,1.0,rating,drill rank_depth side training,0,53,45.8498,1.8578,14.1949,0.91202,0,0
+infantry,180,n,1.0,drill rating side,,1,49,45.8533,1.6773,14.0613,0.91112,0,0
+infantry,181,n,1.0,drill rating side,training,1,53,45.8739,1.7086,14.0660,0.91183,0,0
+infantry,182,n,1.0,rating,drill rank_depth side,1,50,45.8927,1.7198,14.2152,0.91272,0,0
+infantry,183,n,1.0,drill rating,rank_depth side,0,49,45.9009,1.7353,14.1167,0.90760,0,0
+infantry,184,n,1.0,rating side,drill training,1,53,45.9044,1.7196,14.1659,0.91391,0,0
+infantry,185,n,1.0,rating training,rank_depth side,1,51,45.9157,1.6687,14.2111,0.91105,0,0
+infantry,186,n,1.0,rating training,drill rank_depth side,1,54,45.9195,1.7318,14.1838,0.91228,0,0
+infantry,187,n,1.0,rating side,drill,1,49,45.9446,1.6381,14.1846,0.91367,0,0
+infantry,188,n,1.0,rating training,drill rank_depth side,0,53,45.9872,1.8046,14.2019,0.91159,0,0
+infantry,189,n,1.0,rating,rank_depth side training,0,50,45.9986,1.8567,14.2744,0.90972,0,0
+infantry,190,n,1.0,rating,drill rank_depth side,0,49,46.0048,1.8090,14.2500,0.91182,0,0
+infantry,191,n,1.0,drill rating side training,,1,53,46.0112,1.6943,14.0833,0.91103,0,0
+infantry,192,n,1.0,drill rating training,rank_depth side,0,53,46.0122,1.7155,14.1301,0.90780,0,0
+infantry,193,n,1.0,rank_depth rating,drill side training,0,53,46.0300,1.9071,14.2090,0.90818,0,0
+infantry,194,n,1.0,drill rank_depth rating,side training,0,53,46.0350,1.9727,14.1424,0.90499,0,0
+infantry,195,n,1.0,drill rating side,rank_depth training,1,54,46.0444,1.7564,14.1606,0.90720,0,0
+infantry,196,n,1.0,rating side,training,1,50,46.0563,1.7137,14.2470,0.91218,0,0
+infantry,197,n,1.0,drill rating side,rank_depth,1,50,46.0661,1.7156,14.1679,0.90661,0,0
+infantry,198,n,1.0,rating side,drill rank_depth training,0,53,46.0661,1.8137,14.2623,0.90966,0,0
+infantry,199,n,1.0,rating side,,1,46,46.0667,1.6921,14.2531,0.91178,0,0
+infantry,200,n,1.0,rating side training,drill,1,53,46.0745,1.7322,14.2037,0.91338,0,0
+infantry,201,n,1.0,rating,rank_depth side,0,46,46.1292,1.8090,14.3144,0.90896,0,0
+infantry,202,n,1.0,drill rating side,rank_depth training,0,53,46.1296,1.8275,14.1822,0.90580,0,0
+infantry,203,n,1.0,rank_depth rating,side training,0,50,46.1333,1.9346,14.2732,0.90587,0,0
+infantry,204,n,1.0,rating side,drill rank_depth training,1,54,46.1391,1.7781,14.2854,0.90941,0,0
+infantry,205,n,1.0,drill rank_depth rating,side,0,49,46.1508,1.9510,14.1725,0.90350,0,0
+infantry,206,n,1.0,drill rating side,rank_depth,0,49,46.1649,1.7886,14.1920,0.90502,0,0
+infantry,207,n,1.0,rating side,drill rank_depth,0,49,46.1696,1.7130,14.2973,0.90957,0,0
+infantry,208,n,1.0,drill rating,side training,0,52,46.1814,1.6613,14.0960,0.91346,0,0
+infantry,209,n,1.0,rating training,rank_depth side,0,50,46.1843,1.7671,14.2982,0.90860,0,0
+infantry,210,n,1.0,drill rating side training,rank_depth,1,54,46.1991,1.7106,14.1791,0.90660,0,0
+infantry,211,n,1.0,rank_depth rating training,drill side,0,53,46.2087,1.8672,14.2577,0.90804,0,0
+infantry,212,n,1.0,rating,drill side training,0,52,46.2181,1.7721,14.1953,0.91556,0,0
+infantry,213,n,1.0,rating side training,,1,50,46.2229,1.7076,14.2774,0.91126,0,0
+infantry,214,n,1.0,drill rank_depth rating training,side,0,53,46.2231,1.8840,14.1722,0.90388,0,0
+infantry,215,n,1.0,rating side,drill rank_depth,1,50,46.2295,1.6679,14.3185,0.90952,0,0
+infantry,216,n,1.0,rating side training,drill rank_depth,0,53,46.2311,1.7650,14.2877,0.90926,0,0
+infantry,217,n,1.0,rank_depth rating,drill side,0,49,46.2363,1.8786,14.2821,0.90790,0,0
+infantry,218,n,1.0,rating side,rank_depth training,1,51,46.2422,1.7404,14.3523,0.90815,0,0
+infantry,219,n,1.0,rank_depth rating side,drill training,0,53,46.2726,1.9666,14.3169,0.90605,0,0
+infantry,220,n,1.0,rating side,rank_depth,1,47,46.2854,1.6970,14.3677,0.90797,0,0
+infantry,221,n,1.0,drill rating,side,0,48,46.2869,1.6307,14.1184,0.91249,0,0
+infantry,222,n,1.0,drill rating side training,rank_depth,0,53,46.2904,1.7824,14.2017,0.90508,0,0
+infantry,223,n,1.0,rating side training,drill rank_depth,1,54,46.3217,1.7272,14.3131,0.90893,0,0
+infantry,224,n,1.0,rank_depth rating,side,0,46,46.3272,1.9088,14.3363,0.90477,0,0
+infantry,225,n,1.0,rating,drill side,0,48,46.3336,1.7359,14.2344,0.91523,0,0
+infantry,226,n,1.0,rating training,drill side,0,52,46.3443,1.7484,14.2075,0.91515,0,0
+infantry,227,n,1.0,rating side,rank_depth training,0,50,46.3484,1.8171,14.3816,0.90675,0,0
+infantry,228,n,1.0,rank_depth rating training,side,0,50,46.3697,1.8741,14.3325,0.90474,0,0
+infantry,229,n,1.0,rating,side training,0,49,46.3760,1.7672,14.2773,0.91374,0,0
+infantry,230,n,1.0,drill rating training,side,0,52,46.3802,1.6281,14.1388,0.91253,0,0
+infantry,231,n,1.0,drill rank_depth rating side,training,0,53,46.3938,2.0898,14.2728,0.90242,0,0
+infantry,232,n,1.0,rating side training,rank_depth,1,51,46.4037,1.7004,14.3745,0.90733,0,0
+infantry,233,n,1.0,rating side,rank_depth,0,46,46.4131,1.7710,14.4023,0.90633,0,0
+infantry,234,n,1.0,rank_depth rating side,drill,0,49,46.4323,1.8443,14.3686,0.90591,0,0
+infantry,235,n,1.0,rating side,drill training,0,52,46.4443,1.7944,14.2591,0.91332,0,0
+infantry,236,n,1.0,rank_depth rating side training,drill,0,53,46.4603,1.8978,14.3658,0.90591,0,0
+infantry,237,n,1.0,drill rank_depth rating side,,0,49,46.4648,2.0295,14.2907,0.90135,0,0
+infantry,238,n,1.0,drill rank_depth rating,side training,1,54,46.4671,2.0364,14.2645,0.90112,0,0
+infantry,239,n,1.0,rating,side,0,45,46.4816,1.7456,14.3072,0.91297,0,0
+infantry,240,n,1.0,drill rank_depth rating,side,1,50,46.4837,1.9820,14.2716,0.90053,0,0
+infantry,241,n,1.0,rank_depth rating side,training,0,50,46.4959,1.9990,14.4162,0.90322,0,0
+infantry,242,n,1.0,rating side,drill,0,48,46.5078,1.7271,14.2832,0.91303,0,0
+infantry,243,n,1.0,rating side training,rank_depth,0,50,46.5117,1.7671,14.4030,0.90583,0,0
+infantry,244,n,1.0,drill rating side,training,0,52,46.5117,1.7806,14.1758,0.91069,0,0
+infantry,245,n,1.0,drill rating side,,0,48,46.5328,1.7378,14.1835,0.90995,0,0
+infantry,246,n,1.0,rating training,side,0,49,46.5368,1.7111,14.3045,0.91271,0,0
+infantry,247,n,1.0,drill rank_depth rating side training,,0,53,46.5470,2.0147,14.2905,0.90156,0,0
+infantry,248,n,1.0,rank_depth rating,side training,1,51,46.5640,2.0008,14.3871,0.90198,0,0
+infantry,249,n,1.0,rating side training,drill,0,52,46.5677,1.8150,14.2838,0.91290,0,0
+infantry,250,n,1.0,drill rank_depth rating training,side,1,54,46.5849,1.9009,14.2795,0.90077,0,0
+infantry,251,n,1.0,rank_depth rating side,,0,46,46.6192,1.9311,14.4578,0.90256,0,0
+infantry,252,n,1.0,drill rating side training,,0,52,46.6359,1.7467,14.2002,0.90992,0,0
+infantry,253,n,1.0,rank_depth rating,side,1,47,46.6532,1.9371,14.4306,0.90191,0,0
+infantry,254,n,1.0,rank_depth rating side training,,0,50,46.6884,1.9487,14.4622,0.90233,0,0
+infantry,255,n,1.0,rank_depth rating,drill side training,1,54,46.6994,2.0260,14.3687,0.90348,0,0
+infantry,256,n,1.0,rank_depth rating training,side,1,51,46.7277,1.9046,14.4370,0.90169,0,0
+infantry,257,n,1.0,rating side,training,0,49,46.7441,1.7946,14.3831,0.91091,0,0
+infantry,258,n,1.0,rating side,,0,45,46.7752,1.7790,14.3933,0.91043,0,0
+infantry,259,n,1.0,rank_depth rating,drill side,1,50,46.8694,1.9226,14.4439,0.90383,0,0
+infantry,260,n,1.0,rating side training,,0,49,46.8694,1.7796,14.4025,0.91004,0,0
+infantry,261,n,1.0,rank_depth rating training,drill side,1,54,46.8762,1.9432,14.4258,0.90379,0,0
+infantry,262,n,1.0,drill rank_depth rating side,,1,50,46.9491,2.1019,14.4177,0.89635,0,0
+infantry,263,n,1.0,drill rank_depth rating side,training,1,54,46.9498,2.2298,14.4080,0.89640,0,0
+infantry,264,n,1.0,drill rank_depth rating side training,,1,54,47.0529,2.0954,14.4231,0.89634,0,0
+infantry,265,n,1.0,rank_depth rating side,training,1,51,47.0693,2.1425,14.5600,0.89723,0,0
+infantry,266,n,1.0,rank_depth rating side,,1,47,47.1148,2.0089,14.5928,0.89771,0,0
+infantry,267,n,1.0,rank_depth rating side,drill training,1,54,47.1172,2.1704,14.4859,0.89915,0,0
+infantry,268,n,1.0,rank_depth rating side training,,1,51,47.2014,2.0382,14.6018,0.89722,0,0
+infantry,269,n,1.0,rank_depth rating side,drill,1,50,47.2316,1.9484,14.5467,0.90004,0,0
+infantry,270,n,1.0,rank_depth rating side training,drill,1,54,47.2749,2.0276,14.5443,0.89978,0,0
+infantry,271,n,1.0,drill rating,,1,48,50.4873,2.0470,15.1756,0.90313,0,0
+infantry,272,n,1.0,rating training,drill,1,52,50.5170,2.1360,15.2939,0.90481,0,0
+infantry,273,n,1.0,rating,drill,1,48,50.5473,2.0017,15.3254,0.90507,0,0
+infantry,274,n,1.0,drill rating training,,1,52,50.5541,2.0799,15.2078,0.90295,0,0
+infantry,275,n,1.0,rating,drill training,1,52,50.6203,2.1755,15.3492,0.90482,0,0
+infantry,276,n,1.0,drill rating,training,1,52,50.6621,2.1152,15.2548,0.90314,0,0
+infantry,277,n,1.0,rating,,1,45,50.7208,2.1982,15.3973,0.90330,0,0
+infantry,278,n,1.0,rating training,,1,49,50.7556,2.2455,15.4044,0.90278,0,0
+infantry,279,n,1.0,rating training,drill rank_depth,0,52,50.7773,2.2066,15.4521,0.89948,0,0
+infantry,280,n,1.0,rating,training,1,49,50.8537,2.2665,15.4523,0.90315,0,0
+infantry,281,n,1.0,drill rating,rank_depth,1,49,50.8755,2.1858,15.3949,0.89586,0,0
+infantry,282,n,1.0,rating,drill rank_depth,0,48,50.8904,2.1352,15.5274,0.89970,0,0
+infantry,283,n,1.0,drill rating,rank_depth,0,48,50.8908,2.2508,15.3969,0.89522,0,0
+infantry,284,n,1.0,rating,drill rank_depth training,0,52,50.9035,2.2531,15.5284,0.89929,0,0
+infantry,285,n,1.0,drill rating training,rank_depth,1,53,50.9069,2.1614,15.4029,0.89602,0,0
+infantry,286,n,1.0,drill rating training,rank_depth,0,52,50.9158,2.2221,15.4036,0.89542,0,0
+infantry,287,n,1.0,rating training,drill rank_depth,1,53,50.9372,2.1763,15.5064,0.89851,0,0
+infantry,288,n,1.0,rating training,drill,0,51,50.9698,2.1768,15.3757,0.90398,0,0
+infantry,289,n,1.0,drill rating,rank_depth training,1,53,51.0138,2.2185,15.4571,0.89608,0,0
+infantry,290,n,1.0,rating,drill rank_depth,1,49,51.0236,2.0954,15.5776,0.89905,0,0
+infantry,291,n,1.0,rating,drill rank_depth training,1,53,51.0309,2.2219,15.5779,0.89849,0,0
+infantry,292,n,1.0,drill rating,rank_depth training,0,52,51.0397,2.2765,15.4640,0.89534,0,0
+infantry,293,n,1.0,rating training,rank_depth,1,50,51.0991,2.3067,15.5985,0.89668,0,0
+infantry,294,n,1.0,rating,drill training,0,51,51.1054,2.2294,15.4431,0.90377,0,0
+infantry,295,n,1.0,rating,rank_depth,1,46,51.1091,2.2878,15.6150,0.89720,0,0
+infantry,296,n,1.0,rating,drill,0,47,51.1137,2.0175,15.4394,0.90392,0,0
+infantry,297,n,1.0,rating training,rank_depth,0,49,51.1384,2.3646,15.6115,0.89584,0,0
+infantry,298,n,1.0,rank_depth rating training,drill,0,52,51.1635,2.2742,15.5398,0.89571,0,0
+infantry,299,n,1.0,rating,rank_depth,0,45,51.1667,2.3572,15.6333,0.89621,0,0
+infantry,300,n,1.0,drill rating training,,0,51,51.1758,2.1526,15.3478,0.90141,0,0
+infantry,301,n,1.0,drill rating,,0,47,51.1926,2.0916,15.3354,0.90140,0,0
+infantry,302,n,1.0,drill rank_depth rating training,,0,52,51.1966,2.3240,15.4432,0.89170,0,0
+infantry,303,n,1.0,rating,rank_depth training,1,50,51.2080,2.3343,15.6528,0.89716,0,0
+infantry,304,n,1.0,drill rank_depth rating,,0,48,51.2146,2.2881,15.4473,0.89117,0,0
+infantry,305,n,1.0,rank_depth rating,drill training,0,52,51.2546,2.2722,15.5703,0.89510,0,0
+infantry,306,n,1.0,rank_depth rating,drill,0,48,51.2600,2.1395,15.5806,0.89529,0,0
+infantry,307,n,1.0,rating,rank_depth training,0,49,51.2723,2.3967,15.6744,0.89611,0,0
+infantry,308,n,1.0,drill rating,training,0,51,51.3088,2.1931,15.4026,0.90144,0,0
+infantry,309,n,1.0,drill rank_depth rating,training,0,52,51.3133,2.3216,15.4853,0.89171,0,0
+infantry,310,n,1.0,rating training,,0,48,51.3538,2.3199,15.5341,0.90110,0,0
+infantry,311,n,1.0,rating,,0,44,51.4325,2.2495,15.5595,0.90131,0,0
+infantry,312,n,1.0,rank_depth rating training,,0,49,51.4646,2.4104,15.6703,0.89201,0,0
+infantry,313,n,1.0,rating,training,0,48,51.5028,2.3545,15.6009,0.90125,0,0
+infantry,314,n,1.0,rank_depth rating,,0,45,51.5113,2.3406,15.6895,0.89185,0,0
+infantry,315,n,1.0,rank_depth rating,training,0,49,51.5729,2.3894,15.7066,0.89217,0,0
+infantry,316,n,1.0,drill rank_depth rating training,,1,53,51.7900,2.3870,15.6183,0.88555,0,0
+infantry,317,n,1.0,drill rank_depth rating,,1,49,51.8067,2.3477,15.6274,0.88490,0,0
+infantry,318,n,1.0,drill rank_depth rating,training,1,53,51.8978,2.3924,15.6504,0.88533,0,0
+infantry,319,n,1.0,rank_depth rating training,,1,50,52.0029,2.5151,15.8235,0.88623,0,0
+infantry,320,n,1.0,rank_depth rating,,1,46,52.0643,2.4259,15.8530,0.88602,0,0
+infantry,321,n,1.0,rank_depth rating training,drill,1,53,52.0763,2.3207,15.7571,0.88848,0,0
+infantry,322,n,1.0,rank_depth rating,drill training,1,53,52.1235,2.3059,15.7672,0.88739,0,0
+infantry,323,n,1.0,rank_depth rating,training,1,50,52.1383,2.4644,15.8605,0.88617,0,0
+infantry,324,n,1.0,rank_depth rating,drill,1,49,52.1853,2.1672,15.8105,0.88807,0,0
+infantry,325,n,1.0,training,drill side,1,46,68.8296,2.7485,17.7977,0.83609,0,0
+infantry,326,n,1.0,training,drill side,0,45,68.8320,2.7427,17.7994,0.83622,0,0
+infantry,327,n,1.0,training,drill rank_depth side,0,46,68.9003,2.6832,17.8072,0.83298,0,0
+infantry,328,n,1.0,training,side,1,43,68.9021,2.7912,17.8303,0.83439,0,0
+infantry,329,n,1.0,training,side,0,42,68.9325,2.7911,17.8351,0.83427,0,0
+infantry,330,n,1.0,drill training,side,1,46,68.9392,2.7908,17.8412,0.83398,0,0
+infantry,331,n,1.0,drill training,side,0,45,68.9648,2.7857,17.8439,0.83391,0,0
+infantry,332,n,1.0,,drill side training,1,46,68.9838,2.8305,17.9285,0.83609,0,0
+infantry,333,n,1.0,training,rank_depth side,0,43,68.9989,2.7380,17.8586,0.83048,0,0
+infantry,334,n,1.0,,drill side,1,42,69.0034,2.7940,17.8755,0.83564,0,0
+infantry,335,n,1.0,,drill side training,0,45,69.0125,2.8218,17.9367,0.83610,0,0
+infantry,336,n,1.0,,drill side,0,41,69.0331,2.7859,17.8808,0.83560,0,0
+infantry,337,n,1.0,drill training,rank_depth side,0,46,69.0467,2.7444,17.8706,0.82993,0,0
+infantry,338,n,1.0,,side training,1,43,69.0573,2.8779,17.9670,0.83472,0,0
+infantry,339,n,1.0,,side,1,39,69.0867,2.8462,17.9038,0.83359,0,0
+infantry,340,n,1.0,drill,side training,1,46,69.1024,2.9039,17.9828,0.83422,0,0
+infantry,341,n,1.0,,drill rank_depth side training,0,46,69.1045,2.7551,17.9578,0.83297,0,0
+infantry,342,n,1.0,,side training,0,42,69.1192,2.8789,17.9836,0.83450,0,0
+infantry,343,n,1.0,drill,side,1,42,69.1344,2.8482,17.9277,0.83323,0,0
+infantry,344,n,1.0,,drill rank_depth side,0,42,69.1398,2.7947,17.9043,0.83244,0,0
+infantry,345,n,1.0,,side,0,38,69.1411,2.8390,17.9144,0.83325,0,0
+infantry,346,n,1.0,drill,side training,0,45,69.1606,2.8985,17.9982,0.83402,0,0
+infantry,347,n,1.0,drill,side,0,41,69.1823,2.8300,17.9370,0.83296,0,0
+infantry,348,n,1.0,,rank_depth side training,0,43,69.1904,2.7990,18.0088,0.83087,0,0
+infantry,349,n,1.0,training,drill rank_depth side,1,47,69.2169,2.6223,17.8631,0.82862,0,0
+infantry,350,n,1.0,rank_depth training,drill side,0,46,69.2185,2.8252,17.9840,0.83201,0,0
+infantry,351,n,1.0,drill,rank_depth side training,0,46,69.2396,2.8354,18.0222,0.83016,0,0
+infantry,352,n,1.0,,rank_depth side,0,39,69.2552,2.8519,17.9457,0.82937,0,0
+infantry,353,n,1.0,training,rank_depth side,1,44,69.2851,2.6692,17.9307,0.82569,0,0
+infantry,354,n,1.0,rank_depth training,side,0,43,69.3031,2.8892,18.0058,0.82958,0,0
+infantry,355,n,1.0,drill,rank_depth side,0,42,69.3041,2.8649,17.9695,0.82887,0,0
+infantry,356,n,1.0,rank_depth,drill side training,0,46,69.3255,2.9409,18.0570,0.83183,0,0
+infantry,357,n,1.0,drill rank_depth training,side,0,46,69.3541,2.9040,18.0220,0.82909,0,0
+infantry,358,n,1.0,drill training,rank_depth side,1,47,69.3551,2.6482,17.9526,0.82505,0,0
+infantry,359,n,1.0,rank_depth,drill side,0,42,69.4141,2.9697,18.0526,0.83125,0,0
+infantry,360,n,1.0,rank_depth,side training,0,43,69.4373,2.9802,18.1123,0.82983,0,0
+infantry,361,n,1.0,,drill rank_depth side,1,43,69.4585,2.7687,17.9716,0.82843,0,0
+infantry,362,n,1.0,,drill rank_depth side training,1,47,69.4783,2.7075,18.0606,0.82876,0,0
+infantry,363,n,1.0,drill rank_depth,side training,0,46,69.4916,3.0174,18.1303,0.82924,0,0
+infantry,364,n,1.0,rank_depth,side,0,39,69.5200,3.0301,18.0835,0.82829,0,0
+infantry,365,n,1.0,,rank_depth side,1,40,69.5219,2.7941,18.0153,0.82498,0,0
+infantry,366,n,1.0,,rank_depth side training,1,44,69.5250,2.7432,18.1218,0.82645,0,0
+infantry,367,n,1.0,drill rank_depth,side,0,42,69.5627,3.0249,18.1050,0.82790,0,0
+infantry,368,n,1.0,drill,rank_depth side training,1,47,69.5754,2.7562,18.1371,0.82560,0,0
+infantry,369,n,1.0,drill,rank_depth side,1,43,69.5894,2.7767,18.0531,0.82428,0,0
+infantry,370,n,1.0,side training,drill,0,45,70.0142,2.5904,18.2007,0.82986,0,0
+infantry,371,n,1.0,side,drill training,1,46,70.0275,2.7260,18.1986,0.82980,0,0
+infantry,372,n,1.0,side training,drill,1,46,70.0348,2.5971,18.2034,0.82965,0,0
+infantry,373,n,1.0,side,drill training,0,45,70.0373,2.7169,18.2011,0.82989,0,0
+infantry,374,n,1.0,rank_depth training,side,1,44,70.0425,3.0607,18.2784,0.82176,0,0
+infantry,375,n,1.0,side training,drill rank_depth,0,46,70.0560,2.6212,18.1770,0.82657,0,0
+infantry,376,n,1.0,side,drill,1,42,70.0916,2.7153,18.1836,0.82942,0,0
+infantry,377,n,1.0,drill rank_depth training,side,1,47,70.1109,3.0605,18.3054,0.82116,0,0
+infantry,378,n,1.0,side,drill,0,41,70.1112,2.7149,18.1869,0.82947,0,0
+infantry,379,n,1.0,side,drill rank_depth training,0,46,70.1175,2.7288,18.2175,0.82667,0,0
+infantry,380,n,1.0,rank_depth,side training,1,44,70.1413,3.1615,18.3710,0.82262,0,0
+infantry,381,n,1.0,side,drill rank_depth,0,42,70.1581,2.7424,18.1796,0.82625,0,0
+infantry,382,n,1.0,rank_depth training,drill side,1,47,70.1886,3.0275,18.3461,0.82440,0,0
+infantry,383,n,1.0,rank_depth,drill side training,1,47,70.1937,3.1504,18.3658,0.82444,0,0
+infantry,384,n,1.0,rank_depth,side,1,40,70.2031,3.2337,18.3317,0.82075,0,0
+infantry,385,n,1.0,drill rank_depth,side training,1,47,70.2055,3.1739,18.3951,0.82191,0,0
+infantry,386,n,1.0,side training,,1,43,70.2109,2.7210,18.2400,0.82725,0,0
+infantry,387,n,1.0,side,training,1,43,70.2144,2.8292,18.2754,0.82774,0,0
+infantry,388,n,1.0,drill side,training,1,46,70.2278,2.8266,18.2806,0.82728,0,0
+infantry,389,n,1.0,side training,,0,42,70.2357,2.7315,18.2418,0.82716,0,0
+infantry,390,n,1.0,drill side training,,1,46,70.2399,2.7110,18.2604,0.82692,0,0
+infantry,391,n,1.0,drill side training,,0,45,70.2601,2.7175,18.2620,0.82689,0,0
+infantry,392,n,1.0,side,training,0,42,70.2628,2.8269,18.2844,0.82756,0,0
+infantry,393,n,1.0,side training,rank_depth,0,43,70.2682,2.7256,18.2334,0.82326,0,0
+infantry,394,n,1.0,side,,1,39,70.2695,2.8206,18.2441,0.82670,0,0
+infantry,395,n,1.0,drill side,training,0,45,70.2743,2.8252,18.2889,0.82713,0,0
+infantry,396,n,1.0,drill rank_depth,side,1,43,70.2825,3.2188,18.3706,0.82019,0,0
+infantry,397,n,1.0,drill side training,rank_depth,0,46,70.3055,2.7276,18.2557,0.82284,0,0
+infantry,398,n,1.0,drill side,,1,42,70.3071,2.8109,18.2724,0.82646,0,0
+infantry,399,n,1.0,rank_depth,drill side,1,43,70.3261,3.2397,18.3789,0.82382,0,0
+infantry,400,n,1.0,side,,0,38,70.3357,2.8416,18.2509,0.82643,0,0
+infantry,401,n,1.0,side,rank_depth,0,39,70.3449,2.8289,18.2441,0.82245,0,0
+infantry,402,n,1.0,side,rank_depth training,0,43,70.3509,2.8266,18.3193,0.82378,0,0
+infantry,403,n,1.0,rank_depth side training,drill,0,46,70.3547,2.7629,18.3627,0.82576,0,0
+infantry,404,n,1.0,drill side,,0,41,70.3634,2.8279,18.2790,0.82625,0,0
+infantry,405,n,1.0,drill side,rank_depth training,0,46,70.3721,2.8351,18.3240,0.82316,0,0
+infantry,406,n,1.0,rank_depth side,drill training,0,46,70.3860,2.8689,18.3600,0.82573,0,0
+infantry,407,n,1.0,drill side,rank_depth,0,42,70.3946,2.8368,18.2788,0.82210,0,0
+infantry,408,n,1.0,side training,drill rank_depth,1,47,70.4281,2.5216,18.2208,0.82180,0,0
+infantry,409,n,1.0,rank_depth side,drill,0,42,70.4659,2.8909,18.3709,0.82526,0,0
+infantry,410,n,1.0,side,drill rank_depth training,1,47,70.5249,2.6118,18.2900,0.82194,0,0
+infantry,411,n,1.0,side,drill rank_depth,1,43,70.5335,2.6920,18.2284,0.82183,0,0
+infantry,412,n,1.0,rank_depth side training,,0,43,70.5708,2.8765,18.4068,0.82265,0,0
+infantry,413,n,1.0,drill rank_depth side training,,0,46,70.5850,2.8783,18.4169,0.82228,0,0
+infantry,414,n,1.0,side training,rank_depth,1,44,70.5926,2.6736,18.2943,0.81832,0,0
+infantry,415,n,1.0,rank_depth side,training,0,43,70.6101,2.9538,18.4378,0.82304,0,0
+infantry,416,n,1.0,drill rank_depth side,training,0,46,70.6197,2.9657,18.4429,0.82251,0,0
+infantry,417,n,1.0,rank_depth side,,0,39,70.6479,2.9735,18.4269,0.82169,0,0
+infantry,418,n,1.0,drill side training,rank_depth,1,47,70.6570,2.6472,18.3319,0.81776,0,0
+infantry,419,n,1.0,side,rank_depth,1,40,70.6617,2.8031,18.3066,0.81785,0,0
+infantry,420,n,1.0,drill rank_depth side,,0,42,70.6694,2.9815,18.4440,0.82145,0,0
+infantry,421,n,1.0,side,rank_depth training,1,44,70.7041,2.7462,18.4092,0.81911,0,0
+infantry,422,n,1.0,drill side,rank_depth training,1,47,70.7391,2.7504,18.4230,0.81830,0,0
+infantry,423,n,1.0,drill side,rank_depth,1,43,70.7535,2.7958,18.3614,0.81730,0,0
+infantry,424,n,1.0,,drill,1,41,71.0884,2.6488,18.4321,0.82029,0,0
+infantry,425,n,1.0,training,drill,1,45,71.0949,2.5691,18.4481,0.82084,0,0
+infantry,426,n,1.0,training,drill,0,44,71.0959,2.5638,18.4487,0.82095,0,0
+infantry,427,n,1.0,,drill,0,40,71.1349,2.6504,18.4408,0.82018,0,0
+infantry,428,n,1.0,training,drill rank_depth,0,45,71.1544,2.5119,18.4516,0.81725,0,0
+infantry,429,n,1.0,,drill rank_depth,0,41,71.1790,2.6534,18.4549,0.81650,0,0
+infantry,430,n,1.0,rank_depth side,drill training,1,47,71.2401,3.0568,18.6139,0.81794,0,0
+infantry,431,n,1.0,,drill training,1,45,71.2490,2.6845,18.5463,0.82110,0,0
+infantry,432,n,1.0,,drill training,0,44,71.2869,2.6844,18.5548,0.82105,0,0
+infantry,433,n,1.0,rank_depth side training,,1,44,71.2896,3.0745,18.6295,0.81485,0,0
+infantry,434,n,1.0,rank_depth side training,drill,1,47,71.2953,2.9559,18.6601,0.81774,0,0
+infantry,435,n,1.0,rank_depth side,training,1,44,71.3031,3.1368,18.6532,0.81589,0,0
+infantry,436,n,1.0,training,,1,42,71.3201,2.7919,18.4998,0.81832,0,0
+infantry,437,n,1.0,drill rank_depth side,training,1,47,71.3244,3.1473,18.6645,0.81519,0,0
+infantry,438,n,1.0,drill training,,1,45,71.3294,2.7063,18.5249,0.81833,0,0
+infantry,439,n,1.0,drill rank_depth side training,,1,47,71.3338,3.0749,18.6517,0.81434,0,0
+infantry,440,n,1.0,rank_depth side,,1,40,71.3358,3.1824,18.6394,0.81413,0,0
+infantry,441,n,1.0,rank_depth side,drill,1,43,71.3641,3.1195,18.6376,0.81744,0,0
+infantry,442,n,1.0,drill training,,0,44,71.3703,2.7188,18.5295,0.81814,0,0
+infantry,443,n,1.0,training,,0,41,71.3765,2.8211,18.5050,0.81802,0,0
+infantry,444,n,1.0,,,1,38,71.3807,2.8392,18.5283,0.81732,0,0
+infantry,445,n,1.0,drill,,1,41,71.3837,2.7697,18.5671,0.81751,0,0
+infantry,446,n,1.0,drill rank_depth side,,1,43,71.3941,3.1812,18.6730,0.81370,0,0
+infantry,447,n,1.0,,drill rank_depth training,0,45,71.4068,2.6177,18.5982,0.81742,0,0
+infantry,448,n,1.0,training,rank_depth,0,42,71.4263,2.7348,18.5298,0.81366,0,0
+infantry,449,n,1.0,drill training,rank_depth,0,45,71.4404,2.6454,18.5484,0.81364,0,0
+infantry,450,n,1.0,drill,,0,40,71.4669,2.7912,18.5812,0.81710,0,0
+infantry,451,n,1.0,,,0,37,71.4805,2.8758,18.5398,0.81676,0,0
+infantry,452,n,1.0,rank_depth training,drill,0,45,71.4943,2.6015,18.6675,0.81632,0,0
+infantry,453,n,1.0,drill,training,1,45,71.5113,2.7539,18.6585,0.81868,0,0
+infantry,454,n,1.0,drill,rank_depth,0,41,71.5123,2.7594,18.5946,0.81240,0,0
+infantry,455,n,1.0,,training,1,42,71.5135,2.8219,18.6468,0.81889,0,0
+infantry,456,n,1.0,,rank_depth,0,38,71.5185,2.7956,18.5613,0.81220,0,0
+infantry,457,n,1.0,training,drill rank_depth,1,46,71.5491,2.4522,18.4949,0.81192,0,0
+infantry,458,n,1.0,rank_depth,drill,0,41,71.5547,2.7600,18.6866,0.81525,0,0
+infantry,459,n,1.0,,drill rank_depth,1,42,71.5649,2.5566,18.5061,0.81151,0,0
+infantry,460,n,1.0,drill,training,0,44,71.5937,2.7725,18.6765,0.81830,0,0
+infantry,461,n,1.0,,training,0,41,71.6048,2.8520,18.6644,0.81841,0,0
+infantry,462,n,1.0,rank_depth,drill training,0,45,71.6610,2.7342,18.7299,0.81626,0,0
+infantry,463,n,1.0,drill,rank_depth training,0,45,71.7042,2.6781,18.7228,0.81382,0,0
+infantry,464,n,1.0,,rank_depth training,0,42,71.7074,2.7365,18.7113,0.81419,0,0
+infantry,465,n,1.0,drill rank_depth training,,0,45,71.7606,2.7492,18.7459,0.81299,0,0
+infantry,466,n,1.0,rank_depth training,,0,42,71.7787,2.8008,18.7337,0.81293,0,0
+infantry,467,n,1.0,training,rank_depth,1,43,71.7887,2.6989,18.5919,0.80821,0,0
+infantry,468,n,1.0,,drill rank_depth training,1,46,71.8184,2.4987,18.6827,0.81216,0,0
+infantry,469,n,1.0,,rank_depth,1,39,71.8344,2.7509,18.6120,0.80701,0,0
+infantry,470,n,1.0,drill training,rank_depth,1,46,71.8350,2.5788,18.6227,0.80791,0,0
+infantry,471,n,1.0,drill,rank_depth,1,42,71.8676,2.7046,18.6639,0.80683,0,0
+infantry,472,n,1.0,drill rank_depth,,0,41,71.8792,2.8666,18.8211,0.81155,0,0
+infantry,473,n,1.0,rank_depth,,0,38,71.9060,2.9113,18.7991,0.81121,0,0
+infantry,474,n,1.0,drill rank_depth,training,0,45,71.9693,2.8055,18.8611,0.81305,0,0
+infantry,475,n,1.0,rank_depth,training,0,42,71.9824,2.8646,18.8545,0.81328,0,0
+infantry,476,n,1.0,,rank_depth training,1,43,72.0671,2.6946,18.7993,0.80915,0,0
+infantry,477,n,1.0,drill,rank_depth training,1,46,72.1151,2.6083,18.8270,0.80837,0,0
+infantry,478,n,1.0,rank_depth,drill training,1,46,72.5942,2.9527,19.0333,0.80755,0,0
+infantry,479,n,1.0,rank_depth training,drill,1,46,72.6105,2.7981,19.0448,0.80723,0,0
+infantry,480,n,1.0,rank_depth training,,1,43,72.6121,3.0000,19.0087,0.80432,0,0
+infantry,481,n,1.0,rank_depth,drill,1,42,72.6204,2.9820,19.0295,0.80614,0,0
+infantry,482,n,1.0,drill rank_depth training,,1,46,72.6399,2.9390,19.0422,0.80403,0,0
+infantry,483,n,1.0,rank_depth,training,1,43,72.6715,3.0560,19.0878,0.80574,0,0
+infantry,484,n,1.0,rank_depth,,1,39,72.6892,3.1299,19.0578,0.80253,0,0
+infantry,485,n,1.0,drill rank_depth,training,1,46,72.7167,2.9914,19.1147,0.80504,0,0
+infantry,486,n,1.0,drill rank_depth,,1,42,72.7359,3.0588,19.1061,0.80246,0,0
+cavalry,1,n,1.0,,rank_depth rating,1,31,60.0312,2.0686,7.8860,0.95789,1,0
+cavalry,2,n,1.0,side,rank_depth rating,1,32,60.0352,2.1654,7.8735,0.95871,0,0
+cavalry,3,n,1.0,,rank_depth rating side,1,32,60.0615,2.1983,7.8669,0.95849,0,0
+cavalry,4,n,1.0,,rank_depth rating side training,1,36,60.0724,2.1933,7.8948,0.95841,0,0
+cavalry,5,n,1.0,side,rank_depth rating training,1,36,60.0726,2.1934,7.8990,0.95862,0,0
+cavalry,6,n,1.0,,rank_depth rating training,1,35,60.0745,2.0966,7.9157,0.95779,0,0
+cavalry,7,n,1.0,training,rank_depth rating,1,35,60.2855,1.8655,7.9061,0.95768,0,0
+cavalry,8,n,1.0,training,rank_depth rating side,1,36,60.2992,2.0603,7.8927,0.95819,0,0
+cavalry,9,n,1.0,side training,rank_depth rating,1,36,60.3056,2.0541,7.9049,0.95840,0,0
+cavalry,10,n,1.0,side,rank_depth rating,0,31,60.4905,2.9687,7.8476,0.95778,0,0
+cavalry,11,n,1.0,,rank_depth rating side,0,31,60.5101,2.8515,7.8481,0.95772,0,0
+cavalry,12,n,1.0,,rank_depth rating,0,30,60.5637,2.7380,7.8847,0.95724,0,1
+cavalry,13,n,1.0,,rank_depth rating side training,0,35,60.6774,2.8548,7.8965,0.95758,0,0
+cavalry,14,n,1.0,side,rank_depth rating training,0,35,60.6896,2.9957,7.9006,0.95763,0,0
+cavalry,15,n,1.0,training,rank_depth rating side,0,35,60.7276,2.8078,7.8752,0.95746,0,0
+cavalry,16,n,1.0,,rank_depth rating training,0,34,60.7364,2.8012,7.9342,0.95708,0,0
+cavalry,17,n,1.0,side training,rank_depth rating,0,35,60.7668,2.9121,7.8878,0.95751,0,0
+cavalry,18,n,1.0,training,rank_depth rating,0,34,60.7673,2.7215,7.9021,0.95705,0,0
+cavalry,19,n,1.0,rank_depth side,rating training,1,36,68.9111,1.2613,9.1180,0.94447,0,0
+cavalry,20,n,1.0,rank_depth side,rating training,0,35,69.1167,1.6690,9.0537,0.94392,0,0
+cavalry,21,n,1.0,rank_depth,rating side training,1,36,69.1697,1.4102,9.1467,0.94356,0,0
+cavalry,22,n,1.0,rank_depth side,rating,1,32,69.1883,1.7134,9.1618,0.94428,0,0
+cavalry,23,n,1.0,rank_depth,rating side training,0,35,69.2392,1.5551,9.0559,0.94313,0,0
+cavalry,24,n,1.0,rank_depth side training,rating,1,36,69.2599,1.7174,9.1655,0.94428,0,0
+cavalry,25,n,1.0,rank_depth,rating training,1,35,69.3468,1.9234,9.1691,0.94264,0,0
+cavalry,26,n,1.0,rank_depth,rating side,1,32,69.4273,1.9623,9.1805,0.94328,0,0
+cavalry,27,n,1.0,rank_depth side,rating,0,31,69.4277,1.8042,9.0956,0.94360,0,0
+cavalry,28,n,1.0,rank_depth,rating training,0,34,69.4917,1.8445,9.0813,0.94220,0,0
+cavalry,29,n,1.0,rank_depth training,rating side,1,36,69.5073,1.8866,9.1823,0.94337,0,0
+cavalry,30,n,1.0,rank_depth side training,rating,0,35,69.5374,1.8393,9.1113,0.94358,0,0
+cavalry,31,n,1.0,rank_depth,rating,1,31,69.5509,2.4842,9.1972,0.94238,0,0
+cavalry,32,n,1.0,rank_depth,rating side,0,31,69.5529,1.8762,9.0962,0.94273,0,0
+cavalry,33,n,1.0,rank_depth training,rating,1,35,69.6387,2.3314,9.1946,0.94258,0,0
+cavalry,34,n,1.0,rank_depth training,rating side,0,35,69.6695,1.8421,9.1095,0.94280,0,0
+cavalry,35,n,1.0,rank_depth,rating,0,30,69.6883,2.3583,9.1072,0.94179,0,0
+cavalry,36,n,1.0,rank_depth training,rating,0,34,69.8418,2.1642,9.1198,0.94200,0,0
+cavalry,37,n,1.0,rating,rank_depth side training,1,36,71.5721,5.0373,9.4185,0.94155,0,0
+cavalry,38,n,1.0,rating side,rank_depth training,1,36,71.7566,4.7828,9.4488,0.94104,0,0
+cavalry,39,n,1.0,rating,rank_depth training,1,35,72.3188,4.4240,9.5336,0.93983,0,0
+cavalry,40,n,1.0,rating,rank_depth side training,0,35,72.3825,5.1074,9.4850,0.94016,0,0
+cavalry,41,n,1.0,rating side,rank_depth training,0,35,72.5396,4.9236,9.5260,0.93977,0,0
+cavalry,42,n,1.0,rating,rank_depth side,1,32,72.5529,4.8641,9.5247,0.93966,0,0
+cavalry,43,n,1.0,rating training,rank_depth side,1,36,72.6154,4.8692,9.5335,0.93987,0,0
+cavalry,44,n,1.0,rating,rank_depth training,0,34,72.7613,4.5537,9.5717,0.93904,0,0
+cavalry,45,n,1.0,rating side training,rank_depth,1,36,72.7986,4.7046,9.5663,0.93948,0,0
+cavalry,46,n,1.0,rating side,rank_depth,1,32,72.8140,4.6336,9.5720,0.93918,0,0
+cavalry,47,n,1.0,rating,rank_depth side,0,31,73.3051,4.8496,9.5734,0.93853,0,0
+cavalry,48,n,1.0,rating,rank_depth,1,31,73.3087,4.3861,9.6366,0.93804,0,0
+cavalry,49,n,1.0,rating training,rank_depth,1,35,73.3136,4.4107,9.6361,0.93837,0,0
+cavalry,50,n,1.0,rating training,rank_depth side,0,35,73.3340,4.8366,9.5769,0.93863,0,0
+cavalry,51,n,1.0,rating side training,rank_depth,0,35,73.5020,4.6765,9.6152,0.93829,0,0
+cavalry,52,n,1.0,rating side,rank_depth,0,31,73.5382,4.6979,9.6286,0.93814,0,0
+cavalry,53,n,1.0,rating training,rank_depth,0,34,73.7113,4.3747,9.6572,0.93762,0,0
+cavalry,54,n,1.0,rating,rank_depth,0,30,73.7677,4.4498,9.6685,0.93741,0,0
+cavalry,55,n,1.0,,rating training,1,34,74.8996,4.3199,9.9589,0.92705,0,0
+cavalry,56,n,1.0,,rating side training,1,35,75.0105,4.1863,9.9687,0.92693,0,0
+cavalry,57,n,1.0,side,rating training,1,35,75.0698,4.0227,9.9629,0.92777,0,0
+cavalry,58,n,1.0,training,rating,1,34,75.6901,4.3633,10.0680,0.92657,0,0
+cavalry,59,n,1.0,,rating,1,30,75.7065,4.4921,10.0830,0.92636,0,0
+cavalry,60,n,1.0,training,rating side,1,35,75.7681,4.3105,10.0758,0.92642,0,0
+cavalry,61,n,1.0,,rating side,1,31,75.8081,4.4345,10.0925,0.92618,0,0
+cavalry,62,n,1.0,side training,rating,1,35,75.8114,4.2021,10.0719,0.92717,0,0
+cavalry,63,n,1.0,side,rating,1,31,75.8539,4.3011,10.0847,0.92700,0,0
+cavalry,64,n,1.0,rank_depth rating side,training,0,35,78.0933,3.4235,10.4493,0.92892,0,0
+cavalry,65,n,1.0,rank_depth rating side,training,1,36,78.0956,3.4134,10.4528,0.92841,0,0
+cavalry,66,n,1.0,rank_depth rating,side training,1,36,78.3153,3.4175,10.4806,0.92822,0,0
+cavalry,67,n,1.0,rank_depth rating,side training,0,35,78.3487,3.4220,10.4814,0.92860,0,0
+cavalry,68,n,1.0,rank_depth rating,training,1,35,78.9694,3.5236,10.5852,0.92675,0,0
+cavalry,69,n,1.0,rank_depth rating,training,0,34,78.9847,3.4258,10.5866,0.92730,0,0
+cavalry,70,n,1.0,rank_depth rating side training,,1,36,79.1194,3.4670,10.5932,0.92644,0,0
+cavalry,71,n,1.0,rank_depth rating side,,1,32,79.2257,3.4467,10.6135,0.92618,0,0
+cavalry,72,n,1.0,rank_depth rating side training,,0,35,79.2364,3.4819,10.5963,0.92678,0,0
+cavalry,73,n,1.0,rank_depth rating,side,1,32,79.2572,3.4910,10.5964,0.92600,0,0
+cavalry,74,n,1.0,rank_depth rating training,side,1,36,79.2810,3.4920,10.6038,0.92615,0,0
+cavalry,75,n,1.0,rank_depth rating side,,0,31,79.3100,3.4194,10.6144,0.92664,0,0
+cavalry,76,n,1.0,rank_depth rating,side,0,31,79.3997,3.4935,10.6076,0.92631,0,0
+cavalry,77,n,1.0,rank_depth rating training,side,0,35,79.4387,3.5291,10.6154,0.92637,0,0
+cavalry,78,n,1.0,rank_depth rating,,1,31,79.8706,3.6011,10.6888,0.92440,0,0
+cavalry,79,n,1.0,rank_depth rating,,0,30,79.9122,3.5374,10.6937,0.92488,0,0
+cavalry,80,n,1.0,rank_depth rating training,,1,35,79.9336,3.5625,10.7018,0.92477,0,0
+cavalry,81,n,1.0,rank_depth rating training,,0,34,80.0327,3.5165,10.7107,0.92519,0,0
+cavalry,82,n,1.0,rating side,training,1,35,80.5547,3.0871,10.6923,0.91926,0,0
+cavalry,83,n,1.0,rating,side training,1,35,80.6959,3.3222,10.6798,0.91903,0,0
+cavalry,84,n,1.0,rating,training,1,34,80.9958,3.7114,10.7501,0.91737,0,0
+cavalry,85,n,1.0,rating side training,,1,35,81.3078,2.5926,10.8048,0.91837,0,0
+cavalry,86,n,1.0,rating training,side,1,35,81.4944,2.8368,10.7943,0.91767,0,0
+cavalry,87,n,1.0,rating training,,1,34,81.7476,3.1715,10.8498,0.91643,0,0
+cavalry,88,n,1.0,rating side,,1,31,81.7736,2.3185,10.8489,0.91678,0,0
+cavalry,89,n,1.0,rating,side,1,31,81.8743,2.5065,10.8234,0.91632,0,0
+cavalry,90,n,1.0,rating,,1,30,82.1188,2.8289,10.8821,0.91485,0,0
+cavalry,91,n,1.0,side,rating training,0,34,103.5246,6.3559,12.2040,0.85533,0,0
+cavalry,92,n,1.0,,rating side training,0,34,103.5326,6.4628,12.1988,0.85498,0,0
+cavalry,93,n,1.0,,rating training,0,33,104.3377,6.0485,12.2360,0.85400,0,0
+cavalry,94,n,1.0,training,rating side,0,34,104.5699,6.4221,12.3121,0.85261,0,0
+cavalry,95,n,1.0,,rating side,0,30,104.5735,6.5447,12.2880,0.85019,0,0
+cavalry,96,n,1.0,side training,rating,0,34,104.6090,6.2797,12.3214,0.85280,0,0
+cavalry,97,n,1.0,side,rating,0,30,104.6182,6.3653,12.2980,0.85044,0,0
+cavalry,98,n,1.0,training,rating,0,33,105.4523,6.1136,12.3594,0.85125,0,0
+cavalry,99,n,1.0,,rating,0,29,105.5892,6.1343,12.3440,0.84882,0,0
+cavalry,100,n,1.0,rating side,training,0,34,112.4800,5.3669,13.5710,0.83404,0,0
+cavalry,101,n,1.0,rating,side training,0,34,112.5833,5.4733,13.5857,0.83302,0,0
+cavalry,102,n,1.0,rating,training,0,33,112.8208,5.0848,13.5520,0.83327,0,0
+cavalry,103,n,1.0,rating side training,,0,34,113.8878,5.7490,13.7044,0.82921,0,0
+cavalry,104,n,1.0,rating training,side,0,34,113.9949,5.9107,13.7205,0.82819,0,0
+cavalry,105,n,1.0,rating side,,0,30,114.2218,6.0846,13.7333,0.82529,0,0
+cavalry,106,n,1.0,rating training,,0,33,114.2628,5.5830,13.7028,0.82830,0,0
+cavalry,107,n,1.0,rating,side,0,30,114.3373,6.2283,13.7536,0.82417,0,0
+cavalry,108,n,1.0,rating,,0,29,114.7394,5.8908,13.7510,0.82425,0,0
+cavalry,109,n,1.0,,rank_depth side training,0,28,123.3176,4.7201,15.7487,0.83815,0,0
+cavalry,110,n,1.0,,rank_depth side,0,24,123.3271,4.3870,15.7168,0.83765,0,0
+cavalry,111,n,1.0,training,rank_depth side,0,28,123.3660,4.7838,15.7380,0.83839,0,0
+cavalry,112,n,1.0,side,rank_depth training,0,28,123.4030,4.6419,15.7504,0.83724,0,0
+cavalry,113,n,1.0,side,rank_depth,0,24,123.4300,4.3229,15.7205,0.83675,0,0
+cavalry,114,n,1.0,side training,rank_depth,0,28,123.4793,4.7543,15.7458,0.83749,0,0
+cavalry,115,n,1.0,,rank_depth side training,1,29,123.4895,4.4175,15.7444,0.83743,0,0
+cavalry,116,n,1.0,,rank_depth side,1,25,123.4924,4.1386,15.7235,0.83702,0,0
+cavalry,117,n,1.0,training,rank_depth side,1,29,123.5101,4.5158,15.7359,0.83780,0,0
+cavalry,118,n,1.0,side,rank_depth training,1,29,123.6513,4.4116,15.7525,0.83623,0,0
+cavalry,119,n,1.0,side,rank_depth,1,25,123.6789,4.1240,15.7304,0.83585,0,0
+cavalry,120,n,1.0,side training,rank_depth,1,29,123.7019,4.5668,15.7493,0.83662,0,0
+cavalry,121,n,1.0,training,rank_depth,0,27,123.8893,4.3843,15.8340,0.83514,0,0
+cavalry,122,n,1.0,,rank_depth training,0,27,124.0416,4.3012,15.8842,0.83464,0,0
+cavalry,123,n,1.0,,rank_depth,0,23,124.0519,3.9158,15.8564,0.83430,0,0
+cavalry,124,n,1.0,training,rank_depth,1,28,124.1826,4.3122,15.8540,0.83426,0,0
+cavalry,125,n,1.0,,rank_depth,1,24,124.2816,3.8920,15.8730,0.83347,0,0
+cavalry,126,n,1.0,,rank_depth training,1,28,124.3148,4.2344,15.8984,0.83370,0,0
+cavalry,127,n,1.0,rank_depth side,training,0,28,130.9145,3.4122,16.6277,0.80996,0,0
+cavalry,128,n,1.0,rank_depth side training,,0,28,131.0582,3.8795,16.6022,0.80967,0,0
+cavalry,129,n,1.0,rank_depth side training,,1,29,131.2587,4.2872,16.6291,0.80807,0,0
+cavalry,130,n,1.0,rank_depth,side training,0,28,131.2728,3.1957,16.6843,0.80902,0,0
+cavalry,131,n,1.0,rank_depth side,training,1,29,131.2754,4.0295,16.6532,0.80778,0,0
+cavalry,132,n,1.0,rank_depth side,,0,24,131.3328,3.6033,16.6142,0.80764,0,0
+cavalry,133,n,1.0,rank_depth training,side,0,28,131.4116,3.6315,16.6609,0.80874,0,0
+cavalry,134,n,1.0,rank_depth training,side,1,29,131.4205,3.9642,16.6755,0.80777,0,0
+cavalry,135,n,1.0,rank_depth,side training,1,29,131.4245,3.7266,16.6927,0.80747,0,0
+cavalry,136,n,1.0,rank_depth side,,1,25,131.5686,3.9624,16.6382,0.80584,0,0
+cavalry,137,n,1.0,rank_depth,side,0,24,131.6335,3.3511,16.6724,0.80679,0,0
+cavalry,138,n,1.0,side,training,1,28,131.6357,5.0425,16.5933,0.79972,0,0
+cavalry,139,n,1.0,side training,,1,28,131.6563,4.9696,16.6747,0.80147,0,0
+cavalry,140,n,1.0,,side training,1,28,131.6656,4.4936,16.6444,0.79964,0,0
+cavalry,141,n,1.0,rank_depth,side,1,25,131.6857,3.6784,16.6824,0.80561,0,0
+cavalry,142,n,1.0,training,side,1,28,131.7552,4.4885,16.7360,0.80087,0,0
+cavalry,143,n,1.0,rank_depth,training,0,27,132.1706,3.7699,16.8140,0.80477,0,0
+cavalry,144,n,1.0,rank_depth training,,0,27,132.2361,4.2090,16.7755,0.80481,0,0
+cavalry,145,n,1.0,side,,1,24,132.3338,4.7390,16.6967,0.79813,0,0
+cavalry,146,n,1.0,,side,1,24,132.3529,4.1787,16.7491,0.79773,0,0
+cavalry,147,n,1.0,rank_depth training,,1,28,132.4599,4.5039,16.8000,0.80304,0,0
+cavalry,148,n,1.0,rank_depth,training,1,28,132.5655,4.2835,16.8486,0.80266,0,0
+cavalry,149,n,1.0,rank_depth,,0,23,132.5904,3.8896,16.8110,0.80256,0,0
+cavalry,150,n,1.0,rank_depth,,1,24,132.8460,4.0977,16.8361,0.80074,0,0
+cavalry,151,n,1.0,training,,1,27,132.9183,5.3087,16.8313,0.79539,0,0
+cavalry,152,n,1.0,,training,1,27,132.9911,5.3153,16.7837,0.79360,0,0
+cavalry,153,n,1.0,,,1,23,133.5249,4.9835,16.8693,0.79223,0,0
+cavalry,154,n,1.0,,training,0,26,150.9118,5.5273,18.4862,0.72331,0,0
+cavalry,155,n,1.0,side,training,0,27,151.0279,5.4199,18.4976,0.72274,0,0
+cavalry,156,n,1.0,,side training,0,27,151.0656,5.4190,18.4874,0.72212,0,0
+cavalry,157,n,1.0,training,,0,26,151.3776,5.4580,18.5204,0.72171,0,0
+cavalry,158,n,1.0,side training,,0,27,151.5004,5.3923,18.5373,0.72112,0,0
+cavalry,159,n,1.0,training,side,0,27,151.5212,5.4316,18.5239,0.72046,0,0
+cavalry,160,n,1.0,,,0,22,151.9115,5.5483,18.5252,0.71686,0,0
+cavalry,161,n,1.0,side,,0,23,152.0161,5.5042,18.5435,0.71623,0,0
+cavalry,162,n,1.0,,side,0,23,152.0181,5.5621,18.5271,0.71552,0,0
+artillery,1,n,1.0,rank_depth,rating training,1,33,72.9234,4.4639,14.7505,0.91772,1,0
+artillery,2,n,1.0,rank_depth side,rating training,1,34,73.0081,4.6900,14.5764,0.91691,0,0
+artillery,3,n,1.0,,rating training,1,32,73.1708,4.0395,14.7747,0.91666,0,0
+artillery,4,n,1.0,side,rating training,1,33,73.3222,4.3327,14.6029,0.91593,0,0
+artillery,5,n,1.0,rank_depth,rating side training,1,34,73.3286,4.1069,14.5780,0.91626,0,0
+artillery,6,n,1.0,,rating side training,1,33,73.4976,3.7865,14.5904,0.91564,0,0
+artillery,7,n,1.0,rating,training,1,32,74.3387,3.5391,15.7027,0.91877,0,0
+artillery,8,n,1.0,rank_depth rating,training,1,33,74.4303,3.4684,15.7123,0.91858,0,0
+artillery,9,n,1.0,rating side,training,1,33,74.4873,4.0942,15.5676,0.91808,0,0
+artillery,10,n,1.0,rank_depth rating training,,1,33,74.5366,3.4618,15.7536,0.91702,0,0
+artillery,11,n,1.0,rating side,,1,30,74.5510,3.5650,15.7050,0.91673,0,0
+artillery,12,n,1.0,rating,,1,29,74.5768,3.2493,15.7817,0.91742,0,1
+artillery,13,n,1.0,rank_depth rating side,training,1,34,74.5815,3.9411,15.5858,0.91769,0,0
+artillery,14,n,1.0,rating training,,1,32,74.5934,3.3096,15.7885,0.91647,0,0
+artillery,15,n,1.0,rank_depth rating side,,1,31,74.5958,3.6931,15.6794,0.91713,0,0
+artillery,16,n,1.0,rank_depth rating training,side,1,34,74.6257,3.4437,15.7009,0.91636,0,0
+artillery,17,n,1.0,rank_depth,rating,1,30,74.6465,4.1559,15.0329,0.91569,0,0
+artillery,18,n,1.0,rank_depth rating side training,,1,34,74.6470,3.8493,15.6918,0.91619,0,0
+artillery,19,n,1.0,rating,side,1,30,74.6572,3.2879,15.7410,0.91683,0,0
+artillery,20,n,1.0,rank_depth rating,,1,30,74.6765,3.4197,15.7688,0.91779,0,0
+artillery,21,n,1.0,rating training,side,1,33,74.6882,3.3191,15.7437,0.91584,0,0
+artillery,22,n,1.0,rating,side training,1,33,74.7103,3.3984,15.5437,0.91778,0,0
+artillery,23,n,1.0,rating side training,,1,33,74.7315,3.6776,15.7334,0.91563,0,0
+artillery,24,n,1.0,rank_depth training,rating,1,33,74.7507,3.6226,15.0682,0.91502,0,0
+artillery,25,n,1.0,rank_depth rating,side,1,31,74.7532,3.4350,15.7218,0.91719,0,0
+artillery,26,n,1.0,rank_depth side,rating,1,31,74.7997,4.4272,14.9300,0.91493,0,0
+artillery,27,n,1.0,,rank_depth rating training,1,33,74.8798,2.6985,14.2162,0.90480,0,0
+artillery,28,n,1.0,rank_depth rating,side training,1,34,74.8853,3.2169,15.5757,0.91718,0,0
+artillery,29,n,1.0,rank_depth,rating side,1,31,74.9666,4.2707,14.9764,0.91473,0,0
+artillery,30,n,1.0,rank_depth side training,rating,1,34,74.9895,4.0321,14.9560,0.91398,0,0
+artillery,31,n,1.0,rank_depth training,rating side,1,34,75.0492,3.8202,14.9816,0.91392,0,0
+artillery,32,n,1.0,side,rank_depth rating training,1,34,75.0583,2.2409,14.0994,0.90314,0,0
+artillery,33,n,1.0,,rating,1,29,75.1726,3.1083,15.1215,0.91386,0,0
+artillery,34,n,1.0,,rank_depth rating side training,1,34,75.1766,1.8333,14.0824,0.90325,0,0
+artillery,35,n,1.0,side,rating,1,30,75.4767,3.4421,15.0358,0.91297,0,0
+artillery,36,n,1.0,training,rating,1,32,75.5143,2.6820,15.1589,0.91287,0,0
+artillery,37,n,1.0,,rating side,1,30,75.5148,3.1476,15.0752,0.91291,0,0
+artillery,38,n,1.0,training,rating side,1,33,75.7825,2.7448,15.0826,0.91182,0,0
+artillery,39,n,1.0,side training,rating,1,33,75.8676,3.0862,15.0749,0.91177,0,0
+artillery,40,n,1.0,rating,rank_depth training,1,33,76.5056,2.2081,15.3634,0.90775,0,0
+artillery,41,n,1.0,rating side,rank_depth training,1,34,76.5280,2.2666,15.2246,0.90625,0,0
+artillery,42,n,1.0,rating training,rank_depth side,1,34,76.5509,3.2274,15.4546,0.90601,0,0
+artillery,43,n,1.0,rating side,rank_depth,1,31,76.5535,3.0530,15.4228,0.90629,0,0
+artillery,44,n,1.0,rating training,rank_depth,1,33,76.5674,3.2528,15.4889,0.90656,0,0
+artillery,45,n,1.0,rating,rank_depth side,1,31,76.5845,3.0679,15.4465,0.90652,0,0
+artillery,46,n,1.0,rating side training,rank_depth,1,34,76.6004,3.3149,15.4467,0.90559,0,0
+artillery,47,n,1.0,rating,rank_depth,1,30,76.6320,3.1044,15.4810,0.90699,0,0
+artillery,48,n,1.0,rating,rank_depth side training,1,34,76.6503,2.1788,15.2168,0.90626,0,0
+artillery,49,n,1.0,,rank_depth rating,1,30,76.8574,1.8767,14.6851,0.90299,0,0
+artillery,50,n,1.0,training,rank_depth rating,1,33,77.0570,2.1721,14.7191,0.90271,0,0
+artillery,51,n,1.0,side,rank_depth rating,1,31,77.0866,1.8380,14.6545,0.90210,0,0
+artillery,52,n,1.0,,rank_depth rating side,1,31,77.2054,1.7185,14.7045,0.90225,0,0
+artillery,53,n,1.0,training,rank_depth rating side,1,34,77.4415,2.0284,14.7293,0.90181,0,0
+artillery,54,n,1.0,side training,rank_depth rating,1,34,77.4652,2.1459,14.6934,0.90151,0,0
+artillery,55,n,1.0,side,rank_depth rating training,0,33,83.4700,5.1705,15.0691,0.83325,0,0
+artillery,56,n,1.0,,rank_depth rating training,0,32,83.5237,6.3287,15.0720,0.83805,0,0
+artillery,57,n,1.0,,rank_depth rating side training,0,33,83.7324,6.0886,15.1388,0.83535,0,0
+artillery,58,n,1.0,,rank_depth rating,0,29,86.9398,7.6567,15.5304,0.82113,0,0
+artillery,59,n,1.0,training,rank_depth rating,0,32,87.1744,7.5739,15.5587,0.82143,0,0
+artillery,60,n,1.0,side,rank_depth rating,0,30,87.3440,6.9014,15.5769,0.81835,0,0
+artillery,61,n,1.0,side training,rank_depth rating,0,33,87.3746,7.1599,15.5865,0.81830,0,0
+artillery,62,n,1.0,,rank_depth rating side,0,30,87.3948,7.3310,15.6026,0.81960,0,0
+artillery,63,n,1.0,rating,rank_depth training,0,32,87.4420,5.4001,16.3577,0.84328,0,0
+artillery,64,n,1.0,training,rank_depth rating side,0,33,87.5259,7.6994,15.6275,0.81966,0,0
+artillery,65,n,1.0,rating side,rank_depth training,0,33,87.5415,4.9102,16.4685,0.83886,0,0
+artillery,66,n,1.0,rating,rank_depth side training,0,33,88.0894,5.6371,16.4600,0.83967,0,0
+artillery,67,n,1.0,rating side,rank_depth,0,30,89.0850,7.1445,16.6444,0.82899,0,0
+artillery,68,n,1.0,rating,rank_depth,0,29,89.1284,7.1705,16.6476,0.83089,0,0
+artillery,69,n,1.0,rating,rank_depth side,0,30,89.2333,7.1300,16.6664,0.83061,0,0
+artillery,70,n,1.0,rating side training,rank_depth,0,33,89.2732,7.3937,16.6938,0.82810,0,0
+artillery,71,n,1.0,rating training,rank_depth,0,32,89.3117,7.3234,16.6738,0.83090,0,0
+artillery,72,n,1.0,rating training,rank_depth side,0,33,89.3948,7.3856,16.6899,0.83015,0,0
+artillery,73,n,1.0,rank_depth,rating side training,0,33,105.1054,9.7266,19.0101,0.75679,0,0
+artillery,74,n,1.0,rank_depth rating,,0,29,105.1526,11.6321,20.2764,0.75632,0,0
+artillery,75,n,1.0,rank_depth side,rating training,0,33,105.2387,10.8449,18.9410,0.75633,0,0
+artillery,76,n,1.0,rank_depth rating side,training,0,33,105.4006,9.4535,20.0597,0.76065,0,0
+artillery,77,n,1.0,rank_depth rating,training,0,32,105.4190,10.2706,20.0935,0.76079,0,0
+artillery,78,n,1.0,rank_depth rating side,,0,30,105.4786,11.3943,20.2859,0.75451,0,0
+artillery,79,n,1.0,rank_depth rating,side,0,30,105.5653,11.4531,20.3094,0.75331,0,0
+artillery,80,n,1.0,rank_depth rating,side training,0,33,105.9746,8.3912,20.0446,0.75884,0,0
+artillery,81,n,1.0,rank_depth rating training,,0,32,105.9905,12.0270,20.4038,0.75462,0,0
+artillery,82,n,1.0,rank_depth,rating training,0,32,106.1332,10.8753,19.0644,0.75559,0,0
+artillery,83,n,1.0,rank_depth rating side training,,0,33,106.2383,11.5662,20.4184,0.75204,0,0
+artillery,84,n,1.0,rank_depth rating training,side,0,33,106.3100,11.8128,20.4089,0.75113,0,0
+artillery,85,n,1.0,rank_depth side,rating,0,30,106.3552,8.6195,19.4027,0.74989,0,0
+artillery,86,n,1.0,rank_depth,rating,0,29,106.4102,9.1288,19.4287,0.75154,0,0
+artillery,87,n,1.0,rank_depth,rating side,0,30,106.5996,8.7179,19.4934,0.74902,0,0
+artillery,88,n,1.0,rank_depth training,rating,0,32,107.5484,9.2636,19.6097,0.74932,0,0
+artillery,89,n,1.0,rank_depth side training,rating,0,33,107.6063,8.5307,19.6389,0.74667,0,0
+artillery,90,n,1.0,rank_depth training,rating side,0,33,107.7192,8.6968,19.6931,0.74595,0,0
+artillery,91,n,1.0,rank_depth,side training,1,27,110.5896,6.0320,19.6148,0.83224,0,0
+artillery,92,n,1.0,rank_depth,training,1,26,110.7037,7.5728,19.8416,0.83179,0,0
+artillery,93,n,1.0,rank_depth,,1,23,110.8248,7.2488,19.9466,0.83244,0,0
+artillery,94,n,1.0,rank_depth,side,1,24,110.9209,6.7665,19.9264,0.83223,0,0
+artillery,95,n,1.0,rank_depth side,training,1,27,110.9371,6.3442,19.7231,0.83214,0,0
+artillery,96,n,1.0,rank_depth side,,1,24,111.0368,6.8933,19.9452,0.83231,0,0
+artillery,97,n,1.0,rank_depth training,side,1,27,111.0733,6.9860,19.8995,0.83095,0,0
+artillery,98,n,1.0,rank_depth training,,1,26,111.1718,7.4111,20.0253,0.83136,0,0
+artillery,99,n,1.0,rank_depth side training,,1,27,111.2728,7.0178,19.9390,0.83113,0,0
+artillery,100,n,1.0,,side training,1,26,112.9006,6.8245,19.7800,0.82575,0,0
+artillery,101,n,1.0,,,1,22,113.1111,8.3731,20.0836,0.82567,0,0
+artillery,102,n,1.0,,training,1,25,113.1929,8.2968,20.0269,0.82489,0,0
+artillery,103,n,1.0,,side,1,23,113.3842,7.6930,20.0718,0.82534,0,0
+artillery,104,n,1.0,training,,1,25,113.6136,8.7489,20.1737,0.82382,0,0
+artillery,105,n,1.0,training,side,1,26,113.6509,8.0697,20.0651,0.82344,0,0
+artillery,106,n,1.0,side,,1,23,113.6607,7.7115,20.1132,0.82521,0,0
+artillery,107,n,1.0,side,training,1,26,113.7570,6.9635,19.9513,0.82497,0,0
+artillery,108,n,1.0,,rank_depth side training,1,27,113.8162,6.5527,19.6542,0.82081,0,0
+artillery,109,n,1.0,,rank_depth,1,23,113.8647,8.1391,19.9872,0.82212,0,0
+artillery,110,n,1.0,,rank_depth training,1,26,113.9789,8.0240,19.9207,0.82113,0,0
+artillery,111,n,1.0,,rank_depth side,1,24,114.1364,7.5051,19.9738,0.82158,0,0
+artillery,112,n,1.0,side training,,1,26,114.1845,8.0131,20.1436,0.82324,0,0
+artillery,113,n,1.0,training,rank_depth,1,26,114.2750,8.5712,20.0822,0.82059,0,0
+artillery,114,n,1.0,training,rank_depth side,1,27,114.3345,7.8777,19.9745,0.81982,0,0
+artillery,115,n,1.0,side,rank_depth,1,24,114.4232,7.5080,20.0180,0.82147,0,0
+artillery,116,n,1.0,side,rank_depth training,1,27,114.6894,6.6806,19.8453,0.82043,0,0
+artillery,117,n,1.0,side training,rank_depth,1,27,114.8868,7.8191,20.0573,0.81963,0,0
+artillery,118,n,1.0,,rating,0,28,117.5383,10.8268,25.1735,0.81233,0,0
+artillery,119,n,1.0,training,rating,0,31,117.9052,9.9347,25.3268,0.81226,0,0
+artillery,120,n,1.0,rating,,0,28,118.2409,12.9403,25.0880,0.81281,0,0
+artillery,121,n,1.0,,rating side,0,29,118.2809,9.6337,25.2468,0.80797,0,0
+artillery,122,n,1.0,side,rating,0,29,118.4935,9.4869,25.3775,0.80938,0,0
+artillery,123,n,1.0,rating training,,0,31,118.8593,11.7515,25.2041,0.81281,0,0
+artillery,124,n,1.0,side training,rating,0,32,118.8902,8.9742,25.4519,0.80764,0,0
+artillery,125,n,1.0,training,rating side,0,32,118.9832,9.0078,25.3762,0.80655,0,0
+artillery,126,n,1.0,,rating training,0,31,118.9923,11.9266,25.2757,0.80974,0,0
+artillery,127,n,1.0,rating,training,0,31,119.0786,14.2359,25.1459,0.81032,0,0
+artillery,128,n,1.0,side,rating training,0,32,119.5108,10.6788,25.3283,0.80526,0,0
+artillery,129,n,1.0,rating,side,0,29,119.5406,11.4532,25.2220,0.80899,0,0
+artillery,130,n,1.0,rating side,,0,29,119.5979,11.5804,25.4053,0.81036,0,0
+artillery,131,n,1.0,,rating side training,0,32,119.6625,10.5022,25.1264,0.80181,0,0
+artillery,132,n,1.0,rating training,side,0,32,120.3519,10.7912,25.3981,0.80791,0,0
+artillery,133,n,1.0,rating side training,,0,32,120.5352,11.1770,25.6177,0.80893,0,0
+artillery,134,n,1.0,rating,side training,0,32,121.1404,12.0154,25.2820,0.80267,0,0
+artillery,135,n,1.0,rating side,training,0,32,121.2519,13.2909,25.6704,0.80674,0,0
+artillery,136,n,1.0,,rank_depth side training,0,26,124.9376,9.2237,21.5250,0.72652,0,0
+artillery,137,n,1.0,,rank_depth,0,22,125.2658,10.4825,21.6122,0.73055,0,0
+artillery,138,n,1.0,,rank_depth training,0,25,125.3337,9.0142,21.6489,0.73178,0,0
+artillery,139,n,1.0,,rank_depth side,0,23,125.4791,10.9124,21.6316,0.72637,0,0
+artillery,140,n,1.0,side,rank_depth,0,23,125.5620,10.6582,21.6448,0.72581,0,0
+artillery,141,n,1.0,side,rank_depth training,0,26,125.7228,8.8967,21.6581,0.72533,0,0
+artillery,142,n,1.0,training,rank_depth side,0,26,126.2342,10.6336,21.7442,0.72071,0,0
+artillery,143,n,1.0,training,rank_depth,0,25,126.2697,10.3646,21.7788,0.72685,0,0
+artillery,144,n,1.0,side training,rank_depth,0,26,126.3512,10.2836,21.7486,0.71955,0,0
+artillery,145,n,1.0,,side training,0,25,135.4629,4.6163,28.2904,0.74940,0,0
+artillery,146,n,1.0,,,0,21,135.5338,7.7512,28.3852,0.75550,0,0
+artillery,147,n,1.0,rank_depth,side training,0,26,135.6346,11.1748,23.7307,0.67669,0,0
+artillery,148,n,1.0,rank_depth,,0,22,135.9298,13.8979,23.7627,0.67775,0,0
+artillery,149,n,1.0,,training,0,24,135.9353,6.9057,28.4795,0.75319,0,0
+artillery,150,n,1.0,side,training,0,25,136.0273,4.7614,28.6031,0.75006,0,0
+artillery,151,n,1.0,,side,0,22,136.2244,6.6400,28.4914,0.75353,0,0
+artillery,152,n,1.0,rank_depth,side,0,23,136.3728,13.3312,23.9479,0.67508,0,0
+artillery,153,n,1.0,side,,0,22,136.5652,6.4290,28.6638,0.75322,0,0
+artillery,154,n,1.0,training,,0,24,136.6462,7.1002,28.6400,0.75421,0,0
+artillery,155,n,1.0,rank_depth,training,0,25,136.7866,12.3492,23.7993,0.67574,0,0
+artillery,156,n,1.0,training,side,0,25,136.9235,6.3765,28.6420,0.75100,0,0
+artillery,157,n,1.0,rank_depth side,,0,23,136.9455,13.4699,23.9488,0.67536,0,0
+artillery,158,n,1.0,side training,,0,25,137.0261,5.9160,28.7639,0.75079,0,0
+artillery,159,n,1.0,rank_depth side,training,0,26,137.4697,11.4223,23.9650,0.67469,0,0
+artillery,160,n,1.0,rank_depth training,side,0,26,137.5427,12.5858,24.1787,0.67013,0,0
+artillery,161,n,1.0,rank_depth training,,0,25,137.6260,13.8482,24.0324,0.67367,0,0
+artillery,162,n,1.0,rank_depth side training,,0,26,138.4321,12.8013,24.2504,0.66998,0,0
