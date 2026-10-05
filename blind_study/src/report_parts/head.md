@@ -96,7 +96,7 @@ These findings come from development data only (experiments 01–18 in `RESULTS.
    army effect differs by unit type (e.g. heavy cavalry of `[1815] 9. France (Flandres)` and
    `[1815] 9. UK, Nederlanden` is ×0.82 of what their stats imply, while the HRE is ×1.09–1.18
    on every type — its divisor is 0.79, not 0.9). A single shared
-   army table gains little (exp 07); an army × type table gains ~13 MAE (exp 15d → 13c). No
+   army table gains little (exp 07); the army tables together gain ~15.6 MAE (18b → 13c). No
    attribute in the data (unit cap, roster counts, year, source corps, weapon) explains it;
    it looks like hand-set balancing.
 3. **Standalone generals:** 1 gold without command stars (presumably the army's own
@@ -193,6 +193,6 @@ for staff generals" (105 cells, exp 15b) and "army × broad type" (215 cells, ex
 a worse use of table cells than the sparse army × type table. Dropping the `unit_key` type
 code costs ~8.5 MAE. The single biggest structural gains were the army divisor, the
 unit-type segmentation, and the additive commander stage; the army tables are worth
-~13 MAE but are the least "explanatory" part.
+~15.6 MAE (18b → 13c) but are the least "explanatory" part.
 
 MODELS_PLACEHOLDER

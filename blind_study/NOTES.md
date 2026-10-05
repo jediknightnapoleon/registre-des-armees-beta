@@ -2,16 +2,15 @@
 
 ## Status
 
+**Study complete.** Deliverable: `REPORT.md` (built by `src/93_build_report.py`).
+
 - Holdout (20%, `data/holdout_ids.csv`) and 5 dev folds (`data/dev_folds.csv`) created by
-  `src/00_make_split.py` — **fixed, never regenerate**. Both are stratified by `unit_class`
-  and grouped by identical feature rows (`group_id` = hash of `FEATURE_COLS` in
-  `src/common.py`).
-- Experiments 01–14 done (see RESULTS.md). Best so far: **14a** (CV MAE 27.7, MAPE 7.3%,
-  R² 0.985): two-stage model (`src/twostage.py`), stage 1 fitted by price-weighted LAD on
-  log price (IRLS), commander stage with star slopes + per-army premium.
-- Exp 13 (nested per-segment feature selection) is running/ran via
-  `src/13_select_run.py` (cached per job in `out/sel/<seg>_<fold>.json`, resumable: just
-  rerun it); evaluate with `src/13_selected_eval.py`.
+  `src/00_make_split.py` — fixed. Holdout evaluated **once** (`src/90_holdout.py`,
+  flag `out/holdout_done.json`): 13c 27.8 MAE, 18a 31.0, 18b 43.1; baselines 287.2 / 226.9.
+- Final models: 13c (best, CV 27.4), 18a (compact, CV 30.7), 18b (simplest, CV 43.0);
+  exported by `src/91_export_final.py` (hand-pricing check reproduces predictions).
+- Do not re-run the holdout. Any further modelling would need a fresh protocol decision
+  (the holdout has now been used).
 
 ## Findings so far
 
@@ -63,10 +62,11 @@
 
 ## Next steps
 
-- Holdout candidates (decided on CV): **13c** (best, sparse 328-cell table), **18a**
-  (compact, 118 cells), **18b** (simplest, N/10 only). Baselines 01 and 02e are scored on the
-  holdout too for comparison. `src/candidates.py` + `src/90_holdout.py` (one shot).
-- Then: error analysis (CV OOF of 13c + holdout), export final model, write REPORT.md.
+- Done: holdout candidates 13c / 18a / 18b (+ baselines 01, 02e) scored once; error
+  analysis (`out/error_analysis_*.md`); export (`out/model_*.md/csv`); REPORT.md.
+- Possible follow-ups (not done): per-type commander slopes with shrinkage; a dedicated
+  rule for the 4 fixed-artillery units; cap star slopes for 5-star commanders (Tecumseh
+  miss in holdout).
 
 ## Open questions
 
