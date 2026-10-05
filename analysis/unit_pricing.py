@@ -43,10 +43,12 @@ from __future__ import annotations
 import argparse
 import csv
 import itertools
+import os
 import re
 import sys
 import time
 from collections import Counter, defaultdict
+from concurrent.futures import ProcessPoolExecutor
 from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Callable, Sequence
@@ -147,6 +149,14 @@ EXTRA_ABILITIES = ("guard_mode", "skirmish", "can_snipe")
 # block (linear) or one free multiplier per level (multiplicative); rank_depth
 # gets γ·rank_depth (linear) or 1 + δ·(rank_depth − median) (multiplicative).
 CATEGORICAL = ("rating", "training", "drill", "side")
+# Army-level price groupings (from the blind study, blind-pricing-study branch):
+# one multiplier per faction (= army) and one per faction × unit_class cell, as
+# NTW3 prices look hand-set per corps per unit class. Only ever multipliers, and
+# fitted with a ridge pull towards 1 worth κ pseudo-units of average price, so
+# they need no reference level and an unseen cell falls back to its faction's
+# factor (then 1). Kept out of CATEGORICAL, which also drives linear placements.
+GROUPING = ("faction", "fclass")
+MULT_CATEGORICAL = CATEGORICAL + GROUPING
 CANDIDATES = {
     "infantry": ("rating", "training", "drill", "rank_depth", "side"),
     "cavalry": ("rating", "training", "rank_depth", "side"),
@@ -307,7 +317,14 @@ class Spec:
     """One model. `linear` / `mult` hold candidate variables; `const` adds c
     outside the multiplier; `extras` are linear-part ablation features; `size`
     is "n" (models) or "guns"; `p` the size power; `powers` per-stat powers as
-    sorted (stat, a) pairs (absent = 1); `faction` adds a faction modifier."""
+    sorted (stat, a) pairs (absent = 1); `faction` adds a faction modifier.
+
+    Blind-study options (defaults leave the model unchanged): `fixed_rating`
+    replaces the free rating levels by the divisor REF_RATING / rating (drop
+    "rating" from mult); "faction" / "fclass" in `mult` fit those groupings jointly
+    with ridge strength `kappa`; `fclass = "residual"` adds a faction × unit_class
+    modifier after the faction modifier, shrunk towards it with `kappa`; `loss =
+    "lad"` fits least absolute deviation on total price by IRLS."""
     linear: frozenset[str] = frozenset()
     mult: frozenset[str] = frozenset()
     const: bool = False
@@ -317,6 +334,10 @@ class Spec:
     powers: tuple[tuple[str, float], ...] = ()
     faction: bool = False
     shape: tuple[tuple[str, str], ...] = ()      # non-default SHAPE_DEFAULTS entries
+    fixed_rating: bool = False
+    fclass: str = "none"                         # "none" | "residual"
+    kappa: float = 0.0
+    loss: str = "ls"                             # "ls" | "lad"
 
     def power_of(self, stat: str) -> float:
         return dict(self.powers).get(stat, 1.0)
@@ -340,6 +361,14 @@ class Spec:
         bent = [f"{s}^{a:g}" for s, a in self.powers if a != 1.0]
         if bent:
             parts.append("stat powers: " + ", ".join(bent))
+        if self.fixed_rating:
+            parts.append(f"rating fixed ({REF_RATING}/N)")
+        if self.mult & set(GROUPING) or self.fclass != "none":
+            parts.append(f"κ={self.kappa:g}")
+        if self.fclass == "residual":
+            parts.append("+ residual faction×class")
+        if self.loss != "ls":
+            parts.append(f"loss {self.loss}")
         return " ".join(parts)
 
 
@@ -428,6 +457,10 @@ def factor_values(units: Sequence[Unit], var: str) -> np.ndarray:
         # Diagnostic only: a multiplier 1 + δ·(n − median) tests whether price
         # per model changes with unit size (rank_depth tracks n at r ≈ 0.97).
         return np.array([u.n for u in units], float)
+    if var == "faction":
+        return np.array([u.faction for u in units])
+    if var == "fclass":
+        return np.array([f"{u.faction}|{u.unit_class}" for u in units])
     raise KeyError(var)
 
 
@@ -617,12 +650,18 @@ class PriceModel:
     variable in spec.mult; categorical factors have one m per level with the
     reference fixed at 1, rank_depth has m = 1 + δ·(rank_depth − median)).
 
-    Fitted by alternating least squares on Σ (y − M·g·(b0 + β·f(x)) − c/size)²:
-    the β/c step is exact least squares on the columns [M·g, M·g·X, 1/size];
-    each factor step is a closed-form regression on y − c/size given everything
-    else. Every step lowers the objective, which is asserted. A faction modifier,
-    when asked for, is fitted afterwards on the scaled part:
-    m_f = Σ (y − c/size)·q / Σ q², q = M·g·base.
+    Fitted by alternating least squares on Σ w·(y − M·g·(b0 + β·f(x)) − c/size)²
+    (w = 1 unless IRLS row weights are passed): the β/c step is exact least
+    squares on the columns [M·g, M·g·X, 1/size]; each factor step is a
+    closed-form regression on y − c/size given everything else. Every step lowers
+    the objective, which is asserted. Grouping factors (faction, faction × class)
+    carry no reference level; instead the objective adds λ·Σ (m − 1)² with
+    λ = κ·mean(w·y²) — κ pseudo-units of average price at m = 1 — so their step
+    is m = (Σ w·t·q + λ) / (Σ w·q² + λ).
+
+    A faction modifier, when asked for, is fitted afterwards on the scaled part:
+    m_f = Σ (y − c/size)·q / Σ q², q = M·g·base; a residual faction × class
+    modifier then multiplies it, shrunk towards 1 (i.e. towards m_f) the same way.
     """
 
     def __init__(self, spec: Spec):
@@ -634,25 +673,35 @@ class PriceModel:
         self.refs: dict[str, object] = {}
         self.delta: dict[str, float] = {}
         self.faction_m: dict[str, float] = {}
+        self.fclass_m: dict[str, float] = {}
+        self.ridge: dict[str, float] = {}
         self.iterations = 0
         self.sse = float("nan")
 
     def _factor(self, var: str, values: np.ndarray) -> np.ndarray:
-        if var in CATEGORICAL:
+        if var in MULT_CATEGORICAL:
             table = self.levels[var]
             return np.array([table.get(v, 1.0) for v in values.tolist()])
         return 1 + self.delta[var] * (values - self.refs[var])
 
     def fit(self, X: np.ndarray, y: np.ndarray, inv: np.ndarray, g: np.ndarray,
-            fvals: dict[str, np.ndarray], factions: np.ndarray) -> "PriceModel":
+            fvals: dict[str, np.ndarray], factions: np.ndarray,
+            weights: np.ndarray | None = None) -> "PriceModel":
         mult = sorted(self.spec.mult)
+        w = np.ones(len(y)) if weights is None else weights
+        sw = None if weights is None else np.sqrt(weights)
+        scale2 = float(np.mean(w * y * y))
         codes: dict[str, tuple[np.ndarray, list]] = {}
         for var in mult:
             values = fvals[var]
-            if var in CATEGORICAL:
+            if var in MULT_CATEGORICAL:
                 levels = sorted(set(values.tolist()), key=str)
-                ref = REF_RATING if var == "rating" and REF_RATING in levels else most_common_level(values.tolist())
-                self.refs[var] = ref
+                if var in GROUPING:
+                    self.refs[var] = None
+                    self.ridge[var] = self.spec.kappa * scale2
+                else:
+                    ref = REF_RATING if var == "rating" and REF_RATING in levels else most_common_level(values.tolist())
+                    self.refs[var] = ref
                 self.levels[var] = {level: 1.0 for level in levels}
                 index = {level: i for i, level in enumerate(levels)}
                 codes[var] = (np.array([index[v] for v in values.tolist()]), levels)
@@ -664,8 +713,11 @@ class PriceModel:
         previous = np.inf
         for self.iterations in range(1, MAX_ITER + 1):
             scale = M * g
-            Z = [scale[:, None], scale[:, None] * X] + ([inv[:, None]] if self.spec.const else [])
-            coef, *_ = np.linalg.lstsq(np.hstack(Z), y, rcond=None)
+            Z = np.hstack([scale[:, None], scale[:, None] * X] + ([inv[:, None]] if self.spec.const else []))
+            if sw is None:
+                coef, *_ = np.linalg.lstsq(Z, y, rcond=None)
+            else:
+                coef, *_ = np.linalg.lstsq(Z * sw[:, None], y * sw, rcond=None)
             self.b0 = float(coef[0])
             self.beta = coef[1:1 + X.shape[1]]
             self.c = float(coef[-1]) if self.spec.const else 0.0
@@ -676,21 +728,34 @@ class PriceModel:
                 for other in mult:
                     if other != var:
                         q *= factor[other]
-                if var in CATEGORICAL:
+                wq = q if weights is None else w * q
+                if var in MULT_CATEGORICAL:
                     code, levels = codes[var]
-                    numerator = np.bincount(code, weights=target * q, minlength=len(levels))
-                    denominator = np.bincount(code, weights=q * q, minlength=len(levels))
-                    m = np.divide(numerator, denominator, out=np.ones(len(levels)), where=denominator > 0)
-                    m[levels.index(self.refs[var])] = 1.0
+                    numerator = np.bincount(code, weights=target * wq, minlength=len(levels))
+                    denominator = np.bincount(code, weights=q * wq, minlength=len(levels))
+                    if var in GROUPING:
+                        lam = self.ridge[var]
+                        m = np.divide(numerator + lam, denominator + lam, out=np.ones(len(levels)),
+                                      where=denominator + lam > 0)
+                    else:
+                        m = np.divide(numerator, denominator, out=np.ones(len(levels)), where=denominator > 0)
+                        m[levels.index(self.refs[var])] = 1.0
                     self.levels[var] = dict(zip(levels, m.tolist()))
                     factor[var] = m[code]
                 else:
                     d = fvals[var] - self.refs[var]
-                    denominator = float(((d * q) ** 2).sum())
-                    self.delta[var] = float(((target - q) * d * q).sum()) / denominator if denominator else 0.0
+                    if weights is None:
+                        denominator = float(((d * q) ** 2).sum())
+                        numerator = float(((target - q) * d * q).sum())
+                    else:
+                        denominator = float((w * (d * q) ** 2).sum())
+                        numerator = float((w * (target - q) * d * q).sum())
+                    self.delta[var] = numerator / denominator if denominator else 0.0
                     factor[var] = 1 + self.delta[var] * d
             M = np.prod([factor[var] for var in mult], axis=0) if mult else np.ones(len(y))
-            sse = float(((y - M * base - self.c * inv) ** 2).sum())
+            residual = y - M * base - self.c * inv
+            sse = float((residual ** 2).sum()) if weights is None else float((w * residual ** 2).sum())
+            sse += sum(lam * sum((m - 1) ** 2 for m in self.levels[var].values()) for var, lam in self.ridge.items())
             if not mult:
                 break
             if sse > previous * (1 + 1e-7) + 1e-9:
@@ -705,7 +770,23 @@ class PriceModel:
             self.faction_m = {}
             for faction in set(factions.tolist()):
                 mask = factions == faction
-                self.faction_m[faction] = float((target[mask] * q[mask]).sum() / (q[mask] ** 2).sum())
+                if weights is None:
+                    self.faction_m[faction] = float((target[mask] * q[mask]).sum() / (q[mask] ** 2).sum())
+                else:
+                    wm = w[mask]
+                    self.faction_m[faction] = float((wm * target[mask] * q[mask]).sum() / (wm * q[mask] ** 2).sum())
+            if self.spec.fclass == "residual":
+                s = q * np.array([self.faction_m[f] for f in factions.tolist()])
+                ws = s if weights is None else w * s
+                lam = self.spec.kappa * scale2
+                cells = fvals["fclass"].tolist()
+                code_of = {cell: i for i, cell in enumerate(sorted(set(cells)))}
+                code = np.array([code_of[cell] for cell in cells])
+                numerator = np.bincount(code, weights=target * ws, minlength=len(code_of))
+                denominator = np.bincount(code, weights=s * ws, minlength=len(code_of))
+                m = np.divide(numerator + lam, denominator + lam, out=np.ones(len(code_of)),
+                              where=denominator + lam > 0)
+                self.fclass_m = dict(zip(code_of, m.tolist()))
         return self
 
     def multiplier(self, fvals: dict[str, np.ndarray], size: int) -> np.ndarray:
@@ -720,6 +801,8 @@ class PriceModel:
         scaled = self.multiplier(fvals, len(X)) * g * (self.b0 + X @ self.beta)
         if self.spec.faction:
             scaled = scaled * np.array([self.faction_m.get(f, 1.0) for f in factions])
+            if self.spec.fclass == "residual":
+                scaled = scaled * np.array([self.fclass_m.get(c, 1.0) for c in fvals["fclass"].tolist()])
         return scaled, self.c * inv
 
     def predict(self, X, inv, g, fvals, factions) -> np.ndarray:
@@ -727,19 +810,31 @@ class PriceModel:
         return scaled + const
 
     def unseen(self, fvals: dict[str, np.ndarray], factions: np.ndarray) -> int:
-        """Test rows predicted with a fallback multiplier of 1 (level/faction not in training)."""
+        """Test rows predicted with a fallback multiplier of 1 (level/faction not in
+        training). An unseen faction × class cell counts too, although it falls
+        back to its faction's factor rather than to 1."""
         bad = np.zeros(len(factions), bool)
         for var in self.spec.mult:
-            if var in CATEGORICAL:
+            if var in MULT_CATEGORICAL:
                 bad |= np.array([v not in self.levels[var] for v in fvals[var].tolist()])
         if self.spec.faction:
             bad |= np.array([f not in self.faction_m for f in factions])
+            if self.spec.fclass == "residual":
+                bad |= np.array([c not in self.fclass_m for c in fvals["fclass"].tolist()])
         return int(bad.sum())
 
     def n_params(self, X: np.ndarray) -> int:
+        """Free coefficients; ridge-shrunk grouping levels and residual faction ×
+        class cells count in full (an upper bound on their effective number); the
+        plain faction modifier is not counted, as before."""
         count = 1 + X.shape[1] + (1 if self.spec.const else 0)
         for var in self.spec.mult:
-            count += len(self.levels[var]) - 1 if var in CATEGORICAL else 1
+            if var in GROUPING:
+                count += len(self.levels[var])
+            else:
+                count += len(self.levels[var]) - 1 if var in CATEGORICAL else 1
+        if self.spec.fclass == "residual":
+            count += len(self.fclass_m)
         return count
 
 
@@ -888,10 +983,14 @@ def repair(folds: list[Fold], C: np.ndarray, groups: np.ndarray, names: Sequence
 
 
 def search_splits(C: np.ndarray, names: Sequence[str], strata: np.ndarray, balance: np.ndarray,
-                  groups: np.ndarray, n_seeds: int) -> SplitPlan:
+                  groups: np.ndarray, n_seeds: int, extra_pinned: set[int] | None = None) -> SplitPlan:
     """Try `n_seeds` assignments; keep the one with zero coverage violations and
-    the most uniform spread of `balance` keys across test folds."""
+    the most uniform spread of `balance` keys across test folds. `extra_pinned`
+    groups are always trained on too (analysis/extreme_pinning.py)."""
     pinned, pinned_labels = pinned_groups(C, groups, names)
+    if extra_pinned:
+        pinned = pinned | extra_pinned
+        pinned_labels = pinned_labels + [f"{len(extra_pinned)} extra group(s)"]
     eligible = ~np.isin(groups, list(pinned))
     best: tuple | None = None
     for seed in range(n_seeds):
@@ -980,19 +1079,38 @@ def slice_data(units: Sequence[Unit], kind: str = "n", p: float = 1.0) -> SliceD
     cost = np.array([u.cost for u in units], float)
     return SliceData(n, size, cost, cost / size, 1 / size, size ** (p - 1), np.array([u.faction for u in units]),
                      {var: factor_values(units, var)
-                      for var in ("rating", "training", "drill", "side", "rank_depth", "size")})
+                      for var in ("rating", "training", "drill", "side", "rank_depth", "size") + GROUPING})
 
 
 def data_for(spec: Spec, units: Sequence[Unit]) -> SliceData:
-    return slice_data(units, spec.size, spec.p)
+    d = slice_data(units, spec.size, spec.p)
+    if spec.fixed_rating:
+        # Rating as a fixed divisor: price ∝ REF_RATING / rating, folded into g so
+        # it scales the β part (c stays outside, like every multiplier).
+        d = replace(d, g=d.g * REF_RATING / d.fvals["rating"].astype(float))
+    return d
 
 
 def sub(fvals: dict[str, np.ndarray], index: np.ndarray) -> dict[str, np.ndarray]:
     return {k: v[index] for k, v in fvals.items()}
 
 
+IRLS_STEPS = 10          # loss = "lad": reweighted least-squares passes
+IRLS_FLOOR = 1.0         # gold; |residual| floor in the IRLS weights
+
+
 def fit_on(spec: Spec, design: Design, d: SliceData, rows: np.ndarray) -> PriceModel:
-    return PriceModel(spec).fit(design.X[rows], d.y[rows], d.inv[rows], d.g[rows], sub(d.fvals, rows), d.factions[rows])
+    args = (design.X[rows], d.y[rows], d.inv[rows], d.g[rows], sub(d.fvals, rows), d.factions[rows])
+    model = PriceModel(spec).fit(*args)
+    if spec.loss == "lad":
+        # Least absolute deviation on total price, Σ size·|y − ŷ|, by IRLS on the
+        # per-size objective: w = size / |y − ŷ| = size² / |total residual|.
+        size = d.size[rows]
+        X, y, inv, g, fvals, factions = args
+        for _ in range(IRLS_STEPS):
+            resid = size * np.abs(y - model.predict(X, inv, g, fvals, factions))
+            model = PriceModel(spec).fit(*args, weights=size ** 2 / np.maximum(resid, IRLS_FLOOR))
+    return model
 
 
 def predict_total(model: PriceModel, design: Design, d: SliceData, rows: np.ndarray) -> np.ndarray:
@@ -1017,7 +1135,7 @@ def cv_spec(spec: Spec, units: Sequence[Unit], folds: list[Fold], arm: str, *,
     full = fit_on(spec, design, d, np.arange(len(units))) if full_fit else None
     params = full.n_params(design.X) if full else (
         1 + design.X.shape[1] + int(spec.const) +
-        sum(len(set(d.fvals[v].tolist())) - 1 if v in CATEGORICAL else 1 for v in spec.mult))
+        sum(len(set(d.fvals[v].tolist())) - (v in CATEGORICAL) if v in MULT_CATEGORICAL else 1 for v in spec.mult))
     return CVRun(label or spec.describe(), fold_metrics, oof, oof_fold, spec, full,
                  design.names, design.references, design.aliases, params, fallbacks)
 
@@ -1090,12 +1208,15 @@ def rich_design(units: Sequence[Unit], arm: str) -> Design:
                         extras=frozenset({"pike_square", "firearm", "damage", "proj_reload"}), const_inside=True)
 
 
-def make_slice(arm: str, side: str, units: list[Unit], n_seeds: int) -> Slice:
+def make_slice(arm: str, side: str, units: list[Unit], n_seeds: int,
+               extra_pinned: Callable[[np.ndarray], set[int]] | None = None) -> Slice:
+    """`extra_pinned(groups)` returns further group ids to pin to train."""
     rich = rich_design(units, arm)
     groups = group_ids(rich.X, [u.n for u in units])
     strata = strata_for(units, groups)
     balance = np.array([u.faction for u in units])
-    plan = search_splits(rich.X, rich.names, strata, balance, groups, n_seeds)
+    plan = search_splits(rich.X, rich.names, strata, balance, groups, n_seeds,
+                         extra_pinned(groups) if extra_pinned else None)
     sl = Slice(arm, side, units, plan, groups)
     sl.coverage = coverage_report(units, plan.folds, arm)
     return sl
@@ -1191,6 +1312,39 @@ def structure_search(sl: Slice, kind: str, p: float) -> SearchResult:
                     and (var in r.spec.mult) == (where == "mult")]
             placement[var][where] = min(r.mean("mae") for r in pool) if pool else float("nan")
     return SearchResult(sl.arm, runs, best, headline, placement)
+
+
+# --- Parallel workers ---------------------------------------------------------
+#
+# The nested power searches run one independent descent per outer fold plus one
+# on all rows; those jobs go to a process pool. Each job is a pure function of
+# its arguments, so results are identical to a serial run. Workers are spawned
+# fresh (Windows), so the tunable module settings are copied into them, and a
+# worker never opens a pool of its own.
+
+WORKERS = max(1, min(6, (os.cpu_count() or 1) // 2))    # --workers; 1 = serial
+SHARED_SETTINGS = ("P_GRID", "POWER_GRID", "MAX_PASSES", "FINE_PASSES", "MAX_ITER", "TOLERANCE", "ARTILLERY_CAL")
+_POOL: ProcessPoolExecutor | None = None
+
+
+def _init_worker(settings: dict) -> None:
+    globals().update(settings, WORKERS=1)
+
+
+def _call(job: tuple) -> object:
+    fn, args = job
+    return fn(*args)
+
+
+def parallel_map(fn: Callable, jobs: Sequence[tuple]) -> list:
+    """[fn(*job) for job in jobs], on the worker pool when WORKERS > 1."""
+    global _POOL
+    if WORKERS <= 1 or len(jobs) <= 1:
+        return [fn(*job) for job in jobs]
+    if _POOL is None:
+        _POOL = ProcessPoolExecutor(WORKERS, initializer=_init_worker,
+                                    initargs=({k: globals()[k] for k in SHARED_SETTINGS},))
+    return list(_POOL.map(_call, [(fn, tuple(job)) for job in jobs]))
 
 
 # --- Stat powers (nested coordinate descent) ----------------------------------
@@ -1383,9 +1537,12 @@ def nested_fine(spec: Spec, sl: Slice, coarse: PowerResult) -> FineResult:
     oof = np.full(len(units), np.nan)
     oof_fold = np.zeros(len(units), int)
     fold_metrics, fold_powers = [], []
+    everything = np.arange(len(units))
+    refined = parallel_map(refine_powers, [(spec, units, arm, train, *coarse.fold_powers[k])
+                                           for k, (train, _) in enumerate(sl.plan.folds)]
+                           + [(spec, units, arm, everything, coarse.full_powers, coarse.full_p)])
     for k, (train, test) in enumerate(sl.plan.folds):
-        start_powers, start_p = coarse.fold_powers[k]
-        powers, p = refine_powers(spec, units, arm, train, start_powers, start_p)
+        powers, p = refined[k]
         fold_powers.append((powers, p))
         fitted = with_powers(spec, powers, p)
         design, d = design_for(fitted, units, arm), data_for(fitted, units)
@@ -1394,7 +1551,7 @@ def nested_fine(spec: Spec, sl: Slice, coarse: PowerResult) -> FineResult:
         oof[test], oof_fold[test] = pred, k + 1
         fold_metrics.append(metrics(cost[test], pred, d.size[test]))
     nested = CVRun("fine powers + p, refined inside each training fold", fold_metrics, oof, oof_fold, spec)
-    full_powers, full_p = refine_powers(spec, units, arm, np.arange(len(units)), coarse.full_powers, coarse.full_p)
+    full_powers, full_p = refined[-1]
     profiles = local_profiles(spec, sl, full_powers, full_p)
     base = coarse.base
     best_power = min(coarse.nested.mean("mae"), nested.mean("mae"))
@@ -1411,8 +1568,10 @@ def nested_powers(spec: Spec, sl: Slice, base: CVRun) -> PowerResult:
     oof = np.full(len(units), np.nan)
     oof_fold = np.zeros(len(units), int)
     fold_metrics, fold_powers = [], []
+    descents = parallel_map(descend_powers, [(spec, units, arm, train) for train, _ in sl.plan.folds]
+                            + [(spec, units, arm, np.arange(len(units)))])
     for k, (train, test) in enumerate(sl.plan.folds):
-        powers, p, _ = descend_powers(spec, units, arm, train)
+        powers, p, _ = descents[k]
         fold_powers.append((powers, p))
         fitted = with_powers(spec, powers, p)
         design, d = design_for(fitted, units, arm), data_for(fitted, units)
@@ -1421,7 +1580,7 @@ def nested_powers(spec: Spec, sl: Slice, base: CVRun) -> PowerResult:
         oof[test], oof_fold[test] = pred, k + 1
         fold_metrics.append(metrics(cost[test], pred, d.size[test]))
     nested = CVRun("stat powers + p, fitted inside each training fold", fold_metrics, oof, oof_fold, spec)
-    full_powers, full_p, _ = descend_powers(spec, units, arm, np.arange(len(units)))
+    full_powers, full_p, _ = descents[-1]
     kept = nested.mean("mae") < base.mean("mae") - base.se("mae")
     return PowerResult(base, nested, fold_powers, full_powers, full_p, kept)
 
@@ -1638,7 +1797,113 @@ def shared_faction_runs(slices: dict[tuple[str, str], Slice], side: str,
     return runs, full_m
 
 
-# --- Staff generals (unchanged model family) ----------------------------------
+# --- Faction × unit-class modifier (from the blind study) ---------------------
+#
+# NTW3 prices look hand-set per corps per unit class (blind study, branch
+# blind-pricing-study; tested here by analysis/blind_ideas.py). Two forms:
+#   RFC  residual: the final model × per-arm faction modifier × a faction × class
+#        cell, shrunk towards 1 (i.e. towards the faction modifier);
+#   JFC  joint: a faction × class multiplier inside the ALS fit around the fixed
+#        divisor REF_RATING / rating, so stat coefficients are fitted net of it.
+# The ridge strength κ is chosen by inner CV inside each outer training fold.
+
+FCLASS_GRID = {"RFC": (0.0, 0.5, 1.0, 3.0, 10.0, 30.0), "JFC": (0.5, 1.0, 3.0, 10.0, 30.0)}
+FCLASS_LABEL = {"RFC": "residual faction × class", "JFC": f"joint faction × class around {REF_RATING}/N"}
+# Adopted by analysis/blind_ideas.py (see blind_ideas_report.md): (variant, loss).
+FCLASS_FORM: tuple[str, str] | None = ("JFC", "ls")
+
+
+def residual_fclass_spec(spec: Spec, kappa: float) -> Spec:
+    return replace(spec, faction=True, fclass="residual", kappa=kappa)
+
+
+def joint_fclass_spec(spec: Spec, kappa: float) -> Spec:
+    return replace(spec, mult=(spec.mult - {"rating"}) | {"fclass"}, fixed_rating=True, kappa=kappa)
+
+
+FCLASS_MAKERS: dict[str, Callable[[Spec, float], Spec]] = {"RFC": residual_fclass_spec, "JFC": joint_fclass_spec}
+
+
+def fold_run(label: str, specs: Sequence[Spec], full_spec: Spec, units: Sequence[Unit], folds: list[Fold],
+             arm: str, design: Design) -> CVRun:
+    """CV with one spec per outer fold (e.g. κ chosen per fold), plus a full-data fit."""
+    oof = np.full(len(units), np.nan)
+    oof_fold = np.zeros(len(units), int)
+    fold_metrics, fallbacks = [], 0
+    for k, ((train, test), spec) in enumerate(zip(folds, specs)):
+        d = data_for(spec, units)
+        model = fit_on(spec, design, d, train)
+        pred = predict_total(model, design, d, test)
+        fallbacks += model.unseen(sub(d.fvals, test), d.factions[test])
+        oof[test], oof_fold[test] = pred, k + 1
+        fold_metrics.append(metrics(d.cost[test], pred, d.size[test]))
+    d = data_for(full_spec, units)
+    full = fit_on(full_spec, design, d, np.arange(len(units)))
+    return CVRun(label, fold_metrics, oof, oof_fold, full_spec, full, design.names, design.references,
+                 design.aliases, full.n_params(design.X), fallbacks)
+
+
+def inner_kappa(make: Callable[[Spec, float], Spec], base: Spec, grid: Sequence[float], units: Sequence[Unit],
+                folds: list[Fold], arm: str, design: Design, k: int) -> float:
+    """κ with the lowest pooled MAE over inner folds = the other outer folds' test
+    sets, each fitted on the rest of outer fold k's training rows."""
+    train = folds[k][0]
+    best = (np.inf, grid[0])
+    for kappa in grid:
+        spec = make(base, kappa)
+        d = data_for(spec, units)
+        errors = []
+        for j, (_, inner_test) in enumerate(folds):
+            if j == k:
+                continue
+            model = fit_on(spec, design, d, np.setdiff1d(train, inner_test))
+            errors.append(np.abs(predict_total(model, design, d, inner_test) - d.cost[inner_test]))
+        score = float(np.concatenate(errors).mean())
+        if score < best[0] - 1e-12:
+            best = (score, kappa)
+    return best[1]
+
+
+@dataclass
+class FclassResult:
+    run: CVRun                                   # nested: κ chosen per outer fold
+    kappas: list[float]                          # κ per outer fold
+    grid: list[tuple[float, CVRun]]              # non-nested CV per κ (full fit uses the best)
+    full_kappa: float
+
+
+def fclass_cv(variant: str, base: Spec, units: Sequence[Unit], folds: list[Fold], arm: str,
+              design: Design | None = None, kappas: Sequence[float] | None = None) -> FclassResult:
+    """Faction × class variant with nested κ. `kappas` reuses per-fold κ (e.g. LAD
+    on the least-squares choice) instead of re-selecting them."""
+    make, grid = FCLASS_MAKERS[variant], FCLASS_GRID[variant]
+    design = design or design_for(base, units, arm)
+    grid_runs = []
+    for kappa in grid:
+        spec = make(base, kappa)
+        grid_runs.append((kappa, cv_spec(spec, units, folds, arm, label=f"{variant} κ={kappa:g}", design=design,
+                                         data=data_for(spec, units), full_fit=False)))
+    full_kappa = min(grid_runs, key=lambda t: t[1].mean("mae"))[0]
+    chosen = list(kappas) if kappas is not None else [
+        inner_kappa(make, base, grid, units, folds, arm, design, k) for k in range(len(folds))]
+    label = FCLASS_LABEL[variant] + (", LAD" if base.loss == "lad" else "")
+    run = fold_run(label, [make(base, kappa) for kappa in chosen], make(base, full_kappa), units, folds, arm, design)
+    return FclassResult(run, chosen, grid_runs, full_kappa)
+
+
+def fclass_multiplier(model: PriceModel, u: Unit) -> float:
+    """A unit's army multiplier relative to the plain REF_RATING / rating rule:
+    1 = priced as the rating alone predicts."""
+    cell = f"{u.faction}|{u.unit_class}"
+    if model.spec.fclass == "residual":
+        m = model.faction_m.get(u.faction, 1.0) * model.fclass_m.get(cell, 1.0)
+        if "rating" in model.spec.mult:
+            m *= model.levels["rating"].get(u.rating, 1.0) / (REF_RATING / u.rating)
+        return m
+    return model.levels["fclass"].get(cell, 1.0)
+
+
+# --- Staff generals ------------------------------------------------------------
 
 @dataclass
 class StaffRun:
@@ -1669,7 +1934,31 @@ def staff_rating_design(stars: np.ndarray, d: np.ndarray, form: str) -> np.ndarr
 STAFF_RATING_NAMES = {
     "T1": ["b (per star)", "γ (per star per rating point)", "q (per star²)"],
     "T2": ["b (per star)", "q (per star²)", "γ (per star per rating point)", "κ (per star² per rating point)"],
+    "T3": ["b (gold per star^q at rating 8)", "q (star power)"],
 }
+
+
+STAFF_POWER_GRID = np.round(np.arange(0.5, 3.0001, 0.005), 3)
+
+
+def staff_power_fit(stars: np.ndarray, cost: np.ndarray, rating: np.ndarray) -> tuple[float, float]:
+    """T3 (from the blind study): a starred general costs b·stars^q·(REF_RATING / rating),
+    one without stars 1 gold. q on a 0.005 grid, b by least squares given q; fitted
+    on starred generals only."""
+    starred = stars > 0
+    s, c, divisor = stars[starred], cost[starred], REF_RATING / rating[starred]
+    best = (np.inf, 0.0, 1.0)
+    for q in STAFF_POWER_GRID:
+        x = s ** q * divisor
+        b = float((c * x).sum() / (x * x).sum())
+        sse = float(((c - b * x) ** 2).sum())
+        if sse < best[0]:
+            best = (sse, b, float(q))
+    return best[1], best[2]
+
+
+def staff_power_price(stars: np.ndarray, rating: np.ndarray, b: float, q: float) -> np.ndarray:
+    return np.where(stars > 0, b * stars ** q * REF_RATING / rating, 1.0)
 
 
 def staff_faction_m(cost: np.ndarray, p: np.ndarray, factions: np.ndarray) -> dict[str, float]:
@@ -1729,6 +2018,19 @@ def staff_cv(gens: Sequence[Staff], folds: list[Fold]) -> dict[str, StaffRun]:
             return 1 + np.array([m.get(factions[i], 1.0) for i in test]) * (p[test] - 1), fb
         return predict
 
+    rating = np.array([g.rating for g in gens], float)
+
+    def power_rule(with_faction: bool):
+        def predict(train, test):
+            b, q = staff_power_fit(stars[train], cost[train], rating[train])
+            p = staff_power_price(stars, rating, b, q)
+            if not with_faction:
+                return p[test], 0
+            m = staff_faction_m(cost[train], p[train], factions[train])
+            fb = int(sum(1 for i in test if factions[i] not in m and stars[i] > 0))
+            return 1 + np.array([m.get(factions[i], 1.0) for i in test]) * (p[test] - 1), fb
+        return predict
+
     return {
         "S1": run("S1: a + b·stars (free constant)", s1),
         "S2q": run("S2q: 1 + b·stars + q·stars² (no rating/faction)", s2_quadratic),
@@ -1737,6 +2039,8 @@ def staff_cv(gens: Sequence[Staff], folds: list[Fold]) -> dict[str, StaffRun]:
         "T2": run("T2: 1 + (1 + δ·(r−8))·(b·stars + q·stars²), free", rating_model("T2", False)),
         "TF1": run("TF1: T1 + faction modifier", rating_model("T1", True)),
         "TF2": run("TF2: T2 + faction modifier", rating_model("T2", True)),
+        "T3": run(f"T3: b·stars^q·({REF_RATING}/r), 1 without stars", power_rule(False)),
+        "TF3": run("TF3: T3 + faction modifier", power_rule(True)),
     }
 
 
@@ -1744,6 +2048,11 @@ def staff_full(gens: Sequence[Staff], form: str) -> tuple[np.ndarray, np.ndarray
     stars = np.array([g.stars for g in gens], float)
     cost = np.array([g.cost for g in gens], float)
     factions = np.array([g.faction for g in gens])
+    if form == "T3":
+        rating = np.array([g.rating for g in gens], float)
+        b, q = staff_power_fit(stars, cost, rating)
+        p = staff_power_price(stars, rating, b, q)
+        return np.array([b, q]), p, staff_faction_m(cost, p, factions)
     d = np.array([g.rating - REF_RATING for g in gens], float)
     X = staff_rating_design(stars, d, form)
     coef, *_ = np.linalg.lstsq(X, cost - 1, rcond=None)
@@ -1921,6 +2230,7 @@ class Results:
     linear: bool = False
     variants: dict[str, list] = field(default_factory=dict)        # arm -> [VariantResult]
     variant_detail: dict[str, dict] = field(default_factory=dict)
+    fclass: dict[tuple[str, str], "FclassResult"] = field(default_factory=dict)
     elapsed: float = 0.0
 
 
@@ -1929,6 +2239,7 @@ def log(message: str, started: float) -> None:
 
 
 def main() -> int:
+    global OUT_DIR, ARTILLERY_CAL, WORKERS
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--seeds", type=int, default=500, help="split seeds to search (default 500)")
     parser.add_argument("--linear", action="store_true",
@@ -1936,11 +2247,13 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=None, help="output directory (default analysis/output)")
     parser.add_argument("--artillery-cal", choices=["auto", *ARTILLERY_CAL_KEYS], default="auto",
                         help="artillery calibre representations to screen: all (auto), or only F0 plus this one")
+    parser.add_argument("--workers", type=int, default=WORKERS,
+                        help=f"worker processes for the nested power searches (default {WORKERS}; 1 = serial)")
     args = parser.parse_args()
-    global OUT_DIR, ARTILLERY_CAL
     if args.out is not None:
         OUT_DIR = args.out.resolve()
     ARTILLERY_CAL = args.artillery_cal
+    WORKERS = args.workers
     started = time.time()
 
     for path in (DATA_CSV, CATALOG_CSV):
@@ -2034,7 +2347,8 @@ def main() -> int:
         log(f"fine      {arm:9} fine nested {fine.nested.mean('mae'):.2f} → choice {fine.choice}; "
             f"final [{final[arm].describe()}]", started)
 
-    # 5. Final model on every slice, baseline, faction modifiers.
+    # 5. Final model on every slice, baseline, faction modifiers (+ faction × class).
+    fclass: dict[tuple[str, str], FclassResult] = {}
     for arm in ARMS:
         for side in SIDES:
             sl = slices[(arm, side)]
@@ -2043,12 +2357,18 @@ def main() -> int:
             sl.runs["final"] = cv_spec(spec, sl.units, sl.plan.folds, arm, label="final model")
             sl.runs["RF"] = cv_spec(replace(spec, faction=True), sl.units, sl.plan.folds, arm,
                                     label="final × per-arm faction modifier")
+            if FCLASS_FORM:
+                variant, loss = FCLASS_FORM
+                fc = fclass_cv(variant, replace(spec, loss=loss), sl.units, sl.plan.folds, arm)
+                sl.runs["FC"], fclass[(arm, side)] = fc.run, fc
     shared_m: dict[str, dict[str, float]] = {}
     for side in SIDES:
         runs, shared_m[side] = shared_faction_runs(slices, side, final)
         for arm in ARMS:
             slices[(arm, side)].runs["RFs"] = runs[arm]
-    log("final models and faction modifiers done", started)
+    log("final models and faction modifiers done" + (
+        "; faction × class " + ", ".join(f"{arm} {slices[(arm, 'merged')].runs['FC'].mean('mae'):.2f}" for arm in ARMS)
+        if FCLASS_FORM else ""), started)
 
     # 5b. Packing vs unit size on the final model.
     packing: dict[str, dict] = {}
@@ -2118,7 +2438,7 @@ def main() -> int:
     # 8. Staff generals.
     staff_slices = {side: make_staff_slice(side, [g for g in staff if side == "merged" or g.side == side], args.seeds)
                     for side in SIDES}
-    staff_head = min(("T1", "T2"), key=lambda k: staff_slices["merged"].runs[k].mean("mae"))
+    staff_head = min(("T1", "T2", "T3"), key=lambda k: staff_slices["merged"].runs[k].mean("mae"))
     staff_poland: dict[str, dict] = {}
     for side in ("imperial", "merged"):
         ss = staff_slices[side]
@@ -2134,7 +2454,7 @@ def main() -> int:
 
     res = Results(units, staff, slices, regression, profiles, search, reprofiles, ablations, powers, final, packing,
                   poland, transfer, staff_slices, staff_head, staff_poland, tag_mismatches, ratings, args.seeds, shared_m,
-                  linear=args.linear, variants=variants, variant_detail=variant_detail)
+                  linear=args.linear, variants=variants, variant_detail=variant_detail, fclass=fclass)
     res.elapsed = time.time() - started
     write_outputs(res)
     log(f"done → {OUT_DIR.relative_to(ROOT) if OUT_DIR.is_relative_to(ROOT) else OUT_DIR}", started)
@@ -2169,7 +2489,9 @@ def write_coefficients(res: Results) -> None:
         writer = csv.writer(handle, lineterminator="\r\n")
         writer.writerow(["model", "slice", "variant", "feature", "coefficient", "note"])
         for (arm, side), sl in res.slices.items():
-            for key in ("final", "RF"):
+            for key in ("final", "RF", "FC"):
+                if key not in sl.runs:
+                    continue
                 run = sl.runs[key]
                 model, spec = run.full, run.spec
                 refs = "reference levels: " + "; ".join(f"{k}={v}" for k, v in run.references.items())
@@ -2194,26 +2516,35 @@ def write_coefficients(res: Results) -> None:
                     writer.writerow([arm, side, key, name, f"{coef:.10g}", "gold per size unit^p"])
                 if spec.const:
                     writer.writerow([arm, side, key, "c (per unit, outside the multiplier)", f"{model.c:.10g}", "gold per unit"])
+                if spec.fixed_rating:
+                    writer.writerow([arm, side, key, "rating divisor", f"{REF_RATING}/rating",
+                                     "fixed; scales the β part like a multiplier"])
                 for var in sorted(spec.mult):
-                    if var in CATEGORICAL:
+                    if var in MULT_CATEGORICAL:
+                        note = (f"ridge κ = {spec.kappa:g}, no reference (unseen cell → 1)" if var in GROUPING
+                                else f"reference {model.refs[var]}")
                         for level, m in sorted(model.levels[var].items(), key=lambda t: str(t[0])):
-                            writer.writerow([arm, side, key, f"multiplier {var}={level}", f"{m:.10g}",
-                                             f"reference {model.refs[var]}"])
+                            writer.writerow([arm, side, key, f"multiplier {var}={level}", f"{m:.10g}", note])
                     else:
                         writer.writerow([arm, side, key, f"multiplier {var} δ", f"{model.delta[var]:.10g}",
                                          f"m = 1 + δ·({var} − {model.refs[var]:g})"])
                 for faction, m in sorted(model.faction_m.items()):
                     writer.writerow([arm, side, key, f"faction modifier {faction}", f"{m:.10g}",
                                      "per-arm; multiplies the scaled part"])
+                for cell, m in sorted(model.fclass_m.items()):
+                    writer.writerow([arm, side, key, f"faction×class modifier {cell}", f"{m:.10g}",
+                                     f"residual, ridge κ = {spec.kappa:g}; multiplies faction modifier × scaled part"])
         for side, mods in res.shared_m.items():
             for faction, m in sorted(mods.items()):
                 writer.writerow(["all arms", side, "RFs", f"faction modifier {faction}", f"{m:.10g}",
                                  "one per corps across arms; multiplies each arm's scaled part"])
         for side, ss in res.staff_slices.items():
-            for form in ("T1", "T2"):
+            for form in ("T1", "T2", "T3"):
                 coef, _, fm = staff_full(ss.gens, form)
+                note = (f"cost = b·stars^q·({REF_RATING}/r); 1 without stars" if form == "T3"
+                        else "cost = 1 + …; r − 8")
                 for name, c in zip(STAFF_RATING_NAMES[form], coef):
-                    writer.writerow(["staff", side, form, name, f"{c:.10g}", "cost = 1 + …; r − 8"])
+                    writer.writerow(["staff", side, form, name, f"{c:.10g}", note])
                 for faction, m in sorted(fm.items()):
                     writer.writerow(["staff", side, f"TF{form[1]}", f"faction modifier {faction}", f"{m:.10g}",
                                      "multiplies (cost − 1)"])
@@ -2229,18 +2560,19 @@ def write_oof(res: Results) -> None:
         writer = csv.writer(handle, lineterminator="\r\n")
         writer.writerow(["model", "slice", "unit_key", "faction_key", "army_corps_name", "side", "rating",
                          "unit_class", "speed", "n_models", "guns", "cost", "fold",
-                         "oof_final", "oof_final_faction", "oof_final_faction_shared",
+                         "oof_final", "oof_final_faction", "oof_final_faction_shared", "oof_final_faction_class",
                          "resid_pct_final", "full_fit_pred_final"])
         cell = lambda v: "" if not np.isfinite(v) else f"{v:.3f}"   # NaN = pinned to train
         for (arm, side), sl in res.slices.items():
             fin, rf, rfs = sl.runs["final"], sl.runs["RF"], sl.runs["RFs"]
+            fc = sl.runs.get("FC")
             full_pred = full_fit_prices(fin, sl.units, arm)
             for i, u in enumerate(sl.units):
                 resid = (u.cost - fin.oof[i]) / fin.oof[i] * 100 if np.isfinite(fin.oof[i]) else np.nan
                 writer.writerow([arm, side, u.key, u.faction, u.corps, u.side, u.rating, u.unit_class,
                                  "DR" if u.is_camel else u.speed, f"{u.n:g}", f"{u.guns:g}", u.cost,
                                  fin.oof_fold[i] or "", cell(fin.oof[i]), cell(rf.oof[i]), cell(rfs.oof[i]),
-                                 cell(resid), f"{full_pred[i]:.3f}"])
+                                 cell(fc.oof[i]) if fc else "", cell(resid), f"{full_pred[i]:.3f}"])
         for side, ss in res.staff_slices.items():
             fold_of = np.zeros(len(ss.gens), int)
             for k, (_, test) in enumerate(ss.plan.folds):
@@ -2252,7 +2584,7 @@ def write_oof(res: Results) -> None:
                          if np.isfinite(rate.oof[i]) and rate.oof[i] else np.nan)
                 writer.writerow(["staff", side, g.key, g.faction, g.corps, g.side, g.rating, "general_staff",
                                  f"stars={g.stars}", 16, "", g.cost, fold_of[i] or "",
-                                 cell(rate.oof[i]), cell(rf.oof[i]), "", cell(resid), f"{full_p[i]:.3f}"])
+                                 cell(rate.oof[i]), cell(rf.oof[i]), "", "", cell(resid), f"{full_p[i]:.3f}"])
 
 
 def corps_resid_stats(res: Results, key: str, min_units: int = 20):
@@ -2302,6 +2634,47 @@ def power_key_order(res: "Results") -> list[str]:
     return [k for k in NUMERIC if k in used] + sorted(used - set(NUMERIC))
 
 
+def fclass_report(res: Results, top: int = 8) -> list[str]:
+    """Section 10b: the adopted faction × unit-class modifier."""
+    variant, loss = FCLASS_FORM
+    L = [f"### Faction × unit-class modifier ({FCLASS_LABEL[variant]}{', LAD loss' if loss == 'lad' else ''})", "",
+         "From the blind study (branch `blind-pricing-study`; tested in `blind_ideas_report.md`): NTW3 prices look "
+         "hand-set per corps *per unit class*, which one faction modifier per arm cannot capture. "
+         + ("Here each faction × class cell multiplies the final model × faction modifier, shrunk towards 1 "
+            "(stats fitted first, unchanged). " if variant == "RFC" else
+            f"Here the free rating levels are replaced by the divisor {REF_RATING}/N and each faction × class cell "
+            "is a multiplier fitted jointly with the stat coefficients. ")
+         + "A cell's ridge pull is κ pseudo-units of average price at 1; κ is chosen by inner CV inside each outer "
+           "training fold (an unseen cell falls back to its faction / to 1).", ""]
+    rows = []
+    for (arm, side), fc in res.fclass.items():
+        sl = res.slices[(arm, side)]
+        rf = sl.runs["RF"]
+        diff = np.array([a["mae"] - b["mae"] for a, b in zip(fc.run.fold_metrics, rf.fold_metrics)])
+        rows.append([arm, side, pm(rf, "mae", f1), pm(fc.run, "mae", f1), pm(fc.run, "mape", f1),
+                     f"{diff.mean():+.2f} ± {diff.std(ddof=1) / np.sqrt(len(diff)):.2f}",
+                     ", ".join(f"{k:g}" for k in fc.kappas), f"{fc.full_kappa:g}", fc.run.fallbacks])
+    L += table(["arm", "side", "MAE + per-arm m_f", "MAE + faction × class", "MAPE %", "Δ vs m_f (paired SE)",
+                "κ per fold", "κ full fit", "test rows in unseen cells"], rows)
+    L += [""]
+    for arm in ARMS:
+        fc = res.fclass.get((arm, "merged"))
+        if not fc:
+            continue
+        sl = res.slices[(arm, "merged")]
+        cells: dict[str, list[Unit]] = defaultdict(list)
+        for u in sl.units:
+            cells[f"{u.faction}|{u.unit_class}"].append(u)
+        ranked = sorted((fclass_multiplier(fc.run.full, us[0]), us[0].corps, us[0].unit_class, len(us))
+                        for us in cells.values())
+        L += [f"**{arm}** — most extreme cells, army multiplier relative to the plain {REF_RATING}/N rule "
+              f"(full-data fit, κ = {fc.full_kappa:g}):", ""]
+        L += table(["corps", "unit class", "units", "multiplier"],
+                   [[c, uc, n, f"×{m:.3f}"] for m, c, uc, n in ranked[:top] + ranked[-top:]])
+        L += [""]
+    return L
+
+
 def report_lines(res: Results) -> list[str]:
     L: list[str] = []
     add = L.append
@@ -2334,17 +2707,19 @@ def report_lines(res: Results) -> list[str]:
         "run's final model (models, p = 1, linear stats), refitted here on the same folds.")
     add("")
     rows = []
+    has_fc = "FC" in slices[(ARMS[0], "merged")].runs
     for arm in ARMS:
         sl = slices[(arm, "merged")]
         b, f_, r_, s_ = sl.runs["baseline"], sl.runs["final"], sl.runs["RF"], sl.runs["RFs"]
-        rows.append([arm] + [f"{f1(run.mean('mape'))}% / {f1(run.mean('mae'))}"
-                             for run in (b, res.regression[arm], f_, r_, s_)] +
+        shown = (b, res.regression[arm], f_, r_, s_) + ((sl.runs["FC"],) if has_fc else ())
+        rows.append([arm] + [f"{f1(run.mean('mape'))}% / {f1(run.mean('mae'))}" for run in shown] +
                     [f3(f_.mean("r2")), f"`{res.final[arm].describe()}`"])
-    L += table(["arm", "baseline", "previous", "final", "final + per-arm faction", "final + shared faction",
-                "R² final", "final structure"], rows)
+    L += table(["arm", "baseline", "previous", "final", "final + per-arm faction", "final + shared faction"] +
+               ([f"{FCLASS_LABEL[FCLASS_FORM[0]]}" + (" (LAD)" if FCLASS_FORM[1] == "lad" else "")] if has_fc else []) +
+               ["R² final", "final structure"], rows)
     add("")
     ss = res.staff_slices["merged"]
-    add(f"Staff generals (merged, unchanged model family): {res.staff_head} MAE "
+    add(f"Staff generals (merged): {res.staff_head} MAE "
         f"{f1(ss.runs[res.staff_head].mean('mae'))}, with faction modifier MAE "
         f"{f1(ss.runs['TF' + res.staff_head[1]].mean('mae'))}.")
     add("")
@@ -2700,11 +3075,12 @@ def report_lines(res: Results) -> list[str]:
     rows = []
     for (arm, side), sl in slices.items():
         b, fin, rf, rfs = sl.runs["baseline"], sl.runs["final"], sl.runs["RF"], sl.runs["RFs"]
+        fc = sl.runs.get("FC")
         rows.append([arm, side, pm(b, "mae", f1), pm(fin, "mae", f1), pm(fin, "mape", f1), pm(fin, "r2", f3),
-                     f1(rf.mean("mae")), f1(rfs.mean("mae")), f1(fin.full.c) if fin.spec.const else "—",
-                     fin.full.iterations])
+                     f1(rf.mean("mae")), f1(rfs.mean("mae")), pm(fc, "mae", f1) if fc else "—",
+                     f1(fin.full.c) if fin.spec.const else "—", fin.full.iterations])
     L += table(["arm", "side", "baseline MAE", "final MAE", "MAPE %", "R²", "+ per-arm m_f MAE",
-                "+ shared m_f MAE", "c (gold/unit)", "ALS iterations"], rows)
+                "+ shared m_f MAE", "faction × class MAE", "c (gold/unit)", "ALS iterations"], rows)
     add("")
     rows = []
     for (arm, side), sl in slices.items():
@@ -2798,6 +3174,8 @@ def report_lines(res: Results) -> list[str]:
     by_side = {s: [m for f, m in shared.items() if side_of_f[f] == s] for s in ("imperial", "coalition")}
     add("Shared `m_f` by side: " + ", ".join(f"{s} mean {np.mean(v):.3f}" for s, v in by_side.items()) + ".")
     add("")
+    if res.fclass:
+        L += fclass_report(res)
 
     # ---- 11. Transfer
     add("## 11. Transfer — one formula for both sides? (final model, side dropped)")
@@ -2856,7 +3234,10 @@ def report_lines(res: Results) -> list[str]:
             add("")
 
     # ---- 14. Staff
-    add("## 14. Staff generals (model family unchanged)")
+    add("## 14. Staff generals")
+    add("")
+    add(f"T3 (from the blind study, see `blind_ideas_report.md`): a starred general costs b·stars^q·({REF_RATING}/r), "
+        "one without stars 1 gold; q on a 0.005 grid, b by least squares, fitted on starred generals.")
     add("")
     rows = []
     for side, ss_ in res.staff_slices.items():
@@ -2868,10 +3249,20 @@ def report_lines(res: Results) -> list[str]:
     merged = res.staff_slices["merged"]
     coef, _, _ = staff_full(merged.gens, res.staff_head)
     add(f"{res.staff_head} full-data fit (merged): " +
-        ", ".join(f"{n} = {c:+.2f}" for n, c in zip(STAFF_RATING_NAMES[res.staff_head], coef)) + ".")
+        ", ".join(f"{n} = {c:+.4g}" for n, c in zip(STAFF_RATING_NAMES[res.staff_head], coef)) + ".")
     add("")
 
-    add("## 15. Follow-ups")
+    add("## 15. Next step: commander variants")
+    add("")
+    add("Commander variants (a general attached to a unit, `unit_class = general`, about 42% of ToW + Custom rows) "
+        "are outside this model. The blind study (branch `blind-pricing-study`) prices them in a second stage from "
+        "the regular price of the unit they lead: `price ≈ max(1, a·p_reg + b(stars)·10/N)`, one global set of 7 "
+        "coefficients (a ≈ 0.9; b ≈ −60, −30, +20, +65, +120 for 0–4 stars), optionally with a per-army premium; "
+        "in its CV that cut commander-row error from about 51 to 39 gold. With this model as stage 1 it is the "
+        "immediate next extension.")
+    add("")
+
+    add("## 16. Follow-ups")
     add("")
     add("- `resolve_speed` in `tools/build_ntw3_army_builder_database.py` mislabels the camels as `L1`, and "
         "two other units are off by a tier against their name tags.")

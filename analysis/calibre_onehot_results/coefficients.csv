@@ -132,6 +132,155 @@ infantry,imperial,RF,faction modifier ntw3_tow_c08_x8_048,0.9832027592,per-arm; 
 infantry,imperial,RF,faction modifier ntw3_tow_c10_x8_025,1.003411835,per-arm; multiplies the scaled part
 infantry,imperial,RF,faction modifier ntw3_tow_c14_x8_030,1.017950944,per-arm; multiplies the scaled part
 infantry,imperial,RF,faction modifier ntw3_tow_c15_x8_051,1.017704913,per-arm; multiplies the scaled part
+infantry,imperial,FC,size,n,models = men_raw/2
+infantry,imperial,FC,size power p,1.09,price ∝ size^p
+infantry,imperial,FC,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,imperial,FC,shape cal,full,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,imperial,FC,shape shoot,additive,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,imperial,FC,shape cal_df,3,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,imperial,FC,shape shot,onehot,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,imperial,FC,stat power accuracy,0.05,the β column is (stat / 100)^power
+infantry,imperial,FC,stat power ammo,0.05,the β column is (stat / 100)^power
+infantry,imperial,FC,stat power charge_bonus,0.05,the β column is (stat / 100)^power
+infantry,imperial,FC,stat power melee_attack,1.4,the β column is (stat / 100)^power
+infantry,imperial,FC,stat power melee_defense,1.15,the β column is (stat / 100)^power
+infantry,imperial,FC,stat power morale,2.25,the β column is (stat / 100)^power
+infantry,imperial,FC,stat power range,4,the β column is (stat / 100)^power
+infantry,imperial,FC,stat power reload_skill,3.1,the β column is (stat / 100)^power
+infantry,imperial,FC,(intercept: per-size constant b0),-2.298035625,"β·x + [—] × models^1.09 × fclass stat powers: accuracy^0.05, ammo^0.05, charge_bonus^0.05, melee_attack^1.4, melee_defense^1.15, morale^2.25, range^4, reload_skill^3.1 rating fixed (8/N) κ=1 | reference levels: unit_class=infantry_line; speed=L4"
+infantry,imperial,FC,accuracy,5.465750675,gold per size unit^p
+infantry,imperial,FC,reload_skill,1.12012871,gold per size unit^p
+infantry,imperial,FC,ammo,0.7649596716,gold per size unit^p
+infantry,imperial,FC,morale,114.1419607,gold per size unit^p
+infantry,imperial,FC,melee_attack,12.68624818,gold per size unit^p
+infantry,imperial,FC,melee_defense,4.346446756,gold per size unit^p
+infantry,imperial,FC,charge_bonus,-3.360792866,gold per size unit^p
+infantry,imperial,FC,range,-0.008573849581,gold per size unit^p
+infantry,imperial,FC,can_form_square,0.3289855417,gold per size unit^p
+infantry,imperial,FC,has_stamina,0.1631846011,gold per size unit^p
+infantry,imperial,FC,is_shock_resistant,0.197163473,gold per size unit^p
+infantry,imperial,FC,can_inspire,0.4608914664,gold per size unit^p
+infantry,imperial,FC,can_place_stakes,0.1050557008,gold per size unit^p
+infantry,imperial,FC,guard_mode,-0.1062192388,gold per size unit^p
+infantry,imperial,FC,can_snipe,3.869517217,gold per size unit^p
+infantry,imperial,FC,unit_class=infantry_grenadiers,-0.07861322884,gold per size unit^p
+infantry,imperial,FC,unit_class=infantry_irregulars,0.3401395757,gold per size unit^p
+infantry,imperial,FC,unit_class=infantry_light,-0.08364592673,gold per size unit^p
+infantry,imperial,FC,unit_class=infantry_militia,-0.1130606683,gold per size unit^p
+infantry,imperial,FC,speed=G2,-0.2856006489,gold per size unit^p
+infantry,imperial,FC,speed=G3,-0.1555794049,gold per size unit^p
+infantry,imperial,FC,speed=G4,0.1092054649,gold per size unit^p
+infantry,imperial,FC,speed=G5,0.4539960418,gold per size unit^p
+infantry,imperial,FC,speed=G6,0.8610675095,gold per size unit^p
+infantry,imperial,FC,speed=L1,-0.3806661627,gold per size unit^p
+infantry,imperial,FC,speed=L2,-0.2534810093,gold per size unit^p
+infantry,imperial,FC,speed=L3,-0.1400733546,gold per size unit^p
+infantry,imperial,FC,speed=L5,0.1907709047,gold per size unit^p
+infantry,imperial,FC,speed=L6,0.2187012093,gold per size unit^p
+infantry,imperial,FC,speed=S1,-2.728062045,gold per size unit^p
+infantry,imperial,FC,speed=S2,-1.952954679,gold per size unit^p
+infantry,imperial,FC,rating divisor,8/rating,fixed; scales the β part like a multiplier
+infantry,imperial,FC,multiplier fclass=denmark|infantry_grenadiers,0.9601056362,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=denmark|infantry_light,0.8297360506,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=denmark|infantry_line,0.9158867826,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=denmark|infantry_militia,1.063362868,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=denmark|infantry_skirmishers,0.9994527929,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=france|infantry_grenadiers,1.026365404,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=france|infantry_light,1.104714316,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=france|infantry_line,1.00711157,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=france|infantry_skirmishers,0.7231392594,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_032|infantry_grenadiers,0.9478807421,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_032|infantry_light,1.071451638,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_032|infantry_line,0.9242312219,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_032|infantry_skirmishers,0.931477448,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_033|infantry_grenadiers,0.8880384666,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_033|infantry_light,1.06748302,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_033|infantry_line,1.061077554,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_033|infantry_skirmishers,0.96393744,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_038|infantry_grenadiers,0.8227142337,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_038|infantry_light,0.9592851392,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_038|infantry_line,0.9833832166,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_038|infantry_militia,1.100130273,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_038|infantry_skirmishers,1.099172572,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_040|infantry_grenadiers,1.036809619,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_040|infantry_light,1.011113836,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_040|infantry_line,0.9373750605,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_040|infantry_skirmishers,1.167598568,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a04_x8_005|infantry_grenadiers,0.9858125615,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a04_x8_005|infantry_irregulars,0.9634894366,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a04_x8_005|infantry_light,0.9479331258,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a04_x8_005|infantry_line,0.8965856591,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a04_x8_005|infantry_militia,1.071505666,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a04_x8_005|infantry_skirmishers,0.9216122866,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_001|infantry_grenadiers,1.035083423,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_001|infantry_light,1.028517788,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_001|infantry_line,0.9214272283,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_001|infantry_skirmishers,1.039042839,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_004|infantry_grenadiers,0.9693143829,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_004|infantry_light,0.9693965217,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_004|infantry_line,0.9705088434,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_004|infantry_skirmishers,1.0787732,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a06_x8_002|infantry_grenadiers,1.008848123,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a06_x8_002|infantry_light,1.045556115,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a06_x8_002|infantry_line,0.9372986104,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a06_x8_002|infantry_skirmishers,0.8349867737,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a08_x8_047|infantry_grenadiers,0.9965897255,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a08_x8_047|infantry_light,1.077976731,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a08_x8_047|infantry_line,0.947974804,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a08_x8_047|infantry_skirmishers,1.067966201,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a09_x8_021|infantry_grenadiers,1.047009718,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a09_x8_021|infantry_light,0.9643628748,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a09_x8_021|infantry_line,0.9513691151,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a09_x8_021|infantry_militia,0.9864719604,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a09_x8_021|infantry_skirmishers,1.030543153,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_027|infantry_grenadiers,1.017992768,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_027|infantry_light,1.010240876,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_027|infantry_line,0.9852445953,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_027|infantry_skirmishers,0.8597933593,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_028|infantry_grenadiers,1.010644879,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_028|infantry_light,1.128916721,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_028|infantry_line,1.004740382,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_028|infantry_skirmishers,0.93685712,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_029|infantry_grenadiers,1.118505402,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_029|infantry_light,1.011304583,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_029|infantry_line,0.970762738,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_029|infantry_skirmishers,0.9522922168,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a12_x8_003|infantry_grenadiers,1.095570979,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a12_x8_003|infantry_light,1.059905367,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a12_x8_003|infantry_line,0.8797826054,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a12_x8_003|infantry_skirmishers,1.034918572,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a13_x8_022|infantry_grenadiers,0.9786246905,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a13_x8_022|infantry_irregulars,0.9603479343,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a13_x8_022|infantry_light,1.093084664,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a13_x8_022|infantry_line,0.9730988102,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a13_x8_022|infantry_skirmishers,0.8803895679,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a17_x8_054|infantry_grenadiers,0.9278422754,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a17_x8_054|infantry_light,0.8704363823,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a17_x8_054|infantry_line,0.8600662233,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a17_x8_054|infantry_militia,1.02325336,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_a17_x8_054|infantry_skirmishers,1.048646514,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c07_x8_017|infantry_grenadiers,1.028707084,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c07_x8_017|infantry_light,0.963540385,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c07_x8_017|infantry_line,1.048323431,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c07_x8_017|infantry_skirmishers,1.131948595,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c08_x8_048|infantry_grenadiers,1.11934054,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c08_x8_048|infantry_light,0.8994022273,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c08_x8_048|infantry_line,0.956130839,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c08_x8_048|infantry_skirmishers,0.9715802478,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c10_x8_025|infantry_grenadiers,1.207770543,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c10_x8_025|infantry_light,1.028839034,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c10_x8_025|infantry_line,0.9083454585,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c10_x8_025|infantry_militia,0.8563385955,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c10_x8_025|infantry_skirmishers,0.8798075665,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c14_x8_030|infantry_grenadiers,1.006529148,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c14_x8_030|infantry_light,1.101173381,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c14_x8_030|infantry_line,0.9785729442,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c14_x8_030|infantry_skirmishers,1.037477022,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c15_x8_051|infantry_grenadiers,0.9928381174,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c15_x8_051|infantry_irregulars,1.181927062,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c15_x8_051|infantry_light,0.8242823548,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c15_x8_051|infantry_line,0.9461443441,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,imperial,FC,multiplier fclass=ntw3_tow_c15_x8_051|infantry_skirmishers,1.17946966,"ridge κ = 1, no reference (unseen cell → 1)"
 infantry,coalition,final,size,n,models = men_raw/2
 infantry,coalition,final,size power p,1.09,price ∝ size^p
 infantry,coalition,final,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
@@ -280,6 +429,219 @@ infantry,coalition,RF,faction modifier ntw3_tow_b17_x8_055,1.000129586,per-arm; 
 infantry,coalition,RF,faction modifier ntw3_tow_b17_x8_056,0.9668460131,per-arm; multiplies the scaled part
 infantry,coalition,RF,faction modifier ntw3_tow_b17_x8_057,1.035141513,per-arm; multiplies the scaled part
 infantry,coalition,RF,faction modifier piedmont_savoy,0.9701674239,per-arm; multiplies the scaled part
+infantry,coalition,FC,size,n,models = men_raw/2
+infantry,coalition,FC,size power p,1.09,price ∝ size^p
+infantry,coalition,FC,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,coalition,FC,shape cal,full,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,coalition,FC,shape shoot,additive,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,coalition,FC,shape cal_df,3,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,coalition,FC,shape shot,onehot,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,coalition,FC,stat power accuracy,0.05,the β column is (stat / 100)^power
+infantry,coalition,FC,stat power ammo,0.05,the β column is (stat / 100)^power
+infantry,coalition,FC,stat power charge_bonus,0.05,the β column is (stat / 100)^power
+infantry,coalition,FC,stat power melee_attack,1.4,the β column is (stat / 100)^power
+infantry,coalition,FC,stat power melee_defense,1.15,the β column is (stat / 100)^power
+infantry,coalition,FC,stat power morale,2.25,the β column is (stat / 100)^power
+infantry,coalition,FC,stat power range,4,the β column is (stat / 100)^power
+infantry,coalition,FC,stat power reload_skill,3.1,the β column is (stat / 100)^power
+infantry,coalition,FC,(intercept: per-size constant b0),3.608203565,"β·x + [—] × models^1.09 × fclass stat powers: accuracy^0.05, ammo^0.05, charge_bonus^0.05, melee_attack^1.4, melee_defense^1.15, morale^2.25, range^4, reload_skill^3.1 rating fixed (8/N) κ=1 | reference levels: unit_class=infantry_line; speed=L3"
+infantry,coalition,FC,accuracy,9.220594227,gold per size unit^p
+infantry,coalition,FC,reload_skill,1.53232732,gold per size unit^p
+infantry,coalition,FC,ammo,0.3418503982,gold per size unit^p
+infantry,coalition,FC,morale,120.9539122,gold per size unit^p
+infantry,coalition,FC,melee_attack,14.3171559,gold per size unit^p
+infantry,coalition,FC,melee_defense,5.065872254,gold per size unit^p
+infantry,coalition,FC,charge_bonus,-3.912234422,gold per size unit^p
+infantry,coalition,FC,range,0.0213725845,gold per size unit^p
+infantry,coalition,FC,has_range,-8.589079122,gold per size unit^p
+infantry,coalition,FC,can_form_square,0.3031192057,gold per size unit^p
+infantry,coalition,FC,has_stamina,0.1809859932,gold per size unit^p
+infantry,coalition,FC,is_shock_resistant,0.2328651326,gold per size unit^p
+infantry,coalition,FC,can_inspire,0.4915284465,gold per size unit^p
+infantry,coalition,FC,has_guerrilla_deployment,1.911423767,gold per size unit^p
+infantry,coalition,FC,can_place_stakes,0.04877837578,gold per size unit^p
+infantry,coalition,FC,can_place_mines,-0.2973380393,gold per size unit^p
+infantry,coalition,FC,guard_mode,-0.06463847052,gold per size unit^p
+infantry,coalition,FC,can_snipe,2.180390284,gold per size unit^p
+infantry,coalition,FC,unit_class=infantry_grenadiers,-0.03410360431,gold per size unit^p
+infantry,coalition,FC,unit_class=infantry_irregulars,-0.03412657403,gold per size unit^p
+infantry,coalition,FC,unit_class=infantry_light,-0.08350043801,gold per size unit^p
+infantry,coalition,FC,unit_class=infantry_militia,-0.003869523956,gold per size unit^p
+infantry,coalition,FC,speed=G1,-0.2771429701,gold per size unit^p
+infantry,coalition,FC,speed=G2,-0.160228265,gold per size unit^p
+infantry,coalition,FC,speed=G3,0.08689183385,gold per size unit^p
+infantry,coalition,FC,speed=G4,0.407656638,gold per size unit^p
+infantry,coalition,FC,speed=G5,0.8050409296,gold per size unit^p
+infantry,coalition,FC,speed=G6,1.178193225,gold per size unit^p
+infantry,coalition,FC,speed=L1,-0.2166170139,gold per size unit^p
+infantry,coalition,FC,speed=L2,-0.1586739785,gold per size unit^p
+infantry,coalition,FC,speed=L4,0.195780731,gold per size unit^p
+infantry,coalition,FC,speed=L5,0.4737054865,gold per size unit^p
+infantry,coalition,FC,speed=L6,0.7645966614,gold per size unit^p
+infantry,coalition,FC,speed=S1,-1.396647077,gold per size unit^p
+infantry,coalition,FC,speed=S2,-0.1987595011,gold per size unit^p
+infantry,coalition,FC,speed=S3,1.948442656,gold per size unit^p
+infantry,coalition,FC,rating divisor,8/rating,fixed; scales the β part like a multiplier
+infantry,coalition,FC,multiplier fclass=britain|infantry_light,1.030880302,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=britain|infantry_line,1.006178316,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=britain|infantry_skirmishers,0.8499922059,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_hre|infantry_grenadiers,1.129284991,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_hre|infantry_irregulars,1.129681346,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_hre|infantry_light,0.9456221504,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_hre|infantry_line,0.9960736615,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_hre|infantry_militia,1.00758527,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_hre|infantry_skirmishers,1.171666137,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_039|infantry_grenadiers,0.9147670868,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_039|infantry_light,0.9861448149,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_039|infantry_line,1.016988594,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_039|infantry_skirmishers,0.9666797952,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_041|infantry_grenadiers,1.000625144,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_041|infantry_light,0.9587008509,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_041|infantry_line,0.7654192966,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_041|infantry_militia,0.9727384998,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_041|infantry_skirmishers,0.9738485288,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_042|infantry_grenadiers,0.9616142215,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_042|infantry_irregulars,1.039010434,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_042|infantry_light,1.06971107,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_042|infantry_line,1.008329973,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_042|infantry_militia,1.00946236,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_042|infantry_skirmishers,1.179989382,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_043|infantry_grenadiers,0.9722110743,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_043|infantry_light,1.019750094,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_043|infantry_line,1.02544965,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_043|infantry_skirmishers,0.9582663323,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_015|infantry_grenadiers,0.9748983358,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_015|infantry_irregulars,0.8539721963,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_015|infantry_line,0.7958219687,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_015|infantry_militia,1.0090485,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_015|infantry_skirmishers,0.8414691819,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_016|infantry_grenadiers,1.008910954,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_016|infantry_irregulars,1.065089015,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_016|infantry_light,0.9949381916,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_016|infantry_line,0.9653063553,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_016|infantry_militia,0.9781371868,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_016|infantry_skirmishers,0.9462644765,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_006|infantry_grenadiers,1.081821576,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_006|infantry_irregulars,1.017985673,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_006|infantry_light,0.9555908381,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_006|infantry_line,0.9794050121,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_006|infantry_skirmishers,1.077525495,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_007|infantry_grenadiers,1.021888383,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_007|infantry_light,1.044985059,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_007|infantry_line,1.005806264,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_007|infantry_militia,0.9842397655,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_007|infantry_skirmishers,1.03146708,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_008|infantry_grenadiers,1.047510432,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_008|infantry_light,1.038807982,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_008|infantry_line,0.9375462268,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_008|infantry_militia,1.011006221,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_008|infantry_skirmishers,0.959971027,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_009|infantry_grenadiers,1.217879157,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_009|infantry_light,0.9945072607,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_009|infantry_line,0.9136600348,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_009|infantry_skirmishers,1.072611201,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b07_x8_018|infantry_grenadiers,1.023248925,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b07_x8_018|infantry_light,0.9068063006,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b07_x8_018|infantry_line,1.00080899,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b07_x8_018|infantry_militia,1.010470329,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b07_x8_018|infantry_skirmishers,1.272756258,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_044|infantry_grenadiers,0.9373057702,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_044|infantry_irregulars,0.9799265154,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_044|infantry_light,1.027935731,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_044|infantry_line,0.9861406668,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_044|infantry_militia,1.038490932,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_044|infantry_skirmishers,1.026221295,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_045|infantry_light,0.9889624607,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_045|infantry_line,0.995504271,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_045|infantry_skirmishers,1.022891654,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_046|infantry_grenadiers,1.062519307,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_046|infantry_irregulars,1,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_046|infantry_light,0.9477001071,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_046|infantry_line,1.011870866,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_046|infantry_militia,0.7603191069,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_046|infantry_skirmishers,1.209757962,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_019|infantry_grenadiers,0.953408236,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_019|infantry_irregulars,0.659374283,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_019|infantry_light,1.052365523,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_019|infantry_line,1.010254642,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_019|infantry_militia,0.966517785,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_019|infantry_skirmishers,0.9711666047,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_020|infantry_grenadiers,0.9320596961,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_020|infantry_light,0.9571010209,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_020|infantry_line,0.9380150937,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_020|infantry_militia,1.00858609,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_020|infantry_skirmishers,0.9534481779,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|infantry_grenadiers,1.041936683,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|infantry_irregulars,0.8189512208,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|infantry_light,0.9818545966,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|infantry_line,0.9480424518,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|infantry_militia,0.9828159405,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|infantry_skirmishers,0.9481934425,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_013|infantry_grenadiers,0.9813533518,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_013|infantry_light,1.021983267,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_013|infantry_line,0.9824455229,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_013|infantry_militia,1.086939605,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_013|infantry_skirmishers,0.955009472,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_014|infantry_irregulars,0.8064627906,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_014|infantry_skirmishers,0.9570377623,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_011|infantry_grenadiers,0.9340022493,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_011|infantry_light,0.9886406159,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_011|infantry_line,0.9471920435,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_011|infantry_militia,1.036166968,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_011|infantry_skirmishers,1.009858477,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_012|infantry_grenadiers,1.072399906,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_012|infantry_light,0.977016464,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_012|infantry_line,1.010586757,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_012|infantry_militia,0.9699232689,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_012|infantry_skirmishers,1.085221356,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_049|infantry_grenadiers,1.023650403,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_049|infantry_light,0.8595917965,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_049|infantry_line,0.8352217102,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_049|infantry_skirmishers,1.024258101,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_050|infantry_grenadiers,0.9813877291,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_050|infantry_irregulars,0.8520430115,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_050|infantry_light,0.9814317974,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_050|infantry_line,0.9832382695,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_050|infantry_militia,1.001418191,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_050|infantry_skirmishers,1.057193677,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b14_x8_031|infantry_grenadiers,1.026583705,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b14_x8_031|infantry_irregulars,1.035841709,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b14_x8_031|infantry_light,0.8673910321,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b14_x8_031|infantry_line,0.9004748803,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b14_x8_031|infantry_militia,1.004638056,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b14_x8_031|infantry_skirmishers,1.091126644,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|infantry_grenadiers,0.9794235584,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|infantry_irregulars,0.7883829039,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|infantry_light,1.042164799,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|infantry_line,0.9292881124,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|infantry_militia,1.00610586,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|infantry_skirmishers,1.379094127,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_053|infantry_grenadiers,1.021886212,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_053|infantry_irregulars,0.9992615243,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_053|infantry_light,1.010256027,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_053|infantry_line,0.9057672136,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_053|infantry_militia,0.9825254099,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_053|infantry_skirmishers,0.9339785838,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_055|infantry_grenadiers,1.034369643,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_055|infantry_irregulars,1.022104811,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_055|infantry_light,0.9163535026,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_055|infantry_line,1.006599621,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_055|infantry_militia,1.00669038,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_055|infantry_skirmishers,1.102767708,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_056|infantry_grenadiers,0.9680620964,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_056|infantry_light,0.964523027,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_056|infantry_line,0.9529218892,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_056|infantry_militia,1.002655728,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_056|infantry_skirmishers,1.04037456,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_057|infantry_grenadiers,1.009124423,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_057|infantry_light,1.030908733,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_057|infantry_line,1.006153622,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_057|infantry_skirmishers,1.032284584,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=piedmont_savoy|infantry_grenadiers,0.9555467331,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=piedmont_savoy|infantry_light,0.7911756121,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=piedmont_savoy|infantry_line,0.9599928844,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=piedmont_savoy|infantry_militia,0.6854784791,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,coalition,FC,multiplier fclass=piedmont_savoy|infantry_skirmishers,1.436729125,"ridge κ = 1, no reference (unseen cell → 1)"
 infantry,merged,final,size,n,models = men_raw/2
 infantry,merged,final,size power p,1.09,price ∝ size^p
 infantry,merged,final,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
@@ -459,6 +821,322 @@ infantry,merged,RF,faction modifier ntw3_tow_c10_x8_025,1.002692891,per-arm; mul
 infantry,merged,RF,faction modifier ntw3_tow_c14_x8_030,1.019027274,per-arm; multiplies the scaled part
 infantry,merged,RF,faction modifier ntw3_tow_c15_x8_051,0.9867709754,per-arm; multiplies the scaled part
 infantry,merged,RF,faction modifier piedmont_savoy,0.9804865007,per-arm; multiplies the scaled part
+infantry,merged,FC,size,n,models = men_raw/2
+infantry,merged,FC,size power p,1.09,price ∝ size^p
+infantry,merged,FC,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,merged,FC,shape cal,full,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,merged,FC,shape shoot,additive,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,merged,FC,shape cal_df,3,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,merged,FC,shape shot,onehot,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+infantry,merged,FC,stat power accuracy,0.05,the β column is (stat / 100)^power
+infantry,merged,FC,stat power ammo,0.05,the β column is (stat / 100)^power
+infantry,merged,FC,stat power charge_bonus,0.05,the β column is (stat / 100)^power
+infantry,merged,FC,stat power melee_attack,1.4,the β column is (stat / 100)^power
+infantry,merged,FC,stat power melee_defense,1.15,the β column is (stat / 100)^power
+infantry,merged,FC,stat power morale,2.25,the β column is (stat / 100)^power
+infantry,merged,FC,stat power range,4,the β column is (stat / 100)^power
+infantry,merged,FC,stat power reload_skill,3.1,the β column is (stat / 100)^power
+infantry,merged,FC,(intercept: per-size constant b0),3.453362938,"β·x + [—] × models^1.09 × fclass × side stat powers: accuracy^0.05, ammo^0.05, charge_bonus^0.05, melee_attack^1.4, melee_defense^1.15, morale^2.25, range^4, reload_skill^3.1 rating fixed (8/N) κ=1 | reference levels: unit_class=infantry_line; speed=L3"
+infantry,merged,FC,accuracy,8.424751238,gold per size unit^p
+infantry,merged,FC,reload_skill,1.427419578,gold per size unit^p
+infantry,merged,FC,ammo,0.8543182467,gold per size unit^p
+infantry,merged,FC,morale,122.5466628,gold per size unit^p
+infantry,merged,FC,melee_attack,14.17393791,gold per size unit^p
+infantry,merged,FC,melee_defense,5.160651672,gold per size unit^p
+infantry,merged,FC,charge_bonus,-3.699660401,gold per size unit^p
+infantry,merged,FC,range,0.02643263526,gold per size unit^p
+infantry,merged,FC,has_range,-8.372128648,gold per size unit^p
+infantry,merged,FC,can_form_square,0.3267315619,gold per size unit^p
+infantry,merged,FC,has_stamina,0.1841387136,gold per size unit^p
+infantry,merged,FC,is_shock_resistant,0.234321385,gold per size unit^p
+infantry,merged,FC,can_inspire,0.5141844108,gold per size unit^p
+infantry,merged,FC,has_guerrilla_deployment,2.043928944,gold per size unit^p
+infantry,merged,FC,can_place_stakes,0.05775277308,gold per size unit^p
+infantry,merged,FC,can_place_mines,-0.3227045828,gold per size unit^p
+infantry,merged,FC,guard_mode,-0.08392165364,gold per size unit^p
+infantry,merged,FC,can_snipe,2.268890833,gold per size unit^p
+infantry,merged,FC,unit_class=infantry_grenadiers,-0.06442083748,gold per size unit^p
+infantry,merged,FC,unit_class=infantry_irregulars,0.008649660933,gold per size unit^p
+infantry,merged,FC,unit_class=infantry_light,-0.09336217749,gold per size unit^p
+infantry,merged,FC,unit_class=infantry_militia,-0.02417039601,gold per size unit^p
+infantry,merged,FC,speed=G1,-0.2983606402,gold per size unit^p
+infantry,merged,FC,speed=G2,-0.1652630087,gold per size unit^p
+infantry,merged,FC,speed=G3,0.0576948154,gold per size unit^p
+infantry,merged,FC,speed=G4,0.3667279202,gold per size unit^p
+infantry,merged,FC,speed=G5,0.7372735838,gold per size unit^p
+infantry,merged,FC,speed=G6,1.150266893,gold per size unit^p
+infantry,merged,FC,speed=L1,-0.2099543631,gold per size unit^p
+infantry,merged,FC,speed=L2,-0.149826652,gold per size unit^p
+infantry,merged,FC,speed=L4,0.1756965581,gold per size unit^p
+infantry,merged,FC,speed=L5,0.4219274582,gold per size unit^p
+infantry,merged,FC,speed=L6,0.5198590594,gold per size unit^p
+infantry,merged,FC,speed=S1,-1.37192855,gold per size unit^p
+infantry,merged,FC,speed=S2,-0.2134561089,gold per size unit^p
+infantry,merged,FC,speed=S3,1.919625879,gold per size unit^p
+infantry,merged,FC,rating divisor,8/rating,fixed; scales the β part like a multiplier
+infantry,merged,FC,multiplier fclass=britain|infantry_light,1.069526686,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=britain|infantry_line,1.007065311,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=britain|infantry_skirmishers,0.8436764107,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=denmark|infantry_grenadiers,0.9369663824,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=denmark|infantry_light,0.8103908495,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=denmark|infantry_line,0.9178785255,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=denmark|infantry_militia,1.03293316,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=denmark|infantry_skirmishers,1.074358396,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=france|infantry_grenadiers,1.019218603,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=france|infantry_light,1.06275896,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=france|infantry_line,1.001132522,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=france|infantry_skirmishers,0.7588626294,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_hre|infantry_grenadiers,1.143113492,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_hre|infantry_irregulars,1.12237251,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_hre|infantry_light,0.9568602711,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_hre|infantry_line,0.9919194511,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_hre|infantry_militia,1.007872905,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_hre|infantry_skirmishers,1.14869864,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_032|infantry_grenadiers,0.9411734041,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_032|infantry_light,1.030638505,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_032|infantry_line,0.9187868305,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_032|infantry_skirmishers,0.9646860895,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_033|infantry_grenadiers,0.8769394824,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_033|infantry_light,1.040346169,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_033|infantry_line,1.062172321,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_033|infantry_skirmishers,1.026980788,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_038|infantry_grenadiers,0.8130205719,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_038|infantry_light,0.9257992512,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_038|infantry_line,0.9793948141,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_038|infantry_militia,1.040305635,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_038|infantry_skirmishers,1.151164067,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_040|infantry_grenadiers,1.025168189,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_040|infantry_light,0.984477901,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_040|infantry_line,0.9435821623,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_040|infantry_skirmishers,1.199058635,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a04_x8_005|infantry_grenadiers,0.9778061317,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a04_x8_005|infantry_irregulars,1.044966338,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a04_x8_005|infantry_light,0.9219114937,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a04_x8_005|infantry_line,0.8978068103,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a04_x8_005|infantry_militia,1.056377579,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a04_x8_005|infantry_skirmishers,0.9784421748,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_001|infantry_grenadiers,1.012026734,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_001|infantry_light,0.9926500676,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_001|infantry_line,0.9138537838,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_001|infantry_skirmishers,1.07709239,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_004|infantry_grenadiers,0.9486735158,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_004|infantry_light,0.936735071,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_004|infantry_line,0.9671123351,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_004|infantry_skirmishers,1.129287303,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a06_x8_002|infantry_grenadiers,0.9883592303,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a06_x8_002|infantry_light,1.009678083,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a06_x8_002|infantry_line,0.9326710381,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a06_x8_002|infantry_skirmishers,0.8750203446,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a08_x8_047|infantry_grenadiers,0.9781213732,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a08_x8_047|infantry_light,1.037277949,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a08_x8_047|infantry_line,0.9408527606,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a08_x8_047|infantry_skirmishers,1.117411096,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a09_x8_021|infantry_grenadiers,1.030261551,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a09_x8_021|infantry_light,0.9268334707,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a09_x8_021|infantry_line,0.9492408442,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a09_x8_021|infantry_militia,0.9822858572,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a09_x8_021|infantry_skirmishers,1.084367552,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_027|infantry_grenadiers,1.009021386,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_027|infantry_light,0.9807540026,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_027|infantry_line,0.9826360899,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_027|infantry_skirmishers,0.9714584381,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_028|infantry_grenadiers,0.9904413611,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_028|infantry_light,1.097892596,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_028|infantry_line,0.9990891572,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_028|infantry_skirmishers,0.9957233573,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_029|infantry_grenadiers,1.098917652,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_029|infantry_light,0.9917162448,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_029|infantry_line,0.9766619841,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_029|infantry_skirmishers,1.062343025,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a12_x8_003|infantry_grenadiers,1.083259633,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a12_x8_003|infantry_light,1.027421922,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a12_x8_003|infantry_line,0.8781899672,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a12_x8_003|infantry_skirmishers,1.08260184,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a13_x8_022|infantry_grenadiers,0.9615252889,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a13_x8_022|infantry_irregulars,1.044182046,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a13_x8_022|infantry_light,1.053617519,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a13_x8_022|infantry_line,0.9717120205,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a13_x8_022|infantry_skirmishers,0.9305357779,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a17_x8_054|infantry_grenadiers,0.9154183818,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a17_x8_054|infantry_light,0.8470812168,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a17_x8_054|infantry_line,0.862225807,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a17_x8_054|infantry_militia,1.005960634,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_a17_x8_054|infantry_skirmishers,1.107812769,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_039|infantry_grenadiers,0.9236660566,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_039|infantry_light,1.019328565,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_039|infantry_line,1.016144065,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_039|infantry_skirmishers,0.9518759669,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_041|infantry_grenadiers,1.006062611,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_041|infantry_light,0.9735781891,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_041|infantry_line,0.7656277555,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_041|infantry_militia,0.9880060311,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_041|infantry_skirmishers,0.9539093736,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_042|infantry_grenadiers,0.971429845,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_042|infantry_irregulars,1.04215237,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_042|infantry_light,1.090706216,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_042|infantry_line,1.001774119,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_042|infantry_militia,1.011496108,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_042|infantry_skirmishers,1.156315642,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_043|infantry_grenadiers,0.9826624089,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_043|infantry_light,1.033970207,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_043|infantry_line,1.024524585,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_043|infantry_skirmishers,0.9412313118,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_015|infantry_grenadiers,0.9749291969,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_015|infantry_irregulars,0.8406188804,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_015|infantry_line,0.7879356634,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_015|infantry_militia,1.012314951,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_015|infantry_skirmishers,0.8242179105,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_016|infantry_grenadiers,1.020881955,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_016|infantry_irregulars,1.05374263,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_016|infantry_light,1.011484168,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_016|infantry_line,0.9653122408,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_016|infantry_militia,0.9842197864,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_016|infantry_skirmishers,0.9349435552,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_006|infantry_grenadiers,1.092034472,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_006|infantry_irregulars,1.015358559,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_006|infantry_light,0.9684546726,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_006|infantry_line,0.9745114106,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_006|infantry_skirmishers,1.071337288,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_007|infantry_grenadiers,1.035755442,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_007|infantry_light,1.064483132,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_007|infantry_line,1.002783027,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_007|infantry_militia,0.9843664518,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_007|infantry_skirmishers,1.021211827,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_008|infantry_grenadiers,1.057923957,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_008|infantry_light,1.05428711,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_008|infantry_line,0.9323076401,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_008|infantry_militia,1.011999749,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_008|infantry_skirmishers,0.9359351622,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_009|infantry_grenadiers,1.231770028,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_009|infantry_light,1.019445704,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_009|infantry_line,0.9144531515,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_009|infantry_skirmishers,1.049144516,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b07_x8_018|infantry_grenadiers,1.027364688,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b07_x8_018|infantry_light,0.9042354481,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b07_x8_018|infantry_line,0.9970970874,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b07_x8_018|infantry_militia,1.014036905,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b07_x8_018|infantry_skirmishers,1.253022901,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_044|infantry_grenadiers,0.9464860467,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_044|infantry_irregulars,0.9766421786,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_044|infantry_light,1.041423189,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_044|infantry_line,0.9808589228,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_044|infantry_militia,1.047318815,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_044|infantry_skirmishers,1.01221259,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_045|infantry_light,1.002912928,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_045|infantry_line,0.9912193576,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_045|infantry_skirmishers,1.014559582,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_046|infantry_grenadiers,1.075996587,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_046|infantry_irregulars,1,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_046|infantry_light,0.9589438242,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_046|infantry_line,1.006830141,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_046|infantry_militia,0.7424688812,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_046|infantry_skirmishers,1.171432351,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_019|infantry_grenadiers,0.9610087293,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_019|infantry_irregulars,0.6284045738,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_019|infantry_light,1.067564421,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_019|infantry_line,1.003785188,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_019|infantry_militia,0.9682128918,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_019|infantry_skirmishers,0.9550218118,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_020|infantry_grenadiers,0.9425960642,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_020|infantry_light,0.9785489823,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_020|infantry_line,0.936369669,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_020|infantry_militia,1.013534245,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_020|infantry_skirmishers,0.9459769964,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|infantry_grenadiers,1.051481767,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|infantry_irregulars,0.7805272085,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|infantry_light,0.997051398,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|infantry_line,0.9494142998,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|infantry_militia,0.9938307909,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|infantry_skirmishers,0.9251918832,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_013|infantry_grenadiers,0.9940375107,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_013|infantry_light,1.041287267,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_013|infantry_line,0.980110575,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_013|infantry_militia,1.097691238,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_013|infantry_skirmishers,0.9406144346,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_014|infantry_irregulars,0.7791464326,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_014|infantry_skirmishers,0.9348756716,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_011|infantry_grenadiers,0.934250184,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_011|infantry_light,0.996432914,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_011|infantry_line,0.9418797315,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_011|infantry_militia,1.039881212,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_011|infantry_skirmishers,0.9967762895,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_012|infantry_grenadiers,1.080644007,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_012|infantry_light,0.9920637526,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_012|infantry_line,1.008987062,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_012|infantry_militia,0.976824764,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_012|infantry_skirmishers,1.074938863,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_049|infantry_grenadiers,1.03144319,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_049|infantry_light,0.8862109948,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_049|infantry_line,0.8356049155,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_049|infantry_skirmishers,1.017217738,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_050|infantry_grenadiers,0.9872471712,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_050|infantry_irregulars,0.8266234921,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_050|infantry_light,0.9856955385,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_050|infantry_line,0.9835274996,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_050|infantry_militia,1.009119205,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_050|infantry_skirmishers,1.034896386,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b14_x8_031|infantry_grenadiers,1.033922628,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b14_x8_031|infantry_irregulars,1.04025098,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b14_x8_031|infantry_light,0.8876412306,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b14_x8_031|infantry_line,0.8975812557,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b14_x8_031|infantry_militia,1.00540105,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b14_x8_031|infantry_skirmishers,1.071465668,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|infantry_grenadiers,0.9862477709,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|infantry_irregulars,0.760065718,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|infantry_light,1.057402765,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|infantry_line,0.9226489805,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|infantry_militia,1.012510581,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|infantry_skirmishers,1.338817036,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_053|infantry_grenadiers,1.023595188,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_053|infantry_irregulars,0.9907897085,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_053|infantry_light,1.025529323,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_053|infantry_line,0.9054692786,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_053|infantry_militia,0.9809435541,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_053|infantry_skirmishers,0.9268065645,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_055|infantry_grenadiers,1.039853362,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_055|infantry_irregulars,1.018882982,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_055|infantry_light,0.9306832405,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_055|infantry_line,0.9992001909,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_055|infantry_militia,1.007794304,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_055|infantry_skirmishers,1.082696332,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_056|infantry_grenadiers,0.9730968124,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_056|infantry_light,0.9780089913,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_056|infantry_line,0.9498564918,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_056|infantry_militia,1.008848712,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_056|infantry_skirmishers,1.028803568,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_057|infantry_grenadiers,1.018054046,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_057|infantry_light,1.051196612,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_057|infantry_line,1.002475462,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_057|infantry_skirmishers,1.025105676,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c07_x8_017|infantry_grenadiers,1.016104852,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c07_x8_017|infantry_light,0.9409282178,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c07_x8_017|infantry_line,1.043107772,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c07_x8_017|infantry_skirmishers,1.187825763,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c08_x8_048|infantry_grenadiers,1.098745726,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c08_x8_048|infantry_light,0.8798180185,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c08_x8_048|infantry_line,0.957839234,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c08_x8_048|infantry_skirmishers,1.042146583,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c10_x8_025|infantry_grenadiers,1.188363552,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c10_x8_025|infantry_light,1.005915574,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c10_x8_025|infantry_line,0.90448954,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c10_x8_025|infantry_militia,0.8006636895,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c10_x8_025|infantry_skirmishers,0.9298186427,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c14_x8_030|infantry_grenadiers,0.9943907853,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c14_x8_030|infantry_light,1.071689259,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c14_x8_030|infantry_line,0.9792457912,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c14_x8_030|infantry_skirmishers,1.078313103,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c15_x8_051|infantry_grenadiers,0.9757808068,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c15_x8_051|infantry_irregulars,0.9507065855,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c15_x8_051|infantry_light,0.8090744069,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c15_x8_051|infantry_line,0.9414825384,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=ntw3_tow_c15_x8_051|infantry_skirmishers,1.250281525,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=piedmont_savoy|infantry_grenadiers,0.9605139294,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=piedmont_savoy|infantry_light,0.8128020872,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=piedmont_savoy|infantry_line,0.9551629019,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=piedmont_savoy|infantry_militia,0.6487254039,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier fclass=piedmont_savoy|infantry_skirmishers,1.41680177,"ridge κ = 1, no reference (unseen cell → 1)"
+infantry,merged,FC,multiplier side=coalition,1,reference coalition
+infantry,merged,FC,multiplier side=imperial,0.8836976195,reference coalition
 cavalry,imperial,final,size,n,models = men_raw/2
 cavalry,imperial,final,size power p,0.75,price ∝ size^p
 cavalry,imperial,final,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
@@ -548,6 +1226,111 @@ cavalry,imperial,RF,faction modifier ntw3_tow_c08_x8_048,0.9849220102,per-arm; m
 cavalry,imperial,RF,faction modifier ntw3_tow_c10_x8_025,1.099179984,per-arm; multiplies the scaled part
 cavalry,imperial,RF,faction modifier ntw3_tow_c14_x8_030,1.039797564,per-arm; multiplies the scaled part
 cavalry,imperial,RF,faction modifier ntw3_tow_c15_x8_051,1.03078496,per-arm; multiplies the scaled part
+cavalry,imperial,FC,size,n,models = men_raw/2
+cavalry,imperial,FC,size power p,0.75,price ∝ size^p
+cavalry,imperial,FC,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,imperial,FC,shape cal,full,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,imperial,FC,shape shoot,additive,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,imperial,FC,shape cal_df,3,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,imperial,FC,shape shot,onehot,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,imperial,FC,(intercept: per-size constant b0),4.027665843,β·x + [—] × models^0.75 × fclass × rank_depth rating fixed (8/N) κ=1 | reference levels: unit_class=cavalry_light; speed=C4
+cavalry,imperial,FC,accuracy,0.1330523809,gold per size unit^p
+cavalry,imperial,FC,morale,1.010892603,gold per size unit^p
+cavalry,imperial,FC,melee_attack,0.3008743629,gold per size unit^p
+cavalry,imperial,FC,melee_defense,0.3594410788,gold per size unit^p
+cavalry,imperial,FC,charge_bonus,1.110562916,gold per size unit^p
+cavalry,imperial,FC,has_stamina,7.68157986,gold per size unit^p
+cavalry,imperial,FC,is_shock_resistant,10.66431205,gold per size unit^p
+cavalry,imperial,FC,can_inspire,8.843160579,gold per size unit^p
+cavalry,imperial,FC,has_guerrilla_deployment,13.89797557,gold per size unit^p
+cavalry,imperial,FC,is_camel,-22.27987286,gold per size unit^p
+cavalry,imperial,FC,unit_class=cavalry_heavy,-2.375397838,gold per size unit^p
+cavalry,imperial,FC,unit_class=cavalry_lancers,-1.47761781,gold per size unit^p
+cavalry,imperial,FC,unit_class=cavalry_standard,-0.9766458713,gold per size unit^p
+cavalry,imperial,FC,speed=C1,-3.194897613,gold per size unit^p
+cavalry,imperial,FC,speed=C3,-2.207010288,gold per size unit^p
+cavalry,imperial,FC,speed=C5,-3.18552963,gold per size unit^p
+cavalry,imperial,FC,rating divisor,8/rating,fixed; scales the β part like a multiplier
+cavalry,imperial,FC,multiplier fclass=denmark|cavalry_heavy,0.9240438917,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=denmark|cavalry_lancers,1.006559737,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=denmark|cavalry_light,0.8511344227,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=denmark|cavalry_standard,1.001419548,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=france|cavalry_heavy,1.033178641,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=france|cavalry_lancers,1.041323113,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=france|cavalry_light,1.047348876,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=france|cavalry_standard,1.02161298,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_032|cavalry_heavy,1.068959913,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_032|cavalry_light,1.002166625,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_032|cavalry_standard,0.9904883439,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_033|cavalry_heavy,1.108270822,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_033|cavalry_lancers,1.019457707,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_033|cavalry_light,0.9262539505,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_033|cavalry_standard,0.9333622601,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_038|cavalry_light,1.11624014,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_040|cavalry_heavy,1.081283274,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_040|cavalry_light,0.8782467906,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_040|cavalry_standard,0.9596678107,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a04_x8_005|cavalry_light,1.017277036,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a04_x8_005|cavalry_standard,0.9140905765,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_001|cavalry_heavy,1.061115379,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_001|cavalry_light,1.057058728,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_001|cavalry_standard,0.9720297597,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_004|cavalry_heavy,1.076817602,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_004|cavalry_light,1.069545615,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_004|cavalry_standard,0.8493559961,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a06_x8_002|cavalry_heavy,0.9050278834,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a06_x8_002|cavalry_light,1.011318136,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a06_x8_002|cavalry_standard,0.952916254,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a08_x8_047|cavalry_heavy,0.9663960352,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a08_x8_047|cavalry_lancers,0.9775492174,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a08_x8_047|cavalry_light,1.022636367,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a08_x8_047|cavalry_standard,1.040231503,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a09_x8_021|cavalry_heavy,1.038045625,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a09_x8_021|cavalry_lancers,1.037786285,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a09_x8_021|cavalry_light,1.048709685,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a09_x8_021|cavalry_standard,0.8549531452,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_027|cavalry_heavy,1.069997936,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_027|cavalry_lancers,1.043684176,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_027|cavalry_light,0.9035907434,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_027|cavalry_standard,1.043513701,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_028|cavalry_heavy,0.9774504836,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_028|cavalry_lancers,1.005381601,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_028|cavalry_light,1.005530324,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_028|cavalry_standard,1.010430087,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_029|cavalry_heavy,1.080693087,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_029|cavalry_lancers,0.9607460042,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_029|cavalry_light,0.9652189172,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_029|cavalry_standard,0.9703966183,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a12_x8_003|cavalry_heavy,0.8463475338,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a12_x8_003|cavalry_lancers,1.004773502,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a12_x8_003|cavalry_light,1.002517096,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a12_x8_003|cavalry_standard,1.010850975,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a13_x8_022|cavalry_heavy,1.095023161,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a13_x8_022|cavalry_lancers,0.9988680021,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a13_x8_022|cavalry_light,0.9732487054,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a13_x8_022|cavalry_standard,0.9257779094,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a17_x8_054|cavalry_heavy,0.9045469618,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a17_x8_054|cavalry_lancers,0.9904987175,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a17_x8_054|cavalry_light,1.070295814,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_a17_x8_054|cavalry_standard,0.9619707781,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c07_x8_017|cavalry_heavy,0.9406900728,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c07_x8_017|cavalry_lancers,0.8667117096,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c07_x8_017|cavalry_light,1.063430352,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c07_x8_017|cavalry_standard,1.017200589,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c08_x8_048|cavalry_heavy,1.056299928,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c08_x8_048|cavalry_lancers,0.592284845,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c08_x8_048|cavalry_light,1.05012935,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c08_x8_048|cavalry_standard,1.034377673,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c10_x8_025|cavalry_light,1.046817965,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c10_x8_025|cavalry_standard,1.085804407,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c14_x8_030|cavalry_heavy,1.027149128,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c14_x8_030|cavalry_lancers,0.9666713941,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c14_x8_030|cavalry_light,1.045034835,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c15_x8_051|cavalry_heavy,1.068417676,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c15_x8_051|cavalry_lancers,1.013608211,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c15_x8_051|cavalry_light,1.008540733,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier fclass=ntw3_tow_c15_x8_051|cavalry_standard,0.9173628277,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,imperial,FC,multiplier rank_depth δ,-0.01651660169,m = 1 + δ·(rank_depth − 10)
 cavalry,coalition,final,size,n,models = men_raw/2
 cavalry,coalition,final,size power p,0.75,price ∝ size^p
 cavalry,coalition,final,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
@@ -652,6 +1435,150 @@ cavalry,coalition,RF,faction modifier ntw3_tow_b17_x8_055,0.9339132558,per-arm; 
 cavalry,coalition,RF,faction modifier ntw3_tow_b17_x8_056,1.058837072,per-arm; multiplies the scaled part
 cavalry,coalition,RF,faction modifier ntw3_tow_b17_x8_057,0.9892467852,per-arm; multiplies the scaled part
 cavalry,coalition,RF,faction modifier piedmont_savoy,1.037529902,per-arm; multiplies the scaled part
+cavalry,coalition,FC,size,n,models = men_raw/2
+cavalry,coalition,FC,size power p,0.75,price ∝ size^p
+cavalry,coalition,FC,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,coalition,FC,shape cal,full,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,coalition,FC,shape shoot,additive,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,coalition,FC,shape cal_df,3,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,coalition,FC,shape shot,onehot,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,coalition,FC,(intercept: per-size constant b0),5.067857881,β·x + [—] × models^0.75 × fclass × rank_depth rating fixed (8/N) κ=1 | reference levels: unit_class=cavalry_light; speed=C4
+cavalry,coalition,FC,accuracy,0.02537470925,gold per size unit^p
+cavalry,coalition,FC,reload_skill,-0.007643207883,gold per size unit^p
+cavalry,coalition,FC,ammo,-0.08455330283,gold per size unit^p
+cavalry,coalition,FC,morale,0.9285283054,gold per size unit^p
+cavalry,coalition,FC,melee_attack,0.312987657,gold per size unit^p
+cavalry,coalition,FC,melee_defense,0.2657812836,gold per size unit^p
+cavalry,coalition,FC,charge_bonus,1.450130425,gold per size unit^p
+cavalry,coalition,FC,range,0.1127134232,gold per size unit^p
+cavalry,coalition,FC,has_range,-3.796191207,gold per size unit^p
+cavalry,coalition,FC,has_stamina,6.844993968,gold per size unit^p
+cavalry,coalition,FC,is_shock_resistant,10.82966505,gold per size unit^p
+cavalry,coalition,FC,can_inspire,9.925638791,gold per size unit^p
+cavalry,coalition,FC,has_guerrilla_deployment,10.72504486,gold per size unit^p
+cavalry,coalition,FC,is_camel,-16.35137905,gold per size unit^p
+cavalry,coalition,FC,unit_class=cavalry_heavy,-3.126376044,gold per size unit^p
+cavalry,coalition,FC,unit_class=cavalry_lancers,-1.590166132,gold per size unit^p
+cavalry,coalition,FC,unit_class=cavalry_missile,-0.8505539835,gold per size unit^p
+cavalry,coalition,FC,unit_class=cavalry_standard,-1.142996166,gold per size unit^p
+cavalry,coalition,FC,speed=C1,-3.209289398,gold per size unit^p
+cavalry,coalition,FC,speed=C3,-2.458156624,gold per size unit^p
+cavalry,coalition,FC,speed=C5,-1.490519372,gold per size unit^p
+cavalry,coalition,FC,rating divisor,8/rating,fixed; scales the β part like a multiplier
+cavalry,coalition,FC,multiplier fclass=britain|cavalry_light,0.9927163934,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_hre|cavalry_heavy,1.195550444,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_hre|cavalry_lancers,1.066749492,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_hre|cavalry_light,1.15414274,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_hre|cavalry_standard,0.9902864212,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_039|cavalry_lancers,0.8676147473,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_039|cavalry_light,0.998477898,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_041|cavalry_heavy,0.9989844206,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_041|cavalry_light,1.023947852,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_042|cavalry_heavy,0.8501652906,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_042|cavalry_lancers,0.8531031233,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_042|cavalry_light,0.9308056849,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_042|cavalry_standard,0.9925607877,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_043|cavalry_lancers,1.070602309,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_043|cavalry_light,0.9432062644,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_heavy,1.062778193,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_lancers,0.9337839874,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_light,0.8577401909,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_missile,1.011234928,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_standard,1,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_016|cavalry_heavy,1.061062543,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_016|cavalry_lancers,0.951208085,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_016|cavalry_light,0.9772218334,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_016|cavalry_standard,1.004746147,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_006|cavalry_heavy,0.8959491117,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_006|cavalry_lancers,1.010248534,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_006|cavalry_light,1.079910363,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_006|cavalry_standard,1.023811106,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_007|cavalry_heavy,1.004123562,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_007|cavalry_lancers,0.9671012156,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_007|cavalry_light,0.9471066372,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_007|cavalry_standard,1.005854718,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_008|cavalry_heavy,1.062206011,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_008|cavalry_lancers,1.002432818,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_008|cavalry_light,1.061291215,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_008|cavalry_standard,0.9550439456,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_009|cavalry_heavy,0.9656286805,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_009|cavalry_light,1.036037116,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_009|cavalry_standard,0.9294861402,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b07_x8_018|cavalry_heavy,1.062086389,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b07_x8_018|cavalry_light,0.9595744605,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b07_x8_018|cavalry_standard,0.9969355109,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_044|cavalry_heavy,1.001227417,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_044|cavalry_lancers,0.9748172203,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_044|cavalry_light,0.9517257878,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_044|cavalry_standard,1.007617323,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_045|cavalry_heavy,0.9608726049,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_045|cavalry_light,1.034428293,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_046|cavalry_light,1.041759559,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_046|cavalry_standard,0.9983164926,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_019|cavalry_heavy,1.072552082,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_019|cavalry_light,1.034071326,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_019|cavalry_standard,1.027063222,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_020|cavalry_heavy,1.247379327,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_020|cavalry_lancers,1.024607066,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_020|cavalry_light,1.038696644,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_020|cavalry_standard,1.010772947,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_heavy,1.04910376,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_lancers,0.9235913744,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_light,1.081284656,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_missile,0.9142220948,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_standard,1.002186137,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_heavy,1.011198498,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_lancers,1.009928372,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_light,1.093152242,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_missile,1.032329664,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_standard,0.9209422755,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_014|cavalry_lancers,0.7639161531,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_014|cavalry_light,1.074579918,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_014|cavalry_missile,1.020862587,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_011|cavalry_lancers,0.9820641696,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_011|cavalry_light,0.9162543501,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_011|cavalry_standard,0.9400246028,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_012|cavalry_heavy,0.8383326627,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_012|cavalry_lancers,0.9915342806,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_012|cavalry_light,0.990047694,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_049|cavalry_heavy,1.071431631,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_049|cavalry_light,0.9951445205,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_049|cavalry_standard,1.024893648,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_050|cavalry_heavy,1.075224451,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_050|cavalry_lancers,1.007618016,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_050|cavalry_light,1.077820033,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_050|cavalry_standard,1.013548235,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b14_x8_031|cavalry_heavy,1.093655478,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b14_x8_031|cavalry_lancers,0.9664350145,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b14_x8_031|cavalry_light,1.024533498,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b14_x8_031|cavalry_standard,0.9914487445,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_heavy,0.9573366083,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_lancers,0.7989106272,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_light,1.084068747,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_missile,1.008263349,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_standard,1.00372022,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_053|cavalry_heavy,1.043573103,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_053|cavalry_lancers,0.9788475164,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_053|cavalry_light,0.9722852733,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_053|cavalry_missile,0.9223302166,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_055|cavalry_heavy,0.9456273763,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_055|cavalry_lancers,1.000213894,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_055|cavalry_light,0.8268863974,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_055|cavalry_standard,0.9947900848,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_056|cavalry_heavy,0.8974534147,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_056|cavalry_lancers,0.9919848423,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_056|cavalry_light,1.020773635,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_056|cavalry_standard,1.001573321,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_heavy,0.9130484441,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_lancers,0.9451330436,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_light,1.071769628,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_missile,1.037149066,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_standard,0.9698910801,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=piedmont_savoy|cavalry_heavy,1.002767632,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=piedmont_savoy|cavalry_lancers,0.9962707541,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=piedmont_savoy|cavalry_light,1.002719514,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier fclass=piedmont_savoy|cavalry_standard,0.9476389033,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,coalition,FC,multiplier rank_depth δ,-0.01720655623,m = 1 + δ·(rank_depth − 11)
 cavalry,merged,final,size,n,models = men_raw/2
 cavalry,merged,final,size power p,0.75,price ∝ size^p
 cavalry,merged,final,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
@@ -783,6 +1710,229 @@ cavalry,merged,RF,faction modifier ntw3_tow_c10_x8_025,1.078189034,per-arm; mult
 cavalry,merged,RF,faction modifier ntw3_tow_c14_x8_030,1.012154653,per-arm; multiplies the scaled part
 cavalry,merged,RF,faction modifier ntw3_tow_c15_x8_051,1.08970082,per-arm; multiplies the scaled part
 cavalry,merged,RF,faction modifier piedmont_savoy,1.013072755,per-arm; multiplies the scaled part
+cavalry,merged,FC,size,n,models = men_raw/2
+cavalry,merged,FC,size power p,0.75,price ∝ size^p
+cavalry,merged,FC,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,merged,FC,shape cal,full,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,merged,FC,shape shoot,additive,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,merged,FC,shape cal_df,3,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,merged,FC,shape shot,onehot,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+cavalry,merged,FC,(intercept: per-size constant b0),4.724691162,β·x + [—] × models^0.75 × fclass × rank_depth rating fixed (8/N) κ=1 | reference levels: unit_class=cavalry_light; speed=C4
+cavalry,merged,FC,accuracy,0.09333945546,gold per size unit^p
+cavalry,merged,FC,reload_skill,-0.02653954444,gold per size unit^p
+cavalry,merged,FC,ammo,-0.05272694599,gold per size unit^p
+cavalry,merged,FC,morale,0.95545766,gold per size unit^p
+cavalry,merged,FC,melee_attack,0.3046074433,gold per size unit^p
+cavalry,merged,FC,melee_defense,0.2867578358,gold per size unit^p
+cavalry,merged,FC,charge_bonus,1.331353297,gold per size unit^p
+cavalry,merged,FC,range,0.1569872608,gold per size unit^p
+cavalry,merged,FC,has_range,-9.005608073,gold per size unit^p
+cavalry,merged,FC,has_stamina,7.172000356,gold per size unit^p
+cavalry,merged,FC,is_shock_resistant,10.58769135,gold per size unit^p
+cavalry,merged,FC,can_inspire,9.386405762,gold per size unit^p
+cavalry,merged,FC,has_guerrilla_deployment,11.15821604,gold per size unit^p
+cavalry,merged,FC,is_camel,-19.08329832,gold per size unit^p
+cavalry,merged,FC,unit_class=cavalry_heavy,-2.802523586,gold per size unit^p
+cavalry,merged,FC,unit_class=cavalry_lancers,-1.470796755,gold per size unit^p
+cavalry,merged,FC,unit_class=cavalry_missile,-1.188709693,gold per size unit^p
+cavalry,merged,FC,unit_class=cavalry_standard,-0.9587745918,gold per size unit^p
+cavalry,merged,FC,speed=C1,-3.197215351,gold per size unit^p
+cavalry,merged,FC,speed=C3,-2.420595209,gold per size unit^p
+cavalry,merged,FC,speed=C5,-1.732664725,gold per size unit^p
+cavalry,merged,FC,rating divisor,8/rating,fixed; scales the β part like a multiplier
+cavalry,merged,FC,multiplier fclass=britain|cavalry_light,1.000563949,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=denmark|cavalry_heavy,0.912830763,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=denmark|cavalry_lancers,0.9969710524,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=denmark|cavalry_light,0.847334005,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=denmark|cavalry_standard,1.003177194,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=france|cavalry_heavy,1.015864128,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=france|cavalry_lancers,1.036368685,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=france|cavalry_light,1.048142977,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=france|cavalry_standard,1.022902423,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_hre|cavalry_heavy,1.208490234,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_hre|cavalry_lancers,1.073856796,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_hre|cavalry_light,1.160356834,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_hre|cavalry_standard,0.9949719383,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_032|cavalry_heavy,1.049646409,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_032|cavalry_light,0.9957717947,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_032|cavalry_standard,0.9832082757,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_033|cavalry_heavy,1.087809446,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_033|cavalry_lancers,1.009295919,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_033|cavalry_light,0.9187356113,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_033|cavalry_standard,0.9263771901,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_038|cavalry_light,1.11361494,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_040|cavalry_heavy,1.073041125,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_040|cavalry_light,0.8705168836,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a03_x8_040|cavalry_standard,0.952355397,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a04_x8_005|cavalry_light,1.014536283,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a04_x8_005|cavalry_standard,0.9029083005,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_001|cavalry_heavy,1.045627875,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_001|cavalry_light,1.049682362,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_001|cavalry_standard,0.9672061654,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_004|cavalry_heavy,1.06132284,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_004|cavalry_light,1.062885758,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a05_x8_004|cavalry_standard,0.8460825507,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a06_x8_002|cavalry_heavy,0.8890229109,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a06_x8_002|cavalry_light,1.004095222,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a06_x8_002|cavalry_standard,0.9471760018,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a08_x8_047|cavalry_heavy,0.9497143236,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a08_x8_047|cavalry_lancers,0.9700948186,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a08_x8_047|cavalry_light,1.016480409,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a08_x8_047|cavalry_standard,1.037840182,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a09_x8_021|cavalry_heavy,1.029643409,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a09_x8_021|cavalry_lancers,1.029430286,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a09_x8_021|cavalry_light,1.040277377,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a09_x8_021|cavalry_standard,0.8502558795,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_027|cavalry_heavy,1.055981775,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_027|cavalry_lancers,1.022949709,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_027|cavalry_light,0.8952638929,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_027|cavalry_standard,1.030617474,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_028|cavalry_heavy,0.9592285652,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_028|cavalry_lancers,0.98994635,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_028|cavalry_light,0.9951762445,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_028|cavalry_standard,1.001060272,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_029|cavalry_heavy,1.059490177,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_029|cavalry_lancers,0.9541289108,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_029|cavalry_light,0.9612826743,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a11_x8_029|cavalry_standard,0.9667652638,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a12_x8_003|cavalry_heavy,0.8312257558,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a12_x8_003|cavalry_lancers,0.9912949527,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a12_x8_003|cavalry_light,0.9955463156,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a12_x8_003|cavalry_standard,1.004063478,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a13_x8_022|cavalry_heavy,1.075169772,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a13_x8_022|cavalry_lancers,0.9884418871,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a13_x8_022|cavalry_light,0.9651653446,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a13_x8_022|cavalry_standard,0.9208699456,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a17_x8_054|cavalry_heavy,0.8860673503,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a17_x8_054|cavalry_lancers,0.9787631078,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a17_x8_054|cavalry_light,1.060686392,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_a17_x8_054|cavalry_standard,0.9548876516,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_039|cavalry_lancers,0.882413553,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_039|cavalry_light,1.003337692,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_041|cavalry_heavy,1.009191988,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_041|cavalry_light,1.028912284,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_042|cavalry_heavy,0.8633460304,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_042|cavalry_lancers,0.8668434157,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_042|cavalry_light,0.9347069903,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_042|cavalry_standard,1.000508635,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_043|cavalry_lancers,1.084760569,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b03_x8_043|cavalry_light,0.9433281192,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_heavy,1.075907873,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_lancers,0.9423247972,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_light,0.8629571947,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_missile,1.009787099,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_standard,1.023967568,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_016|cavalry_heavy,1.079581728,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_016|cavalry_lancers,0.9591357404,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_016|cavalry_light,0.9795419787,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b04_x8_016|cavalry_standard,1.002465458,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_006|cavalry_heavy,0.9084020136,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_006|cavalry_lancers,1.024826247,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_006|cavalry_light,1.086622024,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_006|cavalry_standard,1.029432836,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_007|cavalry_heavy,1.017959309,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_007|cavalry_lancers,0.9787644885,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_007|cavalry_light,0.9531724061,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b05_x8_007|cavalry_standard,1.009889573,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_008|cavalry_heavy,1.075078502,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_008|cavalry_lancers,1.012210411,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_008|cavalry_light,1.06926953,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_008|cavalry_standard,0.961228827,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_009|cavalry_heavy,0.975151364,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_009|cavalry_light,1.037270749,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b06_x8_009|cavalry_standard,0.933322048,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b07_x8_018|cavalry_heavy,1.07188453,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b07_x8_018|cavalry_light,0.9653137771,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b07_x8_018|cavalry_standard,0.9985363328,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_044|cavalry_heavy,1.010739948,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_044|cavalry_lancers,0.9812179248,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_044|cavalry_light,0.9573861671,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_044|cavalry_standard,1.008536853,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_045|cavalry_heavy,0.9749567994,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_045|cavalry_light,1.040103827,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_046|cavalry_light,1.044106942,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b08_x8_046|cavalry_standard,1.00379072,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_019|cavalry_heavy,1.083634572,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_019|cavalry_light,1.040485797,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_019|cavalry_standard,1.029325619,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_020|cavalry_heavy,1.26086805,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_020|cavalry_lancers,1.025536302,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_020|cavalry_light,1.042687047,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b09_x8_020|cavalry_standard,1.011825253,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_heavy,1.062001345,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_lancers,0.9395788521,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_light,1.085170479,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_missile,0.9121775341,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_standard,1.002490167,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_heavy,1.02349639,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_lancers,1.023766335,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_light,1.101665988,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_missile,1.032682792,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_standard,0.9290480582,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_014|cavalry_lancers,0.7694261375,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_014|cavalry_light,1.073092965,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b11_x8_014|cavalry_missile,1.012574166,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_011|cavalry_lancers,0.988535462,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_011|cavalry_light,0.921464779,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_011|cavalry_standard,0.9455899197,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_012|cavalry_heavy,0.8505026816,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_012|cavalry_lancers,0.997027236,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b12_x8_012|cavalry_light,0.9953571202,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_049|cavalry_heavy,1.083086229,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_049|cavalry_light,1.000094941,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_049|cavalry_standard,1.023406938,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_050|cavalry_heavy,1.091947578,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_050|cavalry_lancers,1.000970714,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_050|cavalry_light,1.07043502,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b13_x8_050|cavalry_standard,1.020744914,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b14_x8_031|cavalry_heavy,1.10144825,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b14_x8_031|cavalry_lancers,0.9745347239,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b14_x8_031|cavalry_light,1.02932115,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b14_x8_031|cavalry_standard,0.9940408129,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_heavy,0.9729883619,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_lancers,0.8048443708,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_light,1.081880459,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_missile,1.014383354,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_standard,1.001342958,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_053|cavalry_heavy,1.056879435,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_053|cavalry_lancers,0.9863206866,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_053|cavalry_light,0.9663370962,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b15_x8_053|cavalry_missile,0.9330073414,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_055|cavalry_heavy,0.9558997689,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_055|cavalry_lancers,1.004670383,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_055|cavalry_light,0.8324070279,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_055|cavalry_standard,0.9981241805,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_056|cavalry_heavy,0.9053165175,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_056|cavalry_lancers,0.9973230469,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_056|cavalry_light,1.028664885,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_056|cavalry_standard,1.00565515,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_heavy,0.9257792133,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_lancers,0.9594040582,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_light,1.080089541,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_missile,1.035448426,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_standard,0.9762516375,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c07_x8_017|cavalry_heavy,0.9250666129,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c07_x8_017|cavalry_lancers,0.8269383449,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c07_x8_017|cavalry_light,1.06019757,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c07_x8_017|cavalry_standard,1.011760448,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c08_x8_048|cavalry_heavy,1.040220078,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c08_x8_048|cavalry_lancers,0.5697741827,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c08_x8_048|cavalry_light,1.046232673,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c08_x8_048|cavalry_standard,1.029758035,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c10_x8_025|cavalry_light,1.041816309,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c10_x8_025|cavalry_standard,1.077880612,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c14_x8_030|cavalry_heavy,1.006170036,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c14_x8_030|cavalry_lancers,0.9627308086,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c14_x8_030|cavalry_light,1.037072583,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c15_x8_051|cavalry_heavy,1.061905509,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c15_x8_051|cavalry_lancers,0.9920043371,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c15_x8_051|cavalry_light,1.003020759,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=ntw3_tow_c15_x8_051|cavalry_standard,0.9105224505,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=piedmont_savoy|cavalry_heavy,1.014455596,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=piedmont_savoy|cavalry_lancers,0.9995544631,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=piedmont_savoy|cavalry_light,1.005202901,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier fclass=piedmont_savoy|cavalry_standard,0.9507339463,"ridge κ = 1, no reference (unseen cell → 1)"
+cavalry,merged,FC,multiplier rank_depth δ,-0.01684580864,m = 1 + δ·(rank_depth − 11)
 artillery,imperial,final,size,guns,guns
 artillery,imperial,final,size power p,1.3,price ∝ size^p
 artillery,imperial,final,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
@@ -908,6 +2058,96 @@ artillery,imperial,RF,faction modifier ntw3_tow_c08_x8_048,1.055615528,per-arm; 
 artillery,imperial,RF,faction modifier ntw3_tow_c10_x8_025,1.017378318,per-arm; multiplies the scaled part
 artillery,imperial,RF,faction modifier ntw3_tow_c14_x8_030,1.003951337,per-arm; multiplies the scaled part
 artillery,imperial,RF,faction modifier ntw3_tow_c15_x8_051,1.008845252,per-arm; multiplies the scaled part
+artillery,imperial,FC,size,guns,guns
+artillery,imperial,FC,size power p,1.3,price ∝ size^p
+artillery,imperial,FC,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,imperial,FC,shape cal,projectile,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,imperial,FC,shape shoot,additive,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,imperial,FC,shape cal_df,3,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,imperial,FC,shape shot,onehot,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,imperial,FC,stat power accuracy,3,the β column is (stat / 100)^power
+artillery,imperial,FC,stat power charge_bonus,0.25,the β column is (stat / 100)^power
+artillery,imperial,FC,stat power melee_attack,3,the β column is (stat / 100)^power
+artillery,imperial,FC,stat power melee_defense,2,the β column is (stat / 100)^power
+artillery,imperial,FC,stat power morale,3,the β column is (stat / 100)^power
+artillery,imperial,FC,stat power reload_skill,1.5,the β column is (stat / 100)^power
+artillery,imperial,FC,(intercept: per-size constant b0),132.2112266,"β·x + [—] × guns^1.3 × fclass + c shape: cal=projectile stat powers: accuracy^3, charge_bonus^0.25, melee_attack^3, melee_defense^2, morale^3, reload_skill^1.5 rating fixed (8/N) κ=0.5 | reference levels: unit_class=artillery_foot; speed=F4; shot=cannon_round_shot; projectile=cannon_6_pounder_shot"
+artillery,imperial,FC,accuracy,79.81340301,gold per size unit^p
+artillery,imperial,FC,reload_skill,66.78257261,gold per size unit^p
+artillery,imperial,FC,morale,31539.79289,gold per size unit^p
+artillery,imperial,FC,melee_attack,111207.146,gold per size unit^p
+artillery,imperial,FC,melee_defense,8260.604444,gold per size unit^p
+artillery,imperial,FC,charge_bonus,7.0164677,gold per size unit^p
+artillery,imperial,FC,has_stamina,32.63809768,gold per size unit^p
+artillery,imperial,FC,can_inspire,31.45923087,gold per size unit^p
+artillery,imperial,FC,unit_class=artillery_horse,141.7729819,gold per size unit^p
+artillery,imperial,FC,speed=F1,-71.44342962,gold per size unit^p
+artillery,imperial,FC,speed=F2,-62.24505948,gold per size unit^p
+artillery,imperial,FC,speed=F3,-36.08389957,gold per size unit^p
+artillery,imperial,FC,speed=F5,47.01624844,gold per size unit^p
+artillery,imperial,FC,speed=F6,95.81749981,gold per size unit^p
+artillery,imperial,FC,speed=H1,-155.6657227,gold per size unit^p
+artillery,imperial,FC,speed=H2,-90.28401757,gold per size unit^p
+artillery,imperial,FC,shot=howitzer_shell,30.32604864,gold per size unit^p
+artillery,imperial,FC,shot=unicorn_shell,109.5253585,gold per size unit^p
+artillery,imperial,FC,projectile=cannon_10_pounder_shot,42.42159415,gold per size unit^p
+artillery,imperial,FC,projectile=cannon_12_pounder_shot,79.20095868,gold per size unit^p
+artillery,imperial,FC,projectile=cannon_18_pounder_shot,95.16586084,gold per size unit^p
+artillery,imperial,FC,projectile=cannon_2_pounder_shot,-140.109029,gold per size unit^p
+artillery,imperial,FC,projectile=cannon_3_pounder_shot,-88.16734745,gold per size unit^p
+artillery,imperial,FC,projectile=cannon_4_pounder_shot,-56.94481404,gold per size unit^p
+artillery,imperial,FC,projectile=cannon_5_pounder_shot,-13.00554867,gold per size unit^p
+artillery,imperial,FC,projectile=cannon_8_pounder_shot,27.47266378,gold per size unit^p
+artillery,imperial,FC,projectile=howitzer_6_In_shell,-0.01270937776,gold per size unit^p
+artillery,imperial,FC,projectile=unicorn_10_pounder_shell,-68.45284555,gold per size unit^p
+artillery,imperial,FC,"c (per unit, outside the multiplier)",-166.3901796,gold per unit
+artillery,imperial,FC,rating divisor,8/rating,fixed; scales the β part like a multiplier
+artillery,imperial,FC,multiplier fclass=denmark|artillery_foot,0.861941688,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=denmark|artillery_horse,0.6451568472,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=france|artillery_foot,1.018000941,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=france|artillery_horse,1.095664201,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_032|artillery_foot,0.8785690371,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_032|artillery_horse,1.016822715,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_033|artillery_foot,1.022487837,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_033|artillery_horse,1.116506913,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_038|artillery_foot,0.9488206822,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_038|artillery_horse,0.9770591115,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_040|artillery_foot,0.9400528857,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a03_x8_040|artillery_horse,1.003256727,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a04_x8_005|artillery_foot,0.9672171793,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a04_x8_005|artillery_horse,0.9725355806,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_001|artillery_foot,1.015208742,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_001|artillery_horse,1.112214787,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_004|artillery_foot,0.9670439888,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a05_x8_004|artillery_horse,1.003277463,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a06_x8_002|artillery_foot,1.024191329,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a06_x8_002|artillery_horse,1.099478739,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a08_x8_047|artillery_foot,1.050905704,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a08_x8_047|artillery_horse,1.12225548,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a09_x8_021|artillery_foot,0.9852861532,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a09_x8_021|artillery_horse,1.141237669,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_027|artillery_foot,0.9599003968,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_027|artillery_horse,0.9781896318,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_028|artillery_foot,0.8775621699,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_028|artillery_horse,1.158540564,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_029|artillery_foot,1.017776452,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a11_x8_029|artillery_horse,1.013591552,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a12_x8_003|artillery_foot,0.9795288472,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a12_x8_003|artillery_horse,1.066478108,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a13_x8_022|artillery_foot,0.9509500742,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a13_x8_022|artillery_horse,1.048533381,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a17_x8_054|artillery_foot,0.8140517358,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_a17_x8_054|artillery_horse,1.091457754,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_c07_x8_017|artillery_foot,0.9000646656,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_c07_x8_017|artillery_horse,0.9386796841,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_c08_x8_048|artillery_foot,0.9743703526,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_c08_x8_048|artillery_horse,1.072831082,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_c10_x8_025|artillery_foot,0.9863418033,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_c10_x8_025|artillery_horse,0.8406272458,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_c14_x8_030|artillery_foot,0.9516797859,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_c14_x8_030|artillery_horse,1.042913278,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_c15_x8_051|artillery_foot,0.9087577791,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,imperial,FC,multiplier fclass=ntw3_tow_c15_x8_051|artillery_horse,1.033899251,"ridge κ = 0.5, no reference (unseen cell → 1)"
 artillery,coalition,final,size,guns,guns
 artillery,coalition,final,size power p,1.3,price ∝ size^p
 artillery,coalition,final,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
@@ -1046,6 +2286,116 @@ artillery,coalition,RF,faction modifier ntw3_tow_b17_x8_055,0.9949601995,per-arm
 artillery,coalition,RF,faction modifier ntw3_tow_b17_x8_056,1.041257647,per-arm; multiplies the scaled part
 artillery,coalition,RF,faction modifier ntw3_tow_b17_x8_057,1.020389233,per-arm; multiplies the scaled part
 artillery,coalition,RF,faction modifier piedmont_savoy,1.039486112,per-arm; multiplies the scaled part
+artillery,coalition,FC,size,guns,guns
+artillery,coalition,FC,size power p,1.3,price ∝ size^p
+artillery,coalition,FC,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,coalition,FC,shape cal,projectile,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,coalition,FC,shape shoot,additive,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,coalition,FC,shape cal_df,3,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,coalition,FC,shape shot,onehot,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,coalition,FC,stat power accuracy,3,the β column is (stat / 100)^power
+artillery,coalition,FC,stat power charge_bonus,0.25,the β column is (stat / 100)^power
+artillery,coalition,FC,stat power melee_attack,3,the β column is (stat / 100)^power
+artillery,coalition,FC,stat power melee_defense,2,the β column is (stat / 100)^power
+artillery,coalition,FC,stat power morale,3,the β column is (stat / 100)^power
+artillery,coalition,FC,stat power reload_skill,1.5,the β column is (stat / 100)^power
+artillery,coalition,FC,(intercept: per-size constant b0),99.44199081,"β·x + [—] × guns^1.3 × fclass + c shape: cal=projectile stat powers: accuracy^3, charge_bonus^0.25, melee_attack^3, melee_defense^2, morale^3, reload_skill^1.5 rating fixed (8/N) κ=1 | reference levels: unit_class=artillery_foot; speed=F3; shot=cannon_round_shot; projectile=cannon_6_pounder_shot"
+artillery,coalition,FC,accuracy,65.30281428,gold per size unit^p
+artillery,coalition,FC,reload_skill,70.23498383,gold per size unit^p
+artillery,coalition,FC,morale,36980.98162,gold per size unit^p
+artillery,coalition,FC,melee_attack,119881.1669,gold per size unit^p
+artillery,coalition,FC,melee_defense,5174.286716,gold per size unit^p
+artillery,coalition,FC,charge_bonus,-4.279373765,gold per size unit^p
+artillery,coalition,FC,has_stamina,34.29815392,gold per size unit^p
+artillery,coalition,FC,can_inspire,55.4457121,gold per size unit^p
+artillery,coalition,FC,has_guerrilla_deployment,60.01373226,gold per size unit^p
+artillery,coalition,FC,unit_class=artillery_horse,182.1861979,gold per size unit^p
+artillery,coalition,FC,speed=F1,-53.63323138,gold per size unit^p
+artillery,coalition,FC,speed=F2,-31.94896443,gold per size unit^p
+artillery,coalition,FC,speed=F4,40.75080377,gold per size unit^p
+artillery,coalition,FC,speed=F5,84.38226204,gold per size unit^p
+artillery,coalition,FC,speed=F6,126.6157416,gold per size unit^p
+artillery,coalition,FC,speed=H1,-136.8558854,gold per size unit^p
+artillery,coalition,FC,speed=H2,-84.37797757,gold per size unit^p
+artillery,coalition,FC,shot=howitzer_shell,28.11861121,gold per size unit^p
+artillery,coalition,FC,shot=unicorn_shell,106.7290409,gold per size unit^p
+artillery,coalition,FC,projectile=cannon_10_pounder_shot,52.65023627,gold per size unit^p
+artillery,coalition,FC,projectile=cannon_12_pounder_shot,80.2726499,gold per size unit^p
+artillery,coalition,FC,projectile=cannon_18_pounder_shot,93.64410071,gold per size unit^p
+artillery,coalition,FC,projectile=cannon_24_pounder_shot,138.0128754,gold per size unit^p
+artillery,coalition,FC,projectile=cannon_2_pounder_shot,-175.0503311,gold per size unit^p
+artillery,coalition,FC,projectile=cannon_3_pounder_shot,-84.0337763,gold per size unit^p
+artillery,coalition,FC,projectile=cannon_4_pounder_shot,-40.46228281,gold per size unit^p
+artillery,coalition,FC,projectile=cannon_5_pounder_shot,-7.082861071,gold per size unit^p
+artillery,coalition,FC,projectile=cannon_64_pounder_shot,165.1187223,gold per size unit^p
+artillery,coalition,FC,projectile=cannon_8_pounder_shot,26.60391855,gold per size unit^p
+artillery,coalition,FC,projectile=cannon_9_pounder_shot,35.82213522,gold per size unit^p
+artillery,coalition,FC,projectile=howitzer_5_In_shell,-15.53040849,gold per size unit^p
+artillery,coalition,FC,projectile=unicorn_10_pounder_shell,-66.95370405,gold per size unit^p
+artillery,coalition,FC,"c (per unit, outside the multiplier)",-157.0748027,gold per unit
+artillery,coalition,FC,rating divisor,8/rating,fixed; scales the β part like a multiplier
+artillery,coalition,FC,multiplier fclass=britain|artillery_foot,0.9780193772,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=britain|artillery_horse,1.027421732,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_hre|artillery_foot,1.107836251,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_hre|artillery_horse,1.046522985,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_039|artillery_foot,1.00507363,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_039|artillery_horse,0.9577316936,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_041|artillery_foot,0.9121297119,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_042|artillery_foot,1.003998494,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_042|artillery_horse,0.9330880642,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_043|artillery_foot,0.9493613243,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b03_x8_043|artillery_horse,0.9926823793,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_015|artillery_foot,1.025765576,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_016|artillery_foot,0.905231427,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b04_x8_016|artillery_horse,1.079734041,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_006|artillery_foot,0.9844567213,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_006|artillery_horse,1.027585616,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_007|artillery_foot,1.002573871,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b05_x8_007|artillery_horse,0.9629152367,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_008|artillery_foot,0.8093891167,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_008|artillery_horse,1.06319517,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_009|artillery_foot,1.030673509,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b06_x8_009|artillery_horse,1.055900995,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b07_x8_018|artillery_foot,0.9680321784,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b07_x8_018|artillery_horse,0.9896296275,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_044|artillery_foot,1.052144066,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_044|artillery_horse,1.038831301,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_045|artillery_foot,0.8177100693,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_045|artillery_horse,0.9926216733,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_046|artillery_foot,0.9945342474,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b08_x8_046|artillery_horse,0.9967752084,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_019|artillery_foot,0.9128530732,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_019|artillery_horse,1.050870374,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_020|artillery_foot,1.058852977,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b09_x8_020|artillery_horse,1.047602733,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|artillery_foot,0.9845627693,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b10_x8_026|artillery_horse,1.002046747,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_013|artillery_foot,0.9435603761,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_013|artillery_horse,1.135005084,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_014|artillery_foot,0.9915435811,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b11_x8_014|artillery_horse,0.8969263435,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_011|artillery_foot,0.8872523456,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_011|artillery_horse,1.006710392,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_012|artillery_foot,1.011197697,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b12_x8_012|artillery_horse,1.114389744,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_049|artillery_foot,1.000677443,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_049|artillery_horse,1.007864776,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_050|artillery_foot,0.917901208,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b13_x8_050|artillery_horse,0.9716856704,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b14_x8_031|artillery_foot,0.9542129817,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b14_x8_031|artillery_horse,0.9541720982,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|artillery_foot,1.011676531,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_052|artillery_horse,1.024622529,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_053|artillery_foot,0.998639133,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b15_x8_053|artillery_horse,0.9054065969,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_055|artillery_foot,1.000672596,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_055|artillery_horse,1.017874872,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_056|artillery_foot,1.040700492,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_056|artillery_horse,1.037538785,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_057|artillery_foot,0.9889988372,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=ntw3_tow_b17_x8_057|artillery_horse,1.098213159,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=piedmont_savoy|artillery_foot,1.079375025,"ridge κ = 1, no reference (unseen cell → 1)"
+artillery,coalition,FC,multiplier fclass=piedmont_savoy|artillery_horse,0.9865223165,"ridge κ = 1, no reference (unseen cell → 1)"
 artillery,merged,final,size,guns,guns
 artillery,merged,final,size power p,1.3,price ∝ size^p
 artillery,merged,final,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
@@ -1213,6 +2563,163 @@ artillery,merged,RF,faction modifier ntw3_tow_c10_x8_025,1.00433944,per-arm; mul
 artillery,merged,RF,faction modifier ntw3_tow_c14_x8_030,0.9961226913,per-arm; multiplies the scaled part
 artillery,merged,RF,faction modifier ntw3_tow_c15_x8_051,1.024084287,per-arm; multiplies the scaled part
 artillery,merged,RF,faction modifier piedmont_savoy,1.040229186,per-arm; multiplies the scaled part
+artillery,merged,FC,size,guns,guns
+artillery,merged,FC,size power p,1.3,price ∝ size^p
+artillery,merged,FC,shape fire,range,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,merged,FC,shape cal,projectile,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,merged,FC,shape shoot,additive,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,merged,FC,shape cal_df,3,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,merged,FC,shape shot,onehot,how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)
+artillery,merged,FC,stat power accuracy,3,the β column is (stat / 100)^power
+artillery,merged,FC,stat power charge_bonus,0.25,the β column is (stat / 100)^power
+artillery,merged,FC,stat power melee_attack,3,the β column is (stat / 100)^power
+artillery,merged,FC,stat power melee_defense,2,the β column is (stat / 100)^power
+artillery,merged,FC,stat power morale,3,the β column is (stat / 100)^power
+artillery,merged,FC,stat power reload_skill,1.5,the β column is (stat / 100)^power
+artillery,merged,FC,(intercept: per-size constant b0),99.17382042,"β·x + [—] × guns^1.3 × fclass + c shape: cal=projectile stat powers: accuracy^3, charge_bonus^0.25, melee_attack^3, melee_defense^2, morale^3, reload_skill^1.5 rating fixed (8/N) κ=0.5 | reference levels: unit_class=artillery_foot; speed=F3; shot=cannon_round_shot; projectile=cannon_6_pounder_shot"
+artillery,merged,FC,accuracy,84.21616252,gold per size unit^p
+artillery,merged,FC,reload_skill,69.6531914,gold per size unit^p
+artillery,merged,FC,morale,32437.02458,gold per size unit^p
+artillery,merged,FC,melee_attack,50873.25453,gold per size unit^p
+artillery,merged,FC,melee_defense,6341.758718,gold per size unit^p
+artillery,merged,FC,charge_bonus,3.338789916,gold per size unit^p
+artillery,merged,FC,has_stamina,32.91671409,gold per size unit^p
+artillery,merged,FC,can_inspire,41.01129597,gold per size unit^p
+artillery,merged,FC,has_guerrilla_deployment,61.34058751,gold per size unit^p
+artillery,merged,FC,unit_class=artillery_horse,177.2946718,gold per size unit^p
+artillery,merged,FC,speed=F1,-50.38956273,gold per size unit^p
+artillery,merged,FC,speed=F2,-30.54962955,gold per size unit^p
+artillery,merged,FC,speed=F4,38.51595292,gold per size unit^p
+artillery,merged,FC,speed=F5,84.33169872,gold per size unit^p
+artillery,merged,FC,speed=F6,127.9292909,gold per size unit^p
+artillery,merged,FC,speed=H1,-148.7115322,gold per size unit^p
+artillery,merged,FC,speed=H2,-87.22424306,gold per size unit^p
+artillery,merged,FC,shot=howitzer_shell,29.94842006,gold per size unit^p
+artillery,merged,FC,shot=unicorn_shell,106.9911904,gold per size unit^p
+artillery,merged,FC,projectile=cannon_10_pounder_shot,50.3024707,gold per size unit^p
+artillery,merged,FC,projectile=cannon_12_pounder_shot,80.20088045,gold per size unit^p
+artillery,merged,FC,projectile=cannon_18_pounder_shot,102.2566242,gold per size unit^p
+artillery,merged,FC,projectile=cannon_24_pounder_shot,135.9003609,gold per size unit^p
+artillery,merged,FC,projectile=cannon_2_pounder_shot,-173.619547,gold per size unit^p
+artillery,merged,FC,projectile=cannon_3_pounder_shot,-85.52301524,gold per size unit^p
+artillery,merged,FC,projectile=cannon_4_pounder_shot,-51.91908994,gold per size unit^p
+artillery,merged,FC,projectile=cannon_5_pounder_shot,-6.35424123,gold per size unit^p
+artillery,merged,FC,projectile=cannon_64_pounder_shot,166.7391782,gold per size unit^p
+artillery,merged,FC,projectile=cannon_8_pounder_shot,26.22545253,gold per size unit^p
+artillery,merged,FC,projectile=cannon_9_pounder_shot,35.61551837,gold per size unit^p
+artillery,merged,FC,projectile=howitzer_5_In_shell,-15.20240353,gold per size unit^p
+artillery,merged,FC,projectile=howitzer_6_In_shell,1.225365492,gold per size unit^p
+artillery,merged,FC,projectile=unicorn_10_pounder_shell,-66.26396682,gold per size unit^p
+artillery,merged,FC,"c (per unit, outside the multiplier)",-161.108014,gold per unit
+artillery,merged,FC,rating divisor,8/rating,fixed; scales the β part like a multiplier
+artillery,merged,FC,multiplier fclass=britain|artillery_foot,0.9779695118,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=britain|artillery_horse,1.050826101,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=denmark|artillery_foot,0.839580848,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=denmark|artillery_horse,0.6286532753,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=france|artillery_foot,1.006658229,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=france|artillery_horse,1.079695892,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_hre|artillery_foot,1.129523617,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_hre|artillery_horse,1.07585881,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a03_x8_032|artillery_foot,0.8650958507,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a03_x8_032|artillery_horse,0.9972782241,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a03_x8_033|artillery_foot,1.009127083,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a03_x8_033|artillery_horse,1.101577349,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a03_x8_038|artillery_foot,0.9202399633,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a03_x8_038|artillery_horse,0.9606643507,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a03_x8_040|artillery_foot,0.9216138864,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a03_x8_040|artillery_horse,0.9808201475,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a04_x8_005|artillery_foot,0.9546409076,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a04_x8_005|artillery_horse,0.9442102665,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a05_x8_001|artillery_foot,0.9994873369,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a05_x8_001|artillery_horse,1.094914087,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a05_x8_004|artillery_foot,0.9577819486,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a05_x8_004|artillery_horse,0.9861727842,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a06_x8_002|artillery_foot,1.009570067,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a06_x8_002|artillery_horse,1.079328434,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a08_x8_047|artillery_foot,1.04401362,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a08_x8_047|artillery_horse,1.094125781,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a09_x8_021|artillery_foot,0.9726060165,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a09_x8_021|artillery_horse,1.107691329,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a11_x8_027|artillery_foot,0.9497526881,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a11_x8_027|artillery_horse,0.9563338326,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a11_x8_028|artillery_foot,0.8642375937,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a11_x8_028|artillery_horse,1.137046193,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a11_x8_029|artillery_foot,0.9969001661,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a11_x8_029|artillery_horse,0.9824213559,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a12_x8_003|artillery_foot,0.9700284402,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a12_x8_003|artillery_horse,1.046416822,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a13_x8_022|artillery_foot,0.9420914463,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a13_x8_022|artillery_horse,1.026020647,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a17_x8_054|artillery_foot,0.8018655691,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_a17_x8_054|artillery_horse,1.07509971,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b03_x8_039|artillery_foot,1.006954981,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b03_x8_039|artillery_horse,0.9653506906,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b03_x8_041|artillery_foot,0.9047679381,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b03_x8_042|artillery_foot,0.9973888724,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b03_x8_042|artillery_horse,0.9454451406,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b03_x8_043|artillery_foot,0.9345562537,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b03_x8_043|artillery_horse,1.013470044,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b04_x8_015|artillery_foot,0.9999217644,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b04_x8_016|artillery_foot,0.8969340623,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b04_x8_016|artillery_horse,1.107435676,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b05_x8_006|artillery_foot,0.9799604426,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b05_x8_006|artillery_horse,1.047821898,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b05_x8_007|artillery_foot,1.002792135,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b05_x8_007|artillery_horse,0.9819503669,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b06_x8_008|artillery_foot,0.7968074481,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b06_x8_008|artillery_horse,1.087999083,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b06_x8_009|artillery_foot,1.035541115,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b06_x8_009|artillery_horse,1.098750189,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b07_x8_018|artillery_foot,0.973715084,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b07_x8_018|artillery_horse,1.020193731,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b08_x8_044|artillery_foot,1.053294708,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b08_x8_044|artillery_horse,1.059528329,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b08_x8_045|artillery_foot,0.8094338084,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b08_x8_045|artillery_horse,1.011620258,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b08_x8_046|artillery_foot,0.9917047073,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b08_x8_046|artillery_horse,1.014163768,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b09_x8_019|artillery_foot,0.9128259545,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b09_x8_019|artillery_horse,1.096136984,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b09_x8_020|artillery_foot,1.060390518,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b09_x8_020|artillery_horse,1.08529634,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|artillery_foot,0.9830986693,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b10_x8_026|artillery_horse,1.017227608,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b11_x8_013|artillery_foot,0.9413779895,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b11_x8_013|artillery_horse,1.159188776,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b11_x8_014|artillery_foot,0.9885931851,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b11_x8_014|artillery_horse,0.9056218482,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b12_x8_011|artillery_foot,0.87458655,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b12_x8_011|artillery_horse,1.027962787,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b12_x8_012|artillery_foot,1.012993017,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b12_x8_012|artillery_horse,1.140262676,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b13_x8_049|artillery_foot,0.997089608,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b13_x8_049|artillery_horse,1.028376575,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b13_x8_050|artillery_foot,0.9091993172,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b13_x8_050|artillery_horse,0.9884842963,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b14_x8_031|artillery_foot,0.9483637252,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b14_x8_031|artillery_horse,0.9744194667,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|artillery_foot,1.004399344,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b15_x8_052|artillery_horse,1.056505549,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b15_x8_053|artillery_foot,1.024122825,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b15_x8_053|artillery_horse,0.9607787072,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b17_x8_055|artillery_foot,0.996028922,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b17_x8_055|artillery_horse,1.040043415,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b17_x8_056|artillery_foot,1.030643072,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b17_x8_056|artillery_horse,1.062456014,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b17_x8_057|artillery_foot,0.9916997659,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_b17_x8_057|artillery_horse,1.126305809,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_c07_x8_017|artillery_foot,0.9157633339,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_c07_x8_017|artillery_horse,0.9352149829,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_c08_x8_048|artillery_foot,0.9757196414,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_c08_x8_048|artillery_horse,1.058141941,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_c10_x8_025|artillery_foot,0.9634317629,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_c10_x8_025|artillery_horse,0.8240331809,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_c14_x8_030|artillery_foot,0.9307671325,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_c14_x8_030|artillery_horse,1.011254293,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_c15_x8_051|artillery_foot,0.9128901298,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=ntw3_tow_c15_x8_051|artillery_horse,1.028211247,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=piedmont_savoy|artillery_foot,1.08769244,"ridge κ = 0.5, no reference (unseen cell → 1)"
+artillery,merged,FC,multiplier fclass=piedmont_savoy|artillery_horse,1.000897559,"ridge κ = 0.5, no reference (unseen cell → 1)"
 all arms,imperial,RFs,faction modifier denmark,0.9254722037,one per corps across arms; multiplies each arm's scaled part
 all arms,imperial,RFs,faction modifier france,1.031419557,one per corps across arms; multiplies each arm's scaled part
 all arms,imperial,RFs,faction modifier ntw3_tow_a03_x8_032,0.9918690183,one per corps across arms; multiplies each arm's scaled part
@@ -1376,6 +2883,31 @@ staff,imperial,TF2,faction modifier ntw3_tow_c08_x8_048,1.049329196,multiplies (
 staff,imperial,TF2,faction modifier ntw3_tow_c10_x8_025,1.017173824,multiplies (cost − 1)
 staff,imperial,TF2,faction modifier ntw3_tow_c14_x8_030,1.105587822,multiplies (cost − 1)
 staff,imperial,TF2,faction modifier ntw3_tow_c15_x8_051,1.015168288,multiplies (cost − 1)
+staff,imperial,T3,b (gold per star^q at rating 8),77.28278737,cost = b·stars^q·(8/r); 1 without stars
+staff,imperial,T3,q (star power),1.375,cost = b·stars^q·(8/r); 1 without stars
+staff,imperial,TF3,faction modifier denmark,1.00007296,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier france,1.024555598,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a03_x8_032,0.9821265713,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a03_x8_033,1.011727685,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a03_x8_038,1.004376711,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a03_x8_040,1.011522589,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a04_x8_005,0.9623364042,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a05_x8_001,0.9800112733,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a05_x8_004,1.008238283,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a06_x8_002,0.9465036262,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a08_x8_047,1.026511087,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a09_x8_021,1.013729936,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a11_x8_027,1.003528377,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a11_x8_028,1.015973553,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a11_x8_029,1.010956733,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a12_x8_003,1.019635141,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a13_x8_022,1.014842574,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_a17_x8_054,1.024911684,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_c07_x8_017,1.00007296,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_c08_x8_048,1.015107012,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_c10_x8_025,1.010665161,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_c14_x8_030,1.014893554,multiplies (cost − 1)
+staff,imperial,TF3,faction modifier ntw3_tow_c15_x8_051,1.02179698,multiplies (cost − 1)
 staff,coalition,T1,b (per star),77.18742237,cost = 1 + …; r − 8
 staff,coalition,T1,γ (per star per rating point),-13.34545914,cost = 1 + …; r − 8
 staff,coalition,T1,q (per star²),13.3798355,cost = 1 + …; r − 8
@@ -1441,6 +2973,37 @@ staff,coalition,TF2,faction modifier ntw3_tow_b17_x8_055,0.9931055243,multiplies
 staff,coalition,TF2,faction modifier ntw3_tow_b17_x8_056,1.021311125,multiplies (cost − 1)
 staff,coalition,TF2,faction modifier ntw3_tow_b17_x8_057,1.015315467,multiplies (cost − 1)
 staff,coalition,TF2,faction modifier piedmont_savoy,0.8520871896,multiplies (cost − 1)
+staff,coalition,T3,b (gold per star^q at rating 8),69.11074212,cost = b·stars^q·(8/r); 1 without stars
+staff,coalition,T3,q (star power),1.475,cost = b·stars^q·(8/r); 1 without stars
+staff,coalition,TF3,faction modifier britain,0.978094198,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_hre,1.119950977,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b03_x8_039,0.9384340364,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b03_x8_042,1.102794484,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b04_x8_015,0.9907165601,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b04_x8_016,1.000042418,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b05_x8_006,0.9498669467,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b05_x8_007,0.9922913641,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b06_x8_008,0.9656517469,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b06_x8_009,1.05222754,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b07_x8_018,0.9743691362,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b08_x8_044,0.9671382355,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b08_x8_045,1.006794863,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b09_x8_019,1.018439001,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b09_x8_020,1.474178952,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b10_x8_026,0.9769152309,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b11_x8_013,0.9650604057,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b11_x8_014,0.9848934006,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b12_x8_011,0.9998807876,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b12_x8_012,0.9562178579,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b13_x8_049,0.8846560557,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b13_x8_050,1.000889405,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b14_x8_031,0.9825012515,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b15_x8_052,1.014337938,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b15_x8_053,1.011301475,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b17_x8_055,0.9945413717,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b17_x8_056,1.008649924,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier ntw3_tow_b17_x8_057,1.003646018,multiplies (cost − 1)
+staff,coalition,TF3,faction modifier piedmont_savoy,1.053986676,multiplies (cost − 1)
 staff,merged,T1,b (per star),91.10134749,cost = 1 + …; r − 8
 staff,merged,T1,γ (per star per rating point),-14.81923948,cost = 1 + …; r − 8
 staff,merged,T1,q (per star²),10.01925277,cost = 1 + …; r − 8
@@ -1552,3 +3115,57 @@ staff,merged,TF2,faction modifier ntw3_tow_c10_x8_025,1.017404105,multiplies (co
 staff,merged,TF2,faction modifier ntw3_tow_c14_x8_030,1.100912272,multiplies (cost − 1)
 staff,merged,TF2,faction modifier ntw3_tow_c15_x8_051,1.002245674,multiplies (cost − 1)
 staff,merged,TF2,faction modifier piedmont_savoy,0.8425162099,multiplies (cost − 1)
+staff,merged,T3,b (gold per star^q at rating 8),76.55039271,cost = b·stars^q·(8/r); 1 without stars
+staff,merged,T3,q (star power),1.39,cost = b·stars^q·(8/r); 1 without stars
+staff,merged,TF3,faction modifier britain,0.9997523168,multiplies (cost − 1)
+staff,merged,TF3,faction modifier denmark,0.9951318258,multiplies (cost − 1)
+staff,merged,TF3,faction modifier france,1.004511693,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_hre,1.138614903,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a03_x8_032,0.9622676481,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a03_x8_033,0.9994574562,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a03_x8_038,0.9981557454,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a03_x8_040,1.000165417,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a04_x8_005,0.9413058721,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a05_x8_001,0.9607666956,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a05_x8_004,0.9989674386,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a06_x8_002,0.9274248223,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a08_x8_047,1.005422238,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a09_x8_021,1.00008118,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a11_x8_027,0.9974097684,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a11_x8_028,1.001074123,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a11_x8_029,1.000047593,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a12_x8_003,1.002667924,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a13_x8_022,1.000929154,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_a17_x8_054,1.004644086,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b03_x8_039,1.005035948,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b03_x8_042,0.9943787181,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b04_x8_015,0.9993253849,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b04_x8_016,0.9970967963,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b05_x8_006,1.003198756,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b05_x8_007,0.9992078256,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b06_x8_008,1.000493234,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b06_x8_009,0.9865407862,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b07_x8_018,0.999629858,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b08_x8_044,1.000619158,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b08_x8_045,0.9978980929,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b09_x8_019,0.9942065558,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b09_x8_020,1.583757927,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b10_x8_026,1.000141878,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b11_x8_013,1.000976017,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b11_x8_014,1.000403647,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b12_x8_011,0.9978900418,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b12_x8_012,1.002591668,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b13_x8_049,0.9470060972,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b13_x8_050,0.9983561386,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b14_x8_031,1.000417308,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b15_x8_052,0.9946097931,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b15_x8_053,0.9953214842,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b17_x8_055,0.9983223318,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b17_x8_056,1.016972673,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_b17_x8_057,1.02804706,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_c07_x8_017,0.9951318258,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_c08_x8_048,1.000636229,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_c10_x8_025,0.9990497901,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_c14_x8_030,1.001420152,multiplies (cost − 1)
+staff,merged,TF3,faction modifier ntw3_tow_c15_x8_051,1.00362043,multiplies (cost − 1)
+staff,merged,TF3,faction modifier piedmont_savoy,0.9921262856,multiplies (cost − 1)

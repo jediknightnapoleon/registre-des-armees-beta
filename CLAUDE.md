@@ -105,10 +105,14 @@ reference implementation in both pairs.**
 # Data pipeline (Python 3.12 + Pillow)
 python tools/build_web_data.py            # → web/public/{data,assets}
 python tools/build_analysis_dataset.py    # → data/generated/ntw3_units_analysis.csv
-python analysis/unit_pricing.py           # → analysis/output/ (full pricing model + report, ~85 min — run in background)
+python analysis/unit_pricing.py           # → analysis/output/ (full pricing model + report; run in background.
+                                          #   Nested power searches use a process pool, --workers N, default 6; 1 = serial)
 python analysis/unit_pricing.py --linear --out analysis/linear_results          # fully linear model
 python analysis/unit_pricing.py --artillery-cal projectile --out analysis/calibre_onehot_results   # artillery fixed to the cannon-type one-hot
 python analysis/calibre_function.py       # → analysis/output/calibre_function_report.md (smooth calibre functions, ~12 min)
+python analysis/blind_ideas.py            # → analysis/output/blind_ideas_report.md (blind-study ideas on our folds, ~8 min;
+                                          #   reads blind_study/out from branch blind-pricing-study if present)
+python analysis/extreme_pinning.py        # → analysis/output/extreme_pinning_report.md (pin extreme units to train?, ~5 min)
 python -m pytest tools/tests              # from the repo root; tools/ is a package
 
 # App (from web/)
