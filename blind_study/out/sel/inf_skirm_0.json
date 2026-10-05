@@ -1,0 +1,21 @@
+{
+ "seg": "inf_skirm",
+ "outer": 0,
+ "terms": [
+  "accuracy",
+  "ammo",
+  "morale",
+  "melee_attack",
+  "melee_defense",
+  "range0",
+  "speed_num",
+  "has_guerrilla_deployment",
+  "can_place_stakes",
+  "log_accuracy",
+  "log_reload_skill",
+  "log_morale",
+  "log_melee_defense",
+  "men_raw"
+ ],
+ "inner_mae": 34.18423532277326
+}

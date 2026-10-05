@@ -1,0 +1,24 @@
+{
+ "seg": "inf_skirm",
+ "outer": 1,
+ "terms": [
+  "log_men",
+  "train",
+  "accuracy",
+  "reload_skill",
+  "ammo",
+  "melee_attack",
+  "charge_bonus",
+  "range0",
+  "speed_num",
+  "is_shock_resistant",
+  "has_guerrilla_deployment",
+  "guard_mode",
+  "log_reload_skill",
+  "log_ammo",
+  "log_melee_defense",
+  "men_raw",
+  "log_projectile_reload_time0"
+ ],
+ "inner_mae": 31.408711661705762
+}
