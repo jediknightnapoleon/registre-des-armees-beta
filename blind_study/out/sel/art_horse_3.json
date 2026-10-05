@@ -1,0 +1,27 @@
+{
+ "seg": "art_horse",
+ "outer": 3,
+ "terms": [
+  "log_men",
+  "train",
+  "accuracy",
+  "reload_skill",
+  "morale",
+  "melee_defense",
+  "range0",
+  "projectile_damage0",
+  "projectile_reload_time0",
+  "speed_num",
+  "guns0",
+  "has_stamina",
+  "can_inspire",
+  "log_reload_skill",
+  "log_guns0",
+  "log_projectile_reload_time0",
+  "accuracy^2",
+  "log_men^2",
+  "reload_skill^2",
+  "accuracy*reload"
+ ],
+ "inner_mae": 26.21332696273786
+}

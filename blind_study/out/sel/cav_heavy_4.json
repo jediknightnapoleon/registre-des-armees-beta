@@ -1,0 +1,19 @@
+{
+ "seg": "cav_heavy",
+ "outer": 4,
+ "terms": [
+  "log_men",
+  "melee_attack",
+  "melee_defense",
+  "speed_num",
+  "has_stamina",
+  "is_shock_resistant",
+  "can_inspire",
+  "log_morale",
+  "log_melee_attack",
+  "log_charge_bonus",
+  "men_raw",
+  "melee_attack^2"
+ ],
+ "inner_mae": 45.054315830800846
+}

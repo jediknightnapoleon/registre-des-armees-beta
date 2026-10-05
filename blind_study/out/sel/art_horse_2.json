@@ -1,0 +1,31 @@
+{
+ "seg": "art_horse",
+ "outer": 2,
+ "terms": [
+  "log_men",
+  "train",
+  "reload_skill",
+  "morale",
+  "melee_attack",
+  "melee_defense",
+  "charge_bonus",
+  "projectile_damage0",
+  "projectile_reload_time0",
+  "speed_num",
+  "has_stamina",
+  "can_inspire",
+  "log_accuracy",
+  "log_reload_skill",
+  "log_morale",
+  "log_melee_attack",
+  "log_melee_defense",
+  "log_charge_bonus",
+  "men_raw",
+  "log_guns0",
+  "log_range0",
+  "log_projectile_damage0",
+  "log_projectile_reload_time0",
+  "cat:speed_code"
+ ],
+ "inner_mae": 33.28534820279979
+}

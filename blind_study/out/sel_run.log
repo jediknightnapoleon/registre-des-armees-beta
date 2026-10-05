@@ -50,3 +50,15 @@ done inf_milit 4 24.38
 done cav_lance 2 33.06
 done cav_lance 3 36.13
 done cav_lance 4 38.09
+done cav_heavy 0 41.76
+done cav_lance all 35.05
+done cav_heavy 1 47.65
+done cav_heavy 2 46.45
+done cav_heavy 3 47.56
+done cav_heavy 4 45.05
+done inf_milit all 23.57
+done cav_heavy all 42.35
+done art_horse 2 33.29
+done art_horse 0 24.58
+done art_horse 1 33.97
+done art_horse 3 26.21

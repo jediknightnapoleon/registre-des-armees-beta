@@ -1,0 +1,20 @@
+{
+ "seg": "cav_heavy",
+ "outer": 1,
+ "terms": [
+  "log_men",
+  "train",
+  "melee_attack",
+  "has_stamina",
+  "is_shock_resistant",
+  "can_inspire",
+  "log_morale",
+  "log_melee_attack",
+  "log_melee_defense",
+  "log_charge_bonus",
+  "log_men*melee_attack",
+  "close_formation_spacing_horizontal",
+  "log_men*melee_defense"
+ ],
+ "inner_mae": 47.64839965420062
+}
