@@ -6,7 +6,9 @@ The price (`base_mp_cost`) of Theatre-of-War and Custom units can be written as 
 hand-computable recipe:
 
 1. **Army divisor.** Every army has a price divisor `N/10`, where `N` is the leading
-   number of `army_corps_name` (`[1812] 7. España` → N = 7 → prices ×10/7). Together with
+   number of `army_corps_name` (`[1812] 7. España` → N = 7 → prices ×10/7). It applies to
+   units and generals alike; a few armies deviate from it, some only for their generals
+   (section 3). Together with
    the per-type stat formulas below, this alone takes MAE from 229 gold (per-class
    baseline) to 43.
 2. **Regular units:** one log-linear formula per unit type (11 types, 10–31 coefficients
@@ -87,11 +89,24 @@ These findings come from development data only (experiments 01–18 in `RESULTS.
 1. **Prices are multiplicative in an army divisor.** For a standalone general, the price
    at each star level takes only a handful of values, and their ratios are exact:
    2-star generals cost 159 / 177 / 199 / 228 / 266 gold = 159 / {1.0, 0.9, 0.8, 0.7, 0.6}.
-   The divisor is the army's `N/10`, with N the leading number of `army_corps_name`. A few
-   armies deviate (HRE 9. → 0.79, France (Égypte) 8. → 0.855, Rossiya (Frantsiya) 9. → 0.875,
-   France (Italie) 9. → 0.94, UK Portugal 9. → 0.955, the 11. armies → 1.10–1.15,
-   France (Prusse) 12. → 1.3, UK España Portugal 10. → 0.64). These show up as near-constant
-   entries in the army tables (e.g. HRE light cavalry ×1.138 ≈ 0.9/0.79).
+   The divisor is the army's `N/10`, with N the leading number of `army_corps_name`, and it
+   applies to **all** rows, not only generals: identical regular units in armies with
+   different N have price ratios centred on the N ratio (median 0.999 over 85 pairs; half of
+   the pairs are within ±5%, the rest scatter because of the army × type effects below).
+   For **standalone generals**, a few armies deviate from N/10 (HRE 9. → 0.79,
+   France (Égypte) 8. → 0.855, Rossiya (Frantsiya) 9. → 0.875, France (Italie) 9. → 0.94,
+   UK Portugal 9. → 0.955, the 11. armies → 1.10–1.15, France (Prusse) 12. → 1.3,
+   UK España Portugal 10. → 0.64). These general-level deviations carry over to the army's
+   units only in some cases (all data, units compared with the stats-only model 18b; armies
+   whose generals follow N/10 have a median unit level of 1.00, IQR 0.97–1.02):
+   - **whole army:** HRE units are ×1.12 (generals ×1.14 = 0.9/0.79); Rossiya (Frantsiya)
+     units ×1.04 (generals ×1.03).
+   - **generals only:** UK, España, Portugal — generals ×1.58, units ×0.98 (normal);
+     France (Égypte) — generals ×0.94, units ×0.99.
+   - **within noise / partial:** France (Italie), the 11. and 12. armies, UK Portugal (whose
+     units are ×0.90, cheaper than its generals' ×0.94).
+   The army tables pick these up per type (e.g. HRE light cavalry ×1.138 ≈ 0.9/0.79; the
+   UK, España, Portugal staff-general cell ×1.37 on top of the general formula).
 2. **The rest of the army effect is type-specific.** After the divisor, the residual
    army effect differs by unit type (e.g. heavy cavalry of `[1815] 9. France (Flandres)` and
    `[1815] 9. UK, Nederlanden` is ×0.82 of what their stats imply, while the HRE is ×1.09–1.18
