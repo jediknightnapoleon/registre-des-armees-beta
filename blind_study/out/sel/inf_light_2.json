@@ -1,0 +1,32 @@
+{
+ "seg": "inf_light",
+ "outer": 2,
+ "terms": [
+  "log_men",
+  "accuracy",
+  "reload_skill",
+  "morale",
+  "melee_attack",
+  "melee_defense",
+  "projectile_damage0",
+  "speed_num",
+  "can_form_square",
+  "has_stamina",
+  "is_shock_resistant",
+  "can_inspire",
+  "has_guerrilla_deployment",
+  "guard_mode",
+  "pike_square",
+  "log_accuracy",
+  "log_melee_defense",
+  "log_charge_bonus",
+  "men_raw",
+  "log_men*accuracy",
+  "cat:speed_code",
+  "log_men*melee_attack",
+  "melee_defense^2",
+  "log_men*reload_skill",
+  "morale*accuracy"
+ ],
+ "inner_mae": 19.377160037173248
+}
