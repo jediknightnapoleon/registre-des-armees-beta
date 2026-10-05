@@ -1,0 +1,24 @@
+{
+ "seg": "art_foot",
+ "outer": 4,
+ "terms": [
+  "log_men",
+  "accuracy",
+  "melee_defense",
+  "charge_bonus",
+  "range0",
+  "projectile_reload_time0",
+  "speed_num",
+  "guns0",
+  "can_inspire",
+  "has_guerrilla_deployment",
+  "log_reload_skill",
+  "log_morale",
+  "log_melee_attack",
+  "men_raw",
+  "log_projectile_damage0",
+  "log_projectile_reload_time0",
+  "cat:speed_code"
+ ],
+ "inner_mae": 35.77659809894032
+}
