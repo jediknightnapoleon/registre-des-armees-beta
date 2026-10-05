@@ -54,15 +54,21 @@
     per-army additive premium −0.9 MAE (14a).
 11. Effective coefficients per stage-1 segment with RICH spec: 17–36 (constant flags drop out).
 
+12. Nested per-type greedy selection (exp 13; prune RICH then add squares / men
+    interactions / stat products / dummies) keeps 10–31 terms per type and gives the best
+    CV: 13b 27.3, 13c (sparse army table, 328 cells) 27.4.
+13. Accuracy vs. army-table size (selected formulas): 579 cells 27.3 · 328 cells 27.4 ·
+    241 cells 27.9 · 118 cells 30.7 · none (N/10 only) 43.0. Broad-type tables (55×4) are a
+    worse use of cells (35.0 with RICH formulas).
+
 ## Next steps
 
-- Evaluate exp 13a once selection finishes; keep it if it beats 14a's config (then 13b = 13a
-  + per-army commander premium).
-- Exp 15: compact variants for the accuracy/simplicity trade-off: army offsets per broad type,
-  one shared army table, N/10 only (no tables).
-- Pick 2–3 final candidates → holdout once (`src/90_holdout.py`), error analysis
-  (`src/error_analysis.py`), export model (`src/export_model.py`) → REPORT.md.
+- Holdout candidates (decided on CV): **13c** (best, sparse 328-cell table), **18a**
+  (compact, 118 cells), **18b** (simplest, N/10 only). Baselines 01 and 02e are scored on the
+  holdout too for comparison. `src/candidates.py` + `src/90_holdout.py` (one shot).
+- Then: error analysis (CV OOF of 13c + holdout), export final model, write REPORT.md.
 
 ## Open questions
 
-- Is using the unit_key type token acceptable? (It's a type code, not an id; reported both.)
+- Is using the unit_key type token acceptable? (It's a type code, not an id; reported both:
+  06c shows the cost of not using it.)

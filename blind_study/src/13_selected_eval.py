@@ -45,12 +45,12 @@ def run(eid, desc, note="", **kw):
     fm, oof = cross_validate(dev, lambda tr, te: mk(int(te["fold"].iloc[0]), **kw).fit(tr).predict(te))
     save_oof(eid, dev, oof)
     m = mk("all", **kw).fit(dev)
-    n1 = m.stage1.n_params_by_seg()
     ncv = sum(len(c) for c in m.cv_coef.values())
     nz = {s: int(sum(1 for c in m.stage1.cols if c.startswith(s + ":") and abs(m.stage1.coef[c]) > 1e-12))
           for s in m.stage1.segs}
+    nfac = sum(1 for c in m.stage1.cols if c.startswith("fac:") and abs(m.stage1.coef[c]) > 1e-12)
     append_result(eid, "regular: 11 types + staff; commanders: stage 2", desc, fm,
-                  f"≤{max(nz.values())}/seg + {n1['faction']} army + {ncv} cv", note)
+                  f"≤{max(nz.values())}/seg + {nfac} army cells + {ncv} cv", note)
     return m
 
 
@@ -62,6 +62,14 @@ if __name__ == "__main__":
     if "13b" in todo:
         run("13b", "13a + per-army commander premium (as 14a)", note="selection nested inside CV",
             cv_army_lam=1e-3)
+    if "18a" in todo:
+        run("18a", "13b with sparse army table (L1 1e-4, ~100 cells)", cv_army_lam=1e-3,
+            l1_f=1e-4, note="compact candidate")
+    if "18b" in todo:
+        run("18b", "13a with no army tables: divisor N/10 only", lam_f=None,
+            note="simplest candidate")
+    if "18c" in todo:
+        run("18c", "13b with sparse army table (L1 3e-5)", cv_army_lam=1e-3, l1_f=3e-5)
     if "13c" in todo:
         run("13c", "13b with sparse army x type table (L1 1e-5, as 16a)",
             note="selection nested inside CV", cv_army_lam=1e-3, l1_f=1e-5)

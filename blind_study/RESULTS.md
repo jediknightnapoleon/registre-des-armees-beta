@@ -58,6 +58,9 @@ bottom, filled in only at the end.
 | 13a | 2026-10-05 07:03 | regular: 11 types + staff; commanders: stage 2 | 12c with per-type stage-1 terms chosen by nested greedy selection | 28.3 ± 0.4 | 8.07 ± 1.84 | 0.9847 ± 0.0014 | ≤31/seg + 579 army + 12 cv | selection nested inside CV; sparser (10–31 terms/seg) and −0.3 MAE vs 12c |
 | 13b | 2026-10-05 07:03 | regular: 11 types + staff; commanders: stage 2 | 13a + per-army commander premium (as 14a) | 27.3 ± 0.5 | 6.98 ± 0.90 | 0.9850 ± 0.0015 | ≤31/seg + 579 army + 67 cv | nested selection; **best**: −0.4 MAE vs 14a with fewer terms |
 | 13c | 2026-10-05 07:03 | regular: 11 types + staff; commanders: stage 2 | 13b with sparse army x type table (L1 1e-5, as 16a) | 27.4 ± 0.6 | 7.04 ± 0.91 | 0.9849 ± 0.0016 | ≤31/seg + 328 army cells + 67 cv | nested selection; sparse table (328 of 579 cells) at equal accuracy |
+| 18a | 2026-10-05 07:04 | regular: 11 types + staff; commanders: stage 2 | 13b with sparse army table (L1 1e-4, ~100 cells) | 30.7 ± 0.6 | 7.54 ± 0.75 | 0.9820 ± 0.0018 | ≤31/seg + 118 army cells + 67 cv | compact candidate: 118 cells, +3.3 MAE |
+| 18b | 2026-10-05 07:05 | regular: 11 types + staff; commanders: stage 2 | 13a with no army tables: divisor N/10 only | 43.0 ± 0.9 | 11.04 ± 1.95 | 0.9678 ± 0.0020 | ≤31/seg + 0 army cells + 12 cv | simplest candidate: only N/10, no lookup tables |
+| 18c | 2026-10-05 07:05 | regular: 11 types + staff; commanders: stage 2 | 13b with sparse army table (L1 3e-5) | 27.9 ± 0.7 | 7.08 ± 0.77 | 0.9845 ± 0.0017 | ≤31/seg + 241 army cells + 67 cv | trade-off point: 241 cells, +0.5 MAE vs 13c |
 
 ## Holdout (final, evaluated once)
 
