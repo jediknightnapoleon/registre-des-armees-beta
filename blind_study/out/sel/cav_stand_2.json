@@ -1,0 +1,17 @@
+{
+ "seg": "cav_stand",
+ "outer": 2,
+ "terms": [
+  "log_men",
+  "morale",
+  "melee_attack",
+  "melee_defense",
+  "speed_num",
+  "has_stamina",
+  "is_shock_resistant",
+  "log_morale",
+  "log_charge_bonus",
+  "men_raw"
+ ],
+ "inner_mae": 32.734318349245044
+}

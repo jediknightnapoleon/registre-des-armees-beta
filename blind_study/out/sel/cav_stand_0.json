@@ -1,0 +1,18 @@
+{
+ "seg": "cav_stand",
+ "outer": 0,
+ "terms": [
+  "log_men",
+  "train",
+  "morale",
+  "melee_attack",
+  "charge_bonus",
+  "has_stamina",
+  "is_shock_resistant",
+  "log_morale",
+  "log_melee_attack",
+  "log_men^2",
+  "morale*melee_attack"
+ ],
+ "inner_mae": 30.955026664337552
+}
