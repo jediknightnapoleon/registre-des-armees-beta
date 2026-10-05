@@ -1,0 +1,33 @@
+{
+ "seg": "inf_line",
+ "outer": 4,
+ "terms": [
+  "log_men",
+  "accuracy",
+  "ammo",
+  "morale",
+  "melee_attack",
+  "melee_defense",
+  "charge_bonus",
+  "speed_num",
+  "can_form_square",
+  "has_stamina",
+  "is_shock_resistant",
+  "can_inspire",
+  "can_place_stakes",
+  "pike_square",
+  "log_reload_skill",
+  "log_ammo",
+  "log_morale",
+  "log_melee_defense",
+  "log_charge_bonus",
+  "men_raw",
+  "log_men*morale",
+  "morale*accuracy",
+  "accuracy^2",
+  "morale*melee_attack",
+  "charge_bonus^2",
+  "log_men*reload_skill"
+ ],
+ "inner_mae": 16.94005088598757
+}
