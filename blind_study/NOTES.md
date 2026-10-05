@@ -6,8 +6,12 @@
   `src/00_make_split.py` — **fixed, never regenerate**. Both are stratified by `unit_class`
   and grouped by identical feature rows (`group_id` = hash of `FEATURE_COLS` in
   `src/common.py`).
-- Experiments 01–10 done (see RESULTS.md). Best so far: **10a/10b** (CV MAE 32.1, MAPE 7.5%,
-  R² 0.98): two-stage model (`src/twostage.py`).
+- Experiments 01–14 done (see RESULTS.md). Best so far: **14a** (CV MAE 27.7, MAPE 7.3%,
+  R² 0.985): two-stage model (`src/twostage.py`), stage 1 fitted by price-weighted LAD on
+  log price (IRLS), commander stage with star slopes + per-army premium.
+- Exp 13 (nested per-segment feature selection) is running/ran via
+  `src/13_select_run.py` (cached per job in `out/sel/<seg>_<fold>.json`, resumable: just
+  rerun it); evaluate with `src/13_selected_eval.py`.
 
 ## Findings so far
 
@@ -45,14 +49,19 @@
    features to training range (exp() extrapolation blew up artillery/militia otherwise).
    Ridge 1e-4..1e-5 (× n) is right.
 
+10. Fitting loss matters: price-weighted LAD on log price (IRLS) beats plain least squares on
+    log price by ~3.5 MAE (12c). Commander stage: star-specific slopes small gain (11c),
+    per-army additive premium −0.9 MAE (14a).
+11. Effective coefficients per stage-1 segment with RICH spec: 17–36 (constant flags drop out).
+
 ## Next steps
 
-- Prune stage-1 specs to ≤ 40 coefficients per segment (10a has 41) — drop flags that are
-  constant within a segment, choose per-segment feature subsets on CV.
-- Try weighting the log fit toward MAE (weights ∝ price) / bias correction.
-- Commander stage: star-specific slopes; use commander's de-boosted stats?
-- Army table compaction: shrink to N/10 + exceptions per type; compare accuracy.
-- Error analysis by faction / type for the report.
+- Evaluate exp 13a once selection finishes; keep it if it beats 14a's config (then 13b = 13a
+  + per-army commander premium).
+- Exp 15: compact variants for the accuracy/simplicity trade-off: army offsets per broad type,
+  one shared army table, N/10 only (no tables).
+- Pick 2–3 final candidates → holdout once (`src/90_holdout.py`), error analysis
+  (`src/error_analysis.py`), export model (`src/export_model.py`) → REPORT.md.
 
 ## Open questions
 
