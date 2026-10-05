@@ -1,0 +1,23 @@
+{
+ "seg": "art_foot",
+ "outer": 3,
+ "terms": [
+  "log_men",
+  "accuracy",
+  "reload_skill",
+  "range0",
+  "projectile_damage0",
+  "projectile_reload_time0",
+  "speed_num",
+  "guns0",
+  "can_inspire",
+  "has_guerrilla_deployment",
+  "log_accuracy",
+  "log_morale",
+  "men_raw",
+  "log_range0",
+  "log_projectile_damage0",
+  "log_projectile_reload_time0"
+ ],
+ "inner_mae": 39.895782913533964
+}
