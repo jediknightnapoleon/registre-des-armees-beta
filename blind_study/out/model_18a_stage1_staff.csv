@@ -1,0 +1,3 @@
+term,x,coef,lo,hi
+const,intercept,4.120344438790355,,
+log_stars,ln(command_stars),1.3834111207358353,0.0,2.1972245773362196

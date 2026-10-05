@@ -1,0 +1,32 @@
+term,x,coef,lo,hi
+const,intercept,-7.390867198125347,,
+log_men,ln(men_raw),2.280689882489883,4.867534450455582,6.113682179832232
+train,training code,0.00454276098426607,1.0,4.0
+reload_skill,reload_skill,-0.026686147204674163,23.0,101.0
+ammo,ammo,-0.00029806300500515297,15.0,70.0
+melee_attack,melee_attack,-0.021636823271232994,6.0,19.0
+charge_bonus,charge_bonus,0.004059092182777354,10.0,26.0
+projectile_reload_time0,projectile_reload_time,0.027962507820292994,14.0,20.0
+speed_num,speed digit,0.05583980543248249,3.0,6.0
+can_form_square,[can_form_square],0.1524348634339037,,
+has_stamina,[has_stamina],0.11427207396275495,,
+is_shock_resistant,[is_shock_resistant],0.10440398212041957,,
+can_inspire,[can_inspire],0.10499715514009308,,
+has_guerrilla_deployment,[has_guerrilla_deployment],0.5285969725302164,,
+guard_mode,[guard_mode],0.05831064539447271,,
+pike_square,[pike_square],0.021518381485931992,,
+log_accuracy,ln(1 + accuracy),0.3673039120562027,2.8903717578961645,3.4339872044851463
+log_morale,ln(1 + morale),0.19595949837117468,0.0,2.6390573296152584
+log_melee_defense,ln(1 + melee_defense),0.012352061133815553,0.6931471805599453,2.5649493574615367
+log_charge_bonus,ln(1 + charge_bonus),-0.07169487579676209,2.3978952727983707,3.295836866004329
+men_raw,men_raw,-0.006773482683418108,130.0,452.0
+log_projectile_damage0,ln(1 + projectile_damage),-1.213402979220947,0.5766133643039938,0.6043159668533296
+log_men*reload_skill,ln(men_raw) × reload_skill,0.005834271938181142,130.08781164885661,566.9259387451951
+speed_code=G5,[speed_code = G5],0.13034546657545099,,
+speed_code=G6,[speed_code = G6],0.0753115381899528,,
+speed_code=L3,[speed_code = L3],-0.09622414951014113,,
+speed_code=L4,[speed_code = L4],0.02042600707435452,,
+speed_code=L5,[speed_code = L5],0.054392881422165425,,
+speed_code=L6,[speed_code = L6],0.05381943076154965,,
+log_men*melee_attack,ln(men_raw) × melee_attack,0.010694920378377751,34.86684595786021,99.28918680055084
+melee_attack^2,melee_attack²,-0.00010700238782415809,36.0,361.0

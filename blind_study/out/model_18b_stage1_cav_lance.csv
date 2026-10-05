@@ -1,0 +1,15 @@
+term,x,coef,lo,hi
+const,intercept,1.8784458055230155,,
+log_men,ln(men_raw),0.626268776116193,4.356708826689592,5.655991810819852
+morale,morale,0.037902295976731025,4.0,16.0
+melee_defense,melee_defense,-0.016663059523283223,4.0,19.0
+charge_bonus,charge_bonus,-0.06283531553172338,1.0,9.0
+rank_depth,rank_depth,-0.02219614489211874,6.0,16.0
+has_stamina,[has_stamina],0.2718017537277572,,
+is_shock_resistant,[is_shock_resistant],0.285260261694625,,
+can_inspire,[can_inspire],0.07332721774422375,,
+has_guerrilla_deployment,[has_guerrilla_deployment],0.015395763403899452,,
+log_melee_attack,ln(1 + melee_attack),-0.08125336879552696,1.9459101490553132,2.9444389791664403
+log_melee_defense,ln(1 + melee_defense),0.2794042029325592,1.6094379124341003,2.995732273553991
+log_charge_bonus,ln(1 + charge_bonus),0.48378992311982205,0.6931471805599453,2.302585092994046
+log_men*melee_attack,ln(men_raw) × melee_attack,0.0032145560037134683,29.649854535655823,90.89740813049167

@@ -1,0 +1,24 @@
+term,x,coef,lo,hi
+const,intercept,-11.842062472309415,,
+log_men,ln(men_raw),2.0579883193271407,2.4849066497880004,4.0943445622221
+accuracy,accuracy,0.005807038701421801,29.0,85.0
+reload_skill,reload_skill,0.0037227930084102376,35.0,100.0
+morale,morale,0.0976790976929151,5.0,14.0
+range0,range,0.0020353376866991423,250.0,600.0
+projectile_damage0,projectile_damage,0.01138375793165661,9.0,90.0
+projectile_reload_time0,projectile_reload_time,-0.1599100126907059,14.0,40.0
+speed_num,speed digit,0.3822288591607216,1.0,3.0
+guns0,guns,-0.244220993466157,1.0,5.0
+has_stamina,[has_stamina],0.2058947387352888,,
+can_inspire,[can_inspire],0.14361310319709927,,
+log_morale,ln(1 + morale),-0.5385538202436144,1.791759469228055,2.70805020110221
+log_melee_attack,ln(1 + melee_attack),0.27341994098626804,0.6931471805599453,1.6094379124341003
+log_guns0,ln(1 + guns),-0.11218531540279907,0.6931471805599453,1.791759469228055
+log_projectile_reload_time0,ln(1 + projectile_reload_time),4.1264633982739936,2.70805020110221,3.713572066704308
+morale*accuracy,morale × accuracy,-0.00025738728825068106,175.0,1162.0
+unit_training_level=poorly_trained,[unit_training_level = poorly_trained],0.016821449446338517,,
+unit_training_level=trained,[unit_training_level = trained],0.0030842062691701566,,
+unit_training_level=well_trained,[unit_training_level = well_trained],-0.024019515890329086,,
+log_men^2,ln(men_raw)²,0.04715750859872191,6.174761058160624,16.763657394197683
+close_formation_spacing_vertical,close_formation_spacing_vertical,0.0005906717910546618,15.0,35.0
+log_men*melee_attack,ln(men_raw) × melee_attack,-0.013416931637886821,2.4849066497880004,15.484804043631565

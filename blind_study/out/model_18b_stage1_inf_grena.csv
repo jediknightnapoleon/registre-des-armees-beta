@@ -1,0 +1,32 @@
+term,x,coef,lo,hi
+const,intercept,-0.7884163693226522,,
+log_men,ln(men_raw),1.792303570070488,4.7535901911063645,6.091309882077698
+accuracy,accuracy,-0.12106960988691655,9.0,30.0
+reload_skill,reload_skill,0.004097603504002189,4.0,99.0
+morale,morale,0.03256497446937463,4.0,18.0
+melee_attack,melee_attack,0.1455277727639885,12.0,25.0
+melee_defense,melee_defense,-0.04678624622658167,6.0,18.0
+charge_bonus,charge_bonus,-0.030254914847738904,16.0,33.0
+range0,range,-0.0011269202621829854,70.0,100.0
+projectile_damage0,projectile_damage,16.02708853862207,0.48,0.83
+speed_num,speed digit,0.0625853819775635,1.0,6.0
+can_form_square,[can_form_square],0.10381955401102412,,
+has_stamina,[has_stamina],0.10937881000892243,,
+is_shock_resistant,[is_shock_resistant],0.10623756562614992,,
+can_inspire,[can_inspire],0.15130789621988952,,
+has_guerrilla_deployment,[has_guerrilla_deployment],0.339100031385276,,
+can_place_stakes,[can_place_stakes],0.17101368280469573,,
+can_build_barricades,[can_build_barricades],0.09011195298955962,,
+log_accuracy,ln(1 + accuracy),-0.23331164386629868,2.302585092994046,3.4339872044851463
+log_melee_attack,ln(1 + melee_attack),-2.2533820960798865,2.5649493574615367,3.258096538021482
+log_melee_defense,ln(1 + melee_defense),0.5363696490636333,1.9459101490553132,2.9444389791664403
+log_charge_bonus,ln(1 + charge_bonus),1.1465788034204558,2.833213344056216,3.5263605246161616
+men_raw,men_raw,-0.006061710788806814,116.0,442.0
+log_projectile_damage0,ln(1 + projectile_damage),-26.018709875137688,0.3920420877760237,0.6043159668533296
+log_men*morale,ln(men_raw) × morale,0.010085524508373628,21.922555693367965,98.65150062015584
+morale*accuracy,morale × accuracy,-0.00325336418809786,75.0,486.0
+log_men*accuracy,ln(men_raw) × accuracy,0.03406848992061182,44.345283166414845,167.95265876995126
+morale^2,morale²,0.0015492520322949346,16.0,324.0
+morale*melee_attack,morale × melee_attack,-0.0015360698315981702,48.0,450.0
+unit_drill_set=drill_set_infantry_light,[unit_drill_set = drill_set_infantry_light],0.24106226931837896,,
+unit_drill_set=drill_set_infantry_line,[unit_drill_set = drill_set_infantry_line],-0.010506672895656969,,

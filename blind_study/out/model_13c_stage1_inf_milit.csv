@@ -1,0 +1,29 @@
+term,x,coef,lo,hi
+const,intercept,-8.007814080198344,,
+log_men,ln(men_raw),1.2519985243493268,4.852030263919617,6.881411303642535
+train,training code,-0.015660093459039265,0.0,3.0
+ammo,ammo,0.007070700558912146,0.0,70.0
+morale,morale,0.05384638879975195,0.0,18.0
+melee_defense,melee_defense,0.04001568277884367,0.0,9.0
+charge_bonus,charge_bonus,-0.09811817198690154,8.0,29.0
+range0,range,0.00840370080461037,0.0,100.0
+projectile_damage0,projectile_damage,0.6110607227862488,0.0,0.83
+speed_num,speed digit,0.15690966339168438,1.0,6.0
+can_form_square,[can_form_square],0.14926402874441314,,
+is_shock_resistant,[is_shock_resistant],0.07619989237280742,,
+can_inspire,[can_inspire],-0.42986494259849345,,
+has_guerrilla_deployment,[has_guerrilla_deployment],0.39444701084843203,,
+can_place_stakes,[can_place_stakes],0.08910177640677511,,
+scares_enemies,[scares_enemies],0.4401172029335377,,
+skirmish,[skirmish],-1.203818063252861,,
+log_accuracy,ln(1 + accuracy),0.4296690388769279,0.0,3.4011973816621555
+log_reload_skill,ln(1 + reload_skill),0.14534653394272856,0.0,4.30406509320417
+log_ammo,ln(1 + ammo),-0.235880086687428,0.0,4.2626798770413155
+log_morale,ln(1 + morale),0.1342760154622217,0.0,2.9444389791664403
+log_melee_attack,ln(1 + melee_attack),1.0659675431231328,1.791759469228055,3.1354942159291497
+log_melee_defense,ln(1 + melee_defense),-0.2090369410833016,0.0,2.302585092994046
+log_charge_bonus,ln(1 + charge_bonus),1.357940490872106,2.1972245773362196,3.4011973816621555
+men_raw,men_raw,-0.0026031538101349877,128.0,974.0
+log_projectile_damage0,ln(1 + projectile_damage),-0.6713944462878219,0.0,0.6043159668533296
+log_projectile_reload_time0,ln(1 + projectile_reload_time),-0.21730790723511914,0.0,3.044522437723423
+log_men^2,ln(men_raw)²,0.043975591267733115,23.542197681991865,47.35382152989926

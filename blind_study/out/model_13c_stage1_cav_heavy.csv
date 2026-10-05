@@ -1,0 +1,11 @@
+term,x,coef,lo,hi
+const,intercept,0.4398496762316668,,
+log_men,ln(men_raw),0.5795147410930057,4.382026634673881,5.823045895483019
+train,training code,-0.011689749096751672,1.0,4.0
+morale,morale,0.022107593360075548,7.0,18.0
+melee_attack,melee_attack,-0.052836470182862375,11.0,27.0
+charge_bonus,charge_bonus,0.013917412899592339,5.0,19.0
+has_stamina,[has_stamina],0.15983710257780817,,
+is_shock_resistant,[is_shock_resistant],0.33307102491922486,,
+can_inspire,[can_inspire],0.1576108728693773,,
+log_melee_attack,ln(1 + melee_attack),1.3098001916320783,2.4849066497880004,3.332204510175204

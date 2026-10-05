@@ -1,0 +1,19 @@
+term,x,coef,lo,hi
+const,intercept,-9.006993352401402,,
+log_men,ln(men_raw),1.9703564819247357,2.995732273553991,6.173786103901937
+accuracy,accuracy,0.006018190230816787,6.0,82.0
+reload_skill,reload_skill,0.0044978585952996945,14.0,100.0
+morale,morale,0.025563075986168204,2.0,12.0
+melee_defense,melee_defense,-0.2994906864999265,3.0,6.0
+charge_bonus,charge_bonus,0.3976236158021019,0.0,2.0
+range0,range,0.0009354054802853498,280.0,1400.0
+projectile_reload_time0,projectile_reload_time,-0.028430052910039104,17.0,80.0
+speed_num,speed digit,0.18243076520090543,0.0,6.0
+guns0,guns,0.004954754963070129,1.0,12.0
+can_inspire,[can_inspire],0.1629819024096448,,
+has_guerrilla_deployment,[has_guerrilla_deployment],0.35907816594430614,,
+log_melee_defense,ln(1 + melee_defense),1.5137164381901989,1.3862943611198906,1.9459101490553132
+log_charge_bonus,ln(1 + charge_bonus),-0.6231184770210146,0.0,1.0986122886681098
+men_raw,men_raw,-0.006909316936436721,20.0,480.0
+log_projectile_damage0,ln(1 + projectile_damage),-0.14590461309075853,2.3978952727983707,5.081404364984463
+log_projectile_reload_time0,ln(1 + projectile_reload_time),1.7747636243294074,2.8903717578961645,4.394449154672439
