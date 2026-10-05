@@ -1,0 +1,27 @@
+{
+ "seg": "inf_skirm",
+ "outer": 4,
+ "terms": [
+  "log_men",
+  "train",
+  "accuracy",
+  "reload_skill",
+  "morale",
+  "melee_attack",
+  "charge_bonus",
+  "speed_num",
+  "rank_depth",
+  "is_shock_resistant",
+  "can_inspire",
+  "has_guerrilla_deployment",
+  "guard_mode",
+  "log_accuracy",
+  "log_reload_skill",
+  "log_ammo",
+  "log_morale",
+  "men_raw",
+  "morale^2",
+  "morale*melee_attack"
+ ],
+ "inner_mae": 29.02120834033818
+}

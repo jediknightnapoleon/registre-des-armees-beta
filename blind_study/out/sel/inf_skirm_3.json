@@ -1,0 +1,23 @@
+{
+ "seg": "inf_skirm",
+ "outer": 3,
+ "terms": [
+  "log_men",
+  "accuracy",
+  "reload_skill",
+  "ammo",
+  "morale",
+  "melee_attack",
+  "melee_defense",
+  "charge_bonus",
+  "speed_num",
+  "has_guerrilla_deployment",
+  "guard_mode",
+  "log_accuracy",
+  "log_reload_skill",
+  "log_ammo",
+  "log_charge_bonus",
+  "men_raw"
+ ],
+ "inner_mae": 26.034892955757588
+}
