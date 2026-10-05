@@ -20,6 +20,18 @@ bottom, filled in only at the end.
 | 06a | 2026-10-05 03:56 | 12 segments, joint | type segments; log-linear stats + commander terms; army offset | 54.4 ± 2.4 | 14.38 ± 3.29 | 0.9006 ± 0.1056 | 32/seg + 55 army | unit type from unit_key token; commanders join their unit's segment: big gain |
 | 06b | 2026-10-05 03:56 | 12 segments, joint | 06a, fit without rows < 50 gold | 51.2 ± 2.1 | 14.39 ± 3.46 | 0.9016 ± 0.1218 | 32/seg + 55 army | near-free commanders (<50) distort log fit; dropping them from training helps |
 | 06c | 2026-10-05 03:56 | 4 segments, joint | base-type segments + speed-letter/drill dummies (no unit_key); fit w/o < 50 gold | 59.7 ± 2.5 | 16.07 ± 2.95 | 0.8830 ± 0.1246 | 38/seg + 55 army | without unit_key type code: +8.5 MAE worse than 06b |
+| 07a | 2026-10-05 03:57 | 12 segments, joint | 06b with separate army offsets for staff generals and units | 51.1 ± 2.1 | 14.35 ± 3.46 | 0.9016 ± 0.1218 | 32/seg + 105 army | negligible gain |
+| 07b | 2026-10-05 03:57 | 12 segments, joint | 07a with weaker shrinkage (1e-4) | 51.2 ± 2.1 | 14.34 ± 3.44 | 0.9009 ± 0.1233 | 32/seg + 105 army | shrinkage barely matters |
+| 07c | 2026-10-05 03:57 | 12 segments, joint | 07a with stronger shrinkage (1e-2) | 50.8 ± 2.0 | 14.46 ± 3.52 | 0.9041 ± 0.1170 | 32/seg + 105 army | army offsets are not the bottleneck; unit stats are |
+| 08a | 2026-10-05 03:59 | 11 types x (regular, commander) + staff, joint | commander/regular split; army offsets: staff + units tables | 50.3 ± 2.6 | 14.78 ± 5.43 | 0.9122 ± 0.0932 | 31/seg + 105 army | separate coefficients for commanders helps a little |
+| 08b | 2026-10-05 03:59 | 11 types x (regular, commander) + staff, joint | commander/regular split; army offsets per base type (staff/inf/cav/art) | 48.5 ± 2.5 | 14.46 ± 5.38 | 0.9136 ± 0.0963 | 31/seg + 215 army | army effect differs by broad type |
+| 08c | 2026-10-05 03:59 | 11 types x (regular, commander) + staff, joint | commander/regular split; army offsets per unit type (12 tables) | 48.5 ± 2.5 | 14.55 ± 5.43 | 0.9134 ± 0.0969 | 31/seg + 585 army | shrinkage 1e-2 too strong for small army x type cells |
+| 08d | 2026-10-05 03:59 | 11 types x (regular, commander) + staff, joint | 08b with weak army shrinkage (1e-4) | 47.4 ± 2.4 | 13.85 ± 4.98 | 0.9028 ± 0.1239 | 31/seg + 215 army | weak shrinkage better |
+| 08e | 2026-10-05 04:00 | 11 types x (regular, commander) + staff, joint | 08c with weak army shrinkage (1e-4) | 42.5 ± 2.5 | 13.29 ± 5.16 | 0.9004 ± 0.1423 | 31/seg + 585 army | army x unit-type table (55x12) helps most; not compact |
+| 09a | 2026-10-05 04:01 | regular: 11 types + staff; commanders: stage 2 | two-stage; commander adj. global (a, b0..b5), least squares | 39.5 ± 2.2 | 9.45 ± 0.61 | 0.9118 ± 0.1287 | 29/seg + 579 army + 7 cv | commanders additive in regular price: big gain, 7 params |
+| 09b | 2026-10-05 04:01 | regular: 11 types + staff; commanders: stage 2 | two-stage; commander adj. per base type, least squares | 39.6 ± 2.2 | 9.89 ± 0.63 | 0.9122 ± 0.1286 | 29/seg + 579 army + 21 cv | no gain over global |
+| 09c | 2026-10-05 04:01 | regular: 11 types + staff; commanders: stage 2 | two-stage; commander adj. per unit type, least squares | 39.3 ± 2.1 | 10.49 ± 1.63 | 0.9136 ± 0.1285 | 29/seg + 579 army + 77 cv | marginal |
+| 09d | 2026-10-05 04:01 | regular: 11 types + staff; commanders: stage 2 | two-stage; commander adj. per unit type, least abs. deviation | 39.1 ± 2.0 | 9.68 ± 0.72 | 0.9136 ± 0.1285 | 29/seg + 579 army + 77 cv | LAD marginally better; global LS is the simple choice |
 
 ## Holdout (final, evaluated once)
 
