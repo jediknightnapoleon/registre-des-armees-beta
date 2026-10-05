@@ -55,7 +55,13 @@ def run(eid, desc, note="", **kw):
 
 
 if __name__ == "__main__":
-    todo = sys.argv[1:] or ["13a"]
+    todo = sys.argv[1:] or ["13a", "13b", "13c"]
     if "13a" in todo:
         run("13a", "12c with per-type stage-1 terms chosen by nested greedy selection",
             note="selection nested inside CV")
+    if "13b" in todo:
+        run("13b", "13a + per-army commander premium (as 14a)", note="selection nested inside CV",
+            cv_army_lam=1e-3)
+    if "13c" in todo:
+        run("13c", "13b with sparse army x type table (L1 1e-5, as 16a)",
+            note="selection nested inside CV", cv_army_lam=1e-3, l1_f=1e-5)

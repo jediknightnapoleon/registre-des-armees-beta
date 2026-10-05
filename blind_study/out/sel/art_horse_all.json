@@ -1,0 +1,27 @@
+{
+ "seg": "art_horse",
+ "outer": "all",
+ "terms": [
+  "log_men",
+  "accuracy",
+  "reload_skill",
+  "morale",
+  "range0",
+  "projectile_damage0",
+  "projectile_reload_time0",
+  "speed_num",
+  "guns0",
+  "has_stamina",
+  "can_inspire",
+  "log_morale",
+  "log_melee_attack",
+  "log_guns0",
+  "log_projectile_reload_time0",
+  "morale*accuracy",
+  "cat:unit_training_level",
+  "log_men^2",
+  "close_formation_spacing_vertical",
+  "log_men*melee_attack"
+ ],
+ "inner_mae": 24.919056739640006
+}
