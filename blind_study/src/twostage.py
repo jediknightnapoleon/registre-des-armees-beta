@@ -37,7 +37,7 @@ class TwoStage:
     def __init__(self, reg_seg_fn, reg_specs, army_col, lam_f=1e-4, rule_fn=None,
                  cv_group_fn=None, lowcut=50, star_levels=(0, 1, 2, 3, 4, 5),
                  cv_loss="l2", reg_lam=1e-4, slope_col=None, star_slopes=False,
-                 weight="none", irls=0, cv_army_lam=None):
+                 weight="none", irls=0, cv_army_lam=None, l1_f=None):
         self.reg_seg_fn, self.reg_specs, self.army_col = reg_seg_fn, reg_specs, army_col
         self.lam_f, self.rule_fn, self.lowcut = lam_f, rule_fn, lowcut
         self.cv_group_fn = cv_group_fn or (lambda d: np.full(len(d), "all", dtype=object))
@@ -46,6 +46,7 @@ class TwoStage:
         self.slope_col, self.star_slopes = slope_col, star_slopes
         self.weight, self.irls = weight, irls
         self.cv_army_lam = cv_army_lam
+        self.l1_f = l1_f
 
     def fit(self, df):
         reg = df[df["is_commander_variant"] == 0]
@@ -53,7 +54,8 @@ class TwoStage:
         self.stage1 = JointLogLinear(self.reg_seg_fn, self.reg_specs, use_n=True,
                                      lam_f=self.lam_f, rule_fn=self.rule_fn,
                                      faction_col=self.army_col, lam=self.reg_lam,
-                                     weight=self.weight, irls=self.irls).fit(reg)
+                                     weight=self.weight, irls=self.irls,
+                                     l1_f=self.l1_f).fit(reg)
         cv = df[df["is_commander_variant"] == 1]
         p_reg = self.stage1.predict(cv)
         self.slope_levels = sorted(set(cv[self.slope_col])) if self.slope_col else None

@@ -50,6 +50,9 @@ bottom, filled in only at the end.
 | 15b | 2026-10-05 06:37 | regular: 11 types + staff; commanders: stage 2 | 14a with one army table for units + one for staff (55x2) | 38.3 ± 1.2 | 9.47 ± 1.43 | 0.9730 ± 0.0022 | 41/seg + 105 army + 67 cv | one army table: +10.6 MAE |
 | 15c | 2026-10-05 06:37 | regular: 11 types + staff; commanders: stage 2 | 14a with no stage-1 army tables (N/10 only); commander army premium kept | 40.2 ± 1.1 | 10.00 ± 1.90 | 0.9708 ± 0.0023 | 41/seg + 0 army + 67 cv | N/10 only in stage 1: +12.5 MAE |
 | 15d | 2026-10-05 06:37 | regular: 11 types + staff; commanders: stage 2 | no army tables at all: divisor N/10 only | 41.8 ± 1.2 | 10.85 ± 2.13 | 0.9695 ± 0.0022 | 41/seg + 0 army + 12 cv | simplest: no lookup tables beyond N |
+| 16a | 2026-10-05 06:45 | regular: 11 types + staff; commanders: stage 2 | 14a with sparse army x type table (L1 1e-05) | 27.9 ± 0.9 | 7.39 ± 1.11 | 0.9840 ± 0.0029 | ≤36/seg + 308 army cells + 67 cv | sparse table: half the cells, same accuracy as 14a |
+| 16b | 2026-10-05 06:48 | regular: 11 types + staff; commanders: stage 2 | 14a with sparse army x type table (L1 3e-05) | 28.7 ± 0.9 | 7.37 ± 0.77 | 0.9835 ± 0.0028 | ≤36/seg + 220 army cells + 67 cv | 220 cells: +1.0 MAE |
+| 16c | 2026-10-05 06:49 | regular: 11 types + staff; commanders: stage 2 | 14a with sparse army x type table (L1 0.0001) | 31.8 ± 1.0 | 8.09 ± 0.95 | 0.9803 ± 0.0026 | ≤36/seg + 96 army cells + 67 cv | 96 cells: +4.1 MAE; still beats broad-type tables (215 cells, 35.0) |
 
 ## Holdout (final, evaluated once)
 

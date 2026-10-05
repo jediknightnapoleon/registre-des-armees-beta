@@ -101,9 +101,11 @@ class JointLogLinear:
     """
 
     def __init__(self, seg_fn, specs, use_n=True, lam_f=1.0, lam=1e-4, rule_fn=None,
-                 faction_col="faction_key", clip=True, weight="none", irls=0):
+                 faction_col="faction_key", clip=True, weight="none", irls=0, l1_f=None,
+                 l1_iter=15, l1_thresh=0.01):
         self.seg_fn, self.specs, self.use_n, self.lam_f, self.lam = seg_fn, specs, use_n, lam_f, lam
         self.clip, self.weight, self.irls = clip, weight, irls
+        self.l1_f, self.l1_iter, self.l1_thresh = l1_f, l1_iter, l1_thresh
         self.rule_fn, self.faction_col = rule_fn, faction_col
 
     def _blocks(self, df, fit):
@@ -175,9 +177,21 @@ class JointLogLinear:
             w0 = np.ones(len(df))
         w0 = w0 / w0.mean()
         beta = ridge_solve(Xv, y, pen, w0)
+        w = w0
         for _ in range(self.irls):  # IRLS towards weighted least absolute deviation
             r = np.abs(y - Xv @ beta)
-            beta = ridge_solve(Xv, y, pen, w0 / np.maximum(r, 0.01) * np.mean(np.maximum(r, 0.01)))
+            w = w0 / np.maximum(r, 0.01) * np.mean(np.maximum(r, 0.01))
+            beta = ridge_solve(Xv, y, pen, w)
+        if self.l1_f is not None:  # adaptive ridge ~ L1 on the army offsets -> sparse table
+            isf = np.array([c.startswith("fac:") for c in self.cols])
+            for _ in range(self.l1_iter):
+                pen2 = pen.copy()
+                pen2[isf] = self.l1_f * w.sum() / np.maximum(np.abs(beta[isf]), 1e-4)
+                beta = ridge_solve(Xv, y, pen2, w)
+            zero = isf & (np.abs(beta) < self.l1_thresh)
+            keep = ~zero
+            beta = np.zeros_like(beta)
+            beta[keep] = ridge_solve(Xv[:, keep], y, pen[keep], w)
         # convert back to raw-scale coefficients
         self.coef = pd.Series(beta / self.sd, index=self.cols)
         for s in self.segs:

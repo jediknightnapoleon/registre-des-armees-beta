@@ -1,0 +1,29 @@
+{
+ "seg": "inf_milit",
+ "outer": 1,
+ "terms": [
+  "log_men",
+  "accuracy",
+  "reload_skill",
+  "ammo",
+  "morale",
+  "melee_attack",
+  "speed_num",
+  "rank_depth",
+  "can_form_square",
+  "has_stamina",
+  "is_shock_resistant",
+  "has_guerrilla_deployment",
+  "can_build_barricades",
+  "skirmish",
+  "log_accuracy",
+  "log_reload_skill",
+  "log_ammo",
+  "log_melee_attack",
+  "log_melee_defense",
+  "men_raw",
+  "log_range0",
+  "base_density"
+ ],
+ "inner_mae": 23.79742153548195
+}

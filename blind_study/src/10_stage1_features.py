@@ -54,11 +54,14 @@ def run(eid, desc, note="", spec=RICH, **kw):
     fm, oof = cross_validate(dev, lambda tr, te: mk().fit(tr).predict(te))
     save_oof(eid, dev, oof)
     m = mk().fit(dev)
-    n1 = m.stage1.n_params_by_seg()
     ncv = sum(len(c) for c in m.cv_coef.values())
+    st = m.stage1
+    nz = {s: sum(1 for c in st.cols if c.startswith(s + ":") and abs(st.coef[c]) > 1e-12)
+          for s in st.segs}
+    nfac = sum(1 for c in st.cols if c.startswith("fac:") and abs(st.coef[c]) > 1e-12)
     append_result(eid, "regular: 11 types + staff; commanders: stage 2", desc, fm,
-                  f"{max(v for k, v in n1.items() if k != 'faction')}/seg + {n1['faction']} army"
-                  f" + {ncv} cv", note)
+                  f"≤{max(nz.values())}/seg + {nfac} army cells + {ncv} cv", note)
+    return m
 
 
 if __name__ == "__main__":
