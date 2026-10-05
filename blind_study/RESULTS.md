@@ -14,6 +14,9 @@ bottom, filled in only at the end.
 | 02e | 2026-10-05 03:51 | all (clean) | per class: mean or gold/man x men (chosen on train) | 228.7 ± 4.8 | 305.68 ± 378.55 | 0.2749 ± 0.0605 | 15 | baseline 2 on clean set |
 | 03 | 2026-10-05 03:51 | staff generals / rest | log price ~ class + log men + log N + stars; staff: 1 if no stars else log-linear(log stars, log N) | 212.3 ± 6.1 | 63.91 ± 9.81 | 0.3123 ± 0.0258 | 21 | multiplicative structure; corps number N from army name |
 | 04 | 2026-10-05 03:51 | staff / inf / cav / art | log-linear, all raw stats + flags + class + log men + log N (linear in stats) | 73.3 ± 4.8 | 18.14 ± 2.84 | 0.6098 ± 0.6309 | ~40/seg | first full log-linear per base type |
+| 05a | 2026-10-05 03:53 | staff / inf / cav / art, joint | log-linear stats (as exp 04) + army offset = -log(N/10) fixed | 73.4 ± 5.2 | 18.20 ± 2.83 | 0.5744 ± 0.7121 | 38/seg + 0 army | faction divisor modelling |
+| 05b | 2026-10-05 03:53 | staff / inf / cav / art, joint | log-linear stats (as exp 04) + -log(N/10) + per-army deviation (ridge 1e-3) | 71.8 ± 6.1 | 17.49 ± 2.97 | 0.5319 ± 0.8202 | 38/seg + 55 army | faction divisor modelling |
+| 05c | 2026-10-05 03:53 | staff / inf / cav / art, joint | log-linear stats (as exp 04) + free per-army lookup (no N) | 72.2 ± 6.3 | 17.52 ± 2.98 | 0.5244 ± 0.8363 | 38/seg + 55 army | faction divisor modelling |
 
 ## Holdout (final, evaluated once)
 
