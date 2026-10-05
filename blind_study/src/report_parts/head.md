@@ -97,12 +97,13 @@ These findings come from development data only (experiments 01–18 in `RESULTS.
    France (Égypte) 8. → 0.855, Rossiya (Frantsiya) 9. → 0.875, France (Italie) 9. → 0.94,
    UK Portugal 9. → 0.955, the 11. armies → 1.10–1.15, France (Prusse) 12. → 1.3,
    UK España Portugal 10. → 0.64). These general-level deviations carry over to the army's
-   units only in some cases (all data, units compared with the stats-only model 18b; armies
-   whose generals follow N/10 have a median unit level of 1.00, IQR 0.97–1.02):
+   units only in some cases (post-study check on all clean rows, regular units compared with
+   the stats-only model 18b, `src/94_army_audit.py` → `out/army_audit.md`; armies whose
+   generals follow N/10 have a median unit level of 0.99, IQR 0.97–1.01):
    - **whole army:** HRE units are ×1.12 (generals ×1.14 = 0.9/0.79); Rossiya (Frantsiya)
-     units ×1.04 (generals ×1.03).
+     units ×1.05 (generals ×1.03).
    - **generals only:** UK, España, Portugal — generals ×1.58, units ×0.98 (normal);
-     France (Égypte) — generals ×0.94, units ×0.99.
+     France (Égypte) — generals ×0.94, units ×0.98.
    - **within noise / partial:** France (Italie), the 11. and 12. armies, UK Portugal (whose
      units are ×0.90, cheaper than its generals' ×0.94).
    The army tables pick these up per type (e.g. HRE light cavalry ×1.138 ≈ 0.9/0.79; the

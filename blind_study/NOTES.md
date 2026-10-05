@@ -3,6 +3,8 @@
 ## Status
 
 **Study complete.** Deliverable: `REPORT.md` (built by `src/93_build_report.py`).
+Handoff for another agent: `HANDOFF.md`. Post-study army analysis (user follow-ups on
+UK, España, Portugal / UK Portugal / Polska): `src/94_army_audit.py` → `out/army_audit.md`.
 
 - Holdout (20%, `data/holdout_ids.csv`) and 5 dev folds (`data/dev_folds.csv`) created by
   `src/00_make_split.py` — fixed. Holdout evaluated **once** (`src/90_holdout.py`,
