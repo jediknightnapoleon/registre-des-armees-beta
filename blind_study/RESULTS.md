@@ -17,6 +17,9 @@ bottom, filled in only at the end.
 | 05a | 2026-10-05 03:53 | staff / inf / cav / art, joint | log-linear stats (as exp 04) + army offset = -log(N/10) fixed | 73.4 ± 5.2 | 18.20 ± 2.83 | 0.5744 ± 0.7121 | 38/seg + 0 army | faction divisor modelling |
 | 05b | 2026-10-05 03:53 | staff / inf / cav / art, joint | log-linear stats (as exp 04) + -log(N/10) + per-army deviation (ridge 1e-3) | 71.8 ± 6.1 | 17.49 ± 2.97 | 0.5319 ± 0.8202 | 38/seg + 55 army | faction divisor modelling |
 | 05c | 2026-10-05 03:53 | staff / inf / cav / art, joint | log-linear stats (as exp 04) + free per-army lookup (no N) | 72.2 ± 6.3 | 17.52 ± 2.98 | 0.5244 ± 0.8363 | 38/seg + 55 army | faction divisor modelling |
+| 06a | 2026-10-05 03:56 | 12 segments, joint | type segments; log-linear stats + commander terms; army offset | 54.4 ± 2.4 | 14.38 ± 3.29 | 0.9006 ± 0.1056 | 32/seg + 55 army | unit type from unit_key token; commanders join their unit's segment: big gain |
+| 06b | 2026-10-05 03:56 | 12 segments, joint | 06a, fit without rows < 50 gold | 51.2 ± 2.1 | 14.39 ± 3.46 | 0.9016 ± 0.1218 | 32/seg + 55 army | near-free commanders (<50) distort log fit; dropping them from training helps |
+| 06c | 2026-10-05 03:56 | 4 segments, joint | base-type segments + speed-letter/drill dummies (no unit_key); fit w/o < 50 gold | 59.7 ± 2.5 | 16.07 ± 2.95 | 0.8830 ± 0.1246 | 38/seg + 55 army | without unit_key type code: +8.5 MAE worse than 06b |
 
 ## Holdout (final, evaluated once)
 

@@ -45,6 +45,13 @@ def add_features(df):
     df["base_type"] = np.where(drill.str.contains("artillery"), "art",
                       np.where(drill.str.contains("cavalry"), "cav", "inf"))
     df.loc[df["staff_general"] == 1, "base_type"] = "staff"
+    # unit type code from unit_key (e.g. inf_line); for commander variants this is the type
+    # of the unit the general is attached to
+    df["utype"] = df["unit_key"].str.extract(r"^ntw3_([a-z]+_[a-z]+)_")[0]
+    seg = df["utype"].replace({"cav_missi": "cav_light", "art_fixed": "art_foot",
+                               "inf_irreg": "inf_milit", "gen_staff": "staff"})
+    df["seg"] = seg
+    df["cv_stars"] = df["stars"] * df["is_commander_variant"]
     df["log_men"] = np.log(df["men_raw"].clip(lower=1))
     df["log_n"] = np.log(df["corps_n"].fillna(10).clip(lower=1))
     for c in ["accuracy", "reload_skill", "ammo", "range", "projectile_damage",
