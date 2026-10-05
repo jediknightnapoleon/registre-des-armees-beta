@@ -36,6 +36,14 @@ bottom, filled in only at the end.
 | 10b | 2026-10-05 04:04 | regular: 11 types + staff; commanders: stage 2 | 10a with ridge 1e-5 | 32.0 ± 1.3 | 7.42 ± 0.33 | 0.9800 ± 0.0027 | 41/seg + 579 army + 7 cv | ~same |
 | 10c | 2026-10-05 04:04 | regular: 11 types + staff; commanders: stage 2 | 10a with ridge 1e-3 | 33.9 ± 1.1 | 8.29 ± 0.73 | 0.9801 ± 0.0017 | 41/seg + 579 army + 7 cv | too much shrinkage |
 | 10d | 2026-10-05 04:04 | regular: 11 types + staff; commanders: stage 2 | 10a but army offsets per base type (staff/inf/cav/art) | 38.2 ± 1.3 | 8.50 ± 0.43 | 0.9717 ± 0.0042 | 41/seg + 215 army + 7 cv | compact army table costs +6 MAE |
+| 11a | 2026-10-05 04:06 | regular: 11 types + staff; commanders: stage 2 | 10b + commander slope a per base type | 32.0 ± 1.2 | 7.38 ± 0.28 | 0.9801 ± 0.0027 | 41/seg + 579 army + 9 cv | ~no gain |
+| 11b | 2026-10-05 04:06 | regular: 11 types + staff; commanders: stage 2 | 10b + commander slope a per unit type | 32.3 ± 1.4 | 7.48 ± 0.32 | 0.9802 ± 0.0029 | 41/seg + 579 army + 17 cv | no gain |
+| 11c | 2026-10-05 04:06 | regular: 11 types + staff; commanders: stage 2 | 10b + commander star-specific slopes | 31.7 ± 1.2 | 7.64 ± 0.73 | 0.9801 ± 0.0025 | 41/seg + 579 army + 12 cv | small gain; commander stage near its floor |
+| 11d | 2026-10-05 04:06 | regular: 11 types + staff; commanders: stage 2 | 10b + commander slope per unit type + star slopes | 32.0 ± 1.3 | 7.54 ± 0.42 | 0.9803 ± 0.0027 | 41/seg + 579 army + 22 cv | no gain |
+| 12a | 2026-10-05 04:07 | regular: 11 types + staff; commanders: stage 2 | 11c + stage-1 weights = price | 29.8 ± 0.9 | 7.90 ± 1.32 | 0.9835 ± 0.0018 | 41/seg + 579 army + 12 cv | aligning loss with gold MAE helps |
+| 12b | 2026-10-05 04:07 | regular: 11 types + staff; commanders: stage 2 | 11c + stage-1 LAD on log (IRLS 10) | 29.9 ± 1.1 | 7.53 ± 0.71 | 0.9821 ± 0.0030 | 41/seg + 579 army + 12 cv | robust loss helps |
+| 12c | 2026-10-05 04:07 | regular: 11 types + staff; commanders: stage 2 | 11c + stage-1 price-weighted LAD on log (IRLS 10) | 28.6 ± 0.8 | 8.26 ± 1.93 | 0.9841 ± 0.0023 | 41/seg + 579 army + 12 cv | both combined: best so far |
+| 12d | 2026-10-05 04:08 | regular: 11 types + staff; commanders: stage 2 | 12c + commander stage by LAD | 28.6 ± 0.9 | 8.11 ± 1.83 | 0.9842 ± 0.0024 | 41/seg + 579 army + 12 cv | same as 12c; keep LS for commander stage |
 
 ## Holdout (final, evaluated once)
 

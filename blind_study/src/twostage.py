@@ -10,34 +10,49 @@ from common import TARGET
 from linmodels import JointLogLinear, ridge_solve
 
 
-def _cv_design(df, p_reg, star_levels):
+def _cv_design(df, p_reg, star_levels, slope_col=None, slope_levels=None, star_slopes=False):
     d = (df["corps_n"].fillna(10).clip(lower=1) / 10.0).values
-    cols = {"a": p_reg}
+    cols = {}
+    if slope_col is None:
+        cols["a"] = p_reg
+    else:
+        v = df[slope_col].values
+        for lv in slope_levels:
+            cols[f"a[{lv}]"] = p_reg * (v == lv)
     s = df["stars"].clip(upper=star_levels[-1]).values
     for lv in star_levels:
         cols[f"b{lv}"] = (s == lv).astype(float) / d
+    if star_slopes:
+        for lv in star_levels[1:]:
+            cols[f"a_star{lv}"] = p_reg * (s == lv)
     return pd.DataFrame(cols, index=df.index)
 
 
 class TwoStage:
     def __init__(self, reg_seg_fn, reg_specs, army_col, lam_f=1e-4, rule_fn=None,
                  cv_group_fn=None, lowcut=50, star_levels=(0, 1, 2, 3, 4, 5),
-                 cv_loss="l2", reg_lam=1e-4):
+                 cv_loss="l2", reg_lam=1e-4, slope_col=None, star_slopes=False,
+                 weight="none", irls=0):
         self.reg_seg_fn, self.reg_specs, self.army_col = reg_seg_fn, reg_specs, army_col
         self.lam_f, self.rule_fn, self.lowcut = lam_f, rule_fn, lowcut
         self.cv_group_fn = cv_group_fn or (lambda d: np.full(len(d), "all", dtype=object))
         self.star_levels = list(star_levels)
         self.cv_loss, self.reg_lam = cv_loss, reg_lam
+        self.slope_col, self.star_slopes = slope_col, star_slopes
+        self.weight, self.irls = weight, irls
 
     def fit(self, df):
         reg = df[df["is_commander_variant"] == 0]
         reg = reg[(reg[TARGET] >= self.lowcut) | (reg["staff_general"] == 1)]
         self.stage1 = JointLogLinear(self.reg_seg_fn, self.reg_specs, use_n=True,
                                      lam_f=self.lam_f, rule_fn=self.rule_fn,
-                                     faction_col=self.army_col, lam=self.reg_lam).fit(reg)
+                                     faction_col=self.army_col, lam=self.reg_lam,
+                                     weight=self.weight, irls=self.irls).fit(reg)
         cv = df[df["is_commander_variant"] == 1]
         p_reg = self.stage1.predict(cv)
-        X = _cv_design(cv, p_reg, self.star_levels)
+        self.slope_levels = sorted(set(cv[self.slope_col])) if self.slope_col else None
+        X = _cv_design(cv, p_reg, self.star_levels, self.slope_col, self.slope_levels,
+                       self.star_slopes)
         y = cv[TARGET].values.astype(float)
         g = np.asarray(self.cv_group_fn(cv))
         self.cv_coef = {}
@@ -59,7 +74,8 @@ class TwoStage:
         if cvm.any():
             cv = df[cvm]
             p_reg = out[cvm]
-            X = _cv_design(cv, p_reg, self.star_levels)
+            X = _cv_design(cv, p_reg, self.star_levels, self.slope_col, self.slope_levels,
+                           self.star_slopes)
             g = np.asarray(self.cv_group_fn(cv))
             p = np.empty(len(cv))
             for grp in set(g):

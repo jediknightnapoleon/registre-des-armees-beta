@@ -101,9 +101,9 @@ class JointLogLinear:
     """
 
     def __init__(self, seg_fn, specs, use_n=True, lam_f=1.0, lam=1e-4, rule_fn=None,
-                 faction_col="faction_key", clip=True):
+                 faction_col="faction_key", clip=True, weight="none", irls=0):
         self.seg_fn, self.specs, self.use_n, self.lam_f, self.lam = seg_fn, specs, use_n, lam_f, lam
-        self.clip = clip
+        self.clip, self.weight, self.irls = clip, weight, irls
         self.rule_fn, self.faction_col = rule_fn, faction_col
 
     def _blocks(self, df, fit):
@@ -167,7 +167,17 @@ class JointLogLinear:
         pen = np.array([0.0 if c.endswith(":const") else
                         (self.lam_f if c.startswith("fac:") else self.lam) for c in self.cols])
         pen = pen * len(df)
-        beta = ridge_solve(Xv, y, pen)
+        if self.weight == "price":
+            w0 = df[TARGET].clip(lower=1).values.astype(float)
+        elif self.weight == "sqrtprice":
+            w0 = np.sqrt(df[TARGET].clip(lower=1).values.astype(float))
+        else:
+            w0 = np.ones(len(df))
+        w0 = w0 / w0.mean()
+        beta = ridge_solve(Xv, y, pen, w0)
+        for _ in range(self.irls):  # IRLS towards weighted least absolute deviation
+            r = np.abs(y - Xv @ beta)
+            beta = ridge_solve(Xv, y, pen, w0 / np.maximum(r, 0.01) * np.mean(np.maximum(r, 0.01)))
         # convert back to raw-scale coefficients
         self.coef = pd.Series(beta / self.sd, index=self.cols)
         for s in self.segs:
