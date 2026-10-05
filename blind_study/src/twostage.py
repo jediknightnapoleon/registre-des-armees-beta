@@ -10,7 +10,8 @@ from common import TARGET
 from linmodels import JointLogLinear, ridge_solve
 
 
-def _cv_design(df, p_reg, star_levels, slope_col=None, slope_levels=None, star_slopes=False):
+def _cv_design(df, p_reg, star_levels, slope_col=None, slope_levels=None, star_slopes=False,
+               army_levels=None, army_col="faction_key"):
     d = (df["corps_n"].fillna(10).clip(lower=1) / 10.0).values
     cols = {}
     if slope_col is None:
@@ -25,6 +26,10 @@ def _cv_design(df, p_reg, star_levels, slope_col=None, slope_levels=None, star_s
     if star_slopes:
         for lv in star_levels[1:]:
             cols[f"a_star{lv}"] = p_reg * (s == lv)
+    if army_levels is not None:
+        v = df[army_col].values
+        for lv in army_levels:
+            cols[f"army[{lv}]"] = (v == lv).astype(float) / d
     return pd.DataFrame(cols, index=df.index)
 
 
@@ -32,7 +37,7 @@ class TwoStage:
     def __init__(self, reg_seg_fn, reg_specs, army_col, lam_f=1e-4, rule_fn=None,
                  cv_group_fn=None, lowcut=50, star_levels=(0, 1, 2, 3, 4, 5),
                  cv_loss="l2", reg_lam=1e-4, slope_col=None, star_slopes=False,
-                 weight="none", irls=0):
+                 weight="none", irls=0, cv_army_lam=None):
         self.reg_seg_fn, self.reg_specs, self.army_col = reg_seg_fn, reg_specs, army_col
         self.lam_f, self.rule_fn, self.lowcut = lam_f, rule_fn, lowcut
         self.cv_group_fn = cv_group_fn or (lambda d: np.full(len(d), "all", dtype=object))
@@ -40,6 +45,7 @@ class TwoStage:
         self.cv_loss, self.reg_lam = cv_loss, reg_lam
         self.slope_col, self.star_slopes = slope_col, star_slopes
         self.weight, self.irls = weight, irls
+        self.cv_army_lam = cv_army_lam
 
     def fit(self, df):
         reg = df[df["is_commander_variant"] == 0]
@@ -51,15 +57,17 @@ class TwoStage:
         cv = df[df["is_commander_variant"] == 1]
         p_reg = self.stage1.predict(cv)
         self.slope_levels = sorted(set(cv[self.slope_col])) if self.slope_col else None
+        self.army_levels = sorted(set(cv["faction_key"])) if self.cv_army_lam is not None else None
         X = _cv_design(cv, p_reg, self.star_levels, self.slope_col, self.slope_levels,
-                       self.star_slopes)
+                       self.star_slopes, self.army_levels)
         y = cv[TARGET].values.astype(float)
         g = np.asarray(self.cv_group_fn(cv))
         self.cv_coef = {}
         for grp in sorted(set(g)):
             m = g == grp
             Xg, yg = X.values[m], y[m]
-            pen = np.full(Xg.shape[1], 1e-6)
+            pen = np.array([self.cv_army_lam * len(Xg) if c.startswith("army[") else 1e-6
+                            for c in X.columns])
             w = np.ones(m.sum())
             for _ in range(30 if self.cv_loss == "l1" else 1):  # IRLS for least absolute dev.
                 beta = ridge_solve(Xg, yg, pen, w)
@@ -75,7 +83,7 @@ class TwoStage:
             cv = df[cvm]
             p_reg = out[cvm]
             X = _cv_design(cv, p_reg, self.star_levels, self.slope_col, self.slope_levels,
-                           self.star_slopes)
+                           self.star_slopes, self.army_levels)
             g = np.asarray(self.cv_group_fn(cv))
             p = np.empty(len(cv))
             for grp in set(g):

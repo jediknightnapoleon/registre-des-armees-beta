@@ -44,6 +44,8 @@ bottom, filled in only at the end.
 | 12b | 2026-10-05 04:07 | regular: 11 types + staff; commanders: stage 2 | 11c + stage-1 LAD on log (IRLS 10) | 29.9 ± 1.1 | 7.53 ± 0.71 | 0.9821 ± 0.0030 | 41/seg + 579 army + 12 cv | robust loss helps |
 | 12c | 2026-10-05 04:07 | regular: 11 types + staff; commanders: stage 2 | 11c + stage-1 price-weighted LAD on log (IRLS 10) | 28.6 ± 0.8 | 8.26 ± 1.93 | 0.9841 ± 0.0023 | 41/seg + 579 army + 12 cv | both combined: best so far |
 | 12d | 2026-10-05 04:08 | regular: 11 types + staff; commanders: stage 2 | 12c + commander stage by LAD | 28.6 ± 0.9 | 8.11 ± 1.83 | 0.9842 ± 0.0024 | 41/seg + 579 army + 12 cv | same as 12c; keep LS for commander stage |
+| 14a | 2026-10-05 04:13 | regular: 11 types + staff; commanders: stage 2 | 12c + per-army commander premium (ridge 1e-3) | 27.7 ± 1.0 | 7.28 ± 1.04 | 0.9845 ± 0.0024 | 41/seg + 579 army + 67 cv | army-specific commander premium helps (−0.9 MAE); '41/seg' counts constant cols, effective ≤36 |
+| 14b | 2026-10-05 04:14 | regular: 11 types + staff; commanders: stage 2 | 12c + per-army commander premium (ridge 1e-2) | 27.7 ± 0.9 | 7.46 ± 1.28 | 0.9845 ± 0.0024 | 41/seg + 579 army + 67 cv | same; keep 1e-3 |
 
 ## Holdout (final, evaluated once)
 
