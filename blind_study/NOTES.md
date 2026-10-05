@@ -6,7 +6,8 @@
   `src/00_make_split.py` — **fixed, never regenerate**. Both are stratified by `unit_class`
   and grouped by identical feature rows (`group_id` = hash of `FEATURE_COLS` in
   `src/common.py`).
-- Experiments 01–06 done (see RESULTS.md). Best so far: **06b** (CV MAE 51.2).
+- Experiments 01–10 done (see RESULTS.md). Best so far: **10a/10b** (CV MAE 32.1, MAPE 7.5%,
+  R² 0.98): two-stage model (`src/twostage.py`).
 
 ## Findings so far
 
@@ -33,13 +34,25 @@
    number; exploratory GBM (not allowed as model) reaches log-resid sd ≈ 0.10 vs 0.15 linear
    on line infantry → some nonlinearity left, but much is unexplained noise.
 
+7. **Two-stage model (exp 09+).** Stage 1 prices regular units with one log-linear formula per
+   unit type (11 types) + `-log(N/10)` + an army×type offset table; staff generals by
+   `log stars`. Stage 2 prices commander variants additively from the stage-1 price of the
+   commander's own row: `price = max(1, a·p_reg + b_stars/(N/10))` with **one global set of 7
+   coefficients** (a ≈ 0.9). This explains the near-free commanders.
+8. Army effects are **type-specific** (army×type table 55×12 beats a shared army table by
+   ~6 MAE). No roster-count/cap/year driver found — they look like hand-set adjustments.
+9. log1p transforms of the main stats + raw men help most segments; predictions must clamp
+   features to training range (exp() extrapolation blew up artillery/militia otherwise).
+   Ridge 1e-4..1e-5 (× n) is right.
+
 ## Next steps
 
-- Feature engineering per segment: splines / log transforms of key stats, men interactions.
-- Price additive vs multiplicative check for commander variants.
-- Robust loss (fit on log but weight to MAE), calibration of exp() back-transform.
-- Model trees (shallow tree + per-leaf formula) for artillery.
-- Compact army table: N/10 + list of exceptions.
+- Prune stage-1 specs to ≤ 40 coefficients per segment (10a has 41) — drop flags that are
+  constant within a segment, choose per-segment feature subsets on CV.
+- Try weighting the log fit toward MAE (weights ∝ price) / bias correction.
+- Commander stage: star-specific slopes; use commander's de-boosted stats?
+- Army table compaction: shrink to N/10 + exceptions per type; compare accuracy.
+- Error analysis by faction / type for the report.
 
 ## Open questions
 

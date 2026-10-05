@@ -25,8 +25,8 @@ def design(df, spec):
 class LogLinear:
     """log(price) = b0 + X b, fitted by (lightly) ridge-regularised least squares."""
 
-    def __init__(self, spec, alpha=1e-6, min_price=1.0):
-        self.spec, self.alpha, self.min_price = spec, alpha, min_price
+    def __init__(self, spec, alpha=1e-6, min_price=1.0, clip=True):
+        self.spec, self.alpha, self.min_price, self.clip = spec, alpha, min_price, clip
 
     def fit(self, df):
         X = design(df, self.spec)
@@ -39,6 +39,7 @@ class LogLinear:
                 self.spec_fixed.append(s)
         X = design(df, self.spec_fixed)
         self.cols = list(X.columns)
+        self.lo, self.hi = X.min(), X.max()
         self.mu = X.mean()
         self.sd = X.std().replace(0, 1).fillna(1)
         Z = ((X - self.mu) / self.sd).fillna(0).values
@@ -50,6 +51,8 @@ class LogLinear:
 
     def predict_log(self, df):
         X = design(df, self.spec_fixed).reindex(columns=self.cols)
+        if self.clip:
+            X = X.clip(self.lo, self.hi, axis=1)
         Z = ((X - self.mu) / self.sd).fillna(0).values
         return self.m.predict(Z)
 
@@ -98,8 +101,9 @@ class JointLogLinear:
     """
 
     def __init__(self, seg_fn, specs, use_n=True, lam_f=1.0, lam=1e-4, rule_fn=None,
-                 faction_col="faction_key"):
+                 faction_col="faction_key", clip=True):
         self.seg_fn, self.specs, self.use_n, self.lam_f, self.lam = seg_fn, specs, use_n, lam_f, lam
+        self.clip = clip
         self.rule_fn, self.faction_col = rule_fn, faction_col
 
     def _blocks(self, df, fit):
@@ -140,6 +144,13 @@ class JointLogLinear:
             df = df[np.isnan(self.rule_fn(df))]
         X, seg = self._blocks(df, fit=True)
         self.cols = list(X.columns)
+        # per-column range over the rows of that column's segment (used to clamp at predict)
+        self.lo = pd.Series(0.0, index=self.cols); self.hi = pd.Series(0.0, index=self.cols)
+        for c in self.cols:
+            if c.startswith("fac:") or c.endswith(":const"):
+                continue
+            m = seg == c.split(":")[0]
+            self.lo[c], self.hi[c] = X.loc[m, c].min(), X.loc[m, c].max()
         y = np.log(df[TARGET].clip(lower=1).values) - self._offset(df)
         # standardise non-constant, non-faction columns within their segment
         Xv = X.values.copy()
@@ -167,6 +178,13 @@ class JointLogLinear:
     def predict_log(self, df):
         X, seg = self._blocks(df, fit=False)
         X = X.reindex(columns=self.cols, fill_value=0.0)
+        if self.clip:
+            for s in self.segs:
+                m = seg == s
+                if not m.any():
+                    continue
+                cs = [c for c in self.cols if c.startswith(s + ":") and not c.endswith(":const")]
+                X.loc[m, cs] = X.loc[m, cs].clip(self.lo[cs], self.hi[cs], axis=1)
         return X.values @ self.coef.values + self._offset(df)
 
     def predict(self, df):

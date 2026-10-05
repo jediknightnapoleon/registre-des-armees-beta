@@ -32,6 +32,10 @@ bottom, filled in only at the end.
 | 09b | 2026-10-05 04:01 | regular: 11 types + staff; commanders: stage 2 | two-stage; commander adj. per base type, least squares | 39.6 ± 2.2 | 9.89 ± 0.63 | 0.9122 ± 0.1286 | 29/seg + 579 army + 21 cv | no gain over global |
 | 09c | 2026-10-05 04:01 | regular: 11 types + staff; commanders: stage 2 | two-stage; commander adj. per unit type, least squares | 39.3 ± 2.1 | 10.49 ± 1.63 | 0.9136 ± 0.1285 | 29/seg + 579 army + 77 cv | marginal |
 | 09d | 2026-10-05 04:01 | regular: 11 types + staff; commanders: stage 2 | two-stage; commander adj. per unit type, least abs. deviation | 39.1 ± 2.0 | 9.68 ± 0.72 | 0.9136 ± 0.1285 | 29/seg + 579 army + 77 cv | LAD marginally better; global LS is the simple choice |
+| 10a | 2026-10-05 04:04 | regular: 11 types + staff; commanders: stage 2 | 09a + log1p stats, men_raw, log1p art stats; clamp; ridge 1e-4 | 32.1 ± 1.2 | 7.46 ± 0.32 | 0.9806 ± 0.0021 | 41/seg + 579 army + 7 cv | log stats + clamping: big gain, R2 stable |
+| 10b | 2026-10-05 04:04 | regular: 11 types + staff; commanders: stage 2 | 10a with ridge 1e-5 | 32.0 ± 1.3 | 7.42 ± 0.33 | 0.9800 ± 0.0027 | 41/seg + 579 army + 7 cv | ~same |
+| 10c | 2026-10-05 04:04 | regular: 11 types + staff; commanders: stage 2 | 10a with ridge 1e-3 | 33.9 ± 1.1 | 8.29 ± 0.73 | 0.9801 ± 0.0017 | 41/seg + 579 army + 7 cv | too much shrinkage |
+| 10d | 2026-10-05 04:04 | regular: 11 types + staff; commanders: stage 2 | 10a but army offsets per base type (staff/inf/cav/art) | 38.2 ± 1.3 | 8.50 ± 0.43 | 0.9717 ± 0.0042 | 41/seg + 215 army + 7 cv | compact army table costs +6 MAE |
 
 ## Holdout (final, evaluated once)
 
