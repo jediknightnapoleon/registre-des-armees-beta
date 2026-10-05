@@ -46,10 +46,10 @@ bottom, filled in only at the end.
 | 12d | 2026-10-05 04:08 | regular: 11 types + staff; commanders: stage 2 | 12c + commander stage by LAD | 28.6 ± 0.9 | 8.11 ± 1.83 | 0.9842 ± 0.0024 | 41/seg + 579 army + 12 cv | same as 12c; keep LS for commander stage |
 | 14a | 2026-10-05 04:13 | regular: 11 types + staff; commanders: stage 2 | 12c + per-army commander premium (ridge 1e-3) | 27.7 ± 1.0 | 7.28 ± 1.04 | 0.9845 ± 0.0024 | 41/seg + 579 army + 67 cv | army-specific commander premium helps (−0.9 MAE); '41/seg' counts constant cols, effective ≤36 |
 | 14b | 2026-10-05 04:14 | regular: 11 types + staff; commanders: stage 2 | 12c + per-army commander premium (ridge 1e-2) | 27.7 ± 0.9 | 7.46 ± 1.28 | 0.9845 ± 0.0024 | 41/seg + 579 army + 67 cv | same; keep 1e-3 |
-| 15a | 2026-10-05 06:36 | regular: 11 types + staff; commanders: stage 2 | 14a with army offsets per broad type (55x4) | 35.0 ± 1.0 | 8.27 ± 0.64 | 0.9751 ± 0.0030 | 41/seg + 215 army + 67 cv || army x broad type: +7.3 MAE vs 14a |
-| 15b | 2026-10-05 06:37 | regular: 11 types + staff; commanders: stage 2 | 14a with one army table for units + one for staff (55x2) | 38.3 ± 1.2 | 9.47 ± 1.43 | 0.9730 ± 0.0022 | 41/seg + 105 army + 67 cv || one army table: +10.6 MAE |
-| 15c | 2026-10-05 06:37 | regular: 11 types + staff; commanders: stage 2 | 14a with no stage-1 army tables (N/10 only); commander army premium kept | 40.2 ± 1.1 | 10.00 ± 1.90 | 0.9708 ± 0.0023 | 41/seg + 0 army + 67 cv || N/10 only in stage 1: +12.5 MAE |
-| 15d | 2026-10-05 06:37 | regular: 11 types + staff; commanders: stage 2 | no army tables at all: divisor N/10 only | 41.8 ± 1.2 | 10.85 ± 2.13 | 0.9695 ± 0.0022 | 41/seg + 0 army + 12 cv || simplest: no lookup tables beyond N |
+| 15a | 2026-10-05 06:36 | regular: 11 types + staff; commanders: stage 2 | 14a with army offsets per broad type (55x4) | 35.0 ± 1.0 | 8.27 ± 0.64 | 0.9751 ± 0.0030 | 41/seg + 215 army + 67 cv | army x broad type: +7.3 MAE vs 14a |
+| 15b | 2026-10-05 06:37 | regular: 11 types + staff; commanders: stage 2 | 14a with one army table for units + one for staff (55x2) | 38.3 ± 1.2 | 9.47 ± 1.43 | 0.9730 ± 0.0022 | 41/seg + 105 army + 67 cv | one army table: +10.6 MAE |
+| 15c | 2026-10-05 06:37 | regular: 11 types + staff; commanders: stage 2 | 14a with no stage-1 army tables (N/10 only); commander army premium kept | 40.2 ± 1.1 | 10.00 ± 1.90 | 0.9708 ± 0.0023 | 41/seg + 0 army + 67 cv | N/10 only in stage 1: +12.5 MAE |
+| 15d | 2026-10-05 06:37 | regular: 11 types + staff; commanders: stage 2 | no army tables at all: divisor N/10 only | 41.8 ± 1.2 | 10.85 ± 2.13 | 0.9695 ± 0.0022 | 41/seg + 0 army + 12 cv | simplest: no lookup tables beyond N |
 
 ## Holdout (final, evaluated once)
 
