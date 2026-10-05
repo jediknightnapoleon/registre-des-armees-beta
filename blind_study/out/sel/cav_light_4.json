@@ -1,0 +1,22 @@
+{
+ "seg": "cav_light",
+ "outer": 4,
+ "terms": [
+  "log_men",
+  "accuracy",
+  "reload_skill",
+  "melee_defense",
+  "has_stamina",
+  "is_shock_resistant",
+  "can_inspire",
+  "has_guerrilla_deployment",
+  "log_accuracy",
+  "log_reload_skill",
+  "log_morale",
+  "log_melee_defense",
+  "log_charge_bonus",
+  "log_range0",
+  "close_formation_spacing_vertical"
+ ],
+ "inner_mae": 33.65521524667765
+}
