@@ -64,5 +64,10 @@ bottom, filled in only at the end.
 
 ## Holdout (final, evaluated once)
 
-| model | holdout MAE | MAPE % | R² |
-| --- | --- | --- | --- |
+| model | holdout MAE | MAPE % | R² | incl. excluded rows: MAE / MAPE / R² |
+| --- | --- | --- | --- | --- |
+| 13c: best: selected formulas, sparse army x type table, commander army premium | 27.8 | 8.88 | 0.9785 | 41.1 / 9.0 / 0.697 |
+| 18a: compact: as 13c with a 118-cell army table | 31.0 | 9.85 | 0.9744 | 44.2 / 10.0 / 0.695 |
+| 18b: simplest: selected formulas, divisor N/10 only, no lookup tables | 43.1 | 12.95 | 0.9608 | 56.3 / 13.1 / 0.689 |
+| 01: baseline: global mean | 287.2 | 149.37 | -0.0004 | 308.0 / 149.2 / -0.001 |
+| 02e: baseline: per-class mean or gold/man x men | 226.9 | 125.89 | 0.3030 | 247.6 / 125.8 / 0.141 |
