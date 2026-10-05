@@ -1,0 +1,32 @@
+{
+ "seg": "inf_light",
+ "outer": "all",
+ "terms": [
+  "log_men",
+  "train",
+  "reload_skill",
+  "ammo",
+  "melee_attack",
+  "charge_bonus",
+  "projectile_reload_time0",
+  "speed_num",
+  "can_form_square",
+  "has_stamina",
+  "is_shock_resistant",
+  "can_inspire",
+  "has_guerrilla_deployment",
+  "guard_mode",
+  "pike_square",
+  "log_accuracy",
+  "log_morale",
+  "log_melee_defense",
+  "log_charge_bonus",
+  "men_raw",
+  "log_projectile_damage0",
+  "log_men*reload_skill",
+  "cat:speed_code",
+  "log_men*melee_attack",
+  "melee_attack^2"
+ ],
+ "inner_mae": 19.731090513043824
+}

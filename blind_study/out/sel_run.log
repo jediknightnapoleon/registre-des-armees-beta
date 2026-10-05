@@ -11,3 +11,6 @@ done inf_light 2 19.38
 done inf_light 4 20.59
 done cav_light 0 32.16
 done cav_light 1 30.26
+done inf_light all 19.73
+done cav_light 2 31.97
+done cav_light 3 31.81
