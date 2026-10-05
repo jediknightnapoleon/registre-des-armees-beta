@@ -78,7 +78,8 @@ data/generated/    Pipeline output, COMMITTED (rebuilding needs local game files
 assets/            Converted icons, flags, UI sprites, COMMITTED
 web/               React + TypeScript + Vite PWA, also packaged as Electron (Windows)
 web/public/{data,assets}   Generated per build, GITIGNORED
-analysis/          Offline analyses (numpy + sklearn, no pandas); not part of the app
+analysis/          Offline analyses (numpy + sklearn, no pandas); not part of the app.
+                   Unit-pricing model: output/ (current), linear_results/, calibre_onehot_results/
 docs/HANDOFF.md    Full technical documentation
 ```
 
@@ -104,7 +105,10 @@ reference implementation in both pairs.**
 # Data pipeline (Python 3.12 + Pillow)
 python tools/build_web_data.py            # → web/public/{data,assets}
 python tools/build_analysis_dataset.py    # → data/generated/ntw3_units_analysis.csv
-python analysis/unit_pricing.py           # → analysis/output/ (size-power profile, structure search, nested stat powers + report, ~20 min — run in background)
+python analysis/unit_pricing.py           # → analysis/output/ (full pricing model + report, ~85 min — run in background)
+python analysis/unit_pricing.py --linear --out analysis/linear_results          # fully linear model
+python analysis/unit_pricing.py --artillery-cal projectile --out analysis/calibre_onehot_results   # artillery fixed to the cannon-type one-hot
+python analysis/calibre_function.py       # → analysis/output/calibre_function_report.md (smooth calibre functions, ~12 min)
 python -m pytest tools/tests              # from the repo root; tools/ is a package
 
 # App (from web/)

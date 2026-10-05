@@ -89,6 +89,46 @@ SIZE_KINDS = {"infantry": ("n",), "cavalry": ("n",), "artillery": ("guns", "n")}
 POWER_GRID = (0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5, 3.0)
 P_WINDOW = 0.30
 MAX_PASSES = 4
+# Fine local refinement around the coarse powers: a ±half window at a fine step
+# per coordinate, re-centred (up to MAX_RECENTRE times) when the best value
+# lands on a window edge — so powers stuck at the coarse grid's limits can move.
+FINE_STAT_STEP, FINE_STAT_HALF = 0.05, 10     # stats: ±0.50 in steps of 0.05
+FINE_P_STEP, FINE_P_HALF = 0.01, 15           # size power: ±0.15 in steps of 0.01
+MIN_POWER = 0.05
+MAX_RECENTRE = 4
+FINE_PASSES = 3
+# Powered stat columns are (stat / POWER_SCALE)^a, keeping large exponents
+# numerically tame; predictions are unchanged, only the coefficient's unit.
+POWER_SCALE = 100.0
+
+# Shape options for how shooting and firearm/calibre information enters β·x.
+#   fire  (infantry, cavalry): "range" — the numeric range stat; "firearm" — a
+#         firearm one-hot (each firearm has exactly one range, so it holds all of
+#         range plus whatever else differs between firearms)
+#   cal   (artillery): "full" — range + projectile damage + projectile reload;
+#         "calibre" — (damage/100)^a_cal with the shot-type one-hot (damage is a
+#         consistent calibre label; within round shot it tracks range at r 0.99
+#         and gun reload at r 0.92); "projectile" — a cannon-type one-hot
+#   shoot "additive" — accuracy, ammo, reload_skill as separate columns;
+#         "product" — one column shoot = Π (stat/100)^a × rate^a_rate, where
+#         rate = RATE_SCALE / projectile reload time is the gun's intrinsic fire
+#         rate (independent of the crew's reload_skill); "product_type" — the same
+#         with one shooting slope per firearm / cannon type (artillery "calibre":
+#         calibre inside the product instead)
+#   cal   smooth calibre functions of log range r and log damage d, replacing the
+#         cannon-type one-hot (analysis/calibre_function.py): "power2" —
+#         (range/100)^a_r + (damage/100)^a_d; "spline_r" / "spline_d" — a natural
+#         cubic spline in r or d with `cal_df` degrees of freedom; "spline_rd" — both
+#         splines; "poly2" — a quadratic surface in (r, d) with the interaction
+#   shot  (artillery) "onehot" — shot-type one-hot; "none" — left out, letting a 2-D
+#         calibre function separate howitzers / unicorns from round shot
+SHAPE_DEFAULTS = {"fire": "range", "cal": "full", "shoot": "additive", "cal_df": "3", "shot": "onehot"}
+SHOOT_STATS = {
+    "infantry": ("accuracy", "ammo", "reload_skill"),
+    "cavalry": ("accuracy", "ammo", "reload_skill"),
+    "artillery": ("accuracy", "reload_skill"),     # artillery ammo is a constant 30
+}
+RATE_SCALE = 20.0          # fire rate = 20 / reload time: ≈ 1 for a musket (14-20 s)
 
 NUMERIC = (
     "accuracy", "reload_skill", "ammo", "morale",
@@ -276,9 +316,13 @@ class Spec:
     p: float = 1.0
     powers: tuple[tuple[str, float], ...] = ()
     faction: bool = False
+    shape: tuple[tuple[str, str], ...] = ()      # non-default SHAPE_DEFAULTS entries
 
     def power_of(self, stat: str) -> float:
         return dict(self.powers).get(stat, 1.0)
+
+    def shape_of(self, key: str) -> str:
+        return dict(self.shape).get(key, SHAPE_DEFAULTS[key])
 
     def describe(self) -> str:
         lin = ", ".join(sorted(self.linear)) or "—"
@@ -287,8 +331,12 @@ class Spec:
         parts = [f"β·x + [{lin}]", f"× {mul}"]
         if self.const:
             parts.append("+ c")
-        if self.extras:
-            parts.append("extras: " + ", ".join(sorted(self.extras)))
+        # Artillery calibre / cannon-type shapes replace these extras (build_design drops them).
+        shown = self.extras - ({"damage", "proj_reload"} if self.shape_of("cal") != "full" else set())
+        if shown:
+            parts.append("extras: " + ", ".join(sorted(shown)))
+        if self.shape:
+            parts.append("shape: " + ", ".join(f"{k}={v}" for k, v in self.shape))
         bent = [f"{s}^{a:g}" for s, a in self.powers if a != 1.0]
         if bent:
             parts.append("stat powers: " + ", ".join(bent))
@@ -308,6 +356,7 @@ class Design:
     references: dict[str, str]   # categorical family -> reference (omitted) level
     dropped: list[str]           # candidate columns dropped as constant / too rare
     aliases: list[str] = field(default_factory=list)   # dropped as exact combinations of kept columns
+    power_keys: list[str] = field(default_factory=list)   # exponents this design can fit
 
 
 def most_common_level(levels: Sequence) -> object:
@@ -342,6 +391,28 @@ def prune_aliases(X: np.ndarray, names: Sequence[str]) -> tuple[np.ndarray, list
     return X[:, kept], kept_names, aliases
 
 
+def spline_knots(x: np.ndarray, df: int) -> np.ndarray:
+    """df + 1 knots (boundary ones included) at unit-weighted quantiles of x; if
+    heavy ties collapse them (338 batteries are 6-pdrs), quantiles of the distinct
+    values are used instead."""
+    knots = np.unique(np.quantile(x, np.linspace(0, 1, df + 1)))
+    if len(knots) < df + 1:
+        knots = np.quantile(np.unique(x), np.linspace(0, 1, df + 1))
+    return knots
+
+
+def natural_spline_basis(x: np.ndarray, knots: np.ndarray) -> np.ndarray:
+    """Natural cubic spline basis (without the constant): x and K − 2 cubic terms,
+    K = len(knots), so df = K − 1. Linear beyond the boundary knots, so it
+    extrapolates sanely. Standard truncated-power construction:
+    N_k = d_k − d_{K−1}, d_k(x) = ((x − ξ_k)³₊ − (x − ξ_K)³₊) / (ξ_K − ξ_k)."""
+    K = len(knots)
+    def d(k: int) -> np.ndarray:
+        return (np.maximum(x - knots[k], 0) ** 3 - np.maximum(x - knots[-1], 0) ** 3) / (knots[-1] - knots[k])
+    columns = [x] + [d(k) - d(K - 2) for k in range(K - 2)]
+    return np.column_stack(columns)
+
+
 def factor_values(units: Sequence[Unit], var: str) -> np.ndarray:
     if var == "rating":
         return np.array([u.rating for u in units])
@@ -362,31 +433,47 @@ def factor_values(units: Sequence[Unit], var: str) -> np.ndarray:
 
 def build_design(units: Sequence[Unit], arm: str, *, linear: frozenset[str] = frozenset(),
                  extras: frozenset[str] = frozenset(), powers: dict[str, float] | None = None,
-                 const_inside: bool = False, use_gs: bool = False) -> Design:
+                 const_inside: bool = False, use_gs: bool = False, shape: dict[str, str] | None = None) -> Design:
     """Per-size feature matrix f(x). The per-size constant b0 is the regression
     intercept, not a column. `linear` holds the candidate variables placed in the
-    linear part; `extras` the ablation features; `powers` raise numeric stats to
-    a power (stats stay additive); `const_inside` adds a c/n column (used only by
-    the coverage design)."""
+    linear part; `extras` the ablation features; `powers` the exponents — on
+    additive numeric stats (key = stat), inside the shooting product (key =
+    "shoot:<stat>", "shoot:rate", "shoot:damage") and on the artillery calibre
+    column ("cal:damage"); `shape` how shooting and firearm/calibre enter (see
+    SHAPE_DEFAULTS); `const_inside` adds a c/n column (coverage design only)."""
     powers = powers or {}
+    shape = {**SHAPE_DEFAULTS, **(shape or {})}
+    fire, cal, shoot = shape["fire"], shape["cal"], shape["shoot"]
+    extras = set(extras)
+    if fire == "firearm" and arm != "artillery":
+        extras |= {"firearm", "no_range"}
+    if arm == "artillery" and cal != "full":
+        # Calibre / cannon type carry range and the gun's reload time.
+        extras = (extras - {"damage", "proj_reload"}) | {"no_range"}
+    shoot_stats = SHOOT_STATS[arm] if shoot != "additive" else ()
     columns: list[np.ndarray] = []
     names: list[str] = []
     dropped: list[str] = []
     references: dict[str, str] = {}
+    power_keys: list[str] = []
 
     def add(values: np.ndarray, name: str) -> None:
         columns.append(np.asarray(values, float))
         names.append(name)
 
+    def stat(column: str) -> np.ndarray:
+        return np.array([u.values[column] for u in units], float)
+
     for column in NUMERIC:
-        if column == "range" and "no_range" in extras:
+        if (column == "range" and "no_range" in extras) or column in shoot_stats:
             continue
-        values = np.array([u.values[column] for u in units])
+        values = stat(column)
         if np.ptp(values) == 0:
             dropped.append(f"{column} (constant)")
             continue
         a = powers.get(column, 1.0)
-        add(values ** a if a != 1.0 else values, column)
+        add((values / POWER_SCALE) ** a if a != 1.0 else values, column)
+        power_keys.append(column)
 
     flags = (("has_range",) if "no_range" not in extras else ()) + ABILITIES + EXTRA_ABILITIES
     if "pike_square" in extras:
@@ -419,8 +506,10 @@ def build_design(units: Sequence[Unit], arm: str, *, linear: frozenset[str] = fr
         families.append(("training", lambda u: u.training))
     if "drill" in linear and arm == "infantry":
         families.append(("drill", lambda u: u.drill))
-    if arm == "artillery":
+    if arm == "artillery" and shape["shot"] != "none":
         families.append(("shot", lambda u: u.shot))
+    if arm == "artillery" and cal == "projectile":
+        families.append(("projectile", lambda u: u.projectile))
     if "firearm" in extras:
         families.append(("firearm", lambda u: u.firearm))
     if "rating" in linear:
@@ -448,6 +537,54 @@ def build_design(units: Sequence[Unit], arm: str, *, linear: frozenset[str] = fr
     if "proj_reload" in extras:
         add(np.array([u.values["proj_reload"] for u in units]), "projectile_reload_time")
 
+    if arm == "artillery" and cal == "calibre":
+        add((stat("proj_damage") / POWER_SCALE) ** powers.get("cal:damage", 1.0), "calibre")
+        power_keys.append("cal:damage")
+    if arm == "artillery" and cal == "power2":
+        add((stat("range") / POWER_SCALE) ** powers.get("cal:range", 1.0), "calibre_range")
+        add((stat("proj_damage") / POWER_SCALE) ** powers.get("cal:damage", 1.0), "calibre_damage")
+        power_keys += ["cal:range", "cal:damage"]
+    if arm == "artillery" and cal in ("spline_r", "spline_d", "spline_rd", "poly2"):
+        log_r, log_d = np.log(stat("range")), np.log(stat("proj_damage"))
+        df = int(shape["cal_df"])
+        if cal in ("spline_r", "spline_rd"):
+            for j, column in enumerate(natural_spline_basis(log_r, spline_knots(log_r, df)).T):
+                add(column, f"cal_r{j + 1}")
+        if cal in ("spline_d", "spline_rd"):
+            for j, column in enumerate(natural_spline_basis(log_d, spline_knots(log_d, df)).T):
+                add(column, f"cal_d{j + 1}")
+        if cal == "poly2":
+            r, d = log_r - log_r.mean(), log_d - log_d.mean()
+            for column, name in ((r, "cal_lr"), (d, "cal_ld"), (r * r, "cal_lr2"), (d * d, "cal_ld2"), (r * d, "cal_lrld")):
+                add(column, name)
+
+    if shoot_stats:
+        # Shooting effectiveness compounded: accuracy, ammo and the crew's reload
+        # skill multiply with the gun's intrinsic fire rate (independent of crew
+        # skill). Not shifted: zero ammo or accuracy really means no shooting.
+        product = np.ones(len(units))
+        for column in shoot_stats:
+            product *= (stat(column) / POWER_SCALE) ** powers.get(f"shoot:{column}", 1.0)
+        reload_time = stat("proj_reload")
+        rate = np.divide(RATE_SCALE, reload_time, out=np.zeros(len(units)), where=reload_time > 0)
+        product *= rate ** powers.get("shoot:rate", 1.0)
+        power_keys += [f"shoot:{column}" for column in shoot_stats] + ["shoot:rate"]
+        by_type = None
+        if shoot == "product_type":
+            if arm == "artillery" and cal == "calibre":
+                product *= (stat("proj_damage") / POWER_SCALE) ** powers.get("shoot:damage", 1.0)
+                power_keys.append("shoot:damage")
+            elif arm == "artillery" and cal == "projectile":
+                by_type = ("projectile", [u.projectile for u in units])
+            elif "firearm" in extras:
+                by_type = ("firearm", [u.firearm for u in units])
+        if by_type:
+            family, levels = by_type
+            for level in sorted(set(levels)):
+                add(product * np.array([1.0 if value == level else 0.0 for value in levels]), f"shoot×{family}={level}")
+        else:
+            add(product, "shoot")
+
     if arm == "artillery":
         # Crew per gun is fixed by type, so guns/n is a function of the class and
         # this column is always aliased (reported) — kept for the identity.
@@ -457,11 +594,19 @@ def build_design(units: Sequence[Unit], arm: str, *, linear: frozenset[str] = fr
 
     X = np.column_stack(columns) if columns else np.zeros((len(units), 0))
     X, names, aliases = prune_aliases(X, names)
-    return Design(X=X, names=names, references=references, dropped=dropped, aliases=aliases)
+    # An exponent is fittable only while its column survived alias pruning.
+    shooting_kept = any(name == "shoot" or name.startswith("shoot×") for name in names)
+    cal_columns = {"cal:damage": ("calibre", "calibre_damage"), "cal:range": ("calibre_range",)}
+    power_keys = [k for k in power_keys
+                  if (k.startswith("shoot:") and shooting_kept)
+                  or (k in cal_columns and any(c in names for c in cal_columns[k]))
+                  or k in names]
+    return Design(X=X, names=names, references=references, dropped=dropped, aliases=aliases, power_keys=power_keys)
 
 
 def design_for(spec: Spec, units: Sequence[Unit], arm: str) -> Design:
-    return build_design(units, arm, linear=spec.linear, extras=spec.extras, powers=dict(spec.powers))
+    return build_design(units, arm, linear=spec.linear, extras=spec.extras, powers=dict(spec.powers),
+                        shape=dict(spec.shape))
 
 
 # --- Model --------------------------------------------------------------------
@@ -1054,10 +1199,13 @@ def descend_powers(spec: Spec, units: Sequence[Unit], arm: str, rows: np.ndarray
     """Coordinate descent on the training SSE (per-size space, the model's own
     objective) over one power per numeric stat and the size power p.
 
-    Each stat's power is tried on POWER_GRID with the others held, then p on a
-    0.05 grid within ±P_WINDOW of the current p; up to MAX_PASSES passes, stopping
-    when a full pass changes nothing. Returns (powers, p, passes used)."""
-    stats = [s for s in NUMERIC if s in design_for(spec, units, arm).names]
+    Each exponent (the design's power keys: additive stats, shooting-product
+    factors, the calibre column) is tried on POWER_GRID with the others held —
+    the gun fire-rate exponent also on 0, meaning "the gun's reload time doesn't
+    matter" — then p on a 0.05 grid within ±P_WINDOW of the current p; up to
+    MAX_PASSES passes, stopping when a full pass changes nothing.
+    Returns (powers, p, passes used)."""
+    stats = design_for(spec, units, arm).power_keys
     powers = {s: spec.power_of(s) for s in stats}
     p = spec.p
     designs: dict[tuple, Design] = {}
@@ -1067,7 +1215,8 @@ def descend_powers(spec: Spec, units: Sequence[Unit], arm: str, rows: np.ndarray
         key = tuple(sorted(trial.items()))
         design = designs.get(key)
         if design is None:
-            design = designs[key] = build_design(units, arm, linear=spec.linear, extras=spec.extras, powers=trial)
+            design = designs[key] = build_design(units, arm, linear=spec.linear, extras=spec.extras, powers=trial,
+                                                 shape=dict(spec.shape))
         d = datas.get(p_trial)
         if d is None:
             d = datas[p_trial] = slice_data(units, spec.size, p_trial)
@@ -1077,7 +1226,7 @@ def descend_powers(spec: Spec, units: Sequence[Unit], arm: str, rows: np.ndarray
     for passes in range(1, MAX_PASSES + 1):
         changed = False
         for s in stats:
-            for a in POWER_GRID:
+            for a in ((0.0,) + POWER_GRID if s == "shoot:rate" else POWER_GRID):
                 if a == powers[s]:
                     continue
                 trial = {**powers, s: a}
@@ -1099,11 +1248,161 @@ def descend_powers(spec: Spec, units: Sequence[Unit], arm: str, rows: np.ndarray
 @dataclass
 class PowerResult:
     base: CVRun                       # final structure, linear stats
-    nested: CVRun                     # powers + p fitted inside each training fold
+    nested: CVRun                     # coarse powers + p fitted inside each training fold
     fold_powers: list[tuple[dict[str, float], float]]
     full_powers: dict[str, float]
     full_p: float
-    kept: bool
+    kept: bool                        # coarse powers beat linear by > 1 SE
+    fine: "FineResult | None" = None
+
+
+@dataclass
+class FineResult:
+    nested: CVRun                     # fine powers + p, refined inside each training fold
+    fold_powers: list[tuple[dict[str, float], float]]
+    full_powers: dict[str, float]
+    full_p: float
+    profiles: list[dict]              # local CV curves per coordinate
+    choice: str                       # "linear" | "coarse" | "fine"
+
+
+class PowerObjective:
+    """Training SSE (per-size space, the model's own objective) for a set of
+    stat powers and a size power, with designs and size data cached."""
+
+    def __init__(self, spec: Spec, units: Sequence[Unit], arm: str, rows: np.ndarray):
+        self.spec, self.units, self.arm, self.rows = spec, units, arm, rows
+        self.designs: dict[tuple, Design] = {}
+        self.datas: dict[float, SliceData] = {}
+        self.values: dict[tuple, float] = {}
+
+    def __call__(self, powers: dict[str, float], p: float) -> float:
+        key = (tuple(sorted((s, round(a, 4)) for s, a in powers.items())), round(p, 4))
+        if key in self.values:
+            return self.values[key]
+        design = self.designs.get(key[0])
+        if design is None:
+            design = self.designs[key[0]] = build_design(self.units, self.arm, linear=self.spec.linear,
+                                                         extras=self.spec.extras, powers=dict(key[0]),
+                                                         shape=dict(self.spec.shape))
+        d = self.datas.get(key[1])
+        if d is None:
+            d = self.datas[key[1]] = slice_data(self.units, self.spec.size, key[1])
+        value = fit_on(replace(self.spec, p=key[1]), design, d, self.rows).sse
+        self.values[key] = value
+        return value
+
+
+def power_floor(key: str) -> float:
+    """Smallest exponent tried. The gun fire-rate exponent may reach 0 (its reload
+    time then has no effect); other exponents stay positive — a shooting-product
+    factor at 0 would turn a zero stat into a 1."""
+    return 0.0 if key == "shoot:rate" else MIN_POWER
+
+
+def line_search(f: Callable[[float], float], center: float, step: float, half: int,
+                floor: float) -> tuple[float, float]:
+    """Best value of f on center ± half·step (≥ floor), re-centring on the best
+    point while it sits on a window edge, up to MAX_RECENTRE times."""
+    best = (f(center), center)
+    for _ in range(MAX_RECENTRE + 1):
+        grid = [round(center + step * k, 4) for k in range(-half, half + 1)]
+        grid = [g for g in grid if g >= floor - 1e-12]
+        value, point = min((f(g), g) for g in grid)
+        if value < best[0]:
+            best = (value, point)
+        on_edge = point == grid[-1] or (point == grid[0] and grid[0] > floor + 1e-12)
+        if not on_edge:
+            break
+        center = point
+    return best[1], best[0]
+
+
+def refine_powers(spec: Spec, units: Sequence[Unit], arm: str, rows: np.ndarray,
+                  powers: dict[str, float], p: float) -> tuple[dict[str, float], float]:
+    """Fine coordinate descent from a coarse solution: each stat on a ±0.5 window
+    in steps of 0.05, then p on ±0.15 in steps of 0.01, windows re-centred at
+    edges; up to FINE_PASSES passes until nothing changes."""
+    objective = PowerObjective(spec, units, arm, rows)
+    stats = design_for(spec, units, arm).power_keys
+    powers = {s: powers.get(s, 1.0) for s in stats}
+    current = objective(powers, p)
+    for _ in range(FINE_PASSES):
+        changed = False
+        for s in stats:
+            a, value = line_search(lambda v: objective({**powers, s: v}, p), powers[s],
+                                   FINE_STAT_STEP, FINE_STAT_HALF, power_floor(s))
+            if value < current * (1 - 1e-9):
+                powers, current, changed = {**powers, s: a}, value, True
+        q, value = line_search(lambda v: objective(powers, v), p, FINE_P_STEP, FINE_P_HALF, MIN_POWER)
+        if value < current * (1 - 1e-9):
+            p, current, changed = q, value, True
+        if not changed:
+            break
+    return powers, p
+
+
+def local_profiles(spec: Spec, sl: Slice, powers: dict[str, float], p: float) -> list[dict]:
+    """Exploratory CV curves: each coordinate varied over its fine window around
+    the full-data fine solution (the others held there), plus its linear value
+    (power 1 / p = 1). Holding the others at full-data values makes the curves
+    slightly optimistic, so they show shape and identifiability, not accuracy."""
+    out = []
+    coordinates = [(s, FINE_STAT_STEP, FINE_STAT_HALF) for s in powers] + [("size power p", FINE_P_STEP, FINE_P_HALF)]
+    for name, step, half in coordinates:
+        center = p if name == "size power p" else powers[name]
+        floor = MIN_POWER if name == "size power p" else power_floor(name)
+        grid = sorted({round(center + step * k, 4) for k in range(-half, half + 1) if center + step * k >= floor - 1e-12}
+                      | {1.0})
+        curve = []
+        for v in grid:
+            trial_powers = powers if name == "size power p" else {**powers, name: v}
+            trial = with_powers(spec, trial_powers, v if name == "size power p" else p)
+            run = cv_spec(trial, sl.units, sl.plan.folds, sl.arm, full_fit=False)
+            curve.append((v, run.mean("mae"), run.se("mae")))
+        best_v, best_mae, best_se = min(curve, key=lambda t: (t[1], t[0]))
+        window = [t for t in curve if abs(t[0] - center) <= step * half + 1e-9]
+        within = [v for v, mae, _ in window if mae <= best_mae + best_se]
+        out.append({
+            "name": name, "center": center, "best": best_v, "best_mae": best_mae, "se": best_se,
+            "lo": min(within), "hi": max(within),
+            "at_center": next(mae for v, mae, _ in curve if v == round(center, 4)),
+            "at_linear": next(mae for v, mae, _ in curve if v == 1.0),
+            "edge": min(within) <= window[0][0] + 1e-9 or max(within) >= window[-1][0] - 1e-9,
+        })
+    return out
+
+
+def nested_fine(spec: Spec, sl: Slice, coarse: PowerResult) -> FineResult:
+    """Fine refinement nested inside each training fold, starting from that
+    fold's coarse powers; then a full-data refinement and local CV curves.
+    The model choice: powers are kept only if the better of coarse / fine beats
+    linear stats by more than one SE, and then whichever of the two is lower."""
+    units, arm = sl.units, sl.arm
+    cost = np.array([u.cost for u in units], float)
+    oof = np.full(len(units), np.nan)
+    oof_fold = np.zeros(len(units), int)
+    fold_metrics, fold_powers = [], []
+    for k, (train, test) in enumerate(sl.plan.folds):
+        start_powers, start_p = coarse.fold_powers[k]
+        powers, p = refine_powers(spec, units, arm, train, start_powers, start_p)
+        fold_powers.append((powers, p))
+        fitted = with_powers(spec, powers, p)
+        design, d = design_for(fitted, units, arm), data_for(fitted, units)
+        model = fit_on(fitted, design, d, train)
+        pred = predict_total(model, design, d, test)
+        oof[test], oof_fold[test] = pred, k + 1
+        fold_metrics.append(metrics(cost[test], pred, d.size[test]))
+    nested = CVRun("fine powers + p, refined inside each training fold", fold_metrics, oof, oof_fold, spec)
+    full_powers, full_p = refine_powers(spec, units, arm, np.arange(len(units)), coarse.full_powers, coarse.full_p)
+    profiles = local_profiles(spec, sl, full_powers, full_p)
+    base = coarse.base
+    best_power = min(coarse.nested.mean("mae"), nested.mean("mae"))
+    if best_power >= base.mean("mae") - base.se("mae"):
+        choice = "linear"
+    else:
+        choice = "fine" if nested.mean("mae") <= coarse.nested.mean("mae") else "coarse"
+    return FineResult(nested, fold_powers, full_powers, full_p, profiles, choice)
 
 
 def nested_powers(spec: Spec, sl: Slice, base: CVRun) -> PowerResult:
@@ -1125,6 +1424,155 @@ def nested_powers(spec: Spec, sl: Slice, base: CVRun) -> PowerResult:
     full_powers, full_p, _ = descend_powers(spec, units, arm, np.arange(len(units)))
     kept = nested.mean("mae") < base.mean("mae") - base.se("mae")
     return PowerResult(base, nested, fold_powers, full_powers, full_p, kept)
+
+
+# --- Shape variants: firearm/calibre representation × shooting cluster --------
+
+@dataclass
+class VariantResult:
+    key: str                 # e.g. "F1·SH2"
+    label: str
+    spec: Spec               # linear exponents; powers live in `power`
+    power: PowerResult       # nested coarse stat powers for this shape
+    params: int              # fitted parameters incl. exponents and p
+    unseen: int              # test rows hitting a level absent from their training fold
+    adopted: bool = False
+    eligible: bool = True    # product variants: beat their own summation by > 1 SE
+
+    def mean(self) -> float:
+        return self.power.nested.mean("mae")
+
+    def se(self) -> float:
+        return self.power.nested.se("mae")
+
+
+# --artillery-cal: restrict the artillery calibre representations screened.
+# "auto" screens them all; otherwise F0 (the baseline) plus the named one.
+ARTILLERY_CAL = "auto"
+ARTILLERY_CAL_KEYS = {"calibre": "F1", "projectile": "F2", "spline": "F3"}
+
+
+def shape_variants(arm: str) -> list[tuple[str, str, tuple[tuple[str, str], ...]]]:
+    """(key, label, shape) for every variant of one arm. F = firearm / calibre
+    representation, SH = shooting: 0 additive, 1 product, 2 product per type."""
+    if arm == "artillery":
+        # F3: the smooth calibre function from analysis/calibre_function.py — a
+        # natural cubic spline in log range (df 5) with the shot type, which matched
+        # the cannon-type one-hot (49.68 vs 49.43 nested MAE) with 9 fewer parameters.
+        reps = [("F0", "range + damage + gun reload", ()),
+                ("F1", "calibre", (("cal", "calibre"),)),
+                ("F2", "cannon type", (("cal", "projectile"),)),
+                ("F3", "range spline (df 5)", (("cal", "spline_r"), ("cal_df", "5")))]
+        if ARTILLERY_CAL != "auto":
+            reps = [r for r in reps if r[0] in ("F0", ARTILLERY_CAL_KEYS[ARTILLERY_CAL])]
+        per_type = {"F1": "calibre inside the shooting product", "F2": "shooting product per cannon type"}
+    else:
+        reps = [("F0", "range", ()), ("F1", "firearm one-hot", (("fire", "firearm"),))]
+        per_type = {"F1": "shooting product per firearm"}
+    out = []
+    for fkey, flabel, fshape in reps:
+        shoots = [("SH0", "additive shooting", ()), ("SH1", "shooting product", (("shoot", "product"),))]
+        if fkey in per_type:
+            shoots.append(("SH2", per_type[fkey], (("shoot", "product_type"),)))
+        for skey, slabel, sshape in shoots:
+            out.append((f"{fkey}·{skey}", f"{flabel}; {slabel}", tuple(sorted(fshape + sshape))))
+    return out
+
+
+def screen_variants(pre: Spec, sl: Slice, log_fn: Callable[[str], None]) -> list[VariantResult]:
+    """Nested coarse CV for every shape variant of one arm, then the adoption
+    rule, with summation as the default (per the user — a product is probably
+    not how the game implements shooting):
+
+    1. A shooting-product variant (SH1/SH2) is eligible only if it beats the
+       summation variant with the same firearm/calibre representation (its
+       F·SH0) by more than one SE. Summation variants are always eligible.
+    2. F0·SH0 is the current model. An eligible variant is adopted only if it
+       beats F0·SH0 by more than one SE.
+    3. Among those within one SE of the best, summation is preferred, then the
+       fewest parameters."""
+    out = []
+    for key, label, shape in shape_variants(sl.arm):
+        spec = replace(pre, shape=shape)
+        base = cv_spec(spec, sl.units, sl.plan.folds, sl.arm, full_fit=False, label=f"{key}, linear exponents")
+        power = nested_powers(spec, sl, base)
+        design = design_for(spec, sl.units, sl.arm)
+        unseen = 0
+        for train, test in sl.plan.folds:
+            bad = unidentified(design.X, train, test)
+            if bad.any():
+                unseen += int(np.any(design.X[test][:, bad] != design.X[train][0, bad], axis=1).sum())
+        params = base.params + len(design.power_keys) + 1
+        out.append(VariantResult(key, label, spec, power, params, unseen))
+        log_fn(f"variant   {sl.arm:9} {key} {label:45} linear {base.mean('mae'):6.2f}  nested {power.nested.mean('mae'):6.2f}")
+    adopt_variant(out)
+    return out
+
+
+def adopt_variant(out: list[VariantResult]) -> VariantResult:
+    """Apply the adoption rule (see screen_variants) and mark the pick. out[0]
+    is F0·SH0, the current model."""
+    current = out[0]
+    summation = {v.key.split("·")[0]: v for v in out if v.key.endswith("SH0")}
+    for v in out:
+        if v.key.endswith("SH0"):
+            v.eligible = True
+        else:
+            ref = summation[v.key.split("·")[0]]
+            v.eligible = v.mean() < ref.mean() - ref.se()
+    beats = [v for v in out[1:] if v.eligible and v.mean() < current.mean() - current.se()]
+    if beats:
+        best = min(beats, key=lambda v: v.mean())
+        pool = [v for v in beats if v.mean() <= best.mean() + best.se()]
+        pick = min(pool, key=lambda v: (not v.key.endswith("SH0"), v.params, v.mean()))
+    else:
+        pick = current
+    pick.adopted = True
+    return pick
+
+
+def variant_details(variants: list[VariantResult], sl: Slice) -> dict:
+    """Full-data fits of the best F1 (and, for artillery, F2) variant, for the
+    report: per-firearm coefficients, or the calibre curve and cannon-type
+    coefficients."""
+    def full_fit(v: VariantResult) -> tuple[Spec, Design, PriceModel]:
+        spec = with_powers(v.spec, v.power.full_powers, v.power.full_p)
+        design, d = design_for(spec, sl.units, sl.arm), data_for(spec, sl.units)
+        return spec, design, fit_on(spec, design, d, np.arange(len(sl.units)))
+
+    def best_of(prefix: str) -> VariantResult | None:
+        # A representation may be absent (e.g. --artillery-cal restricts the screen).
+        pool = [v for v in variants if v.key.startswith(prefix)]
+        return min(pool, key=lambda v: v.mean()) if pool else None
+
+    out: dict = {}
+    f1 = best_of("F1")
+    if sl.arm == "artillery":
+        if f1:
+            spec, design, model = full_fit(f1)
+            coef = dict(zip(design.names, model.beta))
+            a = spec.power_of("cal:damage")
+            projectiles: dict[str, tuple[str, float]] = {}
+            for u in sl.units:
+                projectiles.setdefault(u.projectile, (u.shot, u.values["proj_damage"]))
+            out["calibre"] = {
+                "variant": f1.key, "beta": coef.get("calibre", float("nan")), "a": a,
+                "rows": [(proj, shot, dmg, coef.get("calibre", float("nan")) * (dmg / POWER_SCALE) ** a)
+                         for proj, (shot, dmg) in sorted(projectiles.items(), key=lambda t: (t[1][0], t[1][1]))],
+            }
+        f2 = best_of("F2")
+        if f2:
+            spec2, design2, model2 = full_fit(f2)
+            out["cannon"] = {"variant": f2.key, "reference": design2.references.get("projectile"),
+                             "rows": [(n, c) for n, c in zip(design2.names, model2.beta)
+                                      if n.startswith("projectile=") or n.startswith("shoot×projectile=")]}
+    elif f1:
+        spec, design, model = full_fit(f1)
+        coef = dict(zip(design.names, model.beta))
+        out["firearm"] = {"variant": f1.key, "reference": design.references.get("firearm"),
+                          "rows": [(n, c) for n, c in coef.items()
+                                   if n.startswith("firearm=") or n.startswith("shoot×firearm=") or n == "shoot"]}
+    return out
 
 
 # --- Faction modifier shared across arms --------------------------------------
@@ -1471,6 +1919,8 @@ class Results:
     n_seeds: int
     shared_m: dict[str, dict[str, float]] = field(default_factory=dict)
     linear: bool = False
+    variants: dict[str, list] = field(default_factory=dict)        # arm -> [VariantResult]
+    variant_detail: dict[str, dict] = field(default_factory=dict)
     elapsed: float = 0.0
 
 
@@ -1484,10 +1934,13 @@ def main() -> int:
     parser.add_argument("--linear", action="store_true",
                         help="fully linear run: size = models, p = 1, linear stats (no size or stat powers)")
     parser.add_argument("--out", type=Path, default=None, help="output directory (default analysis/output)")
+    parser.add_argument("--artillery-cal", choices=["auto", *ARTILLERY_CAL_KEYS], default="auto",
+                        help="artillery calibre representations to screen: all (auto), or only F0 plus this one")
     args = parser.parse_args()
-    global OUT_DIR
+    global OUT_DIR, ARTILLERY_CAL
     if args.out is not None:
         OUT_DIR = args.out.resolve()
+    ARTILLERY_CAL = args.artillery_cal
     started = time.time()
 
     for path in (DATA_CSV, CATALOG_CSV):
@@ -1554,16 +2007,31 @@ def main() -> int:
                 accepted |= best.spec.extras
         pre_power[arm] = replace(headline[arm], extras=accepted)
 
-    # 4. Stat powers, nested CV.
+    # 4. Shape variants (firearm/calibre representation × shooting cluster), each
+    #    with stat powers fitted by nested coarse descent; then the fine search on
+    #    the adopted variant.
     powers: dict[str, PowerResult] = {}
+    variants: dict[str, list[VariantResult]] = {}
+    variant_detail: dict[str, dict] = {}
     final: dict[str, Spec] = dict(pre_power) if args.linear else {}
     for arm in ARMS if not args.linear else ():
         sl = slices[(arm, "merged")]
-        base = cv_spec(pre_power[arm], sl.units, sl.plan.folds, arm, full_fit=False, label="final structure, linear stats")
-        powers[arm] = nested_powers(pre_power[arm], sl, base)
-        pw = powers[arm]
-        final[arm] = with_powers(pre_power[arm], pw.full_powers, pw.full_p) if pw.kept else pre_power[arm]
-        log(f"powers    {arm:9} base {base.mean('mae'):.2f} nested {pw.nested.mean('mae'):.2f} kept={pw.kept}; "
+        variants[arm] = screen_variants(pre_power[arm], sl, lambda m: log(m, started))
+        adopted = next(v for v in variants[arm] if v.adopted)
+        variant_detail[arm] = variant_details(variants[arm], sl)
+        pw = powers[arm] = adopted.power
+        spec = adopted.spec
+        log(f"adopted   {arm:9} {adopted.label} (nested {pw.nested.mean('mae'):.2f})", started)
+        # 4b. Fine local refinement around the adopted variant's coarse powers, nested again.
+        pw.fine = nested_fine(spec, sl, pw)
+        fine = pw.fine
+        if fine.choice == "fine":
+            final[arm] = with_powers(spec, fine.full_powers, fine.full_p)
+        elif fine.choice == "coarse":
+            final[arm] = with_powers(spec, pw.full_powers, pw.full_p)
+        else:
+            final[arm] = spec
+        log(f"fine      {arm:9} fine nested {fine.nested.mean('mae'):.2f} → choice {fine.choice}; "
             f"final [{final[arm].describe()}]", started)
 
     # 5. Final model on every slice, baseline, faction modifiers.
@@ -1589,14 +2057,14 @@ def main() -> int:
         spec = final[arm]
         rd = np.array([u.rank_depth for u in sl.units])
         n = np.array([u.n for u in sl.units])
-        variants = [("final model", spec), ("+ size multiplier", replace(spec, mult=spec.mult | {"size"}))]
+        packing_variants = [("final model", spec), ("+ size multiplier", replace(spec, mult=spec.mult | {"size"}))]
         if "rank_depth" in spec.mult | spec.linear:
             no_rd = replace(spec, mult=spec.mult - {"rank_depth"}, linear=spec.linear - {"rank_depth"})
-            variants.append(("rank_depth removed", no_rd))
+            packing_variants.append(("rank_depth removed", no_rd))
         else:
-            variants.append(("+ rank_depth multiplier", replace(spec, mult=spec.mult | {"rank_depth"})))
+            packing_variants.append(("+ rank_depth multiplier", replace(spec, mult=spec.mult | {"rank_depth"})))
         runs = []
-        for label, variant in variants:
+        for label, variant in packing_variants:
             run = cv_spec(variant, sl.units, sl.plan.folds, arm, label=label)
             note = "; ".join(f"δ_{v} = {run.full.delta[v]:+.4f} (ref {run.full.refs[v]:g})"
                              for v in ("rank_depth", "size") if v in variant.mult)
@@ -1666,10 +2134,10 @@ def main() -> int:
 
     res = Results(units, staff, slices, regression, profiles, search, reprofiles, ablations, powers, final, packing,
                   poland, transfer, staff_slices, staff_head, staff_poland, tag_mismatches, ratings, args.seeds, shared_m,
-                  linear=args.linear)
+                  linear=args.linear, variants=variants, variant_detail=variant_detail)
     res.elapsed = time.time() - started
     write_outputs(res)
-    log(f"done → {OUT_DIR.relative_to(ROOT)}", started)
+    log(f"done → {OUT_DIR.relative_to(ROOT) if OUT_DIR.is_relative_to(ROOT) else OUT_DIR}", started)
     return 0
 
 
@@ -1707,8 +2175,19 @@ def write_coefficients(res: Results) -> None:
                 refs = "reference levels: " + "; ".join(f"{k}={v}" for k, v in run.references.items())
                 writer.writerow([arm, side, key, "size", spec.size, "models = men_raw/2" if spec.size == "n" else "guns"])
                 writer.writerow([arm, side, key, "size power p", f"{spec.p:g}", "price ∝ size^p"])
+                for shape_key in SHAPE_DEFAULTS:
+                    writer.writerow([arm, side, key, f"shape {shape_key}", spec.shape_of(shape_key),
+                                     "how shooting / firearm / calibre enter β·x (see SHAPE_DEFAULTS)"])
                 for stat, a in spec.powers:
-                    writer.writerow([arm, side, key, f"stat power {stat}", f"{a:g}", "the β column is stat^power"])
+                    if stat.startswith("shoot:"):
+                        note = (f"exponent inside shoot = Π (stat/{POWER_SCALE:g})^a × ({RATE_SCALE:g}/gun reload "
+                                f"time)^a_rate; absent exponents are 1")
+                    elif stat.startswith("cal:"):
+                        source = "projectile damage" if stat == "cal:damage" else "range"
+                        note = f"calibre column = ({source} / {POWER_SCALE:g})^power"
+                    else:
+                        note = f"the β column is (stat / {POWER_SCALE:g})^power"
+                    writer.writerow([arm, side, key, f"stat power {stat}", f"{a:g}", note])
                 writer.writerow([arm, side, key, "(intercept: per-size constant b0)", f"{model.b0:.10g}",
                                  spec.describe() + " | " + refs])
                 for name, coef in zip(run.names, model.beta):
@@ -1810,6 +2289,17 @@ def bargains(res: Results, arm: str) -> tuple[list[dict], list[dict]]:
         item["saved"] = item["pred"] - item["unit"].cost
         item["rel"] = item["saved"] / item["pred"] * 100
     return (sorted(items, key=lambda t: -t["saved"])[:10], sorted(items, key=lambda t: -t["rel"])[:10])
+
+
+def power_key_order(res: "Results") -> list[str]:
+    """Every exponent key used by any arm's adopted variant (coarse or fine):
+    additive stats in NUMERIC order, then shooting / calibre keys."""
+    used = set()
+    for pw in res.powers.values():
+        used |= set(pw.full_powers)
+        if pw.fine:
+            used |= set(pw.fine.full_powers)
+    return [k for k in NUMERIC if k in used] + sorted(used - set(NUMERIC))
 
 
 def report_lines(res: Results) -> list[str]:
@@ -2015,10 +2505,93 @@ def report_lines(res: Results) -> list[str]:
     add("")
 
     # ---- 7. Stat powers
-    add("## 7. Stat powers")
+    add("## 7. Shooting, firearm / calibre representation, and stat powers")
     add("")
     if res.linear:
         add("Not fitted in the fully linear run: every stat enters β·x linearly.")
+        add("")
+    if res.variants:
+        add("**Variants.** These change only how shooting and the firearm/calibre information enter β·x; "
+            "everything else is the headline structure. Each is scored with its exponents fitted by nested "
+            "coarse descent: the shooting-product exponents, the gun fire-rate exponent, the calibre exponent, "
+            "the remaining additive stat powers, and p. **F0·SH0 is the current model.**")
+        add("")
+        add("- **F (infantry/cavalry):** F0 range; F1 firearm one-hot, with range dropped (each firearm has "
+            "one range).")
+        add("- **F (artillery):** F0 range + projectile damage + gun reload; F1 calibre = (damage/100)^a with "
+            "the shot type, range and gun reload dropped; F2 cannon-type (projectile) one-hot.")
+        add("- **SH:** SH0 accuracy, ammo and reload_skill additive; SH1 one shooting column "
+            f"`Π (stat/100)^a × ({RATE_SCALE:g} / gun reload time)^a_rate`, so the crew's reload skill and the "
+            "gun's intrinsic fire rate are separate factors; SH2 the same with one shooting slope per firearm "
+            "or cannon type (artillery F1: calibre inside the product).")
+        add("- Melee attack, defence and charge stay additive, like morale.")
+        add("")
+        add("**Adoption rule — summation is the default.** A shooting product is probably not how the game "
+            "implements shooting, so:")
+        add("")
+        add("1. A product variant (SH1/SH2) is **eligible** only if it beats the summation variant with the same "
+            "firearm/calibre representation (its F·SH0) by more than one SE.")
+        add("2. An eligible variant replaces F0·SH0, the current model, only if it beats it by more than one SE.")
+        add("3. Among those within one SE of the best, summation is preferred, then the fewest parameters.")
+        add("")
+        add("Cavalry error is already low (about 7.7% MAPE), so cavalry stays as it is unless a variant clears "
+            "this bar.")
+        add("")
+        for arm, items in res.variants.items():
+            current = items[0]
+            rows = []
+            for v in items:
+                rows.append([f"`{v.key}`", v.label, f1(v.power.base.mean("mae")), pm(v.power.nested, "mae", f1),
+                             f"{v.mean() - current.mean():+.2f}", f2(current.se()), f1(v.power.nested.mean("mape")),
+                             v.params, v.unseen or "—",
+                             "—" if v.key.endswith("SH0") else ("yes" if v.eligible else "no"),
+                             "**adopted**" if v.adopted else ""])
+            add(f"### {arm}")
+            add("")
+            L += table(["variant", "shape", "MAE, exponents = 1", "MAE nested (exponents fitted)", "Δ vs F0·SH0",
+                        "1 SE (F0·SH0)", "MAPE nested", "params", "test rows with unseen levels",
+                        "product beats its summation by > 1 SE", ""], rows)
+            add("")
+            keys = sorted({k for v in items for k in v.power.full_powers} - set(NUMERIC)) + \
+                [k for k in NUMERIC if any(k in v.power.full_powers for v in items)]
+            rows = [[f"`{k}`"] + [f"{v.power.full_powers[k]:g}" if k in v.power.full_powers else "—" for v in items]
+                    for k in keys]
+            rows.append(["size power p"] + [f"{v.power.full_p:g}" for v in items])
+            add("Full-data exponents per variant (coarse grid; `shoot:rate` = gun fire-rate exponent, "
+                "`cal:damage` = calibre exponent):")
+            add("")
+            L += table(["exponent"] + [f"`{v.key}`" for v in items], rows)
+            add("")
+            detail = res.variant_detail.get(arm, {})
+            if "firearm" in detail:
+                fd = detail["firearm"]
+                add(f"Firearm coefficients in the best F1 variant (`{fd['variant']}`, full-data fit, gold per "
+                    f"size unit^p, reference firearm `{fd['reference']}`):")
+                add("")
+                L += table(["column", "coefficient"], [[f"`{n}`", f"{c:+.4g}"] for n, c in fd["rows"]])
+                add("")
+            if "calibre" in detail:
+                cd = detail["calibre"]
+                add(f"Calibre curve in the best F1 variant (`{cd['variant']}`): calibre term = "
+                    f"{cd['beta']:+.4g} × (damage/100)^{cd['a']:g}, in gold per gun^p, added to β·x. The shot "
+                    "type's own coefficient sets each family's level.")
+                add("")
+                L += table(["projectile", "shot type", "damage", "calibre term"],
+                           [[f"`{p}`", s, f"{d:g}", f"{t:+.1f}"] for p, s, d, t in cd["rows"]])
+                add("")
+            if "cannon" in detail:
+                kd = detail["cannon"]
+                add(f"Cannon-type coefficients in the best F2 variant (`{kd['variant']}`, reference "
+                    f"`{kd['reference']}`):")
+                add("")
+                L += table(["column", "coefficient"], [[f"`{n}`", f"{c:+.4g}"] for n, c in kd["rows"]])
+                add("")
+        if ARTILLERY_CAL != "auto":
+            add(f"**Artillery was restricted** (`--artillery-cal {ARTILLERY_CAL}`): only F0 and "
+                f"{ARTILLERY_CAL_KEYS[ARTILLERY_CAL]} were screened, so this run fixes the calibre representation "
+                "rather than choosing it.")
+            add("")
+        add("The adopted variant then goes through the stat-power comparison and fine search below.")
         add("")
     if res.powers:
         add(f"For each numeric stat, a power from {list(POWER_GRID)}, plus the size power p within ±{P_WINDOW}, is "
@@ -2038,7 +2611,7 @@ def report_lines(res: Results) -> list[str]:
             "the 5 training folds.")
         add("")
         rows = []
-        for stat in list(NUMERIC) + ["size power p"]:
+        for stat in power_key_order(res) + ["size power p"]:
             row = [stat]
             for arm, pw in res.powers.items():
                 if stat == "size power p":
@@ -2054,6 +2627,72 @@ def report_lines(res: Results) -> list[str]:
             rows.append(row)
         L += table(["stat"] + [f"{arm}: full (folds)" for arm in res.powers], rows)
         add("")
+
+    if any(pw.fine for pw in res.powers.values()):
+        add("### 7b. Fine power search")
+        add("")
+        add(f"Starting from each fold's coarse powers, every stat power is refined in steps of {FINE_STAT_STEP} within "
+            f"±{FINE_STAT_STEP * FINE_STAT_HALF:g}, and p in steps of {FINE_P_STEP} within ±{FINE_P_STEP * FINE_P_HALF:g}. "
+            "A window re-centres when its best value sits on an edge, so powers stuck at the coarse grid's limits "
+            f"(0.25, 3) can move, down to a floor of {MIN_POWER}. This is nested inside each training fold again. "
+            "**Decision rule:** powers are kept only if the better of coarse or fine beats linear stats by more "
+            "than one SE, and then whichever of the two is lower.")
+        add("")
+        add("**Note on cavalry.** Cavalry error is already low, about 7.7% MAPE with linear stats. If neither the "
+            "coarse nor the fine search beats linear stats by more than one SE, the power hypothesis is **dropped "
+            "for cavalry**, and cavalry stays linear in its stats.")
+        add("")
+        rows = []
+        for arm, pw in res.powers.items():
+            fine = pw.fine
+            se = pw.base.se("mae")
+            rows.append([arm, f1(pw.base.mean("mae")), f1(pw.nested.mean("mae")), f1(fine.nested.mean("mae")),
+                         f"{fine.nested.mean('mae') - pw.nested.mean('mae'):+.2f}",
+                         f"{min(fine.nested.mean('mae'), pw.nested.mean('mae')) - pw.base.mean('mae'):+.2f}",
+                         f2(se), f1(fine.nested.mean("mape")), f"**{fine.choice}**"])
+        L += table(["arm", "MAE linear stats", "MAE coarse (nested)", "MAE fine (nested)", "fine − coarse",
+                    "best powers − linear", "1 SE (linear)", "MAPE fine", "choice"], rows)
+        add("")
+        add("Fine powers (full-data refinement, with the range across the 5 training folds). Coarse full-data "
+            "values in brackets.")
+        add("")
+        rows = []
+        for stat in power_key_order(res) + ["size power p"]:
+            row = [stat]
+            for arm, pw in res.powers.items():
+                fine = pw.fine
+                if stat == "size power p":
+                    full, folds, coarse = fine.full_p, [p for _, p in fine.fold_powers], pw.full_p
+                elif stat in fine.full_powers:
+                    full = fine.full_powers[stat]
+                    folds = [powers.get(stat, 1.0) for powers, _ in fine.fold_powers]
+                    coarse = pw.full_powers.get(stat, 1.0)
+                else:
+                    row.append("—")
+                    continue
+                row.append(f"{full:g} ({min(folds):g} … {max(folds):g}) [{coarse:g}]")
+            rows.append(row)
+        L += table(["stat"] + [f"{arm}: fine (folds) [coarse]" for arm in res.powers], rows)
+        add("")
+        add("**Local CV curves.** Each power is varied over its fine window around the full-data fine solution, "
+            "with the others held there, and the power 1 / p = 1 is also scored. *Within 1 SE* is the span of "
+            "values whose CV MAE is within one SE of that curve's minimum. A wide span means the exponent is "
+            "poorly pinned down. *Edge* means the span reaches the window edge, so the best value may lie "
+            "further out. The curves hold the other powers at full-data values, so they are slightly "
+            "optimistic: read them for shape, not accuracy.")
+        add("")
+        for arm, pw in res.powers.items():
+            add(f"#### {arm}")
+            add("")
+            rows = []
+            for prof in pw.fine.profiles:
+                rows.append([prof["name"], f"{prof['center']:g}", f"{prof['best']:g}", f1(prof["best_mae"]),
+                             f"{prof['lo']:g} … {prof['hi']:g}", "yes" if prof["edge"] else "—",
+                             f1(prof["at_center"]), f1(prof["at_linear"]),
+                             f"{prof['at_linear'] - prof['best_mae']:+.2f}"])
+            L += table(["power", "fine value", "CV-best", "CV MAE", "within 1 SE", "edge", "MAE at fine value",
+                        "MAE at 1 (linear)", "linear − best"], rows)
+            add("")
 
     # ---- 8. Final accuracy
     add("## 8. Final model — accuracy on every slice")
@@ -2092,7 +2731,7 @@ def report_lines(res: Results) -> list[str]:
     add("## 9. Final model — coefficients")
     add("")
     add("Refit on all rows of each slice. Price = M × size^p × (b0 + β·f(x)) + c. β is in gold per size "
-        "unit^p; where a stat has a power, its column is stat^power.")
+        "unit^p; where a stat has a power, its column is (stat / 100)^power.")
     add("")
     for arm in ARMS:
         runs = {side: slices[(arm, side)].runs["final"] for side in SIDES}
