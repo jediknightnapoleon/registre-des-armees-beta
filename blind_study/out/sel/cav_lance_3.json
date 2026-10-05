@@ -1,0 +1,20 @@
+{
+ "seg": "cav_lance",
+ "outer": 3,
+ "terms": [
+  "log_men",
+  "morale",
+  "melee_attack",
+  "melee_defense",
+  "charge_bonus",
+  "rank_depth",
+  "has_stamina",
+  "is_shock_resistant",
+  "has_guerrilla_deployment",
+  "log_morale",
+  "log_melee_attack",
+  "log_melee_defense",
+  "log_charge_bonus"
+ ],
+ "inner_mae": 36.13198245547333
+}

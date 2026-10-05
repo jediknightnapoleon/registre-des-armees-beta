@@ -53,6 +53,8 @@ bottom, filled in only at the end.
 | 16a | 2026-10-05 06:45 | regular: 11 types + staff; commanders: stage 2 | 14a with sparse army x type table (L1 1e-05) | 27.9 ± 0.9 | 7.39 ± 1.11 | 0.9840 ± 0.0029 | ≤36/seg + 308 army cells + 67 cv | sparse table: half the cells, same accuracy as 14a |
 | 16b | 2026-10-05 06:48 | regular: 11 types + staff; commanders: stage 2 | 14a with sparse army x type table (L1 3e-05) | 28.7 ± 0.9 | 7.37 ± 0.77 | 0.9835 ± 0.0028 | ≤36/seg + 220 army cells + 67 cv | 220 cells: +1.0 MAE |
 | 16c | 2026-10-05 06:49 | regular: 11 types + staff; commanders: stage 2 | 14a with sparse army x type table (L1 0.0001) | 31.8 ± 1.0 | 8.09 ± 0.95 | 0.9803 ± 0.0026 | ≤36/seg + 96 army cells + 67 cv | 96 cells: +4.1 MAE; still beats broad-type tables (215 cells, 35.0) |
+| 17a | 2026-10-05 06:51 | regular: 11 types + staff; commanders: stage 2 | 14a with army-offset ridge 1e-05 | 28.1 ± 1.0 | 7.30 ± 1.02 | 0.9840 ± 0.0019 | ≤36/seg + 579 army cells + 67 cv | weaker: slightly worse; 1e-4 is right |
+| 17b | 2026-10-05 06:52 | regular: 11 types + staff; commanders: stage 2 | 14a with army-offset ridge 0.001 | 30.1 ± 1.0 | 7.86 ± 1.09 | 0.9822 ± 0.0026 | ≤36/seg + 579 army cells + 67 cv | stronger: worse |
 
 ## Holdout (final, evaluated once)
 
