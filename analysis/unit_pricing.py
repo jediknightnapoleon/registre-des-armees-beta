@@ -156,7 +156,9 @@ CATEGORICAL = ("rating", "training", "drill", "side")
 # they need no reference level and an unseen cell falls back to its faction's
 # factor (then 1). Kept out of CATEGORICAL, which also drives linear placements.
 GROUPING = ("faction", "fclass")
-MULT_CATEGORICAL = CATEGORICAL + GROUPING
+# "uclass" = unit class as a multiplier (reference = most common class), replacing
+# its additive one-hot in β·x (analysis/class_structure.py).
+MULT_CATEGORICAL = CATEGORICAL + GROUPING + ("uclass",)
 CANDIDATES = {
     "infantry": ("rating", "training", "drill", "rank_depth", "side"),
     "cavalry": ("rating", "training", "rank_depth", "side"),
@@ -461,12 +463,15 @@ def factor_values(units: Sequence[Unit], var: str) -> np.ndarray:
         return np.array([u.faction for u in units])
     if var == "fclass":
         return np.array([f"{u.faction}|{u.unit_class}" for u in units])
+    if var == "uclass":
+        return np.array([u.unit_class for u in units])
     raise KeyError(var)
 
 
 def build_design(units: Sequence[Unit], arm: str, *, linear: frozenset[str] = frozenset(),
                  extras: frozenset[str] = frozenset(), powers: dict[str, float] | None = None,
-                 const_inside: bool = False, use_gs: bool = False, shape: dict[str, str] | None = None) -> Design:
+                 const_inside: bool = False, use_gs: bool = False, shape: dict[str, str] | None = None,
+                 class_linear: bool = True) -> Design:
     """Per-size feature matrix f(x). The per-size constant b0 is the regression
     intercept, not a column. `linear` holds the candidate variables placed in the
     linear part; `extras` the ablation features; `powers` the exponents — on
@@ -535,6 +540,8 @@ def build_design(units: Sequence[Unit], arm: str, *, linear: frozenset[str] = fr
         # Camels carry is_camel instead of a speed level (all speed dummies 0).
         ("speed", lambda u: None if u.is_camel else u.speed),
     ]
+    if not class_linear:
+        families = families[1:]
     if "training" in linear:
         families.append(("training", lambda u: u.training))
     if "drill" in linear and arm == "infantry":
@@ -639,7 +646,7 @@ def build_design(units: Sequence[Unit], arm: str, *, linear: frozenset[str] = fr
 
 def design_for(spec: Spec, units: Sequence[Unit], arm: str) -> Design:
     return build_design(units, arm, linear=spec.linear, extras=spec.extras, powers=dict(spec.powers),
-                        shape=dict(spec.shape))
+                        shape=dict(spec.shape), class_linear="uclass" not in spec.mult)
 
 
 # --- Model --------------------------------------------------------------------
@@ -1079,7 +1086,7 @@ def slice_data(units: Sequence[Unit], kind: str = "n", p: float = 1.0) -> SliceD
     cost = np.array([u.cost for u in units], float)
     return SliceData(n, size, cost, cost / size, 1 / size, size ** (p - 1), np.array([u.faction for u in units]),
                      {var: factor_values(units, var)
-                      for var in ("rating", "training", "drill", "side", "rank_depth", "size") + GROUPING})
+                      for var in ("rating", "training", "drill", "side", "rank_depth", "size", "uclass") + GROUPING})
 
 
 def data_for(spec: Spec, units: Sequence[Unit]) -> SliceData:

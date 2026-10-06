@@ -24,3 +24,6 @@ __pycache__/
 /assets/army_corps_by_theatre.staging/
 /assets/army_corps_by_theatre.old/
 
+
+# Analysis checkpoints (analysis/class_structure.py resumes from these)
+/analysis/.cache/

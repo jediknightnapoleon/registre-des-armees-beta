@@ -113,6 +113,8 @@ python analysis/calibre_function.py       # → analysis/output/calibre_function
 python analysis/blind_ideas.py            # → analysis/output/blind_ideas_report.md (blind-study ideas on our folds, ~8 min;
                                           #   reads blind_study/out from branch blind-pricing-study if present)
 python analysis/extreme_pinning.py        # → analysis/output/extreme_pinning_report.md (pin extreme units to train?, ~5 min)
+python analysis/class_structure.py        # → analysis/output/class_structure_report.md (class as multiplier / own size
+                                          #   exponent / own formula, ~40 min; checkpoints in analysis/.cache/, resumable)
 python -m pytest tools/tests              # from the repo root; tools/ is a package
 
 # App (from web/)
