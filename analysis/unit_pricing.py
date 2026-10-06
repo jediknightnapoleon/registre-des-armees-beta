@@ -17,8 +17,12 @@ stats, traits and abilities, then multiplied by unit size and other factors):
 Which of corps rating, training level, drill set (infantry), packing
 (rank_depth) and side belong in β·x, in M, or nowhere is searched
 exhaustively; the headline is the simplest model within one standard error of
-the best. Faction modifiers are fitted on top of the final model. Staff
-generals keep their own model: price = 1 + (1 + δ(r − 8))·(b·stars + q·stars²).
+the best. Faction modifiers are fitted on top of the final model; the adopted
+army-level form (FCLASS_FORM, from the blind study) replaces the free rating
+levels by the divisor 8/N and adds a ridge-shrunk faction × unit_class
+multiplier fitted jointly with the stats (run "FC"). Staff generals:
+price = b·stars^q·(8/N), 1 gold without stars (T3). See analysis/PRICING_MODEL_REPORT.md
+for the model written out and analysis/HANDOFF.md for how to work on it.
 
 Validation is 5-fold cross-validation where every fold is an 80/20 split built
 to keep identical units together, stratify by unit type, cover every
@@ -31,9 +35,9 @@ Outputs: analysis/output/unit_pricing_report.md
          analysis/output/coefficients.csv
          analysis/output/oof_predictions.csv
 
-Run from the repository root (takes ~20 minutes):
+Run from the repository root (~50 minutes with the default 6 worker processes):
 
-    python analysis/unit_pricing.py [--seeds 500]
+    python analysis/unit_pricing.py [--seeds 500] [--workers 6] [--out DIR] [--artillery-cal …] [--linear]
 
 Depends on numpy and scikit-learn only (pandas is not assumed to be installed).
 """

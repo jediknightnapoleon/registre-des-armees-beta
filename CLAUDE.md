@@ -80,6 +80,7 @@ web/               React + TypeScript + Vite PWA, also packaged as Electron (Win
 web/public/{data,assets}   Generated per build, GITIGNORED
 analysis/          Offline analyses (numpy + sklearn, no pandas); not part of the app.
                    Unit-pricing model: output/ (current), linear_results/, calibre_onehot_results/
+                   Start with analysis/PRICING_MODEL_REPORT.md (the model) and analysis/HANDOFF.md (how to work on it)
 docs/HANDOFF.md    Full technical documentation
 ```
 
