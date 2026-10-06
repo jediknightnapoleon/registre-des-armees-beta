@@ -1,5 +1,80 @@
 # Registre des Armées
 
+> ## This branch: `analysis/unit-pricing`
+>
+> This branch adds an **offline analysis of how NTW3 prices its units**. Nothing
+> in the app changes: everything new lives under [`analysis/`](analysis/) and in
+> the extended analysis dataset `data/generated/ntw3_units_analysis.csv`. The
+> app description further down is the same as on `main`.
+>
+> **The question.** Can the multiplayer price of every Theatre-of-War and Custom
+> army unit be predicted from the unit's stats, type, size and army, with a
+> formula a person can read?
+>
+> **The answer: yes, to within about 5–8%.** Cross-validated on units the model
+> never saw:
+>
+> | | Units | Mean error | Mean % error |
+> | --- | --- | --- | --- |
+> | Infantry | 4 370 | 27 gold | 7.7% |
+> | Cavalry | 1 724 | 35 gold | 4.6% |
+> | Artillery | 894 | 32 gold | 6.8% |
+> | Staff generals | 288 | 9 gold | 2.2% |
+>
+> **The model in one line:**
+>
+> ```
+> price = (8 / N) × army×class multiplier × size^p × (b0 + Σ β·stat^a + traits + class + speed)
+> ```
+>
+> - **N** is the corps number ("7. Danmark" → 7); price scales with 1/N.
+> - **Size** is models for infantry and cavalry, guns for artillery.
+> - The **army × class multiplier** captures each army's own pricing of each
+>   unit class. Polska lancers, for example, are priced at ×0.57.
+> - **Staff generals** cost 76.6 × stars^1.39 × 8/N, or 1 gold without stars.
+>
+> **Two versions of the model:**
+> - **The main model** shares coefficients across unit classes, so classes can
+>   be compared like for like.
+> - **A per-class alternative ("V4")** gives each class its own formula. It is
+>   more accurate (25 / 33 / 27 gold), but classes can then only be compared
+>   through their predicted prices.
+>
+> **Known weak spots:**
+> - Very large militia units are overpriced; one 487-model unit is predicted at
+>   ~2 200 against 608 actual.
+> - Tiny skirmisher units are slightly underpriced.
+> - Commander variants (a general attached to a unit) and Army Corps prices are
+>   not modelled yet.
+>
+> **Where to read:**
+>
+> | File | What |
+> | --- | --- |
+> | [`analysis/PRICING_MODEL_REPORT.md`](analysis/PRICING_MODEL_REPORT.md) | The model written out: equations, parameters, a worked example, limitations, the per-class alternative |
+> | [`analysis/output/faction_class_multipliers.md`](analysis/output/faction_class_multipliers.md) | Every army's price multiplier per unit class (also as CSV) |
+> | [`analysis/output/unit_pricing_report.md`](analysis/output/unit_pricing_report.md) | Full technical report of the current run |
+> | [`analysis/HANDOFF.md`](analysis/HANDOFF.md) | For whoever (or whichever AI) continues the work: rules, commands, code map, checks, next steps |
+>
+> **Running it** needs Python with numpy and scikit-learn. Run from the
+> repository root:
+>
+> ```bash
+> python tools/build_analysis_dataset.py   # the analysis dataset (already committed)
+> python analysis/unit_pricing.py          # full model + report → analysis/output/ (~50 min, 6 worker processes)
+> python analysis/fclass_table.py          # army × class multiplier tables (seconds)
+> python analysis/class_structure.py       # per-class alternative V4 (~40 min, resumable)
+> ```
+>
+> The other `analysis/*.py` scripts are the individual experiments behind the
+> model choices: calibre curve, blind-study ideas, extreme units. Each writes
+> its own report to `analysis/output/`.
+>
+> An independent "blind" attempt at the same question, made without knowledge
+> of this model, is on branch [`blind-pricing-study`](../../tree/blind-pricing-study).
+
+---
+
 **A desktop army builder for Napoleonic Total War 3 (NTW3).**
 
 Registre des Armées lets you plan a multiplayer army corps outside the game:
@@ -109,6 +184,8 @@ exported game tables into the app's data) and the React/TypeScript/Electron app
 source under `web/`. If you want to build, modify, or extend it, start with
 [`docs/HANDOFF.md`](docs/HANDOFF.md) — it documents the architecture, data
 pipeline, rules math, the general-rotation engine, and the release workflow.
+The unit-pricing analysis on this branch has its own guide,
+[`analysis/HANDOFF.md`](analysis/HANDOFF.md).
 
 ---
 
