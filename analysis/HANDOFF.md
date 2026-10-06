@@ -33,12 +33,17 @@ pricing analysis, which the app does not use.
 - **Adopted model:** `FCLASS_FORM = ("JFC", "ls")` in `unit_pricing.py`. CV
   MAE: infantry 27.4, cavalry 34.9, artillery 32.4. Staff generals use T3
   (8.6, or 2.3 with the faction modifier).
-- **Pending user decision:** whether to adopt the class-structure result
-  (`analysis/output/class_structure_report.md`). The candidates the adoption
-  rule picked are:
-  - infantry and artillery: a separate formula per class plus a size power per
-    class;
-  - cavalry: class as a multiplier plus a size power per class.
+- **Two model versions, both reported (user decision, October 2026):**
+  - **Adopted model** (`unit_pricing.py`): shared stat coefficients per arm, so
+    unit classes are comparable. Kept as the main model because of that.
+  - **V4, the per-class alternative** (`class_structure.py`): its own formula
+    and size power per class. More accurate (24.9 / 32.8 / 27.2), reported
+    beside the adopted model in `PRICING_MODEL_REPORT.md` §6. Coefficients are
+    in `analysis/output/class_structure_coefficients.csv`; it is not wired into
+    `unit_pricing.py`.
+  - The user decided **not** to test fully independent models per class (own
+    power and structure search): too much overfitting risk on small classes for
+    little expected gain.
 - **Blind study.** It lives on branch `blind-pricing-study`
   (`blind_study/`, with its own `HANDOFF.md`). An untracked copy sits in the
   working tree at `blind_study/`. **Don't commit it to this branch.**
@@ -219,11 +224,12 @@ to `analysis/output/`, and never changes committed outputs):
 
 ## 8. Open next steps, in suggested order
 
-1. **Adopt the class structure if the user agrees.** Add `Spec` support for
+1. **Only if the user asks: make V4 a pipeline model.** Add `Spec` support for
    per-class size powers (`class_p`) and per-class segmented designs. The
    `class_structure.py` functions `segmented` and `fit_class_p` are the
    reference.
-   - Wire this into step 5 as the new `FC`.
+   - Wire this into step 5 as an extra run *next to* `FC`, not replacing it: the
+     user wants both versions.
    - Rerun both full outputs and update `PRICING_MODEL_REPORT.md`.
 2. **Large-unit discount.** Militia above about 180 models need a size term that
    bends down. Test something readable before a spline, e.g. a capped or

@@ -1,6 +1,6 @@
 # NTW3 unit pricing model — final summary
 
-*Theatre-of-War and Custom armies · state of branch `analysis/unit-pricing` at commit `880dd653` (October 2026)*
+*Theatre-of-War and Custom armies · branch `analysis/unit-pricing`, October 2026*
 
 A readable formula that predicts the multiplayer price (`base_mp_cost`) of every
 regular unit and staff general in NTW3's Theatre-of-War (ToW) and Custom armies
@@ -32,13 +32,21 @@ How the error came down, MAE in gold (infantry / cavalry / artillery):
 | + size powers, stat powers, calibre curve | 34.6 | 59.2 | 49.7 |
 | + one faction modifier per arm | 32.9 | 54.1 | 46.8 |
 | **+ army × unit-class multiplier around 8/N (adopted)** | **27.4** | **34.9** | **32.4** |
+| Per-class alternative V4: own formula and size power per class (§6) | 24.9 | 32.8 | 27.2 |
 | Blind study's best model (13c), same units | 21.9 | 36.8 | 35.5 |
 
 The blind study was an independent attempt in a fresh session that knew nothing
 of this model (branch `blind-pricing-study`). Its key finding, a per-army
 price adjustment per unit type, is what the adopted step brings over. The
 adopted model now beats the blind study's best on cavalry and artillery; it
-still trails on infantry (§6).
+still trails on infantry.
+
+**Two versions of the model:**
+- **The adopted model** (§2–3) shares stat coefficients across the unit classes
+  of an arm, so classes can be compared like for like.
+- **The per-class alternative V4** (§6) gives each class its own formula. It is
+  more accurate, especially for militia, grenadiers and horse artillery, but its
+  classes can only be compared through their predicted prices.
 
 ---
 
@@ -266,33 +274,170 @@ The full lists are in `unit_pricing_report.md` §10.
 
 ---
 
-## 6. Tested next step (not yet adopted): letting each class have its own size curve or formula
+## 6. The per-class alternative (V4): one formula per unit class
 
-`analysis/class_structure.py` (report: `analysis/output/class_structure_report.md`),
-same folds, adopted model as base. MAE:
+There are two versions of the model, with a trade-off between them:
 
-| Variant | Infantry | Cavalry | Artillery |
+- **The adopted model (§2–3)** gives every class in an arm the *same* stat
+  coefficients and size power. Classes differ only by an intercept shift and
+  their army × class multipliers. This makes classes directly comparable: a
+  point of morale is worth the same to a line regiment as to a grenadier
+  regiment, so the model can say how much more a class costs for the same
+  stats.
+- **V4** gives each class its *own* formula and its *own* size power. It
+  predicts better (below), but its coefficients live on different scales per
+  class, so classes can only be compared through their predicted prices.
+
+V4 was fitted by `analysis/class_structure.py` on the same folds. It isn't part
+of `unit_pricing.py`; its coefficients are in
+`analysis/output/class_structure_coefficients.csv`. Classes follow the blind
+study's segments: militia and irregulars together, and light and missile
+cavalry together, because irregulars (64 units) and missile cavalry (11) are
+too small to stand alone.
+
+### 6.1 Equation
+
+For a unit of class *c*:
+
+$$
+\text{price} \;=\; \frac{8}{N}\;\cdot\; m'_{f,\,c}\;\cdot\; M_a\;\cdot\; S^{\,p_c}\;\cdot\;\Bigl(b_c + \sum_k \beta_{c,k}\,\phi_k(x)\Bigr) \;+\; c_a
+$$
+
+It is the adopted equation with three things made per class: the size power
+*p*_c, the intercept *b*_c and every stat, trait and speed coefficient
+β_{c,k}. Still shared by all classes of an arm:
+
+- the stat powers inside φ(x), kept at the adopted values (not re-tuned);
+- the 8/N divisor;
+- the arm factor *M*ₐ;
+- the artillery constant *c*ₐ.
+
+The army × class multipliers *m*′ are refitted along with V4. The ridge κ
+is the same as in the adopted model.
+
+### 6.2 Accuracy
+
+Cross-validated MAE in gold, same folds as the adopted model:
+
+| | Adopted | V4 | Change (paired SE) |
 | --- | --- | --- | --- |
-| Adopted (class additive in β·x) | 27.38 | 34.71 | 32.36 |
-| Class as a multiplier | 27.32 | 33.55 | 32.26 |
-| + size power per class | 26.81 | **33.03** | 30.95 |
-| Separate formula per class | 25.47 | 33.26 | 29.67 |
-| + size power per class | **24.92** | 32.77 | **27.15** |
+| Infantry | 27.38 | **24.92** | −2.46 (0.25) |
+| Cavalry | 34.71 | **32.77** | −1.95 (0.68) |
+| Artillery | 32.36 | **27.15** | −5.21 (0.83) |
 
-The bold entry in each arm is the variant the adoption rule picks.
+Per class:
 
-- **Fitted size powers:**
-  - infantry: grenadiers 1.3, line and light 1.2, militia 1.0, skirmishers 0.8–0.9;
-  - artillery: foot 1.2, horse 1.35–1.4;
-  - cavalry: 0.7–0.8 for every class.
-- **What it fixes:**
-  - the tiny-skirmisher residual (+16% → +7%);
-  - the big-battery residual (−8.6% → −1.9%);
-  - grenadier and militia error.
-- **What it doesn't fix:** the giant militia stay overpriced (−30% → −23.5%).
+| Class | Units | Adopted | V4 |
+| --- | --- | --- | --- |
+| Infantry line | 2 295 | 20.8 | 20.0 |
+| Infantry light | 755 | 26.5 | 23.9 |
+| Infantry grenadiers | 585 | 40.4 | 34.1 |
+| Infantry skirmishers | 368 | 39.0 | 37.7 |
+| Infantry militia + irregulars | 367 | 38.3 | 30.1 |
+| Cavalry light + missile | 702 | 30.3 | 27.0 |
+| Cavalry standard | 387 | 26.9 | 28.2 |
+| Cavalry lancers | 326 | 28.3 | 27.7 |
+| Cavalry heavy | 309 | 61.2 | 57.1 |
+| Artillery foot | 631 | 27.4 | 24.3 |
+| Artillery horse | 263 | 44.3 | 33.9 |
 
-Adopting it means folding it into `unit_pricing.py` and re-running the full
-model (~50 minutes).
+**Size-related fixes:**
+- **Tiny skirmisher units (≤ 40 models):** the median residual falls from +16%
+  to +7%.
+- **The largest batteries (7+ guns):** from −8.6% to −1.9%.
+- **Not fixed:** units above 240 models only improve from −30% to −23.5%. The
+  giant militia stay overpriced.
+
+For cavalry the 1-SE adoption rule would pick a simpler version: class as a
+multiplier plus a size power per class (33.03). V4 is shown here for all
+three arms so the two versions can be compared like for like.
+
+### 6.3 Size power per class
+
+| Arm | Adopted (shared) | V4 per class |
+| --- | --- | --- |
+| Infantry | 1.09 | grenadiers 1.3 · line 1.2 · light 1.2 · militia 1.0 · skirmishers 0.8 |
+| Cavalry | 0.75 | heavy 0.8 · standard 0.8 · lancers 0.7 · light 0.7 |
+| Artillery | 1.3 | foot 1.2 · horse 1.4 |
+
+Skirmisher prices grow much more slowly with unit size than line infantry
+prices, and horse artillery faster than foot. The shared power of the adopted
+model sits between them, which is where its size-related errors come from.
+
+### 6.4 Main coefficients per class
+
+β is gold per size unit^p_c at rating 8, before the army × class multiplier;
+stats enter as (stat ÷ 100)^power, with the powers as in §3.1. "—" means the
+feature is constant within that class, so its intercept carries it.
+
+**Infantry**
+
+| Feature | Adopted (all) | Grenadiers | Light | Line | Militia | Skirmishers |
+| --- | --- | --- | --- | --- | --- | --- |
+| size power | 1.09 | 1.3 | 1.2 | 1.2 | 1.0 | 0.8 |
+| intercept | 3.36–3.45 | −4.93 | −4.56 | −5.24 | 3.08 | 2.93 |
+| morale ^2.25 | 122.5 | 32.5 | 63.6 | 84.9 | 230.0 | 437.2 |
+| melee attack ^1.4 | 14.17 | 5.09 | 8.82 | 6.92 | 30.16 | 17.09 |
+| melee defence ^1.15 | 5.16 | 3.06 | 2.32 | 1.97 | 6.87 | 115.2 |
+| reload skill ^3.1 | 1.43 | 0.61 | 0.78 | 0.63 | 3.78 | 4.28 |
+| accuracy ^0.05 | 8.43 | 6.87 | 2.66 | 4.91 | 8.98 | 38.2 |
+| charge bonus ^0.05 | −3.70 | −0.73 | 0.66 | 0.76 | −7.92 | −12.64 |
+
+**Cavalry** (linear stats)
+
+| Feature | Adopted (all) | Heavy | Lancers | Light + missile | Standard |
+| --- | --- | --- | --- | --- | --- |
+| size power | 0.75 | 0.8 | 0.7 | 0.7 | 0.8 |
+| intercept | 1.92–4.72 | 3.60 | 4.04 | 6.11 | 6.20 |
+| morale | 0.955 | 0.979 | 1.395 | 1.031 | 0.656 |
+| melee attack | 0.305 | 0.257 | 0.276 | 0.352 | 0.314 |
+| melee defence | 0.287 | 0.131 | 0.316 | 0.408 | 0.136 |
+| charge bonus | 1.331 | 0.711 | 1.541 | 2.028 | 0.713 |
+| stamina | 7.17 | 7.25 | 7.45 | 8.36 | 6.15 |
+| shock resistant | 10.59 | 10.56 | 11.23 | 13.33 | 8.27 |
+
+**Artillery**
+
+| Feature | Adopted (all) | Foot | Horse |
+| --- | --- | --- | --- |
+| size power | 1.3 | 1.2 | 1.4 |
+| accuracy ^3 | 86.4 | 115.1 | 43.0 |
+| reload skill ^2 | 72.6 | 77.0 | 81.1 |
+| howitzer shell | 26.3 | 28.1 | 44.7 |
+| unicorn shell | 23.5 | 30.4 | — |
+
+The full per-class tables, with traits, speed tiers, the calibre spline and the
+artillery intercepts, are in `analysis/output/class_structure_report.md`. Every
+value is in `class_structure_coefficients.csv`.
+
+**Reading these coefficients:**
+- **Compare classes through predicted prices, not β.** Each class has its own
+  intercept and size power, so a larger β does not by itself mean a dearer unit.
+- **Skirmishers' large β values** (morale 437, melee defence 115, accuracy 38)
+  come from a small class with a narrow stat range. They are partly offset by
+  its negative ammo and charge-bonus terms (−23.5 and −12.6), so read them
+  together.
+- **Columns identical within a class share their effect equally.** For example,
+  two skirmisher flags held by exactly the same units get the same coefficient.
+
+### 6.5 Worked example
+
+The same Bauditz line infantry as §2.3 (7. Danmark, 130 models, actual price
+317): the adopted model gives 287.2 and V4 gives **293.3**. This reproduces
+exactly from `class_structure_coefficients.csv`: line intercept and β, line
+size power 1.2, V4's army × class cell and side factor.
+
+### 6.6 Status
+
+V4 is fully specified and reproducible, but `unit_pricing.py` still computes the
+adopted model only. To make V4 the pipeline's model:
+- add per-class size powers and per-class designs to `Spec`
+  (`class_structure.segmented` and `fit_class_p` are the reference);
+- re-run the full model (~50 minutes).
+
+Keeping both versions is reasonable:
+- the adopted model for comparing classes and explaining prices;
+- V4 when the best price prediction is what matters.
 
 ---
 
@@ -307,6 +452,8 @@ model (~50 minutes).
 | `analysis/output/blind_ideas_report.md` | Which blind-study ideas helped, and the comparison on the same units |
 | `analysis/output/calibre_function_report.md` | Smooth calibre functions vs the cannon-type one-hot |
 | `analysis/output/extreme_pinning_report.md` | Extreme units: pinning, and how badly they are priced |
-| `analysis/output/class_structure_report.md` | §6 |
+| `analysis/output/class_structure_report.md` | §6: class structure variants, per-class V4 tables |
+| `analysis/output/class_structure_coefficients.csv` | Every V4 coefficient (per-class β, size powers, army × class cells) |
+| `analysis/output/faction_class_multipliers*.csv`, `.md` | The adopted model's army × class multipliers as tables (`analysis/fclass_table.py`) |
 | `analysis/calibre_onehot_results/`, `analysis/linear_results/` | The same pipeline with the cannon-type one-hot, and the fully linear model |
 | `analysis/HANDOFF.md` | How to work on this further |

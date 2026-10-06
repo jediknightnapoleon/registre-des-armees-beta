@@ -1,0 +1,818 @@
+model,variant,segment,feature,coefficient,note
+infantry,V4,all,ridge κ (faction × class cells),1,pseudo-units of average price
+infantry,V4,all,rating divisor,8/rating,fixed
+infantry,V4,all,stat power accuracy,0.05,shared by every segment (not re-tuned)
+infantry,V4,all,stat power ammo,0.05,shared by every segment (not re-tuned)
+infantry,V4,all,stat power charge_bonus,0.05,shared by every segment (not re-tuned)
+infantry,V4,all,stat power melee_attack,1.4,shared by every segment (not re-tuned)
+infantry,V4,all,stat power melee_defense,1.15,shared by every segment (not re-tuned)
+infantry,V4,all,stat power morale,2.25,shared by every segment (not re-tuned)
+infantry,V4,all,stat power range,4,shared by every segment (not re-tuned)
+infantry,V4,all,stat power reload_skill,3.1,shared by every segment (not re-tuned)
+infantry,V4,infantry_grenadiers,units,585,
+infantry,V4,infantry_grenadiers,size power p_c,1.3,price ∝ size^p_c
+infantry,V4,infantry_grenadiers,intercept (b0 + segment),-4.930145516,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,accuracy,6.873898482,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,reload_skill,0.6081738755,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,ammo,-0.7007928141,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,morale,32.50072324,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,melee_attack,5.09050559,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,melee_defense,3.059752224,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,charge_bonus,-0.7274737718,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,range,-0.06900320784,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,can_form_square,0.1521749686,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,has_stamina,0.09505572917,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,is_shock_resistant,0.0713836708,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,can_inspire,0.1716651512,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,has_guerrilla_deployment,0.4235969337,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,can_place_stakes,0.1186347282,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,can_place_mines,-0.1488059275,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,guard_mode,-0.05009569849,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,speed=G1,-0.1309804024,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,speed=G2,-0.1220871396,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,speed=G3,-0.01157479883,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,speed=G4,0.1400258177,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,speed=G5,0.3269028844,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,speed=G6,0.5292418549,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,speed=L2,-0.07087423915,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_grenadiers,speed=L4,0.0708135513,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,units,755,
+infantry,V4,infantry_light,size power p_c,1.2,price ∝ size^p_c
+infantry,V4,infantry_light,intercept (b0 + segment),-4.560267273,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,accuracy,2.654984816,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,reload_skill,0.7762696186,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,ammo,1.614048221,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,morale,63.60451265,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,melee_attack,8.823069679,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,melee_defense,2.315906525,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,charge_bonus,0.6603030227,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,range,0.1373844033,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,can_form_square,0.2356782512,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,has_stamina,0.1189713969,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,is_shock_resistant,0.1713504865,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,can_inspire,0.3260437851,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,has_guerrilla_deployment,0.8639528825,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,can_place_stakes,0.2523689457,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,guard_mode,0.09588331704,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,speed=G4,0.1646570253,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,speed=G5,0.3063885667,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,speed=G6,0.3122813562,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,speed=L4,0.1774018731,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,speed=L5,0.301433437,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_light,speed=L6,0.3882545553,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,units,2295,
+infantry,V4,infantry_line,size power p_c,1.2,price ∝ size^p_c
+infantry,V4,infantry_line,intercept (b0 + segment),-5.237107578,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,accuracy,4.913527994,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,reload_skill,0.6318842716,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,ammo,0.2710631292,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,morale,84.92725706,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,melee_attack,6.914683613,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,melee_defense,1.969221112,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,charge_bonus,0.7615069099,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,range,-0.02845208557,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,can_form_square,0.1609727833,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,has_stamina,0.1097772399,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,is_shock_resistant,0.1196013659,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,can_inspire,0.2064442484,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,can_place_stakes,0.07872760453,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,guard_mode,0.04921116663,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,speed=G2,-0.08527225644,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,speed=G3,0.02718835719,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,speed=G4,0.1094526991,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,speed=G5,0.1425483638,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,speed=L1,-0.1054736062,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,speed=L2,-0.08072162983,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,speed=L4,0.08995645567,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_line,speed=L5,0.2232477145,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,units,367,
+infantry,V4,infantry_militia,size power p_c,1,price ∝ size^p_c
+infantry,V4,infantry_militia,intercept (b0 + segment),3.075699543,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,accuracy,8.977902357,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,reload_skill,3.778550214,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,ammo,2.069968423,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,morale,230.0152,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,melee_attack,30.16231179,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,melee_defense,6.864878604,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,charge_bonus,-7.922505043,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,range,-0.1033829018,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,has_range,-10.02182667,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,can_form_square,0.2611554517,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,has_stamina,0.239870116,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,is_shock_resistant,0.2763466004,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,can_inspire,0.698049684,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,has_guerrilla_deployment,0.8553731022,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,can_place_stakes,0.1603414935,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,unit_class=infantry_irregulars,4.230554697,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,unit_class=infantry_militia,4.082252424,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,speed=G1,-0.4676194129,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,speed=G2,-0.2274737732,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,speed=G3,-0.2589022385,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,speed=G4,0.5181081877,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,speed=G5,0.6408823245,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,speed=L1,-0.2968212883,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,speed=L2,-0.2571281079,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,speed=L4,0.340324742,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,speed=L5,0.6218245153,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,speed=L6,1.047769526,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_militia,speed=S2,-0.2469289425,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,units,368,
+infantry,V4,infantry_skirmishers,size power p_c,0.8,price ∝ size^p_c
+infantry,V4,infantry_skirmishers,intercept (b0 + segment),2.93448228,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,accuracy,38.19967248,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,reload_skill,4.279463647,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,ammo,-23.53028674,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,morale,437.2074742,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,melee_attack,17.09227232,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,melee_defense,115.2085715,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,charge_bonus,-12.6409621,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,range,-0.02428453855,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,has_stamina,-0.3151302728,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,is_shock_resistant,0.8704089473,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,can_inspire,1.935076092,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,has_guerrilla_deployment,10.20263283,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,can_place_stakes,1.554121301,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,can_place_mines,-6.004854947,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,guard_mode,-6.004854947,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,speed=S1,-1.771104633,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,speed=S2,1.731419819,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,infantry_skirmishers,speed=S3,8.211274673,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+infantry,V4,all,multiplier side=coalition,1,reference coalition
+infantry,V4,all,multiplier side=imperial,0.8843149292,reference coalition
+infantry,V4,all,multiplier fclass=britain|infantry_light,1.063936442,ridge κ = 1
+infantry,V4,all,multiplier fclass=britain|infantry_line,1.044470849,ridge κ = 1
+infantry,V4,all,multiplier fclass=britain|infantry_skirmishers,0.8607412833,ridge κ = 1
+infantry,V4,all,multiplier fclass=denmark|infantry_grenadiers,0.9256418712,ridge κ = 1
+infantry,V4,all,multiplier fclass=denmark|infantry_light,0.888119125,ridge κ = 1
+infantry,V4,all,multiplier fclass=denmark|infantry_line,0.9844073669,ridge κ = 1
+infantry,V4,all,multiplier fclass=denmark|infantry_militia,1.017341934,ridge κ = 1
+infantry,V4,all,multiplier fclass=denmark|infantry_skirmishers,0.9565986178,ridge κ = 1
+infantry,V4,all,multiplier fclass=france|infantry_grenadiers,1.003797038,ridge κ = 1
+infantry,V4,all,multiplier fclass=france|infantry_light,1.044799829,ridge κ = 1
+infantry,V4,all,multiplier fclass=france|infantry_line,1.019913154,ridge κ = 1
+infantry,V4,all,multiplier fclass=france|infantry_skirmishers,0.7370749484,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_hre|infantry_grenadiers,1.076746755,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_hre|infantry_irregulars,1.053764004,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_hre|infantry_light,0.9843165027,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_hre|infantry_line,0.9862656836,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_hre|infantry_militia,1.007979627,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_hre|infantry_skirmishers,1.130207109,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_032|infantry_grenadiers,0.9779592003,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_032|infantry_light,1.039188121,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_032|infantry_line,0.9664361282,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_032|infantry_skirmishers,0.938737977,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_033|infantry_grenadiers,0.915353874,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_033|infantry_light,1.022514775,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_033|infantry_line,1.084573772,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_033|infantry_skirmishers,1.054468466,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_038|infantry_grenadiers,0.8569693604,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_038|infantry_light,0.9747665747,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_038|infantry_line,1.025283702,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_038|infantry_militia,1.062771102,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_038|infantry_skirmishers,0.993905061,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_040|infantry_grenadiers,1.010889747,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_040|infantry_light,1.003515819,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_040|infantry_line,0.9908195632,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a03_x8_040|infantry_skirmishers,1.142229408,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a04_x8_005|infantry_grenadiers,0.9769447534,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a04_x8_005|infantry_irregulars,1.018349147,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a04_x8_005|infantry_light,0.9162134194,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a04_x8_005|infantry_line,0.8960565651,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a04_x8_005|infantry_militia,1.039754883,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a04_x8_005|infantry_skirmishers,0.9980364738,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a05_x8_001|infantry_grenadiers,0.9827292831,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a05_x8_001|infantry_light,1.008908462,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a05_x8_001|infantry_line,0.9465468416,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a05_x8_001|infantry_skirmishers,1.011553061,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a05_x8_004|infantry_grenadiers,0.975064219,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a05_x8_004|infantry_light,0.9487680473,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a05_x8_004|infantry_line,1.013233643,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a05_x8_004|infantry_skirmishers,1.042437074,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a06_x8_002|infantry_grenadiers,0.9488332955,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a06_x8_002|infantry_light,1.003147014,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a06_x8_002|infantry_line,0.9582435165,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a06_x8_002|infantry_skirmishers,0.8386387031,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a08_x8_047|infantry_grenadiers,0.9716700823,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a08_x8_047|infantry_light,1.052310507,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a08_x8_047|infantry_line,0.9961037806,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a08_x8_047|infantry_skirmishers,1.045693689,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a09_x8_021|infantry_grenadiers,1.030056039,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a09_x8_021|infantry_light,0.9471891508,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a09_x8_021|infantry_line,1.00569506,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a09_x8_021|infantry_militia,0.9882047118,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a09_x8_021|infantry_skirmishers,1.043989678,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a11_x8_027|infantry_grenadiers,1.006996845,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a11_x8_027|infantry_light,0.9765806103,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a11_x8_027|infantry_line,1.037943762,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a11_x8_027|infantry_skirmishers,0.9398925933,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a11_x8_028|infantry_grenadiers,0.98999188,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a11_x8_028|infantry_light,1.098683748,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a11_x8_028|infantry_line,1.0553198,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a11_x8_028|infantry_skirmishers,0.9859435896,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a11_x8_029|infantry_grenadiers,1.080753203,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a11_x8_029|infantry_light,0.9933493166,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a11_x8_029|infantry_line,1.022186109,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a11_x8_029|infantry_skirmishers,1.075595899,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a12_x8_003|infantry_grenadiers,1.076368452,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a12_x8_003|infantry_light,1.028820892,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a12_x8_003|infantry_line,0.9331292277,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a12_x8_003|infantry_skirmishers,1.020837038,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a13_x8_022|infantry_grenadiers,0.9898627097,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a13_x8_022|infantry_irregulars,0.9884660744,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a13_x8_022|infantry_light,1.056219728,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a13_x8_022|infantry_line,1.018575157,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a13_x8_022|infantry_skirmishers,0.9075602804,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a17_x8_054|infantry_grenadiers,0.9292763749,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a17_x8_054|infantry_light,0.8628809673,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a17_x8_054|infantry_line,0.9072321939,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a17_x8_054|infantry_militia,1.031736049,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_a17_x8_054|infantry_skirmishers,1.07136612,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_039|infantry_grenadiers,0.9321716425,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_039|infantry_light,1.025794612,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_039|infantry_line,1.059007254,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_039|infantry_skirmishers,0.973677071,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_041|infantry_grenadiers,0.9122381297,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_041|infantry_light,0.9951945156,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_041|infantry_line,0.8451385033,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_041|infantry_militia,0.9140395893,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_041|infantry_skirmishers,0.9595207609,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_042|infantry_grenadiers,0.9842573497,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_042|infantry_irregulars,1.012704813,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_042|infantry_light,1.103809522,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_042|infantry_line,1.058381662,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_042|infantry_militia,1.010365285,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_042|infantry_skirmishers,1.029234398,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_043|infantry_grenadiers,0.9645273818,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_043|infantry_light,1.089287917,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_043|infantry_line,1.066617539,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b03_x8_043|infantry_skirmishers,0.8973736005,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b04_x8_015|infantry_grenadiers,0.8975189858,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b04_x8_015|infantry_irregulars,0.7835164424,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b04_x8_015|infantry_line,0.807627912,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b04_x8_015|infantry_militia,1.015430172,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b04_x8_015|infantry_skirmishers,0.8457024867,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b04_x8_016|infantry_grenadiers,1.019276378,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b04_x8_016|infantry_irregulars,1.013873804,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b04_x8_016|infantry_light,1.012224202,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b04_x8_016|infantry_line,1.011601985,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b04_x8_016|infantry_militia,1.00541818,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b04_x8_016|infantry_skirmishers,0.9869495514,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b05_x8_006|infantry_grenadiers,1.052571074,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b05_x8_006|infantry_irregulars,0.9969528299,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b05_x8_006|infantry_light,0.9839678503,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b05_x8_006|infantry_line,0.9996500627,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b05_x8_006|infantry_skirmishers,1.037680422,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b05_x8_007|infantry_grenadiers,0.9673818204,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b05_x8_007|infantry_light,1.032851555,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b05_x8_007|infantry_line,1.043320917,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b05_x8_007|infantry_militia,0.9876745839,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b05_x8_007|infantry_skirmishers,0.9872391714,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b06_x8_008|infantry_grenadiers,1.008250233,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b06_x8_008|infantry_light,1.076908964,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b06_x8_008|infantry_line,0.9412149728,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b06_x8_008|infantry_militia,1.007341456,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b06_x8_008|infantry_skirmishers,0.9272513833,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b06_x8_009|infantry_grenadiers,1.147193343,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b06_x8_009|infantry_light,1.008803071,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b06_x8_009|infantry_line,0.9642025981,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b06_x8_009|infantry_skirmishers,1.007658597,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b07_x8_018|infantry_grenadiers,0.9778747819,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b07_x8_018|infantry_light,0.9902976337,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b07_x8_018|infantry_line,1.044061534,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b07_x8_018|infantry_militia,1.008385328,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b07_x8_018|infantry_skirmishers,0.9798469562,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_044|infantry_grenadiers,0.9036691628,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_044|infantry_irregulars,0.9126586218,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_044|infantry_light,1.031085239,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_044|infantry_line,1.000891458,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_044|infantry_militia,1.019143036,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_044|infantry_skirmishers,0.9437989138,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_045|infantry_light,0.9843548633,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_045|infantry_line,1.057207938,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_045|infantry_skirmishers,0.9276980904,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_046|infantry_grenadiers,1.054405738,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_046|infantry_irregulars,1,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_046|infantry_light,0.9103414459,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_046|infantry_line,1.026372638,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_046|infantry_militia,1.037822213,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b08_x8_046|infantry_skirmishers,1.077078264,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b09_x8_019|infantry_grenadiers,0.996996293,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b09_x8_019|infantry_irregulars,0.9494625909,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b09_x8_019|infantry_light,1.045174657,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b09_x8_019|infantry_line,1.053401627,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b09_x8_019|infantry_militia,0.9442939285,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b09_x8_019|infantry_skirmishers,1.068021762,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b09_x8_020|infantry_grenadiers,0.9865406234,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b09_x8_020|infantry_light,0.9661183146,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b09_x8_020|infantry_line,0.9916101129,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b09_x8_020|infantry_militia,1.001445702,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b09_x8_020|infantry_skirmishers,0.9605066689,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|infantry_grenadiers,1.004022467,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|infantry_irregulars,0.965280603,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|infantry_light,0.992312224,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|infantry_line,1.009358766,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|infantry_militia,0.9804542617,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|infantry_skirmishers,0.8644168203,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b11_x8_013|infantry_grenadiers,1.015826114,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b11_x8_013|infantry_light,1.077811046,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b11_x8_013|infantry_line,1.00469917,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b11_x8_013|infantry_militia,1.049271368,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b11_x8_013|infantry_skirmishers,0.9740950601,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b11_x8_014|infantry_irregulars,1.078678188,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b11_x8_014|infantry_skirmishers,0.8506900682,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b12_x8_011|infantry_grenadiers,0.9560672314,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b12_x8_011|infantry_light,0.9971008004,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b12_x8_011|infantry_line,0.9822117918,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b12_x8_011|infantry_militia,1.03939287,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b12_x8_011|infantry_skirmishers,0.9811152898,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b12_x8_012|infantry_grenadiers,1.082000208,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b12_x8_012|infantry_light,0.9914989688,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b12_x8_012|infantry_line,1.062114417,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b12_x8_012|infantry_militia,1.017215637,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b12_x8_012|infantry_skirmishers,1.040228329,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b13_x8_049|infantry_grenadiers,1.032868851,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b13_x8_049|infantry_light,0.8912129129,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b13_x8_049|infantry_line,0.8799658989,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b13_x8_049|infantry_skirmishers,0.9740494663,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b13_x8_050|infantry_grenadiers,1.007887975,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b13_x8_050|infantry_irregulars,1.08460241,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b13_x8_050|infantry_light,1.024591813,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b13_x8_050|infantry_line,1.031959123,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b13_x8_050|infantry_militia,0.9639672725,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b13_x8_050|infantry_skirmishers,1.020931137,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b14_x8_031|infantry_grenadiers,1.024390993,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b14_x8_031|infantry_irregulars,1.00095679,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b14_x8_031|infantry_light,0.8651685501,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b14_x8_031|infantry_line,0.9050365715,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b14_x8_031|infantry_militia,1.013866161,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b14_x8_031|infantry_skirmishers,1.008421204,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|infantry_grenadiers,1.040611588,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|infantry_irregulars,1.020729223,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|infantry_light,1.04724467,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|infantry_line,0.9601457433,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|infantry_militia,1.01860617,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|infantry_skirmishers,1.181179609,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b15_x8_053|infantry_grenadiers,0.9551374668,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b15_x8_053|infantry_irregulars,0.9391047969,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b15_x8_053|infantry_light,1.015036539,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b15_x8_053|infantry_line,0.9480714599,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b15_x8_053|infantry_militia,0.9835073021,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b15_x8_053|infantry_skirmishers,0.8646557895,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_055|infantry_grenadiers,1.047791752,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_055|infantry_irregulars,1.005788071,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_055|infantry_light,0.9555269811,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_055|infantry_line,1.071490169,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_055|infantry_militia,1.010892381,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_055|infantry_skirmishers,1.009078795,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_056|infantry_grenadiers,0.9592143601,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_056|infantry_light,1.026148713,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_056|infantry_line,1.01443413,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_056|infantry_militia,1.007832207,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_056|infantry_skirmishers,1.00355141,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_057|infantry_grenadiers,1.059828308,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_057|infantry_light,1.071506914,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_057|infantry_line,1.062145177,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_b17_x8_057|infantry_skirmishers,1.008708401,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c07_x8_017|infantry_grenadiers,0.9849613174,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c07_x8_017|infantry_light,0.964382609,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c07_x8_017|infantry_line,1.059580591,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c07_x8_017|infantry_skirmishers,1.14691114,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c08_x8_048|infantry_grenadiers,1.069487497,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c08_x8_048|infantry_light,0.8994963967,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c08_x8_048|infantry_line,1.001959667,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c08_x8_048|infantry_skirmishers,0.9980801675,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c10_x8_025|infantry_grenadiers,1.155307177,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c10_x8_025|infantry_light,1.072301858,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c10_x8_025|infantry_line,0.9535242399,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c10_x8_025|infantry_militia,0.7869033488,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c10_x8_025|infantry_skirmishers,0.9137651727,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c14_x8_030|infantry_grenadiers,0.9871851494,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c14_x8_030|infantry_light,1.034094212,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c14_x8_030|infantry_line,1.020958921,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c14_x8_030|infantry_skirmishers,1.035578387,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c15_x8_051|infantry_grenadiers,0.965650992,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c15_x8_051|infantry_irregulars,1.080383745,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c15_x8_051|infantry_light,0.8519647476,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c15_x8_051|infantry_line,0.9810947239,ridge κ = 1
+infantry,V4,all,multiplier fclass=ntw3_tow_c15_x8_051|infantry_skirmishers,1.186067608,ridge κ = 1
+infantry,V4,all,multiplier fclass=piedmont_savoy|infantry_grenadiers,0.9388157671,ridge κ = 1
+infantry,V4,all,multiplier fclass=piedmont_savoy|infantry_light,0.825654674,ridge κ = 1
+infantry,V4,all,multiplier fclass=piedmont_savoy|infantry_line,1.00616986,ridge κ = 1
+infantry,V4,all,multiplier fclass=piedmont_savoy|infantry_militia,0.964096875,ridge κ = 1
+infantry,V4,all,multiplier fclass=piedmont_savoy|infantry_skirmishers,1.106348356,ridge κ = 1
+cavalry,V4,all,ridge κ (faction × class cells),1,pseudo-units of average price
+cavalry,V4,all,rating divisor,8/rating,fixed
+cavalry,V4,cavalry_heavy,units,309,
+cavalry,V4,cavalry_heavy,size power p_c,0.8,price ∝ size^p_c
+cavalry,V4,cavalry_heavy,intercept (b0 + segment),3.595532456,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_heavy,morale,0.9793321429,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_heavy,melee_attack,0.2566013181,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_heavy,melee_defense,0.1304718956,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_heavy,charge_bonus,0.7108657421,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_heavy,has_stamina,7.244505178,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_heavy,is_shock_resistant,10.55559801,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_heavy,can_inspire,8.76833692,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_heavy,speed=C1,-1.48933309,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_lancers,units,326,
+cavalry,V4,cavalry_lancers,size power p_c,0.7,price ∝ size^p_c
+cavalry,V4,cavalry_lancers,intercept (b0 + segment),4.038458139,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_lancers,morale,1.394690987,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_lancers,melee_attack,0.2758922242,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_lancers,melee_defense,0.3157557176,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_lancers,charge_bonus,1.541367964,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_lancers,has_stamina,7.453753682,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_lancers,is_shock_resistant,11.22953371,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_lancers,can_inspire,9.464455595,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_lancers,has_guerrilla_deployment,10.12120294,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_lancers,speed=C3,-2.395432699,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_lancers,speed=C5,-1.401206991,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,units,702,
+cavalry,V4,cavalry_light,size power p_c,0.7,price ∝ size^p_c
+cavalry,V4,cavalry_light,intercept (b0 + segment),6.11039937,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,accuracy,0.07647426527,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,reload_skill,-0.04846552508,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,ammo,-0.03334582566,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,morale,1.03110404,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,melee_attack,0.35231963,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,melee_defense,0.407611414,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,charge_bonus,2.027567537,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,range,0.2713370055,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,has_range,-16.69196656,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,has_stamina,8.359993351,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,is_shock_resistant,13.3301275,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,can_inspire,9.773251522,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,has_guerrilla_deployment,16.00788892,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,unit_class=cavalry_missile,-4.956585895,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,speed=C3,-3.431094178,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_light,speed=C5,0.09750026762,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,units,387,
+cavalry,V4,cavalry_standard,size power p_c,0.8,price ∝ size^p_c
+cavalry,V4,cavalry_standard,intercept (b0 + segment),6.199732912,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,accuracy,0.007160552166,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,reload_skill,-0.07869433161,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,ammo,0.0110162341,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,morale,0.6555141968,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,melee_attack,0.3136952223,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,melee_defense,0.1359814511,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,charge_bonus,0.7133265257,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,range,0.01652435115,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,has_range,0.0002754058525,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,has_stamina,6.146095796,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,is_shock_resistant,8.264935992,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,can_inspire,7.163255515,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,is_camel,-15.09427419,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,cavalry_standard,speed=C3,-2.260040185,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+cavalry,V4,all,multiplier rank_depth δ,-0.01772626149,m = 1 + δ·(rank_depth − 11)
+cavalry,V4,all,multiplier fclass=britain|cavalry_light,0.9865314114,ridge κ = 1
+cavalry,V4,all,multiplier fclass=denmark|cavalry_heavy,0.8727656156,ridge κ = 1
+cavalry,V4,all,multiplier fclass=denmark|cavalry_lancers,0.9852141979,ridge κ = 1
+cavalry,V4,all,multiplier fclass=denmark|cavalry_light,0.8529112422,ridge κ = 1
+cavalry,V4,all,multiplier fclass=denmark|cavalry_standard,0.9899109058,ridge κ = 1
+cavalry,V4,all,multiplier fclass=france|cavalry_heavy,0.9946857688,ridge κ = 1
+cavalry,V4,all,multiplier fclass=france|cavalry_lancers,1.053278536,ridge κ = 1
+cavalry,V4,all,multiplier fclass=france|cavalry_light,1.03909195,ridge κ = 1
+cavalry,V4,all,multiplier fclass=france|cavalry_standard,1.037632955,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_hre|cavalry_heavy,1.177198852,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_hre|cavalry_lancers,1.080190349,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_hre|cavalry_light,1.155739382,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_hre|cavalry_standard,1.01036405,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a03_x8_032|cavalry_heavy,1.055199566,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a03_x8_032|cavalry_light,0.9699452583,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a03_x8_032|cavalry_standard,1.005291461,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a03_x8_033|cavalry_heavy,1.078430457,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a03_x8_033|cavalry_lancers,1.030531043,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a03_x8_033|cavalry_light,0.9019029307,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a03_x8_033|cavalry_standard,0.955470295,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a03_x8_038|cavalry_light,1.083429026,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a03_x8_040|cavalry_heavy,1.042694201,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a03_x8_040|cavalry_light,0.8658123071,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a03_x8_040|cavalry_standard,0.9725059497,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a04_x8_005|cavalry_light,0.9820904225,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a04_x8_005|cavalry_standard,0.9361223869,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a05_x8_001|cavalry_heavy,1.02248475,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a05_x8_001|cavalry_light,1.031408566,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a05_x8_001|cavalry_standard,1.009547462,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a05_x8_004|cavalry_heavy,1.030804432,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a05_x8_004|cavalry_light,1.044582868,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a05_x8_004|cavalry_standard,0.8749174181,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a06_x8_002|cavalry_heavy,0.8709635505,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a06_x8_002|cavalry_light,0.9821953186,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a06_x8_002|cavalry_standard,0.9800981531,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a08_x8_047|cavalry_heavy,0.928243082,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a08_x8_047|cavalry_lancers,1.001682029,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a08_x8_047|cavalry_light,1.003399017,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a08_x8_047|cavalry_standard,1.073857371,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a09_x8_021|cavalry_heavy,1.028257389,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a09_x8_021|cavalry_lancers,1.05230249,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a09_x8_021|cavalry_light,1.021201663,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a09_x8_021|cavalry_standard,0.8796842652,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a11_x8_027|cavalry_heavy,1.028558162,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a11_x8_027|cavalry_lancers,1.044206492,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a11_x8_027|cavalry_light,0.8754344565,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a11_x8_027|cavalry_standard,1.07182116,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a11_x8_028|cavalry_heavy,0.9375914163,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a11_x8_028|cavalry_lancers,1.02376977,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a11_x8_028|cavalry_light,0.9779589558,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a11_x8_028|cavalry_standard,1.030405987,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a11_x8_029|cavalry_heavy,1.027396787,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a11_x8_029|cavalry_lancers,1.008747831,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a11_x8_029|cavalry_light,0.9483359052,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a11_x8_029|cavalry_standard,0.9698697268,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a12_x8_003|cavalry_heavy,0.8188017262,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a12_x8_003|cavalry_lancers,1.030171254,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a12_x8_003|cavalry_light,0.9911232067,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a12_x8_003|cavalry_standard,1.041424786,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a13_x8_022|cavalry_heavy,1.066784782,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a13_x8_022|cavalry_lancers,1.031426201,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a13_x8_022|cavalry_light,0.9452896061,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a13_x8_022|cavalry_standard,0.9574276114,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a17_x8_054|cavalry_heavy,0.8709024439,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a17_x8_054|cavalry_lancers,1.019219205,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a17_x8_054|cavalry_light,1.051041781,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_a17_x8_054|cavalry_standard,0.9963302995,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b03_x8_039|cavalry_lancers,0.9339911078,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b03_x8_039|cavalry_light,1.001943468,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b03_x8_041|cavalry_heavy,0.9861253064,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b03_x8_041|cavalry_light,1.027482139,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b03_x8_042|cavalry_heavy,0.8283813401,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b03_x8_042|cavalry_lancers,0.9106363643,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b03_x8_042|cavalry_light,0.9373227367,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b03_x8_042|cavalry_standard,1.013465298,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b03_x8_043|cavalry_lancers,1.110285462,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b03_x8_043|cavalry_light,0.9412631025,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_heavy,1.087058416,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_lancers,0.9782871206,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_light,0.8675739214,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_missile,1.009040544,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b04_x8_015|cavalry_standard,1.021331996,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b04_x8_016|cavalry_heavy,1.075754268,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b04_x8_016|cavalry_lancers,0.9881986201,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b04_x8_016|cavalry_light,0.9651919296,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b04_x8_016|cavalry_standard,1,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b05_x8_006|cavalry_heavy,0.8736771899,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b05_x8_006|cavalry_lancers,1.058630354,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b05_x8_006|cavalry_light,1.071210551,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b05_x8_006|cavalry_standard,1.042226033,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b05_x8_007|cavalry_heavy,0.9825820829,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b05_x8_007|cavalry_lancers,0.9867792677,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b05_x8_007|cavalry_light,0.9331067499,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b05_x8_007|cavalry_standard,1.017974694,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b06_x8_008|cavalry_heavy,1.037800717,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b06_x8_008|cavalry_lancers,1.012992475,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b06_x8_008|cavalry_light,1.053728527,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b06_x8_008|cavalry_standard,0.9772754221,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b06_x8_009|cavalry_heavy,0.9465058787,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b06_x8_009|cavalry_light,1.025494004,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b06_x8_009|cavalry_standard,0.9512214875,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b07_x8_018|cavalry_heavy,1.03081196,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b07_x8_018|cavalry_light,0.9432019596,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b07_x8_018|cavalry_standard,0.9917588329,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b08_x8_044|cavalry_heavy,0.9643303051,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b08_x8_044|cavalry_lancers,1.005998856,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b08_x8_044|cavalry_light,0.9642146107,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b08_x8_044|cavalry_standard,1.00520114,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b08_x8_045|cavalry_heavy,1.010206887,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b08_x8_045|cavalry_light,1.038130073,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b08_x8_046|cavalry_light,1.04581507,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b08_x8_046|cavalry_standard,1.005710367,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b09_x8_019|cavalry_heavy,1.045112746,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b09_x8_019|cavalry_light,1.029415496,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b09_x8_019|cavalry_standard,1.031636575,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b09_x8_020|cavalry_heavy,1.208860957,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b09_x8_020|cavalry_lancers,1.028967777,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b09_x8_020|cavalry_light,1.035951597,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b09_x8_020|cavalry_standard,1.001702981,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_heavy,1.058784392,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_lancers,0.9460220059,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_light,1.067669497,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_missile,0.9010197896,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|cavalry_standard,0.9985289832,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_heavy,0.9869241536,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_lancers,1.064188304,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_light,1.081350162,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_missile,1.044027157,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b11_x8_013|cavalry_standard,0.9546543005,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b11_x8_014|cavalry_lancers,0.8455173184,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b11_x8_014|cavalry_light,1.02151359,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b11_x8_014|cavalry_missile,0.9904827964,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b12_x8_011|cavalry_lancers,1.010921433,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b12_x8_011|cavalry_light,0.9250039107,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b12_x8_011|cavalry_standard,0.9585708275,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b12_x8_012|cavalry_heavy,0.8292350474,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b12_x8_012|cavalry_lancers,0.9800329388,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b12_x8_012|cavalry_light,0.9781112193,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b13_x8_049|cavalry_heavy,1.062913757,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b13_x8_049|cavalry_light,0.9952679292,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b13_x8_049|cavalry_standard,1.017980808,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b13_x8_050|cavalry_heavy,1.065374418,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b13_x8_050|cavalry_lancers,1.060015558,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b13_x8_050|cavalry_light,1.037874751,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b13_x8_050|cavalry_standard,1.037760723,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b14_x8_031|cavalry_heavy,1.078842646,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b14_x8_031|cavalry_lancers,0.9786742618,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b14_x8_031|cavalry_light,1.045098166,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b14_x8_031|cavalry_standard,0.9824349498,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_heavy,0.980628901,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_lancers,0.8310187238,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_light,1.056795165,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_missile,0.9920226113,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|cavalry_standard,1,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b15_x8_053|cavalry_heavy,1.043982151,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b15_x8_053|cavalry_lancers,1.030470641,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b15_x8_053|cavalry_light,0.9555708031,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b15_x8_053|cavalry_missile,0.9399258718,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_055|cavalry_heavy,0.9215958752,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_055|cavalry_lancers,1.004315247,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_055|cavalry_light,0.8244278398,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_055|cavalry_standard,1.003428934,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_056|cavalry_heavy,0.905296862,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_056|cavalry_lancers,1.027457784,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_056|cavalry_light,1.026844214,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_056|cavalry_standard,1.016551601,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_heavy,0.9010136802,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_lancers,1.005728439,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_light,1.081582189,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_missile,1.04467949,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_b17_x8_057|cavalry_standard,1.003903903,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c07_x8_017|cavalry_heavy,0.902446337,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c07_x8_017|cavalry_lancers,0.8644919888,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c07_x8_017|cavalry_light,1.047020888,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c07_x8_017|cavalry_standard,1.02924981,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c08_x8_048|cavalry_heavy,1.02642072,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c08_x8_048|cavalry_lancers,0.5952893398,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c08_x8_048|cavalry_light,1.027735137,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c08_x8_048|cavalry_standard,1.049680924,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c10_x8_025|cavalry_light,1.026488488,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c10_x8_025|cavalry_standard,1.110111686,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c14_x8_030|cavalry_heavy,0.9580788439,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c14_x8_030|cavalry_lancers,1.011269216,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c14_x8_030|cavalry_light,1.051488945,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c15_x8_051|cavalry_heavy,1.030677565,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c15_x8_051|cavalry_lancers,1.069783415,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c15_x8_051|cavalry_light,0.9855869366,ridge κ = 1
+cavalry,V4,all,multiplier fclass=ntw3_tow_c15_x8_051|cavalry_standard,0.9320980079,ridge κ = 1
+cavalry,V4,all,multiplier fclass=piedmont_savoy|cavalry_heavy,0.9776411341,ridge κ = 1
+cavalry,V4,all,multiplier fclass=piedmont_savoy|cavalry_lancers,0.9986405472,ridge κ = 1
+cavalry,V4,all,multiplier fclass=piedmont_savoy|cavalry_light,1.002514369,ridge κ = 1
+cavalry,V4,all,multiplier fclass=piedmont_savoy|cavalry_standard,0.9634955597,ridge κ = 1
+artillery,V4,all,ridge κ (faction × class cells),0.5,pseudo-units of average price
+artillery,V4,all,rating divisor,8/rating,fixed
+artillery,V4,all,stat power accuracy,3,shared by every segment (not re-tuned)
+artillery,V4,all,stat power charge_bonus,0.25,shared by every segment (not re-tuned)
+artillery,V4,all,stat power melee_attack,2.5,shared by every segment (not re-tuned)
+artillery,V4,all,stat power melee_defense,3,shared by every segment (not re-tuned)
+artillery,V4,all,stat power morale,3,shared by every segment (not re-tuned)
+artillery,V4,all,stat power reload_skill,2,shared by every segment (not re-tuned)
+artillery,V4,artillery_foot,units,631,
+artillery,V4,artillery_foot,size power p_c,1.2,price ∝ size^p_c
+artillery,V4,artillery_foot,intercept (b0 + segment),-3573.276058,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,accuracy,115.1109668,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,reload_skill,77.01679251,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,morale,35308.07338,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,melee_attack,11314.6692,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,melee_defense,67980.3971,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,charge_bonus,0.7440462599,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,has_stamina,30.83346174,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,can_inspire,40.33761831,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,has_guerrilla_deployment,65.15245,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,speed=F1,-46.50651955,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,speed=F2,-29.17641525,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,speed=F4,37.19666236,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,speed=F5,76.8665399,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,speed=F6,112.2945242,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,shot=howitzer_shell,28.11195336,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,shot=unicorn_shell,30.41591831,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,cal_r1,642.8374792,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,cal_r2,-3127.583094,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,cal_r3,9815.062309,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,cal_r4,-8224.806881,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_foot,cal_r5,1437.269871,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,units,263,
+artillery,V4,artillery_horse,size power p_c,1.4,price ∝ size^p_c
+artillery,V4,artillery_horse,intercept (b0 + segment),-3908.118731,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,accuracy,43.02895332,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,reload_skill,81.06308043,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,morale,26956.90638,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,melee_attack,13229.545,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,melee_defense,43332.06638,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,charge_bonus,3.840676122,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,has_stamina,40.62151884,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,can_inspire,41.25779142,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,has_guerrilla_deployment,53.90756363,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,speed=H1,-190.5564775,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,speed=H2,-107.3326352,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,shot=howitzer_shell,44.70522905,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,cal_r1,726.3481849,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,cal_r2,-2342.121644,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,cal_r3,6735.610988,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,cal_r4,-6861.229688,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,artillery_horse,cal_r5,12573.62293,gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed
+artillery,V4,all,"c (per unit, outside the multiplier)",-172.8853401,gold per unit
+artillery,V4,all,multiplier fclass=britain|artillery_foot,0.9724459881,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=britain|artillery_horse,1.021188104,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=denmark|artillery_foot,0.8442279628,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=denmark|artillery_horse,0.6271545598,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=france|artillery_foot,1.055355227,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=france|artillery_horse,1.01598289,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_hre|artillery_foot,1.143106767,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_hre|artillery_horse,1.144603543,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a03_x8_032|artillery_foot,0.8882773231,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a03_x8_032|artillery_horse,0.9709177353,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a03_x8_033|artillery_foot,1.053965918,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a03_x8_033|artillery_horse,1.013825178,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a03_x8_038|artillery_foot,0.9046945046,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a03_x8_038|artillery_horse,0.9368776191,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a03_x8_040|artillery_foot,0.9324394592,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a03_x8_040|artillery_horse,0.9742581237,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a04_x8_005|artillery_foot,0.9921972368,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a04_x8_005|artillery_horse,0.9664566747,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a05_x8_001|artillery_foot,1.056384412,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a05_x8_001|artillery_horse,1.009995597,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a05_x8_004|artillery_foot,0.988184199,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a05_x8_004|artillery_horse,0.963957666,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a06_x8_002|artillery_foot,1.068845072,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a06_x8_002|artillery_horse,1.008010527,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a08_x8_047|artillery_foot,1.116020188,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a08_x8_047|artillery_horse,1.058373573,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a09_x8_021|artillery_foot,1.029051637,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a09_x8_021|artillery_horse,1.069998534,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a11_x8_027|artillery_foot,0.9832323745,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a11_x8_027|artillery_horse,0.9170661924,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a11_x8_028|artillery_foot,0.9254396989,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a11_x8_028|artillery_horse,1.061056311,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a11_x8_029|artillery_foot,1.005749463,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a11_x8_029|artillery_horse,0.963859024,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a12_x8_003|artillery_foot,1.029488841,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a12_x8_003|artillery_horse,0.9977886747,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a13_x8_022|artillery_foot,0.9873413905,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a13_x8_022|artillery_horse,0.9934988173,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a17_x8_054|artillery_foot,0.8411381125,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_a17_x8_054|artillery_horse,1.010081041,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b03_x8_039|artillery_foot,1.032310535,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b03_x8_039|artillery_horse,1.000630563,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b03_x8_041|artillery_foot,0.9124985503,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b03_x8_042|artillery_foot,0.9991682156,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b03_x8_042|artillery_horse,0.9636654242,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b03_x8_043|artillery_foot,0.9699908121,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b03_x8_043|artillery_horse,0.9861383289,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b04_x8_015|artillery_foot,1.026856448,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b04_x8_016|artillery_foot,0.9370661551,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b04_x8_016|artillery_horse,1.037451726,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b05_x8_006|artillery_foot,1.041117085,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b05_x8_006|artillery_horse,1.031309046,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b05_x8_007|artillery_foot,1.018395829,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b05_x8_007|artillery_horse,1.00902765,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b06_x8_008|artillery_foot,0.8775824114,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b06_x8_008|artillery_horse,1.032369465,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b06_x8_009|artillery_foot,1.09224412,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b06_x8_009|artillery_horse,1.032055888,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b07_x8_018|artillery_foot,0.9992070356,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b07_x8_018|artillery_horse,0.9823659688,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b08_x8_044|artillery_foot,1.076251839,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b08_x8_044|artillery_horse,1.071936034,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b08_x8_045|artillery_foot,0.8029273466,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b08_x8_045|artillery_horse,0.9783946692,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b08_x8_046|artillery_foot,1.010049417,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b08_x8_046|artillery_horse,1.041387639,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b09_x8_019|artillery_foot,0.9603769328,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b09_x8_019|artillery_horse,1.016371523,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b09_x8_020|artillery_foot,1.096968115,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b09_x8_020|artillery_horse,1.059564475,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|artillery_foot,0.9768668078,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b10_x8_026|artillery_horse,0.9914769036,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b11_x8_013|artillery_foot,1.012625086,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b11_x8_013|artillery_horse,1.055324699,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b11_x8_014|artillery_foot,1.014839601,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b11_x8_014|artillery_horse,0.9258741931,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b12_x8_011|artillery_foot,0.9127658493,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b12_x8_011|artillery_horse,0.9732898796,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b12_x8_012|artillery_foot,1.028869224,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b12_x8_012|artillery_horse,1.04674884,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b13_x8_049|artillery_foot,1.02259654,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b13_x8_049|artillery_horse,1.001906885,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b13_x8_050|artillery_foot,0.9200651051,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b13_x8_050|artillery_horse,0.9990212655,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b14_x8_031|artillery_foot,0.9645561754,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b14_x8_031|artillery_horse,0.9930008064,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|artillery_foot,1.049087053,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b15_x8_052|artillery_horse,1.051008662,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b15_x8_053|artillery_foot,1.036060684,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b15_x8_053|artillery_horse,0.9981171042,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b17_x8_055|artillery_foot,1.024526045,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b17_x8_055|artillery_horse,1.016004825,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b17_x8_056|artillery_foot,1.055423871,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b17_x8_056|artillery_horse,1.010084564,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b17_x8_057|artillery_foot,1.05857996,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_b17_x8_057|artillery_horse,1.041204689,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_c07_x8_017|artillery_foot,0.9782583462,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_c07_x8_017|artillery_horse,0.9528923711,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_c08_x8_048|artillery_foot,1.020250712,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_c08_x8_048|artillery_horse,0.9910028646,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_c10_x8_025|artillery_foot,0.9841173013,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_c10_x8_025|artillery_horse,0.8159672914,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_c14_x8_030|artillery_foot,0.9515252327,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_c14_x8_030|artillery_horse,0.9445343874,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_c15_x8_051|artillery_foot,0.9614931991,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=ntw3_tow_c15_x8_051|artillery_horse,0.9763325749,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=piedmont_savoy|artillery_foot,1.088525823,ridge κ = 0.5
+artillery,V4,all,multiplier fclass=piedmont_savoy|artillery_horse,0.9852654644,ridge κ = 0.5

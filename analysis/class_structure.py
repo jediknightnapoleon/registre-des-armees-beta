@@ -24,7 +24,8 @@ Segments follow the blind study: militia + irregulars, light + missile cavalry.
 Adoption: a variant must beat V0 by more than one paired SE; among those, the
 simplest (V1 < V2 < V3 < V4) within one SE of the best wins.
 
-Output: analysis/output/class_structure_report.md. Each finished arm × variant is
+Output: analysis/output/class_structure_report.md, and every V4 coefficient (full-data
+fit) in analysis/output/class_structure_coefficients.csv. Each finished arm × variant is
 checkpointed in analysis/.cache/class_structure/ (gitignored), so an interrupted
 run resumes where it stopped; --fresh ignores the checkpoints.
 
@@ -34,6 +35,7 @@ run resumes where it stopped; --fresh ignores the checkpoints.
 from __future__ import annotations
 
 import argparse
+import csv
 import pickle
 import sys
 import time
@@ -57,6 +59,7 @@ LABELS = {"V0": "adopted: class additive in β·x", "V1": "class as a multiplier
           "V2": "class multiplier + size exponent per class", "V3": "separate formula per class",
           "V4": "separate formula + size exponent per class"}
 REPORT = up.ROOT / "analysis" / "output" / "class_structure_report.md"
+COEFFICIENTS = up.ROOT / "analysis" / "output" / "class_structure_coefficients.csv"
 CACHE = up.ROOT / "analysis" / ".cache" / "class_structure"
 CACHE_VERSION = 2          # bump when a variant's definition changes
 
@@ -161,6 +164,77 @@ def run_variant(label: str, spec: up.Spec, design: up.Design, sl: up.Slice, arm:
                     design.aliases, params), fitted[-1]
 
 
+def v4_tables(arm: str, final: up.Spec, kappa: float, units: list[up.Unit], v0: up.CVRun, v4: up.CVRun,
+              p_of: dict[str, float]) -> tuple[list[list[object]], list[str]]:
+    """V4's full-data coefficients: CSV rows, and a markdown table that sets each
+    segment's coefficients beside the adopted model's shared ones (V0)."""
+    m4, m0 = v4.full, v0.full
+    beta4 = dict(zip(v4.names, m4.beta))
+    beta0 = dict(zip(v0.names, m0.beta))
+    seg_units: dict[str, int] = {}
+    for u in units:
+        seg_units[segment(u)] = seg_units.get(segment(u), 0) + 1
+    segments = sorted(seg_units)
+    reference = v4.references["segment"]
+
+    def intercept4(s: str) -> float:
+        return m4.b0 + (0.0 if s == reference else beta4.get(f"segment={s}", 0.0))
+
+    def intercept0(s: str) -> float:
+        return m0.b0 + beta0.get(f"unit_class={s}", 0.0)
+
+    note_beta = "gold per size unit^p_c at rating 8; column (stat/100)^power where a power is listed"
+    rows: list[list[object]] = [
+        [arm, "V4", "all", "ridge κ (faction × class cells)", f"{kappa:g}", "pseudo-units of average price"],
+        [arm, "V4", "all", "rating divisor", f"{up.REF_RATING}/rating", "fixed"],
+    ]
+    for stat, a in final.powers:
+        rows.append([arm, "V4", "all", f"stat power {stat}", f"{a:g}", "shared by every segment (not re-tuned)"])
+    for s in segments:
+        rows.append([arm, "V4", s, "units", seg_units[s], ""])
+        rows.append([arm, "V4", s, "size power p_c", f"{p_of.get(s, final.p):g}",
+                     "price ∝ size^p_c" + ("" if s in p_of else " (segment too small: shared p)")])
+        rows.append([arm, "V4", s, "intercept (b0 + segment)", f"{intercept4(s):.10g}", note_beta])
+        for name, coef in beta4.items():
+            if name.endswith(f" × {s}"):
+                rows.append([arm, "V4", s, name[: -len(f" × {s}")], f"{coef:.10g}", note_beta])
+    if m4.spec.const:
+        rows.append([arm, "V4", "all", "c (per unit, outside the multiplier)", f"{m4.c:.10g}", "gold per unit"])
+    for var in sorted(m4.spec.mult - {"fclass"}):
+        if var in up.MULT_CATEGORICAL:
+            for level, value in sorted(m4.levels[var].items(), key=lambda t: str(t[0])):
+                rows.append([arm, "V4", "all", f"multiplier {var}={level}", f"{value:.10g}", f"reference {m4.refs[var]}"])
+        else:
+            rows.append([arm, "V4", "all", f"multiplier {var} δ", f"{m4.delta[var]:.10g}",
+                         f"m = 1 + δ·({var} − {m4.refs[var]:g})"])
+    for cell, value in sorted(m4.levels["fclass"].items()):
+        rows.append([arm, "V4", "all", f"multiplier fclass={cell}", f"{value:.10g}", f"ridge κ = {kappa:g}"])
+
+    # Markdown: features × (adopted shared, V4 per segment).
+    features = [n for n in v0.names if not n.startswith(("unit_class=", "speed="))]
+    short = {s: s.split("_", 1)[1] for s in segments}
+    header = ["feature", "adopted: all classes"] + [f"V4: {short[s]} ({seg_units[s]})" for s in segments]
+    table = [["size power p", f"{final.p:g}"] + [f"**{p_of.get(s, final.p):g}**" for s in segments],
+             ["intercept", "class shifts: " + ", ".join(f"{short[s]} {intercept0(s):.3g}" for s in segments)]
+             + [f"{intercept4(s):.4g}" for s in segments]]
+    for name in features:
+        power = final.power_of(name)
+        label = f"`{name}`" + (f" ^{power:g}" if power != 1.0 else "")
+        line = [label, f"{beta0[name]:.4g}"]
+        for s in segments:
+            coef = beta4.get(f"{name} × {s}")
+            line.append(f"{coef:.4g}" if coef is not None else "—")
+        table.append(line)
+    md = [f"### {arm}: V4 coefficients beside the adopted model", "",
+          "Full-data fits. β in gold per size unit^p at rating 8, before the army × class multiplier; a stat "
+          "with a power enters as (stat/100)^power, the powers shared by all classes. The adopted model has one β "
+          "per feature for every class plus a class intercept shift; V4 has its own β and size power per class. "
+          "— = constant within that class (its intercept carries it). Columns identical within a class (e.g. two "
+          "flags held by exactly the same units) cannot be told apart, so least squares splits their effect equally "
+          "between them. Speed tiers and every other coefficient: `class_structure_coefficients.csv`.", ""] + up.table(header, table) + [""]
+    return rows, md
+
+
 def paired(a: up.CVRun, b: up.CVRun) -> tuple[float, float]:
     diff = np.array([x["mae"] - y["mae"] for x, y in zip(a.fold_metrics, b.fold_metrics)])
     return float(diff.mean()), float(diff.std(ddof=1) / np.sqrt(len(diff)))
@@ -182,6 +256,7 @@ def main() -> int:
            "(militia + irregulars; light + missile cavalry). MAE in gold, mean ± sd over the 5 folds; Δ and SE "
            "paired over folds against V0.", ""]
     summary, details = [], []
+    coefficient_rows: list[list[object]] = []
     for arm, final in FINAL.items():
         sl = up.make_slice(arm, "merged", up.slice_units(units, arm, "merged"), args.seeds)
         kappa = cached(f"{arm}_kappa", lambda: up.fclass_cv("JFC", final, sl.units, sl.plan.folds, arm).full_kappa,
@@ -250,12 +325,19 @@ def main() -> int:
             seg_rows.append([s, int(mask.sum())] + [
                 f"{np.nanmean(np.abs(runs[k].oof[mask] - cost[mask])):.1f}" for k in ORDER])
         details += ["MAE per segment:", ""] + up.table(["segment", "units"] + list(ORDER), seg_rows) + [""]
+        rows4, md4 = v4_tables(arm, final, kappa, sl.units, runs["V0"], runs["V4"], exps["V4"])
+        coefficient_rows += rows4
+        details += md4
         summary.append([arm] + [f"{runs[k].mean('mae'):.2f}" for k in ORDER] + [f"`{adopted}` {LABELS[adopted]}"])
     out += ["## Summary", ""] + up.table(["arm"] + list(ORDER) + ["adopted"], summary) + [""]
     out += [f"- `{k}`: {LABELS[k]}" for k in ORDER] + [""] + details
     out += [f"*Runtime {time.time() - started:.0f} s.*", ""]
     REPORT.write_text("\n".join(out), encoding="utf-8")
-    up.log(f"done → {REPORT.relative_to(up.ROOT)}", started)
+    with open(COEFFICIENTS, "w", encoding="utf-8", newline="") as fh:
+        writer = csv.writer(fh)                     # csv's default line terminator is CRLF, as elsewhere
+        writer.writerow(["model", "variant", "segment", "feature", "coefficient", "note"])
+        writer.writerows(coefficient_rows)
+    up.log(f"done → {REPORT.relative_to(up.ROOT)}, {COEFFICIENTS.relative_to(up.ROOT)}", started)
     return 0
 
 

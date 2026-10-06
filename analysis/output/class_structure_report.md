@@ -50,6 +50,33 @@ MAE per segment:
 | infantry_militia | 367 | 38.3 | 37.9 | 37.3 | 31.0 | 30.1 |
 | infantry_skirmishers | 368 | 39.0 | 38.1 | 37.5 | 39.6 | 37.7 |
 
+### infantry: V4 coefficients beside the adopted model
+
+Full-data fits. β in gold per size unit^p at rating 8, before the army × class multiplier; a stat with a power enters as (stat/100)^power, the powers shared by all classes. The adopted model has one β per feature for every class plus a class intercept shift; V4 has its own β and size power per class. — = constant within that class (its intercept carries it). Columns identical within a class (e.g. two flags held by exactly the same units) cannot be told apart, so least squares splits their effect equally between them. Speed tiers and every other coefficient: `class_structure_coefficients.csv`.
+
+| feature | adopted: all classes | V4: grenadiers (585) | V4: light (755) | V4: line (2295) | V4: militia (367) | V4: skirmishers (368) |
+| --- | --- | --- | --- | --- | --- | --- |
+| size power p | 1.09 | **1.3** | **1.2** | **1.2** | **1** | **0.8** |
+| intercept | class shifts: grenadiers 3.39, light 3.36, line 3.45, militia 3.43, skirmishers 3.45 | -4.93 | -4.56 | -5.237 | 3.076 | 2.934 |
+| `accuracy` ^0.05 | 8.425 | 6.874 | 2.655 | 4.914 | 8.978 | 38.2 |
+| `reload_skill` ^3.1 | 1.427 | 0.6082 | 0.7763 | 0.6319 | 3.779 | 4.279 |
+| `ammo` ^0.05 | 0.8543 | -0.7008 | 1.614 | 0.2711 | 2.07 | -23.53 |
+| `morale` ^2.25 | 122.5 | 32.5 | 63.6 | 84.93 | 230 | 437.2 |
+| `melee_attack` ^1.4 | 14.17 | 5.091 | 8.823 | 6.915 | 30.16 | 17.09 |
+| `melee_defense` ^1.15 | 5.161 | 3.06 | 2.316 | 1.969 | 6.865 | 115.2 |
+| `charge_bonus` ^0.05 | -3.7 | -0.7275 | 0.6603 | 0.7615 | -7.923 | -12.64 |
+| `range` ^4 | 0.02643 | -0.069 | 0.1374 | -0.02845 | -0.1034 | -0.02428 |
+| `has_range` | -8.372 | — | — | — | -10.02 | — |
+| `can_form_square` | 0.3267 | 0.1522 | 0.2357 | 0.161 | 0.2612 | — |
+| `has_stamina` | 0.1841 | 0.09506 | 0.119 | 0.1098 | 0.2399 | -0.3151 |
+| `is_shock_resistant` | 0.2343 | 0.07138 | 0.1714 | 0.1196 | 0.2763 | 0.8704 |
+| `can_inspire` | 0.5142 | 0.1717 | 0.326 | 0.2064 | 0.698 | 1.935 |
+| `has_guerrilla_deployment` | 2.044 | 0.4236 | 0.864 | — | 0.8554 | 10.2 |
+| `can_place_stakes` | 0.05775 | 0.1186 | 0.2524 | 0.07873 | 0.1603 | 1.554 |
+| `can_place_mines` | -0.3227 | -0.1488 | — | — | — | -6.005 |
+| `guard_mode` | -0.08392 | -0.0501 | 0.09588 | 0.04921 | — | -6.005 |
+| `can_snipe` | 2.269 | — | — | — | — | — |
+
 ## cavalry
 
 | key | variant | MAE | MAPE % | Δ vs V0 | SE | beats > 1 SE | params |  |
@@ -83,6 +110,29 @@ MAE per segment:
 | cavalry_light | 702 | 30.3 | 29.8 | 27.6 | 29.2 | 27.0 |
 | cavalry_standard | 387 | 26.9 | 26.6 | 28.1 | 26.7 | 28.2 |
 
+### cavalry: V4 coefficients beside the adopted model
+
+Full-data fits. β in gold per size unit^p at rating 8, before the army × class multiplier; a stat with a power enters as (stat/100)^power, the powers shared by all classes. The adopted model has one β per feature for every class plus a class intercept shift; V4 has its own β and size power per class. — = constant within that class (its intercept carries it). Columns identical within a class (e.g. two flags held by exactly the same units) cannot be told apart, so least squares splits their effect equally between them. Speed tiers and every other coefficient: `class_structure_coefficients.csv`.
+
+| feature | adopted: all classes | V4: heavy (309) | V4: lancers (326) | V4: light (702) | V4: standard (387) |
+| --- | --- | --- | --- | --- | --- |
+| size power p | 0.75 | **0.8** | **0.7** | **0.7** | **0.8** |
+| intercept | class shifts: heavy 1.92, lancers 3.25, light 4.72, standard 3.77 | 3.596 | 4.038 | 6.11 | 6.2 |
+| `accuracy` | 0.09334 | — | — | 0.07647 | 0.007161 |
+| `reload_skill` | -0.02654 | — | — | -0.04847 | -0.07869 |
+| `ammo` | -0.05273 | — | — | -0.03335 | 0.01102 |
+| `morale` | 0.9555 | 0.9793 | 1.395 | 1.031 | 0.6555 |
+| `melee_attack` | 0.3046 | 0.2566 | 0.2759 | 0.3523 | 0.3137 |
+| `melee_defense` | 0.2868 | 0.1305 | 0.3158 | 0.4076 | 0.136 |
+| `charge_bonus` | 1.331 | 0.7109 | 1.541 | 2.028 | 0.7133 |
+| `range` | 0.157 | — | — | 0.2713 | 0.01652 |
+| `has_range` | -9.006 | — | — | -16.69 | 0.0002754 |
+| `has_stamina` | 7.172 | 7.245 | 7.454 | 8.36 | 6.146 |
+| `is_shock_resistant` | 10.59 | 10.56 | 11.23 | 13.33 | 8.265 |
+| `can_inspire` | 9.386 | 8.768 | 9.464 | 9.773 | 7.163 |
+| `has_guerrilla_deployment` | 11.16 | — | 10.12 | 16.01 | — |
+| `is_camel` | -19.08 | — | — | — | -15.09 |
+
 ## artillery
 
 | key | variant | MAE | MAPE % | Δ vs V0 | SE | beats > 1 SE | params |  |
@@ -114,4 +164,29 @@ MAE per segment:
 | artillery_foot | 631 | 27.4 | 28.9 | 27.0 | 27.6 | 24.3 |
 | artillery_horse | 263 | 44.3 | 40.1 | 40.4 | 34.6 | 33.9 |
 
-*Runtime 2481 s.*
+### artillery: V4 coefficients beside the adopted model
+
+Full-data fits. β in gold per size unit^p at rating 8, before the army × class multiplier; a stat with a power enters as (stat/100)^power, the powers shared by all classes. The adopted model has one β per feature for every class plus a class intercept shift; V4 has its own β and size power per class. — = constant within that class (its intercept carries it). Columns identical within a class (e.g. two flags held by exactly the same units) cannot be told apart, so least squares splits their effect equally between them. Speed tiers and every other coefficient: `class_structure_coefficients.csv`.
+
+| feature | adopted: all classes | V4: foot (631) | V4: horse (263) |
+| --- | --- | --- | --- |
+| size power p | 1.3 | **1.2** | **1.4** |
+| intercept | class shifts: foot -3.87e+03, horse -3.7e+03 | -3573 | -3908 |
+| `accuracy` ^3 | 86.38 | 115.1 | 43.03 |
+| `reload_skill` ^2 | 72.63 | 77.02 | 81.06 |
+| `morale` ^3 | 3.203e+04 | 3.531e+04 | 2.696e+04 |
+| `melee_attack` ^2.5 | 5792 | 1.131e+04 | 1.323e+04 |
+| `melee_defense` ^3 | 9.922e+04 | 6.798e+04 | 4.333e+04 |
+| `charge_bonus` ^0.25 | 1.295 | 0.744 | 3.841 |
+| `has_stamina` | 31.33 | 30.83 | 40.62 |
+| `can_inspire` | 39.68 | 40.34 | 41.26 |
+| `has_guerrilla_deployment` | 59.05 | 65.15 | 53.91 |
+| `shot=howitzer_shell` | 26.3 | 28.11 | 44.71 |
+| `shot=unicorn_shell` | 23.53 | 30.42 | — |
+| `cal_r1` | 691.6 | 642.8 | 726.3 |
+| `cal_r2` | -3238 | -3128 | -2342 |
+| `cal_r3` | 1.008e+04 | 9815 | 6736 |
+| `cal_r4` | -8574 | -8225 | -6861 |
+| `cal_r5` | 1724 | 1437 | 1.257e+04 |
+
+*Runtime 14 s.*
