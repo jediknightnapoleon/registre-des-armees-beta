@@ -27,3 +27,4 @@ __pycache__/
 
 # Analysis checkpoints (analysis/class_structure.py resumes from these)
 /analysis/.cache/
+/blind_study
