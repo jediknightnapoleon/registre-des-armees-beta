@@ -116,6 +116,8 @@ python analysis/blind_ideas.py            # → analysis/output/blind_ideas_repo
 python analysis/extreme_pinning.py        # → analysis/output/extreme_pinning_report.md (pin extreme units to train?, ~5 min)
 python analysis/class_structure.py        # → analysis/output/class_structure_report.md (class as multiplier / own size
                                           #   exponent / own formula, ~40 min; checkpoints in analysis/.cache/, resumable)
+python analysis/commander_stage.py        # → commander_stage_report.md (commander variants from their regular unit; seconds,
+                                          #   reads the committed outputs and the class_structure checkpoints)
 python -m pytest tools/tests              # from the repo root; tools/ is a package
 
 # App (from web/)

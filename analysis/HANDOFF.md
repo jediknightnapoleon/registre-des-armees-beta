@@ -120,7 +120,10 @@ pricing analysis, which the app does not use.
   - Excluded factions: `aaa_lordz`, `austria`, `hannover` and `saxony`, which
     are joke or placeholder units.
   - `artillery_fixed` is excluded.
-  - Commander variants (`unit_class = general` attached to a unit) are skipped.
+  - Commander variants (`unit_class = general` attached to a unit) are skipped by
+    `unit_pricing.load`. They are priced separately by `commander_stage.py`, which
+    pairs each with its regular counterpart (same army, unit key minus `_com_<id>`;
+    all 5 238 match).
   - Staff generals are modelled separately.
 - **Counts.** 4 370 infantry, 1 724 cavalry, 894 artillery and 288 staff
   generals (merged slice). Groups of identical feature rows are kept on one
@@ -239,7 +242,19 @@ to `analysis/output/`, and never changes committed outputs):
    blind study found no overall cap effect.
 3. **Re-tune the stat powers jointly with the adopted army × class form.** They
    were tuned before it.
-4. **Commander variants.** About 42% of ToW + Custom rows. Blind-study recipe:
+4. **Commander variants: done** (`commander_stage.py`, report §7). Notes for
+   extending it:
+   - Its parameters are learned from *true* regular prices (the user's choice), so
+     it is a standalone model; keep it that way.
+   - The remaining chain error (40–46 vs 31 given the true price) is the
+     regular-unit model's error carried through.
+   - Commanders' individual stat boosts beyond their star level are not used. A
+     natural extension: scale P by the regular-unit model's predicted ratio of
+     the commander's boosted row to the regular row (this generalises the size
+     scaling).
+   - High-star commanders (4+) have large individual premiums.
+
+   The original note, kept for reference: about 42% of ToW + Custom rows. Blind-study recipe:
    `price ≈ max(1, a·p_reg + b(stars)·10/N)`, with `p_reg` the regular price of
    the unit the general leads and one global set of 7 coefficients
    (a ≈ 0.9). Its CV error went 51 → 39 gold. Use our regular model as stage 1.

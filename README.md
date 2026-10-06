@@ -44,8 +44,13 @@
 > - Very large militia units are overpriced; one 487-model unit is predicted at
 >   ~2 200 against 608 actual.
 > - Tiny skirmisher units are slightly underpriced.
-> - Commander variants (a general attached to a unit) and Army Corps prices are
->   not modelled yet.
+> - Army Corps prices are not modelled yet.
+>
+> **Commander variants** (a named general leading a unit) are priced from their
+> regular unit: about 0.91–1.11 × its price plus a star term (−79 to +218 gold,
+> × 8/N). That is within 31 gold (5%) when the regular price is known, and
+> 40–46 gold when the regular price itself comes from the model. Its parameters
+> are learned from true regular prices, so this stage is a model of its own.
 >
 > **Where to read:**
 >
@@ -64,6 +69,7 @@
 > python analysis/unit_pricing.py          # full model + report → analysis/output/ (~50 min, 6 worker processes)
 > python analysis/fclass_table.py          # army × class multiplier tables (seconds)
 > python analysis/class_structure.py       # per-class alternative V4 (~40 min, resumable)
+> python analysis/commander_stage.py       # commander variants (seconds; needs the two runs above)
 > ```
 >
 > The other `analysis/*.py` scripts are the individual experiments behind the

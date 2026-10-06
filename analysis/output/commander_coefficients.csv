@@ -1,0 +1,87 @@
+variant,feature,coefficient,note
+S1,a,0.9473612141,slope on the regular price P
+S1,b_0,-96.74700505,gold × 8/N for this star level
+S1,b_1,-47.2810914,gold × 8/N for this star level
+S1,b_2,40.14620068,gold × 8/N for this star level
+S1,b_3,112.6127088,gold × 8/N for this star level
+S1,b_4,225.1451295,gold × 8/N for this star level
+S1,b_5,361.2554084,gold × 8/N for this star level
+S2,a,0.9085022941,slope on the regular price P
+S2,b_0,-75.89209857,gold × 8/N for this star level
+S2,b_1,-37.25785579,gold × 8/N for this star level
+S2,b_2,24.99853565,gold × 8/N for this star level
+S2,b_3,77.61060806,gold × 8/N for this star level
+S2,b_4,160.5935264,gold × 8/N for this star level
+S2,b_5,211.3162813,gold × 8/N for this star level
+S2,a_1,0.02212001479,added to the slope for this star level
+S2,a_2,0.0625723637,added to the slope for this star level
+S2,a_3,0.08955825831,added to the slope for this star level
+S2,a_4,0.1189086676,added to the slope for this star level
+S2,a_5,0.2013280379,added to the slope for this star level
+S3,a,0.9128572884,slope on the regular price P (adopted)
+S3,b_0,-78.81025256,gold × 8/N for this star level (adopted)
+S3,b_1,-38.90049544,gold × 8/N for this star level (adopted)
+S3,b_2,23.04026464,gold × 8/N for this star level (adopted)
+S3,b_3,75.89643497,gold × 8/N for this star level (adopted)
+S3,b_4,161.4767007,gold × 8/N for this star level (adopted)
+S3,b_5,217.9651231,gold × 8/N for this star level (adopted)
+S3,a_1,0.02030469929,added to the slope for this star level (adopted)
+S3,a_2,0.0618091388,added to the slope for this star level (adopted)
+S3,a_3,0.09031199729,added to the slope for this star level (adopted)
+S3,a_4,0.1138796525,added to the slope for this star level (adopted)
+S3,a_5,0.1955646561,added to the slope for this star level (adopted)
+S3,army=britain,27.95661851,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=denmark,-7.52008056,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=france,-21.51642017,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_hre,0.8152665563,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a03_x8_032,-12.28348033,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a03_x8_033,-4.222236656,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a03_x8_038,23.77118655,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a03_x8_040,0.2299726621,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a04_x8_005,15.85112017,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a05_x8_001,-24.79810679,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a05_x8_004,18.10344506,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a06_x8_002,-17.98447483,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a08_x8_047,-21.01752059,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a09_x8_021,-24.02783894,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a11_x8_027,15.99779825,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a11_x8_028,-29.19618797,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a11_x8_029,4.478189016,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a12_x8_003,-13.89476187,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a13_x8_022,-5.390275204,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_a17_x8_054,-18.70944334,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b03_x8_039,-5.357577289,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b03_x8_041,27.40114125,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b03_x8_042,3.636388179,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b03_x8_043,31.08700865,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b04_x8_015,-0.02264503449,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b04_x8_016,19.75564977,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b05_x8_006,-1.381702868,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b05_x8_007,-6.025890134,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b06_x8_008,2.787230551,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b06_x8_009,-12.98053385,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b07_x8_018,23.14472536,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b08_x8_044,-0.8606716841,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b08_x8_045,26.43365773,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b08_x8_046,14.79591808,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b09_x8_019,-3.066342173,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b09_x8_020,-6.154755448,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b10_x8_026,3.842672074,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b11_x8_013,-15.40771227,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b11_x8_014,-53.26507462,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b12_x8_011,5.636185904,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b12_x8_012,-6.683763337,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b13_x8_049,-4.457200042,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b13_x8_050,15.40053151,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b14_x8_031,42.6083109,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b15_x8_052,-11.50218868,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b15_x8_053,11.44962823,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b17_x8_055,-8.723690453,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b17_x8_056,-8.291657394,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_b17_x8_057,-24.45889711,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_c07_x8_017,14.9541796,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_c08_x8_048,-5.139310999,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_c10_x8_025,19.92298788,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_c14_x8_030,13.69522798,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=ntw3_tow_c15_x8_051,-13.59613529,"gold × 8/N, ridge 0.001·n (adopted)"
+S3,army=piedmont_savoy,4.18160439,"gold × 8/N, ridge 0.001·n (adopted)"

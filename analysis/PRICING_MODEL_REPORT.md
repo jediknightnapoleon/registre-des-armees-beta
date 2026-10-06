@@ -22,6 +22,7 @@ absolute error in gold; MAPE the mean absolute percentage error.
 | Cavalry | 1 724 | 727 | **34.9** | **4.6%** | 0.958 |
 | Artillery | 894 | 591 | **32.4** | **6.8%** | 0.955 |
 | Staff generals | 288 | 202 | **8.6** (2.3 with faction modifier) | 2.2% | 0.989 |
+| Commander variants (§7) | 5 238 | — | **31.2** given the regular price; 40–46 from a model's price | 5.0% | — |
 
 How the error came down, MAE in gold (infantry / cavalry / artillery):
 
@@ -205,7 +206,8 @@ The full lists are in `unit_pricing_report.md` §10.
   `.pack` tables. Scope: every ToW and Custom unit.
   - Excluded: the developer joke and placeholder corps (`aaa_lordz`, `austria`,
     `hannover`, `saxony`) and fixed artillery.
-  - Out of scope: commander variants (a general attached to a unit; §5).
+  - Commander variants (a general attached to a unit) have their own stage on
+    top (§7).
 - **Validation.** 5-fold cross-validation, where each fold is an 80/20 split:
   - identical units are kept together;
   - folds are stratified by class and speed;
@@ -263,7 +265,9 @@ The full lists are in `unit_pricing_report.md` §10.
 5. **Stat powers were tuned before the army × class step** and not re-tuned
    after it. A joint re-tune could gain a little.
 6. **Scope:**
-   - Commander variants (about 42% of ToW + Custom rows) are not modelled.
+   - Commander variants (about 42% of ToW + Custom rows) are priced by a
+     separate stage from their regular unit (§7), not by the regular-unit
+     formulas.
    - Army Corps (non-ToW) prices are not modelled.
    - The 4 fixed artillery pieces are excluded.
 7. **Accuracy varies by class.** Grenadiers (40 MAE), militia (38),
@@ -441,7 +445,99 @@ Keeping both versions is reasonable:
 
 ---
 
-## 7. Files
+## 7. Commander variants (combat generals attached to a unit)
+
+5 238 rows of the ToW and Custom data are commander variants: a named general
+leading a regular unit. Every one has its regular counterpart in the same army,
+with the same unit key minus `_com_<id>`. The commander version has the same
+speed and, for all but 70 rows, the same size, with stats boosted by its
+command stars. Script: `analysis/commander_stage.py`; report:
+`analysis/output/commander_stage_report.md`.
+
+> **How this stage was built, and how to read it.** The functional form is the
+> blind study's. Its *parameters* are not learned the blind study's way:
+>
+> - The blind study fitted them to its regular-unit model's **prediction** of
+>   the commander's own row, so its commander parameters partly absorb that
+>   model's errors.
+> - Here they are learned from the **true price** of each commander's regular
+>   counterpart.
+>
+> The commander stage is therefore a model in its own right, *commander price
+> given the regular unit's price*, and should be interpreted on its own,
+> independently of the adopted and V4 regular-unit models. Those models only
+> enter when the stage is applied to a regular price they have predicted.
+
+### 7.1 Equation
+
+$$
+\text{price}_{\text{cmd}} \;=\; \max\Bigl(1,\; (a + a_s)\cdot P \;+\; (b_s + \text{army}_f)\cdot\frac{8}{N}\Bigr),
+\qquad P = P_{\text{regular}}\cdot\Bigl(\frac{S_{\text{cmd}}}{S_{\text{regular}}}\Bigr)^{p}
+$$
+
+- **s** is the number of command stars, capped at 5; 12 commanders have 6–7.
+- **P** is the regular counterpart's price scaled to the commander's unit
+  size, using the arm's size power *p* (1.09 / 0.75 / 1.3).
+  - It matters for 70 commanders who lead a bigger unit, e.g. a Guard battery
+    of 6 guns against the regular 3. Without the scaling their error is about
+    7× the rest.
+- **army_f** is a per-army premium, ridge-shrunk with the blind study's
+  penalty.
+
+### 7.2 Parameters
+
+Full-data fit on actual regular prices:
+
+| Stars | Price slope a + a_s | b_s (gold, at N = 8) | Median commander ÷ regular price |
+| --- | --- | --- | --- |
+| 0 | 0.913 | −78.8 | 0.73 |
+| 1 | 0.933 | −38.9 | 0.85 |
+| 2 | 0.975 | +23.0 | 1.01 |
+| 3 | 1.003 | +75.9 | 1.15 |
+| 4 | 1.027 | +161.5 | 1.29 |
+| 5+ | 1.108 | +218.0 | 1.48 |
+
+- **Reading:** a commander costs about 0.91–1.11 × the regular unit plus a star
+  term. That term runs from −79 gold with no stars to +218 with five, at N = 8,
+  and scales with 8/N.
+  - So a commander without stars is *cheaper* than the plain unit, and from 2
+    stars up dearer.
+  - Example: a 2-star commander of a 500-gold unit in a rating-8 army costs
+    0.975 × 500 + 23 ≈ 510 gold, plus the army premium.
+- **Army premiums:** median −1 gold, ranging from −53 (Russkiy narod) to +43
+  ([1815] 6. Österreich (Italien)). All coefficients are in
+  `analysis/output/commander_coefficients.csv`.
+
+### 7.3 Accuracy
+
+Cross-validated: each commander takes its regular counterpart's fold, and is
+priced by parameters learned without its fold. MAE in gold, with the median
+absolute % error in brackets.
+
+| P used | All | Infantry | Cavalry | Artillery |
+| --- | --- | --- | --- | --- |
+| **Actual regular price**: the commander stage on its own | **31.2 (5.0%)** | 27.5 | 39.7 | 34.9 |
+| Adopted model's price for the regular unit, unit in the data | 43.4 (6.9%) | 40.5 | 50.5 | 44.2 |
+| V4's price for the regular unit, unit in the data | 39.8 (6.3%) | 35.9 | 49.0 | 43.0 |
+| Adopted model, regular unit never seen (out of fold) | 45.9 (7.2%) | 42.5 | 53.5 | 49.7 |
+| V4, regular unit never seen (out of fold) | 42.4 (6.6%) | 38.1 | 51.7 | 47.3 |
+
+- **Form variants:** the per-army premium (−3.1 ± 0.1 gold) and the
+  star-dependent slopes (−1.2 ± 0.2) each beat the simpler form by more than
+  one SE. The simplest form, a·P + b_s·8/N with 7 parameters, gives 35.5.
+- **Comparison with the blind study.** Its best model reaches 28.7 on the same
+  commander rows, better than our "unit in the data" chain at 39.8–43.4. Its
+  parameters were fitted to its own predictions, so they compensate for its
+  regular-unit model's errors; ours, learned from true prices, do not.
+  Comparing stage 2 on its own, ours is 31.2.
+- **Error grows with stars:** 17 gold at 0 stars, 126 at 5+. The few
+  high-star commanders (223 with 4 or more stars) carry individually priced
+  premiums. The largest misses are famous generals and Guard batteries, e.g.
+  Rayevski's 12-pdr battery at 2 594 against 2 128 predicted.
+
+---
+
+## 8. Files
 
 | File | What |
 | --- | --- |
@@ -456,4 +552,5 @@ Keeping both versions is reasonable:
 | `analysis/output/class_structure_coefficients.csv` | Every V4 coefficient (per-class β, size powers, army × class cells) |
 | `analysis/output/faction_class_multipliers*.csv`, `.md` | The adopted model's army × class multipliers as tables (`analysis/fclass_table.py`) |
 | `analysis/calibre_onehot_results/`, `analysis/linear_results/` | The same pipeline with the cannon-type one-hot, and the fully linear model |
+| `analysis/output/commander_stage_report.md`, `commander_coefficients.csv`, `commander_predictions.csv` | §7: commander variants (`analysis/commander_stage.py`) |
 | `analysis/HANDOFF.md` | How to work on this further |
