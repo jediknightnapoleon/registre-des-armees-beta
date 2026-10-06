@@ -1,0 +1,562 @@
+army_corps_name,faction_key,rating,side,unit_class,units,multiplier
+[1798] 5. UK (Ireland),ntw3_tow_b03_x8_041,5,coalition,infantry_line,1,0.7656
+[1798] 5. UK (Ireland),ntw3_tow_b03_x8_041,5,coalition,infantry_light,2,0.9736
+[1798] 5. UK (Ireland),ntw3_tow_b03_x8_041,5,coalition,infantry_grenadiers,1,1.0061
+[1798] 5. UK (Ireland),ntw3_tow_b03_x8_041,5,coalition,infantry_skirmishers,1,0.9539
+[1798] 5. UK (Ireland),ntw3_tow_b03_x8_041,5,coalition,infantry_militia,17,0.9880
+[1798] 5. UK (Ireland),ntw3_tow_b03_x8_041,5,coalition,cavalry_light,6,1.0289
+[1798] 5. UK (Ireland),ntw3_tow_b03_x8_041,5,coalition,cavalry_heavy,2,1.0092
+[1798] 5. UK (Ireland),ntw3_tow_b03_x8_041,5,coalition,artillery_foot,1,0.9023
+[1809] 6. UK (Walcheren),ntw3_tow_b08_x8_045,6,coalition,infantry_line,32,0.9912
+[1809] 6. UK (Walcheren),ntw3_tow_b08_x8_045,6,coalition,infantry_light,8,1.0029
+[1809] 6. UK (Walcheren),ntw3_tow_b08_x8_045,6,coalition,infantry_skirmishers,4,1.0146
+[1809] 6. UK (Walcheren),ntw3_tow_b08_x8_045,6,coalition,cavalry_light,3,1.0401
+[1809] 6. UK (Walcheren),ntw3_tow_b08_x8_045,6,coalition,cavalry_heavy,2,0.9750
+[1809] 6. UK (Walcheren),ntw3_tow_b08_x8_045,6,coalition,artillery_foot,7,0.7859
+[1809] 6. UK (Walcheren),ntw3_tow_b08_x8_045,6,coalition,artillery_horse,1,1.0051
+[1815] 6. Österreich (Italien),ntw3_tow_b14_x8_031,6,coalition,infantry_line,28,0.8976
+[1815] 6. Österreich (Italien),ntw3_tow_b14_x8_031,6,coalition,infantry_light,15,0.8876
+[1815] 6. Österreich (Italien),ntw3_tow_b14_x8_031,6,coalition,infantry_grenadiers,7,1.0339
+[1815] 6. Österreich (Italien),ntw3_tow_b14_x8_031,6,coalition,infantry_skirmishers,12,1.0715
+[1815] 6. Österreich (Italien),ntw3_tow_b14_x8_031,6,coalition,infantry_militia,3,1.0054
+[1815] 6. Österreich (Italien),ntw3_tow_b14_x8_031,6,coalition,infantry_irregulars,2,1.0403
+[1815] 6. Österreich (Italien),ntw3_tow_b14_x8_031,6,coalition,cavalry_light,10,1.0293
+[1815] 6. Österreich (Italien),ntw3_tow_b14_x8_031,6,coalition,cavalry_standard,3,0.9940
+[1815] 6. Österreich (Italien),ntw3_tow_b14_x8_031,6,coalition,cavalry_lancers,2,0.9745
+[1815] 6. Österreich (Italien),ntw3_tow_b14_x8_031,6,coalition,cavalry_heavy,1,1.1014
+[1815] 6. Österreich (Italien),ntw3_tow_b14_x8_031,6,coalition,artillery_foot,9,0.9424
+[1815] 6. Österreich (Italien),ntw3_tow_b14_x8_031,6,coalition,artillery_horse,4,0.9942
+"[1799] 7. UK, Russia (Helder)",ntw3_tow_b03_x8_043,7,coalition,infantry_line,28,1.0245
+"[1799] 7. UK, Russia (Helder)",ntw3_tow_b03_x8_043,7,coalition,infantry_light,2,1.0340
+"[1799] 7. UK, Russia (Helder)",ntw3_tow_b03_x8_043,7,coalition,infantry_grenadiers,11,0.9827
+"[1799] 7. UK, Russia (Helder)",ntw3_tow_b03_x8_043,7,coalition,infantry_skirmishers,1,0.9412
+"[1799] 7. UK, Russia (Helder)",ntw3_tow_b03_x8_043,7,coalition,cavalry_light,5,0.9433
+"[1799] 7. UK, Russia (Helder)",ntw3_tow_b03_x8_043,7,coalition,cavalry_lancers,2,1.0848
+"[1799] 7. UK, Russia (Helder)",ntw3_tow_b03_x8_043,7,coalition,artillery_foot,3,0.9414
+"[1799] 7. UK, Russia (Helder)",ntw3_tow_b03_x8_043,7,coalition,artillery_horse,1,1.0173
+[1799] 7. Österreich (Schwaben),ntw3_tow_b03_x8_042,7,coalition,infantry_line,50,1.0018
+[1799] 7. Österreich (Schwaben),ntw3_tow_b03_x8_042,7,coalition,infantry_light,17,1.0907
+[1799] 7. Österreich (Schwaben),ntw3_tow_b03_x8_042,7,coalition,infantry_grenadiers,20,0.9714
+[1799] 7. Österreich (Schwaben),ntw3_tow_b03_x8_042,7,coalition,infantry_skirmishers,6,1.1563
+[1799] 7. Österreich (Schwaben),ntw3_tow_b03_x8_042,7,coalition,infantry_militia,3,1.0115
+[1799] 7. Österreich (Schwaben),ntw3_tow_b03_x8_042,7,coalition,infantry_irregulars,1,1.0422
+[1799] 7. Österreich (Schwaben),ntw3_tow_b03_x8_042,7,coalition,cavalry_light,14,0.9347
+[1799] 7. Österreich (Schwaben),ntw3_tow_b03_x8_042,7,coalition,cavalry_standard,4,1.0005
+[1799] 7. Österreich (Schwaben),ntw3_tow_b03_x8_042,7,coalition,cavalry_lancers,7,0.8668
+[1799] 7. Österreich (Schwaben),ntw3_tow_b03_x8_042,7,coalition,cavalry_heavy,12,0.8633
+[1799] 7. Österreich (Schwaben),ntw3_tow_b03_x8_042,7,coalition,artillery_foot,15,0.9951
+[1799] 7. Österreich (Schwaben),ntw3_tow_b03_x8_042,7,coalition,artillery_horse,4,0.9512
+[1804] 7. Irānshahr,ntw3_tow_b15_x8_053,7,coalition,infantry_line,6,0.9055
+[1804] 7. Irānshahr,ntw3_tow_b15_x8_053,7,coalition,infantry_light,2,1.0255
+[1804] 7. Irānshahr,ntw3_tow_b15_x8_053,7,coalition,infantry_grenadiers,1,1.0236
+[1804] 7. Irānshahr,ntw3_tow_b15_x8_053,7,coalition,infantry_skirmishers,2,0.9268
+[1804] 7. Irānshahr,ntw3_tow_b15_x8_053,7,coalition,infantry_militia,2,0.9809
+[1804] 7. Irānshahr,ntw3_tow_b15_x8_053,7,coalition,infantry_irregulars,2,0.9908
+[1804] 7. Irānshahr,ntw3_tow_b15_x8_053,7,coalition,cavalry_light,2,0.9663
+[1804] 7. Irānshahr,ntw3_tow_b15_x8_053,7,coalition,cavalry_missile,1,0.9330
+[1804] 7. Irānshahr,ntw3_tow_b15_x8_053,7,coalition,cavalry_lancers,5,0.9863
+[1804] 7. Irānshahr,ntw3_tow_b15_x8_053,7,coalition,cavalry_heavy,2,1.0569
+[1804] 7. Irānshahr,ntw3_tow_b15_x8_053,7,coalition,artillery_foot,3,1.0196
+[1804] 7. Irānshahr,ntw3_tow_b15_x8_053,7,coalition,artillery_horse,2,0.9587
+[1808] 7. Sverige (Finska),ntw3_tow_b07_x8_018,7,coalition,infantry_line,16,0.9971
+[1808] 7. Sverige (Finska),ntw3_tow_b07_x8_018,7,coalition,infantry_light,9,0.9042
+[1808] 7. Sverige (Finska),ntw3_tow_b07_x8_018,7,coalition,infantry_grenadiers,5,1.0274
+[1808] 7. Sverige (Finska),ntw3_tow_b07_x8_018,7,coalition,infantry_skirmishers,5,1.2530
+[1808] 7. Sverige (Finska),ntw3_tow_b07_x8_018,7,coalition,infantry_militia,1,1.0140
+[1808] 7. Sverige (Finska),ntw3_tow_b07_x8_018,7,coalition,cavalry_light,6,0.9653
+[1808] 7. Sverige (Finska),ntw3_tow_b07_x8_018,7,coalition,cavalry_standard,2,0.9985
+[1808] 7. Sverige (Finska),ntw3_tow_b07_x8_018,7,coalition,cavalry_heavy,2,1.0719
+[1808] 7. Sverige (Finska),ntw3_tow_b07_x8_018,7,coalition,artillery_foot,6,0.9645
+[1808] 7. Sverige (Finska),ntw3_tow_b07_x8_018,7,coalition,artillery_horse,1,1.0218
+[1811] 7. España,ntw3_tow_b13_x8_050,7,coalition,infantry_line,74,0.9835
+[1811] 7. España,ntw3_tow_b13_x8_050,7,coalition,infantry_light,37,0.9857
+[1811] 7. España,ntw3_tow_b13_x8_050,7,coalition,infantry_grenadiers,9,0.9872
+[1811] 7. España,ntw3_tow_b13_x8_050,7,coalition,infantry_skirmishers,15,1.0349
+[1811] 7. España,ntw3_tow_b13_x8_050,7,coalition,infantry_militia,17,1.0091
+[1811] 7. España,ntw3_tow_b13_x8_050,7,coalition,infantry_irregulars,7,0.8266
+[1811] 7. España,ntw3_tow_b13_x8_050,7,coalition,cavalry_light,27,1.0704
+[1811] 7. España,ntw3_tow_b13_x8_050,7,coalition,cavalry_standard,9,1.0207
+[1811] 7. España,ntw3_tow_b13_x8_050,7,coalition,cavalry_lancers,3,1.0010
+[1811] 7. España,ntw3_tow_b13_x8_050,7,coalition,cavalry_heavy,11,1.0919
+[1811] 7. España,ntw3_tow_b13_x8_050,7,coalition,artillery_foot,14,0.8948
+[1811] 7. España,ntw3_tow_b13_x8_050,7,coalition,artillery_horse,4,0.9829
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,infantry_line,25,0.9494
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,infantry_light,6,0.9971
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,infantry_grenadiers,3,1.0515
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,infantry_skirmishers,14,0.9252
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,infantry_militia,19,0.9938
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,infantry_irregulars,2,0.7805
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,cavalry_light,6,1.0852
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,cavalry_missile,2,0.9122
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,cavalry_standard,1,1.0025
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,cavalry_lancers,1,0.9396
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,cavalry_heavy,1,1.0620
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,artillery_foot,5,0.9671
+[1812] 7. UK (USA),ntw3_tow_b10_x8_026,7,coalition,artillery_horse,1,1.0148
+[1815] 7. Preußen (Flandern),ntw3_tow_b12_x8_011,7,coalition,infantry_line,25,0.9419
+[1815] 7. Preußen (Flandern),ntw3_tow_b12_x8_011,7,coalition,infantry_light,5,0.9964
+[1815] 7. Preußen (Flandern),ntw3_tow_b12_x8_011,7,coalition,infantry_grenadiers,4,0.9343
+[1815] 7. Preußen (Flandern),ntw3_tow_b12_x8_011,7,coalition,infantry_skirmishers,9,0.9968
+[1815] 7. Preußen (Flandern),ntw3_tow_b12_x8_011,7,coalition,infantry_militia,22,1.0399
+[1815] 7. Preußen (Flandern),ntw3_tow_b12_x8_011,7,coalition,cavalry_light,10,0.9215
+[1815] 7. Preußen (Flandern),ntw3_tow_b12_x8_011,7,coalition,cavalry_standard,6,0.9456
+[1815] 7. Preußen (Flandern),ntw3_tow_b12_x8_011,7,coalition,cavalry_lancers,21,0.9885
+[1815] 7. Preußen (Flandern),ntw3_tow_b12_x8_011,7,coalition,artillery_foot,28,0.8787
+[1815] 7. Preußen (Flandern),ntw3_tow_b12_x8_011,7,coalition,artillery_horse,8,1.0234
+8. Piemonte-Sardegna (1796),piedmont_savoy,8,coalition,infantry_line,30,0.9552
+8. Piemonte-Sardegna (1796),piedmont_savoy,8,coalition,infantry_light,9,0.8128
+8. Piemonte-Sardegna (1796),piedmont_savoy,8,coalition,infantry_grenadiers,10,0.9605
+8. Piemonte-Sardegna (1796),piedmont_savoy,8,coalition,infantry_skirmishers,2,1.4168
+8. Piemonte-Sardegna (1796),piedmont_savoy,8,coalition,infantry_militia,4,0.6487
+8. Piemonte-Sardegna (1796),piedmont_savoy,8,coalition,cavalry_light,1,1.0052
+8. Piemonte-Sardegna (1796),piedmont_savoy,8,coalition,cavalry_standard,4,0.9507
+8. Piemonte-Sardegna (1796),piedmont_savoy,8,coalition,cavalry_lancers,1,0.9996
+8. Piemonte-Sardegna (1796),piedmont_savoy,8,coalition,cavalry_heavy,5,1.0145
+8. Piemonte-Sardegna (1796),piedmont_savoy,8,coalition,artillery_foot,4,1.1003
+8. Piemonte-Sardegna (1796),piedmont_savoy,8,coalition,artillery_horse,2,1.0091
+"8. UK (Spain, 1808)",britain,8,coalition,infantry_line,25,1.0071
+"8. UK (Spain, 1808)",britain,8,coalition,infantry_light,5,1.0695
+"8. UK (Spain, 1808)",britain,8,coalition,infantry_skirmishers,2,0.8437
+"8. UK (Spain, 1808)",britain,8,coalition,cavalry_light,5,1.0006
+"8. UK (Spain, 1808)",britain,8,coalition,artillery_foot,3,0.9567
+"8. UK (Spain, 1808)",britain,8,coalition,artillery_horse,1,1.0446
+[1798] 8. Mamālīk,ntw3_tow_b04_x8_015,8,coalition,infantry_line,6,0.7879
+[1798] 8. Mamālīk,ntw3_tow_b04_x8_015,8,coalition,infantry_grenadiers,1,0.9749
+[1798] 8. Mamālīk,ntw3_tow_b04_x8_015,8,coalition,infantry_skirmishers,4,0.8242
+[1798] 8. Mamālīk,ntw3_tow_b04_x8_015,8,coalition,infantry_militia,3,1.0123
+[1798] 8. Mamālīk,ntw3_tow_b04_x8_015,8,coalition,infantry_irregulars,3,0.8406
+[1798] 8. Mamālīk,ntw3_tow_b04_x8_015,8,coalition,cavalry_light,10,0.8630
+[1798] 8. Mamālīk,ntw3_tow_b04_x8_015,8,coalition,cavalry_missile,1,1.0098
+[1798] 8. Mamālīk,ntw3_tow_b04_x8_015,8,coalition,cavalry_standard,1,1.0240
+[1798] 8. Mamālīk,ntw3_tow_b04_x8_015,8,coalition,cavalry_lancers,3,0.9423
+[1798] 8. Mamālīk,ntw3_tow_b04_x8_015,8,coalition,cavalry_heavy,2,1.0759
+[1798] 8. Mamālīk,ntw3_tow_b04_x8_015,8,coalition,artillery_foot,4,0.9725
+"[1800] 8. Osmanlı, UK",ntw3_tow_b04_x8_016,8,coalition,infantry_line,52,0.9653
+"[1800] 8. Osmanlı, UK",ntw3_tow_b04_x8_016,8,coalition,infantry_light,4,1.0115
+"[1800] 8. Osmanlı, UK",ntw3_tow_b04_x8_016,8,coalition,infantry_grenadiers,8,1.0209
+"[1800] 8. Osmanlı, UK",ntw3_tow_b04_x8_016,8,coalition,infantry_skirmishers,5,0.9349
+"[1800] 8. Osmanlı, UK",ntw3_tow_b04_x8_016,8,coalition,infantry_militia,9,0.9842
+"[1800] 8. Osmanlı, UK",ntw3_tow_b04_x8_016,8,coalition,infantry_irregulars,3,1.0537
+"[1800] 8. Osmanlı, UK",ntw3_tow_b04_x8_016,8,coalition,cavalry_light,19,0.9795
+"[1800] 8. Osmanlı, UK",ntw3_tow_b04_x8_016,8,coalition,cavalry_standard,1,1.0025
+"[1800] 8. Osmanlı, UK",ntw3_tow_b04_x8_016,8,coalition,cavalry_lancers,9,0.9591
+"[1800] 8. Osmanlı, UK",ntw3_tow_b04_x8_016,8,coalition,cavalry_heavy,6,1.0796
+"[1800] 8. Osmanlı, UK",ntw3_tow_b04_x8_016,8,coalition,artillery_foot,13,0.8824
+"[1800] 8. Osmanlı, UK",ntw3_tow_b04_x8_016,8,coalition,artillery_horse,2,1.1144
+[1805] 8. Österreich,ntw3_tow_b05_x8_007,8,coalition,infantry_line,57,1.0028
+[1805] 8. Österreich,ntw3_tow_b05_x8_007,8,coalition,infantry_light,12,1.0645
+[1805] 8. Österreich,ntw3_tow_b05_x8_007,8,coalition,infantry_grenadiers,50,1.0358
+[1805] 8. Österreich,ntw3_tow_b05_x8_007,8,coalition,infantry_skirmishers,2,1.0212
+[1805] 8. Österreich,ntw3_tow_b05_x8_007,8,coalition,infantry_militia,1,0.9844
+[1805] 8. Österreich,ntw3_tow_b05_x8_007,8,coalition,cavalry_light,15,0.9532
+[1805] 8. Österreich,ntw3_tow_b05_x8_007,8,coalition,cavalry_standard,5,1.0099
+[1805] 8. Österreich,ntw3_tow_b05_x8_007,8,coalition,cavalry_lancers,3,0.9788
+[1805] 8. Österreich,ntw3_tow_b05_x8_007,8,coalition,cavalry_heavy,7,1.0180
+[1805] 8. Österreich,ntw3_tow_b05_x8_007,8,coalition,artillery_foot,12,0.9994
+[1805] 8. Österreich,ntw3_tow_b05_x8_007,8,coalition,artillery_horse,6,0.9980
+[1809] 8. Österreich (Tyrol),ntw3_tow_b08_x8_046,8,coalition,infantry_line,10,1.0068
+[1809] 8. Österreich (Tyrol),ntw3_tow_b08_x8_046,8,coalition,infantry_light,7,0.9589
+[1809] 8. Österreich (Tyrol),ntw3_tow_b08_x8_046,8,coalition,infantry_grenadiers,4,1.0760
+[1809] 8. Österreich (Tyrol),ntw3_tow_b08_x8_046,8,coalition,infantry_skirmishers,24,1.1714
+[1809] 8. Österreich (Tyrol),ntw3_tow_b08_x8_046,8,coalition,infantry_militia,16,0.7425
+[1809] 8. Österreich (Tyrol),ntw3_tow_b08_x8_046,8,coalition,infantry_irregulars,1,1.0000
+[1809] 8. Österreich (Tyrol),ntw3_tow_b08_x8_046,8,coalition,cavalry_light,5,1.0441
+[1809] 8. Österreich (Tyrol),ntw3_tow_b08_x8_046,8,coalition,cavalry_standard,2,1.0038
+[1809] 8. Österreich (Tyrol),ntw3_tow_b08_x8_046,8,coalition,artillery_foot,5,0.9924
+[1809] 8. Österreich (Tyrol),ntw3_tow_b08_x8_046,8,coalition,artillery_horse,2,1.0323
+[1812] 8. Russkiy narod,ntw3_tow_b11_x8_014,8,coalition,infantry_skirmishers,4,0.9349
+[1812] 8. Russkiy narod,ntw3_tow_b11_x8_014,8,coalition,infantry_irregulars,4,0.7791
+[1812] 8. Russkiy narod,ntw3_tow_b11_x8_014,8,coalition,cavalry_light,1,1.0731
+[1812] 8. Russkiy narod,ntw3_tow_b11_x8_014,8,coalition,cavalry_missile,1,1.0126
+[1812] 8. Russkiy narod,ntw3_tow_b11_x8_014,8,coalition,cavalry_lancers,44,0.7694
+[1812] 8. Russkiy narod,ntw3_tow_b11_x8_014,8,coalition,artillery_foot,1,0.9961
+[1812] 8. Russkiy narod,ntw3_tow_b11_x8_014,8,coalition,artillery_horse,3,0.8985
+[1814] 8. Preußen (Frankreich),ntw3_tow_b17_x8_056,8,coalition,infantry_line,43,0.9499
+[1814] 8. Preußen (Frankreich),ntw3_tow_b17_x8_056,8,coalition,infantry_light,3,0.9780
+[1814] 8. Preußen (Frankreich),ntw3_tow_b17_x8_056,8,coalition,infantry_grenadiers,10,0.9731
+[1814] 8. Preußen (Frankreich),ntw3_tow_b17_x8_056,8,coalition,infantry_skirmishers,13,1.0288
+[1814] 8. Preußen (Frankreich),ntw3_tow_b17_x8_056,8,coalition,infantry_militia,18,1.0088
+[1814] 8. Preußen (Frankreich),ntw3_tow_b17_x8_056,8,coalition,cavalry_light,13,1.0287
+[1814] 8. Preußen (Frankreich),ntw3_tow_b17_x8_056,8,coalition,cavalry_standard,7,1.0057
+[1814] 8. Preußen (Frankreich),ntw3_tow_b17_x8_056,8,coalition,cavalry_lancers,15,0.9973
+[1814] 8. Preußen (Frankreich),ntw3_tow_b17_x8_056,8,coalition,cavalry_heavy,4,0.9053
+[1814] 8. Preußen (Frankreich),ntw3_tow_b17_x8_056,8,coalition,artillery_foot,19,1.0326
+[1814] 8. Preußen (Frankreich),ntw3_tow_b17_x8_056,8,coalition,artillery_horse,9,1.0594
+[1814] 8. Österreich (Frankreich),ntw3_tow_b17_x8_055,8,coalition,infantry_line,53,0.9992
+[1814] 8. Österreich (Frankreich),ntw3_tow_b17_x8_055,8,coalition,infantry_light,22,0.9307
+[1814] 8. Österreich (Frankreich),ntw3_tow_b17_x8_055,8,coalition,infantry_grenadiers,17,1.0399
+[1814] 8. Österreich (Frankreich),ntw3_tow_b17_x8_055,8,coalition,infantry_skirmishers,10,1.0827
+[1814] 8. Österreich (Frankreich),ntw3_tow_b17_x8_055,8,coalition,infantry_militia,3,1.0078
+[1814] 8. Österreich (Frankreich),ntw3_tow_b17_x8_055,8,coalition,infantry_irregulars,1,1.0189
+[1814] 8. Österreich (Frankreich),ntw3_tow_b17_x8_055,8,coalition,cavalry_light,26,0.8324
+[1814] 8. Österreich (Frankreich),ntw3_tow_b17_x8_055,8,coalition,cavalry_standard,4,0.9981
+[1814] 8. Österreich (Frankreich),ntw3_tow_b17_x8_055,8,coalition,cavalry_lancers,1,1.0047
+[1814] 8. Österreich (Frankreich),ntw3_tow_b17_x8_055,8,coalition,cavalry_heavy,8,0.9559
+[1814] 8. Österreich (Frankreich),ntw3_tow_b17_x8_055,8,coalition,artillery_foot,9,0.9851
+[1814] 8. Österreich (Frankreich),ntw3_tow_b17_x8_055,8,coalition,artillery_horse,4,1.0507
+9. Heiliges Römisches Reich,ntw3_hre,9,coalition,infantry_line,41,0.9919
+9. Heiliges Römisches Reich,ntw3_hre,9,coalition,infantry_light,11,0.9569
+9. Heiliges Römisches Reich,ntw3_hre,9,coalition,infantry_grenadiers,11,1.1431
+9. Heiliges Römisches Reich,ntw3_hre,9,coalition,infantry_skirmishers,5,1.1487
+9. Heiliges Römisches Reich,ntw3_hre,9,coalition,infantry_militia,1,1.0079
+9. Heiliges Römisches Reich,ntw3_hre,9,coalition,infantry_irregulars,13,1.1224
+9. Heiliges Römisches Reich,ntw3_hre,9,coalition,cavalry_light,20,1.1604
+9. Heiliges Römisches Reich,ntw3_hre,9,coalition,cavalry_standard,9,0.9950
+9. Heiliges Römisches Reich,ntw3_hre,9,coalition,cavalry_lancers,2,1.0739
+9. Heiliges Römisches Reich,ntw3_hre,9,coalition,cavalry_heavy,9,1.2085
+9. Heiliges Römisches Reich,ntw3_hre,9,coalition,artillery_foot,4,1.1308
+9. Heiliges Römisches Reich,ntw3_hre,9,coalition,artillery_horse,2,1.0901
+[1799] 9. Österreich (Italien),ntw3_tow_b03_x8_039,9,coalition,infantry_line,40,1.0161
+[1799] 9. Österreich (Italien),ntw3_tow_b03_x8_039,9,coalition,infantry_light,14,1.0193
+[1799] 9. Österreich (Italien),ntw3_tow_b03_x8_039,9,coalition,infantry_grenadiers,18,0.9237
+[1799] 9. Österreich (Italien),ntw3_tow_b03_x8_039,9,coalition,infantry_skirmishers,3,0.9519
+[1799] 9. Österreich (Italien),ntw3_tow_b03_x8_039,9,coalition,cavalry_light,13,1.0033
+[1799] 9. Österreich (Italien),ntw3_tow_b03_x8_039,9,coalition,cavalry_lancers,7,0.8824
+[1799] 9. Österreich (Italien),ntw3_tow_b03_x8_039,9,coalition,artillery_foot,11,1.0073
+[1799] 9. Österreich (Italien),ntw3_tow_b03_x8_039,9,coalition,artillery_horse,2,0.9752
+"[1805] 9. Rossiya, Österreich",ntw3_tow_b05_x8_006,9,coalition,infantry_line,34,0.9745
+"[1805] 9. Rossiya, Österreich",ntw3_tow_b05_x8_006,9,coalition,infantry_light,8,0.9685
+"[1805] 9. Rossiya, Österreich",ntw3_tow_b05_x8_006,9,coalition,infantry_grenadiers,4,1.0920
+"[1805] 9. Rossiya, Österreich",ntw3_tow_b05_x8_006,9,coalition,infantry_skirmishers,1,1.0713
+"[1805] 9. Rossiya, Österreich",ntw3_tow_b05_x8_006,9,coalition,infantry_irregulars,1,1.0154
+"[1805] 9. Rossiya, Österreich",ntw3_tow_b05_x8_006,9,coalition,cavalry_light,7,1.0866
+"[1805] 9. Rossiya, Österreich",ntw3_tow_b05_x8_006,9,coalition,cavalry_standard,5,1.0294
+"[1805] 9. Rossiya, Österreich",ntw3_tow_b05_x8_006,9,coalition,cavalry_lancers,11,1.0248
+"[1805] 9. Rossiya, Österreich",ntw3_tow_b05_x8_006,9,coalition,cavalry_heavy,4,0.9084
+"[1805] 9. Rossiya, Österreich",ntw3_tow_b05_x8_006,9,coalition,artillery_foot,5,0.9819
+"[1805] 9. Rossiya, Österreich",ntw3_tow_b05_x8_006,9,coalition,artillery_horse,6,1.0466
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,infantry_line,14,0.9226
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,infantry_light,3,1.0574
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,infantry_grenadiers,3,0.9862
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,infantry_skirmishers,5,1.3388
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,infantry_militia,8,1.0125
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,infantry_irregulars,6,0.7601
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,cavalry_light,7,1.0819
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,cavalry_missile,2,1.0144
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,cavalry_standard,1,1.0013
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,cavalry_lancers,10,0.8048
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,cavalry_heavy,5,0.9730
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,artillery_foot,8,0.9941
+[1806] 9. Osmanlı,ntw3_tow_b15_x8_052,9,coalition,artillery_horse,2,1.0577
+[1807] 9. Rossiya (Polsha),ntw3_tow_b06_x8_008,9,coalition,infantry_line,39,0.9323
+[1807] 9. Rossiya (Polsha),ntw3_tow_b06_x8_008,9,coalition,infantry_light,15,1.0543
+[1807] 9. Rossiya (Polsha),ntw3_tow_b06_x8_008,9,coalition,infantry_grenadiers,8,1.0579
+[1807] 9. Rossiya (Polsha),ntw3_tow_b06_x8_008,9,coalition,infantry_skirmishers,3,0.9359
+[1807] 9. Rossiya (Polsha),ntw3_tow_b06_x8_008,9,coalition,infantry_militia,1,1.0120
+[1807] 9. Rossiya (Polsha),ntw3_tow_b06_x8_008,9,coalition,cavalry_light,8,1.0693
+[1807] 9. Rossiya (Polsha),ntw3_tow_b06_x8_008,9,coalition,cavalry_standard,13,0.9612
+[1807] 9. Rossiya (Polsha),ntw3_tow_b06_x8_008,9,coalition,cavalry_lancers,4,1.0122
+[1807] 9. Rossiya (Polsha),ntw3_tow_b06_x8_008,9,coalition,cavalry_heavy,7,1.0751
+[1807] 9. Rossiya (Polsha),ntw3_tow_b06_x8_008,9,coalition,artillery_foot,11,0.7974
+[1807] 9. Rossiya (Polsha),ntw3_tow_b06_x8_008,9,coalition,artillery_horse,10,1.0886
+[1809] 9. España,ntw3_tow_b09_x8_019,9,coalition,infantry_line,47,1.0038
+[1809] 9. España,ntw3_tow_b09_x8_019,9,coalition,infantry_light,21,1.0676
+[1809] 9. España,ntw3_tow_b09_x8_019,9,coalition,infantry_grenadiers,15,0.9610
+[1809] 9. España,ntw3_tow_b09_x8_019,9,coalition,infantry_skirmishers,6,0.9550
+[1809] 9. España,ntw3_tow_b09_x8_019,9,coalition,infantry_militia,40,0.9682
+[1809] 9. España,ntw3_tow_b09_x8_019,9,coalition,infantry_irregulars,4,0.6284
+[1809] 9. España,ntw3_tow_b09_x8_019,9,coalition,cavalry_light,9,1.0405
+[1809] 9. España,ntw3_tow_b09_x8_019,9,coalition,cavalry_standard,5,1.0293
+[1809] 9. España,ntw3_tow_b09_x8_019,9,coalition,cavalry_heavy,9,1.0836
+[1809] 9. España,ntw3_tow_b09_x8_019,9,coalition,artillery_foot,14,0.9163
+[1809] 9. España,ntw3_tow_b09_x8_019,9,coalition,artillery_horse,3,1.0938
+"[1811] 9. UK, Portugal",ntw3_tow_b13_x8_049,9,coalition,infantry_line,73,0.8356
+"[1811] 9. UK, Portugal",ntw3_tow_b13_x8_049,9,coalition,infantry_light,16,0.8862
+"[1811] 9. UK, Portugal",ntw3_tow_b13_x8_049,9,coalition,infantry_grenadiers,1,1.0314
+"[1811] 9. UK, Portugal",ntw3_tow_b13_x8_049,9,coalition,infantry_skirmishers,13,1.0172
+"[1811] 9. UK, Portugal",ntw3_tow_b13_x8_049,9,coalition,cavalry_light,8,1.0001
+"[1811] 9. UK, Portugal",ntw3_tow_b13_x8_049,9,coalition,cavalry_standard,4,1.0234
+"[1811] 9. UK, Portugal",ntw3_tow_b13_x8_049,9,coalition,cavalry_heavy,3,1.0831
+"[1811] 9. UK, Portugal",ntw3_tow_b13_x8_049,9,coalition,artillery_foot,9,0.9822
+"[1811] 9. UK, Portugal",ntw3_tow_b13_x8_049,9,coalition,artillery_horse,1,1.0226
+[1814] 9. Rossiya (Frantsiya),ntw3_tow_b17_x8_057,9,coalition,infantry_line,74,1.0025
+[1814] 9. Rossiya (Frantsiya),ntw3_tow_b17_x8_057,9,coalition,infantry_light,37,1.0512
+[1814] 9. Rossiya (Frantsiya),ntw3_tow_b17_x8_057,9,coalition,infantry_grenadiers,20,1.0181
+[1814] 9. Rossiya (Frantsiya),ntw3_tow_b17_x8_057,9,coalition,infantry_skirmishers,4,1.0251
+[1814] 9. Rossiya (Frantsiya),ntw3_tow_b17_x8_057,9,coalition,cavalry_light,19,1.0801
+[1814] 9. Rossiya (Frantsiya),ntw3_tow_b17_x8_057,9,coalition,cavalry_missile,1,1.0354
+[1814] 9. Rossiya (Frantsiya),ntw3_tow_b17_x8_057,9,coalition,cavalry_standard,14,0.9763
+[1814] 9. Rossiya (Frantsiya),ntw3_tow_b17_x8_057,9,coalition,cavalry_lancers,43,0.9594
+[1814] 9. Rossiya (Frantsiya),ntw3_tow_b17_x8_057,9,coalition,cavalry_heavy,13,0.9258
+[1814] 9. Rossiya (Frantsiya),ntw3_tow_b17_x8_057,9,coalition,artillery_foot,21,0.9911
+[1814] 9. Rossiya (Frantsiya),ntw3_tow_b17_x8_057,9,coalition,artillery_horse,13,1.1248
+"[1815] 9. UK, Nederlanden",ntw3_tow_b12_x8_012,9,coalition,infantry_line,54,1.0090
+"[1815] 9. UK, Nederlanden",ntw3_tow_b12_x8_012,9,coalition,infantry_light,19,0.9921
+"[1815] 9. UK, Nederlanden",ntw3_tow_b12_x8_012,9,coalition,infantry_grenadiers,2,1.0806
+"[1815] 9. UK, Nederlanden",ntw3_tow_b12_x8_012,9,coalition,infantry_skirmishers,14,1.0749
+"[1815] 9. UK, Nederlanden",ntw3_tow_b12_x8_012,9,coalition,infantry_militia,30,0.9768
+"[1815] 9. UK, Nederlanden",ntw3_tow_b12_x8_012,9,coalition,cavalry_light,22,0.9954
+"[1815] 9. UK, Nederlanden",ntw3_tow_b12_x8_012,9,coalition,cavalry_lancers,2,0.9970
+"[1815] 9. UK, Nederlanden",ntw3_tow_b12_x8_012,9,coalition,cavalry_heavy,9,0.8505
+"[1815] 9. UK, Nederlanden",ntw3_tow_b12_x8_012,9,coalition,artillery_foot,12,1.0029
+"[1815] 9. UK, Nederlanden",ntw3_tow_b12_x8_012,9,coalition,artillery_horse,7,1.1280
+[1806] 10. Preußen,ntw3_tow_b06_x8_009,10,coalition,infantry_line,54,0.9145
+[1806] 10. Preußen,ntw3_tow_b06_x8_009,10,coalition,infantry_light,19,1.0194
+[1806] 10. Preußen,ntw3_tow_b06_x8_009,10,coalition,infantry_grenadiers,33,1.2318
+[1806] 10. Preußen,ntw3_tow_b06_x8_009,10,coalition,infantry_skirmishers,11,1.0491
+[1806] 10. Preußen,ntw3_tow_b06_x8_009,10,coalition,cavalry_light,10,1.0373
+[1806] 10. Preußen,ntw3_tow_b06_x8_009,10,coalition,cavalry_standard,13,0.9333
+[1806] 10. Preußen,ntw3_tow_b06_x8_009,10,coalition,cavalry_heavy,14,0.9752
+[1806] 10. Preußen,ntw3_tow_b06_x8_009,10,coalition,artillery_foot,22,1.0431
+[1806] 10. Preußen,ntw3_tow_b06_x8_009,10,coalition,artillery_horse,11,1.1048
+"[1809] 10. UK, España, Portugal",ntw3_tow_b09_x8_020,10,coalition,infantry_line,56,0.9364
+"[1809] 10. UK, España, Portugal",ntw3_tow_b09_x8_020,10,coalition,infantry_light,20,0.9785
+"[1809] 10. UK, España, Portugal",ntw3_tow_b09_x8_020,10,coalition,infantry_grenadiers,9,0.9426
+"[1809] 10. UK, España, Portugal",ntw3_tow_b09_x8_020,10,coalition,infantry_skirmishers,10,0.9460
+"[1809] 10. UK, España, Portugal",ntw3_tow_b09_x8_020,10,coalition,infantry_militia,24,1.0135
+"[1809] 10. UK, España, Portugal",ntw3_tow_b09_x8_020,10,coalition,cavalry_light,17,1.0427
+"[1809] 10. UK, España, Portugal",ntw3_tow_b09_x8_020,10,coalition,cavalry_standard,7,1.0118
+"[1809] 10. UK, España, Portugal",ntw3_tow_b09_x8_020,10,coalition,cavalry_lancers,1,1.0255
+"[1809] 10. UK, España, Portugal",ntw3_tow_b09_x8_020,10,coalition,cavalry_heavy,9,1.2609
+"[1809] 10. UK, España, Portugal",ntw3_tow_b09_x8_020,10,coalition,artillery_foot,15,1.0563
+"[1809] 10. UK, España, Portugal",ntw3_tow_b09_x8_020,10,coalition,artillery_horse,2,1.0789
+[1809] 10. Österreich,ntw3_tow_b08_x8_044,10,coalition,infantry_line,44,0.9809
+[1809] 10. Österreich,ntw3_tow_b08_x8_044,10,coalition,infantry_light,15,1.0414
+[1809] 10. Österreich,ntw3_tow_b08_x8_044,10,coalition,infantry_grenadiers,23,0.9465
+[1809] 10. Österreich,ntw3_tow_b08_x8_044,10,coalition,infantry_skirmishers,12,1.0122
+[1809] 10. Österreich,ntw3_tow_b08_x8_044,10,coalition,infantry_militia,6,1.0473
+[1809] 10. Österreich,ntw3_tow_b08_x8_044,10,coalition,infantry_irregulars,8,0.9766
+[1809] 10. Österreich,ntw3_tow_b08_x8_044,10,coalition,cavalry_light,10,0.9574
+[1809] 10. Österreich,ntw3_tow_b08_x8_044,10,coalition,cavalry_standard,4,1.0085
+[1809] 10. Österreich,ntw3_tow_b08_x8_044,10,coalition,cavalry_lancers,3,0.9812
+[1809] 10. Österreich,ntw3_tow_b08_x8_044,10,coalition,cavalry_heavy,6,1.0107
+[1809] 10. Österreich,ntw3_tow_b08_x8_044,10,coalition,artillery_foot,25,1.0496
+[1809] 10. Österreich,ntw3_tow_b08_x8_044,10,coalition,artillery_horse,7,1.0801
+[1812] 10. Rossiya,ntw3_tow_b11_x8_013,10,coalition,infantry_line,105,0.9801
+[1812] 10. Rossiya,ntw3_tow_b11_x8_013,10,coalition,infantry_light,45,1.0413
+[1812] 10. Rossiya,ntw3_tow_b11_x8_013,10,coalition,infantry_grenadiers,39,0.9940
+[1812] 10. Rossiya,ntw3_tow_b11_x8_013,10,coalition,infantry_skirmishers,9,0.9406
+[1812] 10. Rossiya,ntw3_tow_b11_x8_013,10,coalition,infantry_militia,5,1.0977
+[1812] 10. Rossiya,ntw3_tow_b11_x8_013,10,coalition,cavalry_light,17,1.1017
+[1812] 10. Rossiya,ntw3_tow_b11_x8_013,10,coalition,cavalry_missile,3,1.0327
+[1812] 10. Rossiya,ntw3_tow_b11_x8_013,10,coalition,cavalry_standard,38,0.9290
+[1812] 10. Rossiya,ntw3_tow_b11_x8_013,10,coalition,cavalry_lancers,40,1.0238
+[1812] 10. Rossiya,ntw3_tow_b11_x8_013,10,coalition,cavalry_heavy,12,1.0235
+[1812] 10. Rossiya,ntw3_tow_b11_x8_013,10,coalition,artillery_foot,32,0.9420
+[1812] 10. Rossiya,ntw3_tow_b11_x8_013,10,coalition,artillery_horse,14,1.1600
+[1798] 5. France (Irlande),ntw3_tow_a03_x8_038,5,imperial,infantry_line,3,0.9794
+[1798] 5. France (Irlande),ntw3_tow_a03_x8_038,5,imperial,infantry_light,2,0.9258
+[1798] 5. France (Irlande),ntw3_tow_a03_x8_038,5,imperial,infantry_grenadiers,2,0.8130
+[1798] 5. France (Irlande),ntw3_tow_a03_x8_038,5,imperial,infantry_skirmishers,2,1.1512
+[1798] 5. France (Irlande),ntw3_tow_a03_x8_038,5,imperial,infantry_militia,4,1.0403
+[1798] 5. France (Irlande),ntw3_tow_a03_x8_038,5,imperial,cavalry_light,3,1.1136
+[1798] 5. France (Irlande),ntw3_tow_a03_x8_038,5,imperial,artillery_foot,1,0.9131
+[1798] 5. France (Irlande),ntw3_tow_a03_x8_038,5,imperial,artillery_horse,1,0.9617
+[1805] 6. France (Tyrol),ntw3_tow_a05_x8_004,6,imperial,infantry_line,46,0.9671
+[1805] 6. France (Tyrol),ntw3_tow_a05_x8_004,6,imperial,infantry_light,16,0.9367
+[1805] 6. France (Tyrol),ntw3_tow_a05_x8_004,6,imperial,infantry_grenadiers,13,0.9487
+[1805] 6. France (Tyrol),ntw3_tow_a05_x8_004,6,imperial,infantry_skirmishers,5,1.1293
+[1805] 6. France (Tyrol),ntw3_tow_a05_x8_004,6,imperial,cavalry_light,20,1.0629
+[1805] 6. France (Tyrol),ntw3_tow_a05_x8_004,6,imperial,cavalry_standard,12,0.8461
+[1805] 6. France (Tyrol),ntw3_tow_a05_x8_004,6,imperial,cavalry_heavy,3,1.0613
+[1805] 6. France (Tyrol),ntw3_tow_a05_x8_004,6,imperial,artillery_foot,12,0.9599
+[1805] 6. France (Tyrol),ntw3_tow_a05_x8_004,6,imperial,artillery_horse,4,0.9856
+[1812] 6. France (Russie-Nord),ntw3_tow_a11_x8_027,6,imperial,infantry_line,70,0.9826
+[1812] 6. France (Russie-Nord),ntw3_tow_a11_x8_027,6,imperial,infantry_light,24,0.9808
+[1812] 6. France (Russie-Nord),ntw3_tow_a11_x8_027,6,imperial,infantry_grenadiers,6,1.0090
+[1812] 6. France (Russie-Nord),ntw3_tow_a11_x8_027,6,imperial,infantry_skirmishers,7,0.9715
+[1812] 6. France (Russie-Nord),ntw3_tow_a11_x8_027,6,imperial,cavalry_light,11,0.8953
+[1812] 6. France (Russie-Nord),ntw3_tow_a11_x8_027,6,imperial,cavalry_standard,4,1.0306
+[1812] 6. France (Russie-Nord),ntw3_tow_a11_x8_027,6,imperial,cavalry_lancers,3,1.0229
+[1812] 6. France (Russie-Nord),ntw3_tow_a11_x8_027,6,imperial,cavalry_heavy,3,1.0560
+[1812] 6. France (Russie-Nord),ntw3_tow_a11_x8_027,6,imperial,artillery_foot,17,0.9525
+[1812] 6. France (Russie-Nord),ntw3_tow_a11_x8_027,6,imperial,artillery_horse,8,0.9555
+[1815] 6. Napoli,ntw3_tow_c14_x8_030,6,imperial,infantry_line,13,0.9792
+[1815] 6. Napoli,ntw3_tow_c14_x8_030,6,imperial,infantry_light,5,1.0717
+[1815] 6. Napoli,ntw3_tow_c14_x8_030,6,imperial,infantry_grenadiers,7,0.9944
+[1815] 6. Napoli,ntw3_tow_c14_x8_030,6,imperial,infantry_skirmishers,1,1.0783
+[1815] 6. Napoli,ntw3_tow_c14_x8_030,6,imperial,cavalry_light,7,1.0371
+[1815] 6. Napoli,ntw3_tow_c14_x8_030,6,imperial,cavalry_lancers,1,0.9627
+[1815] 6. Napoli,ntw3_tow_c14_x8_030,6,imperial,cavalry_heavy,1,1.0062
+[1815] 6. Napoli,ntw3_tow_c14_x8_030,6,imperial,artillery_foot,5,0.9232
+[1815] 6. Napoli,ntw3_tow_c14_x8_030,6,imperial,artillery_horse,2,1.0068
+7. Danmark,denmark,7,imperial,infantry_line,18,0.9179
+7. Danmark,denmark,7,imperial,infantry_light,5,0.8104
+7. Danmark,denmark,7,imperial,infantry_grenadiers,9,0.9370
+7. Danmark,denmark,7,imperial,infantry_skirmishers,4,1.0744
+7. Danmark,denmark,7,imperial,infantry_militia,6,1.0329
+7. Danmark,denmark,7,imperial,cavalry_light,6,0.8473
+7. Danmark,denmark,7,imperial,cavalry_standard,1,1.0032
+7. Danmark,denmark,7,imperial,cavalry_lancers,1,0.9970
+7. Danmark,denmark,7,imperial,cavalry_heavy,5,0.9128
+7. Danmark,denmark,7,imperial,artillery_foot,3,0.8331
+7. Danmark,denmark,7,imperial,artillery_horse,2,0.6351
+[1799] 7. France (Hollande),ntw3_tow_a03_x8_040,7,imperial,infantry_line,20,0.9436
+[1799] 7. France (Hollande),ntw3_tow_a03_x8_040,7,imperial,infantry_light,4,0.9845
+[1799] 7. France (Hollande),ntw3_tow_a03_x8_040,7,imperial,infantry_grenadiers,4,1.0252
+[1799] 7. France (Hollande),ntw3_tow_a03_x8_040,7,imperial,infantry_skirmishers,1,1.1991
+[1799] 7. France (Hollande),ntw3_tow_a03_x8_040,7,imperial,cavalry_light,4,0.8705
+[1799] 7. France (Hollande),ntw3_tow_a03_x8_040,7,imperial,cavalry_standard,2,0.9524
+[1799] 7. France (Hollande),ntw3_tow_a03_x8_040,7,imperial,cavalry_heavy,2,1.0730
+[1799] 7. France (Hollande),ntw3_tow_a03_x8_040,7,imperial,artillery_foot,3,0.9213
+[1799] 7. France (Hollande),ntw3_tow_a03_x8_040,7,imperial,artillery_horse,2,0.9787
+[1808] 7. Rossiya (Finlyandiya),ntw3_tow_c07_x8_017,7,imperial,infantry_line,18,1.0431
+[1808] 7. Rossiya (Finlyandiya),ntw3_tow_c07_x8_017,7,imperial,infantry_light,7,0.9409
+[1808] 7. Rossiya (Finlyandiya),ntw3_tow_c07_x8_017,7,imperial,infantry_grenadiers,2,1.0161
+[1808] 7. Rossiya (Finlyandiya),ntw3_tow_c07_x8_017,7,imperial,infantry_skirmishers,3,1.1878
+[1808] 7. Rossiya (Finlyandiya),ntw3_tow_c07_x8_017,7,imperial,cavalry_light,4,1.0602
+[1808] 7. Rossiya (Finlyandiya),ntw3_tow_c07_x8_017,7,imperial,cavalry_standard,3,1.0118
+[1808] 7. Rossiya (Finlyandiya),ntw3_tow_c07_x8_017,7,imperial,cavalry_lancers,7,0.8269
+[1808] 7. Rossiya (Finlyandiya),ntw3_tow_c07_x8_017,7,imperial,cavalry_heavy,2,0.9251
+[1808] 7. Rossiya (Finlyandiya),ntw3_tow_c07_x8_017,7,imperial,artillery_foot,6,0.9102
+[1808] 7. Rossiya (Finlyandiya),ntw3_tow_c07_x8_017,7,imperial,artillery_horse,2,0.9337
+"[1809] 7. Polska, sojusznicy",ntw3_tow_c08_x8_048,7,imperial,infantry_line,34,0.9578
+"[1809] 7. Polska, sojusznicy",ntw3_tow_c08_x8_048,7,imperial,infantry_light,7,0.8798
+"[1809] 7. Polska, sojusznicy",ntw3_tow_c08_x8_048,7,imperial,infantry_grenadiers,5,1.0987
+"[1809] 7. Polska, sojusznicy",ntw3_tow_c08_x8_048,7,imperial,infantry_skirmishers,2,1.0421
+"[1809] 7. Polska, sojusznicy",ntw3_tow_c08_x8_048,7,imperial,cavalry_light,9,1.0462
+"[1809] 7. Polska, sojusznicy",ntw3_tow_c08_x8_048,7,imperial,cavalry_standard,8,1.0298
+"[1809] 7. Polska, sojusznicy",ntw3_tow_c08_x8_048,7,imperial,cavalry_lancers,11,0.5698
+"[1809] 7. Polska, sojusznicy",ntw3_tow_c08_x8_048,7,imperial,cavalry_heavy,8,1.0402
+"[1809] 7. Polska, sojusznicy",ntw3_tow_c08_x8_048,7,imperial,artillery_foot,10,0.9826
+"[1809] 7. Polska, sojusznicy",ntw3_tow_c08_x8_048,7,imperial,artillery_horse,5,1.0638
+[1812] 7. France (Russie-Sud),ntw3_tow_a11_x8_029,7,imperial,infantry_line,54,0.9767
+[1812] 7. France (Russie-Sud),ntw3_tow_a11_x8_029,7,imperial,infantry_light,14,0.9917
+[1812] 7. France (Russie-Sud),ntw3_tow_a11_x8_029,7,imperial,infantry_grenadiers,8,1.0989
+[1812] 7. France (Russie-Sud),ntw3_tow_a11_x8_029,7,imperial,infantry_skirmishers,9,1.0623
+[1812] 7. France (Russie-Sud),ntw3_tow_a11_x8_029,7,imperial,cavalry_light,13,0.9613
+[1812] 7. France (Russie-Sud),ntw3_tow_a11_x8_029,7,imperial,cavalry_standard,3,0.9668
+[1812] 7. France (Russie-Sud),ntw3_tow_a11_x8_029,7,imperial,cavalry_lancers,1,0.9541
+[1812] 7. France (Russie-Sud),ntw3_tow_a11_x8_029,7,imperial,cavalry_heavy,2,1.0595
+[1812] 7. France (Russie-Sud),ntw3_tow_a11_x8_029,7,imperial,artillery_foot,11,0.9966
+[1812] 7. France (Russie-Sud),ntw3_tow_a11_x8_029,7,imperial,artillery_horse,4,0.9904
+[1812] 7. United States,ntw3_tow_c10_x8_025,7,imperial,infantry_line,24,0.9045
+[1812] 7. United States,ntw3_tow_c10_x8_025,7,imperial,infantry_light,6,1.0059
+[1812] 7. United States,ntw3_tow_c10_x8_025,7,imperial,infantry_grenadiers,9,1.1884
+[1812] 7. United States,ntw3_tow_c10_x8_025,7,imperial,infantry_skirmishers,8,0.9298
+[1812] 7. United States,ntw3_tow_c10_x8_025,7,imperial,infantry_militia,24,0.8007
+[1812] 7. United States,ntw3_tow_c10_x8_025,7,imperial,cavalry_light,12,1.0418
+[1812] 7. United States,ntw3_tow_c10_x8_025,7,imperial,cavalry_standard,6,1.0779
+[1812] 7. United States,ntw3_tow_c10_x8_025,7,imperial,artillery_foot,8,0.9506
+[1812] 7. United States,ntw3_tow_c10_x8_025,7,imperial,artillery_horse,1,0.8286
+[1798] 8. France (Égypte),ntw3_tow_a04_x8_005,8,imperial,infantry_line,16,0.8978
+[1798] 8. France (Égypte),ntw3_tow_a04_x8_005,8,imperial,infantry_light,6,0.9219
+[1798] 8. France (Égypte),ntw3_tow_a04_x8_005,8,imperial,infantry_grenadiers,9,0.9778
+[1798] 8. France (Égypte),ntw3_tow_a04_x8_005,8,imperial,infantry_skirmishers,5,0.9784
+[1798] 8. France (Égypte),ntw3_tow_a04_x8_005,8,imperial,infantry_militia,2,1.0564
+[1798] 8. France (Égypte),ntw3_tow_a04_x8_005,8,imperial,infantry_irregulars,2,1.0450
+[1798] 8. France (Égypte),ntw3_tow_a04_x8_005,8,imperial,cavalry_light,6,1.0145
+[1798] 8. France (Égypte),ntw3_tow_a04_x8_005,8,imperial,cavalry_standard,6,0.9029
+[1798] 8. France (Égypte),ntw3_tow_a04_x8_005,8,imperial,artillery_foot,7,0.9463
+[1798] 8. France (Égypte),ntw3_tow_a04_x8_005,8,imperial,artillery_horse,1,0.9372
+"[1804] 8. Rossiya (Kavkaz, Dunau)",ntw3_tow_c15_x8_051,8,imperial,infantry_line,44,0.9415
+"[1804] 8. Rossiya (Kavkaz, Dunau)",ntw3_tow_c15_x8_051,8,imperial,infantry_light,11,0.8091
+"[1804] 8. Rossiya (Kavkaz, Dunau)",ntw3_tow_c15_x8_051,8,imperial,infantry_grenadiers,8,0.9758
+"[1804] 8. Rossiya (Kavkaz, Dunau)",ntw3_tow_c15_x8_051,8,imperial,infantry_skirmishers,3,1.2503
+"[1804] 8. Rossiya (Kavkaz, Dunau)",ntw3_tow_c15_x8_051,8,imperial,infantry_irregulars,1,0.9507
+"[1804] 8. Rossiya (Kavkaz, Dunau)",ntw3_tow_c15_x8_051,8,imperial,cavalry_light,5,1.0030
+"[1804] 8. Rossiya (Kavkaz, Dunau)",ntw3_tow_c15_x8_051,8,imperial,cavalry_standard,12,0.9105
+"[1804] 8. Rossiya (Kavkaz, Dunau)",ntw3_tow_c15_x8_051,8,imperial,cavalry_lancers,14,0.9920
+"[1804] 8. Rossiya (Kavkaz, Dunau)",ntw3_tow_c15_x8_051,8,imperial,cavalry_heavy,1,1.0619
+"[1804] 8. Rossiya (Kavkaz, Dunau)",ntw3_tow_c15_x8_051,8,imperial,artillery_foot,7,0.9109
+"[1804] 8. Rossiya (Kavkaz, Dunau)",ntw3_tow_c15_x8_051,8,imperial,artillery_horse,5,1.0240
+[1811] 8. France (Espagne),ntw3_tow_a13_x8_022,8,imperial,infantry_line,128,0.9717
+[1811] 8. France (Espagne),ntw3_tow_a13_x8_022,8,imperial,infantry_light,44,1.0536
+[1811] 8. France (Espagne),ntw3_tow_a13_x8_022,8,imperial,infantry_grenadiers,21,0.9615
+[1811] 8. France (Espagne),ntw3_tow_a13_x8_022,8,imperial,infantry_skirmishers,20,0.9305
+[1811] 8. France (Espagne),ntw3_tow_a13_x8_022,8,imperial,infantry_irregulars,3,1.0442
+[1811] 8. France (Espagne),ntw3_tow_a13_x8_022,8,imperial,cavalry_light,33,0.9652
+[1811] 8. France (Espagne),ntw3_tow_a13_x8_022,8,imperial,cavalry_standard,31,0.9209
+[1811] 8. France (Espagne),ntw3_tow_a13_x8_022,8,imperial,cavalry_lancers,6,0.9884
+[1811] 8. France (Espagne),ntw3_tow_a13_x8_022,8,imperial,cavalry_heavy,2,1.0752
+[1811] 8. France (Espagne),ntw3_tow_a13_x8_022,8,imperial,artillery_foot,26,0.9520
+[1811] 8. France (Espagne),ntw3_tow_a13_x8_022,8,imperial,artillery_horse,9,1.0243
+[1814] 8. France,ntw3_tow_a17_x8_054,8,imperial,infantry_line,76,0.8622
+[1814] 8. France,ntw3_tow_a17_x8_054,8,imperial,infantry_light,38,0.8471
+[1814] 8. France,ntw3_tow_a17_x8_054,8,imperial,infantry_grenadiers,8,0.9154
+[1814] 8. France,ntw3_tow_a17_x8_054,8,imperial,infantry_skirmishers,8,1.1078
+[1814] 8. France,ntw3_tow_a17_x8_054,8,imperial,infantry_militia,11,1.0060
+[1814] 8. France,ntw3_tow_a17_x8_054,8,imperial,cavalry_light,21,1.0607
+[1814] 8. France,ntw3_tow_a17_x8_054,8,imperial,cavalry_standard,24,0.9549
+[1814] 8. France,ntw3_tow_a17_x8_054,8,imperial,cavalry_lancers,6,0.9788
+[1814] 8. France,ntw3_tow_a17_x8_054,8,imperial,cavalry_heavy,6,0.8861
+[1814] 8. France,ntw3_tow_a17_x8_054,8,imperial,artillery_foot,14,0.8057
+[1814] 8. France,ntw3_tow_a17_x8_054,8,imperial,artillery_horse,6,1.0756
+9. France (1796),france,9,imperial,infantry_line,37,1.0011
+9. France (1796),france,9,imperial,infantry_light,7,1.0628
+9. France (1796),france,9,imperial,infantry_grenadiers,6,1.0192
+9. France (1796),france,9,imperial,infantry_skirmishers,2,0.7589
+9. France (1796),france,9,imperial,cavalry_light,19,1.0481
+9. France (1796),france,9,imperial,cavalry_standard,8,1.0229
+9. France (1796),france,9,imperial,cavalry_lancers,1,1.0364
+9. France (1796),france,9,imperial,cavalry_heavy,13,1.0159
+9. France (1796),france,9,imperial,artillery_foot,3,1.0144
+9. France (1796),france,9,imperial,artillery_horse,2,1.0809
+[1799] 9. France (Italie),ntw3_tow_a03_x8_032,9,imperial,infantry_line,47,0.9188
+[1799] 9. France (Italie),ntw3_tow_a03_x8_032,9,imperial,infantry_light,13,1.0306
+[1799] 9. France (Italie),ntw3_tow_a03_x8_032,9,imperial,infantry_grenadiers,6,0.9412
+[1799] 9. France (Italie),ntw3_tow_a03_x8_032,9,imperial,infantry_skirmishers,2,0.9647
+[1799] 9. France (Italie),ntw3_tow_a03_x8_032,9,imperial,cavalry_light,12,0.9958
+[1799] 9. France (Italie),ntw3_tow_a03_x8_032,9,imperial,cavalry_standard,3,0.9832
+[1799] 9. France (Italie),ntw3_tow_a03_x8_032,9,imperial,cavalry_heavy,6,1.0496
+[1799] 9. France (Italie),ntw3_tow_a03_x8_032,9,imperial,artillery_foot,8,0.8655
+[1799] 9. France (Italie),ntw3_tow_a03_x8_032,9,imperial,artillery_horse,2,0.9968
+[1799] 9. France (Rhin),ntw3_tow_a03_x8_033,9,imperial,infantry_line,42,1.0622
+[1799] 9. France (Rhin),ntw3_tow_a03_x8_033,9,imperial,infantry_light,5,1.0403
+[1799] 9. France (Rhin),ntw3_tow_a03_x8_033,9,imperial,infantry_grenadiers,4,0.8769
+[1799] 9. France (Rhin),ntw3_tow_a03_x8_033,9,imperial,infantry_skirmishers,4,1.0270
+[1799] 9. France (Rhin),ntw3_tow_a03_x8_033,9,imperial,cavalry_light,16,0.9187
+[1799] 9. France (Rhin),ntw3_tow_a03_x8_033,9,imperial,cavalry_standard,6,0.9264
+[1799] 9. France (Rhin),ntw3_tow_a03_x8_033,9,imperial,cavalry_lancers,1,1.0093
+[1799] 9. France (Rhin),ntw3_tow_a03_x8_033,9,imperial,cavalry_heavy,14,1.0878
+[1799] 9. France (Rhin),ntw3_tow_a03_x8_033,9,imperial,artillery_foot,9,1.0165
+[1799] 9. France (Rhin),ntw3_tow_a03_x8_033,9,imperial,artillery_horse,2,1.1038
+[1815] 9. France (Flandres),ntw3_tow_a12_x8_003,9,imperial,infantry_line,58,0.8782
+[1815] 9. France (Flandres),ntw3_tow_a12_x8_003,9,imperial,infantry_light,17,1.0274
+[1815] 9. France (Flandres),ntw3_tow_a12_x8_003,9,imperial,infantry_grenadiers,9,1.0833
+[1815] 9. France (Flandres),ntw3_tow_a12_x8_003,9,imperial,infantry_skirmishers,5,1.0826
+[1815] 9. France (Flandres),ntw3_tow_a12_x8_003,9,imperial,cavalry_light,15,0.9955
+[1815] 9. France (Flandres),ntw3_tow_a12_x8_003,9,imperial,cavalry_standard,14,1.0041
+[1815] 9. France (Flandres),ntw3_tow_a12_x8_003,9,imperial,cavalry_lancers,8,0.9913
+[1815] 9. France (Flandres),ntw3_tow_a12_x8_003,9,imperial,cavalry_heavy,16,0.8312
+[1815] 9. France (Flandres),ntw3_tow_a12_x8_003,9,imperial,artillery_foot,21,0.9790
+[1815] 9. France (Flandres),ntw3_tow_a12_x8_003,9,imperial,artillery_horse,11,1.0478
+[1809] 10. France (Autriche),ntw3_tow_a08_x8_047,10,imperial,infantry_line,69,0.9409
+[1809] 10. France (Autriche),ntw3_tow_a08_x8_047,10,imperial,infantry_light,29,1.0373
+[1809] 10. France (Autriche),ntw3_tow_a08_x8_047,10,imperial,infantry_grenadiers,24,0.9781
+[1809] 10. France (Autriche),ntw3_tow_a08_x8_047,10,imperial,infantry_skirmishers,11,1.1174
+[1809] 10. France (Autriche),ntw3_tow_a08_x8_047,10,imperial,cavalry_light,24,1.0165
+[1809] 10. France (Autriche),ntw3_tow_a08_x8_047,10,imperial,cavalry_standard,7,1.0378
+[1809] 10. France (Autriche),ntw3_tow_a08_x8_047,10,imperial,cavalry_lancers,1,0.9701
+[1809] 10. France (Autriche),ntw3_tow_a08_x8_047,10,imperial,cavalry_heavy,15,0.9497
+[1809] 10. France (Autriche),ntw3_tow_a08_x8_047,10,imperial,artillery_foot,21,1.0469
+[1809] 10. France (Autriche),ntw3_tow_a08_x8_047,10,imperial,artillery_horse,11,1.0932
+[1809] 10. France (Espagne),ntw3_tow_a09_x8_021,10,imperial,infantry_line,94,0.9492
+[1809] 10. France (Espagne),ntw3_tow_a09_x8_021,10,imperial,infantry_light,27,0.9268
+[1809] 10. France (Espagne),ntw3_tow_a09_x8_021,10,imperial,infantry_grenadiers,20,1.0303
+[1809] 10. France (Espagne),ntw3_tow_a09_x8_021,10,imperial,infantry_skirmishers,16,1.0844
+[1809] 10. France (Espagne),ntw3_tow_a09_x8_021,10,imperial,infantry_militia,3,0.9823
+[1809] 10. France (Espagne),ntw3_tow_a09_x8_021,10,imperial,cavalry_light,21,1.0403
+[1809] 10. France (Espagne),ntw3_tow_a09_x8_021,10,imperial,cavalry_standard,27,0.8503
+[1809] 10. France (Espagne),ntw3_tow_a09_x8_021,10,imperial,cavalry_lancers,3,1.0294
+[1809] 10. France (Espagne),ntw3_tow_a09_x8_021,10,imperial,cavalry_heavy,1,1.0296
+[1809] 10. France (Espagne),ntw3_tow_a09_x8_021,10,imperial,artillery_foot,30,0.9815
+[1809] 10. France (Espagne),ntw3_tow_a09_x8_021,10,imperial,artillery_horse,10,1.1089
+[1805] 11. France (Allemagne),ntw3_tow_a05_x8_001,11,imperial,infantry_line,23,0.9139
+[1805] 11. France (Allemagne),ntw3_tow_a05_x8_001,11,imperial,infantry_light,9,0.9927
+[1805] 11. France (Allemagne),ntw3_tow_a05_x8_001,11,imperial,infantry_grenadiers,12,1.0120
+[1805] 11. France (Allemagne),ntw3_tow_a05_x8_001,11,imperial,infantry_skirmishers,3,1.0771
+[1805] 11. France (Allemagne),ntw3_tow_a05_x8_001,11,imperial,cavalry_light,11,1.0497
+[1805] 11. France (Allemagne),ntw3_tow_a05_x8_001,11,imperial,cavalry_standard,15,0.9672
+[1805] 11. France (Allemagne),ntw3_tow_a05_x8_001,11,imperial,cavalry_heavy,12,1.0456
+[1805] 11. France (Allemagne),ntw3_tow_a05_x8_001,11,imperial,artillery_foot,9,1.0073
+[1805] 11. France (Allemagne),ntw3_tow_a05_x8_001,11,imperial,artillery_horse,5,1.0995
+[1812] 11. France (Russie-Centre),ntw3_tow_a11_x8_028,11,imperial,infantry_line,68,0.9991
+[1812] 11. France (Russie-Centre),ntw3_tow_a11_x8_028,11,imperial,infantry_light,29,1.0979
+[1812] 11. France (Russie-Centre),ntw3_tow_a11_x8_028,11,imperial,infantry_grenadiers,25,0.9904
+[1812] 11. France (Russie-Centre),ntw3_tow_a11_x8_028,11,imperial,infantry_skirmishers,10,0.9957
+[1812] 11. France (Russie-Centre),ntw3_tow_a11_x8_028,11,imperial,cavalry_light,44,0.9952
+[1812] 11. France (Russie-Centre),ntw3_tow_a11_x8_028,11,imperial,cavalry_standard,7,1.0011
+[1812] 11. France (Russie-Centre),ntw3_tow_a11_x8_028,11,imperial,cavalry_lancers,22,0.9899
+[1812] 11. France (Russie-Centre),ntw3_tow_a11_x8_028,11,imperial,cavalry_heavy,21,0.9592
+[1812] 11. France (Russie-Centre),ntw3_tow_a11_x8_028,11,imperial,artillery_foot,28,0.8673
+[1812] 11. France (Russie-Centre),ntw3_tow_a11_x8_028,11,imperial,artillery_horse,21,1.1401
+[1806] 12. France (Prusse),ntw3_tow_a06_x8_002,12,imperial,infantry_line,57,0.9327
+[1806] 12. France (Prusse),ntw3_tow_a06_x8_002,12,imperial,infantry_light,22,1.0097
+[1806] 12. France (Prusse),ntw3_tow_a06_x8_002,12,imperial,infantry_grenadiers,21,0.9884
+[1806] 12. France (Prusse),ntw3_tow_a06_x8_002,12,imperial,infantry_skirmishers,6,0.8750
+[1806] 12. France (Prusse),ntw3_tow_a06_x8_002,12,imperial,cavalry_light,24,1.0041
+[1806] 12. France (Prusse),ntw3_tow_a06_x8_002,12,imperial,cavalry_standard,26,0.9472
+[1806] 12. France (Prusse),ntw3_tow_a06_x8_002,12,imperial,cavalry_heavy,11,0.8890
+[1806] 12. France (Prusse),ntw3_tow_a06_x8_002,12,imperial,artillery_foot,22,1.0164
+[1806] 12. France (Prusse),ntw3_tow_a06_x8_002,12,imperial,artillery_horse,12,1.0819
