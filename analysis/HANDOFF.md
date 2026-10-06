@@ -242,8 +242,20 @@ to `analysis/output/`, and never changes committed outputs):
    blind study found no overall cap effect.
 3. **Re-tune the stat powers jointly with the adopted army × class form.** They
    were tuned before it.
-4. **Commander variants: done** (`commander_stage.py`, report §7). Notes for
-   extending it:
+4. **Commander variants: superseded by the commander blind study (October 2026).**
+   `analysis/commander_blind/` (pairs from `build_commander_pairs.py`; brief `TASK.md`;
+   result `REPORT.md`) was run by a fresh-context agent on unit ↔ commander pairs only.
+   - Its best model prices commanders from the regular price **plus the general's
+     actual stat changes** (morale, melee defence, charge, accuracy, reload).
+   - It gets CV MAE 8.6 (fallback 10.4, minimal 11.9), against 31.2 for the
+     stars-only form in `commander_stage.py`. Verified by re-running it and by
+     stricter grouping.
+   - Corps number matters only as a scale on the premium, not as a level.
+   - **Pending:** replace the form in `commander_stage.py` with the blind model
+     (the user to choose best or fallback), re-run it, and update
+     `PRICING_MODEL_REPORT.md` §7 and the README.
+
+   Earlier notes on `commander_stage.py`:
    - Its parameters are learned from *true* regular prices (the user's choice), so
      it is a standalone model; keep it that way.
    - The remaining chain error (40–46 vs 31 given the true price) is the

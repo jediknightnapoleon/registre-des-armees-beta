@@ -1,0 +1,43 @@
+|--- reg_morale <= 4.5
+|   |--- stars <= 1.5
+|   |   |--- P <= 298.5
+|   |   |   |--- class=infantry_militia <= 0.5
+|   |   |   |   |--- value: [-3.2]
+|   |   |   |--- class=infantry_militia >  0.5
+|   |   |   |   |--- value: [3.4]
+|   |   |--- P >  298.5
+|   |   |   |--- reg_ammo <= 36.0
+|   |   |   |   |--- value: [-17.8]
+|   |   |   |--- reg_ammo >  36.0
+|   |   |   |   |--- value: [-8.5]
+|   |--- stars >  1.5
+|   |   |--- imperial <= 0.5
+|   |   |   |--- reg_melee_defense <= 3.5
+|   |   |   |   |--- value: [-1.7]
+|   |   |   |--- reg_melee_defense >  3.5
+|   |   |   |   |--- value: [-14.0]
+|   |   |--- imperial >  0.5
+|   |   |   |--- value: [-24.7]
+|--- reg_morale >  4.5
+|   |--- reg_melee_attack <= 18.5
+|   |   |--- d_morale <= 2.5
+|   |   |   |--- men <= 107.0
+|   |   |   |   |--- value: [-4.6]
+|   |   |   |--- men >  107.0
+|   |   |   |   |--- value: [1.0]
+|   |   |--- d_morale >  2.5
+|   |   |   |--- men <= 248.5
+|   |   |   |   |--- value: [10.5]
+|   |   |   |--- men >  248.5
+|   |   |   |   |--- value: [32.5]
+|   |--- reg_melee_attack >  18.5
+|   |   |--- d_charge_bonus <= 0.5
+|   |   |   |--- corps <= 9.5
+|   |   |   |   |--- value: [0.9]
+|   |   |   |--- corps >  9.5
+|   |   |   |   |--- value: [-5.2]
+|   |   |--- d_charge_bonus >  0.5
+|   |   |   |--- P <= 1277.0
+|   |   |   |   |--- value: [-9.9]
+|   |   |   |--- P >  1277.0
+|   |   |   |   |--- value: [-17.0]

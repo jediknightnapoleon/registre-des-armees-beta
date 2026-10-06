@@ -1,0 +1,11 @@
+start J8: CV MAE 10.382 (k=16)
+step 1: + P*d(charge_bonus^2)          CV MAE 10.065  gain 0.317  paired SE 0.047  k=17
+step 2: + men*d(morale^2)              CV MAE 9.813  gain 0.252  paired SE 0.021  k=18
+step 3: + corps*P*dmo                  CV MAE 9.464  gain 0.349  paired SE 0.031  k=19
+step 4: + per-arm s,corps*s            CV MAE 9.212  gain 0.253  paired SE 0.041  k=23
+step 5: + P*d(reload_skill^2)          CV MAE 9.006  gain 0.206  paired SE 0.027  k=24
+step 6: + men*drl                      CV MAE 8.798  gain 0.208  paired SE 0.025  k=25
+step 7: + imperial                     CV MAE 8.580  gain 0.218  paired SE 0.015  k=26
+step 8: + class=infantry_militia       CV MAE 8.501  gain 0.079  paired SE 0.016  k=27
+step 9: + s^2                          CV MAE 8.436  gain 0.065  paired SE 0.027  k=28
+step 10: + P*d(morale^2)                CV MAE 8.355  gain 0.081  paired SE 0.027  k=29

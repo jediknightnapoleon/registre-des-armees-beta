@@ -1,0 +1,102 @@
+size changes 70 gun changes 20 both 20
+pid arm stars P C men_r men_c guns_r guns_c C/P menratio name
+25 inf 3 612 925 312 404 nan nan 1.511 1.295 ¤ Paul Grenier (23e de ligne 'le Bouillon') [L5] france
+43 art 1 412 707 40 60 2.0 3.0 1.716 1.5 Armand-Samuel de Marescot (6e d'artillerie à pied  x8_032
+356 cav 3 542 958 104 368 nan nan 1.768 3.538 Frédéric Walther (3e dragons 'le Bourbon-Dragons') x8_001
+506 art 0 283 400 40 60 2.0 3.0 1.413 1.5 Olivier Macoux Rivaud de la Raffinière (8e d'artil x8_002
+510 art 6 383 1649 40 80 2.0 4.0 4.305 2.0 Alexandre-Antoine Hureau de Sénarmont (5e d'artill x8_002
+533 cav 7 866 1406 124 230 nan nan 1.624 1.855 Antoine de Lasalle 'le Général hussard' (5e hussar x8_002
+683 art 1 303 393 60 80 3.0 4.0 1.297 1.333 Johann von Hoyer (8-Pfünder Fuß-Artillerie 'Hoyer' x8_047
+685 art 1 333 433 60 80 3.0 4.0 1.3 1.333 Carl von Birnbaum (Haubitzen 'Coudray') [F2] x8_047
+1079 art 2 898 1407 60 80 3.0 4.0 1.567 1.333 François-Alexandre Espiard de Colonge (4./6. Linie x8_027
+1101 inf 0 507 792 152 211 nan nan 1.562 1.388 ¤ Michel-Menou Dujon (Sapeurs) [G4] x8_027
+1184 art 2 303 486 60 80 3.0 4.0 1.604 1.333 Wincenty Aksamitowski (10./11. artyleria piesza, 6 x8_028
+1187 art 3 743 2221 60 120 3.0 6.0 2.989 2.0 Jean Barthélemot de Sorbier (1ère d'artillerie à p x8_028
+1192 art 1 1126 2106 36 60 3.0 5.0 1.87 1.667 Jean-Jacques Desvaux de Saint-Maurice (4e d'artill x8_028
+1289 inf 3 263 433 146 196 nan nan 1.646 1.342 ¤ François Haxo (Sapeurs) [G4] x8_028
+1368 inf 1 186 185 247 408 nan nan 0.995 1.652 ¤ Chrétien Schaeffer (127e de ligne 'l'Invisible') x8_028
+1434 art 0 413 648 40 60 2.0 3.0 1.569 1.5 Joseph Wachter von Wachterberg (10-Pfünder Fuß-Art x8_029
+1436 art 0 513 653 36 48 3.0 4.0 1.273 1.333 Vilhelm Christopher Gønner (Artillerie à cheval da x8_029
+1837 inf 0 253 152 312 450 nan nan 0.601 1.442 Jean-François Ménard (Corps provisionnel d'infante x8_022
+1838 inf 2 255 228 330 452 nan nan 0.894 1.37 Bertrand Clauzel (Corps provisionnel d'infanterie) x8_022
+2435 inf 0 192 254 468 1022 nan nan 1.323 2.184 Taqi (Martazaka Mina al Maghreb) [L1] x8_015
+2444 inf 0 238 526 104 210 nan nan 2.21 2.019 Badawiin (Al Qanāsūn Al Badw 'Munāwishū Al Saḥra’' x8_015
+2576 art 1 325 549 40 60 2.0 3.0 1.689 1.5 Anton von Reisner (5-Pfünder Fuß-Artillerie) [F4] x8_007
+2651 inf 0 241 184 252 412 nan nan 0.763 1.635 Friedrich Kottulinsky (Deutsche Linieninfanterie N x8_007
+2660 inf 0 250 179 254 414 nan nan 0.716 1.63 Franz von Wouvermanns (Deutsche Linieninfanterie N x8_007
+2661 inf 0 201 115 256 414 nan nan 0.572 1.617 Friedrich von Gottesheim (Deutsche Linieninfanteri x8_007
+2663 inf 0 215 123 268 422 nan nan 0.572 1.575 Joseph von Grill (Deutsche Linieninfanterie Nr. 15 x8_007
+2666 inf 0 193 96 256 414 nan nan 0.497 1.617 Karl O'Donnell von Tyconell (Deutsche Linieninfant x8_007
+2672 inf 0 141 77 280 434 nan nan 0.546 1.55 Joseph von Bieber (Deutsche Linieninfanterie Nr. 3 x8_007
+2674 inf 0 208 109 264 422 nan nan 0.524 1.598 Peter von Novak (Deutsche Linieninfanterie Nr. 36  x8_007
+2676 inf 0 254 154 276 430 nan nan 0.606 1.558 Ignaz Buol von Berenberg (Deutsche Linieninfanteri x8_007
+2678 inf 0 248 148 278 430 nan nan 0.597 1.547 Franz Pflacher (Deutsche Linieninfanterie Nr. 54 ' x8_007
+2713 inf 0 163 151 516 1096 nan nan 0.926 2.124 Joseph von Wolkenstein-Rodenegg (Tiroler Landwehr) x8_007
+2715 inf 0 163 122 516 874 nan nan 0.748 1.694 Franz Neugebauer (Tiroler Landwehr) [L2] x8_007
+2736 cav 4 528 835 104 188 nan nan 1.581 1.808 Matvei Platov (Kazaki 'Don, Malakov') [C5] x8_008
+2830 art 0 623 771 60 80 3.0 4.0 1.238 1.333 Christian von Schimonsky (12-Pfünder Fuß-Artilleri x8_009
+2831 art 3 408 912 60 100 3.0 5.0 2.235 1.667 Carl Thullmann (Sächsische Haubitzen 'Thullmann')  x8_009
+2832 art 0 414 492 60 80 3.0 4.0 1.188 1.333 Johann von Kühnheim (Haubitzen 'Alkier') [F3] x8_009
+2836 art 0 330 386 60 80 3.0 4.0 1.17 1.333 Christian Friedrich von Ernst (8-Pfünder Fuß-Artil x8_009
+2899 inf 0 498 463 259 302 nan nan 0.93 1.166 Heinrich von Cerrini di Monte Varchi (Sächsische G x8_009
+2900 inf 1 632 641 235 259 nan nan 1.014 1.102 ¤ Karl Erdmann von Le Coq (Sächsische Grenadiere ' x8_009
+3290 art 0 244 817 40 100 2.0 5.0 3.348 2.5 César José de Canterac Orlic (Artillería a Pie de  x8_019
+3291 art 2 451 988 60 100 3.0 5.0 2.191 1.667 Martín García-Loygorri e Ichaso (Artillería a Pie  x8_019
+3323 inf 0 510 396 400 568 nan nan 0.776 1.42 Ramón de Cárles (Tercio de Miqueletes de Girona) [ x8_019
+3324 inf 0 566 495 380 540 nan nan 0.875 1.421 ¤ Melchior Rovira (Tercio de Miqueletes de Tarrago x8_019
+3325 inf 0 179 237 158 225 nan nan 1.324 1.424 José Marcos de Sals (Tercio de Miqueletes de Vic)  x8_019
+3360 inf 0 210 120 270 426 nan nan 0.571 1.578 Francisco Chacón (Infantería de Guadix) [L3] x8_019
+3361 inf 0 139 71 346 452 nan nan 0.511 1.306 José María Jalón Llorente (2° Voluntarios de Ciuda x8_019
+3465 inf 0 314 226 280 434 nan nan 0.72 1.55 Juan Antonio Barutell (Voluntarios de Valencia y A x8_020
+3518 inf 1 94 64 308 448 nan nan 0.681 1.455 Francisco de Paula Gómez de Terán y Negrete 'Marqu x8_020
+3523 inf 0 193 102 306 446 nan nan 0.528 1.458 Luis Padilla (Infantería de Murcia 'el Leal') [L3] x8_020
+3564 inf 5 1011 1866 194 294 nan nan 1.846 1.515 Tecumseh (Shaawanwaki 'Shawnee') [GS2] x8_026
+3580 art 2 395 752 40 60 2.0 3.0 1.904 1.5 Jakob von Hoyningen-Huene (40-ya peshaya artilleri x8_013
+3673 inf 3 316 695 186 342 nan nan 2.199 1.839 Mikhail Vorontsov (7-i divizionnie svodnie grenady x8_013
+3841 cav 1 629 670 84 121 nan nan 1.065 1.44 Ivan Andriyanov (Donskie kazaki 'Andriyanov') [C5] x8_014
+3844 cav 0 659 737 94 156 nan nan 1.118 1.66 Rodion Barabanshtchikov (Donskie kazaki 'Barabansh x8_014
+3852 cav 1 824 1048 124 244 nan nan 1.272 1.968 Ilya Tchernozoubov (Donskie kazaki 'Tchernozoubov' x8_014
+3853 cav 0 1039 1238 162 308 nan nan 1.192 1.901 Nikifor Yejov (Donskie kazaki 'Yejov') [C5] x8_014
+3854 cav 0 511 460 82 116 nan nan 0.9 1.415 Tarasi Tchikilyov (Kafkazskie kazaki 'Tchikilyov') x8_014
+3860 cav 1 377 310 82 108 nan nan 0.822 1.317 Vassili Ilovayski (Kazache opolchenie 'Youjnoye ze x8_014
+3863 inf 3 608 697 974 1104 nan nan 1.146 1.133 Guerasim Kourin (Narodnoe gorodoskoe vosstanie) [L x8_014
+3864 inf 2 369 896 98 196 nan nan 2.428 2.0 Aleksei Kojoukov (Diversanti) [GS1] x8_014
+3866 inf 4 570 1267 88 178 nan nan 2.223 2.023 Yelissei Tchetvertakov (Otryad lyegkikh voisk) [GS x8_014
+3962 art 1 264 422 40 60 2.0 3.0 1.598 1.5 Pieter Wijnands (Artillerie te voet 12 ponder) [F2 x8_012
+4086 inf 2 57 69 350 634 nan nan 1.211 1.811 Willem Poolman (Nationale militie No. 14 'Poolman' x8_012
+4515 inf 1 429 607 140 188 nan nan 1.415 1.343 Hos'Kadem (Kazmacılar) [G4] x8_052
+4532 inf 2 102 85 482 1036 nan nan 0.833 2.149 Hurshid Ahmed Paşa (Köylüler) [L1] x8_052
+4535 inf 2 139 176 382 904 nan nan 1.266 2.366 Dana Halil (Pomak toplama askerleri) [L3] x8_052
+4561 inf 2 149 194 624 992 nan nan 1.302 1.59 Babak (Aradl u Abash Lua) [G2] x8_053
+4954 cav 1 672 708 110 156 nan nan 1.054 1.418 Ivan Andriyanov (Donskie kazaki 'Andriyanov') [C5] x8_017
+4956 cav 0 648 649 100 132 nan nan 1.002 1.32 Rodion Barabanshtchikov (Donskie kazaki 'Barabansh x8_017
+rank depth change:
+  43 2.0 3.0 True True
+  506 2.0 3.0 True True
+  510 2.0 4.0 True True
+  683 3.0 4.0 True True
+  685 3.0 4.0 True True
+  1079 3.0 4.0 True True
+  1184 3.0 4.0 True True
+  1187 3.0 6.0 True True
+  1192 3.0 5.0 True True
+  1434 2.0 3.0 True True
+  1436 3.0 4.0 True True
+  2576 2.0 3.0 True True
+  2830 3.0 4.0 True True
+  2831 3.0 5.0 True True
+  2832 3.0 4.0 True True
+  2836 3.0 4.0 True True
+  3290 2.0 5.0 True True
+  3291 3.0 5.0 True True
+  3580 2.0 3.0 True True
+  3962 2.0 3.0 True True
+scare gained:
+  3545 infantry 2 386.0 399.0 Oshawana 'John Naudee' (Neshnabé 'Pottawatomi') [L
+  3562 infantry 1 662.0 552.0 Ahyonwaeghs 'John Brant' (Kanienʼkeháʼka 'Mohawk')
+  3563 infantry 3 364.0 370.0 Teyoninhokarawen 'John Norton, the Snipe' (Lenape 
+  3564 infantry 5 1011.0 1866.0 Tecumseh (Shaawanwaki 'Shawnee') [GS2]
+  3565 infantry 2 263.0 225.0 Roundhead (Wendat 'Huron-Wyandot') [GS2]
+  3857 cavalry 5 519.0 633.0 Aleksandr Figner (Oulani 'Polskie') [C4]
+  4282 infantry 1 787.0 722.0 Jerónimo Merino Cob 'el Cura Merino' (Voluntarios 
+stamina lost: ['3179']

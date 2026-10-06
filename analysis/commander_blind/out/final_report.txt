@@ -1,0 +1,155 @@
+== BEST (k=26): CV MAE 8.58 ± 0.64 (SE 0.29), median APE 1.08%; in-sample MAE 8.47
+     P*inf               0.87526
+     P*cav               0.878883
+     P*art               0.914664
+     inf                -120.14
+     cav                -99.2402
+     art                -101.098
+     P*dmorale           0.045958
+     P*dmelee_def        0.0202272
+     P*dcharge           0.0359521
+     P*daccuracy         0.0119199
+     P*dreload           0.00111702
+     men*dmorale         0.056932
+     P(r-1)[inf,cav]     0.439805
+     P(r-1)[art]         1.8323
+     P*d(charge^2)      -0.000674485
+     P*d(reload^2)       2.45031e-05
+     P*corps*dmorale    -0.00378514
+     men*d(morale^2)     0.00478947
+     men*dreload         0.00854537
+     s[inf]              33.1729
+     s[cav]              31.9104
+     s[art]              13.6802
+     corps*s[inf]       -2.17743
+     corps*s[cav]       -0.49301
+     corps*s[art]        1.2029
+     imperial           -3.97351
+== FALLBACK (k=16): CV MAE 10.38 ± 0.64 (SE 0.29), median APE 1.38%; in-sample MAE 10.28
+     P*inf               0.889221
+     P*cav               0.870171
+     P*art               0.906984
+     inf                -125.278
+     cav                -102.653
+     art                -104.265
+     P*dmorale           0.0285894
+     P*dmelee_def        0.0238025
+     P*dcharge           0.0167846
+     P*daccuracy         0.0116621
+     P*dreload           0.00338937
+     men*dmorale         0.135451
+     s                   41.2303
+     corps*s            -2.07046
+     P(r-1)[inf,cav]     0.437661
+     P(r-1)[art]         1.85304
+== MINIMAL (k=11): CV MAE 11.90 ± 0.80 (SE 0.36), median APE 1.68%; in-sample MAE 11.80
+     P                   0.879395
+     1                  -114.965
+     P*dmorale           0.0374547
+     P*dmelee_def        0.0196496
+     P*daccuracy         0.0100944
+     P*dreload           0.00522328
+     men*dmorale         0.0937798
+     s                   43.8802
+     corps*s            -1.82711
+     P(r-1)[inf,cav]     0.439415
+     P(r-1)[art]         1.89377
+
+== Input evidence vs BEST (paired fold differences; + = worse than BEST)
+  drop all star terms (s, corps*s per arm)             k= 20 CV MAE  11.75  diff  +3.17 ± 0.06
+  drop corps entirely (corps*s, P*corps*dmorale)       k= 25 CV MAE  10.36  diff  +1.78 ± 0.05
+  drop all stat-change terms                           k= 15 CV MAE  22.04  diff +13.46 ± 0.35
+  drop stat changes, use arm x star lookup instead     k= 40 CV MAE  10.44  diff  +1.86 ± 0.13
+  drop men-based terms (men*dmorale, men*d(morale^2), men*dreload) k= 23 CV MAE  12.98  diff  +4.40 ± 0.08
+  drop convex terms (d(charge^2), d(reload^2), d(morale^2)) k= 23 CV MAE   9.92  diff  +1.34 ± 0.05
+  drop size-change terms                               k= 24 CV MAE  10.67  diff  +2.09 ± 0.29
+  drop side (imperial)                                 k= 25 CV MAE   8.80  diff  +0.22 ± 0.02
+  single a,b instead of per arm                        k= 22 CV MAE  10.02  diff  +1.44 ± 0.06
+  add corps (main) + P*corps                           k= 28 CV MAE   8.57  diff  -0.01 ± 0.01
+  add army intercepts (55)                             k= 79 CV MAE   8.40  diff  -0.18 ± 0.03
+  add army P-multipliers (54)                          k= 80 CV MAE   8.45  diff  -0.13 ± 0.03
+  add unit class dummies                               k= 38 CV MAE   8.51  diff  -0.07 ± 0.04
+  add training level dummies                           k= 30 CV MAE   8.56  diff  -0.02 ± 0.01
+  add unit size (men)                                  k= 27 CV MAE   8.58  diff  +0.00 ± 0.00
+  add regular stats (8)                                k= 34 CV MAE   8.52  diff  -0.06 ± 0.02
+  add regular flags (13)                               k= 39 CV MAE   8.43  diff  -0.15 ± 0.04
+  add melee-attack change P*dma                        k= 27 CV MAE   8.58  diff  +0.00 ± 0.00
+  add star convexity s^2, P*s^2                        k= 28 CV MAE   8.51  diff  -0.07 ± 0.03
+
+== Robustness: CV MAE with other grouped-fold seeds (selection was done on seed 0)
+  BEST      seed0 8.58±0.64  seed1 8.61±0.59  seed2 8.59±0.50  seed3 8.63±0.71
+  FALLBACK  seed0 10.38±0.64  seed1 10.44±0.80  seed2 10.38±0.38  seed3 10.39±0.50
+  MINIMAL   seed0 11.90±0.80  seed1 11.94±0.77  seed2 11.92±0.32  seed3 11.92±0.51
+
+== BEST: worst 25 pairs (CV predictions)
+  # 3864 ntw3_tow_b11_x8_014    c 8 infantry_skirmishers   s=2 men 98->196 P=369 C=896 pred=485 err=+411 | Aleksei Kojoukov (Diversanti) [GS1]
+  # 3866 ntw3_tow_b11_x8_014    c 8 infantry_skirmishers   s=4 men 88->178 P=570 C=1267 pred=882 err=+385 | Yelissei Tchetvertakov (Otryad lyegkikh voisk) [GS3]
+  # 3564 ntw3_tow_b10_x8_026    c 7 infantry_skirmishers   s=5 men 194->294 P=1011 C=1866 pred=1493 err=+373 | Tecumseh (Shaawanwaki 'Shawnee') [GS2]
+  # 3863 ntw3_tow_b11_x8_014    c 8 infantry_irregulars    s=3 men 974->1104 P=608 C=697 pred=1029 err=-332 | Guerasim Kourin (Narodnoe gorodoskoe vosstanie) [L3]
+  # 1101 ntw3_tow_a11_x8_027    c 6 infantry_grenadiers    s=0 men 152->211 P=507 C=792 pred=468 err=+324 | ¤ Michel-Menou Dujon (Sapeurs) [G4]
+  # 2444 ntw3_tow_b04_x8_015    c 8 infantry_skirmishers   s=0 men 104->210 P=238 C=526 pred=226 err=+300 | Badawiin (Al Qanāsūn Al Badw 'Munāwishū Al Saḥra’') [GS2]
+  #  510 ntw3_tow_a06_x8_002    c12 artillery_foot         s=6 men 40->80 P=383 C=1649 pred=1350 err=+299 | Alexandre-Antoine Hureau de Sénarmont (5e d'artillerie à pie
+  # 1192 ntw3_tow_a11_x8_028    c11 artillery_horse        s=1 men 36->60 P=1126 C=2106 pred=2403 err=-297 | Jean-Jacques Desvaux de Saint-Maurice (4e d'artillerie à che
+  # 3673 ntw3_tow_b11_x8_013    c10 infantry_grenadiers    s=3 men 186->342 P=316 C=695 pred=455 err=+240 | Mikhail Vorontsov (7-i divizionnie svodnie grenadyori) [G4]
+  # 4515 ntw3_tow_b15_x8_052    c 9 infantry_grenadiers    s=1 men 140->188 P=429 C=607 pred=402 err=+205 | Hos'Kadem (Kazmacılar) [G4]
+  #  356 ntw3_tow_a05_x8_001    c11 cavalry_standard       s=3 men 104->368 P=542 C=958 pred=1150 err=-192 | Frédéric Walther (3e dragons 'le Bourbon-Dragons') [C3]
+  #  366 ntw3_tow_a05_x8_001    c11 infantry_grenadiers    s=1 men 374->374 P=1064 C=1164 pred=1023 err=+141 | ¤ Pierre-Louis Dupas 'le général Z’en avant' (2e grenadiers 
+  # 3946 ntw3_tow_b12_x8_011    c 7 infantry_militia       s=4 men 249->249 P=343 C=649 pred=512 err=+137 | ¤ Friedrich von Bornstedt (1. Kurmärkische Landwehr 'Berlin'
+  # 3325 ntw3_tow_b09_x8_019    c 9 infantry_irregulars    s=0 men 158->225 P=179 C=237 pred=100 err=+137 | José Marcos de Sals (Tercio de Miqueletes de Vic) [L5]
+  # 1289 ntw3_tow_a11_x8_028    c11 infantry_grenadiers    s=3 men 146->196 P=263 C=433 pred=296 err=+137 | ¤ François Haxo (Sapeurs) [G4]
+  # 1259 ntw3_tow_a11_x8_028    c11 cavalry_light          s=1 men 76->76 P=716 C=470 pred=585 err=-115 | François Kirmann (Mamelouks) [C5]
+  # 3587 ntw3_tow_b11_x8_013    c10 artillery_horse        s=3 men 36->36 P=1549 C=1619 pred=1731 err=-112 | Lev Yashvil (3-ya konnaya artilleriya, 6-funtov) [H3]
+  # 1187 ntw3_tow_a11_x8_028    c11 artillery_foot         s=3 men 60->120 P=743 C=2221 pred=2111 err=+110 | Jean Barthélemot de Sorbier (1ère d'artillerie à pied de la 
+  #   25 france                 c 9 infantry_line          s=3 men 312->404 P=612 C=925 pred=823 err=+102 | ¤ Paul Grenier (23e de ligne 'le Bouillon') [L5]
+  # 3148 ntw3_tow_b08_x8_045    c 6 cavalry_light          s=5 men 192->192 P=919 C=1193 pred=1095 err=+98 | Henry Paget 'Uxbridge' (9th (Queen's Royal) Light Dragoons) 
+  # 1838 ntw3_tow_a13_x8_022    c 8 infantry_line          s=2 men 330->452 P=255 C=228 pred=323 err=-95 | Bertrand Clauzel (Corps provisionnel d'infanterie) [L3]
+  # 3323 ntw3_tow_b09_x8_019    c 9 infantry_irregulars    s=0 men 400->568 P=510 C=396 pred=489 err=-93 | Ramón de Cárles (Tercio de Miqueletes de Girona) [L4]
+  # 4997 ntw3_tow_c08_x8_048    c 7 artillery_horse        s=3 men 24->24 P=1018 C=1043 pred=1134 err=-91 | Jean-Baptiste Pelletier (6-funtowa artyleria konna) [H3]
+  #  286 ntw3_tow_a04_x8_005    c 8 infantry_grenadiers    s=6 men 216->216 P=933 C=1338 pred=1428 err=-90 | ¤ Jean-Baptiste Kléber (75e grenadiers 'les Gascons') [G5]
+  # 1227 ntw3_tow_a11_x8_028    c11 cavalry_lancers        s=0 men 78->78 P=245 C=35 pred=124 err=-89 | Antoine-Marguerite Clerc (4e chevau-légers-lanciers) [C4]
+
+  size-change rows (n=70): MAE 82.2; share of total abs error 12.8%
+  other rows: MAE 7.58, median AE 4.42
+  top 5% rows carry 33.6% of total abs error
+  -- by arm
+     artillery                n=  303 MAE   13.7 mean err   -0.6
+     cavalry                  n= 1430 MAE    7.9 mean err   -1.8
+     infantry                 n= 3505 MAE    8.4 mean err   +1.3
+  -- by stars
+     0                        n= 1846 MAE    5.6 mean err   -0.3
+     1                        n= 1539 MAE    6.7 mean err   -0.5
+     2                        n= 1075 MAE   10.1 mean err   -1.0
+     3                        n=  555 MAE   14.7 mean err   +2.9
+     4                        n=  162 MAE   19.5 mean err   +8.2
+     5                        n=   49 MAE   31.2 mean err  +22.7
+     6                        n=    9 MAE   59.8 mean err  +11.6
+     7                        n=    3 MAE   36.5 mean err  -19.7
+  -- by class
+     artillery_foot           n=  227 MAE   12.7 mean err   +3.2
+     artillery_horse          n=   76 MAE   16.9 mean err  -12.0
+     cavalry_heavy            n=  280 MAE    7.4 mean err   -1.3
+     cavalry_lancers          n=  205 MAE   10.1 mean err   +1.6
+     cavalry_light            n=  602 MAE    8.0 mean err   -1.8
+     cavalry_missile          n=    2 MAE    9.3 mean err   -1.6
+     cavalry_standard         n=  341 MAE    6.8 mean err   -4.4
+     infantry_grenadiers      n=  392 MAE   11.0 mean err   +3.0
+     infantry_irregulars      n=   38 MAE   24.9 mean err   -6.7
+     infantry_light           n=  679 MAE    7.5 mean err   +0.9
+     infantry_line            n= 2157 MAE    6.3 mean err   -0.1
+     infantry_militia         n=  163 MAE   16.2 mean err  +10.1
+     infantry_skirmishers     n=   76 MAE   37.7 mean err  +20.9
+  -- by training
+     elite                    n=  295 MAE   11.1 mean err   -3.6
+     mob                      n=  163 MAE   23.0 mean err   +8.1
+     poorly_trained           n=  484 MAE   13.0 mean err   +1.3
+     trained                  n= 1820 MAE    7.6 mean err   -0.1
+     well_trained             n= 2476 MAE    7.2 mean err   +0.5
+  -- by corps
+     5                        n=   45 MAE   18.5 mean err   +6.7
+     6                        n=  396 MAE   11.5 mean err   +2.8
+     7                        n=  894 MAE    9.0 mean err   +0.7
+     8                        n= 1065 MAE    9.9 mean err   -0.2
+     9                        n= 1224 MAE    6.9 mean err   +0.1
+     10                       n= 1095 MAE    7.4 mean err   -0.1
+     11                       n=  347 MAE    9.2 mean err   -0.1
+     12                       n=  172 MAE    7.6 mean err   -0.2
