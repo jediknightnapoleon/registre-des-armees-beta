@@ -93,7 +93,7 @@ Per army: the max-value build, then the balanced one if it differs. `×k` = copi
 
 ### [1806] 12. France (Prusse) — max value: efficiency 2.033, cost 9,999, value 20,324, 30 cards, 7,042 men
 
-Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (1 gold).
+Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (1 gold, 0★).
 
 - Voltigeurs d'infanterie légère [S3] ×7 (243 gold, value 521, ×2.14)
 - ¤ 57e de ligne 'le Terrible que Rien n'arrête' [L4] ×2 (655 gold, value 1190, ×1.82)
@@ -113,7 +113,7 @@ Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (1 gold).
 
 ### [1806] 12. France (Prusse) — balanced: efficiency 2.012, cost 9,997, value 20,110, 30 cards, 5,794 men
 
-Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (1 gold).
+Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (1 gold, 0★).
 
 - Voltigeurs d'infanterie légère [S3] ×7 (243 gold, value 521, ×2.14)
 - 3e cuirassiers 'les Gros culs' [C1] ×1 (1378 gold, value 2429, ×1.76)
@@ -136,7 +136,7 @@ Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (1 gold).
 
 ### [1812] 11. France (Russie-Centre) — max value: efficiency 1.741, cost 10,000, value 17,413, 30 cards, 5,028 men
 
-Staff general: Jérôme Bonaparte (1 gold).
+Staff general: Jérôme Bonaparte (1 gold, 0★).
 
 - Grenadiers à cheval 'les Dieux' [C2] ×1 (2274 gold, value 3663, ×1.61)
 - 25e de ligne 'les Poitevins' [L4] ×5 (195 gold, value 380, ×1.95)
@@ -161,7 +161,7 @@ Staff general: Jérôme Bonaparte (1 gold).
 
 ### [1812] 11. France (Russie-Centre) — balanced: efficiency 1.729, cost 10,000, value 17,288, 30 cards, 4,962 men
 
-Staff general: Jérôme Bonaparte (1 gold).
+Staff general: Jérôme Bonaparte (1 gold, 0★).
 
 - Grenadiers à cheval 'les Dieux' [C2] ×1 (2274 gold, value 3663, ×1.61)
 - 25e de ligne 'les Poitevins' [L4] ×5 (195 gold, value 380, ×1.95)
@@ -188,7 +188,7 @@ Staff general: Jérôme Bonaparte (1 gold).
 
 ### [1805] 11. France (Allemagne) — max value: efficiency 1.670, cost 9,997, value 16,693, 30 cards, 6,592 men
 
-Staff general: Joachim Murat 'le Roi Franconi' [C4] (365 gold).
+Staff general: Joachim Murat 'le Roi Franconi' [C4] (365 gold, 4★).
 
 - ¤ 2e grenadiers de réserve 'la Colonne infernale' [G5] ×1 (1064 gold, value 1780, ×1.67)
 - 33e de ligne 'les Monte-en-l'air' [L4] ×2 (409 gold, value 678, ×1.66)
@@ -213,7 +213,7 @@ Staff general: Joachim Murat 'le Roi Franconi' [C4] (365 gold).
 
 ### [1805] 11. France (Allemagne) — balanced: efficiency 1.629, cost 9,995, value 16,279, 30 cards, 5,836 men
 
-Staff general: Joachim Murat 'le Roi Franconi' [C4] (365 gold).
+Staff general: Joachim Murat 'le Roi Franconi' [C4] (365 gold, 4★).
 
 - ¤ 2e grenadiers de réserve 'la Colonne infernale' [G5] ×1 (1064 gold, value 1780, ×1.67)
 - Frédéric Walther (3e dragons 'le Bourbon-Dragons') [C3] ×1 (958 gold, value 1599, ×1.67) — combat general
@@ -239,7 +239,7 @@ Staff general: Joachim Murat 'le Roi Franconi' [C4] (365 gold).
 
 ### [1809] 10. France (Espagne) — max value: efficiency 1.620, cost 9,999, value 16,201, 30 cards, 5,101 men
 
-Staff general: Horace Sébastiani de La Porta 'le Général Surprise' (159 gold).
+Staff general: Horace Sébastiani de La Porta 'le Général Surprise' (159 gold, 2★).
 
 - ¤ 9e léger 'l'Incomparable' [L6] ×3 (554 gold, value 846, ×1.53)
 - 5e léger 'les Îliens' [L6] ×4 (294 gold, value 512, ×1.74)
@@ -259,7 +259,7 @@ Staff general: Horace Sébastiani de La Porta 'le Général Surprise' (159 gold)
 
 ### [1809] 10. France (Espagne) — balanced: efficiency 1.605, cost 9,998, value 16,046, 30 cards, 4,797 men
 
-Staff general: Horace Sébastiani de La Porta 'le Général Surprise' (159 gold).
+Staff general: Horace Sébastiani de La Porta 'le Général Surprise' (159 gold, 2★).
 
 - 5e léger 'les Îliens' [L6] ×4 (294 gold, value 512, ×1.74)
 - 24e dragons français 'Royal Lorraine' [C3] ×1 (988 gold, value 1462, ×1.48)
@@ -281,7 +281,7 @@ Staff general: Horace Sébastiani de La Porta 'le Général Surprise' (159 gold)
 
 ### [1809] 10. France (Autriche) — max value: efficiency 1.612, cost 9,996, value 16,118, 30 cards, 4,636 men
 
-Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (60 gold).
+Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (60 gold, 1★).
 
 - Voltigeurs de la ligne [S2] ×6 (188 gold, value 313, ×1.66)
 - Voltigeurs de la ligne [S2] ×6 (187 gold, value 307, ×1.64)
@@ -302,7 +302,7 @@ Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (60 gold).
 
 ### [1809] 10. France (Autriche) — balanced: efficiency 1.592, cost 9,995, value 15,914, 30 cards, 4,274 men
 
-Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (60 gold).
+Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (60 gold, 1★).
 
 - Voltigeurs de la ligne [S2] ×6 (188 gold, value 313, ×1.66)
 - Garde du Corps [C2] ×1 (1123 gold, value 1650, ×1.47)
@@ -326,7 +326,7 @@ Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (60 gold).
 
 ### [1815] 9. France (Flandres) — max value: efficiency 1.553, cost 10,000, value 15,528, 30 cards, 4,944 men
 
-Staff general: Emmanuel de Grouchy (67 gold).
+Staff general: Emmanuel de Grouchy (67 gold, 1★).
 
 - 5e cuirassiers 'le Royal-Pologne' [C1] ×1 (1453 gold, value 2027, ×1.40)
 - 12e cuirassiers 'le Glaive' [C1] ×1 (1054 gold, value 1527, ×1.45)
@@ -348,7 +348,7 @@ Staff general: Emmanuel de Grouchy (67 gold).
 
 ### [1815] 9. France (Flandres) — balanced: efficiency 1.538, cost 10,000, value 15,381, 30 cards, 4,686 men
 
-Staff general: Emmanuel de Grouchy (67 gold).
+Staff general: Emmanuel de Grouchy (67 gold, 1★).
 
 - 5e cuirassiers 'le Royal-Pologne' [C1] ×1 (1453 gold, value 2027, ×1.40)
 - 12e cuirassiers 'le Glaive' [C1] ×1 (1054 gold, value 1527, ×1.45)
@@ -371,7 +371,7 @@ Staff general: Emmanuel de Grouchy (67 gold).
 
 ### [1809] 10. Österreich — max value: efficiency 1.489, cost 9,999, value 14,891, 30 cards, 9,100 men
 
-Staff general: Franz von Orsini zu Rosenberg (1 gold).
+Staff general: Franz von Orsini zu Rosenberg (1 gold, 0★).
 
 - ¤ Deutsche Grenadiere 'Hauger' [G3] ×1 (829 gold, value 1159, ×1.40)
 - ¤ Deutsche Grenadiere 'Leiningen' [G3] ×1 (809 gold, value 1130, ×1.40)
@@ -398,7 +398,7 @@ Staff general: Franz von Orsini zu Rosenberg (1 gold).
 
 ### [1809] 10. Österreich — balanced: efficiency 1.465, cost 9,997, value 14,646, 30 cards, 8,220 men
 
-Staff general: Franz von Orsini zu Rosenberg (1 gold).
+Staff general: Franz von Orsini zu Rosenberg (1 gold, 0★).
 
 - Husaren Nr. 8 'Kienmayer' [C4] ×2 (810 gold, value 1110, ×1.37)
 - ¤ Deutsche Grenadiere 'Stark' [L3] ×1 (770 gold, value 1102, ×1.43)
@@ -423,7 +423,7 @@ Staff general: Franz von Orsini zu Rosenberg (1 gold).
 
 ### 9. France (1796) — max value: efficiency 1.475, cost 9,997, value 14,742, 30 cards, 7,240 men
 
-Staff general: Charles Jennings de Kilmaine (1 gold).
+Staff general: Charles Jennings de Kilmaine (1 gold, 0★).
 
 - Tirailleurs [S3] ×6 (237 gold, value 495, ×2.09)
 - Carabiniers à pied [GS2] ×3 (334 gold, value 555, ×1.66)
@@ -444,7 +444,7 @@ Staff general: Charles Jennings de Kilmaine (1 gold).
 
 ### 9. France (1796) — balanced: efficiency 1.438, cost 9,998, value 14,379, 30 cards, 5,988 men
 
-Staff general: Charles Jennings de Kilmaine (1 gold).
+Staff general: Charles Jennings de Kilmaine (1 gold, 0★).
 
 - Tirailleurs [S3] ×6 (237 gold, value 495, ×2.09)
 - Carabiniers à pied [GS2] ×3 (334 gold, value 555, ×1.66)
@@ -467,7 +467,7 @@ Staff general: Charles Jennings de Kilmaine (1 gold).
 
 ### [1811] 9. UK, Portugal — max value: efficiency 1.442, cost 10,000, value 14,418, 30 cards, 6,336 men
 
-Staff general: William Carr Beresford (167 gold).
+Staff general: William Carr Beresford (167 gold, 2★).
 
 - ¤ Infantaria N.° 12 'Chaves' [L2] ×2 (563 gold, value 907, ×1.61)
 - ¤ Infantaria N.° 8 'Vide e Marvão' [L2] ×2 (452 gold, value 600, ×1.33)
@@ -496,7 +496,7 @@ Staff general: William Carr Beresford (167 gold).
 
 ### [1811] 9. UK, Portugal — balanced: efficiency 1.409, cost 9,999, value 14,084, 30 cards, 5,854 men
 
-Staff general: William Carr Beresford (167 gold).
+Staff general: William Carr Beresford (167 gold, 2★).
 
 - ¤ Infantaria N.° 12 'Chaves' [L2] ×2 (563 gold, value 907, ×1.61)
 - ¤ Infantaria N.° 9 'Viana do Castelo' [L3] ×2 (272 gold, value 396, ×1.46)
@@ -526,7 +526,7 @@ Staff general: William Carr Beresford (167 gold).
 
 ### [1798] 8. France (Égypte) — max value: efficiency 1.440, cost 9,980, value 14,366, 27 cards, 5,800 men
 
-Staff general: Jacques de Menou de Boussay 'Abdallah' (71 gold).
+Staff general: Jacques de Menou de Boussay 'Abdallah' (71 gold, 1★).
 
 - Sapeurs [G5] ×6 (233 gold, value 322, ×1.38)
 - ¤ 41e de ligne 'le Garde-robe' [L3] ×2 (636 gold, value 860, ×1.35)
@@ -543,7 +543,7 @@ Staff general: Jacques de Menou de Boussay 'Abdallah' (71 gold).
 
 ### [1798] 8. France (Égypte) — balanced: efficiency 1.402, cost 10,000, value 14,019, 26 cards, 5,338 men
 
-Staff general: Jacques de Menou de Boussay 'Abdallah' (71 gold).
+Staff general: Jacques de Menou de Boussay 'Abdallah' (71 gold, 1★).
 
 - Sapeurs [G5] ×6 (233 gold, value 322, ×1.38)
 - ¤ 41e de ligne 'le Garde-robe' [L3] ×2 (636 gold, value 860, ×1.35)
@@ -562,7 +562,7 @@ Staff general: Jacques de Menou de Boussay 'Abdallah' (71 gold).
 
 ### [1814] 8. France — max value: efficiency 1.427, cost 9,998, value 14,266, 30 cards, 5,402 men
 
-Staff general: Pierre Augereau 'Fier brigand' (76 gold).
+Staff general: Pierre Augereau 'Fier brigand' (76 gold, 1★).
 
 - 2e d'artillerie à pied de 6 livres [F4] ×2 (736 gold, value 966, ×1.31)
 - ¤ 2e grenadiers à pied [G4] ×2 (714 gold, value 953, ×1.33)
@@ -590,7 +590,7 @@ Staff general: Pierre Augereau 'Fier brigand' (76 gold).
 
 ### [1814] 8. France — balanced: efficiency 1.397, cost 9,995, value 13,960, 30 cards, 5,010 men
 
-Staff general: Pierre Augereau 'Fier brigand' (76 gold).
+Staff general: Pierre Augereau 'Fier brigand' (76 gold, 1★).
 
 - 2e d'artillerie à pied de 6 livres [F4] ×2 (736 gold, value 966, ×1.31)
 - ¤ 2e grenadiers à pied [G4] ×2 (714 gold, value 953, ×1.33)
@@ -617,7 +617,7 @@ Staff general: Pierre Augereau 'Fier brigand' (76 gold).
 
 ### [1812] 10. Rossiya — max value: efficiency 1.410, cost 9,999, value 14,097, 27 cards, 3,834 men
 
-Staff general: Magnus Gustav von Essen (1 gold).
+Staff general: Magnus Gustav von Essen (1 gold, 0★).
 
 - 12-ya peshaya artilleriya, tchejolie yedinorogi [F2] ×1 (1466 gold, value 2082, ×1.42)
 - Strelki [GS2] ×6 (212 gold, value 291, ×1.37)
@@ -640,7 +640,7 @@ Staff general: Magnus Gustav von Essen (1 gold).
 
 ### [1799] 9. France (Italie) — max value: efficiency 1.407, cost 9,992, value 14,057, 30 cards, 5,256 men
 
-Staff general: Louis-Gabriel Suchet (299 gold).
+Staff general: Louis-Gabriel Suchet (299 gold, 3★).
 
 - ¤ 70e de ligne 'l'Accroche' [L4] ×3 (398 gold, value 560, ×1.41)
 - ¤ 28e de ligne 'le Bon et Brave' [L4] ×3 (339 gold, value 480, ×1.41)
@@ -662,7 +662,7 @@ Staff general: Louis-Gabriel Suchet (299 gold).
 
 ### [1799] 9. France (Italie) — balanced: efficiency 1.379, cost 9,999, value 13,793, 30 cards, 4,818 men
 
-Staff general: Louis-Gabriel Suchet (299 gold).
+Staff general: Louis-Gabriel Suchet (299 gold, 3★).
 
 - ¤ 70e de ligne 'l'Accroche' [L4] ×3 (398 gold, value 560, ×1.41)
 - ¤ 28e de ligne 'le Bon et Brave' [L4] ×3 (339 gold, value 480, ×1.41)
@@ -687,7 +687,7 @@ Staff general: Louis-Gabriel Suchet (299 gold).
 
 ### [1806] 10. Preußen — max value: efficiency 1.404, cost 9,999, value 14,035, 24 cards, 6,684 men
 
-Staff general: Karl von Braunschweig-Wolfenbüttel (1 gold).
+Staff general: Karl von Braunschweig-Wolfenbüttel (1 gold, 0★).
 
 - 12. Kürassiere 'Bünting' [C2] ×1 (1359 gold, value 1881, ×1.38)
 - 9. Kürassiere 'Holtzendorff' [C2] ×1 (890 gold, value 1292, ×1.45)
@@ -708,7 +708,7 @@ Staff general: Karl von Braunschweig-Wolfenbüttel (1 gold).
 
 ### [1806] 10. Preußen — balanced: efficiency 1.401, cost 9,998, value 14,008, 23 cards, 6,188 men
 
-Staff general: Karl von Braunschweig-Wolfenbüttel (1 gold).
+Staff general: Karl von Braunschweig-Wolfenbüttel (1 gold, 0★).
 
 - 12. Kürassiere 'Bünting' [C2] ×1 (1359 gold, value 1881, ×1.38)
 - 9. Kürassiere 'Holtzendorff' [C2] ×1 (890 gold, value 1292, ×1.45)
@@ -729,7 +729,7 @@ Staff general: Karl von Braunschweig-Wolfenbüttel (1 gold).
 
 ### [1812] 7. United States — max value: efficiency 1.403, cost 9,996, value 14,027, 30 cards, 10,496 men
 
-Staff general: James Madison (87 gold).
+Staff general: James Madison (87 gold, 1★).
 
 - Louisiana militia 'the Louisiana blues' [L5] ×2 (614 gold, value 795, ×1.29)
 - Tennessee militia [L5] ×2 (615 gold, value 766, ×1.25)
@@ -752,7 +752,7 @@ Staff general: James Madison (87 gold).
 
 ### [1812] 7. United States — balanced: efficiency 1.331, cost 10,000, value 13,312, 30 cards, 9,152 men
 
-Staff general: James Madison (87 gold).
+Staff general: James Madison (87 gold, 1★).
 
 - Louisiana militia 'the Louisiana blues' [L5] ×2 (614 gold, value 795, ×1.29)
 - Tennessee militia [L5] ×2 (615 gold, value 766, ×1.25)
@@ -776,7 +776,7 @@ Staff general: James Madison (87 gold).
 
 ### [1798] 8. Mamālīk — max value: efficiency 1.403, cost 9,997, value 14,023, 25 cards, 5,582 men
 
-Staff general: Ibrahim Bey [C3] (1 gold).
+Staff general: Ibrahim Bey [C3] (1 gold, 0★).
 
 - Hashdu Mamāliki 'Wadi Al Nil' [C4] ×2 (1127 gold, value 1448, ×1.28)
 - Hashdu Mamāliki 'Al Sham' [C4] ×2 (1034 gold, value 1295, ×1.25)
@@ -789,7 +789,7 @@ Staff general: Ibrahim Bey [C3] (1 gold).
 
 ### [1798] 8. Mamālīk — balanced: efficiency 1.373, cost 9,999, value 13,725, 25 cards, 5,238 men
 
-Staff general: Ibrahim Bey [C3] (1 gold).
+Staff general: Ibrahim Bey [C3] (1 gold, 0★).
 
 - Hashdu Mamāliki 'Wadi Al Nil' [C4] ×2 (1127 gold, value 1448, ×1.28)
 - Tala’i‘u Al Mamalik [C4] ×5 (218 gold, value 390, ×1.79)
@@ -804,7 +804,7 @@ Staff general: Ibrahim Bey [C3] (1 gold).
 
 ### [1809] 10. UK, España, Portugal — max value: efficiency 1.387, cost 9,999, value 13,865, 30 cards, 7,458 men
 
-Staff general: Don Gregorio Garcia de la Cuesta (95 gold).
+Staff general: Don Gregorio Garcia de la Cuesta (95 gold, 1★).
 
 - ¤ Legión Extranjera [L4] ×2 (506 gold, value 705, ×1.39)
 - ¤ 52nd (Oxfordshire) Light Foot 'the Light Bobs' [L6] ×1 (969 gold, value 1260, ×1.30)
@@ -832,7 +832,7 @@ Staff general: Don Gregorio Garcia de la Cuesta (95 gold).
 
 ### [1809] 10. UK, España, Portugal — balanced: efficiency 1.375, cost 9,998, value 13,751, 30 cards, 6,412 men
 
-Staff general: Don Gregorio Garcia de la Cuesta (95 gold).
+Staff general: Don Gregorio Garcia de la Cuesta (95 gold, 1★).
 
 - ¤ Legión Extranjera [L4] ×2 (506 gold, value 705, ×1.39)
 - ¤ 52nd (Oxfordshire) Light Foot 'the Light Bobs' [L6] ×1 (969 gold, value 1260, ×1.30)
@@ -861,7 +861,7 @@ Staff general: Don Gregorio Garcia de la Cuesta (95 gold).
 
 ### [1799] 9. France (Rhin) — max value: efficiency 1.368, cost 9,999, value 13,683, 30 cards, 6,198 men
 
-Staff general: Gilles Bruneteau de Sainte-Suzanne (67 gold).
+Staff general: Gilles Bruneteau de Sainte-Suzanne (67 gold, 1★).
 
 - 10e chasseurs à pied [L5] ×2 (510 gold, value 694, ×1.36)
 - 38e de ligne [L3] ×2 (475 gold, value 659, ×1.39)
@@ -887,7 +887,7 @@ Staff general: Gilles Bruneteau de Sainte-Suzanne (67 gold).
 
 ### [1815] 9. UK, Nederlanden — max value: efficiency 1.351, cost 10,000, value 13,512, 15 cards, 3,678 men
 
-Staff general: Willem II van Oranje-Nassau (312 gold).
+Staff general: Willem II van Oranje-Nassau (312 gold, 3★).
 
 - Life Guards 'the Cheeses' [C2] ×1 (1961 gold, value 2687, ×1.37)
 - 1st (the Kings) Dragoon Guards 'the Trades Union' [C2] ×1 (1869 gold, value 2609, ×1.40)
@@ -907,7 +907,7 @@ Staff general: Willem II van Oranje-Nassau (312 gold).
 
 ### [1815] 9. UK, Nederlanden — balanced: efficiency 1.348, cost 10,000, value 13,480, 15 cards, 3,396 men
 
-Staff general: Willem II van Oranje-Nassau (312 gold).
+Staff general: Willem II van Oranje-Nassau (312 gold, 3★).
 
 - Life Guards 'the Cheeses' [C2] ×1 (1961 gold, value 2687, ×1.37)
 - 1st (the Kings) Dragoon Guards 'the Trades Union' [C2] ×1 (1869 gold, value 2609, ×1.40)
@@ -927,7 +927,7 @@ Staff general: Willem II van Oranje-Nassau (312 gold).
 
 ### [1806] 9. Osmanlı — max value: efficiency 1.350, cost 10,000, value 13,495, 30 cards, 6,826 men
 
-Staff general: Koca Hüsrev Mehmed Paşa [C3] (67 gold).
+Staff general: Koca Hüsrev Mehmed Paşa [C3] (67 gold, 1★).
 
 - Tatar mızraklı süvarileri [C5] ×3 (316 gold, value 512, ×1.62)
 - Balkan deli [C4] ×2 (540 gold, value 744, ×1.38)
@@ -949,7 +949,7 @@ Staff general: Koca Hüsrev Mehmed Paşa [C3] (67 gold).
 
 ### [1806] 9. Osmanlı — balanced: efficiency 1.341, cost 9,999, value 13,408, 30 cards, 6,378 men
 
-Staff general: Koca Hüsrev Mehmed Paşa [C3] (67 gold).
+Staff general: Koca Hüsrev Mehmed Paşa [C3] (67 gold, 1★).
 
 - Tatar mızraklı süvarileri [C5] ×3 (316 gold, value 512, ×1.62)
 - Balkan deli [C4] ×2 (540 gold, value 744, ×1.38)
@@ -974,7 +974,7 @@ Staff general: Koca Hüsrev Mehmed Paşa [C3] (67 gold).
 
 ### 9. Heiliges Römisches Reich — max value: efficiency 1.347, cost 10,000, value 13,466, 28 cards, 9,984 men
 
-Staff general: Carl-Joseph Hadik von Futak (1 gold).
+Staff general: Eugène-Guillaume d'Argenteau (1 gold, 0★).
 
 - Dragoner Nr. 26 'Johann' [C3] ×1 (1011 gold, value 1224, ×1.21)
 - Dragoner Nr. 39 'Waldeck' [C3] ×1 (844 gold, value 1000, ×1.18)
@@ -1005,7 +1005,7 @@ Staff general: Carl-Joseph Hadik von Futak (1 gold).
 
 ### 9. Heiliges Römisches Reich — balanced: efficiency 1.323, cost 9,988, value 13,213, 26 cards, 8,846 men
 
-Staff general: Carl-Joseph Hadik von Futak (1 gold).
+Staff general: Eugène-Guillaume d'Argenteau (1 gold, 0★).
 
 - Dragoner Nr. 3 'Kaiser Franz' [C3] ×1 (1251 gold, value 1430, ×1.14)
 - Dragoner Nr. 26 'Johann' [C3] ×1 (1011 gold, value 1224, ×1.21)
@@ -1035,7 +1035,7 @@ Staff general: Carl-Joseph Hadik von Futak (1 gold).
 
 ### [1804] 8. Rossiya (Kavkaz, Dunau) — max value: efficiency 1.328, cost 10,000, value 13,282, 30 cards, 6,321 men
 
-Staff general: Pyotr Kotlyarevski (76 gold).
+Staff general: Pyotr Kotlyarevski (76 gold, 1★).
 
 - ¤ 5-i yeger 'Orany' [G5] ×2 (366 gold, value 534, ×1.46)
 - ¤ Moushketyeri 'Voronej' [L3] ×2 (415 gold, value 517, ×1.25)
@@ -1059,7 +1059,7 @@ Staff general: Pyotr Kotlyarevski (76 gold).
 
 ### [1804] 8. Rossiya (Kavkaz, Dunau) — balanced: efficiency 1.317, cost 9,998, value 13,163, 30 cards, 5,472 men
 
-Staff general: Pyotr Kotlyarevski (76 gold).
+Staff general: Pyotr Kotlyarevski (76 gold, 1★).
 
 - ¤ 5-i yeger 'Orany' [G5] ×2 (366 gold, value 534, ×1.46)
 - ¤ Moushketyeri 'Voronej' [L3] ×2 (415 gold, value 517, ×1.25)
@@ -1086,7 +1086,7 @@ Staff general: Pyotr Kotlyarevski (76 gold).
 
 ### [1809] 7. Polska, sojusznicy — max value: efficiency 1.326, cost 9,994, value 13,255, 20 cards, 3,316 men
 
-Staff general: Jérôme Bonaparte (1 gold).
+Staff general: Jérôme Bonaparte (1 gold, 0★).
 
 - 2. Ułani 'Tyszkewicz' [C4] ×1 (1485 gold, value 1734, ×1.17)
 - 3. Ułani 'Łączyński' [C4] ×1 (1333 gold, value 1588, ×1.19)
@@ -1109,7 +1109,7 @@ Staff general: Jérôme Bonaparte (1 gold).
 
 ### [1809] 7. Polska, sojusznicy — balanced: efficiency 1.310, cost 10,000, value 13,099, 20 cards, 2,880 men
 
-Staff general: Jérôme Bonaparte (1 gold).
+Staff general: Jérôme Bonaparte (1 gold, 0★).
 
 - 2. Ułani 'Tyszkewicz' [C4] ×1 (1485 gold, value 1734, ×1.17)
 - 3. Ułani 'Łączyński' [C4] ×1 (1333 gold, value 1588, ×1.19)
@@ -1132,7 +1132,7 @@ Staff general: Jérôme Bonaparte (1 gold).
 
 ### [1807] 9. Rossiya (Polsha) — max value: efficiency 1.323, cost 9,998, value 13,222, 17 cards, 3,156 men
 
-Staff general: Dmitri Dokhtourov (67 gold).
+Staff general: Fyodor Buxhoeveden (67 gold, 1★).
 
 - Pyotr Kaptsevitch (20-funtovie yedinorogi) [F2] ×1 (2496 gold, value 3387, ×1.36) — combat general
 - 12-funtovaya pekhotnaya artilleriya [F3] ×1 (1917 gold, value 2531, ×1.32)
@@ -1150,7 +1150,7 @@ Staff general: Dmitri Dokhtourov (67 gold).
 
 ### [1807] 9. Rossiya (Polsha) — balanced: efficiency 1.320, cost 10,000, value 13,202, 16 cards, 2,634 men
 
-Staff general: Dmitri Dokhtourov (67 gold).
+Staff general: Fyodor Buxhoeveden (67 gold, 1★).
 
 - Pyotr Kaptsevitch (20-funtovie yedinorogi) [F2] ×1 (2496 gold, value 3387, ×1.36) — combat general
 - 12-funtovaya pekhotnaya artilleriya [F3] ×1 (1917 gold, value 2531, ×1.32)
@@ -1167,7 +1167,7 @@ Staff general: Dmitri Dokhtourov (67 gold).
 
 ### [1811] 8. France (Espagne) — max value: efficiency 1.322, cost 9,999, value 13,220, 30 cards, 5,710 men
 
-Staff general: Jean-Baptiste Bessières [C2] (76 gold).
+Staff general: Jean-Baptiste Bessières [C2] (76 gold, 1★).
 
 - ¤ Grenadiers de la Garde Royale [G4] ×2 (629 gold, value 749, ×1.19)
 - ¤ 82e de ligne 'Saintonge' [L4] ×3 (277 gold, value 392, ×1.42)
@@ -1192,7 +1192,7 @@ Staff general: Jean-Baptiste Bessières [C2] (76 gold).
 
 ### [1811] 8. France (Espagne) — balanced: efficiency 1.297, cost 9,997, value 12,966, 30 cards, 5,014 men
 
-Staff general: Jean-Baptiste Bessières [C2] (76 gold).
+Staff general: Jean-Baptiste Bessières [C2] (76 gold, 1★).
 
 - ¤ 82e de ligne 'Saintonge' [L4] ×3 (277 gold, value 392, ×1.42)
 - Hussards de la Garde Royale [C4] ×1 (890 gold, value 1003, ×1.13)
@@ -1219,7 +1219,7 @@ Staff general: Jean-Baptiste Bessières [C2] (76 gold).
 
 ### [1809] 9. España — max value: efficiency 1.305, cost 9,994, value 13,039, 30 cards, 9,216 men
 
-Staff general: Antoine de Malet de Coupigny (1 gold).
+Staff general: Antoine de Malet de Coupigny (1 gold, 0★).
 
 - Caballeria de Linea Farnesio [C2] ×1 (1130 gold, value 1272, ×1.13)
 - Martín García-Loygorri e Ichaso (Artillería a Pie de 8 Libras) [F3] ×1 (988 gold, value 1241, ×1.26) — combat general
@@ -1248,7 +1248,7 @@ Staff general: Antoine de Malet de Coupigny (1 gold).
 
 ### [1809] 9. España — balanced: efficiency 1.298, cost 10,000, value 12,977, 30 cards, 8,846 men
 
-Staff general: Antoine de Malet de Coupigny (1 gold).
+Staff general: Antoine de Malet de Coupigny (1 gold, 0★).
 
 - Caballeria de Linea Farnesio [C2] ×1 (1130 gold, value 1272, ×1.13)
 - Martín García-Loygorri e Ichaso (Artillería a Pie de 8 Libras) [F3] ×1 (988 gold, value 1241, ×1.26) — combat general
@@ -1277,7 +1277,7 @@ Staff general: Antoine de Malet de Coupigny (1 gold).
 
 ### [1805] 9. Rossiya, Österreich — max value: efficiency 1.297, cost 10,000, value 12,974, 12 cards, 2,692 men
 
-Staff general: Aleksandr I (1 gold).
+Staff general: Aleksandr I (1 gold, 0★).
 
 - Kavalergard [C2] ×1 (2534 gold, value 3205, ×1.26)
 - Leyb-gvardyi Konnyi [C2] ×1 (2344 gold, value 2955, ×1.26)
@@ -1295,7 +1295,7 @@ Staff general: Aleksandr I (1 gold).
 
 ### [1814] 8. Österreich (Frankreich) — max value: efficiency 1.284, cost 9,995, value 12,839, 13 cards, 1,453 men
 
-Staff general: Vinzenz Ferrerius von Bianchi (199 gold).
+Staff general: Vinzenz Ferrerius von Bianchi (199 gold, 2★).
 
 - Husaren Nr. 12 'Palatin' [C4] ×2 (842 gold, value 1123, ×1.33)
 - Chevaulegers Nr. 3 'O'Reilly' [C4] ×2 (767 gold, value 1033, ×1.35)
@@ -1308,7 +1308,7 @@ Staff general: Vinzenz Ferrerius von Bianchi (199 gold).
 
 ### [1814] 8. Österreich (Frankreich) — balanced: efficiency 1.260, cost 10,000, value 12,602, 14 cards, 1,405 men
 
-Staff general: Vinzenz Ferrerius von Bianchi (199 gold).
+Staff general: Vinzenz Ferrerius von Bianchi (199 gold, 2★).
 
 - Husaren Nr. 12 'Palatin' [C4] ×2 (842 gold, value 1123, ×1.33)
 - Chevaulegers Nr. 3 'O'Reilly' [C4] ×2 (767 gold, value 1033, ×1.35)
@@ -1323,7 +1323,7 @@ Staff general: Vinzenz Ferrerius von Bianchi (199 gold).
 
 ### [1814] 9. Rossiya (Frantsiya) — max value: efficiency 1.270, cost 9,999, value 12,701, 9 cards, 1,432 men
 
-Staff general: Konstantin Pavlovitch Romanov (69 gold).
+Staff general: Konstantin Pavlovitch Romanov (69 gold, 1★).
 
 - Kavalergard [C1] ×1 (2174 gold, value 2731, ×1.26)
 - Garde du Corps [C1] ×1 (1801 gold, value 2320, ×1.29)
@@ -1337,7 +1337,7 @@ Staff general: Konstantin Pavlovitch Romanov (69 gold).
 
 ### [1814] 9. Rossiya (Frantsiya) — balanced: efficiency 1.261, cost 9,989, value 12,594, 10 cards, 1,334 men
 
-Staff general: Konstantin Pavlovitch Romanov (69 gold).
+Staff general: Konstantin Pavlovitch Romanov (69 gold, 1★).
 
 - Kavalergard [C1] ×1 (2174 gold, value 2731, ×1.26)
 - Garde du Corps [C1] ×1 (1801 gold, value 2320, ×1.29)
@@ -1352,7 +1352,7 @@ Staff general: Konstantin Pavlovitch Romanov (69 gold).
 
 ### [1799] 9. Österreich (Italien) — max value: efficiency 1.263, cost 9,991, value 12,620, 24 cards, 3,613 men
 
-Staff general: Anton von Zach (1 gold).
+Staff general: Anton von Zach (1 gold, 0★).
 
 - Donskie kazaki 'Pozdeyev' [C5] ×2 (724 gold, value 890, ×1.23)
 - ¤ Ungarische Linieninfanterie Nr. 51 'Splényi, Légion infernale' [L3] ×2 (364 gold, value 454, ×1.25)
@@ -1376,7 +1376,7 @@ Staff general: Anton von Zach (1 gold).
 
 ### [1799] 9. Österreich (Italien) — balanced: efficiency 1.260, cost 9,997, value 12,600, 24 cards, 3,512 men
 
-Staff general: Anton von Zach (1 gold).
+Staff general: Anton von Zach (1 gold, 0★).
 
 - Donskie kazaki 'Pozdeyev' [C5] ×2 (724 gold, value 890, ×1.23)
 - ¤ Ungarische Linieninfanterie Nr. 51 'Splényi, Légion infernale' [L3] ×2 (364 gold, value 454, ×1.25)
@@ -1400,7 +1400,7 @@ Staff general: Anton von Zach (1 gold).
 
 ### [1812] 8. Russkiy narod — max value: efficiency 1.198, cost 9,999, value 11,977, 16 cards, 1,480 men
 
-Staff general: Denis Davidov [C5] (526 gold).
+Staff general: Matvei Platov [C5] (526 gold, 4★).
 
 - Otryad lyegkikh voisk [GS3] ×6 (570 gold, value 742, ×1.30)
 - Donskie kazaki 'Kireyev II' [C5] ×1 (736 gold, value 908, ×1.23)
@@ -1416,7 +1416,7 @@ Staff general: Denis Davidov [C5] (526 gold).
 
 ### [1812] 8. Russkiy narod — balanced: efficiency 1.184, cost 9,997, value 11,834, 17 cards, 1,436 men
 
-Staff general: Denis Davidov [C5] (526 gold).
+Staff general: Matvei Platov [C5] (526 gold, 4★).
 
 - Otryad lyegkikh voisk [GS3] ×6 (570 gold, value 742, ×1.30)
 - Donskie kazaki 'Kireyev II' [C5] ×1 (736 gold, value 908, ×1.23)
@@ -1433,7 +1433,7 @@ Staff general: Denis Davidov [C5] (526 gold).
 
 ### 8. Piemonte-Sardegna (1796) — max value: efficiency 1.181, cost 10,000, value 11,810, 26 cards, 6,725 men
 
-Staff general: Giuseppe Felice 'Conti di Vitale' (1 gold).
+Staff general: Giuseppe Felice 'Conti di Vitale' (1 gold, 0★).
 
 - Jean-Baptiste Chaffardon (Dragoni del Piemonte 'Dragons jaunes') [C3] ×1 (1183 gold, value 1300, ×1.10) — combat general
 - ¤ Grenadiers du Roi 'Bellegarde' [G4] ×1 (1067 gold, value 1169, ×1.10)
@@ -1457,7 +1457,7 @@ Staff general: Giuseppe Felice 'Conti di Vitale' (1 gold).
 
 ### 8. Piemonte-Sardegna (1796) — balanced: efficiency 1.168, cost 9,996, value 11,671, 27 cards, 6,841 men
 
-Staff general: Giuseppe Felice 'Conti di Vitale' (1 gold).
+Staff general: Giuseppe Felice 'Conti di Vitale' (1 gold, 0★).
 
 - Jean-Baptiste Chaffardon (Dragoni del Piemonte 'Dragons jaunes') [C3] ×1 (1183 gold, value 1300, ×1.10) — combat general
 - Cavalleria di Savoia [C2] ×1 (1168 gold, value 1270, ×1.09)
@@ -1483,7 +1483,7 @@ Staff general: Giuseppe Felice 'Conti di Vitale' (1 gold).
 
 ### [1809] 8. Österreich (Tyrol) — max value: efficiency 1.174, cost 10,000, value 11,737, 30 cards, 9,596 men
 
-Staff general: Johann Baptist von Österreich (1 gold).
+Staff general: Johann Baptist von Österreich (1 gold, 0★).
 
 - Grenzinfanterie Nr. 4 'Szulin' [L4] ×2 (482 gold, value 649, ×1.35)
 - Grenzinfanterie Nr. 3 'Ogulin' [L4] ×2 (527 gold, value 624, ×1.18)
@@ -1508,7 +1508,7 @@ Staff general: Johann Baptist von Österreich (1 gold).
 
 ### [1809] 8. Österreich (Tyrol) — balanced: efficiency 1.121, cost 10,000, value 11,212, 21 cards, 5,890 men
 
-Staff general: Johann Baptist von Österreich (1 gold).
+Staff general: Johann Baptist von Österreich (1 gold, 0★).
 
 - Husaren Nr. 9 'Frimont' [C4] ×2 (990 gold, value 961, ×0.97)
 - Grenzinfanterie Nr. 4 'Szulin' [L4] ×2 (482 gold, value 649, ×1.35)
@@ -1527,7 +1527,7 @@ Staff general: Johann Baptist von Österreich (1 gold).
 
 ### 7. Danmark — max value: efficiency 1.164, cost 9,992, value 11,634, 29 cards, 4,964 men
 
-Staff general: Ernst Peymann (1 gold).
+Staff general: Ernst Peymann (1 gold, 0★).
 
 - Livgarden til hest [C2] ×1 (1249 gold, value 1300, ×1.04)
 - Fyenske lette dragoner 'Hessen' [C4] ×1 (890 gold, value 924, ×1.04)
@@ -1555,7 +1555,7 @@ Staff general: Ernst Peymann (1 gold).
 
 ### [1800] 8. Osmanlı, UK — max value: efficiency 1.160, cost 10,000, value 11,602, 25 cards, 5,810 men
 
-Staff general: Abdullah Paşa al-Azm [C3] (199 gold).
+Staff general: David Baird (199 gold, 2★).
 
 - Tüfekçi avcı erleri [S2] ×5 (248 gold, value 280, ×1.13)
 - Libyalı milisler [C5] ×2 (556 gold, value 645, ×1.16)
@@ -1577,7 +1577,7 @@ Staff general: Abdullah Paşa al-Azm [C3] (199 gold).
 
 ### [1805] 8. Österreich — max value: efficiency 1.126, cost 10,000, value 11,259, 20 cards, 4,024 men
 
-Staff general: Ferdinand von Österreich-Este (1 gold).
+Staff general: Ferdinand von Österreich-Este (1 gold, 0★).
 
 - Husaren Nr. 2 'Erzherzog Joseph' [C4] ×2 (787 gold, value 864, ×1.10)
 - Husaren Nr. 3 'Erzherzog Ferdinand' [C4] ×2 (771 gold, value 846, ×1.10)
@@ -1594,7 +1594,7 @@ Staff general: Ferdinand von Österreich-Este (1 gold).
 
 ### [1805] 8. Österreich — balanced: efficiency 1.121, cost 10,000, value 11,208, 22 cards, 4,068 men
 
-Staff general: Ferdinand von Österreich-Este (1 gold).
+Staff general: Ferdinand von Österreich-Este (1 gold, 0★).
 
 - Husaren Nr. 3 'Erzherzog Ferdinand' [C4] ×2 (771 gold, value 846, ×1.10)
 - Chevaulegers Nr. 4 'Vincent, les Blancs-Becs' [C4] ×1 (1084 gold, value 1194, ×1.10)
@@ -1613,7 +1613,7 @@ Staff general: Ferdinand von Österreich-Este (1 gold).
 
 ### [1812] 7. UK (USA) — max value: efficiency 1.116, cost 9,994, value 11,156, 22 cards, 3,302 men
 
-Staff general: George Prévost (87 gold).
+Staff general: George Prévost (87 gold, 1★).
 
 - Odawa 'Ottawa' [GS2] ×4 (483 gold, value 619, ×1.28)
 - Lenape 'Delaware' [GS2] ×4 (364 gold, value 510, ×1.40)
@@ -1628,7 +1628,7 @@ Staff general: George Prévost (87 gold).
 
 ### [1812] 7. UK (USA) — balanced: efficiency 1.105, cost 9,999, value 11,050, 23 cards, 3,444 men
 
-Staff general: George Prévost (87 gold).
+Staff general: George Prévost (87 gold, 1★).
 
 - Odawa 'Ottawa' [GS2] ×4 (483 gold, value 619, ×1.28)
 - Lenape 'Delaware' [GS2] ×4 (364 gold, value 510, ×1.40)
@@ -1646,7 +1646,7 @@ Staff general: George Prévost (87 gold).
 
 ### [1814] 8. Preußen (Frankreich) — max value: efficiency 1.081, cost 10,000, value 10,810, 27 cards, 6,208 men
 
-Staff general: Gebhard von Blücher (358 gold).
+Staff general: Gebhard von Blücher (358 gold, 3★).
 
 - Sächsische Kürassiere [C1] ×1 (1418 gold, value 1502, ×1.06)
 - 2. Ostpreußische Kürassiere 'Grossfürst Constantin' [C2] ×1 (1017 gold, value 1194, ×1.17)
@@ -1673,7 +1673,7 @@ Staff general: Gebhard von Blücher (358 gold).
 
 ### [1814] 8. Preußen (Frankreich) — balanced: efficiency 1.073, cost 10,000, value 10,732, 30 cards, 6,480 men
 
-Staff general: Gebhard von Blücher (358 gold).
+Staff general: Gebhard von Blücher (358 gold, 3★).
 
 - ¤ 5. Linieninfanterie '4. Ostpreußische' [L3] ×3 (405 gold, value 430, ×1.06)
 - 2. Ostpreußische Kürassiere 'Grossfürst Constantin' [C2] ×1 (1017 gold, value 1194, ×1.17)
@@ -1701,7 +1701,7 @@ Staff general: Gebhard von Blücher (358 gold).
 
 ### [1815] 6. Österreich (Italien) — max value: efficiency 1.080, cost 10,000, value 10,799, 20 cards, 7,946 men
 
-Staff general: Ferdinand von Bubna und Littitz (266 gold).
+Staff general: Ferdinand von Bubna und Littitz (266 gold, 2★).
 
 - ¤ Ungarische Linieninfanterie Nr. 19 'Hessen-Homburg' [L4] ×3 (1015 gold, value 1106, ×1.09)
 - Grenzinfanterie Nr. 13 'Wallachisch-Illyrische' [L5] ×2 (599 gold, value 655, ×1.09)
@@ -1716,7 +1716,7 @@ Staff general: Ferdinand von Bubna und Littitz (266 gold).
 
 ### [1815] 6. Österreich (Italien) — balanced: efficiency 0.965, cost 9,982, value 9,628, 20 cards, 6,220 men
 
-Staff general: Ferdinand von Bubna und Littitz (266 gold).
+Staff general: Ferdinand von Bubna und Littitz (266 gold, 2★).
 
 - Grenzinfanterie Nr. 13 'Wallachisch-Illyrische' [L5] ×2 (599 gold, value 655, ×1.09)
 - Grenzinfanterie Nr. 12 'Deutschbanater' [L5] ×2 (578 gold, value 640, ×1.11)
@@ -1732,7 +1732,7 @@ Staff general: Ferdinand von Bubna und Littitz (266 gold).
 
 ### 8. UK (Spain, 1808) — max value: efficiency 1.051, cost 9,983, value 10,496, 16 cards, 2,628 men
 
-Staff general: Alexander Mackenzie Fraser (1 gold).
+Staff general: Alexander Mackenzie Fraser (1 gold, 0★).
 
 - 15th (the King's) Hussars 'the Tabs' [C4] ×1 (1452 gold, value 1490, ×1.03)
 - 10th (Prince of Wales') Hussars 'Baker's light bobs' [C4] ×1 (1352 gold, value 1377, ×1.02)
@@ -1753,7 +1753,7 @@ Staff general: Alexander Mackenzie Fraser (1 gold).
 
 ### [1812] 7. France (Russie-Sud) — max value: efficiency 1.049, cost 10,000, value 10,492, 30 cards, 6,766 men
 
-Staff general: Pierre Augereau 'Fier brigand' (1 gold).
+Staff general: Pierre Augereau 'Fier brigand' (1 gold, 0★).
 
 - Husaren Nr. 7 'Liechtenstein' [C4] ×2 (949 gold, value 943, ×0.99)
 - 35. Französische leichte Infanterie '1er Méditerranée' [L4] ×3 (487 gold, value 483, ×0.99)
@@ -1778,7 +1778,7 @@ Staff general: Pierre Augereau 'Fier brigand' (1 gold).
 
 ### [1812] 7. France (Russie-Sud) — balanced: efficiency 1.037, cost 9,994, value 10,367, 26 cards, 5,252 men
 
-Staff general: Pierre Augereau 'Fier brigand' (1 gold).
+Staff general: Pierre Augereau 'Fier brigand' (1 gold, 0★).
 
 - Husaren Nr. 7 'Liechtenstein' [C4] ×2 (949 gold, value 943, ×0.99)
 - 3-Pfünder Reitende Artillerie [H3] ×1 (1134 gold, value 1103, ×0.97)
@@ -1801,7 +1801,7 @@ Staff general: Pierre Augereau 'Fier brigand' (1 gold).
 
 ### [1808] 7. Rossiya (Finlyandiya) — max value: efficiency 1.043, cost 10,000, value 10,425, 19 cards, 4,261 men
 
-Staff general: Nikolai Kamenski (87 gold).
+Staff general: Nikolai Kamenski (87 gold, 1★).
 
 - Moushketyeri 'Libau' [L3] ×3 (407 gold, value 432, ×1.06)
 - Moushketyeri 'Perm' [L4] ×2 (571 gold, value 592, ×1.04)
@@ -1820,7 +1820,7 @@ Staff general: Nikolai Kamenski (87 gold).
 
 ### [1808] 7. Rossiya (Finlyandiya) — balanced: efficiency 1.035, cost 9,997, value 10,351, 19 cards, 4,173 men
 
-Staff general: Nikolai Kamenski (87 gold).
+Staff general: Nikolai Kamenski (87 gold, 1★).
 
 - Moushketyeri 'Libau' [L3] ×3 (407 gold, value 432, ×1.06)
 - Moushketyeri 'Perm' [L4] ×2 (571 gold, value 592, ×1.04)
@@ -1839,7 +1839,7 @@ Staff general: Nikolai Kamenski (87 gold).
 
 ### [1799] 7. Österreich (Schwaben) — max value: efficiency 1.039, cost 9,997, value 10,388, 13 cards, 2,540 men
 
-Staff general: Aleksandr Rimsky-Korsakov (1 gold).
+Staff general: Paul Kray 'le Fils cher de la Victoire' (1 gold, 0★).
 
 - Kürassiere Nr. 7 'Lothringen' [C1] ×1 (1911 gold, value 1893, ×0.99)
 - Kürassiere Nr. 11 'Anspach' [C1] ×1 (1748 gold, value 1740, ×1.00)
@@ -1854,7 +1854,7 @@ Staff general: Aleksandr Rimsky-Korsakov (1 gold).
 
 ### [1799] 7. Österreich (Schwaben) — balanced: efficiency 1.033, cost 9,998, value 10,330, 13 cards, 2,414 men
 
-Staff general: Aleksandr Rimsky-Korsakov (1 gold).
+Staff general: Paul Kray 'le Fils cher de la Victoire' (1 gold, 0★).
 
 - Kürassiere Nr. 7 'Lothringen' [C1] ×1 (1911 gold, value 1893, ×0.99)
 - Kürassiere Nr. 11 'Anspach' [C1] ×1 (1748 gold, value 1740, ×1.00)
@@ -1871,7 +1871,7 @@ Staff general: Aleksandr Rimsky-Korsakov (1 gold).
 
 ### [1804] 7. Irānshahr — max value: efficiency 1.030, cost 10,000, value 10,304, 28 cards, 4,328 men
 
-Staff general: Abbas Mīrzā [C3] (87 gold).
+Staff general: Abbas Mīrzā [C3] (87 gold, 1★).
 
 - Eshaar Kewar [S3] ×7 (361 gold, value 371, ×1.03)
 - Zud u Khward nzam [S2] ×6 (362 gold, value 376, ×1.04)
@@ -1882,7 +1882,7 @@ Staff general: Abbas Mīrzā [C3] (87 gold).
 
 ### [1804] 7. Irānshahr — balanced: efficiency 1.023, cost 9,999, value 10,225, 30 cards, 4,392 men
 
-Staff general: Abbas Mīrzā [C3] (87 gold).
+Staff general: Abbas Mīrzā [C3] (87 gold, 1★).
 
 - Eshaar Kewar [S3] ×7 (361 gold, value 371, ×1.03)
 - Zud u Khward nzam [S2] ×6 (362 gold, value 376, ×1.04)
@@ -1896,7 +1896,7 @@ Staff general: Abbas Mīrzā [C3] (87 gold).
 
 ### [1811] 7. España — max value: efficiency 1.019, cost 10,000, value 10,186, 26 cards, 6,634 men
 
-Staff general: Manuel de la Peña 'Doña Manuela' (1 gold).
+Staff general: Miguel Iranzo y Peralta (1 gold, 0★).
 
 - ¤ Andrés García Diego (2. Infantería de Iberia 'el Temido') [L4] ×1 (1223 gold, value 1213, ×0.99) — combat general
 - ¤ Infantería de la Unión 'el León de San Payo' [L3] ×1 (831 gold, value 838, ×1.01)
@@ -1925,7 +1925,7 @@ Staff general: Manuel de la Peña 'Doña Manuela' (1 gold).
 
 ### [1811] 7. España — balanced: efficiency 1.004, cost 9,998, value 10,038, 28 cards, 6,312 men
 
-Staff general: Manuel de la Peña 'Doña Manuela' (1 gold).
+Staff general: Miguel Iranzo y Peralta (1 gold, 0★).
 
 - ¤ Infantería de la Unión 'el León de San Payo' [L3] ×1 (831 gold, value 838, ×1.01)
 - Caballeria de Linea de España [C2] ×1 (867 gold, value 799, ×0.92)
@@ -1954,7 +1954,7 @@ Staff general: Manuel de la Peña 'Doña Manuela' (1 gold).
 
 ### [1805] 6. France (Tyrol) — max value: efficiency 1.006, cost 9,998, value 10,062, 23 cards, 3,740 men
 
-Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (1 gold).
+Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (1 gold, 0★).
 
 - 28e dragons 'les Gros hussards' [C3] ×3 (631 gold, value 595, ×0.94)
 - ¤ 25e léger 'Champagne' [L6] ×3 (479 gold, value 501, ×1.05)
@@ -1971,7 +1971,7 @@ Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (1 gold).
 
 ### [1805] 6. France (Tyrol) — balanced: efficiency 0.992, cost 9,999, value 9,920, 24 cards, 3,522 men
 
-Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (1 gold).
+Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (1 gold, 0★).
 
 - 28e dragons 'les Gros hussards' [C3] ×3 (631 gold, value 595, ×0.94)
 - ¤ 25e léger 'Champagne' [L6] ×3 (479 gold, value 501, ×1.05)
@@ -1988,7 +1988,7 @@ Staff general: Jean-Baptiste Bernadotte 'Sergent Belle-Jambe' (1 gold).
 
 ### [1815] 7. Preußen (Flandern) — max value: efficiency 0.987, cost 9,994, value 9,862, 18 cards, 2,958 men
 
-Staff general: Georg von Pirch (87 gold).
+Staff general: Georg von Pirch (87 gold, 1★).
 
 - 5. Pommersche Husaren [C4] ×1 (1466 gold, value 1380, ×0.94)
 - 3. Brandenburgische Husaren [C4] ×1 (941 gold, value 930, ×0.99)
@@ -2010,7 +2010,7 @@ Staff general: Georg von Pirch (87 gold).
 
 ### [1799] 7. France (Hollande) — max value: efficiency 0.982, cost 9,997, value 9,815, 25 cards, 5,140 men
 
-Staff general: Guillaume Brune (601 gold).
+Staff general: Guillaume Brune (601 gold, 4★).
 
 - 49e de ligne 'l'En-Avant' [L4] ×3 (349 gold, value 371, ×1.06)
 - 22e de ligne 'la Phalange marseillaise' [L4] ×3 (330 gold, value 347, ×1.05)
@@ -2030,7 +2030,7 @@ Staff general: Guillaume Brune (601 gold).
 
 ### [1799] 7. France (Hollande) — balanced: efficiency 0.972, cost 9,992, value 9,717, 26 cards, 4,873 men
 
-Staff general: Guillaume Brune (601 gold).
+Staff general: Guillaume Brune (601 gold, 4★).
 
 - ¤ 42e de ligne 'Ille-et-Vilaine' [L4] ×3 (442 gold, value 456, ×1.03)
 - 49e de ligne 'l'En-Avant' [L4] ×3 (349 gold, value 371, ×1.06)
@@ -2052,7 +2052,7 @@ Staff general: Guillaume Brune (601 gold).
 
 ### [1808] 7. Sverige (Finska) — max value: efficiency 0.978, cost 9,984, value 9,766, 13 cards, 2,762 men
 
-Staff general: Wilhelm Klingspor (87 gold).
+Staff general: Wilhelm Klingspor (87 gold, 1★).
 
 - ¤ Svenska gardet [G3] ×1 (1935 gold, value 1834, ×0.95)
 - ¤ Lätt infanteri 'Savolax' [L5] ×2 (996 gold, value 905, ×0.91)
@@ -2067,7 +2067,7 @@ Staff general: Wilhelm Klingspor (87 gold).
 
 ### [1808] 7. Sverige (Finska) — balanced: efficiency 0.973, cost 9,999, value 9,730, 15 cards, 2,638 men
 
-Staff general: Wilhelm Klingspor (87 gold).
+Staff general: Wilhelm Klingspor (87 gold, 1★).
 
 - ¤ Svenska gardet [G3] ×1 (1935 gold, value 1834, ×0.95)
 - Lätta dragoner 'Skåne' [C4] ×1 (1573 gold, value 1474, ×0.94)
@@ -2084,7 +2084,7 @@ Staff general: Wilhelm Klingspor (87 gold).
 
 ### [1812] 6. France (Russie-Nord) — max value: efficiency 0.968, cost 9,989, value 9,669, 25 cards, 4,888 men
 
-Staff general: Nicolas Oudinot 'le Bayard moderne' (1 gold).
+Staff general: Nicolas Oudinot 'le Bayard moderne' (1 gold, 0★).
 
 - 11e léger 'les Corses' [L5] ×3 (625 gold, value 572, ×0.91)
 - 1. Kombinierte Husaren '1. Leib' [C4] ×1 (1165 gold, value 1058, ×0.91)
@@ -2106,7 +2106,7 @@ Staff general: Nicolas Oudinot 'le Bayard moderne' (1 gold).
 
 ### [1812] 6. France (Russie-Nord) — balanced: efficiency 0.958, cost 9,995, value 9,580, 23 cards, 3,376 men
 
-Staff general: Nicolas Oudinot 'le Bayard moderne' (1 gold).
+Staff general: Nicolas Oudinot 'le Bayard moderne' (1 gold, 0★).
 
 - 2./3. Reitende Batteries, 6-Pfünder 'Rentzell/Graumann' [H1] ×1 (1233 gold, value 1079, ×0.88)
 - 1. Kombinierte Husaren '1. Leib' [C4] ×1 (1165 gold, value 1058, ×0.91)
@@ -2129,7 +2129,7 @@ Staff general: Nicolas Oudinot 'le Bayard moderne' (1 gold).
 
 ### [1799] 7. UK, Russia (Helder) — max value: efficiency 0.944, cost 9,996, value 9,434, 14 cards, 2,983 men
 
-Staff general: Frederick of York and Albany (1 gold).
+Staff general: Frederick of York and Albany (1 gold, 0★).
 
 - Grenadyori 'Jerebtsov, Fanagoria' [G4] ×2 (952 gold, value 896, ×0.94)
 - ¤ Foot Guards Combined Grenadiers [G2] ×1 (1594 gold, value 1507, ×0.95)
@@ -2147,7 +2147,7 @@ Staff general: Frederick of York and Albany (1 gold).
 
 ### [1799] 7. UK, Russia (Helder) — balanced: efficiency 0.943, cost 9,980, value 9,410, 13 cards, 2,275 men
 
-Staff general: Frederick of York and Albany (1 gold).
+Staff general: Frederick of York and Albany (1 gold, 0★).
 
 - Grenadyori 'Jerebtsov, Fanagoria' [G4] ×2 (952 gold, value 896, ×0.94)
 - ¤ Foot Guards Combined Grenadiers [G2] ×1 (1594 gold, value 1507, ×0.95)
@@ -2163,7 +2163,7 @@ Staff general: Frederick of York and Albany (1 gold).
 
 ### [1815] 6. Napoli — max value: efficiency 0.908, cost 9,998, value 9,076, 21 cards, 6,998 men
 
-Staff general: Giuseppe Lechi (101 gold).
+Staff general: Giuseppe Lechi (101 gold, 1★).
 
 - 2° fanteria leggera 'Campania' [L4] ×3 (573 gold, value 506, ×0.88)
 - ¤ 2° fanteria di linea 'della Regina' [L3] ×2 (585 gold, value 493, ×0.84)
@@ -2181,7 +2181,7 @@ Staff general: Giuseppe Lechi (101 gold).
 
 ### [1815] 6. Napoli — balanced: efficiency 0.868, cost 10,000, value 8,679, 22 cards, 6,104 men
 
-Staff general: Giuseppe Lechi (101 gold).
+Staff general: Giuseppe Lechi (101 gold, 1★).
 
 - 2° fanteria leggera 'Campania' [L4] ×3 (573 gold, value 506, ×0.88)
 - 4° fanteria leggera 'Puglia' [L4] ×3 (344 gold, value 387, ×1.13)
@@ -2200,7 +2200,7 @@ Staff general: Giuseppe Lechi (101 gold).
 
 ### [1809] 6. UK (Walcheren) — max value: efficiency 0.817, cost 9,999, value 8,169, 14 cards, 2,699 men
 
-Staff general: John Pitt 'the Late Lord' (1 gold).
+Staff general: John Pitt 'the Late Lord' (1 gold, 0★).
 
 - 2nd Dragoon Guards (Queen's Bays) 'the Rusty Buckles' [C2] ×1 (1400 gold, value 1047, ×0.75)
 - Howitzers [F5] ×1 (718 gold, value 899, ×1.25)
@@ -2219,7 +2219,7 @@ Staff general: John Pitt 'the Late Lord' (1 gold).
 
 ### [1809] 6. UK (Walcheren) — balanced: efficiency 0.808, cost 9,991, value 8,073, 13 cards, 1,960 men
 
-Staff general: John Pitt 'the Late Lord' (1 gold).
+Staff general: John Pitt 'the Late Lord' (1 gold, 0★).
 
 - 3rd (King's Own) Dragoons 'Bland’s Dragoons' [C2] ×1 (1685 gold, value 1237, ×0.73)
 - 2nd Dragoon Guards (Queen's Bays) 'the Rusty Buckles' [C2] ×1 (1400 gold, value 1047, ×0.75)
@@ -2237,7 +2237,7 @@ Staff general: John Pitt 'the Late Lord' (1 gold).
 
 ### [1798] 5. France (Irlande) — max value: efficiency 0.714, cost 9,983, value 7,131, 15 cards, 3,229 men
 
-Staff general: James Napper Tandy (122 gold).
+Staff general: James Napper Tandy (122 gold, 1★).
 
 - Spartan band 'Spartach' [GS2] ×3 (576 gold, value 441, ×0.76)
 - ¤ 70e de ligne 'l'Accroche' [L5] ×1 (1508 gold, value 1013, ×0.67)
@@ -2251,7 +2251,7 @@ Staff general: James Napper Tandy (122 gold).
 
 ### [1798] 5. UK (Ireland) — max value: efficiency 0.686, cost 9,997, value 6,860, 19 cards, 4,932 men
 
-Staff general: Charles Cornwallis (1 gold).
+Staff general: Charles Cornwallis (1 gold, 0★).
 
 - 5th (Princess Charlotte of Wales') Dragoon Guards 'the Green Horse' [C2] ×1 (2814 gold, value 1855, ×0.66)
 - ¤ 100th (Highland) Foot 'the Gordons' [G2] ×1 (1634 gold, value 1137, ×0.70)
@@ -2297,4 +2297,4 @@ Possible bargains the models cannot value reliably: they overprice units this si
 | [1812] 7. UK (USA) | Montréal fencibles [L2] | 484 | 373 | 381 (×1.02) |
 | [1806] 9. Osmanlı | Köylüler [L1] | 482 | 102 | 102 (×1.00) |
 
-*Runtime 32 s.*
+*Runtime 37 s.*

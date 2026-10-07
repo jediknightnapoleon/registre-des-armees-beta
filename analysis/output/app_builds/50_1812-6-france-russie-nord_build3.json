@@ -2,8 +2,8 @@
   "saveFormatVersion": 2,
   "id": "b_ce_50_3",
   "name": "[1812] 6. France (Russie-Nord) — build 3: highest-star staff general (3★), max value, eff 0.92 (1.23 for its rating)",
-  "createdAt": "2026-10-07T21:03:20Z",
-  "updatedAt": "2026-10-07T21:03:20Z",
+  "createdAt": "2026-10-07T21:25:04Z",
+  "updatedAt": "2026-10-07T21:25:04Z",
   "factionKey": "ntw3_tow_a11_x8_027",
   "armyCorpsName": "[1812] 6. France (Russie-Nord)",
   "instances": [
@@ -31,7 +31,7 @@
     "ntw3_inf_skirm_126_999_7127_tow_027",
     "ntw3_inf_line_125_125_2785_tow_027_com_1342"
   ],
-  "staffSlotUnitKey": "ntw3_gen_staff_125_3_0161_tow_027",
+  "staffSlotUnitKey": "ntw3_gen_staff_122_3_0158_tow_027",
   "config": {
     "density": "comfortable",
     "showCombatGenerals": true

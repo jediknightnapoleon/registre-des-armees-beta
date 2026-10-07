@@ -23,7 +23,12 @@ division discounts outside Army Corps):
 - foot artillery ≤ 2, horse artillery ≤ 1 (2 for a cavalry-only corps), heavy
   cavalry ≤ 10; a commander counts as its unit's class;
 - each unit's `unit_cap`, shared by its commander versions;
-- at most one general per unit.
+- at most one general per unit;
+- build 4 only ("four corps"): units from at most 4 source corps, as one
+  Theatre-of-War roll offers (NTW3AC.ToWFarmycorps, max_ac = 4). A unit's source
+  corps is the 4th part of its key (web/src/domain/tow.ts towSourceCorpsIdOf); the
+  staff general's corps counts too, so the optimiser chooses the staff general
+  jointly. Custom armies have no source corps and are unaffected.
 
 Two builds per army:
 - **max value:** no composition rule;
@@ -69,6 +74,12 @@ OUT = up.ROOT / "analysis" / "output"
 V4_CACHE = up.ROOT / "analysis" / ".cache" / "class_structure"
 BUDGET, MAX_CARDS, MAX_FOOT_ART, MAX_HEAVY_CAV = 10_000, 31, 2, 10
 MAX_UNITS = MAX_CARDS - 1          # the staff general takes one of the 31 cards (as the app counts)
+MAX_ROLL_CORPS = 4                 # NTW3AC.ToWFarmycorps: max_ac = 4
+
+
+def source_corps(unit_key: str) -> str | None:
+    """A ToW card's source corps (web/src/domain/tow.ts towSourceCorpsIdOf); None for Custom armies."""
+    return unit_key.split("_")[3] if "_tow_" in unit_key else None
 BIG_UNIT_MODELS = 240
 NORM_FACTION = "__reference__"
 
@@ -116,20 +127,21 @@ def main() -> int:
     for u in units:
         by_faction[u.faction].append({"kind": "unit", "key": u.key, "base": u.key, "name": u.name, "cls": u.unit_class,
                                       "arm": u.arm, "cost": u.cost, "value": value[(u.faction, u.key)],
-                                      "models": u.n, "men": 2 * u.n, "cap": caps[(u.faction, u.key)]})
+                                      "models": u.n, "men": 2 * u.n, "cap": caps[(u.faction, u.key)],
+                                      "corps": source_corps(u.key)})
     for i, r in enumerate(pairs.rows):
         by_faction[r["faction_key"]].append({"kind": "commander", "key": r["commander_unit_key"], "base": r["regular_unit_key"],
                                              "name": r["commander_name"], "cls": r["unit_class"], "arm": r["arm"],
                                              "cost": float(r["commander_price"]), "value": float(cmd_value[i]),
                                              "models": float(r["commander_men"]) / 2, "men": float(r["commander_men"]),
-                                             "cap": caps[(r["faction_key"], r["regular_unit_key"])]})
-    staff_cost = defaultdict(lambda: None)     # the army's cheapest staff general
-    staff_top = defaultdict(lambda: None)      # its highest-star staff general (cheapest on a tie)
+                                             "cap": caps[(r["faction_key"], r["regular_unit_key"])],
+                                             "corps": source_corps(r["regular_unit_key"])})
+    staff_of: dict[str, list[dict]] = defaultdict(list)
     for g in staff:
-        if staff_cost[g.faction] is None or g.cost < staff_cost[g.faction][0]:
-            staff_cost[g.faction] = (g.cost, g.name)
-        if staff_top[g.faction] is None or (-g.stars, g.cost) < (-staff_top[g.faction][2], staff_top[g.faction][0]):
-            staff_top[g.faction] = (g.cost, g.name, g.stars)
+        staff_of[g.faction].append({"key": g.key, "name": g.name, "cost": g.cost, "stars": g.stars,
+                                    "corps": source_corps(g.key)})
+    cheapest = {f: min(gs, key=lambda g: (g["cost"], g["key"])) for f, gs in staff_of.items()}
+    top_star = {f: min(gs, key=lambda g: (-g["stars"], g["cost"], g["key"])) for f, gs in staff_of.items()}
     army_of = {u.faction: (u.corps, u.rating, u.side) for u in units}
 
     results, big_units = [], []
@@ -137,23 +149,23 @@ def main() -> int:
         big_units += [(army_of[faction][0], c) for c in cards if c["kind"] == "unit" and c["models"] > BIG_UNIT_MODELS]
         cards = [c for c in cards if c["models"] <= BIG_UNIT_MODELS]
         cavalry_only = not any(c["arm"] == "infantry" for c in cards)
-        has_staff = staff_cost[faction] is not None
         best_counts = None
-        for variant in ("max value", "balanced", "runner-up", "top staff"):
+        for variant in ("max value", "balanced", "runner-up", "top staff", "four corps"):
             # runner-up: the best max-value build other than the best one — at least one copy
             # fewer among the best build's cards, so it differs in at least one unit.
             # top staff: the max-value build with the army's highest-star staff general instead.
-            general = staff_top[faction] if variant == "top staff" else staff_cost[faction]
-            sol = solve(cards, general[0] if has_staff else None, cavalry_only,
-                        "max value" if variant == "top staff" else variant,
-                        exclude=best_counts if variant == "runner-up" else None)
+            # four corps: units from at most 4 source corps, staff general chosen jointly.
+            options = {"top staff": [top_star[faction]], "four corps": staff_of[faction]}.get(variant, [cheapest[faction]])
+            sol = solve(cards, options, cavalry_only, "max value" if variant in ("top staff", "four corps") else variant,
+                        exclude=best_counts if variant == "runner-up" else None,
+                        max_corps=MAX_ROLL_CORPS if variant == "four corps" else None)
             if sol is None:
                 continue
-            chosen, slot = sol
+            chosen, general = sol
             if variant == "max value":
                 position = {id(c): j for j, c in enumerate(cards)}
                 best_counts = [(position[id(c)], k) for c, k in chosen]
-            cost = sum(c["cost"] * k for c, k in chosen) + (general[0] if slot == "staff" else 0)
+            cost = sum(c["cost"] * k for c, k in chosen) + general["cost"]
             val = sum(c["value"] * k for c, k in chosen)
             arms = Counter()
             for c, k in chosen:
@@ -162,23 +174,30 @@ def main() -> int:
                             "side": army_of[faction][2], "variant": variant, "cost": cost, "value": val,
                             "efficiency": val / cost, "cards": sum(k for _, k in chosen),
                             "arms": arms, "men": sum(c["men"] * k for c, k in chosen), "chosen": chosen,
-                            "slot": f"{general[1]} ({general[0]} gold)"
-                                    + (f", {general[2]}★" if variant == "top staff" else "")})
+                            "staff": general,
+                            "corps": sorted({c["corps"] for c, _ in chosen if c["corps"]} | ({general["corps"]} - {None})),
+                            "slot": f"{general['name']} ({general['cost']} gold, {general['stars']}★)"})
         up.log(f"{army_of[faction][0][:40]:40} done", started)
 
     write_outputs(results, big_units, value, by_faction, started)
     return 0
 
 
-def solve(cards: list[dict], staff_cost: float | None, cavalry_only: bool, variant: str,
-          exclude: list[tuple[int, int]] | None = None):
-    """MILP: integer copies of each regular card, 0/1 per commander card, 0/1 for the staff general.
-    `exclude` = (card index, copies) of a build to rule out: at least one copy fewer among its cards."""
-    n = len(cards)
-    nv = n + 1                                         # last variable: staff general in the slot
-    c_obj = np.array([-c["value"] + 1e-6 * c["cost"] for c in cards] + [0.0])
+def solve(cards: list[dict], staff_options: list[dict], cavalry_only: bool, variant: str,
+          exclude: list[tuple[int, int]] | None = None, max_corps: int | None = None):
+    """MILP: integer copies of each regular card, 0/1 per commander card, 0/1 per staff-general
+    option (exactly one is taken), and with `max_corps` a 0/1 per source corps (at most that
+    many used; every taken card and the staff general must come from a used corps).
+    `exclude` = (card index, copies) of a build to rule out: at least one copy fewer among its cards.
+    Returns (chosen cards with copies, the staff general) or None."""
+    n, m = len(cards), len(staff_options)
+    corps = sorted({c["corps"] for c in cards if c["corps"]} | {g["corps"] for g in staff_options if g["corps"]}) \
+        if max_corps else []
+    nv = n + m + len(corps)
+    c_obj = np.array([-c["value"] + 1e-6 * c["cost"] for c in cards] + [1e-6 * g["cost"] for g in staff_options]
+                     + [0.0] * len(corps))
     ub = np.array([float(min(c["cap"] if c["cap"] > 0 else MAX_UNITS, MAX_UNITS)) if c["kind"] == "unit" else 1.0
-                   for c in cards] + [1.0 if staff_cost is not None else 0.0])
+                   for c in cards] + [1.0] * (m + len(corps)))
     integrality = np.ones(nv)
     rows, lo, hi = [], [], []
 
@@ -190,11 +209,21 @@ def solve(cards: list[dict], staff_cost: float | None, cavalry_only: bool, varia
         lo.append(low)
         hi.append(high)
 
-    staff = n
+    staff = range(n, n + m)
     cmd = [j for j, c in enumerate(cards) if c["kind"] == "commander"]
-    add({**{j: c["cost"] for j, c in enumerate(cards)}, staff: staff_cost or 0.0}, 0, BUDGET)
+    add({**{j: c["cost"] for j, c in enumerate(cards)}, **{n + i: g["cost"] for i, g in enumerate(staff_options)}},
+        0, BUDGET)
     add({j: 1.0 for j in range(n)}, 0, MAX_UNITS)          # 30 units + the staff general = 31 cards
-    add({staff: 1.0}, 1, 1)                                 # exactly one staff general
+    add({j: 1.0 for j in staff}, 1, 1)                      # exactly one staff general
+    if corps:
+        col = {cid: n + m + i for i, cid in enumerate(corps)}
+        add({col[cid]: 1.0 for cid in corps}, 0, max_corps)  # at most max_corps source corps
+        for j, c in enumerate(cards):
+            if c["corps"]:
+                add({j: 1.0, col[c["corps"]]: -ub[j]}, -np.inf, 0)   # a card only from a used corps
+        for i, g in enumerate(staff_options):
+            if g["corps"]:
+                add({n + i: 1.0, col[g["corps"]]: -1.0}, -np.inf, 0)
     if cmd:
         add({j: 1.0 for j in cmd}, 0, 1)                    # at most one combat general among the units
     for cls, cap in (("artillery_foot", MAX_FOOT_ART), ("artillery_horse", 2 if cavalry_only else 1), ("cavalry_heavy", MAX_HEAVY_CAV)):
@@ -224,7 +253,8 @@ def solve(cards: list[dict], staff_cost: float | None, cavalry_only: bool, varia
         return None
     x = np.round(res.x).astype(int)
     chosen = [(cards[j], int(x[j])) for j in range(n) if x[j] > 0]
-    return sorted(chosen, key=lambda t: -t[0]["value"] * t[1]), ("staff" if x[staff] else "commander")
+    general = next(staff_options[i] for i in range(m) if x[n + i])
+    return sorted(chosen, key=lambda t: -t[0]["value"] * t[1]), general
 
 
 def write_outputs(results, big_units, value, by_faction, started) -> None:
@@ -307,11 +337,14 @@ def write_outputs(results, big_units, value, by_faction, started) -> None:
     with open(OUT / "cost_effective_builds.csv", "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["army_corps_name", "faction_key", "variant", "card", "unit_key", "kind", "unit_class", "copies",
-                    "cost_each", "value_each", "value_per_cost"])
+                    "cost_each", "value_each", "value_per_cost", "staff_key", "staff_name", "staff_cost", "staff_stars",
+                    "source_corps"])
         for x in results:
+            g = x["staff"]
             for c, k in x["chosen"]:
                 w.writerow([x["army"], x["faction"], x["variant"], c["name"], c["key"], c["kind"], c["cls"], k,
-                            f"{c['cost']:.0f}", f"{c['value']:.1f}", f"{c['value'] / c['cost']:.3f}"])
+                            f"{c['cost']:.0f}", f"{c['value']:.1f}", f"{c['value'] / c['cost']:.3f}",
+                            g["key"], g["name"], g["cost"], g["stars"], " ".join(x["corps"])])
     up.log("done → analysis/output/cost_effective_builds.md, cost_effective_builds.csv", started)
 
 

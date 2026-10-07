@@ -28,3 +28,6 @@ __pycache__/
 # Analysis checkpoints (analysis/class_structure.py resumes from these)
 /analysis/.cache/
 /blind_study
+
+# Downloaded replay corpora (tools/download_redcoatz_replays.py; ~1-1.5 GB)
+/replays/

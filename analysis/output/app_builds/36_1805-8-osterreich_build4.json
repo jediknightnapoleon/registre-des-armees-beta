@@ -1,0 +1,36 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_36_4",
+  "name": "[1805] 8. Österreich — build 4: max value from ≤ 4 source corps (one roll), eff 1.13 (1.13 for its rating)",
+  "createdAt": "2026-10-07T21:25:04Z",
+  "updatedAt": "2026-10-07T21:25:04Z",
+  "factionKey": "ntw3_tow_b05_x8_007",
+  "armyCorpsName": "[1805] 8. Österreich",
+  "instances": [
+    "ntw3_cav_light_029_001_0813_tow_007",
+    "ntw3_cav_light_033_002_0829_tow_007",
+    "ntw3_cav_light_033_002_0829_tow_007",
+    "ntw3_cav_light_029_003_0814_tow_007",
+    "ntw3_cav_light_029_003_0814_tow_007",
+    "ntw3_cav_light_033_009_0831_tow_007",
+    "ntw3_cav_light_033_009_0831_tow_007_com_0361",
+    "ntw3_inf_grena_033_048_0375_tow_007",
+    "ntw3_inf_grena_029_045_0049_tow_007",
+    "ntw3_inf_light_030_009_1079_tow_007",
+    "ntw3_inf_light_030_009_1079_tow_007",
+    "ntw3_inf_grena_033_999_0373_tow_007",
+    "ntw3_inf_grena_033_999_0373_tow_007",
+    "ntw3_inf_grena_031_999_0366_tow_007",
+    "ntw3_inf_skirm_030_064_4693_tow_007",
+    "ntw3_inf_skirm_030_064_4693_tow_007",
+    "ntw3_inf_line_033_045_2120_tow_007",
+    "ntw3_inf_line_033_045_2120_tow_007",
+    "ntw3_inf_line_033_045_2120_tow_007",
+    "ntw3_inf_line_033_045_2120_tow_007"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_030_0_0060_tow_007",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

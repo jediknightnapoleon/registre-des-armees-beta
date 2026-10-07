@@ -1,0 +1,30 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_51_4",
+  "name": "[1799] 7. UK, Russia (Helder) — build 4: max value from ≤ 4 source corps (one roll), eff 0.94 (1.08 for its rating)",
+  "createdAt": "2026-10-07T21:25:04Z",
+  "updatedAt": "2026-10-07T21:25:04Z",
+  "factionKey": "ntw3_tow_b03_x8_043",
+  "armyCorpsName": "[1799] 7. UK, Russia (Helder)",
+  "instances": [
+    "ntw3_cav_light_023_018_0802_tow_043",
+    "ntw3_cav_light_023_015_0801_tow_043",
+    "ntw3_cav_light_023_999_0800_tow_043_com_1137",
+    "ntw3_inf_grena_023_999_5131_tow_043",
+    "ntw3_inf_grena_023_999_1979_tow_043",
+    "ntw3_inf_grena_023_999_1979_tow_043",
+    "ntw3_inf_grena_023_999_0339_tow_043",
+    "ntw3_inf_grena_023_999_0338_tow_043",
+    "ntw3_inf_grena_023_999_0340_tow_043",
+    "ntw3_inf_grena_023_999_0341_tow_043",
+    "ntw3_inf_grena_023_999_0342_tow_043",
+    "ntw3_inf_line_023_079_0335_tow_043",
+    "ntw3_inf_skirm_023_060_5135_tow_043",
+    "ntw3_inf_line_023_053_1984_tow_043"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_023_0_0048_tow_043",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

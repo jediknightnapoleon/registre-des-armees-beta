@@ -1,0 +1,56 @@
+faction_key,army_corps_name,kind,appearances,wins,losses,draws,unknown,winrate
+ntw3_tow_b13_x8_049,"[1811] 9. UK, Portugal",theatre_of_war,629,337,260,32,0,0.564
+ntw3_tow_a08_x8_047,[1809] 10. France (Autriche),theatre_of_war,543,242,284,17,0,0.460
+ntw3_tow_a17_x8_054,[1814] 8. France,theatre_of_war,492,243,228,21,0,0.516
+ntw3_tow_a12_x8_003,[1815] 9. France (Flandres),theatre_of_war,489,222,237,30,0,0.484
+ntw3_tow_b11_x8_013,[1812] 10. Rossiya,theatre_of_war,337,148,175,14,0,0.458
+ntw3_tow_a03_x8_032,[1799] 9. France (Italie),theatre_of_war,304,131,163,10,0,0.446
+ntw3_tow_a11_x8_028,[1812] 11. France (Russie-Centre),theatre_of_war,289,139,136,14,0,0.505
+ntw3_tow_a09_x8_021,[1809] 10. France (Espagne),theatre_of_war,250,110,130,10,0,0.458
+ntw3_tow_b12_x8_012,"[1815] 9. UK, Nederlanden",theatre_of_war,246,115,120,11,0,0.489
+ntw3_tow_a13_x8_022,[1811] 8. France (Espagne),theatre_of_war,241,100,132,9,0,0.431
+ntw3_tow_b17_x8_057,[1814] 9. Rossiya (Frantsiya),theatre_of_war,227,128,94,5,0,0.577
+ntw3_tow_b09_x8_020,"[1809] 10. UK, España, Portugal",theatre_of_war,222,119,99,4,0,0.546
+ntw3_tow_b08_x8_044,[1809] 10. Österreich,theatre_of_war,210,99,99,12,0,0.500
+ntw3_tow_b06_x8_008,[1807] 9. Rossiya (Polsha),theatre_of_war,203,103,95,5,0,0.520
+ntw3_tow_b06_x8_009,[1806] 10. Preußen,theatre_of_war,196,100,87,9,0,0.535
+ntw3_tow_b17_x8_056,[1814] 8. Preußen (Frankreich),theatre_of_war,194,95,90,9,0,0.514
+ntw3_tow_a05_x8_001,[1805] 11. France (Allemagne),theatre_of_war,171,85,79,7,0,0.518
+ntw3_tow_b09_x8_019,[1809] 9. España,theatre_of_war,161,80,73,8,0,0.523
+ntw3_tow_b05_x8_007,[1805] 8. Österreich,theatre_of_war,157,76,70,11,0,0.521
+ntw3_hre,9. Heiliges Römisches Reich,custom,156,100,53,3,0,0.654
+ntw3_tow_a03_x8_033,[1799] 9. France (Rhin),theatre_of_war,152,69,71,12,0,0.493
+ntw3_tow_c08_x8_048,"[1809] 7. Polska, sojusznicy",theatre_of_war,139,77,57,5,0,0.575
+ntw3_tow_b03_x8_039,[1799] 9. Österreich (Italien),theatre_of_war,127,68,51,8,0,0.571
+ntw3_tow_b15_x8_052,[1806] 9. Osmanlı,theatre_of_war,123,67,50,6,0,0.573
+ntw3_tow_a04_x8_005,[1798] 8. France (Égypte),theatre_of_war,122,57,62,3,0,0.479
+ntw3_tow_b17_x8_055,[1814] 8. Österreich (Frankreich),theatre_of_war,119,56,54,9,0,0.509
+denmark,7. Danmark,custom,114,49,60,5,0,0.450
+ntw3_tow_a11_x8_029,[1812] 7. France (Russie-Sud),theatre_of_war,106,47,54,5,0,0.465
+ntw3_tow_c10_x8_025,[1812] 7. United States,theatre_of_war,103,44,53,6,0,0.454
+ntw3_tow_a06_x8_002,[1806] 12. France (Prusse),theatre_of_war,94,37,53,4,0,0.411
+ntw3_tow_b05_x8_006,"[1805] 9. Rossiya, Österreich",theatre_of_war,90,45,41,4,0,0.523
+ntw3_tow_b04_x8_016,"[1800] 8. Osmanlı, UK",theatre_of_war,87,51,30,6,0,0.630
+france,9. France (1796),custom,81,40,39,2,0,0.506
+ntw3_tow_c15_x8_051,"[1804] 8. Rossiya (Kavkaz, Dunau)",theatre_of_war,79,32,46,1,0,0.410
+ntw3_tow_b07_x8_018,[1808] 7. Sverige (Finska),theatre_of_war,78,29,48,1,0,0.377
+britain,"8. UK (Spain, 1808)",custom,74,32,37,5,0,0.464
+ntw3_tow_a11_x8_027,[1812] 6. France (Russie-Nord),theatre_of_war,67,23,41,3,0,0.359
+ntw3_tow_b12_x8_011,[1815] 7. Preußen (Flandern),theatre_of_war,62,35,27,0,0,0.565
+piedmont_savoy,8. Piemonte-Sardegna (1796),custom,57,32,25,0,0,0.561
+ntw3_tow_a05_x8_004,[1805] 6. France (Tyrol),theatre_of_war,52,19,31,2,0,0.380
+ntw3_tow_b13_x8_050,[1811] 7. España,theatre_of_war,52,29,22,1,0,0.569
+ntw3_tow_a03_x8_040,[1799] 7. France (Hollande),theatre_of_war,50,22,27,1,0,0.449
+ntw3_tow_b14_x8_031,[1815] 6. Österreich (Italien),theatre_of_war,49,27,19,3,0,0.587
+ntw3_tow_c14_x8_030,[1815] 6. Napoli,theatre_of_war,45,20,24,1,0,0.455
+ntw3_tow_b10_x8_026,[1812] 7. UK (USA),theatre_of_war,44,25,18,1,0,0.581
+ntw3_tow_b04_x8_015,[1798] 8. Mamālīk,theatre_of_war,32,14,18,0,0,0.438
+ntw3_tow_b03_x8_042,[1799] 7. Österreich (Schwaben),theatre_of_war,25,15,10,0,0,0.600
+ntw3_tow_b08_x8_045,[1809] 6. UK (Walcheren),theatre_of_war,21,13,7,1,0,0.650
+ntw3_tow_b15_x8_053,[1804] 7. Irānshahr,theatre_of_war,21,14,6,1,0,0.700
+ntw3_tow_b08_x8_046,[1809] 8. Österreich (Tyrol),theatre_of_war,18,5,12,1,0,0.294
+ntw3_tow_b03_x8_043,"[1799] 7. UK, Russia (Helder)",theatre_of_war,17,7,10,0,0,0.412
+ntw3_tow_b11_x8_014,[1812] 8. Russkiy narod,theatre_of_war,11,5,6,0,0,0.455
+ntw3_tow_c07_x8_017,[1808] 7. Rossiya (Finlyandiya),theatre_of_war,11,4,7,0,0,0.364
+ntw3_tow_a03_x8_038,[1798] 5. France (Irlande),theatre_of_war,9,5,4,0,0,0.556
+ntw3_tow_b03_x8_041,[1798] 5. UK (Ireland),theatre_of_war,5,3,2,0,0,0.600

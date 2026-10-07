@@ -2,8 +2,8 @@
   "saveFormatVersion": 2,
   "id": "b_ce_31_3",
   "name": "[1812] 8. Russkiy narod — build 3: highest-star staff general (4★), max value, eff 1.20 (1.20 for its rating)",
-  "createdAt": "2026-10-07T21:03:20Z",
-  "updatedAt": "2026-10-07T21:03:20Z",
+  "createdAt": "2026-10-07T21:25:04Z",
+  "updatedAt": "2026-10-07T21:25:04Z",
   "factionKey": "ntw3_tow_b11_x8_014",
   "armyCorpsName": "[1812] 8. Russkiy narod",
   "instances": [
@@ -24,7 +24,7 @@
     "ntw3_inf_skirm_191_999_4855_tow_014",
     "ntw3_inf_skirm_191_999_4855_tow_014"
   ],
-  "staffSlotUnitKey": "ntw3_gen_staff_191_4_0218_tow_014",
+  "staffSlotUnitKey": "ntw3_gen_staff_189_4_0215_tow_014",
   "config": {
     "density": "comfortable",
     "showCombatGenerals": true
