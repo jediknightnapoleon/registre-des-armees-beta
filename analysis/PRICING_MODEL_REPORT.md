@@ -22,7 +22,9 @@ absolute error in gold; MAPE the mean absolute percentage error.
 | Cavalry | 1 724 | 727 | **34.9** | **4.6%** | 0.958 |
 | Artillery | 894 | 591 | **32.4** | **6.8%** | 0.955 |
 | Staff generals | 288 | 202 | **8.6** (2.3 with faction modifier) | 2.2% | 0.989 |
-| Commander variants (§7), given the regular price | 5 238 | — | **8.6** (blind-study model; 10.4 fallback) | 1.1% | — |
+| Commander variants (§7), given the true regular price | 5 238 | — | **8.6** | 1.1% | — |
+| Commander variants, regular price also predicted (combined, V4 base) | 5 238 | — | **28.4** | 3.8% | — |
+| **Every unit together** (V4 pipeline: V4 + combined commanders + staff T3) | 12 514 | — | **27.3** | 3.7% | — |
 
 How the error came down, MAE in gold (infantry / cavalry / artillery):
 
@@ -602,13 +604,56 @@ The model is not as complicated as its 26 parameters suggest. Its core is the
 weight per stat) already reach 11.8 gold. The remaining terms (per-man parts,
 squared changes, size changes, side) are refinements worth a few gold each.
 
-### 7.4 Status and remaining weak spots
+### 7.4 The final models and the price database
 
-- **Not wired in yet.** `commander_stage.py` still implements the step-1
-  stars-only form, and its outputs (`analysis/output/commander_stage_report.md`
-  and the commander CSVs) describe that model. Replacing it with the blind
-  model, and pairing that with the adopted and V4 regular prices, is the next
-  step.
+`analysis/commander_model.py` (report `analysis/output/commander_model_report.md`,
+coefficients `commander_model_coefficients.csv`) puts the pieces together. Each
+commander takes its regular unit's fold, and every prediction is out of fold.
+
+There are three models:
+
+1. **Base unit models:** the adopted model and V4 (§2–6), plus T3 for staff
+   generals.
+2. **Commander model given the true regular price:** the blind study's best
+   26-parameter model, fitted on actual regular prices. **CV MAE 8.6 gold
+   (1.1%)**; infantry 8.4, cavalry 7.9, artillery 13.7.
+3. **Combined model:** the same form, *refitted on the base model's
+   out-of-fold predicted regular price*, so that its parameters compensate for
+   the base model's systematic errors.
+
+| Commanders, MAE in gold | Adopted base | V4 base |
+| --- | --- | --- |
+| Naive chain (true-price parameters applied to the predicted price) | 31.6 | 29.1 |
+| **Combined (refitted on the predicted price)** | 31.0 | **28.4** |
+
+**The refit gains only about 0.7 gold.** The base models' errors are mostly
+specific to each unit, such as an army's own price for a class or a one-off
+price, rather than systematic. A commander inherits its regular unit's error,
+and no refit of the commander parameters can remove that. The headline combined
+model uses the V4 base.
+
+**The price database,** `analysis/output/price_database.csv`, has one row for
+every unit: 6 988 regular units, 5 238 commanders and 288 staff generals. Each
+row carries the true price and these out-of-fold predictions:
+- **`pred_adopted` / `pred_v4`:** from the base model for a regular unit, or
+  from the combined model for a commander.
+- **`pred_given_true_regular_price`:** commanders only.
+- **The errors** of each.
+
+It also records the commander's regular counterpart and its price. 22 rows
+pinned to train have no prediction.
+
+| Every unit (MAE, median % error) | Adopted pipeline | V4 pipeline |
+| --- | --- | --- |
+| Regular units | 27.4 / 34.9 / 32.4 (infantry / cavalry / artillery) | 24.9 / 32.8 / 27.1 |
+| Commanders | 28.1 / 35.9 / 41.6 | 25.7 / 34.1 / 33.2 |
+| Staff generals | 8.5 | 8.5 |
+| **All 12 492 predicted units** | **29.9 (4.0%)** | **27.3 (3.7%)** |
+
+`analysis/commander_stage.py` and its outputs keep the rejected stars-only
+model of §7.1, for the record.
+
+### 7.5 Remaining weak spots
 - **Commanders who lead a bigger unit** (70 rows) have MAE 82. Size changes
   follow no single rule: some elite units double in price, some militia barely
   change.
@@ -634,5 +679,7 @@ squared changes, size changes, side) are refinements worth a few gold each.
 | `analysis/calibre_onehot_results/`, `analysis/linear_results/` | The same pipeline with the cannon-type one-hot, and the fully linear model |
 | `analysis/commander_blind/REPORT.md` | §7.2: the commander blind study (brief, data, scripts, log in the same folder) |
 | `analysis/output/commander_within_unit_report.md` | §7.3: generals of the same unit compared (`analysis/commander_within_unit.py`) |
+| `analysis/output/commander_model_report.md`, `commander_model_coefficients.csv` | §7.4: the final commander and combined models (`analysis/commander_model.py`) |
+| **`analysis/output/price_database.csv`** | **Every unit: true price and every model's out-of-fold prediction (§7.4)** |
 | `analysis/output/commander_stage_report.md`, `commander_coefficients.csv`, `commander_predictions.csv` | §7.1: the rejected stars-only model (`analysis/commander_stage.py`) |
 | `analysis/HANDOFF.md` | How to work on this further |

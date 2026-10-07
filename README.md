@@ -53,6 +53,11 @@
 > alone cannot do this: the same stars buy different bonuses on different
 > units, and a bonus costs more on a more expensive unit. See §7 of the report.
 >
+> **Price database:** [`analysis/output/price_database.csv`](analysis/output/price_database.csv)
+> lists every unit (regular units, commanders, staff generals) with its true
+> price and each model's out-of-fold prediction. Over all 12 492 predicted units
+> the best pipeline is off by 27 gold (3.7% median).
+>
 > **Where to read:**
 >
 > | File | What |
@@ -72,6 +77,7 @@
 > python analysis/class_structure.py       # per-class alternative V4 (~40 min, resumable)
 > python analysis/build_commander_pairs.py # regular/commander pairs (seconds)
 > python analysis/commander_within_unit.py # generals of the same unit compared (seconds)
+> python analysis/commander_model.py        # commander + combined models, price database (~1 min)
 > ```
 >
 > The other `analysis/*.py` scripts are the individual experiments behind the

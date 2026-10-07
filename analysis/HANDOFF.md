@@ -253,10 +253,13 @@ to `analysis/output/`, and never changes committed outputs):
    - Corps number matters only as a scale on the premium, not as a level.
    - The within-unit study (`commander_within_unit.py`) explains why stars alone
      fail (`PRICING_MODEL_REPORT.md` §7.3).
-   - **Pending:** replace the stars-only form in `commander_stage.py` with the blind
-     model (the user to choose best or fallback), re-run it, and pair it with the
-     adopted and V4 regular prices. §7 and the README already describe the blind
-     model.
+   - **Done (user's choice: the best 26-parameter model):** `commander_model.py`
+     fits it on true regular prices (8.6) and, as the combined model, refits it on
+     each base model's out-of-fold predicted price (V4 base 28.4, adopted 31.0;
+     the refit gains only ~0.7 because base-model errors are unit-specific).
+   - It also writes `analysis/output/price_database.csv`: every unit with its true
+     price and every out-of-fold prediction. The user values this database.
+   - `commander_stage.py` stays as the record of the rejected stars-only form.
 
    Earlier notes on `commander_stage.py`:
    - Its parameters are learned from *true* regular prices (the user's choice), so
