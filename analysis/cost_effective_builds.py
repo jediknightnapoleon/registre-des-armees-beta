@@ -135,11 +135,18 @@ def main() -> int:
         cards = [c for c in cards if c["models"] <= BIG_UNIT_MODELS]
         cavalry_only = not any(c["arm"] == "infantry" for c in cards)
         has_staff = staff_cost[faction] is not None
-        for variant in ("max value", "balanced"):
-            sol = solve(cards, staff_cost[faction][0] if has_staff else None, cavalry_only, variant)
+        best_counts = None
+        for variant in ("max value", "balanced", "runner-up"):
+            # runner-up: the best max-value build other than the best one — at least one copy
+            # fewer among the best build's cards, so it differs in at least one unit.
+            sol = solve(cards, staff_cost[faction][0] if has_staff else None, cavalry_only, variant,
+                        exclude=best_counts if variant == "runner-up" else None)
             if sol is None:
                 continue
             chosen, slot = sol
+            if variant == "max value":
+                position = {id(c): j for j, c in enumerate(cards)}
+                best_counts = [(position[id(c)], k) for c, k in chosen]
             cost = sum(c["cost"] * k for c, k in chosen) + (staff_cost[faction][0] if slot == "staff" else 0)
             val = sum(c["value"] * k for c, k in chosen)
             arms = Counter()
@@ -156,8 +163,10 @@ def main() -> int:
     return 0
 
 
-def solve(cards: list[dict], staff_cost: float | None, cavalry_only: bool, variant: str):
-    """MILP: integer copies of each regular card, 0/1 per commander card, 0/1 for the staff general."""
+def solve(cards: list[dict], staff_cost: float | None, cavalry_only: bool, variant: str,
+          exclude: list[tuple[int, int]] | None = None):
+    """MILP: integer copies of each regular card, 0/1 per commander card, 0/1 for the staff general.
+    `exclude` = (card index, copies) of a build to rule out: at least one copy fewer among its cards."""
     n = len(cards)
     nv = n + 1                                         # last variable: staff general in the slot
     c_obj = np.array([-c["value"] + 1e-6 * c["cost"] for c in cards] + [0.0])
@@ -200,6 +209,8 @@ def solve(cards: list[dict], staff_cost: float | None, cavalry_only: bool, varia
             idx = [j for j, c in enumerate(cards) if c["arm"] == arm]
             if idx:
                 add({j: 1.0 for j in idx}, min(minimum, sum(ub[j] for j in idx)), MAX_CARDS)
+    if exclude:
+        add({j: 1.0 for j, _ in exclude}, 0, sum(k for _, k in exclude) - 1)
     res = milp(c_obj, constraints=LinearConstraint(np.array(rows), lo, hi), integrality=integrality,
                bounds=Bounds(np.zeros(nv), ub), options={"time_limit": 60})
     if res.x is None:

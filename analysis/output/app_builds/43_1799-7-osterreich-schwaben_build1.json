@@ -1,0 +1,29 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_43_1",
+  "name": "[1799] 7. Österreich (Schwaben) — build 1: max value, eff 1.04 (1.19 for its rating)",
+  "createdAt": "2026-10-07T20:34:11Z",
+  "updatedAt": "2026-10-07T20:34:11Z",
+  "factionKey": "ntw3_tow_b03_x8_042",
+  "armyCorpsName": "[1799] 7. Österreich (Schwaben)",
+  "instances": [
+    "ntw3_cav_heavy_019_007_0024_tow_042",
+    "ntw3_cav_heavy_020_011_0026_tow_042",
+    "ntw3_cav_heavy_019_999_0025_tow_042_com_1006",
+    "ntw3_cav_lance_019_001_0398_tow_042",
+    "ntw3_cav_light_020_006_0792_tow_042",
+    "ntw3_cav_lance_025_999_0412_tow_042",
+    "ntw3_cav_lance_025_999_0413_tow_042",
+    "ntw3_cav_lance_025_999_0413_tow_042",
+    "ntw3_inf_line_021_999_1964_tow_042",
+    "ntw3_inf_line_021_999_1964_tow_042",
+    "ntw3_inf_grena_020_999_0030_tow_042",
+    "ntw3_inf_skirm_019_999_4688_tow_042",
+    "ntw3_inf_skirm_019_999_4688_tow_042"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_019_0_0046_tow_042",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

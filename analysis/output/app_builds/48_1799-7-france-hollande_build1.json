@@ -1,0 +1,41 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_48_1",
+  "name": "[1799] 7. France (Hollande) — build 1: max value, eff 0.98 (1.12 for its rating)",
+  "createdAt": "2026-10-07T20:34:11Z",
+  "updatedAt": "2026-10-07T20:34:11Z",
+  "factionKey": "ntw3_tow_a03_x8_040",
+  "armyCorpsName": "[1799] 7. France (Hollande)",
+  "instances": [
+    "ntw3_cav_light_089_005_0966_tow_040",
+    "ntw3_cav_light_089_001_0967_tow_040",
+    "ntw3_inf_grena_089_003_5138_tow_040",
+    "ntw3_inf_grena_089_002_0473_tow_040",
+    "ntw3_inf_line_089_060_2535_tow_040",
+    "ntw3_inf_line_089_042_2528_tow_040_com_2951",
+    "ntw3_inf_line_089_042_2528_tow_040",
+    "ntw3_inf_line_089_042_2528_tow_040",
+    "ntw3_inf_line_089_054_2533_tow_040",
+    "ntw3_inf_line_089_054_2533_tow_040",
+    "ntw3_inf_light_089_004_1209_tow_040",
+    "ntw3_inf_line_089_049_2530_tow_040",
+    "ntw3_inf_line_089_049_2530_tow_040",
+    "ntw3_inf_line_089_049_2530_tow_040",
+    "ntw3_inf_line_089_022_2525_tow_040",
+    "ntw3_inf_line_089_022_2525_tow_040",
+    "ntw3_inf_line_089_022_2525_tow_040",
+    "ntw3_inf_line_089_051_2532_tow_040",
+    "ntw3_inf_line_089_098_2540_tow_040",
+    "ntw3_inf_line_089_098_2540_tow_040",
+    "ntw3_inf_line_089_098_2540_tow_040",
+    "ntw3_inf_line_089_090_2539_tow_040",
+    "ntw3_inf_line_089_090_2539_tow_040",
+    "ntw3_inf_line_089_015_2523_tow_040",
+    "ntw3_inf_line_089_015_2523_tow_040"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_089_4_0123_tow_040",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_14_1",
+  "name": "[1806] 10. Preußen — build 1: max value, eff 1.40 (1.12 for its rating)",
+  "createdAt": "2026-10-07T20:34:11Z",
+  "updatedAt": "2026-10-07T20:34:11Z",
+  "factionKey": "ntw3_tow_b06_x8_009",
+  "armyCorpsName": "[1806] 10. Preußen",
+  "instances": [
+    "ntw3_art_horse_038_006_0668_tow_009",
+    "ntw3_cav_heavy_034_012_0049_tow_009",
+    "ntw3_cav_heavy_035_009_0055_tow_009",
+    "ntw3_cav_stand_035_999_1586_tow_009_com_0713",
+    "ntw3_cav_stand_038_009_1585_tow_009",
+    "ntw3_inf_line_038_055_2167_tow_009",
+    "ntw3_inf_line_038_055_2167_tow_009",
+    "ntw3_inf_line_034_021_2132_tow_009",
+    "ntw3_inf_line_034_021_2132_tow_009",
+    "ntw3_inf_line_035_039_2144_tow_009",
+    "ntw3_inf_line_035_039_2144_tow_009",
+    "ntw3_inf_line_034_040_2140_tow_009",
+    "ntw3_inf_line_034_040_2140_tow_009",
+    "ntw3_inf_line_039_045_2171_tow_009",
+    "ntw3_inf_line_039_045_2171_tow_009",
+    "ntw3_inf_line_034_003_2139_tow_009",
+    "ntw3_inf_line_034_003_2139_tow_009",
+    "ntw3_inf_line_034_034_2136_tow_009",
+    "ntw3_inf_line_034_034_2136_tow_009",
+    "ntw3_inf_line_038_053_2165_tow_009",
+    "ntw3_inf_line_038_053_2165_tow_009",
+    "ntw3_inf_line_039_999_6099_tow_009",
+    "ntw3_inf_skirm_034_999_4697_tow_009",
+    "ntw3_inf_skirm_035_999_4698_tow_009"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_034_0_0067_tow_009",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}
