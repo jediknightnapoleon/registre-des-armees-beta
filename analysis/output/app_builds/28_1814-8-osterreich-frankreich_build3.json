@@ -1,0 +1,29 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_28_3",
+  "name": "[1814] 8. Österreich (Frankreich) — build 3: highest-star staff general (4★), max value, eff 1.24 (1.24 for its rating)",
+  "createdAt": "2026-10-07T21:03:20Z",
+  "updatedAt": "2026-10-07T21:03:20Z",
+  "factionKey": "ntw3_tow_b17_x8_055",
+  "armyCorpsName": "[1814] 8. Österreich (Frankreich)",
+  "instances": [
+    "ntw3_cav_light_279_012_2478_tow_055",
+    "ntw3_cav_light_279_012_2478_tow_055",
+    "ntw3_cav_light_296_001_2473_tow_055",
+    "ntw3_cav_light_287_004_2448_tow_055",
+    "ntw3_cav_light_279_003_2479_tow_055",
+    "ntw3_cav_light_279_003_2479_tow_055",
+    "ntw3_cav_light_296_002_2462_tow_055",
+    "ntw3_cav_light_296_002_2462_tow_055",
+    "ntw3_cav_light_287_007_2441_tow_055",
+    "ntw3_cav_light_287_007_2441_tow_055",
+    "ntw3_cav_light_296_011_2464_tow_055",
+    "ntw3_cav_light_296_002_2474_tow_055",
+    "ntw3_cav_light_287_999_2454_tow_055_com_1507"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_279_4_0597_tow_055",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

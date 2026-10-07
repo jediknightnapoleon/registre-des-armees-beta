@@ -1,0 +1,25 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_27_3",
+  "name": "[1805] 9. Rossiya, Österreich — build 3: highest-star staff general (7★), max value, eff 1.17 (1.04 for its rating)",
+  "createdAt": "2026-10-07T21:03:20Z",
+  "updatedAt": "2026-10-07T21:03:20Z",
+  "factionKey": "ntw3_tow_b05_x8_006",
+  "armyCorpsName": "[1805] 9. Rossiya, Österreich",
+  "instances": [
+    "ntw3_cav_heavy_028_999_0039_tow_006",
+    "ntw3_cav_heavy_028_999_0037_tow_006_com_0009",
+    "ntw3_cav_heavy_027_001_0038_tow_006",
+    "ntw3_cav_heavy_026_999_2334_tow_006",
+    "ntw3_inf_light_027_015_1072_tow_006",
+    "ntw3_inf_light_027_014_1071_tow_006",
+    "ntw3_inf_light_027_008_6107_tow_006",
+    "ntw3_inf_light_027_008_6107_tow_006",
+    "ntw3_inf_irreg_027_999_4252_tow_006"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_027_7_0056_tow_006",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

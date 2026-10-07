@@ -2297,4 +2297,4 @@ Possible bargains the models cannot value reliably: they overprice units this si
 | [1812] 7. UK (USA) | Montréal fencibles [L2] | 484 | 373 | 381 (×1.02) |
 | [1806] 9. Osmanlı | Köylüler [L1] | 482 | 102 | 102 (×1.00) |
 
-*Runtime 24 s.*
+*Runtime 32 s.*

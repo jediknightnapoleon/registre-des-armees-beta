@@ -123,10 +123,13 @@ def main() -> int:
                                              "cost": float(r["commander_price"]), "value": float(cmd_value[i]),
                                              "models": float(r["commander_men"]) / 2, "men": float(r["commander_men"]),
                                              "cap": caps[(r["faction_key"], r["regular_unit_key"])]})
-    staff_cost = defaultdict(lambda: None)
+    staff_cost = defaultdict(lambda: None)     # the army's cheapest staff general
+    staff_top = defaultdict(lambda: None)      # its highest-star staff general (cheapest on a tie)
     for g in staff:
         if staff_cost[g.faction] is None or g.cost < staff_cost[g.faction][0]:
             staff_cost[g.faction] = (g.cost, g.name)
+        if staff_top[g.faction] is None or (-g.stars, g.cost) < (-staff_top[g.faction][2], staff_top[g.faction][0]):
+            staff_top[g.faction] = (g.cost, g.name, g.stars)
     army_of = {u.faction: (u.corps, u.rating, u.side) for u in units}
 
     results, big_units = [], []
@@ -136,10 +139,13 @@ def main() -> int:
         cavalry_only = not any(c["arm"] == "infantry" for c in cards)
         has_staff = staff_cost[faction] is not None
         best_counts = None
-        for variant in ("max value", "balanced", "runner-up"):
+        for variant in ("max value", "balanced", "runner-up", "top staff"):
             # runner-up: the best max-value build other than the best one — at least one copy
             # fewer among the best build's cards, so it differs in at least one unit.
-            sol = solve(cards, staff_cost[faction][0] if has_staff else None, cavalry_only, variant,
+            # top staff: the max-value build with the army's highest-star staff general instead.
+            general = staff_top[faction] if variant == "top staff" else staff_cost[faction]
+            sol = solve(cards, general[0] if has_staff else None, cavalry_only,
+                        "max value" if variant == "top staff" else variant,
                         exclude=best_counts if variant == "runner-up" else None)
             if sol is None:
                 continue
@@ -147,7 +153,7 @@ def main() -> int:
             if variant == "max value":
                 position = {id(c): j for j, c in enumerate(cards)}
                 best_counts = [(position[id(c)], k) for c, k in chosen]
-            cost = sum(c["cost"] * k for c, k in chosen) + (staff_cost[faction][0] if slot == "staff" else 0)
+            cost = sum(c["cost"] * k for c, k in chosen) + (general[0] if slot == "staff" else 0)
             val = sum(c["value"] * k for c, k in chosen)
             arms = Counter()
             for c, k in chosen:
@@ -156,7 +162,8 @@ def main() -> int:
                             "side": army_of[faction][2], "variant": variant, "cost": cost, "value": val,
                             "efficiency": val / cost, "cards": sum(k for _, k in chosen),
                             "arms": arms, "men": sum(c["men"] * k for c, k in chosen), "chosen": chosen,
-                            "slot": f"{staff_cost[faction][1]} ({staff_cost[faction][0]} gold)"})
+                            "slot": f"{general[1]} ({general[0]} gold)"
+                                    + (f", {general[2]}★" if variant == "top staff" else "")})
         up.log(f"{army_of[faction][0][:40]:40} done", started)
 
     write_outputs(results, big_units, value, by_faction, started)

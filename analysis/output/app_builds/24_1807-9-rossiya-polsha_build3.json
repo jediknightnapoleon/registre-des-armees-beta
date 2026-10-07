@@ -1,0 +1,32 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_24_3",
+  "name": "[1807] 9. Rossiya (Polsha) — build 3: highest-star staff general (6★), max value, eff 1.23 (1.10 for its rating)",
+  "createdAt": "2026-10-07T21:03:20Z",
+  "updatedAt": "2026-10-07T21:03:20Z",
+  "factionKey": "ntw3_tow_b06_x8_008",
+  "armyCorpsName": "[1807] 9. Rossiya (Polsha)",
+  "instances": [
+    "ntw3_art_foot_042_020_0115_tow_008_com_0033",
+    "ntw3_art_foot_042_012_0114_tow_008",
+    "ntw3_art_horse_043_006_15886_tow_008",
+    "ntw3_inf_line_043_999_0088_tow_008",
+    "ntw3_inf_line_042_999_0087_tow_008",
+    "ntw3_inf_line_040_999_2179_tow_008",
+    "ntw3_inf_line_040_999_2179_tow_008",
+    "ntw3_inf_line_040_999_2179_tow_008",
+    "ntw3_inf_light_040_026_1115_tow_008",
+    "ntw3_inf_light_040_026_1115_tow_008",
+    "ntw3_inf_skirm_040_999_4700_tow_008",
+    "ntw3_inf_skirm_040_999_4700_tow_008",
+    "ntw3_inf_skirm_041_999_4701_tow_008",
+    "ntw3_inf_skirm_041_999_4701_tow_008",
+    "ntw3_inf_skirm_042_999_4702_tow_008",
+    "ntw3_inf_skirm_042_999_4702_tow_008"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_040_6_0073_tow_008",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

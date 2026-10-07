@@ -1,0 +1,40 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_35_3",
+  "name": "[1800] 8. Osmanlı, UK — build 3: highest-star staff general (4★), max value, eff 1.12 (1.12 for its rating)",
+  "createdAt": "2026-10-07T21:03:20Z",
+  "updatedAt": "2026-10-07T21:03:20Z",
+  "factionKey": "ntw3_tow_b04_x8_016",
+  "armyCorpsName": "[1800] 8. Osmanlı, UK",
+  "instances": [
+    "ntw3_art_foot_074_003_0197_tow_016",
+    "ntw3_art_foot_070_003_0189_tow_016",
+    "ntw3_cav_light_073_999_0920_tow_016",
+    "ntw3_cav_light_074_999_0924_tow_016",
+    "ntw3_cav_light_073_999_0922_tow_016",
+    "ntw3_cav_light_073_999_0922_tow_016",
+    "ntw3_cav_light_072_022_0918_tow_016",
+    "ntw3_inf_line_072_010_2401_tow_016",
+    "ntw3_inf_line_072_061_2402_tow_016",
+    "ntw3_inf_line_071_999_2390_tow_016",
+    "ntw3_inf_grena_071_999_0447_tow_016",
+    "ntw3_inf_grena_071_999_0447_tow_016",
+    "ntw3_inf_line_074_999_2413_tow_016",
+    "ntw3_inf_skirm_069_999_4745_tow_016",
+    "ntw3_inf_skirm_069_999_4745_tow_016",
+    "ntw3_inf_skirm_069_999_4745_tow_016",
+    "ntw3_inf_skirm_069_999_4745_tow_016",
+    "ntw3_inf_milit_069_999_4324_tow_016",
+    "ntw3_inf_line_069_999_2373_tow_016",
+    "ntw3_inf_line_069_999_2373_tow_016",
+    "ntw3_inf_line_071_044_2379_tow_016_com_1084",
+    "ntw3_inf_milit_073_999_4329_tow_016",
+    "ntw3_inf_milit_073_999_4329_tow_016",
+    "ntw3_inf_milit_073_999_4329_tow_016"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_071_4_0107_tow_016",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

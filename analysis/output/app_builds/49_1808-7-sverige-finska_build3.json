@@ -1,0 +1,29 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_49_3",
+  "name": "[1808] 7. Sverige (Finska) — build 3: highest-star staff general (5★), max value, eff 0.91 (1.04 for its rating)",
+  "createdAt": "2026-10-07T21:03:20Z",
+  "updatedAt": "2026-10-07T21:03:20Z",
+  "factionKey": "ntw3_tow_b07_x8_018",
+  "armyCorpsName": "[1808] 7. Sverige (Finska)",
+  "instances": [
+    "ntw3_art_foot_196_006_0441_tow_018",
+    "ntw3_cav_light_195_999_1789_tow_018",
+    "ntw3_cav_light_195_999_1184_tow_018",
+    "ntw3_cav_light_196_999_1187_tow_018",
+    "ntw3_inf_grena_196_999_0184_tow_018",
+    "ntw3_inf_light_194_999_1441_tow_018_com_0705",
+    "ntw3_inf_line_194_999_3195_tow_018",
+    "ntw3_inf_line_194_999_3195_tow_018",
+    "ntw3_inf_grena_195_999_0641_tow_018",
+    "ntw3_inf_grena_195_999_0641_tow_018",
+    "ntw3_inf_skirm_196_999_4863_tow_018",
+    "ntw3_inf_skirm_195_999_4861_tow_018",
+    "ntw3_inf_skirm_195_999_4861_tow_018"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_195_5_0222_tow_018",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

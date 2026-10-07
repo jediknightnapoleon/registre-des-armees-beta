@@ -1,0 +1,38 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_46_3",
+  "name": "[1805] 6. France (Tyrol) — build 3: highest-star staff general (4★), max value, eff 0.94 (1.26 for its rating)",
+  "createdAt": "2026-10-07T21:03:20Z",
+  "updatedAt": "2026-10-07T21:03:20Z",
+  "factionKey": "ntw3_tow_a05_x8_004",
+  "armyCorpsName": "[1805] 6. France (Tyrol)",
+  "instances": [
+    "ntw3_cav_stand_091_028_1635_tow_004",
+    "ntw3_cav_stand_091_028_1635_tow_004",
+    "ntw3_cav_stand_091_028_1635_tow_004",
+    "ntw3_inf_grena_091_056_0481_tow_004",
+    "ntw3_inf_light_095_025_1225_tow_004_com_0523",
+    "ntw3_inf_light_095_025_1225_tow_004",
+    "ntw3_inf_light_095_025_1225_tow_004",
+    "ntw3_inf_line_091_052_2559_tow_004",
+    "ntw3_inf_line_091_052_2559_tow_004",
+    "ntw3_inf_line_091_056_2561_tow_004",
+    "ntw3_inf_line_091_056_2561_tow_004",
+    "ntw3_inf_line_091_056_2561_tow_004",
+    "ntw3_inf_light_091_008_1216_tow_004",
+    "ntw3_inf_light_091_008_1216_tow_004",
+    "ntw3_inf_light_091_008_1216_tow_004",
+    "ntw3_inf_grena_098_092_0495_tow_004",
+    "ntw3_inf_line_091_013_2554_tow_004",
+    "ntw3_inf_line_091_013_2554_tow_004",
+    "ntw3_inf_line_098_002_2605_tow_004",
+    "ntw3_inf_line_091_081_2566_tow_004",
+    "ntw3_inf_line_091_081_2566_tow_004",
+    "ntw3_inf_line_091_081_2566_tow_004"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_095_4_0129_tow_004",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

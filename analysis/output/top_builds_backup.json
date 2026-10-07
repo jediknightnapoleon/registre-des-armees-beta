@@ -1,14 +1,14 @@
 {
   "format": "rda-builds-backup",
   "version": 2,
-  "exportedAt": "2026-10-07T20:34:11Z",
+  "exportedAt": "2026-10-07T21:03:20Z",
   "builds": [
     {
       "saveFormatVersion": 2,
       "id": "b_costeff_01",
       "name": "Cost-effective: [1806] 12. France (Prusse) (eff 2.03, 1.36 for its rating) — most value for 10 000",
-      "createdAt": "2026-10-07T20:34:11Z",
-      "updatedAt": "2026-10-07T20:34:11Z",
+      "createdAt": "2026-10-07T21:03:20Z",
+      "updatedAt": "2026-10-07T21:03:20Z",
       "factionKey": "ntw3_tow_a06_x8_002",
       "armyCorpsName": "[1806] 12. France (Prusse)",
       "instances": [
@@ -53,8 +53,8 @@
       "saveFormatVersion": 2,
       "id": "b_costeff_02",
       "name": "Cost-effective: [1812] 11. France (Russie-Centre) (eff 1.74, 1.27 for its rating) — most value for 10 000",
-      "createdAt": "2026-10-07T20:34:11Z",
-      "updatedAt": "2026-10-07T20:34:11Z",
+      "createdAt": "2026-10-07T21:03:20Z",
+      "updatedAt": "2026-10-07T21:03:20Z",
       "factionKey": "ntw3_tow_a11_x8_028",
       "armyCorpsName": "[1812] 11. France (Russie-Centre)",
       "instances": [
@@ -99,8 +99,8 @@
       "saveFormatVersion": 2,
       "id": "b_costeff_03",
       "name": "Cost-effective: [1805] 11. France (Allemagne) (eff 1.67, 1.21 for its rating) — most value for 10 000",
-      "createdAt": "2026-10-07T20:34:11Z",
-      "updatedAt": "2026-10-07T20:34:11Z",
+      "createdAt": "2026-10-07T21:03:20Z",
+      "updatedAt": "2026-10-07T21:03:20Z",
       "factionKey": "ntw3_tow_a05_x8_001",
       "armyCorpsName": "[1805] 11. France (Allemagne)",
       "instances": [
@@ -145,8 +145,8 @@
       "saveFormatVersion": 2,
       "id": "b_costeff_04",
       "name": "Cost-effective: [1809] 10. France (Espagne) (eff 1.62, 1.30 for its rating) — most value for 10 000",
-      "createdAt": "2026-10-07T20:34:11Z",
-      "updatedAt": "2026-10-07T20:34:11Z",
+      "createdAt": "2026-10-07T21:03:20Z",
+      "updatedAt": "2026-10-07T21:03:20Z",
       "factionKey": "ntw3_tow_a09_x8_021",
       "armyCorpsName": "[1809] 10. France (Espagne)",
       "instances": [
@@ -191,8 +191,8 @@
       "saveFormatVersion": 2,
       "id": "b_costeff_05",
       "name": "Cost-effective: [1809] 10. France (Autriche) (eff 1.61, 1.29 for its rating) — most value for 10 000",
-      "createdAt": "2026-10-07T20:34:11Z",
-      "updatedAt": "2026-10-07T20:34:11Z",
+      "createdAt": "2026-10-07T21:03:20Z",
+      "updatedAt": "2026-10-07T21:03:20Z",
       "factionKey": "ntw3_tow_a08_x8_047",
       "armyCorpsName": "[1809] 10. France (Autriche)",
       "instances": [
@@ -237,8 +237,8 @@
       "saveFormatVersion": 2,
       "id": "b_costeff_06",
       "name": "Cost-effective: [1812] 7. United States (eff 1.40, 1.60 for its rating) — best priced for its rating",
-      "createdAt": "2026-10-07T20:34:11Z",
-      "updatedAt": "2026-10-07T20:34:11Z",
+      "createdAt": "2026-10-07T21:03:20Z",
+      "updatedAt": "2026-10-07T21:03:20Z",
       "factionKey": "ntw3_tow_c10_x8_025",
       "armyCorpsName": "[1812] 7. United States",
       "instances": [
@@ -283,8 +283,8 @@
       "saveFormatVersion": 2,
       "id": "b_costeff_07",
       "name": "Cost-effective: [1809] 7. Polska, sojusznicy (eff 1.33, 1.52 for its rating) — best priced for its rating",
-      "createdAt": "2026-10-07T20:34:11Z",
-      "updatedAt": "2026-10-07T20:34:11Z",
+      "createdAt": "2026-10-07T21:03:20Z",
+      "updatedAt": "2026-10-07T21:03:20Z",
       "factionKey": "ntw3_tow_c08_x8_048",
       "armyCorpsName": "[1809] 7. Polska, sojusznicy",
       "instances": [
@@ -319,8 +319,8 @@
       "saveFormatVersion": 2,
       "id": "b_costeff_08",
       "name": "Cost-effective: [1815] 6. Österreich (Italien) (eff 1.08, 1.44 for its rating) — best priced for its rating",
-      "createdAt": "2026-10-07T20:34:11Z",
-      "updatedAt": "2026-10-07T20:34:11Z",
+      "createdAt": "2026-10-07T21:03:20Z",
+      "updatedAt": "2026-10-07T21:03:20Z",
       "factionKey": "ntw3_tow_b14_x8_031",
       "armyCorpsName": "[1815] 6. Österreich (Italien)",
       "instances": [
@@ -355,8 +355,8 @@
       "saveFormatVersion": 2,
       "id": "b_costeff_09",
       "name": "Cost-effective: [1798] 8. France (Égypte) (eff 1.44, 1.44 for its rating) — best priced for its rating",
-      "createdAt": "2026-10-07T20:34:11Z",
-      "updatedAt": "2026-10-07T20:34:11Z",
+      "createdAt": "2026-10-07T21:03:20Z",
+      "updatedAt": "2026-10-07T21:03:20Z",
       "factionKey": "ntw3_tow_a04_x8_005",
       "armyCorpsName": "[1798] 8. France (Égypte)",
       "instances": [
@@ -398,8 +398,8 @@
       "saveFormatVersion": 2,
       "id": "b_costeff_10",
       "name": "Cost-effective: [1814] 8. France (eff 1.43, 1.43 for its rating) — best priced for its rating",
-      "createdAt": "2026-10-07T20:34:11Z",
-      "updatedAt": "2026-10-07T20:34:11Z",
+      "createdAt": "2026-10-07T21:03:20Z",
+      "updatedAt": "2026-10-07T21:03:20Z",
       "factionKey": "ntw3_tow_a17_x8_054",
       "armyCorpsName": "[1814] 8. France",
       "instances": [
