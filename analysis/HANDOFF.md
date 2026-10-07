@@ -251,9 +251,12 @@ to `analysis/output/`, and never changes committed outputs):
      stars-only form in `commander_stage.py`. Verified by re-running it and by
      stricter grouping.
    - Corps number matters only as a scale on the premium, not as a level.
-   - **Pending:** replace the form in `commander_stage.py` with the blind model
-     (the user to choose best or fallback), re-run it, and update
-     `PRICING_MODEL_REPORT.md` §7 and the README.
+   - The within-unit study (`commander_within_unit.py`) explains why stars alone
+     fail (`PRICING_MODEL_REPORT.md` §7.3).
+   - **Pending:** replace the stars-only form in `commander_stage.py` with the blind
+     model (the user to choose best or fallback), re-run it, and pair it with the
+     adopted and V4 regular prices. §7 and the README already describe the blind
+     model.
 
    Earlier notes on `commander_stage.py`:
    - Its parameters are learned from *true* regular prices (the user's choice), so

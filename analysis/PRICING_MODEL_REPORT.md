@@ -22,7 +22,7 @@ absolute error in gold; MAPE the mean absolute percentage error.
 | Cavalry | 1 724 | 727 | **34.9** | **4.6%** | 0.958 |
 | Artillery | 894 | 591 | **32.4** | **6.8%** | 0.955 |
 | Staff generals | 288 | 202 | **8.6** (2.3 with faction modifier) | 2.2% | 0.989 |
-| Commander variants (§7) | 5 238 | — | **31.2** given the regular price; 40–46 from a model's price | 5.0% | — |
+| Commander variants (§7), given the regular price | 5 238 | — | **8.6** (blind-study model; 10.4 fallback) | 1.1% | — |
 
 How the error came down, MAE in gold (infantry / cavalry / artillery):
 
@@ -447,93 +447,173 @@ Keeping both versions is reasonable:
 
 ## 7. Commander variants (combat generals attached to a unit)
 
-5 238 rows of the ToW and Custom data are commander variants: a named general
-leading a regular unit. Every one has its regular counterpart in the same army,
-with the same unit key minus `_com_<id>`. The commander version has the same
-speed and, for all but 70 rows, the same size, with stats boosted by its
-command stars. Script: `analysis/commander_stage.py`; report:
-`analysis/output/commander_stage_report.md`.
+5 238 rows of the ToW and Custom data are **commander variants**: a named combat
+general leading a regular unit, sold as a card of its own.
 
-> **How this stage was built, and how to read it.** The functional form is the
-> blind study's. Its *parameters* are not learned the blind study's way:
->
-> - The blind study fitted them to its regular-unit model's **prediction** of
->   the commander's own row, so its commander parameters partly absorb that
->   model's errors.
-> - Here they are learned from the **true price** of each commander's regular
->   counterpart.
->
-> The commander stage is therefore a model in its own right, *commander price
-> given the regular unit's price*, and should be interpreted on its own,
-> independently of the adopted and V4 regular-unit models. Those models only
-> enter when the stage is applied to a regular price they have predicted.
+Every one has a **regular counterpart** in the same army, with the same unit key
+minus `_com_<id>`. All 5 238 match. The commander version has the same speed,
+and except for 70 rows the same size. Its stats are raised by the general.
 
-### 7.1 Equation
+This section prices a commander **given its regular unit's price P**. It is a
+model of its own, independent of the regular-unit models of §2–6. It was
+reached in three steps.
+
+### 7.1 Step 1: a stars-only model (rejected)
+
+The first model took the blind study's functional form (branch
+`blind-pricing-study`) and learned its parameters from the true regular price
+(`analysis/commander_stage.py`):
 
 $$
-\text{price}_{\text{cmd}} \;=\; \max\Bigl(1,\; (a + a_s)\cdot P \;+\; (b_s + \text{army}_f)\cdot\frac{8}{N}\Bigr),
-\qquad P = P_{\text{regular}}\cdot\Bigl(\frac{S_{\text{cmd}}}{S_{\text{regular}}}\Bigr)^{p}
+\text{price}_{\text{cmd}} = \max\Bigl(1,\; (a + a_s)\cdot P + (b_s + \text{army}_f)\cdot\tfrac{8}{N}\Bigr)
 $$
 
-- **s** is the number of command stars, capped at 5; 12 commanders have 6–7.
-- **P** is the regular counterpart's price scaled to the commander's unit
-  size, using the arm's size power *p* (1.09 / 0.75 / 1.3).
-  - It matters for 70 commanders who lead a bigger unit, e.g. a Guard battery
-    of 6 guns against the regular 3. Without the scaling their error is about
-    7× the rest.
-- **army_f** is a per-army premium, ridge-shrunk with the blind study's
-  penalty.
+- *s* is the number of stars, capped at 5.
+- P is scaled to the commander's unit size.
+- There are 67 parameters, including one premium per army.
 
-### 7.2 Parameters
+With P known, it is off by **31.2 gold** (5.0% median error). Pairing it with a
+regular-unit model's price gives 40–46.
 
-Full-data fit on actual regular prices:
+### 7.2 Step 2: a blind study on the pairs alone
 
-| Stars | Price slope a + a_s | b_s (gold, at N = 8) | Median commander ÷ regular price |
-| --- | --- | --- | --- |
-| 0 | 0.913 | −78.8 | 0.73 |
-| 1 | 0.933 | −38.9 | 0.85 |
-| 2 | 0.975 | +23.0 | 1.01 |
-| 3 | 1.003 | +75.9 | 1.15 |
-| 4 | 1.027 | +161.5 | 1.29 |
-| 5+ | 1.108 | +218.0 | 1.48 |
+The 31.2-gold error was suspiciously large for a question with so few inputs,
+so a second blind study was run. A fresh-context agent saw only the 5 238
+regular/commander pairs (`analysis/commander_blind/`; the data comes from
+`analysis/build_commander_pairs.py`). Its brief made no assumption about any
+input, including stars or the corps number.
 
-- **Reading:** a commander costs about 0.91–1.11 × the regular unit plus a star
-  term. That term runs from −79 gold with no stars to +218 with five, at N = 8,
-  and scales with 8/N.
-  - So a commander without stars is *cheaper* than the plain unit, and from 2
-    stars up dearer.
-  - Example: a 2-star commander of a 500-gold unit in a rating-8 army costs
-    0.975 × 500 + 23 ≈ 510 gold, plus the army premium.
-- **Army premiums:** median −1 gold, ranging from −53 (Russkiy narod) to +43
-  ([1815] 6. Österreich (Italien)). All coefficients are in
-  `analysis/output/commander_coefficients.csv`.
+**Its best model, 26 parameters: CV MAE 8.58 ± 0.64 gold, median error 1.1%.**
+`P` is the regular price, `Δx` = commander stat − regular stat, `men` = regular
+men and `r` = commander men ÷ regular men:
 
-### 7.3 Accuracy
+```
+C = max(1,  a[arm]·P + b[arm] − 3.97·imperial
+          + P·(0.0460·Δmorale − 0.00379·N·Δmorale + 0.0202·Δmelee_def + 0.0360·Δcharge
+               − 0.000674·Δ(charge²) + 0.0119·Δaccuracy + 0.00112·Δreload + 0.0000245·Δ(reload²))
+          + men·(0.0569·Δmorale + 0.00479·Δ(morale²) + 0.00855·Δreload)
+          + stars·(k[arm] + c[arm]·N)
+          + g[arm]·P·(r − 1) )
 
-Cross-validated: each commander takes its regular counterpart's fold, and is
-priced by parameters learned without its fold. MAE in gold, with the median
-absolute % error in brackets.
+a = 0.875 / 0.879 / 0.915 (infantry / cavalry / artillery);  b = −120 / −99 / −101
+k = 33.2 / 31.9 / 13.7;  c = −2.18 / −0.49 / +1.20;  g = 0.44 / 0.44 / 1.83
+```
 
-| P used | All | Infantry | Cavalry | Artillery |
-| --- | --- | --- | --- | --- |
-| **Actual regular price**: the commander stage on its own | **31.2 (5.0%)** | 27.5 | 39.7 | 34.9 |
-| Adopted model's price for the regular unit, unit in the data | 43.4 (6.9%) | 40.5 | 50.5 | 44.2 |
-| V4's price for the regular unit, unit in the data | 39.8 (6.3%) | 35.9 | 49.0 | 43.0 |
-| Adopted model, regular unit never seen (out of fold) | 45.9 (7.2%) | 42.5 | 53.5 | 49.7 |
-| V4, regular unit never seen (out of fold) | 42.4 (6.6%) | 38.1 | 51.7 | 47.3 |
+**Its hand-usable fallback, 16 parameters: CV MAE 10.4 gold, 1.4%:**
 
-- **Form variants:** the per-army premium (−3.1 ± 0.1 gold) and the
-  star-dependent slopes (−1.2 ± 0.2) each beat the simpler form by more than
-  one SE. The simplest form, a·P + b_s·8/N with 7 parameters, gives 35.5.
-- **Comparison with the blind study.** Its best model reaches 28.7 on the same
-  commander rows, better than our "unit in the data" chain at 39.8–43.4. Its
-  parameters were fitted to its own predictions, so they compensate for its
-  regular-unit model's errors; ours, learned from true prices, do not.
-  Comparing stage 2 on its own, ours is 31.2.
-- **Error grows with stars:** 17 gold at 0 stars, 126 at 5+. The few
-  high-star commanders (223 with 4 or more stars) carry individually priced
-  premiums. The largest misses are famous generals and Guard batteries, e.g.
-  Rayevski's 12-pdr battery at 2 594 against 2 128 predicted.
+```
+C = max(1, a[arm]·P + b[arm]
+         + P·(0.0286·Δmorale + 0.0238·Δmelee_def + 0.0168·Δcharge + 0.0117·Δaccuracy + 0.00339·Δreload)
+         + 0.135·men·Δmorale + stars·(41.2 − 2.07·N) + g·P·(r − 1))
+
+a = 0.889 / 0.870 / 0.907;  b = −125 / −103 / −104;  g = 0.44 (infantry, cavalry), 1.85 (artillery)
+```
+
+**How to read it:**
+- **Base.** A commander card starts at about **88% of the regular price minus
+  about 110 gold**. This is why commanders with 0–1 stars usually cost *less*
+  than the plain unit (median 0.74 and 0.85 of P). It is also why 33
+  commanders of cheap units cost 30 gold or less, 6 of them exactly 1 gold.
+- **Stat premium.** The general's stat bonuses are then charged mostly **as a
+  share of the unit's price**, plus a small per-man part for morale and reload.
+- **Star fee.** A small flat fee per star sits on top.
+- **Size.** Commanders who lead a bigger unit pay for the extra size.
+
+**What the corps number does:**
+- Once P is known it adds nothing as a level (−0.01 gold); P already contains it.
+- It only scales the star fee and the morale premium down in higher-numbered
+  corps. Dropping it entirely costs +1.8 gold.
+- The army itself adds nothing worth its 55 parameters. Of army-level inputs,
+  only imperial vs coalition is kept, at −4 gold.
+
+**Checks (main session):**
+- `analysis/commander_blind/src/final.py` reproduces the results exactly.
+- With folds grouped by general's name or by unit name across armies, the
+  results don't change (8.61 / 8.62), so duplicates don't flatter them.
+
+### 7.3 Step 3: why the stars-only model fails
+
+Within one regular unit, every commander shares the regular price, size, army
+and corps number. Comparing two generals **of the same unit** therefore shows
+exactly what a general adds, with no regular-price model in between. 444
+regular units have two or more same-size generals, giving 451 such comparisons
+(`analysis/commander_within_unit.py`, report
+`analysis/output/commander_within_unit_report.md`).
+
+**Stars set the general's stat bonus on a fixed schedule**
+(median over all commanders):
+
+| Stars | Morale | Melee attack | Melee defence | Charge | Accuracy | Reload |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0 | +1 | +0 | +1 | +0 | +0 | +5 |
+| 1 | +1 | +0 | +2 | +1 | +1 | +10 |
+| 2 | +2 | +1 | +3 | +1 | +1 | +15 |
+| 3 | +2 | +1 | +4 | +2 | +2 | +20 |
+| 4 | +3 | +2 | +5 | +2 | +2 | +25 |
+| 5 | +3 | +2 | +6 | +3 | +3 | +30 |
+
+Two generals of the same unit with the same stars cost exactly the same in 12
+of 13 cases.
+
+**But stars alone cannot price the difference between two generals of the
+same unit:**
+
+| Model of the within-unit price difference | Params | CV MAE (gold) |
+| --- | --- | --- |
+| No model | 0 | 73.8 |
+| Fixed amount per star | 1 | 35.9 |
+| Fixed amount per star × 8/N | 1 | 36.4 |
+| Separate amount for each star step, × 8/N | 6 | 30.5 |
+| Fee per star + share of P per star | 2 | 29.4 |
+| Fee per star + total stat bonus × P | 2 | 21.4 |
+| **Fee per star + each stat's bonus × P** | **7** | **11.8** |
+
+**Why the stars-only model fails:**
+
+1. **The price is mostly for the stat bonus, and that is charged as a share of
+   the unit's price.** A morale point on an expensive Guard battalion costs far
+   more gold than on a cheap militia unit. A fixed amount per star, or per
+   star level, puts the same gold on both, so it is wrong for nearly every unit.
+   - The raw step per star runs from 52 to 81 gold in the middle half of units.
+   - Moving the stat part from per-man to "share of P" cuts the error from 26
+     to 11.8.
+2. **The same stars buy different bonuses on different units.** The schedule
+   above is what a general *offers*. Units that cannot use a bonus don't get
+   it: no accuracy gain without firearms, for example.
+   - Pricing each stat's *realised* bonus × P (11.8) does far better than
+     pricing a "% of P per star" (29.4).
+   - This is what the star-based terms (a + a_s, b_s) in step 1 can never see.
+3. **The bonus is not linear in stars.** Morale and melee attack rise only at
+   every other star. So the raw price step alternates: 0→1★ adds a median 50
+   gold, 1→2★ adds 80, 2→3★ adds 68. A per-star slope averages over this.
+4. **The commander base is a discount, not a premium.** The card starts at
+   about 0.88·P − 110 gold, before any bonus. A model that treats stars as the
+   main driver has to fake that with a negative star term (step 1's
+   b₀ = −79) and per-army premiums. Those then absorb unit-to-unit differences
+   they cannot explain.
+
+**In short:** the game prices a general by what he does to *this* unit. That is
+his realised stat bonuses, valued at roughly a fixed share of the unit's price
+per point, on top of a discounted copy of the unit, plus a small fee per star.
+Stars only matter through the bonuses they grant and that small fee.
+
+The model is not as complicated as its 26 parameters suggest. Its core is the
+16-parameter fallback, and within units 7 parameters (a fee per star plus one
+weight per stat) already reach 11.8 gold. The remaining terms (per-man parts,
+squared changes, size changes, side) are refinements worth a few gold each.
+
+### 7.4 Status and remaining weak spots
+
+- **Not wired in yet.** `commander_stage.py` still implements the step-1
+  stars-only form, and its outputs (`analysis/output/commander_stage_report.md`
+  and the commander CSVs) describe that model. Replacing it with the blind
+  model, and pairing that with the adopted and V4 regular prices, is the next
+  step.
+- **Commanders who lead a bigger unit** (70 rows) have MAE 82. Size changes
+  follow no single rule: some elite units double in price, some militia barely
+  change.
+- **5-star generals** are under-predicted by about 23 gold.
+- **Very small cavalry units** (76–82 men) are over-predicted by 60–115 gold.
 
 ---
 
@@ -552,5 +632,7 @@ absolute % error in brackets.
 | `analysis/output/class_structure_coefficients.csv` | Every V4 coefficient (per-class β, size powers, army × class cells) |
 | `analysis/output/faction_class_multipliers*.csv`, `.md` | The adopted model's army × class multipliers as tables (`analysis/fclass_table.py`) |
 | `analysis/calibre_onehot_results/`, `analysis/linear_results/` | The same pipeline with the cannon-type one-hot, and the fully linear model |
-| `analysis/output/commander_stage_report.md`, `commander_coefficients.csv`, `commander_predictions.csv` | §7: commander variants (`analysis/commander_stage.py`) |
+| `analysis/commander_blind/REPORT.md` | §7.2: the commander blind study (brief, data, scripts, log in the same folder) |
+| `analysis/output/commander_within_unit_report.md` | §7.3: generals of the same unit compared (`analysis/commander_within_unit.py`) |
+| `analysis/output/commander_stage_report.md`, `commander_coefficients.csv`, `commander_predictions.csv` | §7.1: the rejected stars-only model (`analysis/commander_stage.py`) |
 | `analysis/HANDOFF.md` | How to work on this further |
