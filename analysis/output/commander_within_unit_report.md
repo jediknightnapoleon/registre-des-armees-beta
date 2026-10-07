@@ -31,7 +31,7 @@ A fixed schedule: morale +⌊s/2⌋+1, melee attack +⌊s/2⌋, melee defence +(
 | 2★ → 3★ | 21 | 68 | 10.9% |
 | 3★ → 4★ | 2 | 118 | 20.2% |
 
-Over all differences: a median of nan gold per star (middle half nan–nan). As a share of P the step varies *more* (coefficient of variation 0.43 vs 0.39), so it is not simply a percentage of the regular price. The steps alternate in size because the morale bonus rises only at every other star.
+Over all differences: a median of 65 gold per star (middle half 52–81). As a share of P the step varies *more* (coefficient of variation 0.43 vs 0.39), so it is not simply a percentage of the regular price. The steps alternate in size because the morale bonus rises only at every other star.
 
 ## 3. Models of the within-unit price difference
 

@@ -100,11 +100,12 @@ def main() -> int:
         mae, _, _ = cv([ds * div] + [col("d" + x) * P for x in STATS if x != s])
         drops.append([s, f"{mae:.2f}"])
 
-    slope = y / ds
-    rel = slope / P * 100
+    differ = ds != 0                      # a few same-star pairs have no per-star step
+    slope = y[differ] / ds[differ]
+    rel = slope / P[differ] * 100
     consecutive = []
     for s0 in range(0, 5):
-        m = (col("s0") == s0) & (ds == 1)
+        m = ((col("s0") == s0) & (ds == 1))[differ]
         if m.sum():
             consecutive.append([f"{s0}★ → {s0 + 1}★", int(m.sum()), f"{np.median(slope[m]):.0f}", f"{np.median(rel[m]):.1f}%"])
     schedule = []
