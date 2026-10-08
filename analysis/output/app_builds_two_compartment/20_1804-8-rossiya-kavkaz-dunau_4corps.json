@@ -1,0 +1,41 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_20_4corps",
+  "name": "[1804] 8. Rossiya (Kavkaz, Dunau) — two-compartment, ≤ 4 source corps (one roll): objective 3.458 (mean score 1.73, 10,000 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_c15_x8_051",
+  "armyCorpsName": "[1804] 8. Rossiya (Kavkaz, Dunau)",
+  "instances": [
+    "ntw3_art_horse_259_002_15898_tow_051",
+    "ntw3_cav_stand_260_999_2399_tow_051",
+    "ntw3_cav_stand_260_999_2402_tow_051_com_1473",
+    "ntw3_cav_stand_260_999_2388_tow_051",
+    "ntw3_cav_lance_261_999_2389_tow_051",
+    "ntw3_inf_light_258_010_6168_tow_051",
+    "ntw3_inf_light_258_010_6168_tow_051",
+    "ntw3_inf_light_260_005_6227_tow_051",
+    "ntw3_inf_light_260_005_6227_tow_051",
+    "ntw3_inf_light_261_030_6266_tow_051",
+    "ntw3_inf_light_261_030_6266_tow_051",
+    "ntw3_inf_light_261_032_6257_tow_051",
+    "ntw3_inf_light_261_032_6257_tow_051",
+    "ntw3_inf_light_261_028_6258_tow_051",
+    "ntw3_inf_light_258_048_6270_tow_051",
+    "ntw3_inf_light_260_002_6167_tow_051",
+    "ntw3_inf_light_261_020_6229_tow_051",
+    "ntw3_inf_light_261_020_6229_tow_051",
+    "ntw3_inf_light_260_006_6226_tow_051",
+    "ntw3_inf_light_260_006_6226_tow_051",
+    "ntw3_inf_light_260_006_6226_tow_051",
+    "ntw3_inf_line_259_999_6244_tow_051",
+    "ntw3_inf_line_259_999_6244_tow_051",
+    "ntw3_inf_grena_258_999_6265_tow_051",
+    "ntw3_inf_line_260_999_6254_tow_051"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_260_7_0578_tow_051",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

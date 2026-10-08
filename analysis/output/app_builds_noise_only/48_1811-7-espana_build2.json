@@ -1,0 +1,43 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_cen_48_2",
+  "name": "[1811] 7. España — build 2 (noise-only): balanced (≥ 4 cavalry, ≥ 2 artillery), eff 0.91 (1.04 for its rating)",
+  "createdAt": "2026-10-08T02:08:23Z",
+  "updatedAt": "2026-10-08T02:08:23Z",
+  "factionKey": "ntw3_tow_b13_x8_050",
+  "armyCorpsName": "[1811] 7. España",
+  "instances": [
+    "ntw3_art_foot_174_009_15760_tow_050",
+    "ntw3_art_foot_174_009_15760_tow_050",
+    "ntw3_cav_heavy_175_999_2193_tow_050",
+    "ntw3_cav_heavy_176_999_2223_tow_050",
+    "ntw3_cav_stand_176_999_2215_tow_050",
+    "ntw3_cav_light_176_999_2229_tow_050_com_1335",
+    "ntw3_inf_light_174_999_5566_tow_050",
+    "ntw3_inf_milit_174_999_5553_tow_050",
+    "ntw3_inf_milit_174_002_5552_tow_050",
+    "ntw3_inf_grena_174_999_5321_tow_050",
+    "ntw3_inf_grena_174_999_5320_tow_050",
+    "ntw3_inf_line_177_003_5905_tow_050",
+    "ntw3_inf_light_175_002_5694_tow_050",
+    "ntw3_inf_line_176_002_5869_tow_050",
+    "ntw3_inf_light_174_999_5562_tow_050",
+    "ntw3_inf_light_174_999_5562_tow_050",
+    "ntw3_inf_skirm_175_999_5748_tow_050",
+    "ntw3_inf_line_174_999_5629_tow_050",
+    "ntw3_inf_milit_174_999_5563_tow_050",
+    "ntw3_inf_line_175_999_5705_tow_050",
+    "ntw3_inf_milit_174_999_5564_tow_050",
+    "ntw3_inf_skirm_174_999_5636_tow_050",
+    "ntw3_inf_milit_174_999_5630_tow_050",
+    "ntw3_inf_line_175_002_5702_tow_050",
+    "ntw3_inf_line_175_999_5743_tow_050",
+    "ntw3_inf_line_175_999_5743_tow_050",
+    "ntw3_inf_milit_175_999_5708_tow_050"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_177_4_0454_tow_050",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

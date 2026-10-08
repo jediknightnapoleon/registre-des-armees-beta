@@ -1,0 +1,31 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_32_4corps",
+  "name": "[1808] 7. Rossiya (Finlyandiya) — two-compartment, ≤ 4 source corps (one roll): objective 3.346 (mean score 1.68, 9,938 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_c07_x8_017",
+  "armyCorpsName": "[1808] 7. Rossiya (Finlyandiya)",
+  "instances": [
+    "ntw3_cav_lance_180_999_2325_tow_017",
+    "ntw3_cav_lance_182_999_0521_tow_017",
+    "ntw3_cav_lance_180_999_0519_tow_017",
+    "ntw3_cav_lance_182_999_0522_tow_017",
+    "ntw3_cav_lance_180_999_0520_tow_017",
+    "ntw3_cav_lance_180_999_0517_tow_017",
+    "ntw3_inf_grena_181_999_0614_tow_017",
+    "ntw3_inf_grena_181_999_0614_tow_017",
+    "ntw3_inf_light_180_005_1405_tow_017",
+    "ntw3_inf_light_180_005_1405_tow_017",
+    "ntw3_inf_line_180_999_3118_tow_017",
+    "ntw3_inf_line_180_999_3118_tow_017",
+    "ntw3_inf_line_180_999_3118_tow_017",
+    "ntw3_inf_light_182_999_1408_tow_017",
+    "ntw3_inf_light_182_025_1411_tow_017_com_0677"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_182_3_0207_tow_017",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

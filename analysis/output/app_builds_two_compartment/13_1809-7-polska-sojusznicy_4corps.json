@@ -1,0 +1,33 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_13_4corps",
+  "name": "[1809] 7. Polska, sojusznicy — two-compartment, ≤ 4 source corps (one roll): objective 3.539 (mean score 1.77, 10,000 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_c08_x8_048",
+  "armyCorpsName": "[1809] 7. Polska, sojusznicy",
+  "instances": [
+    "ntw3_cav_lance_113_999_2024_tow_048",
+    "ntw3_cav_lance_116_999_2283_tow_048",
+    "ntw3_cav_lance_116_999_2290_tow_048",
+    "ntw3_cav_lance_115_002_2087_tow_048_com_1154",
+    "ntw3_cav_lance_116_999_2276_tow_048",
+    "ntw3_cav_lance_116_999_2292_tow_048",
+    "ntw3_cav_lance_116_999_2281_tow_048",
+    "ntw3_cav_lance_116_999_2291_tow_048",
+    "ntw3_cav_lance_116_999_2284_tow_048",
+    "ntw3_cav_lance_115_003_2088_tow_048",
+    "ntw3_cav_lance_115_006_2089_tow_048",
+    "ntw3_inf_light_113_999_5411_tow_048",
+    "ntw3_inf_light_113_999_5113_tow_048",
+    "ntw3_inf_light_113_028_5397_tow_048",
+    "ntw3_inf_line_113_003_5399_tow_048",
+    "ntw3_inf_line_113_003_5399_tow_048",
+    "ntw3_inf_line_113_001_5110_tow_048"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_115_5_0151_tow_048",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

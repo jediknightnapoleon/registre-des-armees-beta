@@ -1,0 +1,22 @@
+"skill_group(0 weak,1 strong,2 unknown)",n,win_rate,feature,coef_elo_controlled,se
+0,2365,0.4025,commander,0.1918,0.0988
+0,2365,0.4025,stars,0.0552,0.0204
+0,2365,0.4025,cost_k_artillery,-0.3129,0.1041
+0,2365,0.4025,n_artillery_foot,0.1431,0.0709
+0,2365,0.4025,n_artillery_horse,0.1451,0.1024
+0,2365,0.4025,n_cavalry_lancers,0.0725,0.0298
+0,2365,0.4025,n_infantry_light,0.0131,0.0141
+1,2364,0.6345,commander,0.3863,0.1058
+1,2364,0.6345,stars,0.0167,0.0219
+1,2364,0.6345,cost_k_artillery,-0.1645,0.093
+1,2364,0.6345,n_artillery_foot,0.1154,0.07
+1,2364,0.6345,n_artillery_horse,-0.0244,0.1015
+1,2364,0.6345,n_cavalry_lancers,0.0365,0.0274
+1,2364,0.6345,n_infantry_light,0.0143,0.0136
+2,782,0.3875,commander,0.1357,0.1669
+2,782,0.3875,stars,0.0506,0.0355
+2,782,0.3875,cost_k_artillery,-0.2777,0.1624
+2,782,0.3875,n_artillery_foot,0.1168,0.1231
+2,782,0.3875,n_artillery_horse,0.0459,0.182
+2,782,0.3875,n_cavalry_lancers,0.108,0.0527
+2,782,0.3875,n_infantry_light,-0.023,0.0281

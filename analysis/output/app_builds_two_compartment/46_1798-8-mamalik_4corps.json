@@ -1,0 +1,24 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_46_4corps",
+  "name": "[1798] 8. Mamālīk — two-compartment, ≤ 4 source corps (one roll): objective 3.220 (mean score 1.61, 9,971 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b04_x8_015",
+  "armyCorpsName": "[1798] 8. Mamālīk",
+  "instances": [
+    "ntw3_cav_light_066_999_0902_tow_015",
+    "ntw3_cav_light_066_999_0902_tow_015",
+    "ntw3_cav_light_066_999_0901_tow_015",
+    "ntw3_cav_light_066_999_0901_tow_015",
+    "ntw3_cav_light_066_999_0900_tow_015_com_0426",
+    "ntw3_cav_light_066_999_0899_tow_015",
+    "ntw3_cav_light_066_999_0899_tow_015",
+    "ntw3_cav_light_068_999_0908_tow_015"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_066_4_0102_tow_015",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

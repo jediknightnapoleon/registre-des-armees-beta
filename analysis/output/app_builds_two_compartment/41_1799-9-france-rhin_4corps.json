@@ -1,0 +1,36 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_41_4corps",
+  "name": "[1799] 9. France (Rhin) — two-compartment, ≤ 4 source corps (one roll): objective 3.267 (mean score 1.63, 10,000 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_a03_x8_033",
+  "armyCorpsName": "[1799] 9. France (Rhin)",
+  "instances": [
+    "ntw3_cav_light_084_004_0944_tow_033",
+    "ntw3_cav_light_086_002_0954_tow_033",
+    "ntw3_cav_light_087_006_0960_tow_033",
+    "ntw3_cav_stand_086_023_1627_tow_033",
+    "ntw3_cav_light_086_016_0955_tow_033",
+    "ntw3_cav_stand_087_006_1630_tow_033_com_1257",
+    "ntw3_cav_stand_084_017_1625_tow_033",
+    "ntw3_inf_light_085_010_1202_tow_033",
+    "ntw3_inf_light_085_010_1202_tow_033",
+    "ntw3_inf_light_086_012_1203_tow_033",
+    "ntw3_inf_light_086_012_1203_tow_033",
+    "ntw3_inf_line_085_038_2496_tow_033",
+    "ntw3_inf_line_085_038_2496_tow_033",
+    "ntw3_inf_line_085_083_2498_tow_033",
+    "ntw3_inf_line_085_083_2498_tow_033",
+    "ntw3_inf_light_086_002_1204_tow_033",
+    "ntw3_inf_line_085_094_2500_tow_033",
+    "ntw3_inf_line_085_094_2500_tow_033",
+    "ntw3_inf_line_084_089_2488_tow_033",
+    "ntw3_inf_grena_085_037_0468_tow_033"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_084_5_0118_tow_033",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_25_free",
+  "name": "9. Heiliges Römisches Reich — two-compartment, no corps limit: objective 3.379 (mean score 1.69, 10,000 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_hre",
+  "armyCorpsName": "9. Heiliges Römisches Reich",
+  "instances": [
+    "ntw3_cav_stand_208_003_1874_com_1458",
+    "ntw3_cav_stand_208_039_1877",
+    "ntw3_cav_light_208_035_1318",
+    "ntw3_inf_line_208_048_6093",
+    "ntw3_inf_line_208_022_3517",
+    "ntw3_inf_light_208_076_1544",
+    "ntw3_inf_line_208_009_3529",
+    "ntw3_inf_light_208_064_1537",
+    "ntw3_inf_light_208_071_1543",
+    "ntw3_inf_light_208_063_1535",
+    "ntw3_inf_line_208_036_3523",
+    "ntw3_inf_line_208_002_3543",
+    "ntw3_inf_light_208_070_1532",
+    "ntw3_inf_irreg_208_999_0938",
+    "ntw3_inf_irreg_208_999_0938",
+    "ntw3_inf_line_208_003_3524",
+    "ntw3_inf_irreg_208_999_4484",
+    "ntw3_inf_line_208_027_3518",
+    "ntw3_inf_line_208_017_3514",
+    "ntw3_inf_line_208_039_3546"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_208_5_0316",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

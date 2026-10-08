@@ -1,0 +1,32 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_09_4corps",
+  "name": "[1812] 6. France (Russie-Nord) — two-compartment, ≤ 4 source corps (one roll): objective 3.558 (mean score 1.78, 10,000 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_a11_x8_027",
+  "armyCorpsName": "[1812] 6. France (Russie-Nord)",
+  "instances": [
+    "ntw3_cav_light_126_001_1061_tow_027_com_0519",
+    "ntw3_cav_light_118_007_1035_tow_027",
+    "ntw3_cav_light_118_007_1035_tow_027",
+    "ntw3_cav_light_126_001_1062_tow_027",
+    "ntw3_inf_light_118_003_1265_tow_027",
+    "ntw3_inf_light_118_003_1265_tow_027",
+    "ntw3_inf_line_118_003_2708_tow_027",
+    "ntw3_inf_line_118_003_2708_tow_027",
+    "ntw3_inf_line_118_003_2708_tow_027",
+    "ntw3_inf_light_125_003_6562_tow_027",
+    "ntw3_inf_line_126_011_2800_tow_027",
+    "ntw3_inf_line_126_011_2800_tow_027",
+    "ntw3_inf_line_126_011_2800_tow_027",
+    "ntw3_inf_line_126_011_2800_tow_027",
+    "ntw3_inf_light_118_026_1262_tow_027",
+    "ntw3_inf_light_118_026_1262_tow_027"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_118_0_0154_tow_027",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

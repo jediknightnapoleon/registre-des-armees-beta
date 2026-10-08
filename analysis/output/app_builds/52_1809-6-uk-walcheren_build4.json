@@ -1,0 +1,33 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_52_4",
+  "name": "[1809] 6. UK (Walcheren) — build 4 (harmonised): max value from ≤ 4 source corps (one roll), eff 0.77 (1.03 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_b08_x8_045",
+  "armyCorpsName": "[1809] 6. UK (Walcheren)",
+  "instances": [
+    "ntw3_art_foot_055_999_0152_tow_045",
+    "ntw3_art_foot_055_024_15673_tow_045",
+    "ntw3_cav_light_055_009_0866_tow_045",
+    "ntw3_inf_light_056_001_1149_tow_045",
+    "ntw3_inf_light_056_002_1150_tow_045",
+    "ntw3_inf_light_055_051_1148_tow_045",
+    "ntw3_inf_light_055_068_1147_tow_045",
+    "ntw3_inf_light_055_085_1145_tow_045",
+    "ntw3_inf_light_056_052_1152_tow_045",
+    "ntw3_inf_line_056_011_2286_tow_045",
+    "ntw3_inf_line_055_035_2280_tow_045",
+    "ntw3_inf_line_056_084_2293_tow_045",
+    "ntw3_inf_skirm_056_095_5029_tow_045",
+    "ntw3_inf_skirm_055_095_4723_tow_045",
+    "ntw3_inf_skirm_055_095_4723_tow_045",
+    "ntw3_inf_skirm_055_068_5121_tow_045",
+    "ntw3_inf_skirm_056_003_5120_tow_045"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_056_3_0089_tow_045",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

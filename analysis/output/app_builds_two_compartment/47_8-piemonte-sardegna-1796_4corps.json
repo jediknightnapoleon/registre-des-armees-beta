@@ -1,0 +1,38 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_47_4corps",
+  "name": "8. Piemonte-Sardegna (1796) — two-compartment, ≤ 4 source corps (one roll): objective 3.153 (mean score 1.58, 9,996 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "piedmont_savoy",
+  "armyCorpsName": "8. Piemonte-Sardegna (1796)",
+  "instances": [
+    "ntw3_cav_heavy_229_999_0310",
+    "ntw3_cav_stand_229_999_1898_com_0887",
+    "ntw3_cav_heavy_229_999_0312",
+    "ntw3_cav_stand_229_999_1896",
+    "ntw3_inf_light_229_002_5105",
+    "ntw3_inf_light_229_001_1586",
+    "ntw3_inf_line_229_005_3710",
+    "ntw3_inf_line_229_005_3710",
+    "ntw3_inf_milit_229_999_4521",
+    "ntw3_inf_light_229_002_1588",
+    "ntw3_inf_light_229_999_1585",
+    "ntw3_inf_light_229_999_1585",
+    "ntw3_inf_light_229_999_1585",
+    "ntw3_inf_milit_229_999_4523",
+    "ntw3_inf_milit_229_999_4523",
+    "ntw3_inf_line_229_003_3709",
+    "ntw3_inf_line_229_003_3709",
+    "ntw3_inf_line_229_014_3706",
+    "ntw3_inf_line_229_014_3706",
+    "ntw3_inf_line_229_011_3704",
+    "ntw3_inf_light_229_001_1589",
+    "ntw3_inf_grena_229_999_0747"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_229_0_0376",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

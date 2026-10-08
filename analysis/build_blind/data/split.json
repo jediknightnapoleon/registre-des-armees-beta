@@ -1,0 +1,4 @@
+{
+  "cut_played_at": "2026-09-20T15:25:11Z",
+  "rule": "train: played_at < cut; test: played_at >= cut"
+}

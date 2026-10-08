@@ -1,0 +1,28 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_27_4corps",
+  "name": "[1807] 9. Rossiya (Polsha) — two-compartment, ≤ 4 source corps (one roll): objective 3.368 (mean score 1.69, 9,972 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b06_x8_008",
+  "armyCorpsName": "[1807] 9. Rossiya (Polsha)",
+  "instances": [
+    "ntw3_art_foot_043_012_0116_tow_008",
+    "ntw3_art_foot_042_012_0114_tow_008",
+    "ntw3_cav_stand_045_008_2004_tow_008_com_0918",
+    "ntw3_cav_lance_040_999_0433_tow_008",
+    "ntw3_cav_lance_040_999_0433_tow_008",
+    "ntw3_cav_heavy_043_999_0067_tow_008",
+    "ntw3_inf_line_040_999_2182_tow_008",
+    "ntw3_inf_line_040_999_2182_tow_008",
+    "ntw3_inf_line_040_999_2182_tow_008",
+    "ntw3_inf_line_043_999_0088_tow_008",
+    "ntw3_inf_line_042_999_0087_tow_008",
+    "ntw3_inf_line_040_999_2179_tow_008"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_042_1_0569_tow_008",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_04_4corps",
+  "name": "[1814] 8. Österreich (Frankreich) — two-compartment, ≤ 4 source corps (one roll): objective 3.638 (mean score 1.82, 9,974 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b17_x8_055",
+  "armyCorpsName": "[1814] 8. Österreich (Frankreich)",
+  "instances": [
+    "ntw3_cav_light_287_004_2448_tow_055_com_1505",
+    "ntw3_cav_light_287_999_2454_tow_055",
+    "ntw3_cav_light_279_012_2478_tow_055",
+    "ntw3_cav_light_279_012_2478_tow_055",
+    "ntw3_cav_light_296_002_2474_tow_055",
+    "ntw3_cav_light_287_001_2444_tow_055",
+    "ntw3_cav_light_287_001_2444_tow_055",
+    "ntw3_cav_light_287_004_2448_tow_055",
+    "ntw3_cav_light_296_001_2473_tow_055",
+    "ntw3_cav_light_296_011_2464_tow_055",
+    "ntw3_cav_light_296_011_2464_tow_055",
+    "ntw3_cav_light_279_006_2457_tow_055",
+    "ntw3_cav_light_279_006_2457_tow_055",
+    "ntw3_inf_light_287_005_6369_tow_055",
+    "ntw3_inf_light_287_005_6370_tow_055"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_279_4_0597_tow_055",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

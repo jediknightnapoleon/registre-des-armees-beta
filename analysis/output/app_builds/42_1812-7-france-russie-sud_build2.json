@@ -1,0 +1,41 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_42_2",
+  "name": "[1812] 7. France (Russie-Sud) — build 2 (harmonised): balanced (≥ 4 cavalry, ≥ 2 artillery), eff 0.96 (1.10 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_a11_x8_029",
+  "armyCorpsName": "[1812] 7. France (Russie-Sud)",
+  "instances": [
+    "ntw3_art_foot_123_004_15856_tow_029",
+    "ntw3_art_foot_127_006_0318_tow_029",
+    "ntw3_cav_light_128_003_1072_tow_029",
+    "ntw3_cav_light_128_003_1072_tow_029",
+    "ntw3_cav_light_128_001_1070_tow_029_com_0524",
+    "ntw3_cav_light_128_001_1070_tow_029",
+    "ntw3_inf_light_128_006_1318_tow_029",
+    "ntw3_inf_light_128_005_1317_tow_029",
+    "ntw3_inf_line_128_030_2849_tow_029",
+    "ntw3_inf_line_128_030_2849_tow_029",
+    "ntw3_inf_line_123_001_2773_tow_029",
+    "ntw3_inf_line_127_999_6494_tow_029",
+    "ntw3_inf_line_128_009_6889_tow_029",
+    "ntw3_inf_line_127_105_6603_tow_029",
+    "ntw3_inf_line_128_032_2855_tow_029",
+    "ntw3_inf_line_128_032_2855_tow_029",
+    "ntw3_inf_line_127_003_6601_tow_029",
+    "ntw3_inf_line_127_005_2797_tow_029",
+    "ntw3_inf_line_123_131_2763_tow_029",
+    "ntw3_inf_line_123_131_2763_tow_029",
+    "ntw3_inf_line_123_131_2763_tow_029",
+    "ntw3_inf_line_123_132_2764_tow_029",
+    "ntw3_inf_line_123_132_2764_tow_029",
+    "ntw3_inf_line_123_132_2764_tow_029",
+    "ntw3_inf_line_127_006_6487_tow_029"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_128_4_0165_tow_029",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

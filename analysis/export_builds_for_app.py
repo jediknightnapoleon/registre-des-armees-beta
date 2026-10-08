@@ -4,9 +4,8 @@ Reads analysis/output/cost_effective_builds.csv (analysis/cost_effective_builds.
 and writes builds in the app's saved-build format (web/src/state/saves.ts,
 SAVE_FORMAT_VERSION 2). Import in the app with ⤓ Offline → Import saves… (it takes
 a backup file or a single build), open the build from the saved builds, and use
-"Save image" in the bottom tray for the app's unit-card strip. Every build puts the
-army's cheapest staff general in the staff slot, as cost_effective_builds.py
-assumes.
+"Save image" in the bottom tray for the app's unit-card strip. Each build's staff
+general is the one cost_effective_builds.py chose for it (read from its CSV).
 
 Outputs:
 - analysis/output/top_builds_backup.json: one backup file with the top builds
@@ -20,6 +19,12 @@ Outputs:
   the max-value build with the budget left. Build 4 is the max-value build from
   at most 4 source corps — what one Theatre-of-War roll can offer without
   changing the clock (Custom armies: no source corps, same as build 1).
+
+The same again for each size-harmonisation version of cost_effective_builds.py:
+the files above come from the fully harmonised builds; the noise-only builds
+(cost_effective_builds_noise_only.csv) go to top_builds_backup_noise_only.json
+and app_builds_noise_only/. Ids and names carry the version, so both sets can
+be imported side by side.
 
     python analysis/export_builds_for_app.py
 """
@@ -39,10 +44,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import unit_pricing as up  # noqa: E402
 
 OUT = up.ROOT / "analysis" / "output"
-FOLDER = OUT / "app_builds"
 SAVE_FORMAT_VERSION = 2          # web/src/state/saves.ts
 TOP = 5
 ORDER = {"artillery": 0, "cavalry": 1, "infantry": 2}
+# Size versions of cost_effective_builds.py: (file suffix, tag in build names, id prefix).
+VERSIONS = (("", "harmonised", "ce"), ("_noise_only", "noise-only", "cen"))
 
 
 def slug(text: str) -> str:
@@ -51,8 +57,17 @@ def slug(text: str) -> str:
 
 
 def main() -> int:
+    for suffix, tag, prefix in VERSIONS:
+        if (OUT / f"cost_effective_builds{suffix}.csv").exists():
+            export(suffix, tag, prefix)
+    return 0
+
+
+def export(suffix: str, tag: str, prefix: str) -> None:
+    """One size version: cost_effective_builds{suffix}.csv → top_builds_backup{suffix}.json, app_builds{suffix}/."""
+    folder = OUT / f"app_builds{suffix}"
     builds: dict[tuple[str, str], list[dict]] = defaultdict(list)
-    with open(OUT / "cost_effective_builds.csv", encoding="utf-8") as fh:
+    with open(OUT / f"cost_effective_builds{suffix}.csv", encoding="utf-8") as fh:
         for r in csv.DictReader(fh):
             builds[(r["faction_key"], r["variant"])].append(r)
     factions = sorted({f for f, _ in builds})
@@ -105,20 +120,21 @@ def main() -> int:
     by_abs = sorted(factions, key=lambda f: -table[f]["efficiency"])[:TOP]
     by_own = sorted(factions, key=lambda f: -table[f]["own"])[:TOP]
     top = []
-    for tag, group in (("most value for 10 000", by_abs), ("best priced for its rating", by_own)):
+    for why, group in (("most value for 10 000", by_abs), ("best priced for its rating", by_own)):
         for f in group:
             if f not in [g for g, _ in top]:
-                top.append((f, tag))
+                top.append((f, why))
     backup = {"format": "rda-builds-backup", "version": SAVE_FORMAT_VERSION, "exportedAt": now,
-              "builds": [saved(f, "max value", f"b_costeff_{i + 1:02d}",
-                               f"Cost-effective: {table[f]['army']} (eff {table[f]['efficiency']:.2f}, "
-                               f"{table[f]['own']:.2f} for its rating) — {tag}")
-                         for i, (f, tag) in enumerate(top)]}
-    (OUT / "top_builds_backup.json").write_text(json.dumps(backup, indent=2, ensure_ascii=False), encoding="utf-8")
+              "builds": [saved(f, "max value", f"b_{prefix}eff_{i + 1:02d}",
+                               f"Cost-effective ({tag}): {table[f]['army']} (eff {table[f]['efficiency']:.2f}, "
+                               f"{table[f]['own']:.2f} for its rating) — {why}")
+                         for i, (f, why) in enumerate(top)]}
+    (OUT / f"top_builds_backup{suffix}.json").write_text(json.dumps(backup, indent=2, ensure_ascii=False),
+                                                         encoding="utf-8")
 
-    # 2. The top two builds of every army, one file each.
-    FOLDER.mkdir(parents=True, exist_ok=True)
-    for old in FOLDER.glob("*.json"):
+    # 2. The four builds of every army, one file each.
+    folder.mkdir(parents=True, exist_ok=True)
+    for old in folder.glob("*.json"):
         old.unlink()
     index = []
     corps_of = {}
@@ -136,19 +152,24 @@ def main() -> int:
                      "top staff": f"highest-star staff general ({general(f, variant)[3]}★), max value",
                      "four corps": "max value from ≤ 4 source corps (one roll)"
                                    + ("" if f.startswith("ntw3_tow_") else " — Custom army: no corps limit")}[variant]
-            name = f"{s['army']} — build {number}: {label}, eff {s['efficiency']:.2f} ({s['own']:.2f} for its rating)"
+            name = (f"{s['army']} — build {number} ({tag}): {label}, eff {s['efficiency']:.2f} "
+                    f"({s['own']:.2f} for its rating)")
             file = f"{rank:02d}_{slug(s['army'])}_build{number}.json"
-            (FOLDER / file).write_text(json.dumps(saved(f, variant, f"b_ce_{rank:02d}_{number}", name), indent=2,
+            (folder / file).write_text(json.dumps(saved(f, variant, f"b_{prefix}_{rank:02d}_{number}", name), indent=2,
                                                   ensure_ascii=False), encoding="utf-8")
             index.append([f"`{file}`", s["army"], s["N"], number, label, f"{s['efficiency']:.3f}", f"{s['own']:.3f}",
                           f"{s['cost']:,}", s["units"],
                           f"{s['arms']['infantry']}/{s['arms']['cavalry']}/{s['arms']['artillery']}",
                           f"{general(f, variant)[2]} ({general(f, variant)[0]} gold)",
                           corps_of[(f, variant)] or "—"])
-    lines = ["# Cost-effective builds, ready to import into the app", "",
+    other = {"": ("noise-only", "app_builds_noise_only"), "_noise_only": ("fully harmonised", "app_builds")}[suffix]
+    lines = [f"# Cost-effective builds ({tag} unit values), ready to import into the app", "",
              "Generated by `analysis/export_builds_for_app.py` from `analysis/cost_effective_builds.py` (method and "
-             "caveats: `analysis/output/cost_effective_builds.md`). Two builds per army, one file each, in the app's "
-             "saved-build format.", "",
+             f"caveats: `analysis/output/cost_effective_builds{suffix}.md`). Four builds per army, one file each, in "
+             "the app's saved-build format.", "",
+             f"Unit values here are {'fully size-harmonised' if not suffix else 'size-harmonised for noise only'} "
+             f"(report §5); the {other[0]} version is in `{other[1]}/`. Build ids and names carry the version, so "
+             "both sets can be imported side by side.", "",
              "**To use one:** in the app, ⤓ Offline → *Import saves…* → pick the file, then open the build from your "
              "saved builds. *Save image* in the bottom tray renders its unit cards. For Theatre-of-War armies, "
              "*Generate times* finds a window in which the roll offers every unit.", "",
@@ -156,8 +177,8 @@ def main() -> int:
              "- **Build 2** is the balanced build (≥ 4 cavalry, ≥ 2 artillery) when it differs, otherwise the "
              "runner-up (the best build differing from build 1 in at least one unit).",
              "- **Build 3** takes the army's highest-star staff general (cheapest on a tie) and the max-value build "
-             "with the budget left. Staff generals are not counted in *value*, so its efficiency drops by what the "
-             "better general costs.",
+             "with the budget left. Its general is valued by the price rule alone, so its efficiency drops by "
+             "whatever the better general costs beyond that value.",
              "- **Build 4** draws its units *and* staff general from at most 4 source corps, which is all one "
              "Theatre-of-War roll offers without changing the clock (`NTW3AC.ToWFarmycorps`, max 4). The staff "
              "general is chosen jointly, since his corps uses one of the 4. Custom armies have no source corps, so "
@@ -165,14 +186,15 @@ def main() -> int:
              "corps.",
              "- **Efficiency** = the build's normative value ÷ its cost; *for its rating* removes the corps-number "
              "effect.",
-             "- **Rules:** one staff general (the army's cheapest, except in build 3) + up to 30 units = 31 cards, at most one combat "
+             "- **Rules:** one staff general (valued by the global general price rule and chosen by the optimiser; build 3 "
+             "takes the highest-star one) + up to 30 units = 31 cards, at most one combat "
              "general, 10 000 funds, unit caps, artillery and heavy-cavalry caps. Files are numbered by build 1's "
              "efficiency.", ""]
     lines += up.table(["file", "army", "N", "build", "kind", "efficiency", "for its rating", "cost", "units",
                        "inf/cav/art", "staff general", "source corps"], index)
-    (FOLDER / "README.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"{len(backup['builds'])} top builds → top_builds_backup.json; {len(index)} files → {FOLDER.relative_to(up.ROOT)}")
-    return 0
+    (folder / "README.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"{len(backup['builds'])} top builds → top_builds_backup{suffix}.json; "
+          f"{len(index)} files → {folder.relative_to(up.ROOT)}")
 
 
 if __name__ == "__main__":

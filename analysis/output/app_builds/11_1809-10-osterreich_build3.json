@@ -1,0 +1,32 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_11_3",
+  "name": "[1809] 10. Österreich — build 3 (harmonised): highest-star staff general (6★), max value, eff 1.33 (1.06 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_b08_x8_044",
+  "armyCorpsName": "[1809] 10. Österreich",
+  "instances": [
+    "ntw3_cav_light_049_004_0854_tow_044",
+    "ntw3_cav_light_049_004_0854_tow_044",
+    "ntw3_cav_light_050_008_0855_tow_044",
+    "ntw3_cav_light_050_008_0855_tow_044_com_0390",
+    "ntw3_inf_grena_053_999_0422_tow_044",
+    "ntw3_inf_grena_053_999_0424_tow_044",
+    "ntw3_inf_grena_053_999_0096_tow_044",
+    "ntw3_inf_grena_053_999_0421_tow_044",
+    "ntw3_inf_grena_053_999_0090_tow_044",
+    "ntw3_inf_grena_053_999_0094_tow_044",
+    "ntw3_inf_grena_053_999_0420_tow_044",
+    "ntw3_inf_irreg_046_002_0911_tow_044",
+    "ntw3_inf_irreg_048_003_0915_tow_044",
+    "ntw3_inf_grena_046_001_0416_tow_044",
+    "ntw3_inf_irreg_047_004_0913_tow_044",
+    "ntw3_inf_line_047_018_2227_tow_044"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_053_6_0559_tow_044",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

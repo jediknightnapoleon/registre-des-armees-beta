@@ -1,0 +1,25 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_50_free",
+  "name": "[1798] 5. UK (Ireland) — two-compartment, no corps limit: objective 3.069 (mean score 1.54, 9,954 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b03_x8_041",
+  "armyCorpsName": "[1798] 5. UK (Ireland)",
+  "instances": [
+    "ntw3_cav_heavy_022_005_0034_tow_041_com_1042",
+    "ntw3_cav_light_022_999_2030_tow_041",
+    "ntw3_cav_light_022_001_0796_tow_041",
+    "ntw3_cav_light_022_999_0797_tow_041",
+    "ntw3_cav_light_022_999_0798_tow_041",
+    "ntw3_inf_milit_022_999_4247_tow_041",
+    "ntw3_inf_grena_022_100_5136_tow_041",
+    "ntw3_inf_light_022_001_1061_tow_041",
+    "ntw3_inf_light_022_002_1062_tow_041"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_022_0_0047_tow_041",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

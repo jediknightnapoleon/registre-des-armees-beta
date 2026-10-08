@@ -1,0 +1,32 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_14_4corps",
+  "name": "[1809] 8. Österreich (Tyrol) — two-compartment, ≤ 4 source corps (one roll): objective 3.520 (mean score 1.76, 9,972 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b08_x8_046",
+  "armyCorpsName": "[1809] 8. Österreich (Tyrol)",
+  "instances": [
+    "ntw3_art_foot_244_010_15677_tow_046_com_0281",
+    "ntw3_cav_light_244_005_2028_tow_046",
+    "ntw3_cav_light_244_005_2028_tow_046",
+    "ntw3_cav_stand_244_005_2076_tow_046",
+    "ntw3_inf_milit_245_999_5356_tow_046",
+    "ntw3_inf_light_244_003_5125_tow_046",
+    "ntw3_inf_light_244_003_5125_tow_046",
+    "ntw3_inf_light_244_001_5366_tow_046",
+    "ntw3_inf_light_244_001_5366_tow_046",
+    "ntw3_inf_light_244_001_5366_tow_046",
+    "ntw3_inf_light_244_001_5366_tow_046",
+    "ntw3_inf_light_244_001_5366_tow_046",
+    "ntw3_inf_light_244_010_5126_tow_046",
+    "ntw3_inf_light_244_010_5126_tow_046",
+    "ntw3_inf_skirm_245_999_5350_tow_046",
+    "ntw3_inf_line_244_061_5363_tow_046"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_245_0_0542_tow_046",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_28_4corps",
+  "name": "[1814] 8. France — two-compartment, ≤ 4 source corps (one roll): objective 3.348 (mean score 1.67, 10,000 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_a17_x8_054",
+  "armyCorpsName": "[1814] 8. France",
+  "instances": [
+    "ntw3_art_foot_290_002_16108_tow_054",
+    "ntw3_art_foot_289_002_16092_tow_054",
+    "ntw3_cav_heavy_294_013_2679_tow_054",
+    "ntw3_inf_line_289_040_7014_tow_054",
+    "ntw3_inf_light_289_016_7018_tow_054_com_4246",
+    "ntw3_inf_light_294_032_6926_tow_054",
+    "ntw3_inf_light_290_017_7036_tow_054",
+    "ntw3_inf_line_283_058_6990_tow_054",
+    "ntw3_inf_light_289_006_7013_tow_054",
+    "ntw3_inf_light_289_024_6999_tow_054",
+    "ntw3_inf_line_289_001_7023_tow_054",
+    "ntw3_inf_light_294_023_6921_tow_054",
+    "ntw3_inf_light_294_023_6921_tow_054",
+    "ntw3_inf_light_290_028_7027_tow_054",
+    "ntw3_inf_light_294_023_6930_tow_054",
+    "ntw3_inf_line_289_072_7010_tow_054",
+    "ntw3_inf_light_290_010_7033_tow_054",
+    "ntw3_inf_light_290_010_7033_tow_054",
+    "ntw3_inf_light_283_002_6980_tow_054",
+    "ntw3_inf_light_283_002_6980_tow_054",
+    "ntw3_inf_light_283_012_6987_tow_054",
+    "ntw3_inf_line_289_056_7002_tow_054"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_283_9_0585_tow_054",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

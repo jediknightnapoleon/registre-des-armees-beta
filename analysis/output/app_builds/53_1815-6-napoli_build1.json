@@ -1,0 +1,41 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_53_1",
+  "name": "[1815] 6. Napoli — build 1 (harmonised): max value, eff 0.76 (1.02 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_c14_x8_030",
+  "armyCorpsName": "[1815] 6. Napoli",
+  "instances": [
+    "ntw3_inf_grena_156_002_0721_tow_030",
+    "ntw3_inf_grena_158_999_0236_tow_030",
+    "ntw3_inf_grena_157_007_0727_tow_030",
+    "ntw3_inf_grena_157_004_0723_tow_030",
+    "ntw3_inf_light_156_002_1561_tow_030",
+    "ntw3_inf_grena_156_006_0725_tow_030",
+    "ntw3_inf_line_157_008_3609_tow_030",
+    "ntw3_inf_line_157_008_3609_tow_030",
+    "ntw3_inf_line_157_008_3609_tow_030",
+    "ntw3_inf_light_157_004_1565_tow_030",
+    "ntw3_inf_light_157_004_1565_tow_030",
+    "ntw3_inf_light_157_004_1565_tow_030",
+    "ntw3_inf_line_157_004_3601_tow_030",
+    "ntw3_inf_line_157_004_3601_tow_030",
+    "ntw3_inf_line_157_004_3601_tow_030",
+    "ntw3_inf_line_157_011_3591_tow_030",
+    "ntw3_inf_line_157_012_3593_tow_030",
+    "ntw3_inf_line_157_012_3593_tow_030",
+    "ntw3_inf_line_157_012_3593_tow_030",
+    "ntw3_inf_line_156_006_3605_tow_030",
+    "ntw3_inf_line_156_006_3605_tow_030",
+    "ntw3_inf_line_156_006_3605_tow_030_com_2773",
+    "ntw3_inf_line_156_009_3611_tow_030",
+    "ntw3_inf_line_156_009_3611_tow_030",
+    "ntw3_inf_line_156_009_3611_tow_030"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_158_5_0519_tow_030",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

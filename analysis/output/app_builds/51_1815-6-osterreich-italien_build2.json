@@ -1,0 +1,38 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_51_2",
+  "name": "[1815] 6. Österreich (Italien) — build 2 (harmonised): balanced (≥ 4 cavalry, ≥ 2 artillery), eff 0.78 (1.04 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_b14_x8_031",
+  "armyCorpsName": "[1815] 6. Österreich (Italien)",
+  "instances": [
+    "ntw3_art_foot_159_012_15703_tow_031",
+    "ntw3_art_foot_159_006_15702_tow_031",
+    "ntw3_cav_lance_159_002_2060_tow_031",
+    "ntw3_cav_light_159_999_2062_tow_031",
+    "ntw3_cav_lance_160_004_2058_tow_031",
+    "ntw3_cav_lance_160_004_2058_tow_031",
+    "ntw3_inf_light_160_012_5241_tow_031",
+    "ntw3_inf_light_160_012_5241_tow_031",
+    "ntw3_inf_light_159_005_5259_tow_031",
+    "ntw3_inf_light_159_005_5259_tow_031",
+    "ntw3_inf_line_160_007_5177_tow_031",
+    "ntw3_inf_line_161_062_5170_tow_031_com_2427",
+    "ntw3_inf_line_160_040_5179_tow_031",
+    "ntw3_inf_line_160_040_5179_tow_031",
+    "ntw3_inf_line_160_040_5179_tow_031",
+    "ntw3_inf_line_160_013_5250_tow_031",
+    "ntw3_inf_line_160_013_5250_tow_031",
+    "ntw3_inf_line_160_013_5250_tow_031",
+    "ntw3_inf_line_160_038_5254_tow_031",
+    "ntw3_inf_line_160_038_5254_tow_031",
+    "ntw3_inf_line_160_038_5254_tow_031",
+    "ntw3_inf_milit_159_999_5274_tow_031"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_160_5_0543_tow_031",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

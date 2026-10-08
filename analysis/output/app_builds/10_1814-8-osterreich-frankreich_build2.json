@@ -1,0 +1,30 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_10_2",
+  "name": "[1814] 8. Österreich (Frankreich) — build 2 (harmonised): balanced (≥ 4 cavalry, ≥ 2 artillery), eff 1.29 (1.29 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_b17_x8_055",
+  "armyCorpsName": "[1814] 8. Österreich (Frankreich)",
+  "instances": [
+    "ntw3_art_foot_296_012_15925_tow_055",
+    "ntw3_art_foot_296_012_15925_tow_055",
+    "ntw3_cav_light_296_001_2473_tow_055",
+    "ntw3_cav_light_279_012_2478_tow_055",
+    "ntw3_cav_light_279_012_2478_tow_055",
+    "ntw3_cav_light_287_004_2448_tow_055",
+    "ntw3_cav_light_287_004_2448_tow_055",
+    "ntw3_cav_light_279_003_2479_tow_055",
+    "ntw3_cav_light_296_002_2462_tow_055",
+    "ntw3_cav_light_296_002_2462_tow_055",
+    "ntw3_cav_light_287_007_2441_tow_055",
+    "ntw3_cav_light_287_007_2441_tow_055",
+    "ntw3_cav_light_279_003_2479_tow_055_com_1555",
+    "ntw3_cav_light_296_002_2474_tow_055"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_287_2_0606_tow_055",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

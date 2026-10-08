@@ -1,0 +1,30 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_24_4corps",
+  "name": "[1815] 7. Preußen (Flandern) — two-compartment, ≤ 4 source corps (one roll): objective 3.404 (mean score 1.70, 9,992 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b12_x8_011",
+  "armyCorpsName": "[1815] 7. Preußen (Flandern)",
+  "instances": [
+    "ntw3_art_foot_063_006_15849_tow_011",
+    "ntw3_art_foot_064_012_15670_tow_011",
+    "ntw3_cav_light_065_008_0898_tow_011",
+    "ntw3_cav_light_063_003_0891_tow_011",
+    "ntw3_cav_lance_064_003_0453_tow_011",
+    "ntw3_cav_light_064_008_0895_tow_011_com_0957",
+    "ntw3_cav_light_065_010_0896_tow_011",
+    "ntw3_cav_lance_062_002_0445_tow_011",
+    "ntw3_cav_stand_062_002_1607_tow_011",
+    "ntw3_inf_line_063_021_2350_tow_011",
+    "ntw3_inf_line_063_021_2350_tow_011",
+    "ntw3_inf_line_063_022_2351_tow_011",
+    "ntw3_inf_line_063_022_2351_tow_011",
+    "ntw3_inf_light_064_008_1175_tow_011"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_065_4_0099_tow_011",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

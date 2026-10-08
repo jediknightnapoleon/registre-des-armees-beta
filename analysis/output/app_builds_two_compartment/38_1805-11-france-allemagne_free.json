@@ -1,0 +1,32 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_38_free",
+  "name": "[1805] 11. France (Allemagne) — two-compartment, no corps limit: objective 3.321 (mean score 1.67, 9,954 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_a05_x8_001",
+  "armyCorpsName": "[1805] 11. France (Allemagne)",
+  "instances": [
+    "ntw3_cav_heavy_096_999_0124_tow_001",
+    "ntw3_inf_line_094_061_2588_tow_001",
+    "ntw3_inf_line_094_061_2588_tow_001",
+    "ntw3_inf_line_093_055_2580_tow_001",
+    "ntw3_inf_line_093_055_2580_tow_001",
+    "ntw3_inf_line_093_018_2573_tow_001_com_1154",
+    "ntw3_inf_grena_092_108_0482_tow_001",
+    "ntw3_inf_line_093_004_2579_tow_001",
+    "ntw3_inf_line_093_004_2579_tow_001",
+    "ntw3_inf_line_092_033_2570_tow_001",
+    "ntw3_inf_line_092_033_2570_tow_001",
+    "ntw3_inf_line_092_111_2569_tow_001",
+    "ntw3_inf_line_092_111_2569_tow_001",
+    "ntw3_inf_line_092_108_2568_tow_001",
+    "ntw3_inf_line_092_108_2568_tow_001",
+    "ntw3_inf_light_094_013_1223_tow_001"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_096_9_0131_tow_001",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_14_3",
+  "name": "[1814] 9. Rossiya (Frantsiya) — build 3 (harmonised): highest-star staff general (5★), max value, eff 1.23 (1.09 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_b17_x8_057",
+  "armyCorpsName": "[1814] 9. Rossiya (Frantsiya)",
+  "instances": [
+    "ntw3_cav_heavy_280_999_2597_tow_057",
+    "ntw3_cav_heavy_280_999_2604_tow_057",
+    "ntw3_cav_heavy_280_999_2603_tow_057",
+    "ntw3_cav_heavy_280_999_2601_tow_057",
+    "ntw3_cav_heavy_280_999_2602_tow_057",
+    "ntw3_cav_heavy_280_999_2605_tow_057",
+    "ntw3_cav_heavy_280_999_2606_tow_057",
+    "ntw3_cav_stand_297_999_2546_tow_057",
+    "ntw3_cav_light_280_999_2588_tow_057_com_1677"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_280_5_0595_tow_057",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

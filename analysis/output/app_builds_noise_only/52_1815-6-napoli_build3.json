@@ -1,0 +1,37 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_cen_52_3",
+  "name": "[1815] 6. Napoli — build 3 (noise-only): highest-star staff general (5★), max value, eff 0.81 (1.08 for its rating)",
+  "createdAt": "2026-10-08T02:08:23Z",
+  "updatedAt": "2026-10-08T02:08:23Z",
+  "factionKey": "ntw3_tow_c14_x8_030",
+  "armyCorpsName": "[1815] 6. Napoli",
+  "instances": [
+    "ntw3_inf_grena_156_002_0721_tow_030",
+    "ntw3_inf_grena_157_007_0727_tow_030",
+    "ntw3_inf_grena_157_004_0723_tow_030",
+    "ntw3_inf_line_156_002_3597_tow_030",
+    "ntw3_inf_light_156_002_1561_tow_030",
+    "ntw3_inf_light_156_002_1561_tow_030",
+    "ntw3_inf_light_156_002_1561_tow_030",
+    "ntw3_inf_line_156_002_3597_tow_030_com_3353",
+    "ntw3_inf_grena_156_006_0725_tow_030",
+    "ntw3_inf_grena_158_999_0730_tow_030",
+    "ntw3_inf_light_157_004_1565_tow_030",
+    "ntw3_inf_light_157_004_1565_tow_030",
+    "ntw3_inf_light_157_004_1565_tow_030",
+    "ntw3_inf_skirm_158_999_4933_tow_030",
+    "ntw3_inf_skirm_158_999_4933_tow_030",
+    "ntw3_inf_line_157_004_3601_tow_030",
+    "ntw3_inf_line_157_004_3601_tow_030",
+    "ntw3_inf_line_157_004_3601_tow_030",
+    "ntw3_inf_line_156_006_3605_tow_030",
+    "ntw3_inf_line_156_006_3605_tow_030",
+    "ntw3_inf_line_156_006_3605_tow_030"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_158_5_0519_tow_030",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

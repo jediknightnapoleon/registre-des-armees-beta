@@ -1,0 +1,32 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_49_3",
+  "name": "[1811] 7. España — build 3 (harmonised): highest-star staff general (4★), max value, eff 0.89 (1.01 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_b13_x8_050",
+  "armyCorpsName": "[1811] 7. España",
+  "instances": [
+    "ntw3_art_foot_175_012_15775_tow_050",
+    "ntw3_art_foot_176_009_15795_tow_050",
+    "ntw3_cav_heavy_176_999_2216_tow_050",
+    "ntw3_cav_heavy_175_999_2193_tow_050",
+    "ntw3_cav_heavy_176_999_2219_tow_050",
+    "ntw3_cav_heavy_176_999_2223_tow_050",
+    "ntw3_cav_stand_175_999_2194_tow_050",
+    "ntw3_cav_stand_175_999_2196_tow_050",
+    "ntw3_cav_stand_176_999_2215_tow_050",
+    "ntw3_cav_light_176_999_2221_tow_050",
+    "ntw3_inf_light_177_999_5886_tow_050",
+    "ntw3_inf_grena_174_999_5321_tow_050",
+    "ntw3_inf_grena_174_999_5320_tow_050",
+    "ntw3_inf_line_175_002_5701_tow_050",
+    "ntw3_inf_line_175_002_5702_tow_050",
+    "ntw3_inf_milit_175_999_5708_tow_050"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_177_4_0454_tow_050",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

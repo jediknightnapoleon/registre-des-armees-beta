@@ -1,0 +1,42 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_40_free",
+  "name": "[1809] 10. France (Autriche) — two-compartment, no corps limit: objective 3.271 (mean score 1.64, 10,000 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_a08_x8_047",
+  "armyCorpsName": "[1809] 10. France (Autriche)",
+  "instances": [
+    "ntw3_art_horse_248_006_15820_tow_047",
+    "ntw3_cav_heavy_114_999_2271_tow_047",
+    "ntw3_inf_line_111_999_6017_tow_047_com_3493",
+    "ntw3_inf_line_108_001_6027_tow_047",
+    "ntw3_inf_line_111_002_6008_tow_047",
+    "ntw3_inf_line_111_002_6008_tow_047",
+    "ntw3_inf_grena_108_015_6047_tow_047",
+    "ntw3_inf_line_110_009_2674_tow_047",
+    "ntw3_inf_line_110_009_2674_tow_047",
+    "ntw3_inf_line_111_037_6020_tow_047",
+    "ntw3_inf_line_111_037_6020_tow_047",
+    "ntw3_inf_grena_112_999_5090_tow_047",
+    "ntw3_inf_line_108_002_6028_tow_047",
+    "ntw3_inf_grena_111_016_6045_tow_047",
+    "ntw3_inf_light_111_999_6007_tow_047",
+    "ntw3_inf_light_111_999_6007_tow_047",
+    "ntw3_inf_grena_112_999_5078_tow_047",
+    "ntw3_inf_grena_112_999_5080_tow_047",
+    "ntw3_inf_line_111_002_6018_tow_047",
+    "ntw3_inf_line_111_002_6018_tow_047",
+    "ntw3_inf_line_108_004_6030_tow_047",
+    "ntw3_inf_line_108_003_6029_tow_047",
+    "ntw3_inf_line_111_001_6010_tow_047",
+    "ntw3_inf_line_114_999_5978_tow_047",
+    "ntw3_inf_line_114_999_5978_tow_047",
+    "ntw3_inf_grena_111_004_6014_tow_047"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_108_8_0144_tow_047",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

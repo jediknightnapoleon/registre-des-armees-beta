@@ -1,0 +1,42 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_cen_15_1",
+  "name": "[1799] 9. France (Rhin) — build 1 (noise-only): max value, eff 1.31 (1.17 for its rating)",
+  "createdAt": "2026-10-08T02:08:23Z",
+  "updatedAt": "2026-10-08T02:08:23Z",
+  "factionKey": "ntw3_tow_a03_x8_033",
+  "armyCorpsName": "[1799] 9. France (Rhin)",
+  "instances": [
+    "ntw3_cav_light_084_005_0945_tow_033",
+    "ntw3_cav_light_086_002_0954_tow_033",
+    "ntw3_cav_stand_086_002_1628_tow_033",
+    "ntw3_cav_light_084_006_0946_tow_033",
+    "ntw3_cav_stand_086_023_1627_tow_033",
+    "ntw3_cav_light_084_004_0944_tow_033",
+    "ntw3_cav_light_086_016_0955_tow_033",
+    "ntw3_cav_light_087_020_0959_tow_033_com_1253",
+    "ntw3_inf_grena_084_046_0467_tow_033",
+    "ntw3_inf_light_085_010_1202_tow_033",
+    "ntw3_inf_light_085_010_1202_tow_033",
+    "ntw3_inf_line_085_038_2496_tow_033",
+    "ntw3_inf_line_085_038_2496_tow_033",
+    "ntw3_inf_grena_086_023_0469_tow_033",
+    "ntw3_inf_line_085_036_2494_tow_033",
+    "ntw3_inf_line_085_036_2494_tow_033",
+    "ntw3_inf_line_085_083_2498_tow_033",
+    "ntw3_inf_line_085_083_2498_tow_033",
+    "ntw3_inf_line_087_048_2513_tow_033",
+    "ntw3_inf_skirm_086_999_4759_tow_033",
+    "ntw3_inf_skirm_086_999_4759_tow_033",
+    "ntw3_inf_skirm_086_999_4759_tow_033",
+    "ntw3_inf_skirm_087_999_4760_tow_033",
+    "ntw3_inf_skirm_087_999_4760_tow_033",
+    "ntw3_inf_skirm_087_999_4760_tow_033",
+    "ntw3_inf_skirm_087_999_4760_tow_033"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_086_2_0120_tow_033",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

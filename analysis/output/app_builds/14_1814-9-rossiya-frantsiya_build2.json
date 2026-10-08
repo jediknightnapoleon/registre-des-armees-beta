@@ -1,0 +1,26 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_14_2",
+  "name": "[1814] 9. Rossiya (Frantsiya) — build 2 (harmonised): balanced (≥ 4 cavalry, ≥ 2 artillery), eff 1.30 (1.15 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_b17_x8_057",
+  "armyCorpsName": "[1814] 9. Rossiya (Frantsiya)",
+  "instances": [
+    "ntw3_art_horse_297_002_15990_tow_057_com_0391",
+    "ntw3_art_foot_285_046_16052_tow_057",
+    "ntw3_cav_heavy_280_999_2597_tow_057",
+    "ntw3_cav_heavy_280_999_2604_tow_057",
+    "ntw3_cav_heavy_280_999_2603_tow_057",
+    "ntw3_cav_heavy_280_999_2601_tow_057",
+    "ntw3_cav_heavy_280_999_2602_tow_057",
+    "ntw3_cav_heavy_280_999_2605_tow_057",
+    "ntw3_cav_heavy_280_999_2606_tow_057",
+    "ntw3_cav_stand_297_999_2546_tow_057"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_280_1_0620_tow_057",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

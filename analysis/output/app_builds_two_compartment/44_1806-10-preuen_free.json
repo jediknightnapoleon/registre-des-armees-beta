@@ -1,0 +1,29 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_44_free",
+  "name": "[1806] 10. Preußen — two-compartment, no corps limit: objective 3.245 (mean score 1.62, 10,000 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b06_x8_009",
+  "armyCorpsName": "[1806] 10. Preußen",
+  "instances": [
+    "ntw3_art_horse_036_006_0665_tow_009",
+    "ntw3_cav_heavy_035_001_0054_tow_009_com_0026",
+    "ntw3_cav_stand_038_009_1585_tow_009",
+    "ntw3_cav_stand_038_010_1584_tow_009",
+    "ntw3_cav_heavy_035_009_0055_tow_009",
+    "ntw3_cav_heavy_034_012_0049_tow_009",
+    "ntw3_cav_heavy_037_005_0059_tow_009",
+    "ntw3_cav_stand_037_001_2009_tow_009",
+    "ntw3_cav_stand_034_005_1579_tow_009",
+    "ntw3_cav_stand_034_005_1579_tow_009",
+    "ntw3_cav_heavy_036_002_0058_tow_009",
+    "ntw3_inf_line_034_028_2134_tow_009",
+    "ntw3_inf_line_034_040_2140_tow_009"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_036_2_0069_tow_009",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

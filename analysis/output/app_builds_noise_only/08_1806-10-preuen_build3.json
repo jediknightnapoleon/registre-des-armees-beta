@@ -1,0 +1,36 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_cen_08_3",
+  "name": "[1806] 10. Preußen — build 3 (noise-only): highest-star staff general (2★), max value, eff 1.38 (1.11 for its rating)",
+  "createdAt": "2026-10-08T02:08:23Z",
+  "updatedAt": "2026-10-08T02:08:23Z",
+  "factionKey": "ntw3_tow_b06_x8_009",
+  "armyCorpsName": "[1806] 10. Preußen",
+  "instances": [
+    "ntw3_art_horse_036_006_0665_tow_009",
+    "ntw3_cav_heavy_034_012_0049_tow_009",
+    "ntw3_cav_heavy_035_009_0055_tow_009",
+    "ntw3_cav_stand_035_999_1586_tow_009",
+    "ntw3_cav_heavy_037_005_0059_tow_009_com_0031",
+    "ntw3_cav_stand_038_010_1584_tow_009",
+    "ntw3_cav_stand_035_002_1581_tow_009",
+    "ntw3_cav_stand_038_009_1585_tow_009",
+    "ntw3_cav_stand_035_011_1580_tow_009",
+    "ntw3_inf_line_038_055_2167_tow_009",
+    "ntw3_inf_line_038_055_2167_tow_009",
+    "ntw3_inf_line_034_021_2132_tow_009",
+    "ntw3_inf_line_035_039_2144_tow_009",
+    "ntw3_inf_line_035_039_2144_tow_009",
+    "ntw3_inf_line_039_045_2171_tow_009",
+    "ntw3_inf_line_039_045_2171_tow_009",
+    "ntw3_inf_line_034_003_2139_tow_009",
+    "ntw3_inf_line_034_003_2139_tow_009",
+    "ntw3_inf_line_034_034_2136_tow_009",
+    "ntw3_inf_line_039_999_6099_tow_009"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_036_2_0069_tow_009",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

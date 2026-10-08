@@ -1,0 +1,36 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_47_3",
+  "name": "[1812] 7. UK (USA) — build 3 (harmonised): highest-star staff general (5★), max value, eff 0.95 (1.08 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_b10_x8_026",
+  "armyCorpsName": "[1812] 7. UK (USA)",
+  "instances": [
+    "ntw3_cav_missi_015_999_1990_tow_026",
+    "ntw3_cav_lance_015_999_0397_tow_026",
+    "ntw3_cav_missi_015_999_1991_tow_026",
+    "ntw3_inf_skirm_013_999_4675_tow_026_com_1936",
+    "ntw3_inf_skirm_015_999_4678_tow_026",
+    "ntw3_inf_skirm_015_999_4678_tow_026",
+    "ntw3_inf_skirm_013_999_4675_tow_026",
+    "ntw3_inf_skirm_015_999_5906_tow_026",
+    "ntw3_inf_skirm_015_999_5906_tow_026",
+    "ntw3_inf_skirm_015_999_5906_tow_026",
+    "ntw3_inf_skirm_015_999_5906_tow_026",
+    "ntw3_inf_skirm_015_999_4680_tow_026",
+    "ntw3_inf_skirm_015_999_4680_tow_026",
+    "ntw3_inf_skirm_015_999_4680_tow_026",
+    "ntw3_inf_skirm_015_999_4680_tow_026",
+    "ntw3_inf_skirm_015_999_4684_tow_026",
+    "ntw3_inf_skirm_015_999_4684_tow_026",
+    "ntw3_inf_skirm_015_999_4684_tow_026",
+    "ntw3_inf_skirm_015_999_4684_tow_026",
+    "ntw3_inf_skirm_013_999_4677_tow_026"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_015_5_0039_tow_026",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

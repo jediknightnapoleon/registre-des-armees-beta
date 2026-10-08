@@ -1,0 +1,31 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_15_4corps",
+  "name": "[1812] 10. Rossiya — two-compartment, ≤ 4 source corps (one roll): objective 3.475 (mean score 1.74, 9,988 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b11_x8_013",
+  "armyCorpsName": "[1812] 10. Rossiya",
+  "instances": [
+    "ntw3_art_foot_183_011_0411_tow_013",
+    "ntw3_art_foot_183_026_0410_tow_013_com_0126",
+    "ntw3_cav_stand_192_999_1784_tow_013",
+    "ntw3_cav_stand_183_999_1764_tow_013",
+    "ntw3_cav_stand_263_999_2492_tow_013",
+    "ntw3_cav_stand_192_999_1781_tow_013",
+    "ntw3_cav_stand_192_004_2487_tow_013",
+    "ntw3_cav_stand_186_999_1769_tow_013",
+    "ntw3_cav_stand_263_999_2494_tow_013",
+    "ntw3_cav_lance_263_999_2505_tow_013",
+    "ntw3_cav_lance_263_999_2505_tow_013",
+    "ntw3_cav_stand_192_005_2755_tow_013",
+    "ntw3_cav_stand_192_999_1782_tow_013",
+    "ntw3_cav_stand_186_999_1775_tow_013",
+    "ntw3_inf_line_186_999_3164_tow_013"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_186_3_0212_tow_013",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_25_3",
+  "name": "[1811] 9. UK, Portugal — build 3 (harmonised): highest-star staff general (8★), max value, eff 1.18 (1.05 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_b13_x8_049",
+  "armyCorpsName": "[1811] 9. UK, Portugal",
+  "instances": [
+    "ntw3_cav_stand_172_008_2070_tow_049_com_1115",
+    "ntw3_inf_light_171_043_5232_tow_049",
+    "ntw3_inf_light_172_001_5298_tow_049",
+    "ntw3_inf_light_172_002_5299_tow_049",
+    "ntw3_inf_line_173_003_5305_tow_049",
+    "ntw3_inf_line_173_002_5304_tow_049",
+    "ntw3_inf_light_171_999_5228_tow_049",
+    "ntw3_inf_line_171_083_5202_tow_049",
+    "ntw3_inf_line_172_040_5289_tow_049",
+    "ntw3_inf_light_171_085_5226_tow_049",
+    "ntw3_inf_line_172_039_5284_tow_049",
+    "ntw3_inf_line_172_005_5300_tow_049",
+    "ntw3_inf_line_172_028_5282_tow_049",
+    "ntw3_inf_line_171_007_5195_tow_049",
+    "ntw3_inf_line_171_038_5208_tow_049",
+    "ntw3_inf_line_171_009_5204_tow_049",
+    "ntw3_inf_line_171_009_5204_tow_049",
+    "ntw3_inf_line_173_082_5315_tow_049",
+    "ntw3_inf_line_173_082_5315_tow_049",
+    "ntw3_inf_line_172_031_5277_tow_049",
+    "ntw3_inf_line_171_003_5214_tow_049",
+    "ntw3_inf_line_171_003_5214_tow_049",
+    "ntw3_inf_line_173_009_5313_tow_049",
+    "ntw3_inf_light_171_999_5227_tow_049",
+    "ntw3_inf_line_171_024_5184_tow_049",
+    "ntw3_inf_line_171_021_5205_tow_049",
+    "ntw3_inf_line_171_021_5205_tow_049"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_171_8_0093_tow_049",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_47_2",
+  "name": "[1812] 7. UK (USA) — build 2 (harmonised): balanced (≥ 4 cavalry, ≥ 2 artillery), eff 0.92 (1.06 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_b10_x8_026",
+  "armyCorpsName": "[1812] 7. UK (USA)",
+  "instances": [
+    "ntw3_art_foot_013_006_0030_tow_026",
+    "ntw3_art_foot_014_006_0031_tow_026",
+    "ntw3_cav_missi_015_999_1990_tow_026",
+    "ntw3_cav_lance_015_999_0397_tow_026",
+    "ntw3_cav_missi_015_999_1991_tow_026",
+    "ntw3_cav_missi_015_999_1991_tow_026",
+    "ntw3_inf_skirm_013_999_4675_tow_026_com_1936",
+    "ntw3_inf_skirm_015_999_5906_tow_026",
+    "ntw3_inf_skirm_015_999_5906_tow_026",
+    "ntw3_inf_skirm_015_999_5906_tow_026",
+    "ntw3_inf_skirm_015_999_5906_tow_026",
+    "ntw3_inf_skirm_015_999_4680_tow_026",
+    "ntw3_inf_skirm_015_999_4680_tow_026",
+    "ntw3_inf_skirm_015_999_4680_tow_026",
+    "ntw3_inf_skirm_015_999_4680_tow_026",
+    "ntw3_inf_milit_013_999_4213_tow_026",
+    "ntw3_inf_milit_013_999_4213_tow_026",
+    "ntw3_inf_milit_015_999_4217_tow_026",
+    "ntw3_inf_milit_015_999_4217_tow_026",
+    "ntw3_inf_milit_015_999_4215_tow_026",
+    "ntw3_inf_milit_015_999_4230_tow_026",
+    "ntw3_inf_milit_013_999_4231_tow_026",
+    "ntw3_inf_milit_015_999_4221_tow_026",
+    "ntw3_inf_milit_015_999_4218_tow_026",
+    "ntw3_inf_milit_015_999_4218_tow_026",
+    "ntw3_inf_milit_015_999_4218_tow_026"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_015_5_0039_tow_026",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

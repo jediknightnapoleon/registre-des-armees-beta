@@ -1,0 +1,41 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_cen_42_2",
+  "name": "[1799] 7. France (Hollande) — build 2 (noise-only): balanced (≥ 4 cavalry, ≥ 2 artillery), eff 0.97 (1.11 for its rating)",
+  "createdAt": "2026-10-08T02:08:23Z",
+  "updatedAt": "2026-10-08T02:08:23Z",
+  "factionKey": "ntw3_tow_a03_x8_040",
+  "armyCorpsName": "[1799] 7. France (Hollande)",
+  "instances": [
+    "ntw3_art_foot_089_006_0226_tow_040",
+    "ntw3_art_horse_089_006_0709_tow_040",
+    "ntw3_cav_stand_089_010_1631_tow_040",
+    "ntw3_cav_light_089_016_0964_tow_040",
+    "ntw3_cav_light_089_005_0966_tow_040",
+    "ntw3_cav_light_089_001_0967_tow_040",
+    "ntw3_inf_line_089_060_2535_tow_040",
+    "ntw3_inf_line_089_042_2528_tow_040",
+    "ntw3_inf_line_089_042_2528_tow_040",
+    "ntw3_inf_line_089_042_2528_tow_040",
+    "ntw3_inf_line_089_054_2533_tow_040_com_2965",
+    "ntw3_inf_line_089_054_2533_tow_040",
+    "ntw3_inf_line_089_049_2530_tow_040",
+    "ntw3_inf_line_089_049_2530_tow_040",
+    "ntw3_inf_line_089_049_2530_tow_040",
+    "ntw3_inf_line_089_022_2525_tow_040",
+    "ntw3_inf_line_089_022_2525_tow_040",
+    "ntw3_inf_line_089_022_2525_tow_040",
+    "ntw3_inf_line_089_098_2540_tow_040",
+    "ntw3_inf_line_089_098_2540_tow_040",
+    "ntw3_inf_line_089_098_2540_tow_040",
+    "ntw3_inf_line_089_090_2539_tow_040",
+    "ntw3_inf_line_089_090_2539_tow_040",
+    "ntw3_inf_line_089_090_2539_tow_040",
+    "ntw3_inf_line_089_015_2523_tow_040"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_089_4_0123_tow_040",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_cen_35_4",
+  "name": "[1812] 7. UK (USA) — build 4 (noise-only): max value from ≤ 4 source corps (one roll), eff 1.09 (1.24 for its rating)",
+  "createdAt": "2026-10-08T02:08:23Z",
+  "updatedAt": "2026-10-08T02:08:23Z",
+  "factionKey": "ntw3_tow_b10_x8_026",
+  "armyCorpsName": "[1812] 7. UK (USA)",
+  "instances": [
+    "ntw3_cav_missi_015_999_1990_tow_026",
+    "ntw3_inf_skirm_013_999_4679_tow_026",
+    "ntw3_inf_skirm_013_999_4679_tow_026",
+    "ntw3_inf_skirm_015_999_4678_tow_026",
+    "ntw3_inf_skirm_015_999_4678_tow_026",
+    "ntw3_inf_skirm_015_999_4678_tow_026",
+    "ntw3_inf_skirm_013_999_4675_tow_026_com_1936",
+    "ntw3_inf_skirm_013_999_4675_tow_026",
+    "ntw3_inf_skirm_015_999_5906_tow_026",
+    "ntw3_inf_skirm_015_999_5906_tow_026",
+    "ntw3_inf_skirm_015_999_5906_tow_026",
+    "ntw3_inf_skirm_015_999_5906_tow_026",
+    "ntw3_inf_skirm_015_999_4680_tow_026",
+    "ntw3_inf_skirm_015_999_4680_tow_026",
+    "ntw3_inf_skirm_015_999_4680_tow_026",
+    "ntw3_inf_skirm_015_999_4680_tow_026",
+    "ntw3_inf_skirm_015_999_4676_tow_026",
+    "ntw3_inf_skirm_015_999_4676_tow_026",
+    "ntw3_inf_skirm_014_060_4673_tow_026",
+    "ntw3_inf_milit_015_999_4218_tow_026",
+    "ntw3_inf_milit_015_999_4218_tow_026",
+    "ntw3_inf_milit_015_999_4218_tow_026"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_013_1_0038_tow_026",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

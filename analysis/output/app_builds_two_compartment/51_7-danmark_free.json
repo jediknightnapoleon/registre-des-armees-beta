@@ -1,0 +1,38 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_51_free",
+  "name": "7. Danmark — two-compartment, no corps limit: objective 3.007 (mean score 1.50, 10,000 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "denmark",
+  "armyCorpsName": "7. Danmark",
+  "instances": [
+    "ntw3_art_horse_005_003_0800",
+    "ntw3_cav_light_005_999_1202",
+    "ntw3_cav_light_005_999_1202",
+    "ntw3_cav_light_005_999_1202",
+    "ntw3_cav_light_005_999_1200",
+    "ntw3_cav_heavy_005_999_0228",
+    "ntw3_inf_light_005_999_4872",
+    "ntw3_inf_light_005_999_1453",
+    "ntw3_inf_light_005_999_1453",
+    "ntw3_inf_grena_005_999_0653",
+    "ntw3_inf_light_005_999_4871",
+    "ntw3_inf_grena_005_999_0650",
+    "ntw3_inf_light_005_999_4873",
+    "ntw3_inf_light_005_999_4873",
+    "ntw3_inf_skirm_005_999_1454",
+    "ntw3_inf_skirm_005_999_1454",
+    "ntw3_inf_skirm_005_999_1456",
+    "ntw3_inf_skirm_005_999_1456",
+    "ntw3_inf_grena_005_999_0651_com_0345",
+    "ntw3_inf_light_005_999_4875",
+    "ntw3_inf_milit_005_999_4442",
+    "ntw3_inf_grena_005_999_0648"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_005_0_0228",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

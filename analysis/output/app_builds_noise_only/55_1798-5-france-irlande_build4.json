@@ -1,0 +1,30 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_cen_55_4",
+  "name": "[1798] 5. France (Irlande) — build 4 (noise-only): max value from ≤ 4 source corps (one roll), eff 0.68 (1.08 for its rating)",
+  "createdAt": "2026-10-08T02:08:23Z",
+  "updatedAt": "2026-10-08T02:08:23Z",
+  "factionKey": "ntw3_tow_a03_x8_038",
+  "armyCorpsName": "[1798] 5. France (Irlande)",
+  "instances": [
+    "ntw3_inf_line_088_070_2520_tow_038",
+    "ntw3_inf_milit_088_999_4335_tow_038_com_2941",
+    "ntw3_inf_grena_088_109_0471_tow_038",
+    "ntw3_inf_line_088_081_2521_tow_038",
+    "ntw3_inf_grena_088_081_0472_tow_038",
+    "ntw3_inf_skirm_088_999_5823_tow_038",
+    "ntw3_inf_skirm_088_999_5823_tow_038",
+    "ntw3_inf_line_088_010_2519_tow_038",
+    "ntw3_inf_line_088_010_2519_tow_038",
+    "ntw3_inf_light_088_999_0925_tow_038",
+    "ntw3_inf_milit_088_999_4334_tow_038",
+    "ntw3_inf_milit_088_999_4334_tow_038",
+    "ntw3_inf_milit_088_999_4334_tow_038",
+    "ntw3_inf_milit_088_999_4334_tow_038"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_088_3_0122_tow_038",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

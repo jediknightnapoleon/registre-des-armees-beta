@@ -1,0 +1,33 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_cen_20_3",
+  "name": "[1809] 7. Polska, sojusznicy — build 3 (noise-only): highest-star staff general (5★), max value, eff 1.20 (1.38 for its rating)",
+  "createdAt": "2026-10-08T02:08:23Z",
+  "updatedAt": "2026-10-08T02:08:23Z",
+  "factionKey": "ntw3_tow_c08_x8_048",
+  "armyCorpsName": "[1809] 7. Polska, sojusznicy",
+  "instances": [
+    "ntw3_cav_lance_115_002_2087_tow_048",
+    "ntw3_cav_lance_115_003_2088_tow_048",
+    "ntw3_cav_lance_115_006_2089_tow_048",
+    "ntw3_cav_lance_113_999_2024_tow_048",
+    "ntw3_cav_lance_116_999_2276_tow_048",
+    "ntw3_cav_lance_116_999_2291_tow_048",
+    "ntw3_cav_lance_116_999_2281_tow_048",
+    "ntw3_cav_lance_116_999_2283_tow_048",
+    "ntw3_cav_lance_116_999_2284_tow_048",
+    "ntw3_cav_lance_116_999_2290_tow_048",
+    "ntw3_cav_lance_116_999_2292_tow_048",
+    "ntw3_inf_light_116_010_5993_tow_048",
+    "ntw3_inf_light_116_010_5993_tow_048",
+    "ntw3_inf_light_116_008_5983_tow_048",
+    "ntw3_inf_light_113_999_5109_tow_048",
+    "ntw3_inf_light_116_008_5983_tow_048_com_3422",
+    "ntw3_inf_light_113_999_5411_tow_048"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_115_5_0151_tow_048",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

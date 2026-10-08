@@ -1,0 +1,28 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_30_free",
+  "name": "[1799] 9. Österreich (Italien) — two-compartment, no corps limit: objective 3.349 (mean score 1.68, 9,959 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b03_x8_039",
+  "armyCorpsName": "[1799] 9. Österreich (Italien)",
+  "instances": [
+    "ntw3_art_horse_018_003_0643_tow_039",
+    "ntw3_cav_lance_024_999_0406_tow_039",
+    "ntw3_cav_lance_024_999_0406_tow_039",
+    "ntw3_cav_lance_024_999_0402_tow_039",
+    "ntw3_cav_lance_024_999_0403_tow_039",
+    "ntw3_cav_light_018_004_0774_tow_039_com_0981",
+    "ntw3_cav_light_017_002_0769_tow_039",
+    "ntw3_cav_light_017_002_0769_tow_039",
+    "ntw3_inf_grena_018_999_0025_tow_039",
+    "ntw3_inf_light_018_005_1046_tow_039",
+    "ntw3_inf_light_024_013_1064_tow_039",
+    "ntw3_inf_grena_018_999_0022_tow_039"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_024_8_0050_tow_039",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

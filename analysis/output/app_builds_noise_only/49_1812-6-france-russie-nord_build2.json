@@ -1,0 +1,42 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_cen_49_2",
+  "name": "[1812] 6. France (Russie-Nord) — build 2 (noise-only): balanced (≥ 4 cavalry, ≥ 2 artillery), eff 0.92 (1.23 for its rating)",
+  "createdAt": "2026-10-08T02:08:23Z",
+  "updatedAt": "2026-10-08T02:08:23Z",
+  "factionKey": "ntw3_tow_a11_x8_027",
+  "armyCorpsName": "[1812] 6. France (Russie-Nord)",
+  "instances": [
+    "ntw3_art_foot_122_005_0296_tow_027",
+    "ntw3_art_foot_126_002_16081_tow_027",
+    "ntw3_cav_light_126_001_1062_tow_027",
+    "ntw3_cav_light_118_024_1034_tow_027",
+    "ntw3_cav_light_118_024_1034_tow_027",
+    "ntw3_cav_light_126_003_1063_tow_027",
+    "ntw3_inf_grena_118_008_0525_tow_027",
+    "ntw3_inf_light_118_011_1261_tow_027",
+    "ntw3_inf_light_118_011_1261_tow_027",
+    "ntw3_inf_line_125_007_2792_tow_027",
+    "ntw3_inf_line_125_007_2792_tow_027",
+    "ntw3_inf_light_122_005_1282_tow_027",
+    "ntw3_inf_line_125_003_2783_tow_027",
+    "ntw3_inf_skirm_122_999_6605_tow_027",
+    "ntw3_inf_skirm_126_999_6974_tow_027",
+    "ntw3_inf_skirm_126_999_6974_tow_027",
+    "ntw3_inf_skirm_118_999_4782_tow_027",
+    "ntw3_inf_skirm_118_999_4782_tow_027",
+    "ntw3_inf_skirm_118_999_4781_tow_027",
+    "ntw3_inf_skirm_118_999_4781_tow_027",
+    "ntw3_inf_skirm_118_999_4781_tow_027",
+    "ntw3_inf_skirm_118_999_4781_tow_027",
+    "ntw3_inf_line_125_002_6560_tow_027",
+    "ntw3_inf_skirm_126_999_7127_tow_027",
+    "ntw3_inf_skirm_126_999_7127_tow_027",
+    "ntw3_inf_line_125_125_2785_tow_027_com_1342"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_118_0_0154_tow_027",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

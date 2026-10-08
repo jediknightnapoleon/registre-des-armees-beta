@@ -1,0 +1,41 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_20_3",
+  "name": "9. France (1796) — build 3 (harmonised): highest-star staff general (9★), max value, eff 1.22 (1.09 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "france",
+  "armyCorpsName": "9. France (1796)",
+  "instances": [
+    "ntw3_cav_heavy_203_010_0231",
+    "ntw3_inf_grena_203_057_0663",
+    "ntw3_inf_grena_203_016_0660",
+    "ntw3_inf_line_203_051_3291",
+    "ntw3_inf_line_203_051_3291",
+    "ntw3_inf_skirm_203_999_4881",
+    "ntw3_inf_skirm_203_999_4881",
+    "ntw3_inf_skirm_203_999_4881",
+    "ntw3_inf_grena_203_999_0664",
+    "ntw3_inf_line_203_036_3281",
+    "ntw3_inf_line_203_036_3281",
+    "ntw3_inf_line_203_027_3278",
+    "ntw3_inf_line_203_027_3278",
+    "ntw3_inf_skirm_203_999_4882",
+    "ntw3_inf_skirm_203_999_4882",
+    "ntw3_inf_skirm_203_999_4882",
+    "ntw3_inf_skirm_203_999_4882",
+    "ntw3_inf_skirm_203_999_4882",
+    "ntw3_inf_skirm_203_999_4882",
+    "ntw3_inf_line_203_083_3298",
+    "ntw3_inf_line_203_083_3298",
+    "ntw3_inf_line_203_999_3304",
+    "ntw3_inf_line_203_999_3303",
+    "ntw3_inf_line_203_096_3302",
+    "ntw3_inf_line_203_096_3302"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_203_9_0249",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

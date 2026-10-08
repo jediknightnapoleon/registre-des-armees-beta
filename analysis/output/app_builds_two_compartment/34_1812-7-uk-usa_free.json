@@ -1,0 +1,35 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_34_free",
+  "name": "[1812] 7. UK (USA) — two-compartment, no corps limit: objective 3.331 (mean score 1.67, 10,000 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b10_x8_026",
+  "armyCorpsName": "[1812] 7. UK (USA)",
+  "instances": [
+    "ntw3_cav_lance_015_999_0397_tow_026",
+    "ntw3_cav_light_013_999_0767_tow_026",
+    "ntw3_inf_skirm_013_999_4675_tow_026",
+    "ntw3_inf_skirm_013_999_4675_tow_026",
+    "ntw3_inf_skirm_013_999_4679_tow_026",
+    "ntw3_inf_skirm_013_999_4679_tow_026",
+    "ntw3_inf_light_014_043_1035_tow_026",
+    "ntw3_inf_light_014_085_1034_tow_026",
+    "ntw3_inf_skirm_014_060_4673_tow_026",
+    "ntw3_inf_skirm_015_999_4684_tow_026",
+    "ntw3_inf_skirm_015_999_4684_tow_026",
+    "ntw3_inf_skirm_015_999_4684_tow_026",
+    "ntw3_inf_skirm_015_999_4684_tow_026",
+    "ntw3_inf_skirm_015_999_4684_tow_026",
+    "ntw3_inf_line_013_104_1895_tow_026",
+    "ntw3_inf_skirm_015_999_4678_tow_026_com_1938",
+    "ntw3_inf_line_014_062_1887_tow_026",
+    "ntw3_inf_milit_015_999_4218_tow_026",
+    "ntw3_inf_line_014_044_1875_tow_026"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_014_4_0498_tow_026",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

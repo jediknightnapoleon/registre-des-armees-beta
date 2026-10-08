@@ -1,0 +1,25 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_cen_19_1",
+  "name": "[1814] 9. Rossiya (Frantsiya) — build 1 (noise-only): max value, eff 1.28 (1.14 for its rating)",
+  "createdAt": "2026-10-08T02:08:23Z",
+  "updatedAt": "2026-10-08T02:08:23Z",
+  "factionKey": "ntw3_tow_b17_x8_057",
+  "armyCorpsName": "[1814] 9. Rossiya (Frantsiya)",
+  "instances": [
+    "ntw3_cav_heavy_280_999_2599_tow_057",
+    "ntw3_cav_heavy_280_999_2597_tow_057",
+    "ntw3_cav_heavy_280_999_2604_tow_057",
+    "ntw3_cav_heavy_280_999_2603_tow_057_com_1686",
+    "ntw3_cav_heavy_280_999_2602_tow_057",
+    "ntw3_cav_heavy_280_999_2605_tow_057",
+    "ntw3_cav_heavy_280_999_2606_tow_057",
+    "ntw3_cav_stand_297_999_2546_tow_057",
+    "ntw3_inf_skirm_280_999_6787_tow_057"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_280_1_0620_tow_057",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_44_2",
+  "name": "[1799] 7. UK, Russia (Helder) — build 2 (harmonised): balanced (≥ 4 cavalry, ≥ 2 artillery), eff 0.94 (1.08 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_b03_x8_043",
+  "armyCorpsName": "[1799] 7. UK, Russia (Helder)",
+  "instances": [
+    "ntw3_art_foot_023_006_0052_tow_043",
+    "ntw3_art_foot_023_006_0052_tow_043",
+    "ntw3_cav_light_023_007_0803_tow_043",
+    "ntw3_cav_light_023_018_0802_tow_043",
+    "ntw3_cav_light_023_015_0801_tow_043",
+    "ntw3_cav_light_023_999_0800_tow_043_com_1137",
+    "ntw3_inf_grena_023_999_5131_tow_043",
+    "ntw3_inf_grena_023_999_1979_tow_043",
+    "ntw3_inf_grena_023_999_1979_tow_043",
+    "ntw3_inf_grena_023_999_0339_tow_043",
+    "ntw3_inf_grena_023_999_0338_tow_043",
+    "ntw3_inf_grena_023_999_0341_tow_043"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_023_0_0048_tow_043",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

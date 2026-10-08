@@ -1,0 +1,31 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_ce_34_2",
+  "name": "[1799] 7. Österreich (Schwaben) — build 2 (harmonised): balanced (≥ 4 cavalry, ≥ 2 artillery), eff 1.06 (1.21 for its rating)",
+  "createdAt": "2026-10-08T02:08:22Z",
+  "updatedAt": "2026-10-08T02:08:22Z",
+  "factionKey": "ntw3_tow_b03_x8_042",
+  "armyCorpsName": "[1799] 7. Österreich (Schwaben)",
+  "instances": [
+    "ntw3_art_horse_019_006_0645_tow_042",
+    "ntw3_art_foot_021_005_0049_tow_042",
+    "ntw3_cav_heavy_019_999_0025_tow_042_com_1006",
+    "ntw3_cav_lance_019_001_0398_tow_042",
+    "ntw3_cav_light_019_010_2261_tow_042",
+    "ntw3_cav_light_019_012_0783_tow_042",
+    "ntw3_cav_light_020_006_0792_tow_042",
+    "ntw3_cav_light_020_006_0792_tow_042",
+    "ntw3_cav_lance_025_999_0410_tow_042",
+    "ntw3_cav_light_019_001_0785_tow_042",
+    "ntw3_cav_lance_025_999_0411_tow_042",
+    "ntw3_cav_lance_025_999_0412_tow_042",
+    "ntw3_cav_lance_025_999_0413_tow_042",
+    "ntw3_cav_lance_025_999_0413_tow_042",
+    "ntw3_inf_milit_019_999_4232_tow_042"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_019_1_0043_tow_042",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

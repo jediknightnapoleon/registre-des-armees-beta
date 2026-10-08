@@ -1,0 +1,36 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_45_free",
+  "name": "[1811] 9. UK, Portugal — two-compartment, no corps limit: objective 3.224 (mean score 1.62, 9,943 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b13_x8_049",
+  "armyCorpsName": "[1811] 9. UK, Portugal",
+  "instances": [
+    "ntw3_cav_stand_171_004_2052_tow_049",
+    "ntw3_inf_light_171_999_5227_tow_049",
+    "ntw3_inf_line_171_038_5208_tow_049",
+    "ntw3_inf_line_171_007_5195_tow_049",
+    "ntw3_inf_line_171_005_5194_tow_049",
+    "ntw3_inf_light_171_043_5232_tow_049",
+    "ntw3_inf_line_171_024_5184_tow_049",
+    "ntw3_inf_line_173_082_5315_tow_049",
+    "ntw3_inf_line_173_082_5315_tow_049",
+    "ntw3_inf_light_171_051_5225_tow_049_com_2458",
+    "ntw3_inf_line_171_009_5204_tow_049",
+    "ntw3_inf_line_171_009_5204_tow_049",
+    "ntw3_inf_line_172_028_5282_tow_049",
+    "ntw3_inf_line_173_003_5305_tow_049",
+    "ntw3_inf_line_173_009_5313_tow_049",
+    "ntw3_inf_line_171_044_5212_tow_049",
+    "ntw3_inf_light_172_001_5298_tow_049",
+    "ntw3_inf_light_171_052_5235_tow_049",
+    "ntw3_inf_light_171_052_5235_tow_049",
+    "ntw3_inf_line_171_001_5192_tow_049"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_171_8_0093_tow_049",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_cen_28_2",
+  "name": "[1798] 8. France (Égypte) — build 2 (noise-only): balanced (≥ 4 cavalry, ≥ 2 artillery), eff 1.18 (1.18 for its rating)",
+  "createdAt": "2026-10-08T02:08:23Z",
+  "updatedAt": "2026-10-08T02:08:23Z",
+  "factionKey": "ntw3_tow_a04_x8_005",
+  "armyCorpsName": "[1798] 8. France (Égypte)",
+  "instances": [
+    "ntw3_art_foot_079_004_0456_tow_005",
+    "ntw3_art_foot_076_008_0202_tow_005",
+    "ntw3_cav_stand_077_999_1618_tow_005",
+    "ntw3_cav_light_078_022_0932_tow_005_com_0443",
+    "ntw3_cav_light_076_999_0928_tow_005",
+    "ntw3_cav_light_076_999_0928_tow_005",
+    "ntw3_inf_line_076_025_2415_tow_005",
+    "ntw3_inf_light_078_007_1187_tow_005",
+    "ntw3_inf_line_077_061_2419_tow_005",
+    "ntw3_inf_line_078_041_2426_tow_005",
+    "ntw3_inf_line_078_041_2426_tow_005",
+    "ntw3_inf_line_079_079_2428_tow_005",
+    "ntw3_inf_line_079_086_2418_tow_005",
+    "ntw3_inf_line_079_086_2418_tow_005",
+    "ntw3_inf_line_079_086_2418_tow_005",
+    "ntw3_inf_light_078_022_1186_tow_005",
+    "ntw3_inf_light_078_022_1186_tow_005",
+    "ntw3_inf_grena_078_999_0460_tow_005",
+    "ntw3_inf_grena_078_999_0460_tow_005",
+    "ntw3_inf_grena_078_999_0460_tow_005",
+    "ntw3_inf_milit_078_999_4333_tow_005",
+    "ntw3_inf_milit_078_999_4333_tow_005",
+    "ntw3_inf_milit_078_999_4333_tow_005"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_077_7_0112_tow_005",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

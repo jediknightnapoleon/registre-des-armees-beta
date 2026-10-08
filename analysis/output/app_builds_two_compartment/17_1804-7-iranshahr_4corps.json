@@ -1,0 +1,33 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_17_4corps",
+  "name": "[1804] 7. Irānshahr — two-compartment, ≤ 4 source corps (one roll): objective 3.479 (mean score 1.75, 9,960 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b15_x8_053",
+  "armyCorpsName": "[1804] 7. Irānshahr",
+  "instances": [
+    "ntw3_cav_light_256_999_2367_tow_053",
+    "ntw3_cav_light_256_999_2367_tow_053",
+    "ntw3_cav_light_255_999_2366_tow_053",
+    "ntw3_cav_heavy_256_999_2365_tow_053_com_1605",
+    "ntw3_inf_skirm_256_999_6534_tow_053",
+    "ntw3_inf_skirm_256_999_6534_tow_053",
+    "ntw3_inf_skirm_256_999_6534_tow_053",
+    "ntw3_inf_skirm_256_999_6534_tow_053",
+    "ntw3_inf_skirm_256_999_6534_tow_053",
+    "ntw3_inf_skirm_256_999_6534_tow_053",
+    "ntw3_inf_line_257_999_6159_tow_053",
+    "ntw3_inf_line_257_999_6159_tow_053",
+    "ntw3_inf_line_257_999_6159_tow_053",
+    "ntw3_inf_skirm_255_999_6535_tow_053",
+    "ntw3_inf_skirm_255_999_6535_tow_053",
+    "ntw3_inf_skirm_255_999_6535_tow_053",
+    "ntw3_inf_skirm_255_999_6535_tow_053"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_256_3_0574_tow_053",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

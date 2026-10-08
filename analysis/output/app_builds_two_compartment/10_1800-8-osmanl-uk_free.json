@@ -1,0 +1,36 @@
+{
+  "saveFormatVersion": 2,
+  "id": "b_tc_10_free",
+  "name": "[1800] 8. Osmanlı, UK — two-compartment, no corps limit: objective 3.556 (mean score 1.78, 10,000 gold)",
+  "createdAt": "2026-10-08T02:16:43Z",
+  "updatedAt": "2026-10-08T02:16:43Z",
+  "factionKey": "ntw3_tow_b04_x8_016",
+  "armyCorpsName": "[1800] 8. Osmanlı, UK",
+  "instances": [
+    "ntw3_art_foot_074_003_0198_tow_016",
+    "ntw3_art_foot_069_005_0187_tow_016_com_0058",
+    "ntw3_cav_light_074_999_0927_tow_016",
+    "ntw3_cav_light_074_999_0924_tow_016",
+    "ntw3_cav_light_069_999_0911_tow_016",
+    "ntw3_cav_light_069_999_0911_tow_016",
+    "ntw3_cav_light_069_999_0911_tow_016",
+    "ntw3_cav_lance_074_999_0475_tow_016",
+    "ntw3_cav_lance_074_999_0473_tow_016",
+    "ntw3_cav_light_073_999_0922_tow_016",
+    "ntw3_cav_light_073_999_0922_tow_016",
+    "ntw3_cav_lance_074_999_0474_tow_016",
+    "ntw3_cav_lance_069_999_0468_tow_016",
+    "ntw3_inf_line_069_999_2372_tow_016",
+    "ntw3_inf_line_069_999_2372_tow_016",
+    "ntw3_inf_line_069_999_2372_tow_016",
+    "ntw3_inf_line_069_999_2372_tow_016",
+    "ntw3_inf_milit_073_999_4329_tow_016",
+    "ntw3_inf_milit_073_999_4329_tow_016",
+    "ntw3_inf_milit_073_999_4327_tow_016"
+  ],
+  "staffSlotUnitKey": "ntw3_gen_staff_069_3_0105_tow_016",
+  "config": {
+    "density": "comfortable",
+    "showCombatGenerals": true
+  }
+}

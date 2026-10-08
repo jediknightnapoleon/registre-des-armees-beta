@@ -1,0 +1,15 @@
+model,val_logloss_minus_best,match_bootstrap_se,best
+faction,0.02053,0.00436,hybrid
+faction+elo,0.0209,0.00442,hybrid
+paper,0.02046,0.00436,hybrid
+paper+elo,0.02133,0.0044,hybrid
+comp,0.00125,0.00124,hybrid
+comp+elo,0.00553,0.00158,hybrid
+cardEB,0.01797,0.00403,hybrid
+cardEB+elo,0.02056,0.00436,hybrid
+hybrid,0.0,0.0,hybrid
+hybrid+elo,0.00393,0.00114,hybrid
+small,0.00446,0.003,hybrid
+small+elo,0.00676,0.00314,hybrid
+hybsmall,0.00234,0.00247,hybrid
+hybsmall+elo,0.00463,0.00284,hybrid
