@@ -166,8 +166,11 @@ eyeballed per corps and division.
 ### 3.6 `build_web_data.py` → `web/public/{data,assets}` — the app's data contract
 
 `npm run build:data` (from `web/`) or `python tools/build_web_data.py`. Reads
-*only* `data/generated/ntw3_army_builder_units.csv` and
-`army_corps_catalog.json`. Produces:
+`data/generated/ntw3_army_builder_units.csv` and `army_corps_catalog.json`,
+plus — when present — the build optimiser's `ntw3_optimiser_values.csv` and
+`ntw3_optimiser_params.json` (§4.6), which it merges into the faction files
+(`optimiserValue` per card, an `optimiser` block per ToW / Custom roster).
+Produces:
 
 | Output | Contents |
 | --- | --- |
@@ -190,7 +193,8 @@ Two details that are load-bearing:
 The script is idempotent: it skips PNG conversion when the destination is newer
 than the source, and **prunes** anything under `web/public/{data,assets}` it
 didn't produce this run, so deleting a corps upstream cleanly removes its files.
-`SCHEMA_VERSION = 1` — bump it when the JSON *shape* changes.
+`SCHEMA_VERSION = 2` — bump it when the JSON *shape* changes (2 added the
+optional optimiser fields).
 
 ### 3.7 `build_pick_rates.py` — optional feature data
 
@@ -372,6 +376,73 @@ general), with `maxSwaps = min(remainingCombatSlots, bucketCount)`.
 - **Greedy fallback** above it: repeatedly price `chosen + candidate` for each
   open bucket and commit the single swap that lowers cost most; stop on the first
   non-strict improvement.
+
+### 4.6 Build optimiser (`web/src/state/optimiser.ts`) — ToW and Custom armies
+
+The header's **Optimise** button (`components/OptimiseModal.tsx`) builds the
+legal army with the most *normative value*: what the game's average pricing rule
+charges for the cards' stats. It is the integer programme of the offline
+analysis, `analysis/cost_effective_builds.py` `solve()`, re-implemented in
+TypeScript. Its "max value" build is reproduced here, and with Single roll its
+"four corps" build.
+
+**Settings** (Builder state, kept for the session):
+- **Max unit cards:** 2–31, staff general included.
+- **Quality / Quantity:** which value version; Quantity is the default.
+- **Optimise remainder:** keep the current build and fill what is left; off by default.
+- **Only filtered units:** on by default. The candidates are Builder's
+  `filteredCards`: the grid filters, Offered now and the corps roll — but *not*
+  the Combat-generals display switch, which only hides medallions.
+- **Allow no staff general:** off by default.
+- **Single roll:** ToW only, on by default; ≤ 4 source corps
+  (`LEGACY_TOW_MAX_SOURCE_CORPS`), staff general included.
+
+The result is applied immediately; **Undo optimise** restores the previous build
+until the next edit.
+
+- **Values are data**, because the app cannot run the pricing models.
+  - `analysis/export_optimiser_values.py` writes
+    `data/generated/ntw3_optimiser_values.csv` (per unit and combat-general
+    card) and `ntw3_optimiser_params.json`. Both are committed.
+  - The two value versions:
+    - `quality`: fully size-harmonised, so the size bias is removed;
+    - `quantity`: noise-only harmonisation, so the size discount is kept.
+  - **Staff generals are valued in the app**, from the parameters:
+    - the price rule T3 = b·stars^q (1 gold without stars);
+    - plus λ·stars·D, where D = Σ models·(mRef − morale)₊ over the build's units;
+    - ×(1 + σ) for a C-class general;
+    - plus a melee bonus for a fighting bodyguard.
+    D depends on the build, so each staff option gets an auxiliary w ≤ D,
+    w ≤ D_max·z.
+- **Rules** mirror `checkKnownLimits`, reusing `cappedClassOf`,
+  `horseArtilleryMax` and `generalCaps`:
+  - funds and the card cap;
+  - one staff general;
+  - the combat-general cap;
+  - cap groups shared with combat-general versions;
+  - one combat general per group;
+  - foot artillery, horse artillery and heavy cavalry caps.
+  In remainder mode the kept cards are subtracted from every limit.
+- **Solver:** HiGHS compiled to WebAssembly (`highs` npm package), the same
+  solver `scipy.optimize.milp` uses, run in a module Web Worker
+  (`state/optimiser.worker.ts`, client `workerSolver` in `state/solveLp.ts`).
+  - The model is passed as CPLEX LP text, with a 10 s time limit.
+  - The `.wasm` (~3.5 MB) is precached by the PWA (`**/*.wasm`).
+  - Electron serves it as `application/wasm`.
+  - Vite builds workers as ES modules (`worker.format: "es"`) and pre-bundles
+    `highs` in dev.
+- **Parity test:** `state/optimiser.parity.test.ts` checks the TS optimum
+  equals Python's for Preußen 10, Napoli and HRE, in both versions, with and
+  without Single roll. Its fixture comes from `export_optimiser_values.py
+  --fixture`.
+- **Refreshing the values** after changing the analysis takes three steps:
+  ```
+  py -3.13 analysis/export_optimiser_values.py
+  py -3.13 tools/build_web_data.py
+  py -3.13 analysis/export_optimiser_values.py --fixture
+  ```
+- **Not checked:** whether a single roll actually offers the chosen combat
+  general. "Generate times" finds that window.
 
 ---
 

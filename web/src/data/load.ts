@@ -13,6 +13,8 @@ import {
   type CorpsTheatre,
   type FactionRoster,
   type GeneralKind,
+  type OptimiserParams,
+  type OptimiserValue,
   type UnitAbilities,
   type UnitCard,
   type UnitStats,
@@ -69,7 +71,27 @@ function normalizeAbilities(raw: Record<string, unknown> | undefined): UnitAbili
   };
 }
 
-function normalizeCard(raw: Record<string, unknown>): UnitCard | null {
+function normalizeOptimiserValue(raw: unknown): OptimiserValue | null {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  const quality = num(r.quality);
+  const quantity = num(r.quantity);
+  return quality !== null && quantity !== null ? { quality, quantity } : null;
+}
+
+/** The faction file's `optimiser` block (snake_case, as exported), or null when absent or
+ *  malformed — the optimiser is then simply unavailable for that army. */
+export function normalizeOptimiserParams(raw: unknown): OptimiserParams | null {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  const lambda = normalizeOptimiserValue(r.lambda);
+  const fields = [r.t3_b, r.t3_q, r.m_ref, r.speed_bonus, r.melee_bonus, r.standard_general_melee].map(num);
+  if (lambda === null || fields.some((v) => v === null)) return null;
+  const [t3B, t3Q, mRef, speedBonus, meleeBonus, standardGeneralMelee] = fields as number[];
+  return { t3B, t3Q, mRef, lambda, speedBonus, meleeBonus, standardGeneralMelee };
+}
+
+export function normalizeCard(raw: Record<string, unknown>): UnitCard | null {
   const unitKey = str(raw.unitKey);
   const factionKey = str(raw.factionKey);
   if (!unitKey || !factionKey) return null;
@@ -114,6 +136,7 @@ function normalizeCard(raw: Record<string, unknown>): UnitCard | null {
     guerrillaBadge: strOrNull(raw.guerrillaBadge),
     stats: normalizeStats(raw.stats as Record<string, unknown>),
     abilities: normalizeAbilities(raw.abilities as Record<string, unknown>),
+    optimiserValue: normalizeOptimiserValue(raw.optimiserValue),
   };
 }
 
@@ -200,5 +223,6 @@ export async function loadFaction(factionKey: string): Promise<FactionRoster> {
     factionKey: faction,
     armyCorpsName: str(raw.armyCorpsName),
     cards: withTowPlacements(cards, faction),
+    optimiser: normalizeOptimiserParams(raw.optimiser),
   };
 }

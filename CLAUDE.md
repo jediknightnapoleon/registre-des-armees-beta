@@ -119,6 +119,8 @@ python analysis/class_structure.py        # → analysis/output/class_structure_
 python analysis/commander_model.py        # → commander_model_report.md + price_database.csv (commander model on true and
                                           #   predicted regular prices; every unit's true vs predicted price; ~1 min;
                                           #   needs the committed outputs and the class_structure checkpoints)
+python analysis/export_optimiser_values.py  # in-app optimiser data → data/generated/ntw3_optimiser_{values.csv,params.json};
+                                          #   then build_web_data.py, then again with --fixture (parity fixture; HANDOFF §4.6)
 python -m pytest tools/tests              # from the repo root; tools/ is a package
 
 # App (from web/)

@@ -2486,4 +2486,4 @@ The pricing model V4 errs systematically with unit size. Within every infantry c
 - **Caveats:** this is observational. Skill is controlled through the rating change, but players who choose extreme units may differ in ways the rating doesn't capture, and the user regards the replays as biased. Effect size: one SD of the bias part is 0.19 thousand gold, i.e. +0.08 logit (≈ +2 percentage points of win probability near 50%).
 
 
-*Runtime 323 s.*
+*Runtime 322 s.*

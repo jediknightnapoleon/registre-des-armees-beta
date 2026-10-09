@@ -5,6 +5,9 @@ reads the existing source-of-truth files in the repository root:
 
   - data/generated/ntw3_army_builder_units.csv   (all allowed unit + army-corps combinations)
   - data/generated/army_corps_catalog.json       (theatre-grouped corps index with flags)
+  - data/generated/ntw3_optimiser_values.csv + ntw3_optimiser_params.json
+                                                 (optional: the in-app optimiser's card values and
+                                                  parameters, from analysis/export_optimiser_values.py)
 
 and produces, under ``web/public/``:
 
@@ -48,7 +51,9 @@ except ImportError:  # pragma: no cover - environment guard
 # --- Schema / versioning -------------------------------------------------------
 # Bump SCHEMA_VERSION when the *shape* of the normalized JSON changes so the app
 # can refuse or migrate stale generated data.
-SCHEMA_VERSION = 1
+# 2: optional optimiser data — `optimiserValue` per card and `optimiser` params per
+#    faction file (ToW / Custom armies only; see attach_optimiser_values).
+SCHEMA_VERSION = 2
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 GENERATED_DATA = PROJECT_ROOT / "data" / "generated"
@@ -58,6 +63,9 @@ WEB_PUBLIC = PROJECT_ROOT / "web" / "public"
 OUT_DATA = WEB_PUBLIC / "data"
 OUT_ASSETS = WEB_PUBLIC / "assets"
 PICK_RATES_SRC = PROJECT_ROOT / "data" / "pick_rates"
+OPTIMISER_VALUES_CSV = GENERATED_DATA / "ntw3_optimiser_values.csv"
+OPTIMISER_PARAMS_JSON = GENERATED_DATA / "ntw3_optimiser_params.json"
+OPTIMISER_MODES = ("quality", "quantity")
 
 COMMANDER_SUFFIX = "_com_"
 
@@ -354,6 +362,42 @@ def normalize_unit(row: dict, assets: AssetCopier, errors: list[str]) -> dict | 
     }
 
 
+def load_optimiser_inputs(values_csv: Path, params_json: Path):
+    """The in-app optimiser's inputs, or (None, None) when either file is absent.
+
+    Returns ({(faction_key, unit_key): {"quality": v, "quantity": v}}, params dict). Both
+    files come from analysis/export_optimiser_values.py: the cost-effective-builds
+    valuation, which the app cannot compute itself (it needs the pricing models)."""
+    if not (values_csv.is_file() and params_json.is_file()):
+        return None, None
+    values: dict[tuple[str, str], dict[str, float]] = {}
+    with values_csv.open(newline="", encoding="utf-8-sig") as handle:
+        for row in csv.DictReader(handle):
+            values[(row["faction_key"], row["unit_key"])] = {
+                mode: float(row[f"value_{mode}"]) for mode in OPTIMISER_MODES}
+    return values, json.loads(params_json.read_text(encoding="utf-8"))
+
+
+def attach_optimiser_values(by_faction: dict[str, list[dict]], values, errors: list[str]) -> set[str]:
+    """Put each valued card's `optimiserValue` on it; return the factions that got any.
+
+    Cards without a value (staff generals — valued in the app from their stars —, the
+    fixed artillery the models skip, every Army Corps card) get no field. A value whose
+    card is not in any roster is a validation error: the two files are out of step."""
+    valued: set[str] = set()
+    seen: set[tuple[str, str]] = set()
+    for faction_key, cards in by_faction.items():
+        for c in cards:
+            v = values.get((faction_key, c["unitKey"]))
+            if v is not None:
+                c["optimiserValue"] = {mode: round(v[mode], 6) for mode in OPTIMISER_MODES}
+                seen.add((faction_key, c["unitKey"]))
+                valued.add(faction_key)
+    stray = sorted(set(values) - seen)
+    errors += [f"optimiser value for unknown card {f}/{k}" for f, k in stray]
+    return valued
+
+
 def fatal(message: str) -> int:
     print(f"ERROR: {message}", file=sys.stderr)
     return 1
@@ -406,6 +450,13 @@ def main() -> int:
             # class-specific filters and ordering treat them like the real unit.
             c["underlyingUnitClass"] = base_class.get(c["capGroupKey"], c["unitClass"])
 
+    # 2b. In-app optimiser data (optional): per-card values, and the parameters the app
+    #     needs to value staff generals, ride inside the faction files so the service
+    #     worker, "Save offline" and contentHash cover them with no extra file.
+    optimiser_values, optimiser_params = load_optimiser_inputs(OPTIMISER_VALUES_CSV, OPTIMISER_PARAMS_JSON)
+    optimiser_factions = (attach_optimiser_values(by_faction, optimiser_values, errors)
+                          if optimiser_values is not None else set())
+
     # 3. Write one roster file per faction.
     for faction_key, cards in by_faction.items():
         # Compact division numbers to sequential display order (I, II, III, ...).
@@ -436,12 +487,15 @@ def main() -> int:
             c["name"],
             c["unitKey"],
         ))
-        write_data_file(OUT_DATA / "factions" / f"{faction_key}.json", {
+        roster = {
             "schemaVersion": SCHEMA_VERSION,
             "factionKey": faction_key,
             "armyCorpsName": cards[0].get("armyCorpsName", ""),
             "cards": cards,
-        }, cached_data)
+        }
+        if faction_key in optimiser_factions:
+            roster["optimiser"] = optimiser_params
+        write_data_file(OUT_DATA / "factions" / f"{faction_key}.json", roster, cached_data)
 
     # 3. Build the theatre-grouped corps index from the catalog. Theatres of War
     #    are split into Imperial and Coalition sides; TOW corps are not AC, so
@@ -542,6 +596,8 @@ def main() -> int:
         f"missing_assets={len(assets.missing)}",
         f"validation_errors={len(errors)}",
         f"pick_rate_seasons={pick_rates_copied}",
+        f"optimiser_factions={len(optimiser_factions)}",
+        f"optimiser_cards={sum(1 for cs in by_faction.values() for c in cs if 'optimiserValue' in c)}",
         f"stale_files_pruned={pruned}",
         f"indexed_corps_without_roster={len(unrostered)}",
         f"rosters_not_in_index={len(unindexed)}",

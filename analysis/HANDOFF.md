@@ -96,6 +96,7 @@ pricing analysis, which the app does not use.
 | `python analysis/blind_ideas.py` | `blind_ideas_report.md` | ~8 min |
 | `python analysis/extreme_pinning.py` | `extreme_pinning_report.md` | ~5 min |
 | `python analysis/class_structure.py [--fresh]` | `class_structure_report.md` | ~40 min; checkpoints in `analysis/.cache/`, resumable |
+| `python analysis/export_optimiser_values.py` (then `tools/build_web_data.py`, then again with `--fixture`) | the in-app optimiser's data: `data/generated/ntw3_optimiser_values.csv`, `ntw3_optimiser_params.json`, the app's parity fixture (docs/HANDOFF.md §4.6) | ~15 s each |
 
 - **Running two full runs.** Run them in parallel in the background: 2 × 6
   workers fits the 16-core machine. Watch the logs; the stages print

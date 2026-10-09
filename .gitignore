@@ -31,3 +31,8 @@ __pycache__/
 
 # Downloaded replay corpora (tools/download_redcoatz_replays.py; ~1-1.5 GB)
 /replays/
+
+# Importable optimal-build files (analysis/export_builds_for_app.py, analysis/two_compartment.py):
+# thousands of regenerable JSON builds. The reports and CSVs describing them stay tracked.
+/analysis/output/app_builds*/*.json
+/analysis/output/top_builds_backup*.json

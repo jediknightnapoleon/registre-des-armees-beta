@@ -130,6 +130,22 @@ One click finds the **cheapest** way to add combat generals to the units you've
 already picked — taking the discounts that lower your total and skipping the ones
 that would make it dearer. A second click resets them.
 
+### Optimise a build (Theatres of War and Custom Armies)
+The **Optimise** button builds the army that gets the most stats for 10 000 funds,
+as the game's own average pricing rule values them. All of the game's limits
+apply. You choose:
+
+- **a cap on the number of cards**, since fewer units are easier to control;
+- **Quality or Quantity**: Quantity keeps the discount on very small and very
+  large units, Quality doesn't;
+- **whether to rebuild from scratch or fill what's left** of your current build;
+- **whether to stick to the units your filters show**;
+- **whether a build without a staff general is allowed**;
+- **for Theatres of War, whether to stay within one roll** (4 corps).
+
+The result replaces your build straight away, and **Undo optimise** brings the old
+one back.
+
 ### Know when a general is available — the "Generate times" feature
 In NTW3, the generals a corps offers **rotate roughly every three hours**, so the
 combat and staff generals you want aren't always on the menu. Registre des Armées

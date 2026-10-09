@@ -112,6 +112,34 @@ export interface UnitCard {
   guerrillaBadge: string | null;
   stats: UnitStats;
   abilities: UnitAbilities;
+  /** The in-app optimiser's normative value of this card in gold (ToW / Custom units and
+   *  combat generals; absent for staff generals, which it values from their stars, and for
+   *  Army Corps). From analysis/export_optimiser_values.py via tools/build_web_data.py. */
+  optimiserValue?: OptimiserValue | null;
+}
+
+/** A card's normative value in the two size versions of the analysis valuation:
+ *  `quality` = full size harmonisation (size bias removed), `quantity` = noise-only
+ *  (the size discount kept). */
+export interface OptimiserValue {
+  quality: number;
+  quantity: number;
+}
+
+export type OptimiserMode = keyof OptimiserValue;
+
+/** Parameters the optimiser needs to value staff generals (data/generated/ntw3_optimiser_params.json):
+ *  the global staff-general price rule T3 = b·stars^q (1 gold without stars), and the hand-set
+ *  command correction — λ·stars·D per mode, D = Σ models·(mRef − morale)₊, a σ nudge for
+ *  C-class generals and a priced bonus for a fighting bodyguard. */
+export interface OptimiserParams {
+  t3B: number;
+  t3Q: number;
+  mRef: number;
+  lambda: OptimiserValue;
+  speedBonus: number;
+  meleeBonus: number;
+  standardGeneralMelee: number;
 }
 
 export interface FactionRoster {
@@ -119,6 +147,8 @@ export interface FactionRoster {
   factionKey: string;
   armyCorpsName: string;
   cards: UnitCard[];
+  /** Present only for armies the optimiser covers (ToW and Custom, schema ≥ 2). */
+  optimiser?: OptimiserParams | null;
 }
 
 // --- Corps index (theatre-grouped selection screen) --------------------------

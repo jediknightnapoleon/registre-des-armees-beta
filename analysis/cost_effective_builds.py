@@ -20,7 +20,10 @@ division discounts outside Army Corps):
   nudge and a priced melee bonus), and chosen by the optimiser among all the
   army's staff generals — except in the "top staff" build, which takes the
   highest-star one, valued by T3 alone;
-- 31 cards in total *including* the staff general, i.e. at most 30 units, as the
+- by default 31 cards in total *including* the staff general, i.e. at most 30
+  units; `--max-cards N` sets a lower cap (the user's micro cap: more units are
+  harder to control, which no price captures), written to files suffixed _max<N>.
+  The 31 is the game's limit as the
   app counts it (web/src/state/build.ts expandBuild puts the staff-slot card into
   the list that checkKnownLimits caps at MAX_TOTAL_UNIT_CARDS = 31; the game's
   Lua only states NTW3.MaxUnits() = 31). The app also lets a combat general take
@@ -59,11 +62,13 @@ class_structure checkpoints. Outputs: analysis/output/cost_effective_builds.md
 and cost_effective_builds.csv (full size harmonisation), and the same with the
 suffix _noise_only (noise-only harmonisation).
 
-    python analysis/cost_effective_builds.py
+    python analysis/cost_effective_builds.py                  # the game's 31 cards
+    python analysis/cost_effective_builds.py --max-cards 20   # a micro cap: ≤ 20 cards with the staff general
 """
 
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import pickle
@@ -440,7 +445,7 @@ VARIANTS = ("max value", "balanced", "runner-up", "top staff", "four corps")
 
 
 def army_builds(cards: list[dict], staff: list[dict], top: dict, command: Command | None,
-                variants: tuple[str, ...] = VARIANTS):
+                variants: tuple[str, ...] = VARIANTS, max_cards: int = MAX_CARDS):
     """Yield (variant, chosen, general) for one army.
 
     - runner-up: the best max-value build other than the best one — at least one copy fewer
@@ -456,7 +461,7 @@ def army_builds(cards: list[dict], staff: list[dict], top: dict, command: Comman
         sol = solve(cards, options, cavalry_only, "max value" if variant in ("top staff", "four corps") else variant,
                     exclude=best_counts if variant == "runner-up" else None,
                     max_corps=MAX_ROLL_CORPS if variant == "four corps" else None, score_staff=True,
-                    command=None if variant == "top staff" else command)
+                    command=None if variant == "top staff" else command, max_cards=max_cards)
         if sol is None:
             continue
         chosen, general = sol
@@ -592,23 +597,45 @@ def size_replay_check(by_faction: dict[str, list[dict]], mode: str) -> tuple[lis
     return out, key
 
 
+def card_cap(text: str) -> int:
+    """argparse type for --max-cards: 2 … 31."""
+    n = int(text)
+    if not 2 <= n <= MAX_CARDS:
+        raise argparse.ArgumentTypeError(f"must be 2–{MAX_CARDS} (cards including the staff general)")
+    return n
+
+
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    parser.add_argument("--max-cards", type=card_cap, default=MAX_CARDS, metavar="N",
+                        help=f"cap the build at N cards including the staff general (2–{MAX_CARDS}; default "
+                             f"{MAX_CARDS}, the game's limit). Fewer cards = less micro, which prices don't "
+                             f"capture. A cap writes its own files, suffixed _max<N>.")
+    parser.add_argument("--calibrate", action="store_true",
+                        help="print the smallest λ (and σ) meeting the general correction's anchors, per size "
+                             "version, at the game's 31 cards, then exit")
+    args = parser.parse_args()
     started = time.time()
     melee = bodyguard_melee_bonus()
     up.log(f"bodyguard melee bonus: {melee:.0f} gold", started)
     versions = list(SIZE_VERSIONS.items()) if SIZE_HARMONISATION else [("off", "")]
+    cap_suffix = f"_max{args.max_cards}" if args.max_cards < MAX_CARDS else ""
     for mode, suffix in versions:
-        if "--calibrate" in sys.argv:
+        if args.calibrate:
             by_faction, staff_of, top_star, _ = load_cards(started, size_mode=mode)
             lam, speed = calibrate(by_faction, staff_of, top_star, melee)
             print(f"[{mode}] COMMAND_LAMBDA ≥ {lam:.6f}   SPEED_BONUS ≥ {speed:.4f}   (M_REF {M_REF}, melee {melee:.0f})")
         else:
-            run_version(mode, suffix, melee, started)
+            run_version(mode, suffix + cap_suffix, melee, started, args.max_cards)
     return 0
 
 
-def run_version(mode: str, suffix: str, melee: float, started: float) -> None:
-    """Builds 1–4 for every army on one valuation (`mode`), written to cost_effective_builds{suffix}.*."""
+def run_version(mode: str, suffix: str, melee: float, started: float, max_cards: int = MAX_CARDS) -> None:
+    """Builds 1–4 for every army on one valuation (`mode`), at most `max_cards` cards including the
+    staff general, written to cost_effective_builds{suffix}.*.
+
+    The general correction's λ is the one calibrated at the game's 31 cards: the anchors are a
+    property of the valuation, so a micro cap leaves the generals' worth unchanged."""
     size_table: list[dict] = []
     by_faction, staff_of, top_star, army_of = load_cards(started, size_table, mode)
     command = Command(COMMAND_LAMBDA[mode], SPEED_BONUS, melee)
@@ -619,9 +646,11 @@ def run_version(mode: str, suffix: str, melee: float, started: float) -> None:
         big_units += [(army_of[faction][0], c) for c in cards if c["kind"] == "unit" and c["models"] > BIG_UNIT_MODELS]
         if SIZE_HARMONISATION:
             raw_cards = [dict(c, value=c["value_raw"]) for c in cards]
-            for _, chosen, _ in army_builds(raw_cards, staff_of[faction], top_star[faction], command, ("max value",)):
+            for _, chosen, _ in army_builds(raw_cards, staff_of[faction], top_star[faction], command, ("max value",),
+                                            max_cards):
                 raw_picks.update({(faction, c["base"]): k for c, k in chosen})
-        for variant, chosen, general in army_builds(cards, staff_of[faction], top_star[faction], command):
+        for variant, chosen, general in army_builds(cards, staff_of[faction], top_star[faction], command,
+                                                    max_cards=max_cards):
             cost = sum(c["cost"] * k for c, k in chosen) + general["cost"]
             val = sum(c["value"] * k for c, k in chosen) + general["value"]
             arms = Counter()
@@ -637,17 +666,19 @@ def run_version(mode: str, suffix: str, melee: float, started: float) -> None:
         up.log(f"{army_of[faction][0][:40]:40} done", started)
 
     replay = size_replay_check(by_faction, mode) if SIZE_HARMONISATION else ([], {})
-    write_outputs(results, big_units, value, by_faction, started, command,
+    write_outputs(results, big_units, value, by_faction, started, command, max_cards=max_cards,
                   size=(size_table, raw_picks, replay), mode=mode, suffix=suffix)
 
 
 def solve(cards: list[dict], staff_options: list[dict], cavalry_only: bool, variant: str,
           exclude: list[tuple[int, int]] | None = None, max_corps: int | None = None, *,
           score_key: str = "value", score_staff: bool = False, n_cards: int | None = None,
-          min_spend: float = 0.0, command: Command | None = None):
+          min_spend: float = 0.0, command: Command | None = None, max_cards: int = MAX_CARDS):
     """MILP: integer copies of each regular card, 0/1 per commander card, 0/1 per staff-general
     option (exactly one is taken), and with `max_corps` a 0/1 per source corps (at most that
     many used; every taken card and the staff general must come from a used corps).
+    `max_cards` caps the cards *including* the staff general, as the game counts its 31 (the
+    user's micro cap, see MAX_CARDS_ARG); the default is the game's own limit.
     `exclude` = (card index, copies) of a build to rule out: at least one copy fewer among its cards.
     Maximises Σ card[score_key] (plus the staff general's own score_key when `score_staff`);
     `n_cards` fixes the number of cards including the staff general; `min_spend` puts a floor
@@ -660,12 +691,15 @@ def solve(cards: list[dict], staff_options: list[dict], cavalry_only: bool, vari
     n, m = len(cards), len(staff_options)
     corps = sorted({c["corps"] for c in cards if c["corps"]} | {g["corps"] for g in staff_options if g["corps"]}) \
         if max_corps else []
+    if not 2 <= max_cards <= MAX_CARDS:
+        raise ValueError(f"max_cards must be 2…{MAX_CARDS} (the staff general and at least one unit)")
+    max_units = max_cards - 1                       # the staff general takes one card
     n_w = m if command else 0
     nv = n + m + len(corps) + n_w
-    ub = np.array([float(min(c["cap"] if c["cap"] > 0 else MAX_UNITS, MAX_UNITS)) if c["kind"] == "unit" else 1.0
+    ub = np.array([float(min(c["cap"] if c["cap"] > 0 else max_units, max_units)) if c["kind"] == "unit" else 1.0
                    for c in cards] + [1.0] * (m + len(corps)))
     deficit = np.array([command.deficit(c) for c in cards]) if command else np.zeros(n)
-    d_max = float(np.sort(deficit * ub[:n])[-MAX_UNITS:].sum()) if command else 0.0   # D of ≤ 30 units
+    d_max = float(np.sort(deficit * ub[:n])[-max_units:].sum()) if command else 0.0   # D of ≤ max_units units
     staff_score = [-(command.constant(g) if command else g[score_key] if score_staff else 0.0) + 1e-6 * g["cost"]
                    for g in staff_options]
     c_obj = np.array([-c[score_key] + 1e-6 * c["cost"] for c in cards] + staff_score + [0.0] * len(corps)
@@ -686,7 +720,7 @@ def solve(cards: list[dict], staff_options: list[dict], cavalry_only: bool, vari
     cmd = [j for j, c in enumerate(cards) if c["kind"] == "commander"]
     add({**{j: c["cost"] for j, c in enumerate(cards)}, **{n + i: g["cost"] for i, g in enumerate(staff_options)}},
         min_spend, BUDGET)
-    add({j: 1.0 for j in range(n)}, 0, MAX_UNITS)          # 30 units + the staff general = 31 cards
+    add({j: 1.0 for j in range(n)}, 0, max_units)          # units + the staff general ≤ max_cards (game: 31)
     add({j: 1.0 for j in staff}, 1, 1)                      # exactly one staff general
     if n_cards is not None:
         add({j: 1.0 for j in range(n)}, n_cards - 1, n_cards - 1)   # exactly n_cards with the staff general
@@ -783,7 +817,7 @@ def command_section(results, command: Command) -> list[str]:
     return L
 
 
-def size_section(results, size, mode: str) -> list[str]:
+def size_section(results, size, mode: str, cap: str = "") -> list[str]:
     """§5 of the report: what the size harmonisation removed, what it changed, and the replay check."""
     table, raw_picks, (replay, key) = size
     if not table:
@@ -792,8 +826,8 @@ def size_section(results, size, mode: str) -> list[str]:
     for r in results:
         if r["variant"] == "max value":
             picks.update({(r["faction"], c["base"]): k for c, k in r["chosen"]})
-    other = {"full": ("noise-only", "cost_effective_builds_noise_only.md"),
-             "noise": ("full harmonisation", "cost_effective_builds.md")}[mode]
+    other = {"full": ("noise-only", f"cost_effective_builds_noise_only{cap}.md"),
+             "noise": ("full harmonisation", f"cost_effective_builds{cap}.md")}[mode]
     what = {"full": "Both are removed in this version: each stratum's bias, and its deviations scaled to the "
                     "reference's spread.",
             "noise": "Only the noise is removed in this version: each stratum keeps its own (shrunk) mean error, the "
@@ -862,21 +896,29 @@ def size_section(results, size, mode: str) -> list[str]:
 
 
 def write_outputs(results, big_units, value, by_faction, started, command: Command,
-                  size=([], Counter(), ([], {})), mode: str = "off", suffix: str = "") -> None:
+                  size=([], Counter(), ([], {})), mode: str = "off", suffix: str = "",
+                  max_cards: int = MAX_CARDS) -> None:
     best = [r for r in results if r["variant"] == "max value"]
     best.sort(key=lambda r: -r["efficiency"])
+    cap = f"_max{max_cards}" if max_cards < MAX_CARDS else ""
     size_note = {
         "full": "> - **Values are size-harmonised, fully (§5).** The pricing model's errors depend on unit size: it "
                 "overprices small and very large units and is much noisier there. That size bias and the excess noise "
                 "are removed before optimising, so a unit's size no longer makes it look like a bargain. The "
-                "noise-only version is in `cost_effective_builds_noise_only.md`.",
+                f"noise-only version is in `cost_effective_builds_noise_only{cap}.md`.",
         "noise": "> - **Values are size-harmonised, noise only (§5).** The pricing model is much noisier for small "
                  "and very large units; that excess noise (the fake bargains) is removed before optimising, but each "
                  "size's systematic discount is kept, because the replays link it to winning. The fully harmonised "
-                 "version is in `cost_effective_builds.md`.",
+                 f"version is in `cost_effective_builds{cap}.md`.",
         "off": "> - **Values are not size-harmonised.** The pricing model overprices small and very large units, so "
                "they can look like bargains."}[mode]
-    L = [f"# The most cost-effective build for every ToW / Custom army ({SIZE_LABEL[mode]})", "",
+    card_rule = (f"- 31 cards in total *including* the staff general, i.e. {MAX_CARDS - 1} units, as the app counts it "
+                 "(`web/src/state/build.ts`: the staff-slot card is part of the 31);" if not cap else
+                 f"- **at most {max_cards} cards *including* the staff general ({max_cards - 1} units): a micro cap "
+                 f"set by the user** (`--max-cards {max_cards}`), below the game's 31. More units are harder to "
+                 "control, which no price captures, so this caps the army's size rather than its cost;")
+    title_cap = f", at most {max_cards} cards" if cap else ""
+    L = [f"# The most cost-effective build for every ToW / Custom army ({SIZE_LABEL[mode]}{title_cap})", "",
          "Generated by `analysis/cost_effective_builds.py`. **Value** is normative: what the game's average pricing "
          "rule charges for a card's stats in a reference army, i.e. the per-class model V4 at corps number 8 with no "
          "army × unit-class adjustment; commanders valued by the commander model on that value. **Efficiency** = "
@@ -889,8 +931,7 @@ def write_outputs(results, big_units, value, by_faction, started, command: Comma
          "army modifier) plus the hand-set command correction of §4, which raises his worth in large, low-morale "
          "builds and favours C-class (fast) generals; the *top staff* build instead takes the army's highest-star "
          "general, valued by T3 alone;",
-         "- 31 cards in total *including* the staff general, i.e. 30 units, as the app counts it "
-         "(`web/src/state/build.ts`: the staff-slot card is part of the 31);",
+         card_rule,
          "- 10 000 funds, including the staff general;",
          "- the artillery and heavy-cavalry caps, and each unit's cap.",
          "",
@@ -959,7 +1000,7 @@ def write_outputs(results, big_units, value, by_faction, started, command: Comma
                     f"{c['value']:.0f} (×{c['value'] / c['cost']:.2f})"]
                    for a, c in sorted(big_units, key=lambda t: -t[1]["men"])])
     L += command_section(results, command)
-    L += size_section(results, size, mode)
+    L += size_section(results, size, mode, cap)
     L += ["", f"*Runtime {time.time() - started:.0f} s.*", ""]
     (OUT / f"cost_effective_builds{suffix}.md").write_text("\n".join(L), encoding="utf-8")
     with open(OUT / f"cost_effective_builds{suffix}.csv", "w", encoding="utf-8", newline="") as fh:
