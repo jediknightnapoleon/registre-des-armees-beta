@@ -97,6 +97,7 @@ pricing analysis, which the app does not use.
 | `python analysis/extreme_pinning.py` | `extreme_pinning_report.md` | ~5 min |
 | `python analysis/class_structure.py [--fresh]` | `class_structure_report.md` | ~40 min; checkpoints in `analysis/.cache/`, resumable |
 | `python analysis/export_optimiser_values.py` (then `tools/build_web_data.py`, then again with `--fixture`) | the in-app optimiser's data: `data/generated/ntw3_optimiser_values.csv`, `ntw3_optimiser_params.json`, the app's parity fixture (docs/HANDOFF.md §4.6) | ~15 s each |
+| `python analysis/ac_pricing.py --phase model\|staff\|commanders\|size\|database\|report …` | the AC pricing study: `analysis/output/ac/`, report tables `ac_pricing_results.md` (see `analysis/AC_PRICING_REPORT.md` → Commands) | minutes to ~90 min per arm; checkpoints in `analysis/.cache/ac/` |
 
 - **Running two full runs.** Run them in parallel in the background: 2 × 6
   workers fits the 16-core machine. Watch the logs; the stages print
@@ -277,8 +278,13 @@ to `analysis/output/`, and never changes committed outputs):
    `price ≈ max(1, a·p_reg + b(stars)·10/N)`, with `p_reg` the regular price of
    the unit the general leads and one global set of 7 coefficients
    (a ≈ 0.9). Its CV error went 51 → 39 gold. Use our regular model as stage 1.
-5. **Army Corps (non-ToW) prices.** They are out of scope so far. The blind
-   study found ToW prices are not a rescaling of AC prices (log-ratio sd 0.17).
+5. **Army Corps (non-ToW) prices.** Done in the AC study: `analysis/AC_PRICING_REPORT.md`
+   (`analysis/ac_pricing.py`, `ac_discounts.py`, `ac_natural_experiment.py`; outputs in
+   `analysis/output/ac/`). The ToW model form fits AC about as well. AC prices carry a ~10% hand-set
+   corps × class premium that ToW copies remove, so the blind study's "not a rescaling" (sd 0.17) is the
+   N ratio plus that premium.
+   - **Biggest finding:** a size-band multiplier per class (F6) cuts ToW MAE by 10–20% too. Adopting it
+     here is the open next step.
 
 ## 9. Gotchas
 

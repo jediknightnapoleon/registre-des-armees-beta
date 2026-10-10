@@ -1,0 +1,26 @@
+M2 fold 1 chosen {'infantry': {'inter3': 1.0}, 'cavalry': {'inter3': 10.0}, 'artillery': {'inter3': 10.0}}
+M2 fold 2 chosen {'infantry': {'inter3': 2.0}, 'cavalry': {'inter3': 10.0}, 'artillery': {'inter3': 2.0}}
+M2 fold 3 chosen {'infantry': {'inter3': 1.0}, 'cavalry': {'inter3': 10.0}, 'artillery': {'inter3': 10.0}}
+M2 fold 4 chosen {'infantry': {'inter3': 1.0}, 'cavalry': {'inter3': 10.0}, 'artillery': {'inter3': 10.0}}
+M2 fold 5 chosen {'infantry': {'inter3': 1.0}, 'cavalry': {'inter3': 2.0}, 'artillery': {'inter3': 5.0}}
+  M2         infantry   MAE 34.0 ± 1.3 | MAPE 7.00% | R² 0.9611
+  M2         cavalry    MAE 71.3 ± 2.4 | MAPE 8.25% | R² 0.9490
+  M2         artillery  MAE 69.3 ± 6.0 | MAPE 9.23% | R² 0.9180
+  M2         overall    MAE 47.5 ± 1.3 | MAPE 7.59% | R² 0.9596
+  M2 unseen-army infantry   MAE 58.4 MAPE 8.53% R2 0.9412 n=430
+  M2 unseen-army cavalry    MAE 108.4 MAPE 7.85% R2 0.9457 n=101
+  M2 unseen-army artillery  MAE 95.9 MAPE 10.54% R2 0.8940 n=78
+  M2 unseen-army overall    MAE 71.5 MAPE 8.67% R2 0.9499 n=609
+M1 fold 1 chosen {'infantry': {'army': 1.0, 'armycls': 2.0, 'inter3': 2.0}, 'cavalry': {'army': 1.0, 'armycls': 1.0, 'inter3': 2.0}, 'artillery': {'army': 1.0, 'armycls': 1.0, 'inter3': 5.0}}
+M1 fold 2 chosen {'infantry': {'army': 1.0, 'armycls': 2.0, 'inter3': 2.0}, 'cavalry': {'army': 1.0, 'armycls': 1.0, 'inter3': 5.0}, 'artillery': {'army': 1.0, 'armycls': 1.0, 'inter3': 5.0}}
+M1 fold 3 chosen {'infantry': {'army': 1.0, 'armycls': 1.0, 'inter3': 2.0}, 'cavalry': {'army': 1.0, 'armycls': 1.0, 'inter3': 2.0}, 'artillery': {'army': 0.3, 'armycls': 1.0, 'inter3': 5.0}}
+M1 fold 4 chosen {'infantry': {'army': 1.0, 'armycls': 2.0, 'inter3': 2.0}, 'cavalry': {'army': 1.0, 'armycls': 1.0, 'inter3': 2.0}, 'artillery': {'army': 1.0, 'armycls': 1.0, 'inter3': 5.0}}
+M1 fold 5 chosen {'infantry': {'army': 1.0, 'armycls': 2.0, 'inter3': 2.0}, 'cavalry': {'army': 1.0, 'armycls': 1.0, 'inter3': 5.0}, 'artillery': {'army': 1.0, 'armycls': 1.0, 'inter3': 5.0}}
+  M1         infantry   MAE 26.4 ± 0.4 | MAPE 5.65% | R² 0.9726
+  M1         cavalry    MAE 47.1 ± 2.4 | MAPE 5.60% | R² 0.9735
+  M1         artillery  MAE 47.3 ± 3.5 | MAPE 6.36% | R² 0.9576
+  M1         overall    MAE 34.1 ± 0.9 | MAPE 5.73% | R² 0.9766
+  M1 unseen-army infantry   MAE 50.8 MAPE 7.78% R2 0.9441 n=430
+  M1 unseen-army cavalry    MAE 100.4 MAPE 7.23% R2 0.9525 n=101
+  M1 unseen-army artillery  MAE 91.0 MAPE 10.07% R2 0.9176 n=78
+  M1 unseen-army overall    MAE 64.2 MAPE 7.98% R2 0.9553 n=609

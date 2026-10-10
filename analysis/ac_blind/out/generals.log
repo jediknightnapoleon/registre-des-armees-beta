@@ -1,0 +1,26 @@
+  G-ST1    staff        MAE 14.5 ± 3.1 MAPE 4.71% R2 0.9935
+  G-ST1    staff stars>0 MAE 17.2 ± 3.2 MAPE 3.70% R2 0.9907
+  G-ST1 unseen-army MAE 18.8 MAPE 7.82% n=33
+  staff all-data: b(log cn) = -0.932 ; T[stars] at cn=8: 1:80, 2:209, 3:365, 4:546, 5:746, 6:935, 7:1131, 8:1315, 9:1522 ; stars 0 -> 1
+  G-ST2    staff        MAE 14.7 ± 3.2 MAPE 4.74% R2 0.9934
+  G-ST2    staff stars>0 MAE 17.4 ± 3.3 MAPE 3.74% R2 0.9906
+  G-ST2 unseen-army MAE 18.8 MAPE 7.82% n=33
+  G-CV1    cmd variants MAE 53.1 ± 1.4 MAPE 17.66% R2 0.9584
+  G-CV1    cmd infantry MAE 52.1 ± 0.8 MAPE 19.66% R2 0.9470
+  G-CV1    cmd cavalry  MAE 48.8 ± 2.3 MAPE 7.46% R2 0.9728
+  G-CV1    cmd artillery MAE 84.2 ± 23.2 MAPE 43.67% R2 0.9068
+  G-CV1 unseen-army MAE 89.2 MAPE 11.97% n=438
+  G-CV2    cmd variants MAE 49.4 ± 1.5 MAPE 16.78% R2 0.9669
+  G-CV2    cmd infantry MAE 47.8 ± 1.6 MAPE 18.59% R2 0.9591
+  G-CV2    cmd cavalry  MAE 47.2 ± 1.8 MAPE 7.10% R2 0.9764
+  G-CV2    cmd artillery MAE 78.9 ± 18.5 MAPE 42.68% R2 0.9224
+  G-CV2 unseen-army MAE 56.1 MAPE 9.18% n=438
+  G-CV2 all-data coefficients: intercept -0.2357; stars=0 +0.0352; stars=1 +0.1258; stars=2 +0.0702; stars=3 +0.0930; stars=4 -0.0240; stars=5 -0.0524; stars=6 -0.2478; arm=cavalry +0.1628; arm=artillery +0.1140; d_accuracy +0.0186; d_reload_skill -0.0103; d_ammo +0.0000; d_morale +0.1267; d_melee_attack +0.1189; d_melee_defense +0.0928; d_charge_bonus +0.0492; dlog_men +0.6891; log_cn -0.1895; stars*cavalry -0.0749; stars*artillery +0.0906
+   stars multiplier (infantry, no stat change, cn 8): 0:0.552, 1:0.604, 2:0.571, 3:0.585, 4:0.520, 5:0.506, 6:0.416
+  G-CV3    cmd variants MAE 62.6 ± 2.3 MAPE 18.94% R2 0.9407
+  G-CV3    cmd infantry MAE 57.2 ± 1.7 MAPE 20.29% R2 0.9225
+  G-CV3    cmd cavalry  MAE 67.8 ± 4.1 MAPE 9.79% R2 0.9521
+  G-CV3    cmd artillery MAE 101.1 ± 23.0 MAPE 47.85% R2 0.8925
+  G-CV3 unseen-army MAE 88.6 MAPE 12.77% n=438
+  G-CV3 all-data coefficients: intercept -0.1954; stars=0 +0.0223; stars=1 +0.0973; stars=2 +0.0776; stars=3 +0.0804; stars=4 -0.0066; stars=5 -0.0559; stars=6 -0.2151; arm=cavalry +0.1738; arm=artillery +0.1020; d_accuracy +0.0198; d_reload_skill -0.0094; d_ammo +0.0000; d_morale +0.0908; d_melee_attack +0.1140; d_melee_defense +0.0963; d_charge_bonus +0.0551; dlog_men +0.6708; log_cn -0.1885; stars*cavalry -0.0664; stars*artillery +0.0993
+   stars multiplier (infantry, no stat change, cn 8): 0:0.568, 1:0.613, 2:0.601, 3:0.602, 4:0.552, 5:0.526, 6:0.448

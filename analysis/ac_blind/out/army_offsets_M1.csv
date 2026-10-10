@@ -1,0 +1,658 @@
+faction_key,army_corps_name,corps_number,corps_side,arm,offset_log,factor
+ntw3_ac_a03_x5_080,12. Bonaparte / Italie.C,12,empire,infantry,-0.0311,0.9694
+ntw3_ac_a03_x5_081,6. Desaix / Italie.R,6,empire,infantry,-0.0235,0.9768
+ntw3_ac_a03_x5_082,7. Masséna / Italie.D,7,empire,infantry,0.0206,1.0208
+ntw3_ac_a03_x5_083,6. Suchet / Italie.G,6,empire,infantry,0.0038,1.0038
+ntw3_ac_a03_x5_088,5. Humbert / Irlande,5,empire,infantry,0.0386,1.0393
+ntw3_ac_a03_x5_089,7. Brune / Hollande,7,empire,infantry,0.0368,1.0375
+ntw3_ac_a03_x6_084,11. Moreau / Rhin.R,11,empire,infantry,0.0672,1.0695
+ntw3_ac_a03_x6_085,9. Lecourbe / Rhin.D,9,empire,infantry,0.0787,1.0819
+ntw3_ac_a03_x6_086,8. Gouvion Saint-Cyr / Rhin.C,8,empire,infantry,0.0145,1.0146
+ntw3_ac_a03_x6_087,7. Sainte-Suzanne / Rhin.G,7,empire,infantry,0.0200,1.0202
+ntw3_ac_a04_x5_076,10. Bonaparte / Alexandrie,10,empire,infantry,-0.1357,0.8731
+ntw3_ac_a04_x5_077,8. Desaix / Nil,8,empire,infantry,-0.1462,0.8639
+ntw3_ac_a04_x5_078,6. Menou / Damiette,6,empire,infantry,-0.0009,0.9991
+ntw3_ac_a04_x5_079,3. Chabot / Corfou,3,empire,infantry,-0.1971,0.8211
+ntw3_ac_a05_x2_093,13. Soult / IV.C,13,empire,infantry,-0.0013,0.9987
+ntw3_ac_a05_x4_092,6. Davout / III.C,6,empire,infantry,-0.1092,0.8965
+ntw3_ac_a05_x4_094,9. Lannes / V.C,9,empire,infantry,-0.0274,0.9730
+ntw3_ac_a05_x4_096,8. Garde impériale,8,empire,infantry,-0.0420,0.9589
+ntw3_ac_a05_x5_090,7. Bernadotte / I.C,7,empire,infantry,-0.0564,0.9451
+ntw3_ac_a05_x5_091,7. Masséna / Italie,7,empire,infantry,0.0146,1.0147
+ntw3_ac_a05_x5_095,8. Ney / VI.C,8,empire,infantry,-0.0096,0.9904
+ntw3_ac_a05_x5_098,5. Marmont / II.C,5,empire,infantry,-0.0919,0.9122
+ntw3_ac_a06_x2_101,12. Davout / III.C,12,empire,infantry,-0.0329,0.9677
+ntw3_ac_a06_x3_102,10. Soult / IV.C,10,empire,infantry,0.0248,1.0251
+ntw3_ac_a06_x3_103,11. Lannes / V.C,11,empire,infantry,-0.0298,0.9706
+ntw3_ac_a06_x3_104,8. Ney / VI.C,8,empire,infantry,0.0891,1.0932
+ntw3_ac_a06_x3_106,9. Augereau / VII.C,9,empire,infantry,0.0521,1.0535
+ntw3_ac_a06_x4_099,6. Bernadotte / I.C,6,empire,infantry,0.0498,1.0511
+ntw3_ac_a06_x4_105,7. Garde impériale,7,empire,infantry,-0.0116,0.9885
+ntw3_ac_a06_x4_246,5. Mortier / VIII.C,5,empire,infantry,0.0693,1.0718
+ntw3_ac_a06_x7_107,4. La Romana / D.N,4,empire,infantry,0.0745,1.0774
+ntw3_ac_a07_x5_182,8. Koulnyov / AG,8,empire,infantry,0.0481,1.0493
+ntw3_ac_a07_x6_180,10. Buxhoeveden / I.SA,10,empire,infantry,0.0332,1.0337
+ntw3_ac_a07_x6_181,6. Kamenski / II.SA,6,empire,infantry,0.0466,1.0477
+ntw3_ac_a07_x7_179,4. Hessen-Kassel / DK,4,empire,infantry,-0.0150,0.9851
+ntw3_ac_a08_x5_108,10. Davout / III.C,10,empire,infantry,-0.0621,0.9398
+ntw3_ac_a08_x5_109,11. Lannes / II.C,11,empire,infantry,-0.0450,0.9560
+ntw3_ac_a08_x5_110,8. Lefebvre / VII.C,8,empire,infantry,0.0266,1.0270
+ntw3_ac_a08_x5_111,10. Masséna / IV.C,10,empire,infantry,-0.0185,0.9817
+ntw3_ac_a08_x5_112,7. Bernadotte / IX.C,7,empire,infantry,-0.0116,0.9885
+ntw3_ac_a08_x5_113,8. Jérôme / X.C,8,empire,infantry,0.0217,1.0220
+ntw3_ac_a08_x5_114,8. Garde impériale,8,empire,infantry,-0.0670,0.9352
+ntw3_ac_a08_x5_115,7. Poniatowski,7,empire,infantry,0.0332,1.0338
+ntw3_ac_a08_x5_242,11. Eugène / Italie,11,empire,infantry,-0.0382,0.9626
+ntw3_ac_a08_x5_243,5. Marmont / XI.C,5,empire,infantry,-0.0541,0.9474
+ntw3_ac_a08_x5_248,6. Vandamme / VIII.C,6,empire,infantry,0.0320,1.0325
+ntw3_ac_a08_x6_116,6. Golitsyn,6,empire,infantry,0.0064,1.0064
+ntw3_ac_a09_x5_148,11. Soult / II.C,11,empire,infantry,0.0076,1.0076
+ntw3_ac_a09_x6_140,10. Victor / I.C,10,empire,infantry,-0.0077,0.9924
+ntw3_ac_a09_x6_141,9. Suchet / III.C,9,empire,infantry,0.0208,1.0210
+ntw3_ac_a09_x6_142,7. Sébastiani / IV.C,7,empire,infantry,0.0282,1.0286
+ntw3_ac_a09_x6_143,6. Mortier / V.C,6,empire,infantry,0.0328,1.0333
+ntw3_ac_a09_x6_144,8. Ney / VI.C,8,empire,infantry,0.0281,1.0285
+ntw3_ac_a09_x6_145,9. Gouvion Saint-Cyr / VII.C,9,empire,infantry,-0.0168,0.9833
+ntw3_ac_a09_x6_146,5. Kellermann / TO,5,empire,infantry,0.0672,1.0695
+ntw3_ac_a09_x6_147,7. Joseph / CR,7,empire,infantry,0.0572,1.0589
+ntw3_ac_a10_x5_199,6. Jackson / 7th,6,empire,infantry,0.0300,1.0305
+ntw3_ac_a10_x6_198,7. Brown / 9th,7,empire,infantry,0.0031,1.0031
+ntw3_ac_a10_x7_197,5. Harrison / 8th,5,empire,infantry,-0.0495,0.9517
+ntw3_ac_a10_x7_200,6. Smith / 10th,6,empire,infantry,-0.0596,0.9422
+ntw3_ac_a11_x5_117,13. Davout / I.C,13,empire,infantry,0.0370,1.0377
+ntw3_ac_a11_x5_119,10. Ney / III.C,10,empire,infantry,0.0022,1.0022
+ntw3_ac_a11_x5_120,10. Eugène / IV.C,10,empire,infantry,0.0083,1.0084
+ntw3_ac_a11_x5_121,9. Poniatowski / V.C,9,empire,infantry,0.0073,1.0073
+ntw3_ac_a11_x5_122,6. Gouvion Saint-Cyr / VI.C,6,empire,infantry,0.0652,1.0673
+ntw3_ac_a11_x5_123,7. Reynier / VII.C,7,empire,infantry,0.0237,1.0239
+ntw3_ac_a11_x5_124,7. Junot / VIII.C,7,empire,infantry,0.0030,1.0030
+ntw3_ac_a11_x5_130,7. Garde impériale,7,empire,infantry,-0.0224,0.9778
+ntw3_ac_a11_x6_118,11. Oudinot / II.C,11,empire,infantry,-0.0258,0.9745
+ntw3_ac_a11_x6_125,8. Victor / IX.C,8,empire,infantry,0.0335,1.0340
+ntw3_ac_a11_x7_126,5. Macdonald / X.C,5,empire,infantry,0.0137,1.0138
+ntw3_ac_a11_x7_127,6. Augereau / XI.C,6,empire,infantry,0.0020,1.0020
+ntw3_ac_a11_x7_128,8. Schwarzenberg / XII.C,8,empire,infantry,-0.0099,0.9901
+ntw3_ac_a12_x6_132,8. d'Erlon / I.C,8,empire,infantry,0.0088,1.0088
+ntw3_ac_a12_x6_133,9. Reille / II.C,9,empire,infantry,-0.0737,0.9290
+ntw3_ac_a12_x6_134,6. Vandamme / III.C,6,empire,infantry,0.0069,1.0069
+ntw3_ac_a12_x6_135,7. Gérard / IV.C,7,empire,infantry,-0.0138,0.9863
+ntw3_ac_a12_x6_136,5. Mouton / VI.C,5,empire,infantry,0.0225,1.0228
+ntw3_ac_a12_x6_139,10. Garde impériale,10,empire,infantry,-0.0516,0.9497
+ntw3_ac_a13_x6_149,10. Masséna / Portugal,10,empire,infantry,-0.0099,0.9902
+ntw3_ac_a13_x6_150,9. Soult / Sud,9,empire,infantry,0.0306,1.0311
+ntw3_ac_a13_x6_151,7. Joseph / Centre,7,empire,infantry,0.0126,1.0127
+ntw3_ac_a13_x6_152,9. Suchet / Aragon,9,empire,infantry,0.0136,1.0137
+ntw3_ac_a13_x6_153,6. Dorsenne / Nord,6,empire,infantry,0.0590,1.0608
+ntw3_ac_a13_x6_154,5. Macdonald / Catalogne,5,empire,infantry,0.0071,1.0072
+ntw3_ac_a13_x6_247,7. Victor / Cadix,7,empire,infantry,0.0018,1.0018
+ntw3_ac_a14_x6_158,9. Murat / Guardia reale,9,empire,infantry,0.0223,1.0226
+ntw3_ac_a14_x7_155,3. Suchet / Alpes,3,empire,infantry,-0.1076,0.8979
+ntw3_ac_a14_x7_156,7. Carrascosa / I-II,7,empire,infantry,0.0222,1.0225
+ntw3_ac_a14_x7_157,7. Lecchi / III-IV,7,empire,infantry,0.0051,1.0051
+ntw3_ac_a15_x5_260,11. Koutouzov / Dunau,11,empire,infantry,0.0599,1.0617
+ntw3_ac_a15_x5_261,7. Kotlyarevski / Valakhiya,7,empire,infantry,0.0405,1.0413
+ntw3_ac_a15_x6_258,8. Goudovitch / Kavkaz,8,empire,infantry,0.0363,1.0369
+ntw3_ac_a15_x6_259,5. Tsitsyanov / Kaspiy,5,empire,infantry,0.0648,1.0670
+ntw3_ac_a17_x6_282,8. Ney / Jeune Garde,8,empire,infantry,-0.0170,0.9832
+ntw3_ac_a17_x6_283,10. Mortier / Vieille Garde,10,empire,infantry,-0.0609,0.9409
+ntw3_ac_a17_x6_289,10. Victor / II.C,10,empire,infantry,-0.0368,0.9639
+ntw3_ac_a17_x6_290,"9. Macdonald / XI.C,VII.C",9,empire,infantry,0.0145,1.0146
+ntw3_ac_a17_x6_291,8. Soult / Pyrénées,8,empire,infantry,-0.0126,0.9875
+ntw3_ac_a17_x6_292,6. Eugène / Italie,6,empire,infantry,-0.0167,0.9834
+ntw3_ac_a17_x6_293,7. Maison / Flandres,7,empire,infantry,-0.0061,0.9939
+ntw3_ac_a17_x6_294,9. Augereau / Rhône,9,empire,infantry,0.0119,1.0120
+ntw3_ac_a17_x7_295,5. Donzelot / Sept-Îles,5,empire,infantry,0.0430,1.0439
+ntw3_ac_b03_x6_017,7. Hohenzollern / Italien.L,7,coalition,infantry,-0.0064,0.9937
+ntw3_ac_b03_x6_018,10. Melas / Italien.R,10,coalition,infantry,0.0006,1.0006
+ntw3_ac_b03_x6_019,10. Sztáray / Schwaben.R,10,coalition,infantry,0.0294,1.0299
+ntw3_ac_b03_x6_020,9. Nauendorf / Schweiz,9,coalition,infantry,0.0093,1.0094
+ntw3_ac_b03_x6_021,6. Reuß-Plauen / Schwaben.L,6,coalition,infantry,0.0632,1.0652
+ntw3_ac_b03_x6_022,5. Cornwallis / Ireland,5,coalition,infantry,0.0051,1.0051
+ntw3_ac_b03_x6_024,9. Souvorov / Italiya,9,coalition,infantry,-0.0722,0.9304
+ntw3_ac_b03_x6_025,7. Rimski-Korsakov / Syever,7,coalition,infantry,0.0037,1.0037
+ntw3_ac_b03_x7_023,8. York / Helder,8,coalition,infantry,-0.0889,0.9150
+ntw3_ac_b04_r7_066,11. Mourad / Hashdu,11,coalition,infantry,-0.0705,0.9319
+ntw3_ac_b04_x6_071,9. Abercromby / EF.E,9,coalition,infantry,0.0277,1.0281
+ntw3_ac_b04_x7_067,5. Ibrahim / Ghugha,5,coalition,infantry,-0.0382,0.9625
+ntw3_ac_b04_x7_068,8. Da'Woud / Inkishariyati,8,coalition,infantry,0.0399,1.0407
+ntw3_ac_b04_x7_069,8. Hacı Moustafa / Akdeniz,8,coalition,infantry,-0.0523,0.9490
+ntw3_ac_b04_x7_070,8. Abū Marak / Yeniçeri,8,coalition,infantry,-0.0006,0.9994
+ntw3_ac_b04_x7_072,7. Baird / EF.I,7,coalition,infantry,-0.0015,0.9985
+ntw3_ac_b04_x7_073,7. Abdoullah / Şam,7,coalition,infantry,-0.0397,0.9611
+ntw3_ac_b04_x7_074,9. Youssouf / Fetih,9,coalition,infantry,-0.0107,0.9894
+ntw3_ac_b05_x6_027,12. Buxhoeveden / Slavkov.L,12,coalition,infantry,-0.0261,0.9742
+ntw3_ac_b05_x7_026,7. Bagration / Slavkov.P,7,coalition,infantry,0.0148,1.0149
+ntw3_ac_b05_x7_028,9. Konstantin / O.LG,9,coalition,infantry,-0.0258,0.9745
+ntw3_ac_b05_x7_029,10. Bellegarde / Italien.L,10,coalition,infantry,-0.0103,0.9898
+ntw3_ac_b05_x7_030,8. Mack / Bayern,8,coalition,infantry,-0.0260,0.9744
+ntw3_ac_b05_x7_031,6. Johann / Tirol,6,coalition,infantry,0.0433,1.0443
+ntw3_ac_b05_x7_032,4. Cathcart / Hanover,4,coalition,infantry,0.0815,1.0849
+ntw3_ac_b05_x7_033,9. Reuß-Plauen / Italien.R,9,coalition,infantry,-0.0253,0.9750
+ntw3_ac_b06_x6_040,12. Bagration / LF,12,coalition,infantry,0.0594,1.0612
+ntw3_ac_b06_x6_042,9. Dokhtourov / RK,9,coalition,infantry,0.0442,1.0452
+ntw3_ac_b06_x7_034,13. Braunschweig / AA,13,coalition,infantry,0.0630,1.0650
+ntw3_ac_b06_x7_035,11. Hohenlohe / SK,11,coalition,infantry,0.0545,1.0560
+ntw3_ac_b06_x7_036,8. Kalckreuth / RK,8,coalition,infantry,0.0211,1.0213
+ntw3_ac_b06_x7_037,7. Rüchel / ZK,7,coalition,infantry,0.0143,1.0144
+ntw3_ac_b06_x7_038,5. Württemberg / R,5,coalition,infantry,0.0857,1.0895
+ntw3_ac_b06_x7_039,8. Zezschwitz / SH,8,coalition,infantry,0.0190,1.0191
+ntw3_ac_b06_x7_041,9. Gortchakov / TS,9,coalition,infantry,0.0156,1.0157
+ntw3_ac_b06_x7_043,7. Konstantin / R.LG,7,coalition,infantry,0.0364,1.0371
+ntw3_ac_b06_x7_044,4. Essen / PA,4,coalition,infantry,0.0726,1.0753
+ntw3_ac_b06_x7_045,6. L'Estocq / GK,6,coalition,infantry,0.0120,1.0121
+ntw3_ac_b07_x5_195,9. Adlercreutz / Spetsen,9,coalition,infantry,0.0402,1.0410
+ntw3_ac_b07_x6_194,7. Klingspor / Motstånd,7,coalition,infantry,0.0413,1.0422
+ntw3_ac_b07_x6_196,8. Döbeln / Östersjön,8,coalition,infantry,0.0639,1.0660
+ntw3_ac_b07_x7_193,4. Moore / Baltic,4,coalition,infantry,-0.0761,0.9268
+ntw3_ac_b08_x5_051,10. Hiller / VI.K,10,coalition,infantry,0.0125,1.0126
+ntw3_ac_b08_x5_245,6. Chasteler / VIII.K,6,coalition,infantry,0.0429,1.0439
+ntw3_ac_b08_x6_046,9. Bellegarde / I.K,9,coalition,infantry,-0.0009,0.9991
+ntw3_ac_b08_x6_047,7. Kollowrat / II.K,7,coalition,infantry,-0.0357,0.9649
+ntw3_ac_b08_x6_048,8. Hohenzollern / III.K,8,coalition,infantry,-0.0056,0.9944
+ntw3_ac_b08_x6_049,9. Rosenberg / IV.L,9,coalition,infantry,-0.0023,0.9977
+ntw3_ac_b08_x6_050,6. Ludwig / V.K,6,coalition,infantry,-0.0178,0.9823
+ntw3_ac_b08_x6_052,8. D’Este / VII.K,8,coalition,infantry,-0.0228,0.9775
+ntw3_ac_b08_x6_053,11. Liechtenstein / RK,11,coalition,infantry,0.0068,1.0068
+ntw3_ac_b08_x6_054,4. Kienmayer / Aufstand,4,coalition,infantry,0.0388,1.0395
+ntw3_ac_b08_x6_244,12. Johann / IX.K,12,coalition,infantry,-0.0198,0.9804
+ntw3_ac_b08_x7_055,5. Pitt / Walcheren.R,5,coalition,infantry,0.0547,1.0562
+ntw3_ac_b08_x7_056,7. Hope / Walcheren.L,7,coalition,infantry,0.0339,1.0344
+ntw3_ac_b09_x4_163,13. Wellesley / Peninsular,13,coalition,infantry,-0.0215,0.9788
+ntw3_ac_b09_x6_164,7. Beresford / Sul,7,coalition,infantry,-0.0167,0.9835
+ntw3_ac_b09_x6_165,10. Cuesta / Extremadura,10,coalition,infantry,-0.0695,0.9329
+ntw3_ac_b09_x6_166,9. Venegas / la Mancha,9,coalition,infantry,-0.0257,0.9746
+ntw3_ac_b09_x6_167,8. Del Parque / la Izquierda,8,coalition,infantry,-0.0378,0.9629
+ntw3_ac_b09_x6_168,7. Coupigny / la Derecha I,7,coalition,infantry,-0.0761,0.9267
+ntw3_ac_b09_x6_169,6. Blake y Joyes / la Derecha II,6,coalition,infantry,0.0154,1.0155
+ntw3_ac_b09_x6_170,4. Teixeira / Norte,4,coalition,infantry,0.0668,1.0690
+ntw3_ac_b10_x6_013,6. Drummond / EF.A,6,coalition,infantry,0.0346,1.0353
+ntw3_ac_b10_x6_014,9. Ross / EF.EC,9,coalition,infantry,-0.0029,0.9971
+ntw3_ac_b10_x6_015,6. Brock / Confederacy,6,coalition,infantry,-0.0039,0.9961
+ntw3_ac_b10_x7_016,3. Kindelán / Florida,3,coalition,infantry,-0.0652,0.9369
+ntw3_ac_b11_x4_191,6. Davidov / Narod,6,coalition,infantry,-0.2411,0.7858
+ntw3_ac_b11_x5_183,12. Bagration / II.ZA,12,coalition,infantry,0.0262,1.0265
+ntw3_ac_b11_x5_184,8. Baggovout / II.K,8,coalition,infantry,0.0609,1.0627
+ntw3_ac_b11_x5_185,8. Toutchkov / III.K,8,coalition,infantry,-0.0187,0.9815
+ntw3_ac_b11_x5_186,7. Osterman-Tolstoi / IV.K,7,coalition,infantry,0.0099,1.0099
+ntw3_ac_b11_x5_188,9. Konstantin / LG,9,coalition,infantry,0.0217,1.0220
+ntw3_ac_b11_x5_190,9. Dokhtourov / VI.K,9,coalition,infantry,0.0702,1.0728
+ntw3_ac_b11_x5_192,8. Tormassov / III.OA,8,coalition,infantry,0.0219,1.0221
+ntw3_ac_b11_x5_249,11. Wittgenstein / I.K,11,coalition,infantry,0.0599,1.0617
+ntw3_ac_b11_x5_262,5. Steinheil / F.K,5,coalition,infantry,0.0135,1.0136
+ntw3_ac_b11_x5_263,10. Tchitchagov / D.ZA,10,coalition,infantry,0.0145,1.0146
+ntw3_ac_b12_x5_057,11. Oranje-Nassau / I.C,11,coalition,infantry,0.0027,1.0027
+ntw3_ac_b12_x5_059,8. Wellington / RC,8,coalition,infantry,-0.0010,0.9990
+ntw3_ac_b12_x6_058,7. Hill / II.C,7,coalition,infantry,-0.0542,0.9473
+ntw3_ac_b12_x6_062,6. Zieten / I.K,6,coalition,infantry,0.0361,1.0368
+ntw3_ac_b12_x6_063,8. Pirch / II.K,8,coalition,infantry,0.0238,1.0241
+ntw3_ac_b12_x6_064,5. Thielemann / III.K,5,coalition,infantry,-0.0017,0.9983
+ntw3_ac_b12_x6_065,7. Bülow / IV.K,7,coalition,infantry,0.0180,1.0182
+ntw3_ac_b13_x6_171,11. Wellington / Coa,11,coalition,infantry,-0.1220,0.8851
+ntw3_ac_b13_x6_172,8. Beresford / Guadiana,8,coalition,infantry,-0.0330,0.9675
+ntw3_ac_b13_x6_173,5. Graham / Cádiz,5,coalition,infantry,-0.1178,0.8889
+ntw3_ac_b13_x6_174,8. Iranzo / 1°,8,coalition,infantry,-0.0364,0.9643
+ntw3_ac_b13_x6_175,7. Freire / 2-3°,7,coalition,infantry,0.0313,1.0318
+ntw3_ac_b13_x6_176,10. Blake / 4-5°,10,coalition,infantry,0.0005,1.0005
+ntw3_ac_b13_x6_177,7. Santocildes / 6°,7,coalition,infantry,0.0334,1.0340
+ntw3_ac_b13_x6_178,5. Mendizábal / 7°,5,coalition,infantry,-0.0837,0.9197
+ntw3_ac_b14_x6_159,5. Bubna / Alpen.L,5,coalition,infantry,0.0452,1.0462
+ntw3_ac_b14_x6_160,8. Frimont / Alpen.R,8,coalition,infantry,-0.0045,0.9955
+ntw3_ac_b14_x6_161,8. Bianchi / Italien.R,8,coalition,infantry,-0.0031,0.9969
+ntw3_ac_b14_x6_162,5. Neipperg / Italien.L,5,coalition,infantry,0.0694,1.0718
+ntw3_ac_b15_x6_253,11. Kör Yusuf Ziyaüddin / Rum,11,coalition,infantry,0.0057,1.0057
+ntw3_ac_b15_x6_256,9. Javad Qajar / Azrbadjan,9,coalition,infantry,-0.0098,0.9902
+ntw3_ac_b15_x6_257,6. Eskandar Mīrzā / Gurjstan,6,coalition,infantry,0.0055,1.0055
+ntw3_ac_b15_x7_252,7. Koca Hüsrev / Batı Kafkasya,7,coalition,infantry,0.0685,1.0709
+ntw3_ac_b15_x7_254,7. Laz Aziz / Güney Kafkasya,7,coalition,infantry,0.0417,1.0426
+ntw3_ac_b15_x7_255,5. Abbas Mīrzā / Khazr,5,coalition,infantry,-0.0047,0.9953
+ntw3_ac_b16_x7_273,11. Schwarzenberg / Böhmen,11,coalition,infantry,-0.0474,0.9537
+ntw3_ac_b17_x6_284,8. Wellington / Pyrenees,8,coalition,infantry,-0.0543,0.9471
+ntw3_ac_b17_x7_279,10. Schwarzenberg / Böhmen,10,coalition,infantry,-0.0620,0.9398
+ntw3_ac_b17_x7_280,11. Barclay de Tolly / VI.K,11,coalition,infantry,0.0042,1.0042
+ntw3_ac_b17_x7_281,10. Blücher / Schlesien,10,coalition,infantry,0.0364,1.0370
+ntw3_ac_b17_x7_285,7. Wintzingerode / Syever,7,coalition,infantry,0.0232,1.0235
+ntw3_ac_b17_x7_286,6. Bellegarde / Italien,6,coalition,infantry,0.0018,1.0018
+ntw3_ac_b17_x7_287,9. Bianchi / Süd,9,coalition,infantry,-0.0573,0.9443
+ntw3_ac_b17_x7_288,7. Bülow / Nord,7,coalition,infantry,0.0008,1.0008
+ntw3_ac_b17_x7_297,9. Osten-Sacken / Sileziya,9,coalition,infantry,-0.0002,0.9998
+ntw3_ac_b17_x8_296,5. Wrede / V.K,5,coalition,infantry,-0.0670,0.9352
+ntw3_ac_a03_x5_080,12. Bonaparte / Italie.C,12,empire,cavalry,0.0318,1.0323
+ntw3_ac_a03_x5_081,6. Desaix / Italie.R,6,empire,cavalry,-0.0073,0.9927
+ntw3_ac_a03_x5_082,7. Masséna / Italie.D,7,empire,cavalry,0.0208,1.0210
+ntw3_ac_a03_x5_083,6. Suchet / Italie.G,6,empire,cavalry,-0.0418,0.9591
+ntw3_ac_a03_x5_088,5. Humbert / Irlande,5,empire,cavalry,0.0506,1.0519
+ntw3_ac_a03_x5_089,7. Brune / Hollande,7,empire,cavalry,-0.0003,0.9997
+ntw3_ac_a03_x6_084,11. Moreau / Rhin.R,11,empire,cavalry,-0.0086,0.9915
+ntw3_ac_a03_x6_085,9. Lecourbe / Rhin.D,9,empire,cavalry,-0.0372,0.9635
+ntw3_ac_a03_x6_086,8. Gouvion Saint-Cyr / Rhin.C,8,empire,cavalry,0.0514,1.0527
+ntw3_ac_a03_x6_087,7. Sainte-Suzanne / Rhin.G,7,empire,cavalry,-0.0016,0.9984
+ntw3_ac_a04_x5_076,10. Bonaparte / Alexandrie,10,empire,cavalry,-0.0834,0.9200
+ntw3_ac_a04_x5_077,8. Desaix / Nil,8,empire,cavalry,-0.0921,0.9120
+ntw3_ac_a04_x5_078,6. Menou / Damiette,6,empire,cavalry,-0.1011,0.9039
+ntw3_ac_a05_r4_097,9. Murat / RC,9,empire,cavalry,-0.0822,0.9211
+ntw3_ac_a05_x2_093,13. Soult / IV.C,13,empire,cavalry,-0.0004,0.9996
+ntw3_ac_a05_x4_092,6. Davout / III.C,6,empire,cavalry,-0.0147,0.9854
+ntw3_ac_a05_x4_094,9. Lannes / V.C,9,empire,cavalry,0.0383,1.0390
+ntw3_ac_a05_x4_096,8. Garde impériale,8,empire,cavalry,-0.0577,0.9439
+ntw3_ac_a05_x5_090,7. Bernadotte / I.C,7,empire,cavalry,-0.0506,0.9507
+ntw3_ac_a05_x5_091,7. Masséna / Italie,7,empire,cavalry,0.0020,1.0020
+ntw3_ac_a05_x5_095,8. Ney / VI.C,8,empire,cavalry,0.0049,1.0049
+ntw3_ac_a05_x5_098,5. Marmont / II.C,5,empire,cavalry,-0.0932,0.9111
+ntw3_ac_a06_r3_100,12. Murat / RC,12,empire,cavalry,0.0590,1.0608
+ntw3_ac_a06_x2_101,12. Davout / III.C,12,empire,cavalry,0.0047,1.0047
+ntw3_ac_a06_x3_102,10. Soult / IV.C,10,empire,cavalry,0.0297,1.0301
+ntw3_ac_a06_x3_103,11. Lannes / V.C,11,empire,cavalry,0.0171,1.0173
+ntw3_ac_a06_x3_104,8. Ney / VI.C,8,empire,cavalry,0.0586,1.0603
+ntw3_ac_a06_x3_106,9. Augereau / VII.C,9,empire,cavalry,0.0015,1.0015
+ntw3_ac_a06_x4_099,6. Bernadotte / I.C,6,empire,cavalry,0.0146,1.0147
+ntw3_ac_a06_x4_105,7. Garde impériale,7,empire,cavalry,-0.1309,0.8773
+ntw3_ac_a06_x4_246,5. Mortier / VIII.C,5,empire,cavalry,0.0389,1.0397
+ntw3_ac_a06_x7_107,4. La Romana / D.N,4,empire,cavalry,-0.0415,0.9594
+ntw3_ac_a07_x5_182,8. Koulnyov / AG,8,empire,cavalry,0.0765,1.0796
+ntw3_ac_a07_x6_180,10. Buxhoeveden / I.SA,10,empire,cavalry,0.0157,1.0158
+ntw3_ac_a07_x6_181,6. Kamenski / II.SA,6,empire,cavalry,0.0340,1.0346
+ntw3_ac_a07_x7_179,4. Hessen-Kassel / DK,4,empire,cavalry,-0.0676,0.9346
+ntw3_ac_a08_x5_108,10. Davout / III.C,10,empire,cavalry,0.0167,1.0168
+ntw3_ac_a08_x5_109,11. Lannes / II.C,11,empire,cavalry,0.0139,1.0140
+ntw3_ac_a08_x5_110,8. Lefebvre / VII.C,8,empire,cavalry,0.0288,1.0293
+ntw3_ac_a08_x5_111,10. Masséna / IV.C,10,empire,cavalry,-0.0701,0.9323
+ntw3_ac_a08_x5_112,7. Bernadotte / IX.C,7,empire,cavalry,-0.0865,0.9171
+ntw3_ac_a08_x5_113,8. Jérôme / X.C,8,empire,cavalry,0.0451,1.0461
+ntw3_ac_a08_x5_114,8. Garde impériale,8,empire,cavalry,-0.0542,0.9473
+ntw3_ac_a08_x5_115,7. Poniatowski,7,empire,cavalry,-0.0018,0.9982
+ntw3_ac_a08_x5_242,11. Eugène / Italie,11,empire,cavalry,-0.0002,0.9998
+ntw3_ac_a08_x5_243,5. Marmont / XI.C,5,empire,cavalry,-0.0144,0.9857
+ntw3_ac_a08_x5_248,6. Vandamme / VIII.C,6,empire,cavalry,0.0102,1.0102
+ntw3_ac_a08_x6_116,6. Golitsyn,6,empire,cavalry,0.0434,1.0443
+ntw3_ac_a09_x5_148,11. Soult / II.C,11,empire,cavalry,0.0096,1.0096
+ntw3_ac_a09_x6_140,10. Victor / I.C,10,empire,cavalry,-0.0039,0.9961
+ntw3_ac_a09_x6_141,9. Suchet / III.C,9,empire,cavalry,0.0479,1.0491
+ntw3_ac_a09_x6_142,7. Sébastiani / IV.C,7,empire,cavalry,0.0012,1.0012
+ntw3_ac_a09_x6_143,6. Mortier / V.C,6,empire,cavalry,0.0058,1.0058
+ntw3_ac_a09_x6_144,8. Ney / VI.C,8,empire,cavalry,0.0215,1.0217
+ntw3_ac_a09_x6_145,9. Gouvion Saint-Cyr / VII.C,9,empire,cavalry,-0.0132,0.9869
+ntw3_ac_a09_x6_146,5. Kellermann / TO,5,empire,cavalry,-0.0262,0.9741
+ntw3_ac_a09_x6_147,7. Joseph / CR,7,empire,cavalry,0.0293,1.0297
+ntw3_ac_a10_x5_199,6. Jackson / 7th,6,empire,cavalry,0.0703,1.0728
+ntw3_ac_a10_x6_198,7. Brown / 9th,7,empire,cavalry,0.0563,1.0579
+ntw3_ac_a10_x7_197,5. Harrison / 8th,5,empire,cavalry,0.0308,1.0313
+ntw3_ac_a10_x7_200,6. Smith / 10th,6,empire,cavalry,0.0408,1.0416
+ntw3_ac_a11_r5_131,10. Murat / RC,10,empire,cavalry,-0.0248,0.9755
+ntw3_ac_a11_x5_117,13. Davout / I.C,13,empire,cavalry,0.0526,1.0540
+ntw3_ac_a11_x5_119,10. Ney / III.C,10,empire,cavalry,0.0268,1.0272
+ntw3_ac_a11_x5_120,10. Eugène / IV.C,10,empire,cavalry,0.0405,1.0413
+ntw3_ac_a11_x5_121,9. Poniatowski / V.C,9,empire,cavalry,0.0353,1.0360
+ntw3_ac_a11_x5_123,7. Reynier / VII.C,7,empire,cavalry,0.0035,1.0035
+ntw3_ac_a11_x5_124,7. Junot / VIII.C,7,empire,cavalry,0.0499,1.0512
+ntw3_ac_a11_x5_130,7. Garde impériale,7,empire,cavalry,-0.0560,0.9456
+ntw3_ac_a11_x6_118,11. Oudinot / II.C,11,empire,cavalry,0.0901,1.0943
+ntw3_ac_a11_x6_125,8. Victor / IX.C,8,empire,cavalry,0.0224,1.0227
+ntw3_ac_a11_x7_126,5. Macdonald / X.C,5,empire,cavalry,0.0284,1.0288
+ntw3_ac_a11_x7_127,6. Augereau / XI.C,6,empire,cavalry,0.0244,1.0247
+ntw3_ac_a11_x7_128,8. Schwarzenberg / XII.C,8,empire,cavalry,0.0015,1.0015
+ntw3_ac_a12_r6_137,7. Pajol / I.RC,7,empire,cavalry,-0.2267,0.7971
+ntw3_ac_a12_r6_138,8. Kellermann / III.RC,8,empire,cavalry,-0.1935,0.8240
+ntw3_ac_a12_x6_132,8. d'Erlon / I.C,8,empire,cavalry,0.0433,1.0443
+ntw3_ac_a12_x6_133,9. Reille / II.C,9,empire,cavalry,0.0481,1.0492
+ntw3_ac_a12_x6_134,6. Vandamme / III.C,6,empire,cavalry,0.0178,1.0179
+ntw3_ac_a12_x6_135,7. Gérard / IV.C,7,empire,cavalry,0.0251,1.0254
+ntw3_ac_a12_x6_136,5. Mouton / VI.C,5,empire,cavalry,0.0469,1.0480
+ntw3_ac_a12_x6_139,10. Garde impériale,10,empire,cavalry,-0.0223,0.9779
+ntw3_ac_a13_x6_149,10. Masséna / Portugal,10,empire,cavalry,-0.0387,0.9620
+ntw3_ac_a13_x6_150,9. Soult / Sud,9,empire,cavalry,-0.2322,0.7928
+ntw3_ac_a13_x6_151,7. Joseph / Centre,7,empire,cavalry,0.0237,1.0239
+ntw3_ac_a13_x6_152,9. Suchet / Aragon,9,empire,cavalry,0.0614,1.0633
+ntw3_ac_a13_x6_153,6. Dorsenne / Nord,6,empire,cavalry,0.0853,1.0890
+ntw3_ac_a13_x6_154,5. Macdonald / Catalogne,5,empire,cavalry,0.0601,1.0619
+ntw3_ac_a13_x6_247,7. Victor / Cadix,7,empire,cavalry,0.0284,1.0288
+ntw3_ac_a14_x6_158,9. Murat / Guardia reale,9,empire,cavalry,0.0051,1.0051
+ntw3_ac_a14_x7_155,3. Suchet / Alpes,3,empire,cavalry,-0.0456,0.9555
+ntw3_ac_a14_x7_156,7. Carrascosa / I-II,7,empire,cavalry,0.0277,1.0281
+ntw3_ac_a14_x7_157,7. Lecchi / III-IV,7,empire,cavalry,-0.0224,0.9779
+ntw3_ac_a15_x5_260,11. Koutouzov / Dunau,11,empire,cavalry,0.0526,1.0541
+ntw3_ac_a15_x5_261,7. Kotlyarevski / Valakhiya,7,empire,cavalry,-0.0311,0.9693
+ntw3_ac_a15_x6_258,8. Goudovitch / Kavkaz,8,empire,cavalry,-0.0177,0.9825
+ntw3_ac_a15_x6_259,5. Tsitsyanov / Kaspiy,5,empire,cavalry,0.0157,1.0159
+ntw3_ac_a17_x6_282,8. Ney / Jeune Garde,8,empire,cavalry,0.0034,1.0034
+ntw3_ac_a17_x6_283,10. Mortier / Vieille Garde,10,empire,cavalry,-0.0445,0.9565
+ntw3_ac_a17_x6_289,10. Victor / II.C,10,empire,cavalry,0.0037,1.0037
+ntw3_ac_a17_x6_290,"9. Macdonald / XI.C,VII.C",9,empire,cavalry,-0.0363,0.9644
+ntw3_ac_a17_x6_291,8. Soult / Pyrénées,8,empire,cavalry,0.0429,1.0438
+ntw3_ac_a17_x6_292,6. Eugène / Italie,6,empire,cavalry,0.0485,1.0497
+ntw3_ac_a17_x6_293,7. Maison / Flandres,7,empire,cavalry,0.0407,1.0415
+ntw3_ac_a17_x6_294,9. Augereau / Rhône,9,empire,cavalry,0.0439,1.0449
+ntw3_ac_a17_x7_295,5. Donzelot / Sept-Îles,5,empire,cavalry,0.0532,1.0546
+ntw3_ac_b03_x6_017,7. Hohenzollern / Italien.L,7,coalition,cavalry,-0.0453,0.9557
+ntw3_ac_b03_x6_018,10. Melas / Italien.R,10,coalition,cavalry,-0.0302,0.9703
+ntw3_ac_b03_x6_019,10. Sztáray / Schwaben.R,10,coalition,cavalry,-0.0302,0.9703
+ntw3_ac_b03_x6_020,9. Nauendorf / Schweiz,9,coalition,cavalry,-0.0224,0.9778
+ntw3_ac_b03_x6_021,6. Reuß-Plauen / Schwaben.L,6,coalition,cavalry,0.0541,1.0556
+ntw3_ac_b03_x6_022,5. Cornwallis / Ireland,5,coalition,cavalry,0.0214,1.0216
+ntw3_ac_b03_x6_024,9. Souvorov / Italiya,9,coalition,cavalry,-0.0647,0.9374
+ntw3_ac_b03_x6_025,7. Rimski-Korsakov / Syever,7,coalition,cavalry,-0.0096,0.9905
+ntw3_ac_b03_x7_023,8. York / Helder,8,coalition,cavalry,-0.0367,0.9640
+ntw3_ac_b04_r7_066,11. Mourad / Hashdu,11,coalition,cavalry,-0.0320,0.9685
+ntw3_ac_b04_x6_071,9. Abercromby / EF.E,9,coalition,cavalry,0.0165,1.0166
+ntw3_ac_b04_x7_067,5. Ibrahim / Ghugha,5,coalition,cavalry,-0.0832,0.9202
+ntw3_ac_b04_x7_068,8. Da'Woud / Inkishariyati,8,coalition,cavalry,0.0309,1.0314
+ntw3_ac_b04_x7_069,8. Hacı Moustafa / Akdeniz,8,coalition,cavalry,-0.0037,0.9963
+ntw3_ac_b04_x7_070,8. Abū Marak / Yeniçeri,8,coalition,cavalry,0.0336,1.0342
+ntw3_ac_b04_x7_072,7. Baird / EF.I,7,coalition,cavalry,0.0384,1.0391
+ntw3_ac_b04_x7_073,7. Abdoullah / Şam,7,coalition,cavalry,0.0050,1.0050
+ntw3_ac_b04_x7_074,9. Youssouf / Fetih,9,coalition,cavalry,-0.0091,0.9909
+ntw3_ac_b05_x6_027,12. Buxhoeveden / Slavkov.L,12,coalition,cavalry,0.0246,1.0249
+ntw3_ac_b05_x7_026,7. Bagration / Slavkov.P,7,coalition,cavalry,-0.0090,0.9911
+ntw3_ac_b05_x7_028,9. Konstantin / O.LG,9,coalition,cavalry,-0.0488,0.9523
+ntw3_ac_b05_x7_029,10. Bellegarde / Italien.L,10,coalition,cavalry,0.0214,1.0217
+ntw3_ac_b05_x7_030,8. Mack / Bayern,8,coalition,cavalry,0.0346,1.0352
+ntw3_ac_b05_x7_031,6. Johann / Tirol,6,coalition,cavalry,0.0043,1.0044
+ntw3_ac_b05_x7_032,4. Cathcart / Hanover,4,coalition,cavalry,0.0582,1.0599
+ntw3_ac_b05_x7_033,9. Reuß-Plauen / Italien.R,9,coalition,cavalry,-0.0174,0.9828
+ntw3_ac_b06_x6_040,12. Bagration / LF,12,coalition,cavalry,0.0827,1.0862
+ntw3_ac_b06_x6_042,9. Dokhtourov / RK,9,coalition,cavalry,0.0222,1.0224
+ntw3_ac_b06_x7_034,13. Braunschweig / AA,13,coalition,cavalry,0.0049,1.0050
+ntw3_ac_b06_x7_035,11. Hohenlohe / SK,11,coalition,cavalry,0.0172,1.0173
+ntw3_ac_b06_x7_036,8. Kalckreuth / RK,8,coalition,cavalry,-0.0140,0.9861
+ntw3_ac_b06_x7_037,7. Rüchel / ZK,7,coalition,cavalry,0.0032,1.0032
+ntw3_ac_b06_x7_038,5. Württemberg / R,5,coalition,cavalry,0.0242,1.0245
+ntw3_ac_b06_x7_039,8. Zezschwitz / SH,8,coalition,cavalry,-0.0905,0.9135
+ntw3_ac_b06_x7_041,9. Gortchakov / TS,9,coalition,cavalry,-0.0142,0.9859
+ntw3_ac_b06_x7_043,7. Konstantin / R.LG,7,coalition,cavalry,-0.0021,0.9979
+ntw3_ac_b06_x7_044,4. Essen / PA,4,coalition,cavalry,-0.0007,0.9993
+ntw3_ac_b06_x7_045,6. L'Estocq / GK,6,coalition,cavalry,0.0273,1.0276
+ntw3_ac_b07_x5_195,9. Adlercreutz / Spetsen,9,coalition,cavalry,-0.0412,0.9596
+ntw3_ac_b07_x6_194,7. Klingspor / Motstånd,7,coalition,cavalry,0.0286,1.0290
+ntw3_ac_b07_x6_196,8. Döbeln / Östersjön,8,coalition,cavalry,0.0456,1.0467
+ntw3_ac_b07_x7_193,4. Moore / Baltic,4,coalition,cavalry,-0.0139,0.9862
+ntw3_ac_b08_x5_051,10. Hiller / VI.K,10,coalition,cavalry,-0.0092,0.9908
+ntw3_ac_b08_x5_245,6. Chasteler / VIII.K,6,coalition,cavalry,0.0063,1.0063
+ntw3_ac_b08_x6_046,9. Bellegarde / I.K,9,coalition,cavalry,-0.0149,0.9852
+ntw3_ac_b08_x6_047,7. Kollowrat / II.K,7,coalition,cavalry,-0.0062,0.9938
+ntw3_ac_b08_x6_048,8. Hohenzollern / III.K,8,coalition,cavalry,-0.0167,0.9834
+ntw3_ac_b08_x6_049,9. Rosenberg / IV.L,9,coalition,cavalry,-0.0203,0.9799
+ntw3_ac_b08_x6_050,6. Ludwig / V.K,6,coalition,cavalry,-0.0401,0.9607
+ntw3_ac_b08_x6_052,8. D’Este / VII.K,8,coalition,cavalry,-0.0412,0.9596
+ntw3_ac_b08_x6_053,11. Liechtenstein / RK,11,coalition,cavalry,0.0082,1.0082
+ntw3_ac_b08_x6_054,4. Kienmayer / Aufstand,4,coalition,cavalry,0.0297,1.0301
+ntw3_ac_b08_x6_244,12. Johann / IX.K,12,coalition,cavalry,0.0351,1.0357
+ntw3_ac_b08_x7_055,5. Pitt / Walcheren.R,5,coalition,cavalry,0.0126,1.0127
+ntw3_ac_b08_x7_056,7. Hope / Walcheren.L,7,coalition,cavalry,0.0339,1.0345
+ntw3_ac_b09_x4_163,13. Wellesley / Peninsular,13,coalition,cavalry,-0.0049,0.9951
+ntw3_ac_b09_x6_164,7. Beresford / Sul,7,coalition,cavalry,0.0059,1.0059
+ntw3_ac_b09_x6_165,10. Cuesta / Extremadura,10,coalition,cavalry,0.0344,1.0350
+ntw3_ac_b09_x6_166,9. Venegas / la Mancha,9,coalition,cavalry,-0.0419,0.9590
+ntw3_ac_b09_x6_167,8. Del Parque / la Izquierda,8,coalition,cavalry,0.0121,1.0122
+ntw3_ac_b09_x6_168,7. Coupigny / la Derecha I,7,coalition,cavalry,0.0112,1.0112
+ntw3_ac_b09_x6_169,6. Blake y Joyes / la Derecha II,6,coalition,cavalry,-0.0225,0.9777
+ntw3_ac_b09_x6_170,4. Teixeira / Norte,4,coalition,cavalry,0.0387,1.0395
+ntw3_ac_b10_x6_013,6. Drummond / EF.A,6,coalition,cavalry,0.0032,1.0032
+ntw3_ac_b10_x6_014,9. Ross / EF.EC,9,coalition,cavalry,0.0517,1.0531
+ntw3_ac_b10_x6_015,6. Brock / Confederacy,6,coalition,cavalry,0.0107,1.0107
+ntw3_ac_b10_x7_016,3. Kindelán / Florida,3,coalition,cavalry,0.0623,1.0643
+ntw3_ac_b11_r5_189,10. Platov / Atamanstvo,10,coalition,cavalry,-0.0262,0.9742
+ntw3_ac_b11_x4_191,6. Davidov / Narod,6,coalition,cavalry,0.0451,1.0461
+ntw3_ac_b11_x5_183,12. Bagration / II.ZA,12,coalition,cavalry,0.0245,1.0248
+ntw3_ac_b11_x5_184,8. Baggovout / II.K,8,coalition,cavalry,0.0135,1.0136
+ntw3_ac_b11_x5_185,8. Toutchkov / III.K,8,coalition,cavalry,0.0004,1.0004
+ntw3_ac_b11_x5_186,7. Osterman-Tolstoi / IV.K,7,coalition,cavalry,0.0025,1.0025
+ntw3_ac_b11_x5_188,9. Konstantin / LG,9,coalition,cavalry,-0.0122,0.9879
+ntw3_ac_b11_x5_190,9. Dokhtourov / VI.K,9,coalition,cavalry,0.0345,1.0351
+ntw3_ac_b11_x5_192,8. Tormassov / III.OA,8,coalition,cavalry,0.0331,1.0336
+ntw3_ac_b11_x5_249,11. Wittgenstein / I.K,11,coalition,cavalry,0.0824,1.0859
+ntw3_ac_b11_x5_262,5. Steinheil / F.K,5,coalition,cavalry,0.0290,1.0294
+ntw3_ac_b11_x5_263,10. Tchitchagov / D.ZA,10,coalition,cavalry,-0.0299,0.9705
+ntw3_ac_b12_r6_060,9. Uxbridge / CC,9,coalition,cavalry,-0.1433,0.8665
+ntw3_ac_b12_x5_057,11. Oranje-Nassau / I.C,11,coalition,cavalry,0.0081,1.0081
+ntw3_ac_b12_x5_059,8. Wellington / RC,8,coalition,cavalry,0.0253,1.0256
+ntw3_ac_b12_x6_062,6. Zieten / I.K,6,coalition,cavalry,-0.0253,0.9750
+ntw3_ac_b12_x6_063,8. Pirch / II.K,8,coalition,cavalry,-0.0335,0.9671
+ntw3_ac_b12_x6_064,5. Thielemann / III.K,5,coalition,cavalry,0.0044,1.0044
+ntw3_ac_b12_x6_065,7. Bülow / IV.K,7,coalition,cavalry,-0.0315,0.9689
+ntw3_ac_b13_x6_171,11. Wellington / Coa,11,coalition,cavalry,-0.0512,0.9501
+ntw3_ac_b13_x6_172,8. Beresford / Guadiana,8,coalition,cavalry,-0.0738,0.9289
+ntw3_ac_b13_x6_173,5. Graham / Cádiz,5,coalition,cavalry,-0.0515,0.9498
+ntw3_ac_b13_x6_174,8. Iranzo / 1°,8,coalition,cavalry,0.0004,1.0004
+ntw3_ac_b13_x6_175,7. Freire / 2-3°,7,coalition,cavalry,-0.0078,0.9922
+ntw3_ac_b13_x6_176,10. Blake / 4-5°,10,coalition,cavalry,0.0048,1.0048
+ntw3_ac_b13_x6_177,7. Santocildes / 6°,7,coalition,cavalry,0.0177,1.0178
+ntw3_ac_b13_x6_178,5. Mendizábal / 7°,5,coalition,cavalry,-0.0078,0.9922
+ntw3_ac_b14_x6_159,5. Bubna / Alpen.L,5,coalition,cavalry,0.0286,1.0291
+ntw3_ac_b14_x6_160,8. Frimont / Alpen.R,8,coalition,cavalry,-0.0106,0.9895
+ntw3_ac_b14_x6_161,8. Bianchi / Italien.R,8,coalition,cavalry,0.0183,1.0185
+ntw3_ac_b14_x6_162,5. Neipperg / Italien.L,5,coalition,cavalry,-0.0178,0.9824
+ntw3_ac_b15_x6_253,11. Kör Yusuf Ziyaüddin / Rum,11,coalition,cavalry,0.0091,1.0092
+ntw3_ac_b15_x6_256,9. Javad Qajar / Azrbadjan,9,coalition,cavalry,0.0455,1.0465
+ntw3_ac_b15_x6_257,6. Eskandar Mīrzā / Gurjstan,6,coalition,cavalry,-0.0054,0.9946
+ntw3_ac_b15_x7_252,7. Koca Hüsrev / Batı Kafkasya,7,coalition,cavalry,0.0232,1.0235
+ntw3_ac_b15_x7_254,7. Laz Aziz / Güney Kafkasya,7,coalition,cavalry,-0.0233,0.9769
+ntw3_ac_b15_x7_255,5. Abbas Mīrzā / Khazr,5,coalition,cavalry,0.0320,1.0325
+ntw3_ac_b16_x7_273,11. Schwarzenberg / Böhmen,11,coalition,cavalry,-0.0173,0.9828
+ntw3_ac_b17_x6_284,8. Wellington / Pyrenees,8,coalition,cavalry,0.0250,1.0253
+ntw3_ac_b17_x7_279,10. Schwarzenberg / Böhmen,10,coalition,cavalry,-0.0132,0.9869
+ntw3_ac_b17_x7_280,11. Barclay de Tolly / VI.K,11,coalition,cavalry,-0.0065,0.9936
+ntw3_ac_b17_x7_281,10. Blücher / Schlesien,10,coalition,cavalry,0.0893,1.0935
+ntw3_ac_b17_x7_285,7. Wintzingerode / Syever,7,coalition,cavalry,-0.0358,0.9648
+ntw3_ac_b17_x7_286,6. Bellegarde / Italien,6,coalition,cavalry,0.0363,1.0369
+ntw3_ac_b17_x7_287,9. Bianchi / Süd,9,coalition,cavalry,-0.0356,0.9650
+ntw3_ac_b17_x7_288,7. Bülow / Nord,7,coalition,cavalry,-0.0142,0.9859
+ntw3_ac_b17_x7_297,9. Osten-Sacken / Sileziya,9,coalition,cavalry,0.0146,1.0147
+ntw3_ac_b17_x8_296,5. Wrede / V.K,5,coalition,cavalry,-0.0919,0.9122
+ntw3_ac_a03_x5_080,12. Bonaparte / Italie.C,12,empire,artillery,0.0432,1.0441
+ntw3_ac_a03_x5_081,6. Desaix / Italie.R,6,empire,artillery,0.0048,1.0048
+ntw3_ac_a03_x5_082,7. Masséna / Italie.D,7,empire,artillery,0.0457,1.0468
+ntw3_ac_a03_x5_088,5. Humbert / Irlande,5,empire,artillery,-0.1020,0.9030
+ntw3_ac_a03_x5_089,7. Brune / Hollande,7,empire,artillery,0.0409,1.0417
+ntw3_ac_a03_x6_084,11. Moreau / Rhin.R,11,empire,artillery,-0.0704,0.9320
+ntw3_ac_a03_x6_085,9. Lecourbe / Rhin.D,9,empire,artillery,-0.1709,0.8429
+ntw3_ac_a03_x6_086,8. Gouvion Saint-Cyr / Rhin.C,8,empire,artillery,0.0366,1.0373
+ntw3_ac_a03_x6_087,7. Sainte-Suzanne / Rhin.G,7,empire,artillery,0.0605,1.0624
+ntw3_ac_a04_x5_076,10. Bonaparte / Alexandrie,10,empire,artillery,-0.0417,0.9592
+ntw3_ac_a04_x5_077,8. Desaix / Nil,8,empire,artillery,-0.0633,0.9386
+ntw3_ac_a04_x5_078,6. Menou / Damiette,6,empire,artillery,-0.0090,0.9910
+ntw3_ac_a04_x5_079,3. Chabot / Corfou,3,empire,artillery,-0.2341,0.7913
+ntw3_ac_a05_r4_097,9. Murat / RC,9,empire,artillery,0.0481,1.0493
+ntw3_ac_a05_x2_093,13. Soult / IV.C,13,empire,artillery,-0.0465,0.9546
+ntw3_ac_a05_x4_092,6. Davout / III.C,6,empire,artillery,-0.0670,0.9352
+ntw3_ac_a05_x4_094,9. Lannes / V.C,9,empire,artillery,0.0209,1.0211
+ntw3_ac_a05_x4_096,8. Garde impériale,8,empire,artillery,-0.0178,0.9823
+ntw3_ac_a05_x5_090,7. Bernadotte / I.C,7,empire,artillery,-0.1632,0.8494
+ntw3_ac_a05_x5_091,7. Masséna / Italie,7,empire,artillery,-0.1224,0.8848
+ntw3_ac_a05_x5_095,8. Ney / VI.C,8,empire,artillery,0.0146,1.0147
+ntw3_ac_a05_x5_098,5. Marmont / II.C,5,empire,artillery,-0.1742,0.8401
+ntw3_ac_a06_r3_100,12. Murat / RC,12,empire,artillery,0.0008,1.0008
+ntw3_ac_a06_x2_101,12. Davout / III.C,12,empire,artillery,-0.0388,0.9620
+ntw3_ac_a06_x3_102,10. Soult / IV.C,10,empire,artillery,0.0218,1.0220
+ntw3_ac_a06_x3_103,11. Lannes / V.C,11,empire,artillery,0.0291,1.0296
+ntw3_ac_a06_x3_104,8. Ney / VI.C,8,empire,artillery,0.0621,1.0640
+ntw3_ac_a06_x3_106,9. Augereau / VII.C,9,empire,artillery,0.0729,1.0756
+ntw3_ac_a06_x4_099,6. Bernadotte / I.C,6,empire,artillery,-0.0268,0.9736
+ntw3_ac_a06_x4_105,7. Garde impériale,7,empire,artillery,-0.0392,0.9616
+ntw3_ac_a06_x4_246,5. Mortier / VIII.C,5,empire,artillery,0.0499,1.0512
+ntw3_ac_a06_x7_107,4. La Romana / D.N,4,empire,artillery,0.0246,1.0249
+ntw3_ac_a07_x5_182,8. Koulnyov / AG,8,empire,artillery,-0.0166,0.9835
+ntw3_ac_a07_x6_180,10. Buxhoeveden / I.SA,10,empire,artillery,0.0329,1.0335
+ntw3_ac_a07_x6_181,6. Kamenski / II.SA,6,empire,artillery,0.0127,1.0128
+ntw3_ac_a07_x7_179,4. Hessen-Kassel / DK,4,empire,artillery,0.0078,1.0079
+ntw3_ac_a08_x5_108,10. Davout / III.C,10,empire,artillery,-0.0098,0.9903
+ntw3_ac_a08_x5_109,11. Lannes / II.C,11,empire,artillery,0.0074,1.0075
+ntw3_ac_a08_x5_110,8. Lefebvre / VII.C,8,empire,artillery,0.0499,1.0511
+ntw3_ac_a08_x5_111,10. Masséna / IV.C,10,empire,artillery,-0.0686,0.9337
+ntw3_ac_a08_x5_112,7. Bernadotte / IX.C,7,empire,artillery,0.0126,1.0127
+ntw3_ac_a08_x5_113,8. Jérôme / X.C,8,empire,artillery,0.0440,1.0450
+ntw3_ac_a08_x5_114,8. Garde impériale,8,empire,artillery,-0.0302,0.9703
+ntw3_ac_a08_x5_115,7. Poniatowski,7,empire,artillery,0.0934,1.0980
+ntw3_ac_a08_x5_242,11. Eugène / Italie,11,empire,artillery,0.0125,1.0125
+ntw3_ac_a08_x5_243,5. Marmont / XI.C,5,empire,artillery,0.0173,1.0175
+ntw3_ac_a08_x5_248,6. Vandamme / VIII.C,6,empire,artillery,0.0455,1.0466
+ntw3_ac_a08_x6_116,6. Golitsyn,6,empire,artillery,0.0664,1.0687
+ntw3_ac_a09_x5_148,11. Soult / II.C,11,empire,artillery,-0.0744,0.9283
+ntw3_ac_a09_x6_140,10. Victor / I.C,10,empire,artillery,-0.0050,0.9950
+ntw3_ac_a09_x6_141,9. Suchet / III.C,9,empire,artillery,0.0371,1.0378
+ntw3_ac_a09_x6_142,7. Sébastiani / IV.C,7,empire,artillery,0.0297,1.0301
+ntw3_ac_a09_x6_143,6. Mortier / V.C,6,empire,artillery,-0.0031,0.9969
+ntw3_ac_a09_x6_144,8. Ney / VI.C,8,empire,artillery,0.0389,1.0397
+ntw3_ac_a09_x6_145,9. Gouvion Saint-Cyr / VII.C,9,empire,artillery,0.0380,1.0387
+ntw3_ac_a09_x6_146,5. Kellermann / TO,5,empire,artillery,0.0461,1.0472
+ntw3_ac_a09_x6_147,7. Joseph / CR,7,empire,artillery,0.0159,1.0160
+ntw3_ac_a10_x5_199,6. Jackson / 7th,6,empire,artillery,0.0787,1.0819
+ntw3_ac_a10_x6_198,7. Brown / 9th,7,empire,artillery,0.1000,1.1052
+ntw3_ac_a10_x7_197,5. Harrison / 8th,5,empire,artillery,0.0579,1.0596
+ntw3_ac_a10_x7_200,6. Smith / 10th,6,empire,artillery,0.0362,1.0369
+ntw3_ac_a11_r5_131,10. Murat / RC,10,empire,artillery,0.0466,1.0477
+ntw3_ac_a11_x5_117,13. Davout / I.C,13,empire,artillery,-0.0686,0.9337
+ntw3_ac_a11_x5_119,10. Ney / III.C,10,empire,artillery,0.0422,1.0431
+ntw3_ac_a11_x5_120,10. Eugène / IV.C,10,empire,artillery,-0.0755,0.9272
+ntw3_ac_a11_x5_121,9. Poniatowski / V.C,9,empire,artillery,0.0944,1.0990
+ntw3_ac_a11_x5_122,6. Gouvion Saint-Cyr / VI.C,6,empire,artillery,0.0225,1.0228
+ntw3_ac_a11_x5_123,7. Reynier / VII.C,7,empire,artillery,0.0482,1.0493
+ntw3_ac_a11_x5_124,7. Junot / VIII.C,7,empire,artillery,-0.0023,0.9977
+ntw3_ac_a11_x5_130,7. Garde impériale,7,empire,artillery,-0.0817,0.9216
+ntw3_ac_a11_x6_118,11. Oudinot / II.C,11,empire,artillery,-0.0112,0.9889
+ntw3_ac_a11_x6_125,8. Victor / IX.C,8,empire,artillery,0.0329,1.0334
+ntw3_ac_a11_x7_126,5. Macdonald / X.C,5,empire,artillery,0.0343,1.0349
+ntw3_ac_a11_x7_127,6. Augereau / XI.C,6,empire,artillery,-0.0082,0.9919
+ntw3_ac_a11_x7_128,8. Schwarzenberg / XII.C,8,empire,artillery,0.0332,1.0338
+ntw3_ac_a12_r6_137,7. Pajol / I.RC,7,empire,artillery,0.0392,1.0400
+ntw3_ac_a12_r6_138,8. Kellermann / III.RC,8,empire,artillery,0.0480,1.0492
+ntw3_ac_a12_x6_132,8. d'Erlon / I.C,8,empire,artillery,0.0050,1.0050
+ntw3_ac_a12_x6_133,9. Reille / II.C,9,empire,artillery,0.0422,1.0431
+ntw3_ac_a12_x6_134,6. Vandamme / III.C,6,empire,artillery,-0.0409,0.9599
+ntw3_ac_a12_x6_135,7. Gérard / IV.C,7,empire,artillery,0.0318,1.0323
+ntw3_ac_a12_x6_136,5. Mouton / VI.C,5,empire,artillery,0.0530,1.0544
+ntw3_ac_a12_x6_139,10. Garde impériale,10,empire,artillery,-0.0119,0.9881
+ntw3_ac_a13_x6_149,10. Masséna / Portugal,10,empire,artillery,0.0361,1.0368
+ntw3_ac_a13_x6_150,9. Soult / Sud,9,empire,artillery,-0.0779,0.9250
+ntw3_ac_a13_x6_151,7. Joseph / Centre,7,empire,artillery,0.0129,1.0130
+ntw3_ac_a13_x6_152,9. Suchet / Aragon,9,empire,artillery,-0.0229,0.9774
+ntw3_ac_a13_x6_153,6. Dorsenne / Nord,6,empire,artillery,0.0399,1.0407
+ntw3_ac_a13_x6_154,5. Macdonald / Catalogne,5,empire,artillery,0.0470,1.0481
+ntw3_ac_a13_x6_247,7. Victor / Cadix,7,empire,artillery,-0.0848,0.9187
+ntw3_ac_a14_x6_158,9. Murat / Guardia reale,9,empire,artillery,0.0031,1.0031
+ntw3_ac_a14_x7_155,3. Suchet / Alpes,3,empire,artillery,-0.1381,0.8710
+ntw3_ac_a14_x7_156,7. Carrascosa / I-II,7,empire,artillery,-0.0909,0.9131
+ntw3_ac_a14_x7_157,7. Lecchi / III-IV,7,empire,artillery,-0.0038,0.9962
+ntw3_ac_a15_x5_260,11. Koutouzov / Dunau,11,empire,artillery,0.0508,1.0521
+ntw3_ac_a15_x5_261,7. Kotlyarevski / Valakhiya,7,empire,artillery,0.0648,1.0670
+ntw3_ac_a15_x6_258,8. Goudovitch / Kavkaz,8,empire,artillery,0.0528,1.0542
+ntw3_ac_a15_x6_259,5. Tsitsyanov / Kaspiy,5,empire,artillery,0.0139,1.0140
+ntw3_ac_a17_x6_282,8. Ney / Jeune Garde,8,empire,artillery,0.0194,1.0195
+ntw3_ac_a17_x6_283,10. Mortier / Vieille Garde,10,empire,artillery,0.0083,1.0084
+ntw3_ac_a17_x6_289,10. Victor / II.C,10,empire,artillery,0.0024,1.0024
+ntw3_ac_a17_x6_290,"9. Macdonald / XI.C,VII.C",9,empire,artillery,-0.0044,0.9956
+ntw3_ac_a17_x6_291,8. Soult / Pyrénées,8,empire,artillery,-0.1276,0.8802
+ntw3_ac_a17_x6_292,6. Eugène / Italie,6,empire,artillery,-0.0360,0.9646
+ntw3_ac_a17_x6_293,7. Maison / Flandres,7,empire,artillery,0.0299,1.0303
+ntw3_ac_a17_x6_294,9. Augereau / Rhône,9,empire,artillery,0.0326,1.0331
+ntw3_ac_a17_x7_295,5. Donzelot / Sept-Îles,5,empire,artillery,0.0369,1.0375
+ntw3_ac_b03_x6_017,7. Hohenzollern / Italien.L,7,coalition,artillery,0.0142,1.0143
+ntw3_ac_b03_x6_018,10. Melas / Italien.R,10,coalition,artillery,-0.0272,0.9732
+ntw3_ac_b03_x6_019,10. Sztáray / Schwaben.R,10,coalition,artillery,-0.0096,0.9904
+ntw3_ac_b03_x6_020,9. Nauendorf / Schweiz,9,coalition,artillery,0.0132,1.0133
+ntw3_ac_b03_x6_021,6. Reuß-Plauen / Schwaben.L,6,coalition,artillery,0.0237,1.0240
+ntw3_ac_b03_x6_022,5. Cornwallis / Ireland,5,coalition,artillery,0.0127,1.0128
+ntw3_ac_b03_x6_024,9. Souvorov / Italiya,9,coalition,artillery,-0.0346,0.9660
+ntw3_ac_b03_x6_025,7. Rimski-Korsakov / Syever,7,coalition,artillery,0.0292,1.0296
+ntw3_ac_b03_x7_023,8. York / Helder,8,coalition,artillery,-0.0513,0.9500
+ntw3_ac_b04_x6_071,9. Abercromby / EF.E,9,coalition,artillery,0.0119,1.0119
+ntw3_ac_b04_x7_067,5. Ibrahim / Ghugha,5,coalition,artillery,0.0530,1.0544
+ntw3_ac_b04_x7_068,8. Da'Woud / Inkishariyati,8,coalition,artillery,0.0150,1.0152
+ntw3_ac_b04_x7_069,8. Hacı Moustafa / Akdeniz,8,coalition,artillery,0.0439,1.0449
+ntw3_ac_b04_x7_070,8. Abū Marak / Yeniçeri,8,coalition,artillery,0.0189,1.0191
+ntw3_ac_b04_x7_072,7. Baird / EF.I,7,coalition,artillery,0.0323,1.0328
+ntw3_ac_b04_x7_073,7. Abdoullah / Şam,7,coalition,artillery,-0.0712,0.9313
+ntw3_ac_b04_x7_074,9. Youssouf / Fetih,9,coalition,artillery,-0.1428,0.8669
+ntw3_ac_b05_x6_027,12. Buxhoeveden / Slavkov.L,12,coalition,artillery,-0.0560,0.9456
+ntw3_ac_b05_x7_026,7. Bagration / Slavkov.P,7,coalition,artillery,-0.0999,0.9050
+ntw3_ac_b05_x7_028,9. Konstantin / O.LG,9,coalition,artillery,0.0070,1.0070
+ntw3_ac_b05_x7_029,10. Bellegarde / Italien.L,10,coalition,artillery,-0.0592,0.9425
+ntw3_ac_b05_x7_030,8. Mack / Bayern,8,coalition,artillery,0.0279,1.0283
+ntw3_ac_b05_x7_031,6. Johann / Tirol,6,coalition,artillery,0.0586,1.0603
+ntw3_ac_b05_x7_032,4. Cathcart / Hanover,4,coalition,artillery,0.0341,1.0346
+ntw3_ac_b05_x7_033,9. Reuß-Plauen / Italien.R,9,coalition,artillery,-0.0084,0.9916
+ntw3_ac_b06_x6_040,12. Bagration / LF,12,coalition,artillery,0.0296,1.0301
+ntw3_ac_b06_x6_042,9. Dokhtourov / RK,9,coalition,artillery,-0.0475,0.9536
+ntw3_ac_b06_x7_034,13. Braunschweig / AA,13,coalition,artillery,0.0309,1.0314
+ntw3_ac_b06_x7_035,11. Hohenlohe / SK,11,coalition,artillery,0.0618,1.0638
+ntw3_ac_b06_x7_036,8. Kalckreuth / RK,8,coalition,artillery,-0.0216,0.9786
+ntw3_ac_b06_x7_037,7. Rüchel / ZK,7,coalition,artillery,0.0075,1.0075
+ntw3_ac_b06_x7_038,5. Württemberg / R,5,coalition,artillery,0.0515,1.0529
+ntw3_ac_b06_x7_039,8. Zezschwitz / SH,8,coalition,artillery,0.0148,1.0149
+ntw3_ac_b06_x7_041,9. Gortchakov / TS,9,coalition,artillery,0.0691,1.0715
+ntw3_ac_b06_x7_043,7. Konstantin / R.LG,7,coalition,artillery,-0.0508,0.9505
+ntw3_ac_b06_x7_044,4. Essen / PA,4,coalition,artillery,0.0443,1.0453
+ntw3_ac_b06_x7_045,6. L'Estocq / GK,6,coalition,artillery,0.0175,1.0176
+ntw3_ac_b07_x5_195,9. Adlercreutz / Spetsen,9,coalition,artillery,0.0275,1.0279
+ntw3_ac_b07_x6_194,7. Klingspor / Motstånd,7,coalition,artillery,0.0190,1.0192
+ntw3_ac_b07_x6_196,8. Döbeln / Östersjön,8,coalition,artillery,0.0351,1.0357
+ntw3_ac_b07_x7_193,4. Moore / Baltic,4,coalition,artillery,-0.0755,0.9272
+ntw3_ac_b08_x5_051,10. Hiller / VI.K,10,coalition,artillery,0.0084,1.0085
+ntw3_ac_b08_x5_245,6. Chasteler / VIII.K,6,coalition,artillery,-0.0042,0.9958
+ntw3_ac_b08_x6_046,9. Bellegarde / I.K,9,coalition,artillery,0.0068,1.0068
+ntw3_ac_b08_x6_047,7. Kollowrat / II.K,7,coalition,artillery,0.0120,1.0121
+ntw3_ac_b08_x6_048,8. Hohenzollern / III.K,8,coalition,artillery,0.0112,1.0112
+ntw3_ac_b08_x6_049,9. Rosenberg / IV.L,9,coalition,artillery,0.0068,1.0068
+ntw3_ac_b08_x6_050,6. Ludwig / V.K,6,coalition,artillery,0.0167,1.0168
+ntw3_ac_b08_x6_052,8. D’Este / VII.K,8,coalition,artillery,0.0180,1.0182
+ntw3_ac_b08_x6_053,11. Liechtenstein / RK,11,coalition,artillery,0.0084,1.0084
+ntw3_ac_b08_x6_054,4. Kienmayer / Aufstand,4,coalition,artillery,0.0256,1.0259
+ntw3_ac_b08_x6_244,12. Johann / IX.K,12,coalition,artillery,0.0273,1.0277
+ntw3_ac_b08_x7_055,5. Pitt / Walcheren.R,5,coalition,artillery,0.0367,1.0374
+ntw3_ac_b08_x7_056,7. Hope / Walcheren.L,7,coalition,artillery,-0.0168,0.9833
+ntw3_ac_b09_x4_163,13. Wellesley / Peninsular,13,coalition,artillery,0.0110,1.0111
+ntw3_ac_b09_x6_164,7. Beresford / Sul,7,coalition,artillery,-0.0014,0.9986
+ntw3_ac_b09_x6_165,10. Cuesta / Extremadura,10,coalition,artillery,-0.0101,0.9900
+ntw3_ac_b09_x6_166,9. Venegas / la Mancha,9,coalition,artillery,-0.0901,0.9139
+ntw3_ac_b09_x6_167,8. Del Parque / la Izquierda,8,coalition,artillery,0.0243,1.0246
+ntw3_ac_b09_x6_168,7. Coupigny / la Derecha I,7,coalition,artillery,0.0167,1.0169
+ntw3_ac_b09_x6_169,6. Blake y Joyes / la Derecha II,6,coalition,artillery,0.0512,1.0525
+ntw3_ac_b09_x6_170,4. Teixeira / Norte,4,coalition,artillery,0.0187,1.0189
+ntw3_ac_b10_x6_013,6. Drummond / EF.A,6,coalition,artillery,0.0091,1.0092
+ntw3_ac_b10_x6_014,9. Ross / EF.EC,9,coalition,artillery,0.0144,1.0145
+ntw3_ac_b10_x6_015,6. Brock / Confederacy,6,coalition,artillery,-0.0129,0.9872
+ntw3_ac_b10_x7_016,3. Kindelán / Florida,3,coalition,artillery,0.0313,1.0318
+ntw3_ac_b11_r5_189,10. Platov / Atamanstvo,10,coalition,artillery,-0.0319,0.9686
+ntw3_ac_b11_x4_191,6. Davidov / Narod,6,coalition,artillery,0.0628,1.0648
+ntw3_ac_b11_x5_183,12. Bagration / II.ZA,12,coalition,artillery,-0.1156,0.8908
+ntw3_ac_b11_x5_184,8. Baggovout / II.K,8,coalition,artillery,0.0282,1.0286
+ntw3_ac_b11_x5_185,8. Toutchkov / III.K,8,coalition,artillery,-0.0072,0.9928
+ntw3_ac_b11_x5_186,7. Osterman-Tolstoi / IV.K,7,coalition,artillery,0.0373,1.0380
+ntw3_ac_b11_x5_188,9. Konstantin / LG,9,coalition,artillery,0.0502,1.0514
+ntw3_ac_b11_x5_190,9. Dokhtourov / VI.K,9,coalition,artillery,-0.0053,0.9947
+ntw3_ac_b11_x5_192,8. Tormassov / III.OA,8,coalition,artillery,0.0189,1.0191
+ntw3_ac_b11_x5_249,11. Wittgenstein / I.K,11,coalition,artillery,-0.0529,0.9484
+ntw3_ac_b11_x5_262,5. Steinheil / F.K,5,coalition,artillery,-0.0008,0.9992
+ntw3_ac_b11_x5_263,10. Tchitchagov / D.ZA,10,coalition,artillery,0.0097,1.0098
+ntw3_ac_b12_r6_060,9. Uxbridge / CC,9,coalition,artillery,-0.1183,0.8885
+ntw3_ac_b12_x5_057,11. Oranje-Nassau / I.C,11,coalition,artillery,0.0846,1.0882
+ntw3_ac_b12_x5_059,8. Wellington / RC,8,coalition,artillery,0.0287,1.0292
+ntw3_ac_b12_x6_058,7. Hill / II.C,7,coalition,artillery,0.0432,1.0441
+ntw3_ac_b12_x6_062,6. Zieten / I.K,6,coalition,artillery,-0.0500,0.9513
+ntw3_ac_b12_x6_063,8. Pirch / II.K,8,coalition,artillery,-0.0351,0.9655
+ntw3_ac_b12_x6_064,5. Thielemann / III.K,5,coalition,artillery,0.0130,1.0131
+ntw3_ac_b12_x6_065,7. Bülow / IV.K,7,coalition,artillery,-0.0015,0.9985
+ntw3_ac_b13_x6_171,11. Wellington / Coa,11,coalition,artillery,-0.0590,0.9427
+ntw3_ac_b13_x6_172,8. Beresford / Guadiana,8,coalition,artillery,-0.0222,0.9781
+ntw3_ac_b13_x6_173,5. Graham / Cádiz,5,coalition,artillery,-0.0368,0.9639
+ntw3_ac_b13_x6_174,8. Iranzo / 1°,8,coalition,artillery,0.0079,1.0080
+ntw3_ac_b13_x6_175,7. Freire / 2-3°,7,coalition,artillery,0.0150,1.0151
+ntw3_ac_b13_x6_176,10. Blake / 4-5°,10,coalition,artillery,-0.1219,0.8853
+ntw3_ac_b13_x6_177,7. Santocildes / 6°,7,coalition,artillery,0.0203,1.0205
+ntw3_ac_b13_x6_178,5. Mendizábal / 7°,5,coalition,artillery,-0.0497,0.9515
+ntw3_ac_b14_x6_159,5. Bubna / Alpen.L,5,coalition,artillery,0.0379,1.0386
+ntw3_ac_b14_x6_160,8. Frimont / Alpen.R,8,coalition,artillery,-0.1043,0.9010
+ntw3_ac_b14_x6_161,8. Bianchi / Italien.R,8,coalition,artillery,-0.0005,0.9995
+ntw3_ac_b14_x6_162,5. Neipperg / Italien.L,5,coalition,artillery,0.0376,1.0383
+ntw3_ac_b15_x6_253,11. Kör Yusuf Ziyaüddin / Rum,11,coalition,artillery,0.0476,1.0488
+ntw3_ac_b15_x6_256,9. Javad Qajar / Azrbadjan,9,coalition,artillery,0.0243,1.0246
+ntw3_ac_b15_x7_252,7. Koca Hüsrev / Batı Kafkasya,7,coalition,artillery,0.0004,1.0004
+ntw3_ac_b15_x7_254,7. Laz Aziz / Güney Kafkasya,7,coalition,artillery,0.0020,1.0020
+ntw3_ac_b17_x6_284,8. Wellington / Pyrenees,8,coalition,artillery,-0.0119,0.9882
+ntw3_ac_b17_x7_279,10. Schwarzenberg / Böhmen,10,coalition,artillery,0.0171,1.0172
+ntw3_ac_b17_x7_280,11. Barclay de Tolly / VI.K,11,coalition,artillery,0.0193,1.0195
+ntw3_ac_b17_x7_281,10. Blücher / Schlesien,10,coalition,artillery,0.0277,1.0281
+ntw3_ac_b17_x7_285,7. Wintzingerode / Syever,7,coalition,artillery,0.0356,1.0362
+ntw3_ac_b17_x7_286,6. Bellegarde / Italien,6,coalition,artillery,-0.0910,0.9130
+ntw3_ac_b17_x7_287,9. Bianchi / Süd,9,coalition,artillery,0.0125,1.0126
+ntw3_ac_b17_x7_288,7. Bülow / Nord,7,coalition,artillery,-0.0088,0.9913
+ntw3_ac_b17_x7_297,9. Osten-Sacken / Sileziya,9,coalition,artillery,0.0123,1.0124
+ntw3_ac_b17_x8_296,5. Wrede / V.K,5,coalition,artillery,-0.0372,0.9635

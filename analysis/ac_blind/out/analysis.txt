@@ -1,0 +1,179 @@
+== Unseen-army test (17 armies, 609 scored regular rows)
+  B0: infantry MAE 284.0 MAPE 45.51% R2 -0.042 | cavalry MAE 495.9 MAPE 33.68% R2 -0.141 | artillery MAE 410.7 MAPE 63.22% R2 -0.213 | overall MAE 335.4 MAPE 45.82% R2 0.142 |
+  B1: infantry MAE 273.6 MAPE 41.98% R2 0.048 | cavalry MAE 555.9 MAPE 42.61% R2 -0.268 | artillery MAE 349.2 MAPE 37.83% R2 0.078 | overall MAE 330.1 MAPE 41.56% R2 0.185 |
+  M2: infantry MAE 58.4 MAPE 8.53% R2 0.941 | cavalry MAE 108.4 MAPE 7.85% R2 0.946 | artillery MAE 95.9 MAPE 10.54% R2 0.894 | overall MAE 71.5 MAPE 8.67% R2 0.950 |
+  M1: infantry MAE 50.8 MAPE 7.78% R2 0.944 | cavalry MAE 100.4 MAPE 7.23% R2 0.953 | artillery MAE 91.0 MAPE 10.07% R2 0.918 | overall MAE 64.2 MAPE 7.98% R2 0.955 |
+
+== M1 all-data fit infantry: penalties {'army': 1.0, 'armycls': 2.0, 'inter3': 2.0}; in-sample log resid sd 0.0666
+
+== M1 all-data fit cavalry: penalties {'army': 1.0, 'armycls': 1.0, 'inter3': 2.0}; in-sample log resid sd 0.0589
+
+== M1 all-data fit artillery: penalties {'army': 1.0, 'armycls': 1.0, 'inter3': 5.0}; in-sample log resid sd 0.0499
+
+== Army dependence (M1 all-data fit)
+  infantry: log_cn slope -0.917 (price ~ cn^-0.92); empire -0.037 (x0.964); army offset sd 0.049; army x class offset sd 0.040
+     cn  3: factor vs cn 8 = 2.457
+     cn  4: factor vs cn 8 = 1.888
+     cn  5: factor vs cn 8 = 1.539
+     cn  6: factor vs cn 8 = 1.302
+     cn  7: factor vs cn 8 = 1.130
+     cn  8: factor vs cn 8 = 1.000
+     cn  9: factor vs cn 8 = 0.898
+     cn 10: factor vs cn 8 = 0.815
+     cn 11: factor vs cn 8 = 0.747
+     cn 12: factor vs cn 8 = 0.690
+     cn 13: factor vs cn 8 = 0.641
+  cavalry: log_cn slope -0.965 (price ~ cn^-0.96); empire -0.056 (x0.945); army offset sd 0.048; army x class offset sd 0.058
+     cn  3: factor vs cn 8 = 2.576
+     cn  4: factor vs cn 8 = 1.952
+     cn  5: factor vs cn 8 = 1.574
+     cn  6: factor vs cn 8 = 1.320
+     cn  7: factor vs cn 8 = 1.137
+     cn  8: factor vs cn 8 = 1.000
+     cn  9: factor vs cn 8 = 0.893
+     cn 10: factor vs cn 8 = 0.806
+     cn 11: factor vs cn 8 = 0.736
+     cn 12: factor vs cn 8 = 0.676
+     cn 13: factor vs cn 8 = 0.626
+  artillery: log_cn slope -0.943 (price ~ cn^-0.94); empire -0.046 (x0.955); army offset sd 0.053; army x class offset sd 0.058
+     cn  3: factor vs cn 8 = 2.521
+     cn  4: factor vs cn 8 = 1.922
+     cn  5: factor vs cn 8 = 1.558
+     cn  6: factor vs cn 8 = 1.312
+     cn  7: factor vs cn 8 = 1.134
+     cn  8: factor vs cn 8 = 1.000
+     cn  9: factor vs cn 8 = 0.895
+     cn 10: factor vs cn 8 = 0.810
+     cn 11: factor vs cn 8 = 0.741
+     cn 12: factor vs cn 8 = 0.682
+     cn 13: factor vs cn 8 = 0.633
+  corr of army offsets between arms (inf, cav, art):
+[[1.    0.301 0.244]
+ [0.301 1.    0.298]
+ [0.244 0.298 1.   ]]
+  infantry: corr(army offset, cn) -0.027; extreme armies: ntw3_ac_b11_x4_191(6) -0.24, ntw3_ac_a04_x5_079(3) -0.20, ntw3_ac_a04_x5_077(8) -0.15 ... ntw3_ac_b05_x7_032(4) +0.08, ntw3_ac_b06_x7_038(5) +0.09, ntw3_ac_a06_x3_104(8) +0.09
+  cavalry: corr(army offset, cn) +0.021; extreme armies: ntw3_ac_a13_x6_150(9) -0.23, ntw3_ac_a12_r6_137(7) -0.23, ntw3_ac_a12_r6_138(8) -0.19 ... ntw3_ac_a13_x6_153(6) +0.09, ntw3_ac_b17_x7_281(10) +0.09, ntw3_ac_a11_x6_118(11) +0.09
+  artillery: corr(army offset, cn) -0.034; extreme armies: ntw3_ac_a04_x5_079(3) -0.23, ntw3_ac_a05_x5_098(5) -0.17, ntw3_ac_a03_x6_085(9) -0.17 ... ntw3_ac_a08_x5_115(7) +0.09, ntw3_ac_a11_x5_121(9) +0.09, ntw3_ac_a10_x6_198(7) +0.10
+
+== Size: local elasticity d log price / d log men_raw by class (M1), and price factor vs 100 men_raw
+  infantry_grenadiers    men_raw range 116-442: elasticity at 60:0.33 80:0.33 100:0.33 120:0.33 140:0.33 180:1.72 220:1.01 280:0.79 340:0.79 440:0.10
+                         factor vs 100 men: 60:0.84 80:0.93 100:1.00 120:1.06 140:1.12 180:1.56 220:2.07 280:2.59 340:3.02 440:3.10
+  infantry_irregulars    men_raw range 128-974: elasticity at 60:0.49 80:0.49 100:0.49 120:0.49 140:0.49 180:1.88 220:1.17 280:0.95 340:0.95 440:0.26
+                         factor vs 100 men: 60:0.78 80:0.90 100:1.00 120:1.09 140:1.18 180:1.72 220:2.34 280:3.05 340:3.66 440:3.92
+  infantry_light         men_raw range 140-422: elasticity at 60:0.28 80:0.28 100:0.28 120:0.28 140:0.28 180:1.67 220:0.96 280:0.74 340:0.74 440:0.05
+                         factor vs 100 men: 60:0.87 80:0.94 100:1.00 120:1.05 140:1.10 180:1.52 220:1.98 280:2.46 340:2.84 440:2.88
+  infantry_line          men_raw range 128-452: elasticity at 60:0.31 80:0.31 100:0.31 120:0.31 140:0.31 180:1.69 220:0.99 280:0.77 340:0.77 440:0.08
+                         factor vs 100 men: 60:0.86 80:0.93 100:1.00 120:1.06 140:1.11 180:1.54 220:2.02 280:2.53 340:2.93 440:2.99
+  infantry_militia       men_raw range 146-974: elasticity at 60:0.41 80:0.41 100:0.41 120:0.41 140:0.41 180:1.80 220:1.09 280:0.87 340:0.87 440:0.18
+                         factor vs 100 men: 60:0.81 80:0.91 100:1.00 120:1.08 140:1.15 180:1.64 220:2.20 280:2.81 340:3.33 440:3.48
+  infantry_skirmishers   men_raw range 46-272: elasticity at 60:0.65 80:0.65 100:0.65 120:0.65 140:0.65 180:2.04 220:1.33 280:1.11 340:1.11 440:0.42
+                         factor vs 100 men: 60:0.72 80:0.87 100:1.00 120:1.13 140:1.24 180:1.89 220:2.65 280:3.59 340:4.46 440:4.97
+  cavalry_heavy          men_raw range 78-338: elasticity at 60:0.16 80:0.16 100:0.16 120:0.93 140:0.47 180:0.69 220:0.69 280:0.52 340:0.52 440:0.52
+                         factor vs 100 men: 60:0.92 80:0.97 100:1.00 120:1.19 140:1.32 180:1.51 220:1.73 280:1.98 340:2.19 440:2.50
+  cavalry_lancers        men_raw range 78-286: elasticity at 60:0.13 80:0.13 100:0.13 120:0.91 140:0.44 180:0.66 220:0.66 280:0.49 340:0.49 440:0.49
+                         factor vs 100 men: 60:0.94 80:0.97 100:1.00 120:1.18 140:1.31 180:1.48 220:1.69 280:1.92 340:2.12 440:2.40
+  cavalry_light          men_raw range 76-362: elasticity at 60:0.09 80:0.09 100:0.09 120:0.87 140:0.40 180:0.62 220:0.62 280:0.46 340:0.46 440:0.46
+                         factor vs 100 men: 60:0.95 80:0.98 100:1.00 120:1.17 140:1.29 180:1.45 220:1.64 280:1.85 340:2.02 440:2.27
+  cavalry_missile        men_raw range 84-136: elasticity at 60:0.13 80:0.13 100:0.13 120:0.91 140:0.44 180:0.66 220:0.66 280:0.49 340:0.49 440:0.49
+                         factor vs 100 men: 60:0.94 80:0.97 100:1.00 120:1.18 140:1.31 180:1.48 220:1.69 280:1.92 340:2.11 440:2.40
+  cavalry_standard       men_raw range 78-324: elasticity at 60:0.13 80:0.13 100:0.13 120:0.91 140:0.44 180:0.66 220:0.66 280:0.49 340:0.49 440:0.49
+                         factor vs 100 men: 60:0.94 80:0.97 100:1.00 120:1.18 140:1.31 180:1.48 220:1.69 280:1.92 340:2.11 440:2.40
+  artillery_foot: price factor vs 3 guns: 1:0.11 2:0.53 3:1.00 4:1.50 5:2.10 6:2.62 8:3.71
+  artillery_horse: price factor vs 3 guns: 1:0.10 2:0.52 3:1.00 4:1.52 5:2.15 6:2.70 8:3.87
+
+== Out-of-fold error by size band (M1 / M2 / B1)
+  infantry  men_display   0-40   n=   93 M1 MAE   28.2 MAPE  9.37% | M2 MAE   34.1 MAPE 11.28% | B1 MAE  100.1 | mean price 272
+  infantry  men_display  40-60   n=  214 M1 MAE   30.4 MAPE  9.52% | M2 MAE   31.7 MAPE  9.77% | B1 MAE  110.3 | mean price 305
+  infantry  men_display  60-80   n=  230 M1 MAE   41.7 MAPE  9.65% | M2 MAE   43.2 MAPE 10.20% | B1 MAE  132.8 | mean price 418
+  infantry  men_display  80-100  n=  719 M1 MAE   22.8 MAPE  5.08% | M2 MAE   28.9 MAPE  6.47% | B1 MAE  131.5 | mean price 418
+  infantry  men_display 100-140  n= 2005 M1 MAE   20.5 MAPE  3.99% | M2 MAE   29.0 MAPE  5.43% | B1 MAE  175.1 | mean price 523
+  infantry  men_display 140-180  n= 1042 M1 MAE   29.2 MAPE  5.95% | M2 MAE   39.5 MAPE  7.49% | B1 MAE  234.0 | mean price 573
+  infantry  men_display 180-240  n=  221 M1 MAE   57.3 MAPE 11.52% | M2 MAE   60.1 MAPE 12.33% | B1 MAE  309.2 | mean price 578
+  infantry  men_display 240-     n=   13 M1 MAE   34.2 MAPE  8.88% | M2 MAE   61.3 MAPE 14.42% | B1 MAE  354.4 | mean price 360
+  cavalry   men_display   0-40   n=   22 M1 MAE   79.7 MAPE 36.46% | M2 MAE  104.5 MAPE 46.19% | B1 MAE  348.0 | mean price 745
+  cavalry   men_display  40-60   n=  596 M1 MAE   39.9 MAPE  5.53% | M2 MAE   57.9 MAPE  8.02% | B1 MAE  241.2 | mean price 701
+  cavalry   men_display  60-80   n=  542 M1 MAE   46.7 MAPE  5.16% | M2 MAE   73.6 MAPE  8.20% | B1 MAE  275.1 | mean price 875
+  cavalry   men_display  80-100  n=  324 M1 MAE   50.4 MAPE  5.06% | M2 MAE   73.6 MAPE  6.98% | B1 MAE  318.8 | mean price 1023
+  cavalry   men_display 100-140  n=  203 M1 MAE   59.3 MAPE  4.80% | M2 MAE   95.4 MAPE  7.49% | B1 MAE  446.2 | mean price 1289
+  cavalry   men_display 140-180  n=   26 M1 MAE   55.9 MAPE  3.54% | M2 MAE   88.5 MAPE  5.22% | B1 MAE  678.2 | mean price 1655
+  cavalry   men_display 180-240  n=    2 M1 MAE   51.0 MAPE  5.74% | M2 MAE    1.5 MAPE  0.17% | B1 MAE 1287.9 | mean price 879
+  artillery guns 1  n=  41 M1 MAE   15.7 MAPE 13.92% | M2 MAE   16.8 MAPE 15.27% | B1 MAE  201.4 | mean price 123
+  artillery guns 2  n= 337 M1 MAE   33.3 MAPE  6.11% | M2 MAE   44.6 MAPE  8.58% | B1 MAE  163.7 | mean price 541
+  artillery guns 3  n= 418 M1 MAE   51.1 MAPE  5.88% | M2 MAE   80.5 MAPE  9.23% | B1 MAE  222.8 | mean price 867
+  artillery guns 4  n= 114 M1 MAE   71.6 MAPE  6.00% | M2 MAE  105.2 MAPE  9.06% | B1 MAE  294.0 | mean price 1222
+  artillery guns 5+ n=  29 M1 MAE  105.7 MAPE  6.91% | M2 MAE  129.1 MAPE  9.21% | B1 MAE  279.8 | mean price 1359
+
+== Error analysis (M1 out-of-fold)
+  artillery_foot         n=  667 MAE   38.0 MAPE  5.35% median log ratio -0.008  share |err|>20%:  3.7%
+  artillery_horse        n=  272 MAE   70.2 MAPE  8.84% median log ratio -0.011  share |err|>20%: 10.3%
+  cavalry_heavy          n=  297 MAE   72.0 MAPE  5.53% median log ratio +0.001  share |err|>20%:  1.3%
+  cavalry_lancers        n=  331 MAE   35.3 MAPE  6.41% median log ratio +0.000  share |err|>20%:  0.6%
+  cavalry_light          n=  696 MAE   41.3 MAPE  5.20% median log ratio +0.001  share |err|>20%:  1.6%
+  cavalry_missile        n=   11 MAE   48.1 MAPE  6.13% median log ratio -0.005  share |err|>20%:  9.1%
+  cavalry_standard       n=  380 MAE   48.4 MAPE  5.69% median log ratio +0.005  share |err|>20%:  1.6%
+  infantry_grenadiers    n=  585 MAE   35.0 MAPE  5.43% median log ratio +0.001  share |err|>20%:  3.1%
+  infantry_irregulars    n=   56 MAE   57.7 MAPE 10.95% median log ratio +0.007  share |err|>20%: 17.9%
+  infantry_light         n=  797 MAE   25.8 MAPE  4.90% median log ratio +0.002  share |err|>20%:  2.4%
+  infantry_line          n= 2396 MAE   21.7 MAPE  4.62% median log ratio +0.001  share |err|>20%:  1.8%
+  infantry_militia       n=  314 MAE   23.9 MAPE  9.09% median log ratio +0.005  share |err|>20%:  9.6%
+  infantry_skirmishers   n=  389 MAE   41.3 MAPE 10.30% median log ratio +0.012  share |err|>20%:  9.8%
+  train elite           n=  328 MAE   68.3 MAPE  6.49%
+  train well_trained    n= 3033 MAE   30.2 MAPE  4.93%
+  train trained         n= 2462 MAE   32.7 MAPE  5.62%
+  train poorly_trained  n= 1025 MAE   34.3 MAPE  7.34%
+  train mob             n=  343 MAE   44.1 MAPE  8.09%
+  cn  3 n=   40 MAE  126.3 MAPE 13.41%
+  cn  4 n=  208 MAE   59.2 MAPE  6.56%
+  cn  5 n=  547 MAE   46.3 MAPE  6.60%
+  cn  6 n=  793 MAE   44.9 MAPE  6.63%
+  cn  7 n= 1277 MAE   36.9 MAPE  5.86%
+  cn  8 n= 1191 MAE   30.7 MAPE  5.28%
+  cn  9 n= 1002 MAE   28.8 MAPE  5.63%
+  cn 10 n=  999 MAE   24.7 MAPE  4.99%
+  cn 11 n=  674 MAE   27.3 MAPE  5.72%
+  cn 12 n=  294 MAE   23.8 MAPE  4.52%
+  cn 13 n=  166 MAE   25.0 MAPE  5.33%
+  M1: share of OOF log-residual variance between armies 1.2% (224 groups), between army x class cells 26.8% (1792), between classes 0.1%
+  M2: share of OOF log-residual variance between armies 15.2% (224 groups), between army x class cells 62.0% (1792), between classes 0.0%
+  worst armies (MAPE, n): 3. Kindelán / Florida [ntw3_ac_b10_x7_016] 25.2% n=10; 5. Ibrahim / Ghugha [ntw3_ac_b04_x7_067] 19.3% n=15; 7. Garde impériale [ntw3_ac_a06_x4_105] 19.2% n=14; 9. Soult / Sud [ntw3_ac_a13_x6_150] 17.7% n=56; 6. Davidov / Narod [ntw3_ac_b11_x4_191] 14.5% n=14; 6. Eskandar Mīrzā / Gurjstan [ntw3_ac_b15_x6_257] 14.2% n=6; 4. Teixeira / Norte [ntw3_ac_b09_x6_170] 13.9% n=25; 3. Chabot / Corfou [ntw3_ac_a04_x5_079] 12.8% n=9
+  best armies (MAPE, n): 9. Ross / EF.EC 2.9% n=23; 8. Toutchkov / III.K 2.7% n=18; 9. Konstantin / O.LG 2.6% n=11; 10. Tchitchagov / D.ZA 2.5% n=57
+  20 largest % misses:
+    1er lanciers d'Espagne 'lanciers de Dalmatie' [C cavalry_lancers      9. Soult / Sud             men_raw   78 guns 0 price    43 pred    311 (+623%)
+    Simanó-li 'Seminole' [GS1]                       infantry_skirmishers 3. Kindelán / Florida      men_raw  184 guns 0 price   955 pred   2430 (+154%)
+    Gendarmes d'élite 'les Immortels' [C2]           cavalry_heavy        7. Garde impériale         men_raw   82 guns 0 price   416 pred    965 (+132%)
+    Artillerie à cheval batave de 6 livres [H2]      artillery_horse      5. Marmont / II.C          men_raw   12 guns 1 price    73 pred    134 (+83%)
+    1er d'artillerie à cheval de 4 livres [H3]       artillery_horse      8. Soult / Pyrénées        men_raw   12 guns 1 price    70 pred    128 (+83%)
+    Batterie navale de 18 livres [F2]                artillery_foot       3. Chabot / Corfou         men_raw   80 guns 4 price  1473 pred   2498 (+70%)
+    12e d'artillerie à cheval de 4 livres [H3]       artillery_horse      11. Moreau / Rhin.R        men_raw   36 guns 3 price   587 pred    994 (+69%)
+    Ordenanças de Palmeira [L1]                      infantry_militia     4. Teixeira / Norte        men_raw  394 guns 0 price   387 pred    136 (-65%)
+    Voltigeurs d'infanterie légère [S3]              infantry_skirmishers 6. Bernadotte / I.C        men_raw  118 guns 0 price   422 pred    678 (+61%)
+    Lanciers de la Vistule 'los Diablos Polacos' [C4 cavalry_lancers      9. Soult / Sud             men_raw  194 guns 0 price  1036 pred    412 (-60%)
+    Artillería a Caballo de 6 Libras [H2]            artillery_horse      10. Blake / 4-5°           men_raw   24 guns 2 price   270 pred    432 (+60%)
+    Rukban 'Rijal al Sahra' [DR]                     cavalry_standard     5. Ibrahim / Ghugha        men_raw  160 guns 0 price   586 pred    932 (+59%)
+    Granaderos Provinciales de Castilla La Vieja [G2 infantry_grenadiers  7. Coupigny / la Derecha I men_raw  418 guns 0 price   271 pred    422 (+56%)
+    27e dragons 'l'Éclair de Trèves' [C3]            cavalry_standard     9. Macdonald / XI.C,VII.C  men_raw   84 guns 0 price   473 pred    723 (+53%)
+    Ordenanças de Tabosa [L1]                        infantry_militia     4. Teixeira / Norte        men_raw  422 guns 0 price   155 pred    234 (+51%)
+    ¤ Grenadiers de ligne du 61e [G4]                infantry_grenadiers  9. Lannes / V.C            men_raw  182 guns 0 price   416 pred    628 (+51%)
+    12e d'artillerie à cheval de 4 livres [H3]       artillery_horse      5. Humbert / Irlande       men_raw   24 guns 2 price   686 pred   1033 (+51%)
+    6-funtovaya konnaya artilleriya [H2]             artillery_horse      7. Bagration / Slavkov.P   men_raw   36 guns 3 price   883 pred   1325 (+50%)
+    Corps franc [S1]                                 infantry_skirmishers 9. Augereau / Rhône        men_raw   68 guns 0 price   367 pred    184 (-50%)
+    Tala’i‘u Al Mamalik [C4]                         cavalry_light        11. Mourad / Hashdu        men_raw   82 guns 0 price   184 pred    275 (+49%)
+
+== Unseen-army test, per army (M1)
+  3. Suchet / Alpes                cn  3 empire    n= 21 MAE  117.3 MAPE 17.07% median ratio pred/true 1.147
+  3. Kindelán / Florida            cn  3 coalition n= 10 MAE  274.0 MAPE 23.61% median ratio pred/true 0.940
+  4. Moore / Baltic                cn  4 coalition n= 18 MAE   89.0 MAPE  9.71% median ratio pred/true 1.091
+  4. Hessen-Kassel / DK            cn  4 empire    n= 31 MAE   72.3 MAPE  8.42% median ratio pred/true 1.067
+  4. Cathcart / Hanover            cn  4 coalition n= 68 MAE  116.2 MAPE  8.22% median ratio pred/true 0.923
+  4. Kienmayer / Aufstand          cn  4 coalition n= 25 MAE   78.6 MAPE 10.05% median ratio pred/true 0.964
+  4. Essen / PA                    cn  4 coalition n= 23 MAE   74.9 MAPE  6.38% median ratio pred/true 0.980
+  4. La Romana / D.N               cn  4 empire    n= 18 MAE   96.4 MAPE  7.76% median ratio pred/true 0.952
+  5. Marmont / XI.C                cn  5 empire    n= 18 MAE   60.7 MAPE  8.55% median ratio pred/true 1.058
+  5. Donzelot / Sept-Îles          cn  5 empire    n= 18 MAE   52.4 MAPE  8.82% median ratio pred/true 0.921
+  6. Bellegarde / Italien          cn  6 coalition n= 54 MAE   44.1 MAPE  6.54% median ratio pred/true 0.981
+  6. Eugène / Italie               cn  6 empire    n= 54 MAE   77.4 MAPE  7.07% median ratio pred/true 0.997
+  8. Wellington / Pyrenees         cn  8 coalition n= 88 MAE   40.7 MAPE  6.97% median ratio pred/true 1.054
+  8. D’Este / VII.K                cn  8 coalition n= 24 MAE   44.1 MAPE  7.34% median ratio pred/true 1.030
+  8. Soult / Pyrénées              cn  8 empire    n= 64 MAE   23.4 MAPE  6.50% median ratio pred/true 1.006
+  11. Schwarzenberg / Böhmen       cn 11 coalition n= 12 MAE   19.3 MAPE  9.26% median ratio pred/true 1.052
+  11. Eugène / Italie              cn 11 empire    n= 63 MAE   27.8 MAPE  5.85% median ratio pred/true 1.031

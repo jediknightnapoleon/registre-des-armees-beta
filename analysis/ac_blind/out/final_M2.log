@@ -1,0 +1,13 @@
+M2 fold 1 chosen {'infantry': {'inter3': 2.0}, 'cavalry': {'inter3': 10.0}, 'artillery': {'inter3': 10.0}}
+M2 fold 2 chosen {'infantry': {'inter3': 2.0}, 'cavalry': {'inter3': 10.0}, 'artillery': {'inter3': 2.0}}
+M2 fold 3 chosen {'infantry': {'inter3': 1.0}, 'cavalry': {'inter3': 10.0}, 'artillery': {'inter3': 10.0}}
+M2 fold 4 chosen {'infantry': {'inter3': 2.0}, 'cavalry': {'inter3': 10.0}, 'artillery': {'inter3': 10.0}}
+M2 fold 5 chosen {'infantry': {'inter3': 1.0}, 'cavalry': {'inter3': 2.0}, 'artillery': {'inter3': 5.0}}
+  M2         infantry   MAE 34.1 ± 1.4 | MAPE 6.98% | R² 0.9594
+  M2         cavalry    MAE 72.4 ± 2.2 | MAPE 8.36% | R² 0.9477
+  M2         artillery  MAE 69.3 ± 6.0 | MAPE 9.23% | R² 0.9180
+  M2         overall    MAE 47.9 ± 1.4 | MAPE 7.60% | R² 0.9586
+  M2 unseen-army infantry   MAE 58.1 MAPE 8.43% R2 0.9381 n=430
+  M2 unseen-army cavalry    MAE 109.3 MAPE 7.99% R2 0.9457 n=101
+  M2 unseen-army artillery  MAE 95.9 MAPE 10.54% R2 0.8940 n=78
+  M2 unseen-army overall    MAE 71.4 MAPE 8.62% R2 0.9485 n=609

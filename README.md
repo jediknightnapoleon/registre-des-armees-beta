@@ -44,7 +44,9 @@
 > - Very large militia units are overpriced; one 487-model unit is predicted at
 >   ~2 200 against 608 actual.
 > - Tiny skirmisher units are slightly underpriced.
-> - Army Corps prices are not modelled yet.
+> - Army Corps prices: see [`analysis/AC_PRICING_REPORT.md`](analysis/AC_PRICING_REPORT.md). The same
+>   model form fits AC; AC adds formation rebates ((n − 1)% off a completed group) and a ~10%
+>   hand-set premium that ToW copies remove.
 >
 > **Commander variants** (a named general leading a unit) are priced from their
 > regular unit's price P. A card starts at about 0.88·P − 110 gold, then adds the
