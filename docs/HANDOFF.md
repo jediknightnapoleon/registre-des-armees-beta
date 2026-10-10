@@ -377,18 +377,24 @@ general), with `maxSwaps = min(remainingCombatSlots, bucketCount)`.
   open bucket and commit the single swap that lowers cost most; stop on the first
   non-strict improvement.
 
-### 4.6 Build optimiser (`web/src/state/optimiser.ts`) — ToW and Custom armies
+### 4.6 Build optimiser (`web/src/state/optimiser.ts`, `acOptimiser.ts`) — every army with data
 
 The header's **Optimise** button (`components/OptimiseModal.tsx`) builds the
 legal army with the most *normative value*: what the game's average pricing rule
 charges for the cards' stats. It is the integer programme of the offline
 analysis, `analysis/cost_effective_builds.py` `solve()`, re-implemented in
 TypeScript. Its "max value" build is reproduced here, and with Single roll its
-"four corps" build.
+"four corps" build. For Army Corps it is `analysis/ac_builds.py` `solve_corps()`:
+the same programme plus the formation discounts and the recruit-order rule (below).
 
 **Settings** (Builder state, kept for the session):
 - **Max unit cards:** 2–31, staff general included.
-- **Quality / Quantity:** which value version; Quantity is the default.
+- **Value mode** (Quantity is the default everywhere; `allowedModes`):
+  - ToW / Custom: **Quantity** / **Quality**;
+  - Army Corps: **Quantity** / **Size bands** / **Formation discount only**. The user
+    replaced Quality with the AC study's size-band model for AC; "Formation discount
+    only" values each card at its own list price (no model), so the build fields the
+    most list value 10 000 reaches after discounts.
 - **Optimise remainder:** keep the current build and fill what is left; off by default.
 - **Only filtered units:** on by default. The candidates are Builder's
   `filteredCards`: the grid filters, Offered now and the corps roll — but *not*
@@ -404,9 +410,14 @@ until the next edit.
   - `analysis/export_optimiser_values.py` writes
     `data/generated/ntw3_optimiser_values.csv` (per unit and combat-general
     card) and `ntw3_optimiser_params.json`. Both are committed.
-  - The two value versions:
-    - `quality`: fully size-harmonised, so the size bias is removed;
-    - `quantity`: noise-only harmonisation, so the size discount is kept.
+  - Each card carries its pool's modes only:
+    - `quantity` (all): noise-only harmonisation, so the size discount is kept;
+    - `quality` (ToW / Custom): fully size-harmonised, so the size bias is removed;
+    - `sizeBands` (AC): the size-band model of `analysis/AC_PRICING_REPORT.md`.
+  - `ntw3_optimiser_params.json` holds one block per pool (`pools.tow`, `pools.ac`;
+    AC has its own staff T3 refit); `build_web_data.py` writes the faction's pool
+    block into its file. German Campaign 1813 (`a16`/`b16`) is work in progress in
+    the mod and gets no data (`acOptimiser.isWorkInProgressCorps`).
   - **Staff generals are valued in the app**, from the parameters:
     - the price rule T3 = b·stars^q (1 gold without stars);
     - plus λ·stars·D, where D = Σ models·(mRef − morale)₊ over the build's units;
@@ -431,11 +442,35 @@ until the next edit.
   - Electron serves it as `application/wasm`.
   - Vite builds workers as ES modules (`worker.format: "es"`) and pre-bundles
     `highs` in dev.
-- **Parity test:** `state/optimiser.parity.test.ts` checks the TS optimum
-  equals Python's for Preußen 10, Napoli and HRE, in both versions, with and
-  without Single roll. Its fixture comes from `export_optimiser_values.py
-  --fixture`.
-- **Refreshing the values** after changing the analysis takes three steps:
+- **Army Corps** (`state/acOptimiser.ts`; its header has the full model):
+  - a 0/1 column per brigade or division the build may still complete (rebate
+    > 0, from `buildRosterTotals` + `groupDiscount`): completion counts combat
+    generals, a division replaces its brigades, the budget credits the rebates;
+  - the app's recruit-order rule (§4.3) is *in* the model: completed groups are
+    recruited in a fixed order ≺ (rebate − what a division's own brigades have
+    earned, descending; optimal by an exchange argument), and one row per group
+    checks the running total at its completing card. `compareRebateGroups` and
+    Python's `group_order_key` must stay identical;
+  - decode writes the instances in that recruit order (kept instances first,
+    then the completed groups, brigade by brigade inside divisions, then loose
+    cards); `priceBuild` recruits the staff slot first, as Python does;
+  - safety net: every build is re-priced (`acBuildEarnsItsRebates`); one that
+    did not earn a rebate is cut and re-solved (≤ `MAX_REBATE_CUTS`, ≤ 30 s),
+    else rebuilt without discounts and flagged. On all 223 corps × 4 versions
+    the offline optimiser needs 0 cuts;
+  - MIP gap 1e-6 (1e-8 for Formation discount only), as `ac_builds.py`; ToW
+    keeps HiGHS's default.
+- **Tests:** `optimiser.golden.test.ts` pins the ToW / Custom LP text (written
+  before the AC extension); `acOptimiser.test.ts` covers rebates, the recruit
+  order, remainder, support divisions and the safety net on synthetic corps;
+  `optimiser.parity.test.ts` checks the TS optimum equals Python's for Preußen
+  10, Napoli and HRE (both versions, with and without Single roll) and for
+  Davout I.C 1812, Bonaparte / Italie.C and Eugène / Italie (all three AC
+  modes: same value, final cost, list cost, rebate and completed groups, 0
+  cuts). Its fixture comes from `export_optimiser_values.py --fixture`.
+- **Refreshing the values** after changing the analysis: the AC inputs come from
+  the team study (`analysis/TEAM_BUILDS_REPORT.md` → Commands: `team_values.py`,
+  `ac_builds.py`, `team_search.py`), then three steps:
   ```
   py -3.13 analysis/export_optimiser_values.py
   py -3.13 tools/build_web_data.py
@@ -443,6 +478,33 @@ until the next edit.
   ```
 - **Not checked:** whether a single roll actually offers the chosen combat
   general. "Generate times" finds that window.
+
+### 4.7 Team suggestion (`web/src/state/teamSuggest.ts`, `teamBuild.ts`)
+
+The Ordre de Bataille planner's **Suggest team** (`components/SuggestTeamModal.tsx`)
+finds the best armies for a team points total (Σ corps numbers, `corpsPoints`;
+ntw3.lua `Faction_Points`), as `analysis/team_search.py` does offline.
+- **Pools** (`teamPools`): one AC theatre and side, or ToW + Custom of one side
+  (`domain/teamRule.ts`). The same ToW army twice is an option (the Lua allows it).
+- **Mixed plans are refused:** `planTeamConflict` walks the slots with `joinTeam`
+  and names the first clash (pool, theatre or side); the button is disabled with
+  that sentence as its tooltip, and `TeamConflictWarning` shows it in the strip.
+- **Army values:** precomputed (`CorpsEntry.bestBuildValue`, from
+  `data/generated/ntw3_optimiser_army_values.csv`) at the default settings with
+  nothing kept — instant and offline; otherwise (`needsLiveValues`: card cap, no
+  staff, single roll off, kept armies with units) every candidate is optimised
+  live in the worker, with progress, Cancel and a session cache (`teamBuild.ts`).
+  The user chose this split (2026-10-10).
+- **Ranking:** by total value or by the weakest army (ties: the other);
+  `suggestTeams` enumerates at most ~36k teams. Teams take `k`; the UI offers 4
+  (3 is legal and a planned extension).
+- **Optimise remainder** keeps the plan's armies (and their units) and fills the
+  rest; off replaces the whole team (`plan.ts` `applySuggestedTeam`).
+- **Use this team** puts the corps in the plan with placeholder builds, then
+  optimises each army; a build lands only while its slot still holds the
+  placeholder (`fillPlaceholder`). **Undo suggestion** restores the plan.
+- Rosters come from App's `usePlanRosters().ensure`, shared with the planner's own
+  loads; an army whose roster is not available offline is reported and skipped.
 
 ---
 

@@ -71,12 +71,19 @@ function normalizeAbilities(raw: Record<string, unknown> | undefined): UnitAbili
   };
 }
 
-function normalizeOptimiserValue(raw: unknown): OptimiserValue | null {
+/** A per-mode value record: `quantity` (every pool has it) plus whichever of `quality` (ToW /
+ *  Custom) and `sizeBands` (Army Corps) the pool carries; null when `quantity` is missing. */
+export function normalizeOptimiserValue(raw: unknown): OptimiserValue | null {
   if (!raw || typeof raw !== "object") return null;
   const r = raw as Record<string, unknown>;
-  const quality = num(r.quality);
   const quantity = num(r.quantity);
-  return quality !== null && quantity !== null ? { quality, quantity } : null;
+  if (quantity === null) return null;
+  const value: OptimiserValue = { quantity };
+  const quality = num(r.quality);
+  const sizeBands = num(r.sizeBands);
+  if (quality !== null) value.quality = quality;
+  if (sizeBands !== null) value.sizeBands = sizeBands;
+  return value;
 }
 
 /** The faction file's `optimiser` block (snake_case, as exported), or null when absent or
@@ -177,6 +184,7 @@ function normalizeCorpsEntry(raw: unknown): CorpsEntry | null {
     postSelectionFlag: strOrNull(r.postSelectionFlag),
     isArmyCorps: bool(r.isArmyCorps),
     cardCount: num(r.cardCount) ?? 0,
+    bestBuildValue: normalizeOptimiserValue(r.bestBuildValue),
   };
 }
 

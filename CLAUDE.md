@@ -119,7 +119,10 @@ python analysis/class_structure.py        # → analysis/output/class_structure_
 python analysis/commander_model.py        # → commander_model_report.md + price_database.csv (commander model on true and
                                           #   predicted regular prices; every unit's true vs predicted price; ~1 min;
                                           #   needs the committed outputs and the class_structure checkpoints)
-python analysis/export_optimiser_values.py  # in-app optimiser data → data/generated/ntw3_optimiser_{values.csv,params.json};
+python analysis/team_values.py           # team study: value bases (AC + ToW size bands) → analysis/output/teams/
+python analysis/ac_builds.py              # every AC corps' best build with formation discounts (--check verifies, ~6 min)
+python analysis/team_search.py            # best 4-corps teams per points total + army_values.csv (analysis/TEAM_BUILDS_REPORT.md)
+python analysis/export_optimiser_values.py  # in-app optimiser data → data/generated/ntw3_optimiser_{values.csv,params.json,army_values.csv};
                                           #   then build_web_data.py, then again with --fixture (parity fixture; HANDOFF §4.6)
 python -m pytest tools/tests              # from the repo root; tools/ is a package
 

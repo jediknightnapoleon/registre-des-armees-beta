@@ -98,6 +98,7 @@ pricing analysis, which the app does not use.
 | `python analysis/class_structure.py [--fresh]` | `class_structure_report.md` | ~40 min; checkpoints in `analysis/.cache/`, resumable |
 | `python analysis/export_optimiser_values.py` (then `tools/build_web_data.py`, then again with `--fixture`) | the in-app optimiser's data: `data/generated/ntw3_optimiser_values.csv`, `ntw3_optimiser_params.json`, the app's parity fixture (docs/HANDOFF.md §4.6) | ~15 s each |
 | `python analysis/ac_pricing.py --phase model\|staff\|commanders\|size\|database\|report …` | the AC pricing study: `analysis/output/ac/`, report tables `ac_pricing_results.md` (see `analysis/AC_PRICING_REPORT.md` → Commands) | minutes to ~90 min per arm; checkpoints in `analysis/.cache/ac/` |
+| `python analysis/team_values.py`, `ac_builds.py [--no-rebates\|--check]`, `team_search.py`, `export_team_builds.py`, `team_report_tables.py` | the team study: value bases, every AC corps' best build with formation rebates, the best 4-corps teams per points total, app files, the report's tables (see `analysis/TEAM_BUILDS_REPORT.md` → Commands; progress in `analysis/TEAM_OPTIMISER_PLAN.md`) | ~1 / 6 / 2 min / seconds; checkpoints in `analysis/.cache/teams/` |
 
 - **Running two full runs.** Run them in parallel in the background: 2 × 6
   workers fits the 16-core machine. Watch the logs; the stages print
@@ -285,6 +286,13 @@ to `analysis/output/`, and never changes committed outputs):
    N ratio plus that premium.
    - **Biggest finding:** a size-band multiplier per class (F6) cuts ToW MAE by 10–20% too. Adopting it
      here is the open next step.
+6. **Teams and AC builds.** Done in the team study: `analysis/TEAM_BUILDS_REPORT.md` (plan and
+   progress: `analysis/TEAM_OPTIMISER_PLAN.md`). An AC optimiser with formation rebates and the app's
+   recruit-order rule, a model-free "most face value" mode, and the best 4-corps teams per points
+   total. German Campaign 1813 (`a16`/`b16`) is work in progress in the mod and is left out
+   (`ac_builds.WIP_THEATRES`).
+   - **Open:** the app side (phase B: AC in the Optimise panel, team suggestion in the Ordre de
+     Bataille planner that refuses mixed pools) and teams of three.
 
 ## 9. Gotchas
 

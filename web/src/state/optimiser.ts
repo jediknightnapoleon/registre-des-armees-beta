@@ -1,22 +1,29 @@
-// In-app build optimiser for Theatre-of-War and Custom armies.
+// In-app build optimiser for Theatre-of-War, Custom and Army Corps armies.
 //
 // Finds the build with the most *normative value* — what the game's average pricing
 // rule would charge for the cards' stats — under the game's build rules and the
 // user's settings. It is the integer programme of analysis/cost_effective_builds.py
 // `solve()` (the analysis's "max value" build, and with Single roll its "four corps"
-// build), re-implemented here so the app can run it; the parity test
-// (optimiser.parity.test.ts) checks it reproduces the Python optimum.
+// build), re-implemented here so the app can run it; for Army Corps it adds the
+// formation rebates and the recruit-order rule of analysis/ac_builds.py `solve_corps()`
+// (state/acOptimiser.ts). The parity test (optimiser.parity.test.ts) checks both
+// reproduce the Python optima.
 //
 // Values are data, not computed here (the app cannot run the pricing models): each
 // card's `optimiserValue` comes from analysis/export_optimiser_values.py through
-// tools/build_web_data.py, in two versions —
-//   - "quality":  full size harmonisation. The pricing model overprices small and very
-//                 large units; that size bias is removed, so size alone never looks
-//                 like a bargain;
-//   - "quantity": noise-only harmonisation. Only the model's excess noise at extreme
-//                 sizes is removed and each size's systematic discount is kept,
-//                 because the replays link that discount to winning.
-// Staff generals are valued here: the global staff price rule T3 = b·stars^q (1 gold
+// tools/build_web_data.py, one number per value mode of its army's pool —
+//   - "quantity" (all armies): noise-only size harmonisation. Only the model's excess
+//                 noise at extreme sizes is removed and each size's systematic discount
+//                 is kept, because the replays link that discount to winning;
+//   - "quality" (ToW / Custom): full size harmonisation. The pricing model overprices
+//                 small and very large units; that size bias is removed, so size alone
+//                 never looks like a bargain;
+//   - "sizeBands" (Army Corps): the AC study's size-band model, which fits the size
+//                 curve per class directly (the user chose it over Quality for AC).
+// "formationDiscount" (Army Corps only) needs no model: a card is worth its own list
+// price, so the optimiser fields the most list value the funds reach once the formation
+// rebates are taken off (analysis/ac_builds.py `price`); the size-band value breaks ties.
+// Staff generals are valued here: the pool's staff price rule T3 = b·stars^q (1 gold
 // without stars) plus the analysis's hand-set command correction — stars are worth
 // λ·stars·D more, D = Σ models·(mRef − morale)₊ over the build's units (a big,
 // shaky army needs command), ×(1 + σ) for a C-class (cavalry-speed) general, plus a
@@ -24,13 +31,14 @@
 // carries an auxiliary w ≤ D, w ≤ D_max·z (exact because w is maximised).
 //
 // Rules, as the app enforces them (rules/rules.ts checkKnownLimits): at most 31 cards
-// including the staff slot (the user may cap lower), 10 000 funds, no discounts
-// outside Army Corps, one staff general, the corps' combat-general cap (1 for ToW and
-// Custom), each cap group's cap shared with its combat-general versions and at most
-// one combat general per group, foot artillery ≤ 2, horse artillery ≤ 1 (2 for a
-// cavalry-only corps), heavy cavalry ≤ 10, counted by cappedClassOf. With Single roll,
-// a ToW build draws on at most 4 source corps, staff general included — all one roll
-// offers (state/towRoll.ts LEGACY_TOW_MAX_SOURCE_CORPS; NTW3AC.ToWFarmycorps).
+// including the staff slot (the user may cap lower), 10 000 funds (after formation
+// rebates for Army Corps), one staff general, the corps' combat-general cap (1 for ToW
+// and Custom; 9 − the key's digit for Army Corps), each cap group's cap shared with its
+// combat-general versions and at most one combat general per group, foot artillery ≤ 2,
+// horse artillery ≤ 1 (2 for a cavalry-only corps), heavy cavalry ≤ 10, counted by
+// cappedClassOf. With Single roll, a ToW build draws on at most 4 source corps, staff
+// general included — all one roll offers (state/towRoll.ts LEGACY_TOW_MAX_SOURCE_CORPS;
+// NTW3AC.ToWFarmycorps).
 
 import type { FactionRoster, OptimiserMode, OptimiserParams, UnitCard } from "../domain/types";
 import { isTowFactionKey } from "../domain/tow";
@@ -44,19 +52,29 @@ import {
   horseArtilleryMax,
 } from "../rules/rules";
 import {
+  type RebateGroup,
+  acBuildEarnsItsRebates,
+  brigadeRebates,
+  inGroup,
+  isArmyCorpsKey,
+  orderAcCards,
+  rebateGroups,
+} from "./acOptimiser";
+import {
   type BuildState,
   type RosterIndex,
   combatGeneralsAgainstCap,
   expandBuild,
   makeInstanceId,
+  priceBuild,
 } from "./build";
-import type { LpSolver } from "./solveLp";
+import { type LpSolver, type SolveOptions, OPTIMISER_TIME_LIMIT_S } from "./solveLp";
 import { LEGACY_TOW_MAX_SOURCE_CORPS } from "./towRoll";
 
 export interface OptimiseSettings {
   /** Cards including the staff slot, 2 … 31 (the game's limit). Fewer = less micro. */
   maxCards: number;
-  /** Which value version: "quality" (size bias removed) or "quantity" (size discount kept). */
+  /** Which valuation (see the header); only the army's allowedModes apply. */
   mode: OptimiserMode;
   /** Keep the current build and fill the remaining funds and cards, instead of rebuilding. */
   remainder: boolean;
@@ -77,37 +95,81 @@ export const DEFAULT_OPTIMISE_SETTINGS: OptimiseSettings = {
   singleRoll: true,
 };
 
+/** The modes an army's pool offers: ToW / Custom Quantity and Quality; Army Corps Quantity,
+ *  Size bands and "Formation discount only" (the user's choice, 2026-10-10). */
+export function allowedModes(factionKey: string): OptimiserMode[] {
+  return isArmyCorpsKey(factionKey) ? ["quantity", "sizeBands", "formationDiscount"] : ["quantity", "quality"];
+}
+
+/** `mode` if the army offers it, else Quantity (settings persist across armies in the Builder). */
+export function normaliseMode(mode: OptimiserMode, factionKey: string): OptimiserMode {
+  return allowedModes(factionKey).includes(mode) ? mode : "quantity";
+}
+
 /** Tie-break weight: among equal-value builds prefer the cheaper (as the Python optimiser). */
 const COST_TIE_BREAK = 1e-6;
+/** "Formation discount only": among builds of equal list value prefer the one the size-band
+ *  model rates highest — under 1 gold over a whole build (analysis/ac_builds.py PRICE_TIEBREAK). */
+const FACE_TIE_BREAK = 1e-5;
+/** Relative MIP gaps for Army Corps, as analysis/ac_builds.py (MIP_GAP, MIP_GAP_FACE). ToW and
+ *  Custom keep HiGHS's default 1e-4, as cost_effective_builds.py does. */
+const AC_MIP_GAP = 1e-6;
+const AC_MIP_GAP_FACE = 1e-8;
+/** The rebate safety net (acOptimiser.ts): at most this many cuts and this much time in all. */
+export const MAX_REBATE_CUTS = 5;
+export const OPTIMISE_TIME_BUDGET_S = 30;
 
 type Column =
   | { name: string; kind: "unit"; card: UnitCard }
   | { name: string; kind: "staff"; card: UnitCard }
   | { name: string; kind: "corps"; corps: string }
-  | { name: string; kind: "command"; staff: string };
+  | { name: string; kind: "command"; staff: string }
+  | { name: string; kind: "group"; group: RebateGroup }
+  | { name: string; kind: "groupCost"; group: RebateGroup };
 
 export interface OptimiseProblem {
-  lp: string;
+  objective: string;
+  /** Constraint rows, ` cN: … <= rhs`; cuts are appended at render time. */
+  rows: string[];
+  bounds: string[];
+  integers: string[];
   columns: Column[];
   /** The part of the current build that is kept (empty unless remainder mode). */
   fixed: BuildState;
   settings: OptimiseSettings;
   params: OptimiserParams;
+  /** Army Corps: the rebate groups the programme may complete (≺ order); null otherwise. */
+  groups: RebateGroup[] | null;
 }
 
 export interface OptimiseSummary {
   cards: number;
+  /** What the build costs: list prices less the formation rebates it earns (Army Corps). */
   cost: number;
+  /** Σ list prices. */
+  listCost: number;
+  /** Formation rebates earned (0 outside Army Corps). */
+  rebate: number;
+  /** Brigades and divisions completed that earn a rebate. */
+  groupsCompleted: number;
   value: number;
   efficiency: number;
   staffName: string | null;
 }
 
 export type OptimiseOutcome =
-  | { ok: true; build: BuildState; summary: OptimiseSummary; status: string }
+  | { ok: true; build: BuildState; summary: OptimiseSummary; status: string; cuts: number; fallback?: "noRebates" }
   | { ok: false; error: string };
 
 // --- valuation -----------------------------------------------------------------
+
+/** A card's value in `mode`, or null when it has none (not valued, or not in this pool). */
+export function cardValue(card: UnitCard, mode: OptimiserMode): number | null {
+  const v = card.optimiserValue;
+  if (!v) return null;
+  if (mode === "formationDiscount") return card.cost + FACE_TIE_BREAK * (v.sizeBands ?? 0);
+  return v[mode] ?? null;
+}
 
 /** Morale deficit a card adds to D: models × morale points below mRef. */
 export function moraleDeficit(card: UnitCard, params: OptimiserParams): number {
@@ -118,10 +180,12 @@ export function moraleDeficit(card: UnitCard, params: OptimiserParams): number {
 
 function staffTerms(card: UnitCard, params: OptimiserParams, mode: OptimiserMode): { constant: number; slope: number } {
   const stars = card.commandStars ?? 0;
-  const speed = 1 + params.speedBonus * (card.speedCode?.startsWith("C") ? 1 : 0);
   const t3 = stars > 0 ? params.t3B * stars ** params.t3Q : 1;
+  // Formation discount only: the general is worth his list price, no command correction.
+  if (mode === "formationDiscount") return { constant: card.cost + FACE_TIE_BREAK * t3, slope: 0 };
+  const speed = 1 + params.speedBonus * (card.speedCode?.startsWith("C") ? 1 : 0);
   const melee = (card.stats.meleeAttack ?? 0) > params.standardGeneralMelee ? params.meleeBonus : 0;
-  return { constant: t3 * speed + melee, slope: params.lambda[mode] * stars * speed };
+  return { constant: t3 * speed + melee, slope: (params.lambda[mode] ?? 0) * stars * speed };
 }
 
 /** A staff general's value in a build whose units have morale deficit `deficit`. */
@@ -130,18 +194,23 @@ export function staffGeneralValue(card: UnitCard, params: OptimiserParams, mode:
   return constant + slope * deficit;
 }
 
-/** Totals of a whole build as the optimiser values it (cards include the staff slot). */
+/** Totals of a whole build as the optimiser values it (cards include the staff slot), priced
+ *  as the app prices it (priceBuild: Army Corps rebates earned in recruit order). */
 export function buildValue(index: RosterIndex, build: BuildState, params: OptimiserParams,
                            mode: OptimiserMode): OptimiseSummary {
   const line = build.instances.map((i) => index.byKey.get(i.unitKey)).filter((c): c is UnitCard => !!c);
   const slot = build.staffSlotUnitKey ? index.byKey.get(build.staffSlotUnitKey) ?? null : null;
   const deficit = line.reduce((d, c) => d + moraleDeficit(c, params), 0);
-  let value = line.reduce((v, c) => v + (c.optimiserValue?.[mode] ?? 0), 0);
+  let value = line.reduce((v, c) => v + (cardValue(c, mode) ?? 0), 0);
   if (slot) {
-    value += slot.generalKind === "staff" ? staffGeneralValue(slot, params, mode, deficit) : slot.optimiserValue?.[mode] ?? 0;
+    value += slot.generalKind === "staff" ? staffGeneralValue(slot, params, mode, deficit) : cardValue(slot, mode) ?? 0;
   }
-  const cost = line.reduce((s, c) => s + c.cost, 0) + (slot?.cost ?? 0);
-  return { cards: line.length + (slot ? 1 : 0), cost, value, efficiency: cost > 0 ? value / cost : 0,
+  const price = priceBuild(index, build);
+  return { cards: line.length + (slot ? 1 : 0), cost: price.finalCost, listCost: price.baseCost,
+           rebate: price.baseCost - price.finalCost,
+           // Formations that earn something (a one-card group "completes" with a 0 discount).
+           groupsCompleted: price.completedGroups.filter((g) => g.discount > 0).length, value,
+           efficiency: price.finalCost > 0 ? value / price.finalCost : 0,
            staffName: slot?.generalKind === "staff" ? slot.name : null };
 }
 
@@ -158,27 +227,49 @@ function terms(entries: [number, string][]): string {
   return entries.map(([c, n]) => `${c < 0 ? "-" : "+"} ${num(Math.abs(c))} ${n}`).join("\n   ");
 }
 
+/** The programme as CPLEX LP text, with any rebate cuts (` kN: …` rows) appended. */
+export function renderOptimiseLp(problem: OptimiseProblem, cuts: readonly string[] = []): string {
+  return [
+    "Maximize",
+    ` obj: ${problem.objective}`,
+    "Subject To",
+    ...problem.rows,
+    ...cuts,
+    "Bounds",
+    ...problem.bounds,
+    "Generals",
+    ...problem.integers.map((c) => ` ${c}`),
+    "End",
+    "",
+  ].join("\n");
+}
+
 // --- problem -------------------------------------------------------------------
 
 /** Build the integer programme, or explain why no build can be made. `candidates` are
- *  the cards the optimiser may add (the filtered list, or the whole roster). */
+ *  the cards the optimiser may add (the filtered list, or the whole roster).
+ *  `rebates: false` leaves the Army Corps rebate groups out (the safety net's fallback). */
 export function buildOptimiseProblem(
   roster: FactionRoster,
   index: RosterIndex,
   current: BuildState,
   candidates: readonly UnitCard[],
   settings: OptimiseSettings,
+  { rebates = true }: { rebates?: boolean } = {},
 ): { problem: OptimiseProblem } | { error: string } {
   const params = roster.optimiser;
-  if (!params) return { error: "No optimiser data for this army (Army Corps armies are not covered)." };
-  const mode = settings.mode;
+  if (!params) return { error: "No optimiser data for this army." };
+  const mode = normaliseMode(settings.mode, roster.factionKey);
+  const ac = isArmyCorpsKey(roster.factionKey);
   const maxCards = Math.max(2, Math.min(MAX_TOTAL_UNIT_CARDS, Math.round(settings.maxCards)));
   const fixed: BuildState = settings.remainder ? current : { instances: [], staffSlotUnitKey: null };
   const fixedCards = expandBuild(index, fixed).cards;
   const fixedLine = fixed.instances.map((i) => index.byKey.get(i.unitKey)).filter((c): c is UnitCard => !!c);
   const fixedSlot = fixed.staffSlotUnitKey ? index.byKey.get(fixed.staffSlotUnitKey) ?? null : null;
 
-  const funds = MAX_BUILD_COST - fixedCards.reduce((s, c) => s + c.cost, 0);
+  // What the kept part costs: its list prices, less (Army Corps) the rebates it earns itself.
+  const fixedCost = ac ? priceBuild(index, fixed).finalCost : fixedCards.reduce((s, c) => s + c.cost, 0);
+  const funds = MAX_BUILD_COST - fixedCost;
   const slots = maxCards - fixedCards.length;
   if (funds <= 0) return { error: "The current build already uses all 10 000 funds." };
   if (slots <= 0) return { error: `The current build already has ${fixedCards.length} cards (cap ${maxCards}).` };
@@ -202,16 +293,17 @@ export function buildOptimiseProblem(
   // Unit columns: valued, non-staff candidates with room left in their group.
   const candidateSet = new Set(candidates.map((c) => c.unitKey));
   const columns: Column[] = [];
-  const units: { col: string; card: UnitCard; ub: number }[] = [];
+  const units: { col: string; card: UnitCard; ub: number; value: number }[] = [];
   for (const card of roster.cards) {
-    if (!candidateSet.has(card.unitKey) || card.generalKind === "staff" || !card.optimiserValue) continue;
+    const value = cardValue(card, mode);
+    if (!candidateSet.has(card.unitKey) || card.generalKind === "staff" || value === null) continue;
     const groupRoom = card.groupCap > 0 ? card.groupCap - (groupUsed.get(card.capGroupKey) ?? 0) : slots;
     const isCombat = card.generalKind === "combat";
     if (isCombat && (combatLeft <= 0 || (groupGeneralUsed.get(card.capGroupKey) ?? 0) > 0)) continue;
     const ub = Math.min(isCombat ? 1 : slots, groupRoom, slots);
     if (ub <= 0) continue;
     const col = `x${units.length}`;
-    units.push({ col, card, ub });
+    units.push({ col, card, ub, value });
     columns.push({ name: col, kind: "unit", card });
   }
 
@@ -227,12 +319,19 @@ export function buildOptimiseProblem(
   for (const s of staff) columns.push({ name: s.col, kind: "staff", card: s.card });
   if (!units.length && !staff.length) return { error: "No card passes the filters with room left in the build." };
 
+  // Army Corps: the formation-rebate groups the build may still complete (acOptimiser.ts).
+  const ubOf = new Map(units.map((u) => [u.card.unitKey, u.ub]));
+  const groups = ac && rebates ? rebateGroups(roster.cards, roster.factionKey, fixedCards, (c) => ubOf.get(c.unitKey) ?? 0) : [];
+  const groupCols = groups.map((group, k) => ({ group, g: `g${k}`, q: `q${k}`,
+    members: units.filter((u) => inGroup(u.card, group)) }));
+
   const rows: string[] = [];
   let r = 0;
   const row = (entries: [number, string][], sense: "<=" | ">=" | "=", rhs: number) =>
     rows.push(` c${r++}: ${terms(entries)} ${sense} ${num(rhs)}`);
 
-  row([...units.map((u): [number, string] => [u.card.cost, u.col]), ...staff.map((s): [number, string] => [s.card.cost, s.col])],
+  row([...units.map((u): [number, string] => [u.card.cost, u.col]), ...staff.map((s): [number, string] => [s.card.cost, s.col]),
+       ...groupCols.map((gc): [number, string] => [-gc.group.rebate, gc.g])],
       "<=", funds);
   row([...units.map((u): [number, string] => [1, u.col]), ...staff.map((s): [number, string] => [1, s.col])], "<=", slots);
   if (staff.length) row(staff.map((s): [number, string] => [1, s.col]), settings.allowNoStaff ? "<=" : "=", 1);
@@ -302,60 +401,95 @@ export function buildOptimiseProblem(
     row([[1, s.w], [-dMax, s.col]], "<=", 0);
   }
 
+  // Army Corps rebates (acOptimiser.ts header): completion, a division replaces its brigades,
+  // each completed group's list cost q, and affordability at each group's completing card.
+  const groupBounds: string[] = [];
+  const divisionCol = new Map(groupCols.filter((gc) => gc.group.kind === "division").map((gc) => [gc.group.division, gc.g]));
+  for (const gc of groupCols) {
+    const { group, g, q, members } = gc;
+    const bigM = members.reduce((s, u) => s + u.card.cost * u.ub, 0);
+    columns.push({ name: g, kind: "group", group }, { name: q, kind: "groupCost", group });
+    groupBounds.push(` 0 <= ${g} <= 1`, ` 0 <= ${q} <= ${num(bigM)}`);
+    row([...members.map((u): [number, string] => [1, u.col]), [-(group.required - group.kept), g]], ">=", 0);
+    const division = group.kind === "brigade" ? divisionCol.get(group.division) : undefined;
+    if (division) row([[1, g], [1, division]], "<=", 1);
+    row([[1, q], ...members.map((u): [number, string] => [-u.card.cost, u.col]), [-bigM, g]], ">=", -bigM);
+  }
+  groupCols.forEach((gc, k) => {
+    row([...staff.map((s): [number, string] => [s.card.cost, s.col]),
+         ...groupCols.slice(0, k).flatMap((h): [number, string][] => [[1, h.q], [-h.group.rebate, h.g]]),
+         [1, gc.q], [-gc.group.credit, gc.g]], "<=", funds);
+  });
+
   const objective: [number, string][] = [
-    ...units.map((u, i): [number, string] =>
-      [u.card.optimiserValue![mode] + keptSlope * deficits[i] - COST_TIE_BREAK * u.card.cost, u.col]),
+    ...units.map((u, i): [number, string] => [u.value + keptSlope * deficits[i] - COST_TIE_BREAK * u.card.cost, u.col]),
     ...staff.map((s): [number, string] => [s.constant - COST_TIE_BREAK * s.card.cost, s.col]),
     ...staff.filter((s) => s.slope !== 0).map((s): [number, string] => [s.slope, s.w]),
   ];
 
-  const integers = [...units.map((u) => u.col), ...staff.map((s) => s.col), ...corpsCols];
-  const lp = [
-    "Maximize",
-    ` obj: ${terms(objective)}`,
-    "Subject To",
-    ...rows,
-    "Bounds",
-    ...units.map((u) => ` 0 <= ${u.col} <= ${u.ub}`),
-    ...staff.map((s) => ` 0 <= ${s.col} <= 1`),
-    ...corpsBounds,
-    ...commandBounds,
-    "Generals",
-    ...integers.map((c) => ` ${c}`),
-    "End",
-    "",
-  ].join("\n");
-  return { problem: { lp, columns, fixed, settings: { ...settings, maxCards }, params } };
+  return {
+    problem: {
+      objective: terms(objective),
+      rows,
+      bounds: [
+        ...units.map((u) => ` 0 <= ${u.col} <= ${u.ub}`),
+        ...staff.map((s) => ` 0 <= ${s.col} <= 1`),
+        ...corpsBounds,
+        ...commandBounds,
+        ...groupBounds,
+      ],
+      integers: [...units.map((u) => u.col), ...staff.map((s) => s.col), ...corpsCols, ...groupCols.map((gc) => gc.g)],
+      columns,
+      fixed,
+      settings: { ...settings, mode, maxCards },
+      params,
+      groups: ac ? groups : null,
+    },
+  };
 }
 
 // --- solution ------------------------------------------------------------------
 
 const ARM_ORDER: Record<string, number> = { artillery: 0, cavalry: 1, infantry: 2 };
 
-/** Turn the solver's column values into a build: the kept part, then the new cards
- *  (artillery, cavalry, infantry; most valuable first), the chosen staff general in the slot. */
+/** Turn the solver's column values into a build: the kept part, then the new cards (Army
+ *  Corps: completed groups in recruit order first — acOptimiser.ts orderAcCards; then, and
+ *  for every other army, artillery, cavalry, infantry, most valuable first), the chosen staff
+ *  general in the slot. */
 export function decodeOptimiseSolution(problem: OptimiseProblem, primal: Record<string, number>,
                                        index: RosterIndex): { build: BuildState; summary: OptimiseSummary } {
   const mode = problem.settings.mode;
-  const picks: { card: UnitCard; copies: number }[] = [];
+  const picks: UnitCard[] = [];
+  const completed: RebateGroup[] = [];
   let staffKey: string | null = null;
   for (const col of problem.columns) {
     const v = Math.round(primal[col.name] ?? 0);
     if (v <= 0) continue;
-    if (col.kind === "unit") picks.push({ card: col.card, copies: v });
+    if (col.kind === "unit") picks.push(...Array.from({ length: v }, () => col.card));
     else if (col.kind === "staff") staffKey = col.card.unitKey;
+    else if (col.kind === "group") completed.push(col.group);
   }
   const armRank = (c: UnitCard) => ARM_ORDER[c.underlyingUnitClass.split("_")[0]] ?? 3;
-  picks.sort((a, b) => armRank(a.card) - armRank(b.card)
-    || (b.card.optimiserValue?.[mode] ?? 0) - (a.card.optimiserValue?.[mode] ?? 0)
-    || a.card.unitKey.localeCompare(b.card.unitKey));
-  const added = picks.flatMap(({ card, copies }) =>
-    Array.from({ length: copies }, () => ({ id: makeInstanceId(), unitKey: card.unitKey })));
+  const looseOrder = (a: UnitCard, b: UnitCard) => armRank(a) - armRank(b)
+    || (cardValue(b, mode) ?? 0) - (cardValue(a, mode) ?? 0)
+    || a.unitKey.localeCompare(b.unitKey);
+  const ordered = problem.groups
+    ? orderAcCards(picks, completed, brigadeRebates(index.roster.cards, index.roster.factionKey), looseOrder)
+    : [...picks].sort(looseOrder);
   const build: BuildState = {
-    instances: [...problem.fixed.instances, ...added],
+    instances: [...problem.fixed.instances, ...ordered.map((card) => ({ id: makeInstanceId(), unitKey: card.unitKey }))],
     staffSlotUnitKey: problem.fixed.staffSlotUnitKey ?? staffKey,
   };
   return { build, summary: buildValue(index, build, problem.params, mode) };
+}
+
+/** No-good cut on a set of completed groups: that exact set may not be chosen again. */
+function rebateCut(problem: OptimiseProblem, primal: Record<string, number>, k: number): string | null {
+  const groupCols = problem.columns.filter((c) => c.kind === "group").map((c) => c.name);
+  const on = groupCols.filter((name) => Math.round(primal[name] ?? 0) > 0);
+  if (!on.length) return null;
+  const entries: [number, string][] = groupCols.map((name) => [on.includes(name) ? 1 : -1, name]);
+  return ` k${k}: ${terms(entries)} <= ${num(on.length - 1)}`;
 }
 
 const STATUS_MESSAGES: Record<string, string> = {
@@ -363,7 +497,14 @@ const STATUS_MESSAGES: Record<string, string> = {
   "Primal infeasible or unbounded": "No legal build fits these settings.",
 };
 
-/** Build the programme, solve it with `solver`, and decode the result. */
+function usable(status: string, columns: Record<string, number>): boolean {
+  return status === "Optimal" || (status === "Time limit reached" && Object.keys(columns).length > 0);
+}
+
+/** Build the programme, solve it with `solver`, and decode the result. For an Army Corps the
+ *  build is re-priced as the app prices it; a rebate not earned in recruit order cuts that set
+ *  of groups and solves again (at most MAX_REBATE_CUTS times within OPTIMISE_TIME_BUDGET_S),
+ *  after which a build without formation rebates is returned and flagged. */
 export async function optimiseBuild(
   roster: FactionRoster,
   index: RosterIndex,
@@ -374,12 +515,42 @@ export async function optimiseBuild(
 ): Promise<OptimiseOutcome> {
   const made = buildOptimiseProblem(roster, index, current, candidates, settings);
   if ("error" in made) return { ok: false, error: made.error };
-  const solution = await solver(made.problem.lp);
-  const usable = solution.status === "Optimal"
-    || (solution.status === "Time limit reached" && Object.keys(solution.columns).length > 0);
-  if (!usable) {
+  const problem = made.problem;
+  if (!problem.groups) {
+    const solution = await solver(renderOptimiseLp(problem));
+    if (!usable(solution.status, solution.columns)) {
+      return { ok: false, error: STATUS_MESSAGES[solution.status] ?? `The solver stopped: ${solution.status}.` };
+    }
+    const { build, summary } = decodeOptimiseSolution(problem, solution.columns, index);
+    return { ok: true, build, summary, status: solution.status, cuts: 0 };
+  }
+
+  const started = Date.now();
+  const options = (): SolveOptions => ({
+    mipRelGap: problem.settings.mode === "formationDiscount" ? AC_MIP_GAP_FACE : AC_MIP_GAP,
+    timeLimit: Math.min(OPTIMISER_TIME_LIMIT_S, OPTIMISE_TIME_BUDGET_S - (Date.now() - started) / 1000),
+  });
+  const cuts: string[] = [];
+  for (;;) {
+    const solution = await solver(renderOptimiseLp(problem, cuts), options());
+    if (!usable(solution.status, solution.columns)) {
+      if (!cuts.length) return { ok: false, error: STATUS_MESSAGES[solution.status] ?? `The solver stopped: ${solution.status}.` };
+      break;                                              // every rebate set left was cut: fall back
+    }
+    const { build, summary } = decodeOptimiseSolution(problem, solution.columns, index);
+    if (acBuildEarnsItsRebates(index, build)) return { ok: true, build, summary, status: solution.status, cuts: cuts.length };
+    const cut = rebateCut(problem, solution.columns, cuts.length);
+    if (!cut || cuts.length >= MAX_REBATE_CUTS || (Date.now() - started) / 1000 >= OPTIMISE_TIME_BUDGET_S - 1) break;
+    cuts.push(cut);
+  }
+
+  // Fallback: the same programme without formation rebates, which can always be recruited.
+  const plain = buildOptimiseProblem(roster, index, current, candidates, settings, { rebates: false });
+  if ("error" in plain) return { ok: false, error: plain.error };
+  const solution = await solver(renderOptimiseLp(plain.problem), { mipRelGap: options().mipRelGap });
+  if (!usable(solution.status, solution.columns)) {
     return { ok: false, error: STATUS_MESSAGES[solution.status] ?? `The solver stopped: ${solution.status}.` };
   }
-  const { build, summary } = decodeOptimiseSolution(made.problem, solution.columns, index);
-  return { ok: true, build, summary, status: solution.status };
+  const { build, summary } = decodeOptimiseSolution(plain.problem, solution.columns, index);
+  return { ok: true, build, summary, status: solution.status, cuts: cuts.length, fallback: "noRebates" };
 }

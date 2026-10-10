@@ -8,11 +8,12 @@
 
 import highsLoader from "highs";
 import wasmUrl from "highs/runtime?url";
-import { type HighsLike, solveWithHighs } from "./solveLp";
+import { type HighsLike, type SolveOptions, solveWithHighs } from "./solveLp";
 
 interface SolveRequest {
   id: number;
   lp: string;
+  options?: SolveOptions;
 }
 
 // tsconfig.app.json types the app with the DOM lib; narrow `self` to what a worker uses.
@@ -24,10 +25,10 @@ const scope = self as unknown as {
 let highs: Promise<HighsLike> | null = null;
 
 scope.onmessage = async (event) => {
-  const { id, lp } = event.data;
+  const { id, lp, options } = event.data;
   try {
     highs ??= highsLoader({ locateFile: () => wasmUrl });
-    scope.postMessage({ id, solution: solveWithHighs(await highs, lp) });
+    scope.postMessage({ id, solution: solveWithHighs(await highs, lp, options) });
   } catch (error) {
     highs = null; // a failed load is retried on the next request
     scope.postMessage({ id, error: error instanceof Error ? error.message : String(error) });

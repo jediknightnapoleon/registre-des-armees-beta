@@ -1,5 +1,10 @@
 # In-app build optimiser — plan and progress
 
+> **Superseded in part (2026-10-10).** This plan covered ToW and Custom armies. Army Corps (formation
+> discounts, recruit order), the Size bands and Formation discount only modes, and the planner's team
+> suggestion followed in phase B of `analysis/TEAM_OPTIMISER_PLAN.md`; the current design is in
+> docs/HANDOFF.md §4.6–4.7. The signatures below are the original plan's, not the code's.
+
 > **Resume here.** This file is the plan for the in-app optimiser (approved by
 > the user, October 2026) plus a progress checklist updated after every step.
 > A fresh session should read this file, then continue with the first unticked

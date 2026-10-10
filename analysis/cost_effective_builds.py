@@ -223,7 +223,9 @@ MIN_STRATUM = 5           # smaller strata merge into their neighbour toward the
 
 
 def harmonise_by_size(units: list[up.Unit], value: dict[tuple[str, str], float],
-                      table: list[dict] | None = None, mode: str = "full") -> dict[tuple[str, str], float]:
+                      table: list[dict] | None = None, mode: str = "full",
+                      oof: dict[tuple[str, str], tuple[float, float, float]] | None = None
+                      ) -> dict[tuple[str, str], float]:
     """Normative values with V4's size-stratum bias and excess noise removed (see above).
 
     Per arm, r = log(true price ÷ V4 out-of-fold prediction) (price_database.csv) is standardised
@@ -243,14 +245,19 @@ def harmonise_by_size(units: list[up.Unit], value: dict[tuple[str, str], float],
 
     `mode` picks what is removed: "full" (bias and excess noise, the formula above), "noise"
     (spread only: r* = α + σ·(γ*_b + (Z − γ*_b)·δ*_R/δ*_b), keeping the stratum's own shrunk
-    mean) or "bias" (location only: r* = α + σ·(γ*_R + Z − γ*_b))."""
+    mean) or "bias" (location only: r* = α + σ·(γ*_R + Z − γ*_b)).
+
+    `oof` = {(faction, unit): (size, true price, out-of-fold prediction)} replaces the ToW
+    price database as the error source — analysis/team_values.py passes AC's own V4 errors."""
     if mode not in ("full", "noise", "bias"):
         raise ValueError(f"unknown harmonisation mode {mode!r}")
-    oof = {}
-    with open(OUT / "price_database.csv", encoding="utf-8") as fh:
-        for r in csv.DictReader(fh):
-            if r["kind"] == "regular" and r["pred_v4"] not in ("", "nan") and float(r["pred_v4"]) > 0:
-                oof[(r["faction_key"], r["unit_key"])] = (float(r["size"]), float(r["true_price"]), float(r["pred_v4"]))
+    if oof is None:
+        oof = {}
+        with open(OUT / "price_database.csv", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                if r["kind"] == "regular" and r["pred_v4"] not in ("", "nan") and float(r["pred_v4"]) > 0:
+                    oof[(r["faction_key"], r["unit_key"])] = (float(r["size"]), float(r["true_price"]),
+                                                              float(r["pred_v4"]))
     out = dict(value)
     for arm, edges in SIZE_STRATA.items():
         rows = [(u, oof[(u.faction, u.key)]) for u in units if u.arm == arm and (u.faction, u.key) in oof]

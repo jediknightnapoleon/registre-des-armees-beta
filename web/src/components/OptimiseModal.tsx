@@ -1,26 +1,34 @@
 import { useEffect } from "react";
 import type { OptimiserMode } from "../domain/types";
 import { MAX_TOTAL_UNIT_CARDS } from "../rules/rules";
-import type { OptimiseSettings, OptimiseSummary } from "../state/optimiser";
+import { isTowFactionKey } from "../domain/tow";
+import { isArmyCorpsKey } from "../state/acOptimiser";
+import { type OptimiseSettings, type OptimiseSummary, allowedModes, normaliseMode } from "../state/optimiser";
 
-const MODES: { mode: OptimiserMode; label: string; hint: string }[] = [
-  {
-    mode: "quantity",
+const MODES: Record<OptimiserMode, { label: string; hint: string }> = {
+  quantity: {
     label: "Quantity",
     hint: "Keeps the price discount of very small and very large units (ladder games link it to winning), so mass units are favoured.",
   },
-  {
-    mode: "quality",
+  quality: {
     label: "Quality",
     hint: "Removes the pricing model's size bias, so a unit's size alone never makes it look like a bargain.",
   },
-];
+  sizeBands: {
+    label: "Size bands",
+    hint: "Values units with the Army Corps pricing model that prices each size band of each class on its own, so mid-sized units are valued on their own curve.",
+  },
+  formationDiscount: {
+    label: "Formation discount only",
+    hint: "Ignores unit stats: uses the game's own prices to field the most list value. Brigade and division discounts let an Army Corps field more than 10 000.",
+  },
+};
 
 /** Settings and run button for the build optimiser (state/optimiser.ts). The result is
  *  applied to the build immediately by Builder; "Undo optimise" restores the build it
  *  replaced until the next edit. */
 export function OptimiseModal({
-  isTow,
+  factionKey,
   settings,
   onSettings,
   filteredCount,
@@ -28,12 +36,13 @@ export function OptimiseModal({
   busy,
   error,
   result,
+  fallback,
   canUndo,
   onOptimise,
   onUndo,
   onClose,
 }: {
-  isTow: boolean;
+  factionKey: string;
   settings: OptimiseSettings;
   onSettings: (next: OptimiseSettings) => void;
   /** Cards that pass the roster filters (what "Only filtered units" restricts to). */
@@ -42,6 +51,8 @@ export function OptimiseModal({
   busy: boolean;
   error: string | null;
   result: OptimiseSummary | null;
+  /** The Army Corps result was built without formation discounts (the optimiser's safety net). */
+  fallback: boolean;
   canUndo: boolean;
   onOptimise: () => void;
   onUndo: () => void;
@@ -55,7 +66,10 @@ export function OptimiseModal({
 
   const set = <K extends keyof OptimiseSettings>(key: K, value: OptimiseSettings[K]) =>
     onSettings({ ...settings, [key]: value });
-  const modeHint = MODES.find((m) => m.mode === settings.mode)?.hint;
+  const isTow = isTowFactionKey(factionKey);
+  const isAc = isArmyCorpsKey(factionKey);
+  const modes = allowedModes(factionKey);
+  const mode = normaliseMode(settings.mode, factionKey);
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
@@ -71,6 +85,7 @@ export function OptimiseModal({
             <h3 style={{ color: "var(--gold-bright)" }}>Optimise build</h3>
             <div style={{ fontSize: 12, opacity: 0.85 }}>
               The most stats for 10 000 funds under the game's rules, as the game's average pricing rule values them
+              {isAc ? " — brigade and division discounts included" : ""}
             </div>
           </div>
           <div style={{ flex: 1 }} />
@@ -100,19 +115,19 @@ export function OptimiseModal({
             <div className="tri">
               <span className="opt-label">Unit value</span>
               <span className="seg" role="group" aria-label="Unit value">
-                {MODES.map((m) => (
+                {modes.map((m) => (
                   <button
-                    key={m.mode}
-                    className={settings.mode === m.mode ? "on" : ""}
-                    aria-pressed={settings.mode === m.mode}
-                    onClick={() => set("mode", m.mode)}
+                    key={m}
+                    className={mode === m ? "on" : ""}
+                    aria-pressed={mode === m}
+                    onClick={() => set("mode", m)}
                   >
-                    {m.label}
+                    {MODES[m].label}
                   </button>
                 ))}
               </span>
             </div>
-            <span className="opt-hint">{modeHint}</span>
+            <span className="opt-hint">{MODES[mode].hint}</span>
           </div>
 
           <label className="opt-check">
@@ -168,14 +183,27 @@ export function OptimiseModal({
           )}
           {result && !error && (
             <div className="opt-result" role="status">
-              Applied: {result.cards} cards · {result.cost.toLocaleString()} gold · value {Math.round(result.value).toLocaleString()} ·
-              efficiency {result.efficiency.toFixed(2)}
+              Applied: {result.cards} cards · {result.cost.toLocaleString()} gold
+              {result.rebate > 0
+                ? ` (list ${result.listCost.toLocaleString()} − discounts ${result.rebate.toLocaleString()}, `
+                  + `${result.groupsCompleted} formation${result.groupsCompleted === 1 ? "" : "s"})`
+                : ""}
+              {" "}· value {Math.round(result.value).toLocaleString()} · efficiency {result.efficiency.toFixed(2)}
               {result.staffName ? ` · staff general ${result.staffName}` : " · no staff general"}
             </div>
           )}
+          {result && !error && fallback && (
+            <div className="tow-warning" role="status">
+              No recruit order could earn the discounts of the best build in time, so this build ignores formation
+              discounts. Try again with fewer filters or a different card cap.
+            </div>
+          )}
           <div className="opt-hint opt-foot">
-            Value is what the game's average pricing rule charges for a card's stats (Registre des Armées analysis),
-            not battle power; generals get extra value in big, low-morale builds.
+            {mode === "formationDiscount"
+              ? "Value is the cards' own list price: the build that gets the most out of the formation discounts, whatever the stats. "
+              : "Value is what the game's average pricing rule charges for a card's stats (Registre des Armées analysis), "
+                + "not battle power; generals get extra value in big, low-morale builds. "}
+            {isAc && "Cards are added in an order the game accepts: each completed brigade or division before the rest, so every discount is earned."}
           </div>
         </div>
       </div>

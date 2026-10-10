@@ -932,5 +932,958 @@
         ]
       ]
     }
+  },
+  "ntw3_ac_a11_x5_117": {
+    "quantity/max value": {
+      "objective": 20041.056965249598,
+      "cost": 9999,
+      "listCost": 12001,
+      "rebate": 2002,
+      "staff": "ntw3_gen_staff_117_6_0153",
+      "cuts": 0,
+      "groups": [
+        "division:5:0"
+      ],
+      "units": [
+        [
+          "ntw3_art_foot_117_007_0270",
+          1
+        ],
+        [
+          "ntw3_art_foot_117_008_0271",
+          1
+        ],
+        [
+          "ntw3_inf_grena_117_057_0520",
+          1
+        ],
+        [
+          "ntw3_inf_grena_117_999_0523_com_0274",
+          1
+        ],
+        [
+          "ntw3_inf_line_117_007_6542",
+          2
+        ],
+        [
+          "ntw3_inf_line_117_025_2690",
+          4
+        ],
+        [
+          "ntw3_inf_line_117_025_2690_com_1259",
+          1
+        ],
+        [
+          "ntw3_inf_line_117_057_2694",
+          4
+        ],
+        [
+          "ntw3_inf_line_117_061_2695",
+          4
+        ],
+        [
+          "ntw3_inf_line_117_061_2695_com_1266",
+          1
+        ],
+        [
+          "ntw3_inf_line_117_111_2685",
+          4
+        ],
+        [
+          "ntw3_inf_line_117_111_2685_com_1248",
+          1
+        ],
+        [
+          "ntw3_inf_skirm_117_999_4780",
+          3
+        ],
+        [
+          "ntw3_inf_skirm_117_999_6543",
+          1
+        ]
+      ],
+      "order": [
+        "ntw3_gen_staff_117_6_0153",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_111_2685_com_1248",
+        "ntw3_inf_line_117_007_6542",
+        "ntw3_inf_line_117_007_6542",
+        "ntw3_inf_skirm_117_999_6543",
+        "ntw3_inf_grena_117_057_0520",
+        "ntw3_inf_line_117_057_2694",
+        "ntw3_inf_line_117_057_2694",
+        "ntw3_inf_line_117_057_2694",
+        "ntw3_inf_line_117_057_2694",
+        "ntw3_inf_line_117_061_2695",
+        "ntw3_inf_line_117_061_2695",
+        "ntw3_inf_line_117_061_2695",
+        "ntw3_inf_line_117_061_2695",
+        "ntw3_inf_line_117_061_2695_com_1266",
+        "ntw3_inf_line_117_025_2690",
+        "ntw3_inf_line_117_025_2690",
+        "ntw3_inf_line_117_025_2690",
+        "ntw3_inf_line_117_025_2690",
+        "ntw3_inf_line_117_025_2690_com_1259",
+        "ntw3_art_foot_117_007_0270",
+        "ntw3_art_foot_117_008_0271",
+        "ntw3_inf_skirm_117_999_4780",
+        "ntw3_inf_skirm_117_999_4780",
+        "ntw3_inf_skirm_117_999_4780",
+        "ntw3_inf_grena_117_999_0523_com_0274"
+      ]
+    },
+    "sizeBands/max value": {
+      "objective": 20415.044965249595,
+      "cost": 9997,
+      "listCost": 11999,
+      "rebate": 2002,
+      "staff": "ntw3_gen_staff_117_6_0153",
+      "cuts": 0,
+      "groups": [
+        "division:5:0"
+      ],
+      "units": [
+        [
+          "ntw3_art_foot_117_007_0270",
+          1
+        ],
+        [
+          "ntw3_art_foot_117_008_0271",
+          1
+        ],
+        [
+          "ntw3_inf_grena_117_057_0520",
+          1
+        ],
+        [
+          "ntw3_inf_grena_117_999_0523_com_0274",
+          1
+        ],
+        [
+          "ntw3_inf_line_117_007_6542",
+          2
+        ],
+        [
+          "ntw3_inf_line_117_025_2690",
+          4
+        ],
+        [
+          "ntw3_inf_line_117_025_2690_com_1258",
+          1
+        ],
+        [
+          "ntw3_inf_line_117_057_2694",
+          4
+        ],
+        [
+          "ntw3_inf_line_117_061_2695",
+          4
+        ],
+        [
+          "ntw3_inf_line_117_061_2695_com_1267",
+          1
+        ],
+        [
+          "ntw3_inf_line_117_111_2685",
+          5
+        ],
+        [
+          "ntw3_inf_line_117_999_2697",
+          1
+        ],
+        [
+          "ntw3_inf_line_117_999_2697_com_2252",
+          1
+        ],
+        [
+          "ntw3_inf_skirm_117_999_4780",
+          1
+        ],
+        [
+          "ntw3_inf_skirm_117_999_6543",
+          1
+        ]
+      ],
+      "order": [
+        "ntw3_gen_staff_117_6_0153",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_007_6542",
+        "ntw3_inf_line_117_007_6542",
+        "ntw3_inf_skirm_117_999_6543",
+        "ntw3_inf_grena_117_057_0520",
+        "ntw3_inf_line_117_057_2694",
+        "ntw3_inf_line_117_057_2694",
+        "ntw3_inf_line_117_057_2694",
+        "ntw3_inf_line_117_057_2694",
+        "ntw3_inf_line_117_061_2695",
+        "ntw3_inf_line_117_061_2695",
+        "ntw3_inf_line_117_061_2695",
+        "ntw3_inf_line_117_061_2695",
+        "ntw3_inf_line_117_061_2695_com_1267",
+        "ntw3_inf_line_117_025_2690",
+        "ntw3_inf_line_117_025_2690",
+        "ntw3_inf_line_117_025_2690",
+        "ntw3_inf_line_117_025_2690",
+        "ntw3_inf_line_117_025_2690_com_1258",
+        "ntw3_art_foot_117_007_0270",
+        "ntw3_art_foot_117_008_0271",
+        "ntw3_inf_line_117_999_2697",
+        "ntw3_inf_skirm_117_999_4780",
+        "ntw3_inf_grena_117_999_0523_com_0274",
+        "ntw3_inf_line_117_999_2697_com_2252"
+      ]
+    },
+    "formationDiscount/max value": {
+      "objective": 12108.192671879653,
+      "cost": 10000,
+      "listCost": 12108,
+      "rebate": 2108,
+      "staff": "ntw3_gen_staff_117_6_0153",
+      "cuts": 0,
+      "groups": [
+        "brigade:2:1",
+        "division:5:0"
+      ],
+      "units": [
+        [
+          "ntw3_inf_grena_117_015_0521",
+          1
+        ],
+        [
+          "ntw3_inf_grena_117_057_0520",
+          1
+        ],
+        [
+          "ntw3_inf_light_117_015_1258",
+          3
+        ],
+        [
+          "ntw3_inf_light_117_015_1258_com_0551",
+          1
+        ],
+        [
+          "ntw3_inf_line_117_007_2719",
+          1
+        ],
+        [
+          "ntw3_inf_line_117_007_6542",
+          2
+        ],
+        [
+          "ntw3_inf_line_117_025_2690",
+          4
+        ],
+        [
+          "ntw3_inf_line_117_025_2690_com_1259",
+          1
+        ],
+        [
+          "ntw3_inf_line_117_057_2694",
+          4
+        ],
+        [
+          "ntw3_inf_line_117_061_2695",
+          4
+        ],
+        [
+          "ntw3_inf_line_117_061_2695_com_1267",
+          1
+        ],
+        [
+          "ntw3_inf_line_117_111_2685",
+          4
+        ],
+        [
+          "ntw3_inf_line_117_111_2685_com_1248",
+          1
+        ],
+        [
+          "ntw3_inf_skirm_117_999_6543",
+          1
+        ]
+      ],
+      "order": [
+        "ntw3_gen_staff_117_6_0153",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_111_2685",
+        "ntw3_inf_line_117_111_2685_com_1248",
+        "ntw3_inf_line_117_007_6542",
+        "ntw3_inf_line_117_007_6542",
+        "ntw3_inf_skirm_117_999_6543",
+        "ntw3_inf_grena_117_057_0520",
+        "ntw3_inf_line_117_057_2694",
+        "ntw3_inf_line_117_057_2694",
+        "ntw3_inf_line_117_057_2694",
+        "ntw3_inf_line_117_057_2694",
+        "ntw3_inf_line_117_061_2695",
+        "ntw3_inf_line_117_061_2695",
+        "ntw3_inf_line_117_061_2695",
+        "ntw3_inf_line_117_061_2695",
+        "ntw3_inf_line_117_061_2695_com_1267",
+        "ntw3_inf_line_117_025_2690",
+        "ntw3_inf_line_117_025_2690",
+        "ntw3_inf_line_117_025_2690",
+        "ntw3_inf_line_117_025_2690",
+        "ntw3_inf_line_117_025_2690_com_1259",
+        "ntw3_inf_grena_117_015_0521",
+        "ntw3_inf_light_117_015_1258",
+        "ntw3_inf_light_117_015_1258",
+        "ntw3_inf_light_117_015_1258",
+        "ntw3_inf_light_117_015_1258_com_0551",
+        "ntw3_inf_line_117_007_2719"
+      ]
+    }
+  },
+  "ntw3_ac_a03_x5_080": {
+    "quantity/max value": {
+      "objective": 18225.677276333052,
+      "cost": 9998,
+      "listCost": 11323,
+      "rebate": 1325,
+      "staff": "ntw3_gen_staff_080_9_0114",
+      "cuts": 0,
+      "groups": [
+        "division:1:0",
+        "division:2:0"
+      ],
+      "units": [
+        [
+          "ntw3_inf_grena_080_022_0463",
+          1
+        ],
+        [
+          "ntw3_inf_grena_080_101_0462",
+          1
+        ],
+        [
+          "ntw3_inf_grena_080_999_0117_com_3085",
+          1
+        ],
+        [
+          "ntw3_inf_light_080_006_1189",
+          3
+        ],
+        [
+          "ntw3_inf_light_080_024_1188",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_022_2431",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_028_2432",
+          2
+        ],
+        [
+          "ntw3_inf_line_080_028_2432_com_3073",
+          1
+        ],
+        [
+          "ntw3_inf_line_080_040_2433",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_043_2434",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_044_2435",
+          2
+        ],
+        [
+          "ntw3_inf_line_080_044_2435_com_3079",
+          1
+        ],
+        [
+          "ntw3_inf_line_080_096_2436",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_101_2430",
+          1
+        ],
+        [
+          "ntw3_inf_line_080_101_2430_com_3078",
+          1
+        ],
+        [
+          "ntw3_inf_line_080_102_5952",
+          1
+        ]
+      ],
+      "order": [
+        "ntw3_gen_staff_080_9_0114",
+        "ntw3_inf_grena_080_101_0462",
+        "ntw3_inf_line_080_101_2430_com_3078",
+        "ntw3_inf_line_080_101_2430",
+        "ntw3_inf_line_080_044_2435",
+        "ntw3_inf_line_080_044_2435",
+        "ntw3_inf_line_080_044_2435_com_3079",
+        "ntw3_inf_line_080_102_5952",
+        "ntw3_inf_light_080_024_1188",
+        "ntw3_inf_light_080_024_1188",
+        "ntw3_inf_light_080_024_1188",
+        "ntw3_inf_line_080_043_2434",
+        "ntw3_inf_line_080_043_2434",
+        "ntw3_inf_line_080_043_2434",
+        "ntw3_inf_line_080_096_2436",
+        "ntw3_inf_line_080_096_2436",
+        "ntw3_inf_line_080_096_2436",
+        "ntw3_inf_light_080_006_1189",
+        "ntw3_inf_light_080_006_1189",
+        "ntw3_inf_light_080_006_1189",
+        "ntw3_inf_line_080_040_2433",
+        "ntw3_inf_line_080_040_2433",
+        "ntw3_inf_line_080_040_2433",
+        "ntw3_inf_grena_080_022_0463",
+        "ntw3_inf_line_080_022_2431",
+        "ntw3_inf_line_080_022_2431",
+        "ntw3_inf_line_080_022_2431",
+        "ntw3_inf_line_080_028_2432_com_3073",
+        "ntw3_inf_line_080_028_2432",
+        "ntw3_inf_line_080_028_2432",
+        "ntw3_inf_grena_080_999_0117_com_3085"
+      ]
+    },
+    "sizeBands/max value": {
+      "objective": 18564.889776333053,
+      "cost": 9998,
+      "listCost": 11323,
+      "rebate": 1325,
+      "staff": "ntw3_gen_staff_080_9_0114",
+      "cuts": 0,
+      "groups": [
+        "division:1:0",
+        "division:2:0"
+      ],
+      "units": [
+        [
+          "ntw3_inf_grena_080_022_0463",
+          1
+        ],
+        [
+          "ntw3_inf_grena_080_101_0462",
+          1
+        ],
+        [
+          "ntw3_inf_grena_080_999_0117_com_3085",
+          1
+        ],
+        [
+          "ntw3_inf_light_080_006_1189",
+          3
+        ],
+        [
+          "ntw3_inf_light_080_024_1188",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_022_2431",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_028_2432",
+          2
+        ],
+        [
+          "ntw3_inf_line_080_028_2432_com_3073",
+          1
+        ],
+        [
+          "ntw3_inf_line_080_040_2433",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_043_2434",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_044_2435",
+          2
+        ],
+        [
+          "ntw3_inf_line_080_044_2435_com_3079",
+          1
+        ],
+        [
+          "ntw3_inf_line_080_096_2436",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_101_2430",
+          1
+        ],
+        [
+          "ntw3_inf_line_080_101_2430_com_3078",
+          1
+        ],
+        [
+          "ntw3_inf_line_080_102_5952",
+          1
+        ]
+      ],
+      "order": [
+        "ntw3_gen_staff_080_9_0114",
+        "ntw3_inf_grena_080_101_0462",
+        "ntw3_inf_line_080_101_2430_com_3078",
+        "ntw3_inf_line_080_101_2430",
+        "ntw3_inf_line_080_044_2435",
+        "ntw3_inf_line_080_044_2435",
+        "ntw3_inf_line_080_044_2435_com_3079",
+        "ntw3_inf_line_080_102_5952",
+        "ntw3_inf_light_080_024_1188",
+        "ntw3_inf_light_080_024_1188",
+        "ntw3_inf_light_080_024_1188",
+        "ntw3_inf_line_080_043_2434",
+        "ntw3_inf_line_080_043_2434",
+        "ntw3_inf_line_080_043_2434",
+        "ntw3_inf_line_080_096_2436",
+        "ntw3_inf_line_080_096_2436",
+        "ntw3_inf_line_080_096_2436",
+        "ntw3_inf_light_080_006_1189",
+        "ntw3_inf_light_080_006_1189",
+        "ntw3_inf_light_080_006_1189",
+        "ntw3_inf_line_080_040_2433",
+        "ntw3_inf_line_080_040_2433",
+        "ntw3_inf_line_080_040_2433",
+        "ntw3_inf_grena_080_022_0463",
+        "ntw3_inf_line_080_022_2431",
+        "ntw3_inf_line_080_022_2431",
+        "ntw3_inf_line_080_022_2431",
+        "ntw3_inf_line_080_028_2432_com_3073",
+        "ntw3_inf_line_080_028_2432",
+        "ntw3_inf_line_080_028_2432",
+        "ntw3_inf_grena_080_999_0117_com_3085"
+      ]
+    },
+    "formationDiscount/max value": {
+      "objective": 11325.182830061478,
+      "cost": 10000,
+      "listCost": 11325,
+      "rebate": 1325,
+      "staff": "ntw3_gen_staff_080_7_0554",
+      "cuts": 0,
+      "groups": [
+        "division:1:0",
+        "division:2:0"
+      ],
+      "units": [
+        [
+          "ntw3_inf_grena_080_022_0463",
+          1
+        ],
+        [
+          "ntw3_inf_grena_080_101_0462_com_3072",
+          1
+        ],
+        [
+          "ntw3_inf_grena_080_999_0117",
+          1
+        ],
+        [
+          "ntw3_inf_light_080_006_1189",
+          3
+        ],
+        [
+          "ntw3_inf_light_080_024_1188",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_022_2431",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_028_2432",
+          2
+        ],
+        [
+          "ntw3_inf_line_080_028_2432_com_3073",
+          1
+        ],
+        [
+          "ntw3_inf_line_080_040_2433",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_043_2434",
+          3
+        ],
+        [
+          "ntw3_inf_line_080_044_2435",
+          2
+        ],
+        [
+          "ntw3_inf_line_080_044_2435_com_3079",
+          1
+        ],
+        [
+          "ntw3_inf_line_080_096_2436",
+          2
+        ],
+        [
+          "ntw3_inf_line_080_096_2436_com_3086",
+          1
+        ],
+        [
+          "ntw3_inf_line_080_101_2430",
+          2
+        ],
+        [
+          "ntw3_inf_line_080_102_5952",
+          1
+        ]
+      ],
+      "order": [
+        "ntw3_gen_staff_080_7_0554",
+        "ntw3_inf_grena_080_101_0462_com_3072",
+        "ntw3_inf_line_080_101_2430",
+        "ntw3_inf_line_080_101_2430",
+        "ntw3_inf_line_080_044_2435",
+        "ntw3_inf_line_080_044_2435",
+        "ntw3_inf_line_080_044_2435_com_3079",
+        "ntw3_inf_line_080_102_5952",
+        "ntw3_inf_light_080_024_1188",
+        "ntw3_inf_light_080_024_1188",
+        "ntw3_inf_light_080_024_1188",
+        "ntw3_inf_line_080_043_2434",
+        "ntw3_inf_line_080_043_2434",
+        "ntw3_inf_line_080_043_2434",
+        "ntw3_inf_line_080_096_2436_com_3086",
+        "ntw3_inf_line_080_096_2436",
+        "ntw3_inf_line_080_096_2436",
+        "ntw3_inf_light_080_006_1189",
+        "ntw3_inf_light_080_006_1189",
+        "ntw3_inf_light_080_006_1189",
+        "ntw3_inf_line_080_040_2433",
+        "ntw3_inf_line_080_040_2433",
+        "ntw3_inf_line_080_040_2433",
+        "ntw3_inf_grena_080_022_0463",
+        "ntw3_inf_line_080_022_2431",
+        "ntw3_inf_line_080_022_2431",
+        "ntw3_inf_line_080_022_2431",
+        "ntw3_inf_line_080_028_2432_com_3073",
+        "ntw3_inf_line_080_028_2432",
+        "ntw3_inf_line_080_028_2432",
+        "ntw3_inf_grena_080_999_0117"
+      ]
+    }
+  },
+  "ntw3_ac_a08_x5_242": {
+    "quantity/max value": {
+      "objective": 18301.44253984203,
+      "cost": 9995,
+      "listCost": 12578,
+      "rebate": 2583,
+      "staff": "ntw3_gen_staff_242_2_0537",
+      "cuts": 0,
+      "groups": [
+        "brigade:3:5",
+        "division:1:0"
+      ],
+      "units": [
+        [
+          "ntw3_cav_stand_242_001_2099_com_1169",
+          1
+        ],
+        [
+          "ntw3_cav_stand_242_029_2091",
+          1
+        ],
+        [
+          "ntw3_inf_grena_242_084_5455",
+          1
+        ],
+        [
+          "ntw3_inf_grena_242_999_5536",
+          1
+        ],
+        [
+          "ntw3_inf_grena_242_999_5537",
+          1
+        ],
+        [
+          "ntw3_inf_line_242_009_5437",
+          3
+        ],
+        [
+          "ntw3_inf_line_242_009_5437_com_2752",
+          1
+        ],
+        [
+          "ntw3_inf_line_242_013_5436",
+          4
+        ],
+        [
+          "ntw3_inf_line_242_029_5420",
+          3
+        ],
+        [
+          "ntw3_inf_line_242_029_5420_com_2751",
+          1
+        ],
+        [
+          "ntw3_inf_line_242_084_5421",
+          4
+        ],
+        [
+          "ntw3_inf_line_242_092_5422",
+          3
+        ],
+        [
+          "ntw3_inf_line_242_092_5422_com_2754",
+          1
+        ],
+        [
+          "ntw3_inf_line_242_112_5449",
+          4
+        ]
+      ],
+      "order": [
+        "ntw3_gen_staff_242_2_0537",
+        "ntw3_inf_line_242_084_5421",
+        "ntw3_inf_line_242_084_5421",
+        "ntw3_inf_line_242_084_5421",
+        "ntw3_inf_line_242_084_5421",
+        "ntw3_inf_grena_242_084_5455",
+        "ntw3_inf_line_242_009_5437",
+        "ntw3_inf_line_242_009_5437",
+        "ntw3_inf_line_242_009_5437",
+        "ntw3_inf_line_242_009_5437_com_2752",
+        "ntw3_inf_line_242_013_5436",
+        "ntw3_inf_line_242_013_5436",
+        "ntw3_inf_line_242_013_5436",
+        "ntw3_inf_line_242_013_5436",
+        "ntw3_inf_line_242_029_5420",
+        "ntw3_inf_line_242_029_5420",
+        "ntw3_inf_line_242_029_5420",
+        "ntw3_inf_line_242_029_5420_com_2751",
+        "ntw3_inf_line_242_092_5422",
+        "ntw3_inf_line_242_092_5422",
+        "ntw3_inf_line_242_092_5422",
+        "ntw3_inf_line_242_092_5422_com_2754",
+        "ntw3_inf_line_242_112_5449",
+        "ntw3_inf_line_242_112_5449",
+        "ntw3_inf_line_242_112_5449",
+        "ntw3_inf_line_242_112_5449",
+        "ntw3_cav_stand_242_029_2091",
+        "ntw3_cav_stand_242_001_2099_com_1169",
+        "ntw3_inf_grena_242_999_5536",
+        "ntw3_inf_grena_242_999_5537"
+      ]
+    },
+    "sizeBands/max value": {
+      "objective": 18646.668539842034,
+      "cost": 9996,
+      "listCost": 12579,
+      "rebate": 2583,
+      "staff": "ntw3_gen_staff_242_2_0537",
+      "cuts": 0,
+      "groups": [
+        "division:1:0"
+      ],
+      "units": [
+        [
+          "ntw3_cav_stand_242_001_2099",
+          1
+        ],
+        [
+          "ntw3_cav_stand_242_029_2091",
+          1
+        ],
+        [
+          "ntw3_inf_grena_242_084_5455",
+          1
+        ],
+        [
+          "ntw3_inf_light_242_002_5443_com_2774",
+          1
+        ],
+        [
+          "ntw3_inf_line_242_009_5437",
+          4
+        ],
+        [
+          "ntw3_inf_line_242_013_5436",
+          4
+        ],
+        [
+          "ntw3_inf_line_242_029_5420",
+          3
+        ],
+        [
+          "ntw3_inf_line_242_029_5420_com_2751",
+          1
+        ],
+        [
+          "ntw3_inf_line_242_084_5421",
+          4
+        ],
+        [
+          "ntw3_inf_line_242_092_5422",
+          3
+        ],
+        [
+          "ntw3_inf_line_242_092_5422_com_2754",
+          1
+        ],
+        [
+          "ntw3_inf_line_242_112_5449",
+          3
+        ],
+        [
+          "ntw3_inf_line_242_112_5449_com_2753",
+          1
+        ],
+        [
+          "ntw3_inf_skirm_242_999_5456",
+          1
+        ]
+      ],
+      "order": [
+        "ntw3_gen_staff_242_2_0537",
+        "ntw3_inf_line_242_084_5421",
+        "ntw3_inf_line_242_084_5421",
+        "ntw3_inf_line_242_084_5421",
+        "ntw3_inf_line_242_084_5421",
+        "ntw3_inf_grena_242_084_5455",
+        "ntw3_inf_line_242_009_5437",
+        "ntw3_inf_line_242_009_5437",
+        "ntw3_inf_line_242_009_5437",
+        "ntw3_inf_line_242_009_5437",
+        "ntw3_inf_line_242_013_5436",
+        "ntw3_inf_line_242_013_5436",
+        "ntw3_inf_line_242_013_5436",
+        "ntw3_inf_line_242_013_5436",
+        "ntw3_inf_line_242_029_5420",
+        "ntw3_inf_line_242_029_5420",
+        "ntw3_inf_line_242_029_5420",
+        "ntw3_inf_line_242_029_5420_com_2751",
+        "ntw3_inf_line_242_092_5422",
+        "ntw3_inf_line_242_092_5422",
+        "ntw3_inf_line_242_092_5422",
+        "ntw3_inf_line_242_092_5422_com_2754",
+        "ntw3_inf_line_242_112_5449",
+        "ntw3_inf_line_242_112_5449",
+        "ntw3_inf_line_242_112_5449",
+        "ntw3_inf_line_242_112_5449_com_2753",
+        "ntw3_cav_stand_242_029_2091",
+        "ntw3_cav_stand_242_001_2099",
+        "ntw3_inf_skirm_242_999_5456",
+        "ntw3_inf_light_242_002_5443_com_2774"
+      ]
+    },
+    "formationDiscount/max value": {
+      "objective": 12614.184195860398,
+      "cost": 10000,
+      "listCost": 12614,
+      "rebate": 2614,
+      "staff": "ntw3_gen_staff_242_2_0537",
+      "cuts": 0,
+      "groups": [
+        "brigade:4:1",
+        "division:1:0"
+      ],
+      "units": [
+        [
+          "ntw3_inf_grena_242_084_5455",
+          1
+        ],
+        [
+          "ntw3_inf_grena_242_999_5447",
+          2
+        ],
+        [
+          "ntw3_inf_grena_242_999_5448",
+          1
+        ],
+        [
+          "ntw3_inf_light_242_018_5452",
+          1
+        ],
+        [
+          "ntw3_inf_line_242_009_5437",
+          3
+        ],
+        [
+          "ntw3_inf_line_242_009_5437_com_2752",
+          1
+        ],
+        [
+          "ntw3_inf_line_242_013_5436",
+          4
+        ],
+        [
+          "ntw3_inf_line_242_023_5426_com_2759",
+          1
+        ],
+        [
+          "ntw3_inf_line_242_029_5420",
+          3
+        ],
+        [
+          "ntw3_inf_line_242_029_5420_com_2751",
+          1
+        ],
+        [
+          "ntw3_inf_line_242_084_5421",
+          4
+        ],
+        [
+          "ntw3_inf_line_242_092_5422",
+          3
+        ],
+        [
+          "ntw3_inf_line_242_092_5422_com_2754",
+          1
+        ],
+        [
+          "ntw3_inf_line_242_112_5449",
+          4
+        ]
+      ],
+      "order": [
+        "ntw3_gen_staff_242_2_0537",
+        "ntw3_inf_line_242_084_5421",
+        "ntw3_inf_line_242_084_5421",
+        "ntw3_inf_line_242_084_5421",
+        "ntw3_inf_line_242_084_5421",
+        "ntw3_inf_grena_242_084_5455",
+        "ntw3_inf_line_242_009_5437",
+        "ntw3_inf_line_242_009_5437",
+        "ntw3_inf_line_242_009_5437",
+        "ntw3_inf_line_242_009_5437_com_2752",
+        "ntw3_inf_line_242_013_5436",
+        "ntw3_inf_line_242_013_5436",
+        "ntw3_inf_line_242_013_5436",
+        "ntw3_inf_line_242_013_5436",
+        "ntw3_inf_line_242_029_5420",
+        "ntw3_inf_line_242_029_5420",
+        "ntw3_inf_line_242_029_5420",
+        "ntw3_inf_line_242_029_5420_com_2751",
+        "ntw3_inf_line_242_092_5422",
+        "ntw3_inf_line_242_092_5422",
+        "ntw3_inf_line_242_092_5422",
+        "ntw3_inf_line_242_092_5422_com_2754",
+        "ntw3_inf_line_242_112_5449",
+        "ntw3_inf_line_242_112_5449",
+        "ntw3_inf_line_242_112_5449",
+        "ntw3_inf_line_242_112_5449",
+        "ntw3_inf_grena_242_999_5448",
+        "ntw3_inf_grena_242_999_5447",
+        "ntw3_inf_grena_242_999_5447",
+        "ntw3_inf_light_242_018_5452",
+        "ntw3_inf_line_242_023_5426_com_2759"
+      ]
+    }
   }
 }

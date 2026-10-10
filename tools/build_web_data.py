@@ -53,7 +53,11 @@ except ImportError:  # pragma: no cover - environment guard
 # can refuse or migrate stale generated data.
 # 2: optional optimiser data — `optimiserValue` per card and `optimiser` params per
 #    faction file (ToW / Custom armies only; see attach_optimiser_values).
-SCHEMA_VERSION = 2
+# 3: optimiser data for Army Corps too: `optimiserValue` holds only its pool's modes
+#    (ToW / Custom: quality + quantity; AC: quantity + sizeBands), `optimiser` is the
+#    pool's params block, and corps-index entries carry `bestBuildValue` (each army's
+#    best-build value per mode, for the planner's team suggestion).
+SCHEMA_VERSION = 3
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 GENERATED_DATA = PROJECT_ROOT / "data" / "generated"
@@ -65,7 +69,9 @@ OUT_ASSETS = WEB_PUBLIC / "assets"
 PICK_RATES_SRC = PROJECT_ROOT / "data" / "pick_rates"
 OPTIMISER_VALUES_CSV = GENERATED_DATA / "ntw3_optimiser_values.csv"
 OPTIMISER_PARAMS_JSON = GENERATED_DATA / "ntw3_optimiser_params.json"
-OPTIMISER_MODES = ("quality", "quantity")
+OPTIMISER_ARMY_VALUES_CSV = GENERATED_DATA / "ntw3_optimiser_army_values.csv"
+# App mode → CSV column. Each pool uses a subset (analysis/export_optimiser_values.py).
+OPTIMISER_MODES = {"quality": "value_quality", "quantity": "value_quantity", "sizeBands": "value_size_bands"}
 
 COMMANDER_SUFFIX = "_com_"
 
@@ -362,35 +368,54 @@ def normalize_unit(row: dict, assets: AssetCopier, errors: list[str]) -> dict | 
     }
 
 
+def _mode_values(row: dict[str, str]) -> dict[str, float]:
+    """{mode: value} for the non-blank mode columns of one CSV row."""
+    return {mode: float(row[col]) for mode, col in OPTIMISER_MODES.items() if (row.get(col) or "").strip()}
+
+
 def load_optimiser_inputs(values_csv: Path, params_json: Path):
     """The in-app optimiser's inputs, or (None, None) when either file is absent.
 
-    Returns ({(faction_key, unit_key): {"quality": v, "quantity": v}}, params dict). Both
-    files come from analysis/export_optimiser_values.py: the cost-effective-builds
-    valuation, which the app cannot compute itself (it needs the pricing models)."""
+    Returns ({(faction_key, unit_key): {mode: v}}, params dict). A card carries only its
+    pool's modes (blank cells are absent). The params file holds one block per pool,
+    {"pools": {"tow": ..., "ac": ...}}. Both files come from
+    analysis/export_optimiser_values.py: the cost-effective-builds valuations, which the app
+    cannot compute itself (they need the pricing models)."""
     if not (values_csv.is_file() and params_json.is_file()):
         return None, None
     values: dict[tuple[str, str], dict[str, float]] = {}
     with values_csv.open(newline="", encoding="utf-8-sig") as handle:
         for row in csv.DictReader(handle):
-            values[(row["faction_key"], row["unit_key"])] = {
-                mode: float(row[f"value_{mode}"]) for mode in OPTIMISER_MODES}
+            values[(row["faction_key"], row["unit_key"])] = _mode_values(row)
     return values, json.loads(params_json.read_text(encoding="utf-8"))
+
+
+def optimiser_pool(faction_key: str) -> str:
+    """The params pool of a faction: Army Corps ("_ac_" in the key) or ToW / Custom."""
+    return "ac" if "_ac_" in faction_key else "tow"
+
+
+def load_army_values(path: Path) -> dict[str, dict[str, float]]:
+    """{faction_key: {mode: best-build value}} for the planner's team suggestion, or {}."""
+    if not path.is_file():
+        return {}
+    with path.open(newline="", encoding="utf-8-sig") as handle:
+        return {row["faction_key"]: _mode_values(row) for row in csv.DictReader(handle)}
 
 
 def attach_optimiser_values(by_faction: dict[str, list[dict]], values, errors: list[str]) -> set[str]:
     """Put each valued card's `optimiserValue` on it; return the factions that got any.
 
     Cards without a value (staff generals — valued in the app from their stars —, the
-    fixed artillery the models skip, every Army Corps card) get no field. A value whose
-    card is not in any roster is a validation error: the two files are out of step."""
+    fixed artillery the models skip, the work-in-progress 1813 corps) get no field. A value
+    whose card is not in any roster is a validation error: the two files are out of step."""
     valued: set[str] = set()
     seen: set[tuple[str, str]] = set()
     for faction_key, cards in by_faction.items():
         for c in cards:
             v = values.get((faction_key, c["unitKey"]))
             if v is not None:
-                c["optimiserValue"] = {mode: round(v[mode], 6) for mode in OPTIMISER_MODES}
+                c["optimiserValue"] = {mode: round(x, 6) for mode, x in v.items()}
                 seen.add((faction_key, c["unitKey"]))
                 valued.add(faction_key)
     stray = sorted(set(values) - seen)
@@ -456,6 +481,19 @@ def main() -> int:
     optimiser_values, optimiser_params = load_optimiser_inputs(OPTIMISER_VALUES_CSV, OPTIMISER_PARAMS_JSON)
     optimiser_factions = (attach_optimiser_values(by_faction, optimiser_values, errors)
                           if optimiser_values is not None else set())
+    optimiser_blocks: dict[str, dict] = {}
+    if optimiser_params is not None:
+        pools = optimiser_params.get("pools", {})
+        for faction_key in sorted(optimiser_factions):
+            block = pools.get(optimiser_pool(faction_key))
+            modes = set((block or {}).get("lambda", {}))
+            off = {m for c in by_faction[faction_key] for m in c.get("optimiserValue", {})} ^ modes
+            if block is None or off:
+                errors.append(f"optimiser params for {faction_key} ({optimiser_pool(faction_key)}) do not match "
+                              f"its value modes: {sorted(off) or 'no params block'}")
+                continue
+            optimiser_blocks[faction_key] = block
+    army_values = load_army_values(OPTIMISER_ARMY_VALUES_CSV)
 
     # 3. Write one roster file per faction.
     for faction_key, cards in by_faction.items():
@@ -493,8 +531,8 @@ def main() -> int:
             "armyCorpsName": cards[0].get("armyCorpsName", ""),
             "cards": cards,
         }
-        if faction_key in optimiser_factions:
-            roster["optimiser"] = optimiser_params
+        if faction_key in optimiser_blocks:
+            roster["optimiser"] = optimiser_blocks[faction_key]
         write_data_file(OUT_DATA / "factions" / f"{faction_key}.json", roster, cached_data)
 
     # 3. Build the theatre-grouped corps index from the catalog. Theatres of War
@@ -523,6 +561,8 @@ def main() -> int:
                     "isArmyCorps": "_ac_" in fk,
                     "cardCount": len(by_faction.get(fk, [])),
                 })
+                if fk in army_values:
+                    entries[-1]["bestBuildValue"] = {m: round(v, 3) for m, v in army_values[fk].items()}
                 listed += 1
             if entries:
                 entries.sort(key=lambda e: e["order"])
@@ -536,6 +576,7 @@ def main() -> int:
         corps["factionKey"]
         for side in index_sides for theatre in side["theatres"] for corps in theatre["corps"]
     }
+    errors += [f"army value for a corps not in the index: {fk}" for fk in sorted(set(army_values) - indexed)]
     unrostered = sorted(indexed - set(by_faction))
     unindexed = sorted(set(by_faction) - indexed)
 
@@ -596,7 +637,9 @@ def main() -> int:
         f"missing_assets={len(assets.missing)}",
         f"validation_errors={len(errors)}",
         f"pick_rate_seasons={pick_rates_copied}",
-        f"optimiser_factions={len(optimiser_factions)}",
+        f"optimiser_factions={len(optimiser_blocks)}",
+        f"optimiser_factions_ac={sum(1 for f in optimiser_blocks if optimiser_pool(f) == 'ac')}",
+        f"optimiser_army_values={len(army_values)}",
         f"optimiser_cards={sum(1 for cs in by_faction.values() for c in cs if 'optimiserValue' in c)}",
         f"stale_files_pruned={pruned}",
         f"indexed_corps_without_roster={len(unrostered)}",

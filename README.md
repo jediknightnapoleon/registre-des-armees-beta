@@ -47,6 +47,8 @@
 > - Army Corps prices: see [`analysis/AC_PRICING_REPORT.md`](analysis/AC_PRICING_REPORT.md). The same
 >   model form fits AC; AC adds formation rebates ((n − 1)% off a completed group) and a ~10%
 >   hand-set premium that ToW copies remove.
+> - Teams: see [`analysis/TEAM_BUILDS_REPORT.md`](analysis/TEAM_BUILDS_REPORT.md). It finds every AC corps'
+>   best build with formation rebates, and the best four corps at each team points total.
 >
 > **Commander variants** (a named general leading a unit) are priced from their
 > regular unit's price P. A card starts at about 0.88·P − 110 gold, then adds the
@@ -132,14 +134,18 @@ One click finds the **cheapest** way to add combat generals to the units you've
 already picked — taking the discounts that lower your total and skipping the ones
 that would make it dearer. A second click resets them.
 
-### Optimise a build (Theatres of War and Custom Armies)
+### Optimise a build
 The **Optimise** button builds the army that gets the most stats for 10 000 funds,
 as the game's own average pricing rule values them. All of the game's limits
-apply. You choose:
+apply. For Army Corps it also completes brigades and divisions where the
+formation discounts pay off, adding the cards in an order the game accepts, so
+an Army Corps can field well over 10 000 of list value. You choose:
 
 - **a cap on the number of cards**, since fewer units are easier to control;
-- **Quality or Quantity**: Quantity keeps the discount on very small and very
-  large units, Quality doesn't;
+- **how units are valued**: Quantity keeps the discount on very small and very
+  large units; Quality (Theatres of War and Custom Armies) doesn't; Size bands
+  (Army Corps) uses the size-band pricing model; and **Formation discount only**
+  (Army Corps) ignores stats and fields the most list value the discounts allow;
 - **whether to rebuild from scratch or fill what's left** of your current build;
 - **whether to stick to the units your filters show**;
 - **whether a build without a staff general is allowed**;
@@ -147,6 +153,15 @@ apply. You choose:
 
 The result replaces your build straight away, and **Undo optimise** brings the old
 one back.
+
+### Suggest a team
+In the Ordre de Bataille planner, **Suggest team** finds the four armies with the
+most value at the team points total you agree on (the sum of the corps numbers):
+Army Corps of one theatre, or Theatres of War and Custom Armies of one side. Rank
+by total value or by the strongest weakest army, keep the armies you already
+picked and fill the rest, and build the whole team with the optimiser in one
+click (**Undo suggestion** brings the old plan back). A plan that mixes Army Corps
+with Theatres of War, two theatres or two sides gets a warning instead.
 
 ### Know when a general is available — the "Generate times" feature
 In NTW3, the generals a corps offers **rotate roughly every three hours**, so the

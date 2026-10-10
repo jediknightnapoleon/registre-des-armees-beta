@@ -53,6 +53,7 @@ import { RotationModal } from "./RotationModal";
 import { TowRollModal } from "./TowRollModal";
 import { TowGenerateModal } from "./TowGenerateModal";
 import { OptimiseModal } from "./OptimiseModal";
+import { isWorkInProgressCorps } from "../state/acOptimiser";
 import {
   DEFAULT_OPTIMISE_SETTINGS,
   type OptimiseSettings,
@@ -143,7 +144,7 @@ export function Builder({
   const pickRates = usePickRates(roster.factionKey, !filters.showCombatGenerals);
   const [towRollOpen, setTowRollOpen] = useState(false);
   const [towGenerateOpen, setTowGenerateOpen] = useState(false);
-  // Build optimiser (ToW / Custom): its popup, settings (kept for the session), the
+  // Build optimiser (every army with optimiser data): its popup, settings (kept for the session), the
   // last result or error, and the build it replaced — "Undo optimise" restores that
   // until the build is edited (`optimisedBuild` is the build the optimiser applied).
   const [optimiseOpen, setOptimiseOpen] = useState(false);
@@ -151,6 +152,8 @@ export function Builder({
   const [optimising, setOptimising] = useState(false);
   const [optimiseError, setOptimiseError] = useState<string | null>(null);
   const [optimiseResult, setOptimiseResult] = useState<OptimiseSummary | null>(null);
+  // The Army Corps safety net fell back to a build without formation rebates (state/optimiser.ts).
+  const [optimiseFallback, setOptimiseFallback] = useState(false);
   const [undoBuild, setUndoBuild] = useState<BuildState | null>(null);
   const optimisedBuild = useRef<BuildState | null>(null);
   // Source-corps ids the player has enabled for a Theatres-of-War roster (≤4).
@@ -819,9 +822,12 @@ export function Builder({
       setUndoBuild(before);
       setBuild(outcome.build);
       setOptimiseResult(outcome.summary);
+      setOptimiseFallback(outcome.fallback === "noRebates");
       const s = outcome.summary;
-      setMessage(`Optimised: ${s.cards} cards, ${s.cost.toLocaleString()} gold, value ${Math.round(s.value).toLocaleString()} `
-        + `(efficiency ${s.efficiency.toFixed(2)})${outcome.status === "Optimal" ? "" : " — best found within the time limit"}.`);
+      const discounts = s.rebate > 0 ? ` (list ${s.listCost.toLocaleString()} − discounts ${s.rebate.toLocaleString()})` : "";
+      setMessage(`Optimised: ${s.cards} cards, ${s.cost.toLocaleString()} gold${discounts}, value ${Math.round(s.value).toLocaleString()} `
+        + `(efficiency ${s.efficiency.toFixed(2)})${outcome.status === "Optimal" ? "" : " — best found within the time limit"}`
+        + `${outcome.fallback === "noRebates" ? " — built without formation discounts" : ""}.`);
     } catch (e) {
       const text = e instanceof Error ? e.message : String(e);
       setOptimiseError(text);
@@ -1037,20 +1043,20 @@ export function Builder({
         >
           Generate times
         </button>
-        {(isTow || isCustom) && (
-          <button
-            className="btn small"
-            onClick={() => setOptimiseOpen(true)}
-            disabled={!roster.optimiser}
-            title={
-              roster.optimiser
-                ? "Build the most valuable legal army for 10 000 funds (settings: card cap, quality/quantity, filters, …)"
+        <button
+          className="btn small"
+          onClick={() => setOptimiseOpen(true)}
+          disabled={!roster.optimiser}
+          title={
+            roster.optimiser
+              ? "Build the most valuable legal army for 10 000 funds (settings: card cap, value mode, filters, …)"
+              : isWorkInProgressCorps(roster.factionKey)
+                ? "German Campaign (1813) is still a work in progress in the mod: no optimiser data for its corps"
                 : "No optimiser data for this army in the loaded dataset — refresh the app data"
-            }
-          >
-            Optimise
-          </button>
-        )}
+          }
+        >
+          Optimise
+        </button>
         {isTow && (
           <button
             className="btn small"
@@ -1318,7 +1324,7 @@ export function Builder({
       )}
       {optimiseOpen && (
         <OptimiseModal
-          isTow={isTow}
+          factionKey={roster.factionKey}
           settings={optimiseSettings}
           onSettings={setOptimiseSettings}
           filteredCount={filteredCards.length}
@@ -1326,6 +1332,7 @@ export function Builder({
           busy={optimising}
           error={optimiseError}
           result={optimiseResult}
+          fallback={optimiseFallback}
           canUndo={!!undoBuild}
           onOptimise={() => void runOptimise()}
           onUndo={undoOptimise}

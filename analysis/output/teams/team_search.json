@@ -1,0 +1,915 @@
+{
+ "team_size": 4,
+ "counts": {
+  "ac": 4869,
+  "tow": 44815,
+  "tow_repeats": 67310
+ },
+ "armies": {
+  "ac": 223,
+  "tow": 55
+ },
+ "ac_sb": {
+  "curve_b": 0.951,
+  "curve_se": 0.021,
+  "lopsided_6_6_12_12_vs_9x4_pct": -0.26,
+  "balance": {
+   "cells": 241,
+   "teams": 4709,
+   "slope_pct_per_sd_N": 0.484,
+   "mean_spearman": 0.085,
+   "best_team_at_or_below_median_spread": 0.577
+  },
+  "bargains": {
+   "best": [
+    {
+     "army": "6. Davidov / Narod",
+     "pool": "b11",
+     "N": 6,
+     "vs_curve_pct": 73.0
+    },
+    {
+     "army": "8. Kellermann / III.RC",
+     "pool": "a12",
+     "N": 8,
+     "vs_curve_pct": 35.4
+    },
+    {
+     "army": "3. Kindelán / Florida",
+     "pool": "b10",
+     "N": 3,
+     "vs_curve_pct": 32.8
+    },
+    {
+     "army": "6. Chasteler / VIII.K",
+     "pool": "b08",
+     "N": 6,
+     "vs_curve_pct": 29.9
+    },
+    {
+     "army": "9. Uxbridge / CC",
+     "pool": "b12",
+     "N": 9,
+     "vs_curve_pct": 20.5
+    },
+    {
+     "army": "5. Ibrahim / Ghugha",
+     "pool": "b04",
+     "N": 5,
+     "vs_curve_pct": 18.8
+    },
+    {
+     "army": "10. Murat / RC",
+     "pool": "a11",
+     "N": 10,
+     "vs_curve_pct": 17.8
+    },
+    {
+     "army": "7. Pajol / I.RC",
+     "pool": "a12",
+     "N": 7,
+     "vs_curve_pct": 17.6
+    },
+    {
+     "army": "3. Chabot / Corfou",
+     "pool": "a04",
+     "N": 3,
+     "vs_curve_pct": 17.0
+    },
+    {
+     "army": "5. Mendizábal / 7°",
+     "pool": "b13",
+     "N": 5,
+     "vs_curve_pct": 16.2
+    }
+   ],
+   "worst": [
+    {
+     "army": "9. Ross / EF.EC",
+     "pool": "b10",
+     "N": 9,
+     "vs_curve_pct": -19.1
+    },
+    {
+     "army": "6. Drummond / EF.A",
+     "pool": "b10",
+     "N": 6,
+     "vs_curve_pct": -15.8
+    },
+    {
+     "army": "5. Mouton / VI.C",
+     "pool": "a12",
+     "N": 5,
+     "vs_curve_pct": -13.5
+    },
+    {
+     "army": "6. Menou / Damiette",
+     "pool": "a04",
+     "N": 6,
+     "vs_curve_pct": -11.5
+    },
+    {
+     "army": "8. Abū Marak / Yeniçeri",
+     "pool": "b04",
+     "N": 8,
+     "vs_curve_pct": -11.2
+    },
+    {
+     "army": "7. Santocildes / 6°",
+     "pool": "b13",
+     "N": 7,
+     "vs_curve_pct": -11.1
+    },
+    {
+     "army": "6. Vandamme / VIII.C",
+     "pool": "a08",
+     "N": 6,
+     "vs_curve_pct": -11.1
+    },
+    {
+     "army": "9. Abercromby / EF.E",
+     "pool": "b04",
+     "N": 9,
+     "vs_curve_pct": -10.5
+    },
+    {
+     "army": "8. Ney / VI.C",
+     "pool": "a06",
+     "N": 8,
+     "vs_curve_pct": -10.0
+    },
+    {
+     "army": "11. Wittgenstein / I.K",
+     "pool": "b11",
+     "N": 11,
+     "vs_curve_pct": -9.5
+    }
+   ]
+  }
+ },
+ "ac_full": {
+  "curve_b": 0.983,
+  "curve_se": 0.018,
+  "lopsided_6_6_12_12_vs_9x4_pct": -0.09,
+  "balance": {
+   "cells": 241,
+   "teams": 4709,
+   "slope_pct_per_sd_N": 0.364,
+   "mean_spearman": 0.09,
+   "best_team_at_or_below_median_spread": 0.544
+  },
+  "bargains": {
+   "best": [
+    {
+     "army": "6. Chasteler / VIII.K",
+     "pool": "b08",
+     "N": 6,
+     "vs_curve_pct": 42.3
+    },
+    {
+     "army": "6. Davidov / Narod",
+     "pool": "b11",
+     "N": 6,
+     "vs_curve_pct": 35.7
+    },
+    {
+     "army": "8. Kellermann / III.RC",
+     "pool": "a12",
+     "N": 8,
+     "vs_curve_pct": 34.4
+    },
+    {
+     "army": "9. Uxbridge / CC",
+     "pool": "b12",
+     "N": 9,
+     "vs_curve_pct": 21.9
+    },
+    {
+     "army": "7. Pajol / I.RC",
+     "pool": "a12",
+     "N": 7,
+     "vs_curve_pct": 20.0
+    },
+    {
+     "army": "3. Chabot / Corfou",
+     "pool": "a04",
+     "N": 3,
+     "vs_curve_pct": 19.9
+    },
+    {
+     "army": "6. Brock / Confederacy",
+     "pool": "b10",
+     "N": 6,
+     "vs_curve_pct": 17.2
+    },
+    {
+     "army": "10. Murat / RC",
+     "pool": "a11",
+     "N": 10,
+     "vs_curve_pct": 16.8
+    },
+    {
+     "army": "10. Masséna / Portugal",
+     "pool": "a13",
+     "N": 10,
+     "vs_curve_pct": 14.4
+    },
+    {
+     "army": "5. Mendizábal / 7°",
+     "pool": "b13",
+     "N": 5,
+     "vs_curve_pct": 12.8
+    }
+   ],
+   "worst": [
+    {
+     "army": "9. Ross / EF.EC",
+     "pool": "b10",
+     "N": 9,
+     "vs_curve_pct": -12.8
+    },
+    {
+     "army": "8. d'Erlon / I.C",
+     "pool": "a12",
+     "N": 8,
+     "vs_curve_pct": -12.0
+    },
+    {
+     "army": "5. Mouton / VI.C",
+     "pool": "a12",
+     "N": 5,
+     "vs_curve_pct": -11.9
+    },
+    {
+     "army": "6. Vandamme / VIII.C",
+     "pool": "a08",
+     "N": 6,
+     "vs_curve_pct": -10.7
+    },
+    {
+     "army": "6. Menou / Damiette",
+     "pool": "a04",
+     "N": 6,
+     "vs_curve_pct": -10.4
+    },
+    {
+     "army": "7. Santocildes / 6°",
+     "pool": "b13",
+     "N": 7,
+     "vs_curve_pct": -10.4
+    },
+    {
+     "army": "8. Abū Marak / Yeniçeri",
+     "pool": "b04",
+     "N": 8,
+     "vs_curve_pct": -9.9
+    },
+    {
+     "army": "8. Wellington / RC",
+     "pool": "b12",
+     "N": 8,
+     "vs_curve_pct": -9.8
+    },
+    {
+     "army": "6. Reuß-Plauen / Schwaben.L",
+     "pool": "b03",
+     "N": 6,
+     "vs_curve_pct": -9.5
+    },
+    {
+     "army": "8. Ney / VI.C",
+     "pool": "a06",
+     "N": 8,
+     "vs_curve_pct": -9.3
+    }
+   ]
+  }
+ },
+ "ac_noise": {
+  "curve_b": 0.977,
+  "curve_se": 0.018,
+  "lopsided_6_6_12_12_vs_9x4_pct": -0.13,
+  "balance": {
+   "cells": 241,
+   "teams": 4709,
+   "slope_pct_per_sd_N": 0.434,
+   "mean_spearman": 0.115,
+   "best_team_at_or_below_median_spread": 0.527
+  },
+  "bargains": {
+   "best": [
+    {
+     "army": "6. Chasteler / VIII.K",
+     "pool": "b08",
+     "N": 6,
+     "vs_curve_pct": 45.7
+    },
+    {
+     "army": "6. Davidov / Narod",
+     "pool": "b11",
+     "N": 6,
+     "vs_curve_pct": 43.6
+    },
+    {
+     "army": "8. Kellermann / III.RC",
+     "pool": "a12",
+     "N": 8,
+     "vs_curve_pct": 34.2
+    },
+    {
+     "army": "9. Uxbridge / CC",
+     "pool": "b12",
+     "N": 9,
+     "vs_curve_pct": 21.1
+    },
+    {
+     "army": "3. Chabot / Corfou",
+     "pool": "a04",
+     "N": 3,
+     "vs_curve_pct": 20.3
+    },
+    {
+     "army": "7. Pajol / I.RC",
+     "pool": "a12",
+     "N": 7,
+     "vs_curve_pct": 18.8
+    },
+    {
+     "army": "6. Brock / Confederacy",
+     "pool": "b10",
+     "N": 6,
+     "vs_curve_pct": 17.5
+    },
+    {
+     "army": "10. Murat / RC",
+     "pool": "a11",
+     "N": 10,
+     "vs_curve_pct": 16.6
+    },
+    {
+     "army": "10. Masséna / Portugal",
+     "pool": "a13",
+     "N": 10,
+     "vs_curve_pct": 14.6
+    },
+    {
+     "army": "5. Mendizábal / 7°",
+     "pool": "b13",
+     "N": 5,
+     "vs_curve_pct": 13.5
+    }
+   ],
+   "worst": [
+    {
+     "army": "9. Ross / EF.EC",
+     "pool": "b10",
+     "N": 9,
+     "vs_curve_pct": -14.2
+    },
+    {
+     "army": "5. Mouton / VI.C",
+     "pool": "a12",
+     "N": 5,
+     "vs_curve_pct": -12.7
+    },
+    {
+     "army": "8. Abū Marak / Yeniçeri",
+     "pool": "b04",
+     "N": 8,
+     "vs_curve_pct": -11.7
+    },
+    {
+     "army": "6. Vandamme / VIII.C",
+     "pool": "a08",
+     "N": 6,
+     "vs_curve_pct": -11.6
+    },
+    {
+     "army": "8. d'Erlon / I.C",
+     "pool": "a12",
+     "N": 8,
+     "vs_curve_pct": -11.2
+    },
+    {
+     "army": "7. Santocildes / 6°",
+     "pool": "b13",
+     "N": 7,
+     "vs_curve_pct": -10.8
+    },
+    {
+     "army": "5. Bubna / Alpen.L",
+     "pool": "b14",
+     "N": 5,
+     "vs_curve_pct": -9.7
+    },
+    {
+     "army": "8. Wellington / RC",
+     "pool": "b12",
+     "N": 8,
+     "vs_curve_pct": -9.7
+    },
+    {
+     "army": "6. Reuß-Plauen / Schwaben.L",
+     "pool": "b03",
+     "N": 6,
+     "vs_curve_pct": -9.7
+    },
+    {
+     "army": "6. Menou / Damiette",
+     "pool": "a04",
+     "N": 6,
+     "vs_curve_pct": -9.5
+    }
+   ]
+  }
+ },
+ "tow_sb": {
+  "curve_b": 1.001,
+  "curve_se": 0.057,
+  "lopsided_6_6_12_12_vs_9x4_pct": 0.01,
+  "balance": {
+   "cells": 33,
+   "teams": 44750,
+   "slope_pct_per_sd_N": -2.448,
+   "mean_spearman": -0.253,
+   "best_team_at_or_below_median_spread": 0.697
+  },
+  "bargains": {
+   "best": [
+    {
+     "army": "[1812] 8. Russkiy narod",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": 22.8
+    },
+    {
+     "army": "[1812] 7. United States",
+     "pool": "imperial",
+     "N": 7,
+     "vs_curve_pct": 19.6
+    },
+    {
+     "army": "[1809] 7. Polska, sojusznicy",
+     "pool": "imperial",
+     "N": 7,
+     "vs_curve_pct": 19.4
+    },
+    {
+     "army": "[1815] 6. Österreich (Italien)",
+     "pool": "coalition",
+     "N": 6,
+     "vs_curve_pct": 16.7
+    },
+    {
+     "army": "[1798] 8. Mamālīk",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": 15.3
+    },
+    {
+     "army": "[1812] 7. UK (USA)",
+     "pool": "coalition",
+     "N": 7,
+     "vs_curve_pct": 13.4
+    },
+    {
+     "army": "[1806] 9. Osmanlı",
+     "pool": "coalition",
+     "N": 9,
+     "vs_curve_pct": 10.3
+    },
+    {
+     "army": "[1798] 8. France (Égypte)",
+     "pool": "imperial",
+     "N": 8,
+     "vs_curve_pct": 9.3
+    },
+    {
+     "army": "[1814] 8. Österreich (Frankreich)",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": 8.2
+    },
+    {
+     "army": "[1814] 8. France",
+     "pool": "imperial",
+     "N": 8,
+     "vs_curve_pct": 8.0
+    }
+   ],
+   "worst": [
+    {
+     "army": "[1798] 5. UK (Ireland)",
+     "pool": "coalition",
+     "N": 5,
+     "vs_curve_pct": -14.6
+    },
+    {
+     "army": "8. UK (Spain, 1808)",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": -11.2
+    },
+    {
+     "army": "[1799] 7. UK, Russia (Helder)",
+     "pool": "coalition",
+     "N": 7,
+     "vs_curve_pct": -9.6
+    },
+    {
+     "army": "[1799] 9. France (Rhin)",
+     "pool": "imperial",
+     "N": 9,
+     "vs_curve_pct": -8.8
+    },
+    {
+     "army": "[1808] 7. Rossiya (Finlyandiya)",
+     "pool": "imperial",
+     "N": 7,
+     "vs_curve_pct": -7.6
+    },
+    {
+     "army": "[1798] 5. France (Irlande)",
+     "pool": "imperial",
+     "N": 5,
+     "vs_curve_pct": -7.4
+    },
+    {
+     "army": "[1799] 9. Österreich (Italien)",
+     "pool": "coalition",
+     "N": 9,
+     "vs_curve_pct": -6.9
+    },
+    {
+     "army": "[1809] 8. Österreich (Tyrol)",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": -6.6
+    },
+    {
+     "army": "[1805] 9. Rossiya, Österreich",
+     "pool": "coalition",
+     "N": 9,
+     "vs_curve_pct": -6.5
+    },
+    {
+     "army": "[1809] 6. UK (Walcheren)",
+     "pool": "coalition",
+     "N": 6,
+     "vs_curve_pct": -6.4
+    }
+   ]
+  }
+ },
+ "tow_full": {
+  "curve_b": 1.022,
+  "curve_se": 0.05,
+  "lopsided_6_6_12_12_vs_9x4_pct": 0.13,
+  "balance": {
+   "cells": 33,
+   "teams": 44750,
+   "slope_pct_per_sd_N": -1.711,
+   "mean_spearman": -0.213,
+   "best_team_at_or_below_median_spread": 0.667
+  },
+  "bargains": {
+   "best": [
+    {
+     "army": "[1812] 7. United States",
+     "pool": "imperial",
+     "N": 7,
+     "vs_curve_pct": 22.9
+    },
+    {
+     "army": "[1809] 7. Polska, sojusznicy",
+     "pool": "imperial",
+     "N": 7,
+     "vs_curve_pct": 17.8
+    },
+    {
+     "army": "[1798] 8. Mamālīk",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": 17.0
+    },
+    {
+     "army": "[1814] 8. Österreich (Frankreich)",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": 14.9
+    },
+    {
+     "army": "[1815] 9. UK, Nederlanden",
+     "pool": "coalition",
+     "N": 9,
+     "vs_curve_pct": 13.9
+    },
+    {
+     "army": "[1815] 6. Österreich (Italien)",
+     "pool": "coalition",
+     "N": 6,
+     "vs_curve_pct": 11.1
+    },
+    {
+     "army": "[1806] 9. Osmanlı",
+     "pool": "coalition",
+     "N": 9,
+     "vs_curve_pct": 8.4
+    },
+    {
+     "army": "[1812] 8. Russkiy narod",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": 6.0
+    },
+    {
+     "army": "[1814] 8. France",
+     "pool": "imperial",
+     "N": 8,
+     "vs_curve_pct": 6.0
+    },
+    {
+     "army": "[1799] 7. Österreich (Schwaben)",
+     "pool": "coalition",
+     "N": 7,
+     "vs_curve_pct": 5.6
+    }
+   ],
+   "worst": [
+    {
+     "army": "[1798] 5. France (Irlande)",
+     "pool": "imperial",
+     "N": 5,
+     "vs_curve_pct": -10.3
+    },
+    {
+     "army": "8. UK (Spain, 1808)",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": -9.8
+    },
+    {
+     "army": "[1809] 8. Österreich (Tyrol)",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": -7.6
+    },
+    {
+     "army": "[1799] 9. France (Rhin)",
+     "pool": "imperial",
+     "N": 9,
+     "vs_curve_pct": -7.5
+    },
+    {
+     "army": "[1799] 7. UK, Russia (Helder)",
+     "pool": "coalition",
+     "N": 7,
+     "vs_curve_pct": -7.0
+    },
+    {
+     "army": "[1808] 7. Sverige (Finska)",
+     "pool": "coalition",
+     "N": 7,
+     "vs_curve_pct": -6.9
+    },
+    {
+     "army": "[1809] 10. UK, España, Portugal",
+     "pool": "coalition",
+     "N": 10,
+     "vs_curve_pct": -6.9
+    },
+    {
+     "army": "9. Heiliges Römisches Reich",
+     "pool": "coalition",
+     "N": 9,
+     "vs_curve_pct": -6.6
+    },
+    {
+     "army": "[1798] 5. UK (Ireland)",
+     "pool": "coalition",
+     "N": 5,
+     "vs_curve_pct": -5.6
+    },
+    {
+     "army": "[1809] 6. UK (Walcheren)",
+     "pool": "coalition",
+     "N": 6,
+     "vs_curve_pct": -5.5
+    }
+   ]
+  }
+ },
+ "tow_noise": {
+  "curve_b": 1.011,
+  "curve_se": 0.053,
+  "lopsided_6_6_12_12_vs_9x4_pct": 0.06,
+  "balance": {
+   "cells": 33,
+   "teams": 44750,
+   "slope_pct_per_sd_N": -1.652,
+   "mean_spearman": -0.21,
+   "best_team_at_or_below_median_spread": 0.576
+  },
+  "bargains": {
+   "best": [
+    {
+     "army": "[1812] 7. United States",
+     "pool": "imperial",
+     "N": 7,
+     "vs_curve_pct": 28.4
+    },
+    {
+     "army": "[1798] 8. Mamālīk",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": 20.0
+    },
+    {
+     "army": "[1809] 7. Polska, sojusznicy",
+     "pool": "imperial",
+     "N": 7,
+     "vs_curve_pct": 15.2
+    },
+    {
+     "army": "[1815] 6. Österreich (Italien)",
+     "pool": "coalition",
+     "N": 6,
+     "vs_curve_pct": 14.7
+    },
+    {
+     "army": "[1814] 8. Österreich (Frankreich)",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": 11.6
+    },
+    {
+     "army": "[1815] 9. UK, Nederlanden",
+     "pool": "coalition",
+     "N": 9,
+     "vs_curve_pct": 11.0
+    },
+    {
+     "army": "[1806] 9. Osmanlı",
+     "pool": "coalition",
+     "N": 9,
+     "vs_curve_pct": 8.7
+    },
+    {
+     "army": "[1798] 8. France (Égypte)",
+     "pool": "imperial",
+     "N": 8,
+     "vs_curve_pct": 6.6
+    },
+    {
+     "army": "[1812] 7. UK (USA)",
+     "pool": "coalition",
+     "N": 7,
+     "vs_curve_pct": 6.3
+    },
+    {
+     "army": "[1814] 8. France",
+     "pool": "imperial",
+     "N": 8,
+     "vs_curve_pct": 6.2
+    }
+   ],
+   "worst": [
+    {
+     "army": "8. UK (Spain, 1808)",
+     "pool": "coalition",
+     "N": 8,
+     "vs_curve_pct": -11.3
+    },
+    {
+     "army": "[1798] 5. France (Irlande)",
+     "pool": "imperial",
+     "N": 5,
+     "vs_curve_pct": -10.0
+    },
+    {
+     "army": "[1799] 7. UK, Russia (Helder)",
+     "pool": "coalition",
+     "N": 7,
+     "vs_curve_pct": -8.6
+    },
+    {
+     "army": "[1799] 9. France (Rhin)",
+     "pool": "imperial",
+     "N": 9,
+     "vs_curve_pct": -7.2
+    },
+    {
+     "army": "[1808] 7. Sverige (Finska)",
+     "pool": "coalition",
+     "N": 7,
+     "vs_curve_pct": -7.1
+    },
+    {
+     "army": "[1799] 7. France (Hollande)",
+     "pool": "imperial",
+     "N": 7,
+     "vs_curve_pct": -6.8
+    },
+    {
+     "army": "[1809] 6. UK (Walcheren)",
+     "pool": "coalition",
+     "N": 6,
+     "vs_curve_pct": -6.6
+    },
+    {
+     "army": "[1808] 7. Rossiya (Finlyandiya)",
+     "pool": "imperial",
+     "N": 7,
+     "vs_curve_pct": -6.5
+    },
+    {
+     "army": "[1809] 10. UK, España, Portugal",
+     "pool": "coalition",
+     "N": 10,
+     "vs_curve_pct": -6.4
+    },
+    {
+     "army": "[1812] 7. France (Russie-Sud)",
+     "pool": "imperial",
+     "N": 7,
+     "vs_curve_pct": -5.8
+    }
+   ]
+  }
+ },
+ "rebates_sb": {
+  "corps_gain_median_pct": 6.12,
+  "corps_gain_p90_pct": 11.1,
+  "corps_gain_max_pct": 20.7,
+  "corps_gaining_over_1pct": 217,
+  "spearman_team_totals": 0.9884,
+  "same_best_team_share": {
+   "total": 0.567,
+   "weakest": 0.739
+  }
+ },
+ "rebates_full": {
+  "corps_gain_median_pct": 6.43,
+  "corps_gain_p90_pct": 11.61,
+  "corps_gain_max_pct": 21.48,
+  "corps_gaining_over_1pct": 216,
+  "spearman_team_totals": 0.9879,
+  "same_best_team_share": {
+   "total": 0.528,
+   "weakest": 0.722
+  }
+ },
+ "rebates_noise": {
+  "corps_gain_median_pct": 6.19,
+  "corps_gain_p90_pct": 11.42,
+  "corps_gain_max_pct": 21.26,
+  "corps_gaining_over_1pct": 215,
+  "spearman_team_totals": 0.9886,
+  "same_best_team_share": {
+   "total": 0.567,
+   "weakest": 0.761
+  }
+ },
+ "versions_ac_sb_vs_full": {
+  "spearman_team_totals": 0.9872,
+  "same_best_team_share": {
+   "total": 0.669,
+   "weakest": 0.789
+  }
+ },
+ "versions_ac_sb_vs_noise": {
+  "spearman_team_totals": 0.9851,
+  "same_best_team_share": {
+   "total": 0.708,
+   "weakest": 0.831
+  }
+ },
+ "versions_ac_full_vs_noise": {
+  "spearman_team_totals": 0.9964,
+  "same_best_team_share": {
+   "total": 0.87,
+   "weakest": 0.923
+  }
+ },
+ "versions_tow_sb_vs_full": {
+  "spearman_team_totals": 0.9572,
+  "same_best_team_share": {
+   "total": 0.297,
+   "weakest": 0.351
+  }
+ },
+ "versions_tow_sb_vs_noise": {
+  "spearman_team_totals": 0.9685,
+  "same_best_team_share": {
+   "total": 0.459,
+   "weakest": 0.459
+  }
+ },
+ "versions_tow_full_vs_noise": {
+  "spearman_team_totals": 0.9901,
+  "same_best_team_share": {
+   "total": 0.622,
+   "weakest": 0.676
+  }
+ }
+}

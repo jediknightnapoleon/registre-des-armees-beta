@@ -1,34 +1,43 @@
 """Export the cost-effective-builds valuation for the app's in-app optimiser.
 
-The app's "Optimise" panel (web/src/state/optimiser.ts) solves the same integer
-programme as analysis/cost_effective_builds.py solve(), in the browser with HiGHS.
-It cannot run the pricing models, so this script ships what it needs as data:
+The app's "Optimise" panel (web/src/state/optimiser.ts, and acOptimiser.ts for Army Corps)
+solves the same integer programmes as analysis/cost_effective_builds.py solve() (Theatres of War
+and Custom armies) and analysis/ac_builds.py solve_corps() (Army Corps, formation rebates and
+recruit order included), in the browser with HiGHS. It cannot run the pricing models, so this
+script ships what it needs as data.
 
-- data/generated/ntw3_optimiser_values.csv — every unit and commander card of
-  every ToW / Custom army with its normative value in both size versions:
-  value_quality = full size harmonisation ("Quality" in the app: the size bias is
-  removed), value_quantity = noise-only harmonisation ("Quantity": the size
-  discount is kept). Staff generals are not listed: the app values them itself
-  from their stars (T3) plus the command correction, which depends on the build.
-- data/generated/ntw3_optimiser_params.json — the staff-general rule T3 (b, q),
-  the command correction (m_ref, λ per version, σ, melee bonus) and the standard
-  general's melee attack that marks a fighting bodyguard.
+Value modes (the app's names → the analysis versions):
+- ToW / Custom: "quantity" = noise-only size harmonisation (the size discount is kept),
+  "quality" = full harmonisation (the size bias is removed) — cost_effective_builds.py.
+- Army Corps: "quantity" = noise-only harmonisation of the AC fits, "sizeBands" = the size-band
+  model of the AC study (F6) — analysis/team_values.py. The user replaced Quality with Size bands
+  for AC (2026-10-10). The third AC mode, "formationDiscount" (ac_builds.py `price`), values a card
+  at its list price and needs no data beyond the size-band tie-break.
+German Campaign 1813 (ac_builds.WIP_THEATRES) is work in progress in the mod and gets no values.
 
-tools/build_web_data.py merges both into the faction JSON. Both files are
-committed (data/generated is committed; rebuilding needs the local
-analysis/.cache checkpoints).
+Files (data/generated/, committed; rebuilding needs the analysis outputs and .cache checkpoints):
+- ntw3_optimiser_values.csv — every valued unit and commander card: faction_key, unit_key,
+  value_quality, value_quantity, value_size_bands (blank where the army's pool has no such mode).
+  Staff generals are not listed: the app values them from their stars (T3) plus the command
+  correction, which depends on the build.
+- ntw3_optimiser_params.json — {"pools": {"tow": {...}, "ac": {...}}}: per pool the staff rule T3
+  (b, q; AC uses its own refit, analysis/output/ac/ac_staff.json), the command correction (m_ref,
+  λ per mode, σ, melee bonus) and the standard general's melee attack.
+- ntw3_optimiser_army_values.csv — every army's best-build value per mode (analysis/team_search.py
+  army_values.csv: AC builds from ac_builds.py, ToW / Custom one-roll builds): the planner's
+  "Suggest a team" ranks teams with it when nothing constrains the builds.
+tools/build_web_data.py merges values and the pool's params into each faction JSON and the army
+values into corps-index.json.
 
-Parity with the Python optimiser (two stages, because the app-side fixture needs
-the cards exactly as the app sees them, which only exist after the pipeline):
+Parity with the Python optimisers (two stages, because the app-side fixture needs the cards
+exactly as the app sees them, which only exist after the pipeline):
+1. this script also writes analysis/output/optimiser_parity_python.json — Python's builds for a
+   few armies in every mode;
+2. after `python tools/build_web_data.py`, `--fixture` joins those builds with the generated
+   faction files into web/src/state/__fixtures__/optimiser-parity.json, which
+   web/src/state/optimiser.parity.test.ts checks the TypeScript optimiser against.
 
-1. this script also writes analysis/output/optimiser_parity_python.json — Python's
-   max-value and four-corps builds for a few armies, in both versions;
-2. after `python tools/build_web_data.py`, `--fixture` joins those builds with the
-   generated faction files into web/src/state/__fixtures__/optimiser-parity.json,
-   which web/src/state/optimiser.parity.test.ts checks the TypeScript optimiser
-   against.
-
-    py -3.13 analysis/export_optimiser_values.py              # values, params, Python builds
+    py -3.13 analysis/export_optimiser_values.py              # values, params, army values, Python builds
     py -3.13 tools/build_web_data.py                          # → web/public/data (with values)
     py -3.13 analysis/export_optimiser_values.py --fixture    # → the app's parity fixture
 """
@@ -44,31 +53,41 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import ac_builds as ab  # noqa: E402
 import cost_effective_builds as ceb  # noqa: E402
 import unit_pricing as up  # noqa: E402
 
 GENERATED = up.ROOT / "data" / "generated"
 VALUES_CSV = GENERATED / "ntw3_optimiser_values.csv"
 PARAMS_JSON = GENERATED / "ntw3_optimiser_params.json"
+ARMY_VALUES_CSV = GENERATED / "ntw3_optimiser_army_values.csv"
+TEAMS = up.ROOT / "analysis" / "output" / "teams"
 PYTHON_BUILDS = ceb.OUT / "optimiser_parity_python.json"
 FACTIONS = up.ROOT / "web" / "public" / "data" / "factions"
 FIXTURE = up.ROOT / "web" / "src" / "state" / "__fixtures__" / "optimiser-parity.json"
-# App mode → size version of cost_effective_builds.py.
-MODES = {"quality": "full", "quantity": "noise"}
-# Parity armies: a ToW army with a cheap 2★ anchor general, a ToW army anchored on Murat (C4),
-# and a Custom army (no source corps).
+# App mode → analysis version, per pool.
+TOW_MODES = {"quality": "full", "quantity": "noise"}
+AC_MODES = {"quantity": "noise", "sizeBands": "sb"}
+MODE_COLUMN = {"quality": "value_quality", "quantity": "value_quantity", "sizeBands": "value_size_bands"}
+# Parity armies. ToW / Custom: a ToW army with a cheap 2★ anchor general, a ToW army anchored on
+# Murat (C4), and a Custom army (no source corps). AC: Davout I.C 1812 (the support-division brigade
+# exception), Bonaparte / Italie.C (the verified division-5 placement override) and Eugène / Italie
+# (10 no-good cuts before the recruit-order rows went into the model).
 PARITY_ARMIES = ("ntw3_tow_b06_x8_009", "ntw3_tow_c14_x8_030", "ntw3_hre")
-# Card fields the optimiser reads (web/src/state/optimiser.ts); the fixture keeps only these.
+AC_PARITY_ARMIES = ("ntw3_ac_a11_x5_117", "ntw3_ac_a03_x5_080", "ntw3_ac_a08_x5_242")
+# Card fields the optimisers read (web/src/state/optimiser.ts, acOptimiser.ts, rules.ts pricing);
+# the fixture keeps only these.
 FIXTURE_FIELDS = ("unitKey", "factionKey", "unitClass", "underlyingUnitClass", "cost", "menRaw", "speedCode",
                   "commandStars", "isGeneral", "isCommanderVariant", "generalKind", "cap", "groupCap",
-                  "capGroupKey", "baseUnitKey", "stats", "optimiserValue")
+                  "capGroupKey", "baseUnitKey", "stats", "optimiserValue", "name", "division", "brigade",
+                  "placementSource", "rosterIndex")
 
 
-def export(started: float) -> None:
-    melee = ceb.bodyguard_melee_bonus()
+def tow_values(started: float, melee: float) -> tuple[dict, dict]:
+    """ToW / Custom card values per mode, and Python's parity builds."""
     values: dict[tuple[str, str], dict[str, float]] = {}
     python_builds: dict[str, dict] = {}
-    for mode, version in MODES.items():
+    for mode, version in TOW_MODES.items():
         by_faction, staff_of, top_star, army_of = ceb.load_cards(started, size_mode=version)
         for f, cards in by_faction.items():
             for c in cards:
@@ -82,10 +101,62 @@ def export(started: float) -> None:
                     "cost": sum(c["cost"] * k for c, k in chosen) + general["cost"],
                     "staff": general["key"],
                     "units": sorted([c["key"], k] for c, k in chosen)}
-        up.log(f"{mode} ({version}) values for {len(by_faction)} armies", started)
-    missing = [k for k, v in values.items() if set(v) != set(MODES)]
+        up.log(f"ToW {mode} ({version}) values for {len(by_faction)} armies", started)
+    missing = [k for k, v in values.items() if set(v) != set(TOW_MODES)]
     if missing:
-        raise SystemExit(f"{len(missing)} cards lack a value in one version, e.g. {missing[:3]}")
+        raise SystemExit(f"{len(missing)} ToW cards lack a value in one mode, e.g. {missing[:3]}")
+    return values, python_builds
+
+
+def ac_values() -> dict[tuple[str, str], dict[str, float]]:
+    """AC card values per mode from analysis/team_values.py, WIP theatres left out."""
+    values = {}
+    with open(TEAMS / "values_ac.csv", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            if r["faction_key"].split("_")[2] in ab.WIP_THEATRES:
+                continue
+            values[(r["faction_key"], r["unit_key"])] = {mode: float(r[f"value_{version}"])
+                                                         for mode, version in AC_MODES.items()}
+    return values
+
+
+def ac_python_builds(melee: float, started: float) -> dict[str, dict]:
+    """ac_builds.solve_corps' build of each AC parity army in each app mode."""
+    catalog, values, extra, _, _, t3 = ab.load_inputs()
+    out: dict[str, dict] = {}
+    for f in AC_PARITY_ARMIES:
+        for mode, version in (*AC_MODES.items(), ("formationDiscount", "price")):
+            face = version == "price"
+            command = ceb.Command(0.0, 0.0, 0.0) if face else ceb.Command(ab.LAMBDA[version], ceb.SPEED_BONUS, melee)
+            res = ab.solve_corps(f, catalog, values[version], extra, t3, command, 31, face_value=face)
+            p = res["price"]
+            out.setdefault(f, {})[f"{mode}/max value"] = {
+                "objective": res["value"], "cost": p.final_cost, "listCost": p.base_cost,
+                "rebate": p.applied_discount, "staff": res["general"].unit_key, "cuts": res["cuts"],
+                "groups": sorted(f"{g.group_type}:{g.division_id}:{g.brigade_id or 0}" for g in p.completed_groups),
+                "units": sorted([c.unit_key, k] for c, k in res["chosen"]),
+                "order": [c.unit_key for c in res["order"]]}
+        up.log(f"AC parity builds: {f}", started)
+    return out
+
+
+def params_block(t3: tuple[float, float], modes: dict[str, str], melee: float) -> dict:
+    b, q = t3
+    return {"t3_b": b, "t3_q": q, "m_ref": ceb.M_REF,
+            "lambda": {mode: ceb.COMMAND_LAMBDA["full" if version == "sb" else version] for mode, version in modes.items()},
+            "speed_bonus": ceb.SPEED_BONUS, "melee_bonus": melee,
+            "standard_general_melee": ceb.STANDARD_GENERAL_MELEE}
+
+
+def export(started: float) -> None:
+    melee = ceb.bodyguard_melee_bonus()
+    values, python_builds = tow_values(started, melee)
+    ac = ac_values()
+    overlap = set(values) & set(ac)
+    if overlap:
+        raise SystemExit(f"{len(overlap)} cards valued as both ToW and AC, e.g. {list(overlap)[:3]}")
+    values.update(ac)
+    python_builds.update(ac_python_builds(melee, started))
 
     builder_keys = set()
     with (GENERATED / "ntw3_army_builder_units.csv").open(encoding="utf-8-sig", newline="") as fh:
@@ -97,23 +168,32 @@ def export(started: float) -> None:
 
     with VALUES_CSV.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
-        w.writerow(["faction_key", "unit_key", "value_quality", "value_quantity"])
+        w.writerow(["faction_key", "unit_key", *MODE_COLUMN.values()])
         for (f, k), v in sorted(values.items()):
-            w.writerow([f, k, f"{v['quality']:.6f}", f"{v['quantity']:.6f}"])
-    b, q = ceb.staff_value_rule()
+            w.writerow([f, k, *(f"{v[mode]:.6f}" if mode in v else "" for mode in MODE_COLUMN)])
+
+    staff_fit = json.loads((up.ROOT / "analysis" / "output" / "ac" / "ac_staff.json").read_text(encoding="utf-8"))
     PARAMS_JSON.write_text(json.dumps({
-        "t3_b": b, "t3_q": q, "m_ref": ceb.M_REF,
-        "lambda": {mode: ceb.COMMAND_LAMBDA[version] for mode, version in MODES.items()},
-        "speed_bonus": ceb.SPEED_BONUS, "melee_bonus": melee,
-        "standard_general_melee": ceb.STANDARD_GENERAL_MELEE,
+        "pools": {"tow": params_block(ceb.staff_value_rule(), TOW_MODES, melee),
+                  "ac": params_block((staff_fit["t3_b"], staff_fit["t3_q"]), AC_MODES, melee)},
         "generated": date.today().isoformat(),
-        "source": "analysis/export_optimiser_values.py (cost_effective_builds.py valuation)"}, indent=2) + "\n",
-        encoding="utf-8")
+        "source": "analysis/export_optimiser_values.py (cost_effective_builds.py and ac_builds.py valuations)"},
+        indent=2) + "\n", encoding="utf-8")
+
+    with open(TEAMS / "army_values.csv", encoding="utf-8") as fh:
+        armies = list(csv.DictReader(fh))
+    with ARMY_VALUES_CSV.open("w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["faction_key", *MODE_COLUMN.values()])
+        for r in sorted(armies, key=lambda r: r["faction_key"]):
+            modes = AC_MODES if r["kind"] == "ac" else TOW_MODES
+            w.writerow([r["faction_key"], *(f"{float(r[f'value_{modes[mode]}']):.3f}" if mode in modes else ""
+                                            for mode in MODE_COLUMN)])
+
     PYTHON_BUILDS.write_text(json.dumps(python_builds, indent=2) + "\n", encoding="utf-8")
-    armies = {f for f, _ in values}
-    up.log(f"{len(values)} cards in {len(armies)} armies → {VALUES_CSV.relative_to(up.ROOT)}; "
-           f"params → {PARAMS_JSON.relative_to(up.ROOT)}; Python builds → {PYTHON_BUILDS.relative_to(up.ROOT)}",
-           started)
+    up.log(f"{len(values)} cards in {len({f for f, _ in values})} armies → {VALUES_CSV.relative_to(up.ROOT)}; "
+           f"params → {PARAMS_JSON.relative_to(up.ROOT)}; {len(armies)} army values → "
+           f"{ARMY_VALUES_CSV.relative_to(up.ROOT)}; Python builds → {PYTHON_BUILDS.relative_to(up.ROOT)}", started)
 
 
 def fixture(started: float) -> None:

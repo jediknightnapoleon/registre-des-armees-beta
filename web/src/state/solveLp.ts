@@ -17,7 +17,17 @@ export interface LpSolution {
   columns: Record<string, number>;
 }
 
-export type LpSolver = (lp: string) => Promise<LpSolution>;
+/** Per-solve overrides of HIGHS_OPTIONS. Unset fields keep HiGHS's own defaults (relative MIP gap
+ *  1e-4, as scipy's milp in analysis/cost_effective_builds.py); the Army Corps optimiser asks for a
+ *  tighter gap, as analysis/ac_builds.py does. */
+export interface SolveOptions {
+  /** Wall-clock cap in seconds (default OPTIMISER_TIME_LIMIT_S). */
+  timeLimit?: number;
+  /** Relative MIP gap at which HiGHS stops. */
+  mipRelGap?: number;
+}
+
+export type LpSolver = (lp: string, options?: SolveOptions) => Promise<LpSolution>;
 
 /** The part of a loaded `highs` module the optimiser uses. */
 export interface HighsLike {
@@ -31,9 +41,18 @@ export interface HighsLike {
 /** Options for every solve: quiet, time-limited. */
 export const HIGHS_OPTIONS = { output_flag: false, time_limit: OPTIMISER_TIME_LIMIT_S } as const;
 
+/** HiGHS options for one solve: HIGHS_OPTIONS with the request's overrides. */
+export function highsOptions(options: SolveOptions = {}): Record<string, unknown> {
+  return {
+    ...HIGHS_OPTIONS,
+    ...(options.timeLimit !== undefined ? { time_limit: Math.max(0.1, options.timeLimit) } : {}),
+    ...(options.mipRelGap !== undefined ? { mip_rel_gap: options.mipRelGap } : {}),
+  };
+}
+
 /** One solve with a loaded HiGHS instance (worker and tests share this). */
-export function solveWithHighs(highs: HighsLike, lp: string): LpSolution {
-  const result = highs.solve(lp, HIGHS_OPTIONS);
+export function solveWithHighs(highs: HighsLike, lp: string, options?: SolveOptions): LpSolution {
+  const result = highs.solve(lp, highsOptions(options));
   const columns: Record<string, number> = {};
   for (const [name, col] of Object.entries(result.Columns ?? {})) {
     const primal = (col as { Primal?: unknown } | null)?.Primal;
@@ -44,7 +63,7 @@ export function solveWithHighs(highs: HighsLike, lp: string): LpSolution {
 
 /** An `LpSolver` over an already loaded HiGHS instance (synchronous underneath). */
 export function solverFromHighs(highs: HighsLike): LpSolver {
-  return (lp) => Promise.resolve(solveWithHighs(highs, lp));
+  return (lp, options) => Promise.resolve(solveWithHighs(highs, lp, options));
 }
 
 // --- the app's solver: one lazily started worker, requests matched by id ----------
@@ -78,11 +97,41 @@ function startWorker(): Worker {
   return w;
 }
 
-/** The app's `LpSolver`: HiGHS in a Web Worker, started on first use and kept for later solves. */
-export const workerSolver: LpSolver = (lp) =>
-  new Promise<LpSolution>((resolve, reject) => {
+/** Thrown into pending solves by cancelSolves(). */
+export class SolveCancelled extends Error {
+  constructor() {
+    super("The optimisation was cancelled.");
+    this.name = "SolveCancelled";
+  }
+}
+
+function request(lp: string, options?: SolveOptions): Promise<LpSolution> {
+  return new Promise<LpSolution>((resolve, reject) => {
     worker ??= startWorker();
     const id = ++nextId;
     pending.set(id, { resolve, reject });
-    worker.postMessage({ id, lp });
+    worker.postMessage({ id, lp, options });
   });
+}
+
+/** The app's `LpSolver`: HiGHS in a Web Worker, started on first use and kept for later solves.
+ *  A solve that fails inside the worker (the WebAssembly runtime can abort after many solves; the
+ *  worker then reloads it) is retried once; a cancelled one is not. */
+export const workerSolver: LpSolver = async (lp, options) => {
+  try {
+    return await request(lp, options);
+  } catch (error) {
+    if (error instanceof SolveCancelled) throw error;
+    return request(lp, options);
+  }
+};
+
+/** Stop every running solve: the worker is terminated (a solve cannot be interrupted inside
+ *  WebAssembly) and pending requests reject with SolveCancelled. The next solve starts a new one. */
+export function cancelSolves(): void {
+  const w = worker;
+  for (const { reject } of pending.values()) reject(new SolveCancelled());
+  pending.clear();
+  worker = null;
+  w?.terminate();
+}

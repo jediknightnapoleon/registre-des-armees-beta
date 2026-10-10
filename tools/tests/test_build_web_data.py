@@ -93,6 +93,29 @@ class OptimiserDataTests(unittest.TestCase):
         self.assertNotIn("optimiserValue", by_faction["ntw3_ac_b"][0])    # same key, other faction
         self.assertEqual(errors, ["optimiser value for unknown card ntw3_tow_a/ghost"])
 
+    def test_each_pool_keeps_only_its_modes(self) -> None:
+        (self.dir / "v.csv").write_text(
+            "faction_key,unit_key,value_quality,value_quantity,value_size_bands\n"
+            "ntw3_tow_a,u1,100,110,\n"
+            "ntw3_ac_a11_x5_117,u2,,90.5,95.25\n", encoding="utf-8")
+        (self.dir / "p.json").write_text('{"pools": {"tow": {}, "ac": {}}}', encoding="utf-8")
+        values, _ = web.load_optimiser_inputs(self.dir / "v.csv", self.dir / "p.json")
+        self.assertEqual(values[("ntw3_tow_a", "u1")], {"quality": 100.0, "quantity": 110.0})
+        self.assertEqual(values[("ntw3_ac_a11_x5_117", "u2")], {"quantity": 90.5, "sizeBands": 95.25})
+        self.assertEqual(web.optimiser_pool("ntw3_ac_a11_x5_117"), "ac")
+        self.assertEqual(web.optimiser_pool("ntw3_tow_a"), "tow")
+        self.assertEqual(web.optimiser_pool("ntw3_hre"), "tow")             # Custom armies share the ToW pool
+
+    def test_army_values(self) -> None:
+        self.assertEqual(web.load_army_values(self.dir / "missing.csv"), {})
+        (self.dir / "a.csv").write_text(
+            "faction_key,value_quality,value_quantity,value_size_bands\n"
+            "ntw3_tow_a,50000,51000,\n"
+            "ntw3_ac_a11_x5_117,,20000.5,20415\n", encoding="utf-8")
+        self.assertEqual(web.load_army_values(self.dir / "a.csv"),
+                         {"ntw3_tow_a": {"quality": 50000.0, "quantity": 51000.0},
+                          "ntw3_ac_a11_x5_117": {"quantity": 20000.5, "sizeBands": 20415.0}})
+
 
 class OutputTests(unittest.TestCase):
     def setUp(self) -> None:
