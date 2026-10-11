@@ -60,7 +60,7 @@ POWER_SCALE = 100.0
 #         with one shooting slope per firearm / cannon type (artillery "calibre":
 #         calibre inside the product instead)
 #   cal   smooth calibre functions of log range r and log damage d, replacing the
-#         cannon-type one-hot (analysis/calibre_function.py): "power2" —
+#         cannon-type one-hot (analysis/experiments/calibre_function.py): "power2" —
 #         (range/100)^a_r + (damage/100)^a_d; "spline_r" / "spline_d" — a natural
 #         cubic spline in r or d with `cal_df` degrees of freedom; "spline_rd" — both
 #         splines; "poly2" — a quadratic surface in (r, d) with the interaction

@@ -110,10 +110,10 @@ python analysis/unit_pricing.py           # → analysis/output/ (full pricing m
                                           #   Nested power searches use a process pool, --workers N, default 6; 1 = serial)
 python analysis/unit_pricing.py --linear --out analysis/linear_results          # fully linear model
 python analysis/unit_pricing.py --artillery-cal projectile --out analysis/calibre_onehot_results   # artillery fixed to the cannon-type one-hot
-python analysis/calibre_function.py       # → analysis/output/calibre_function_report.md (smooth calibre functions, ~12 min)
+python analysis/experiments/calibre_function.py  # → analysis/output/calibre_function_report.md (smooth calibre functions, ~12 min)
 python analysis/blind_ideas.py            # → analysis/output/blind_ideas_report.md (blind-study ideas on our folds, ~8 min;
                                           #   reads blind_study/out from branch blind-pricing-study if present)
-python analysis/extreme_pinning.py        # → analysis/output/extreme_pinning_report.md (pin extreme units to train?, ~5 min)
+python analysis/experiments/extreme_pinning.py  # → analysis/output/extreme_pinning_report.md (pin extreme units to train?, ~5 min)
 python analysis/class_structure.py        # → analysis/output/class_structure_report.md (class as multiplier / own size
                                           #   exponent / own formula, ~40 min; checkpoints in analysis/.cache/, resumable)
 python analysis/commander_model.py        # → commander_model_report.md + price_database.csv (commander model on true and

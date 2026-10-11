@@ -256,7 +256,7 @@ py -3.13 analysis/ac_pricing.py --phase commanders
 py -3.13 analysis/ac_pricing.py --phase size --dataset ac|tow --arm …                         # ~5–55 min each
 py -3.13 analysis/ac_pricing.py --phase blind-data       # analysis/ac_blind/data
 py -3.13 analysis/ac_discounts.py                        # rebates, self-checked (~1 min)
-py -3.13 analysis/ac_natural_experiment.py               # AC vs ToW pairs (~4 min)
+py -3.13 analysis/experiments/ac_natural_experiment.py               # AC vs ToW pairs (~4 min)
 py -3.13 analysis/ac_pricing.py --phase database         # ac_price_database.csv
 py -3.13 analysis/ac_pricing.py --phase report           # ac_pricing_results.md
 ```

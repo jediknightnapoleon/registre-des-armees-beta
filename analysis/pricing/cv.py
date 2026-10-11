@@ -93,7 +93,7 @@ def data_for(spec: Spec, units: Sequence[Unit]) -> SliceData:
     return d
 
 
-# --- size-frequency weighting (analysis/size_weighting.py; analysis/SIZE_WEIGHTING_PLAN.md) ----------------
+# --- size-frequency weighting (analysis/experiments/size_weighting.py; analysis/SIZE_WEIGHTING_PLAN.md) ----------------
 # The fits are dominated by the commonest sizes (e.g. 2 005 AC infantry units of 100–140 models against 13
 # of 240+). With the size_weighting setting on, each row's squared error is multiplied by the inverse
 # frequency of its size band (common.SIZE_WEIGHT_BANDS) within the slice (one arm), (median band count /

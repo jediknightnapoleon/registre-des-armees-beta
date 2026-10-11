@@ -389,7 +389,7 @@ def load_cards(started: float | None = None, size_table: list[dict] | None = Non
       1 for a C-class speed tag, melee = 1 for a bodyguard with combat stats);
     - top_star[f]: its highest-star staff general (cheapest on a tie);
     - army_of[f]: (army_corps_name, corps number, side).
-    Shared by this script and analysis/two_compartment.py."""
+    Shared by this script and analysis/experiments/two_compartment.py."""
     started = time.time() if started is None else started
     units, staff, _, _ = up.load(up.load_ratings())
     caps, morale, fast, melee = {}, {}, {}, {}
@@ -689,7 +689,7 @@ def solve(cards: list[dict], staff_options: list[dict], cavalry_only: bool, vari
     `exclude` = (card index, copies) of a build to rule out: at least one copy fewer among its cards.
     Maximises Σ card[score_key] (plus the staff general's own score_key when `score_staff`);
     `n_cards` fixes the number of cards including the staff general; `min_spend` puts a floor
-    under the total cost (analysis/two_compartment.py uses both).
+    under the total cost (analysis/experiments/two_compartment.py uses both).
     `command` values the staff general by the command correction instead (Command.value), which
     depends on the build's morale deficit D: per staff option a continuous w ≤ D and w ≤ D_max·z
     carries D into the objective only for the general taken (exact, since w is maximised).

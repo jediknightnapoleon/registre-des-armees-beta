@@ -14,7 +14,7 @@ from support import ANALYSIS, worker_settings
 
 SNAPSHOT = """
 import sys
-sys.path.insert(0, {analysis!r})
+sys.path[:0] = [{analysis!r}, {analysis!r} + '/experiments']
 import common, unit_pricing as up, commander_model as cm
 def snap():
     return repr((sorted(up.FCLASS_GRID.items()), up.WORKERS, up.SIZE_WEIGHTING, up.P_GRID, up.POWER_GRID,
@@ -23,7 +23,7 @@ def snap():
                  sorted(common.SB_BANDS.items()), str(cm.PAIRS)))
 before = snap()
 import ac_pricing, class_structure, cost_effective_builds, team_values, ac_builds, team_search  # noqa
-import export_optimiser_values, export_team_builds, size_weighting, size_weighting_builds  # noqa
+import export_optimiser_values, export_team_builds, size_weighting, size_weighting_builds, size_weighting_report  # noqa
 print("SAME" if snap() == before else "CHANGED:\\n" + before + "\\n" + snap())
 """
 
@@ -63,6 +63,17 @@ class ApiTests(unittest.TestCase):
             r = subprocess.run([sys.executable, "-c", code.format(a=str(ANALYSIS), m=m)],
                                capture_output=True, text=True, encoding="utf-8")
             self.assertEqual(r.returncode, 0, f"pricing.{m}: {r.stderr[-600:]}")
+
+    def test_each_experiment_imports(self) -> None:
+        # analysis/experiments/ scripts find analysis/ themselves (one level up) and run nothing on import.
+        names = sorted(p.stem for p in (ANALYSIS / "experiments").glob("*.py"))
+        code = ("import sys, runpy; sys.argv = ['x']; "
+                "runpy.run_path({path!r}, run_name='imported')")
+        for name in names:
+            path = str(ANALYSIS / "experiments" / f"{name}.py")
+            r = subprocess.run([sys.executable, "-c", code.format(path=path)], capture_output=True, text=True,
+                               encoding="utf-8", cwd=str(ANALYSIS.parent / "web"))
+            self.assertEqual(r.returncode, 0, f"{name}: {r.stderr[-600:]}")
 
     def test_assigning_a_reexported_name_raises(self) -> None:
         import unit_pricing as up

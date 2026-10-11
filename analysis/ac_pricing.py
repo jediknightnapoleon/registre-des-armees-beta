@@ -636,7 +636,7 @@ def database_phase(started: float) -> None:
       - its list price and rebate-effective prices (analysis/ac_discounts.py),
       - out-of-fold model prices: the adopted form (jfc) and the arm's best size form (step 3),
         the commander model refitted on AC (commanders), T3 refitted on AC (staff generals),
-      - its ToW price where a ToW copy exists (analysis/ac_natural_experiment.py pairs), or the
+      - its ToW price where a ToW copy exists (analysis/experiments/ac_natural_experiment.py pairs), or the
         estimated ToW-equivalent price with its band for the 17 AC-only corps (model-based)."""
     disc = read_oof(OUT / "ac_discounts.csv")
     pred_adopted: dict[tuple[str, str], str] = {}

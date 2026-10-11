@@ -77,10 +77,10 @@
 > ```bash
 > python tools/build_analysis_dataset.py   # the analysis dataset (already committed)
 > python analysis/unit_pricing.py          # full model + report → analysis/output/ (~50 min, 6 worker processes)
-> python analysis/fclass_table.py          # army × class multiplier tables (seconds)
+> python analysis/experiments/fclass_table.py  # army × class multiplier tables (seconds)
 > python analysis/class_structure.py       # per-class alternative V4 (~40 min, resumable)
 > python analysis/build_commander_pairs.py # regular/commander pairs (seconds)
-> python analysis/commander_within_unit.py # generals of the same unit compared (seconds)
+> python analysis/experiments/commander_within_unit.py  # generals of the same unit compared (seconds)
 > python analysis/commander_model.py        # commander + combined models, price database (~1 min)
 > ```
 >

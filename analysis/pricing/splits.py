@@ -145,7 +145,7 @@ def search_splits(C: np.ndarray, names: Sequence[str], strata: np.ndarray, balan
                   groups: np.ndarray, n_seeds: int, extra_pinned: set[int] | None = None) -> SplitPlan:
     """Try `n_seeds` assignments; keep the one with zero coverage violations and
     the most uniform spread of `balance` keys across test folds. `extra_pinned`
-    groups are always trained on too (analysis/extreme_pinning.py)."""
+    groups are always trained on too (analysis/experiments/extreme_pinning.py)."""
     pinned, pinned_labels = pinned_groups(C, groups, names)
     if extra_pinned:
         pinned = pinned | extra_pinned

@@ -7,7 +7,7 @@
 ## Checklist
 
 - [x] S0. Code: weights in unit_pricing (SIZE_WEIGHTING, size_weights, SliceData.w, fit_on), class_structure
-      run_variant/fit_class_p args, team_values helpers, new analysis/size_weighting.py; sanity check (off = unchanged).
+      run_variant/fit_class_p args, team_values helpers, new analysis/experiments/size_weighting.py; sanity check (off = unchanged).
 - [x] S1. Diagnostics: band share of current squared error vs share of units; weight + ESS tables.
 - [x] S2. F6 × {a0.5c10, a1c10, a1} × {ac, tow} × 3 arms.
 - [x] S3. V4 fixed-power screen × 3 variants × 2 datasets.
@@ -19,11 +19,11 @@
 
 - Plan approved. Variants: a0.5c10, a1c10, a1 (uncapped); baseline = existing cached V4/F6 (no unweighted re-run).
 
-- S0 done: unit_pricing SIZE_WEIGHTING / SIZE_WEIGHT_BANDS / size_weights / kish_ess / SliceData.w (data_for) / fit_on weights (None when off → unchanged); class_structure.run_variant(fixed_p=); new analysis/size_weighting.py (diagnostics / run / report; checkpoints sw1_{ds}_{arm}_{model}_{mode}_{variant}.pkl; asserts slice folds = baseline V4 folds). Nested V4 checkpoints per arm (not per class: one parallel fold search per arm).
+- S0 done: unit_pricing SIZE_WEIGHTING / SIZE_WEIGHT_BANDS / size_weights / kish_ess / SliceData.w (data_for) / fit_on weights (None when off → unchanged); class_structure.run_variant(fixed_p=); new analysis/experiments/size_weighting.py (diagnostics / run / report; checkpoints sw1_{ds}_{arm}_{model}_{mode}_{variant}.pkl; asserts slice folds = baseline V4 folds). Nested V4 checkpoints per arm (not per class: one parallel fold search per arm).
 - S1 done → analysis/output/size_weighting_diagnostics.md. The per-size loss ALREADY over-weights the smallest units (AC artillery 1-gun: 4% of units, 24% of loss, bias +28%); uncapped a1 is extreme (AC cavalry 180-240 ×101, ESS 82 of 1715).
 - S2+S3 launched (background, one process per variant, --workers 4): `run --model both --mode fixed --variant X`; logs analysis/.cache/size_weighting/logs/screen_X.log.
 
-- S2+S3 done: 36 checkpoints (F6 + V4 fixed × 3 variants × 2 datasets × 3 arms). Report module analysis/size_weighting_report.py (+ team_values.v4_raw_and_oof(fitted=), replay_test(versions=)).
+- S2+S3 done: 36 checkpoints (F6 + V4 fixed × 3 variants × 2 datasets × 3 arms). Report module analysis/experiments/size_weighting_report.py (+ team_values.v4_raw_and_oof(fitted=), replay_test(versions=)).
 - S4 launched: `run --model V4 --mode nested --variant X --workers 5` (both datasets), logs analysis/.cache/size_weighting/logs/nested_X.log; resumable (re-run the same command; finished arms are skipped).
 
 - Screen results (analysis/output/size_weighting_report.md, powers fixed): cavalry improves slightly everywhere (e.g. ToW V4 a1: balanced MAPE 6.86 → 5.84, MAE −0.3); infantry/artillery MAE worse (+1.5 … +8 gold) with modest balanced gains (best AC inf V4 a1: 13.03 → 11.64); F6 small balanced gains for artillery/cavalry; worst band bias (infantry 240+, ~30%) barely moves. a1c10 = a1 for artillery (no band hits the cap). Nested runs decide for V4.
@@ -31,7 +31,7 @@
 - S4+S5 done (18 nested checkpoints; report rebuilt). Verdict: weighting does not fix the extremes. Nested V4: size powers barely move (only skirmishers 0.80 → 0.60); overall MAE worse for infantry (+2 … +6 gold) and artillery (+3 … +9), ~0 for cavalry; balanced MAPE gains small (best AC infantry a1 13.03 → 11.46, ToW cavalry a1 6.86 → 5.86; ToW infantry ≈ 0). Extreme bands' bias shrinks a few points (ToW inf 0-40 −7.7 → −3.9, 180-240 +9.4 → +3.9) at the cost of the 100-140 core (−2.7 → −5.4). 240+ militia stays ~+20–30% even uncapped: a form problem, not a weighting one. Replay: the removed part points the same way as harmonisation's (β +0.34 … +0.79), not significant (z 1.4–1.6). Not worth shipping; F6 (size bands) remains the better answer to the size problem.
 - S6: summary given to the user.
 
-- Follow-up (user, 2026-10-11): residuals may be real strength, not error — does weighting make mid-sized units more cost-effective? Value shifts (report): infantry 0-40 +2…+4.5%, mid −1…−3%, 240+ −2…−11%; cavalry small +1…2%, 140+ −1…−7%. Running analysis/size_weighting_builds.py (optimiser picks by size band for raw / quantity / quality / sb / 3 weighted sets, ToW + AC; checkpoints builds_*.pkl; log logs/builds.log) → analysis/output/size_weighting_builds.md.
+- Follow-up (user, 2026-10-11): residuals may be real strength, not error — does weighting make mid-sized units more cost-effective? Value shifts (report): infantry 0-40 +2…+4.5%, mid −1…−3%, 240+ −2…−11%; cavalry small +1…2%, 140+ −1…−7%. Running analysis/experiments/size_weighting_builds.py (optimiser picks by size band for raw / quantity / quality / sb / 3 weighted sets, ToW + AC; checkpoints builds_*.pkl; log logs/builds.log) → analysis/output/size_weighting_builds.md.
 
 - Build comparison done → analysis/output/size_weighting_builds.md. Weighted values pick almost the same sizes as raw/quantity: ToW infantry 100-140 share raw 8.2%, weighted 8.6–10.1%, vs quality 22.1% and sb 21.6%; AC infantry 100-140: raw 37.0%, weighted 36.5–36.6%, quality 41.3%, sb 43.1%. Cavalry/artillery shifts within a few points. Conclusion: weighting does not make mid-sized units more cost-effective; Quality / size bands already do, far more.
 
@@ -106,7 +106,7 @@ The user asks to weight each unit's error by the inverse frequency of its size, 
 - `v4_raw_and_oof(..., run=None)` and `replay_test(..., versions=...)`, so a weighted run can be valued and
   replay-tested.
 
-**New `analysis/size_weighting.py`**
+**New `analysis/experiments/size_weighting.py`**
 - **CLI:** `--dataset ac|tow --arm --model V4|F6 --mode fixed|nested --variant a0.5c10|a1c10|a1 --workers`,
   plus `--report`.
 - **Inputs:** slices and folds from the existing caches (AC `v1_s500_{arm}_slice`, ToW `..._tow_...`). It

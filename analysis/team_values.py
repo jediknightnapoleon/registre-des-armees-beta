@@ -77,7 +77,7 @@ kappa_of = ckpt.kappa_of
 def v4_raw_and_oof(dataset: str, arm: str, units: list[up.Unit],
                    fitted: tuple[up.CVRun, dict[str, float]] | None = None) -> tuple[dict, dict]:
     """V4 at corps 8 for every unit, and its out-of-fold errors as harmonise_by_size wants them.
-    `fitted` = (run, size powers) of another V4 fit (analysis/size_weighting.py); None = the cached one."""
+    `fitted` = (run, size powers) of another V4 fit (analysis/experiments/size_weighting.py); None = the cached one."""
     run, p_of = fitted if fitted is not None else common.load_pickle(ckpt.v4_path(dataset, arm))
     spec = run.spec
     design = cs.segmented(up.design_for(spec, units, arm), units)

@@ -368,7 +368,7 @@ def shape_variants(arm: str) -> list[tuple[str, str, tuple[tuple[str, str], ...]
     """(key, label, shape) for every variant of one arm. F = firearm / calibre
     representation, SH = shooting: 0 additive, 1 product, 2 product per type."""
     if arm == "artillery":
-        # F3: the smooth calibre function from analysis/calibre_function.py — a
+        # F3: the smooth calibre function from analysis/experiments/calibre_function.py — a
         # natural cubic spline in log range (df 5) with the shot type, which matched
         # the cannon-type one-hot (49.68 vs 49.43 nested MAE) with 9 fewer parameters.
         reps = [("F0", "range + damage + gun reload", ()),

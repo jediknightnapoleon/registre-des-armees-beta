@@ -464,7 +464,7 @@ reached in three steps.
 
 The first model took the blind study's functional form (branch
 `blind-pricing-study`) and learned its parameters from the true regular price
-(`analysis/commander_stage.py`):
+(`analysis/experiments/commander_stage.py`):
 
 $$
 \text{price}_{\text{cmd}} = \max\Bigl(1,\; (a + a_s)\cdot P + (b_s + \text{army}_f)\cdot\tfrac{8}{N}\Bigr)
@@ -539,7 +539,7 @@ Within one regular unit, every commander shares the regular price, size, army
 and corps number. Comparing two generals **of the same unit** therefore shows
 exactly what a general adds, with no regular-price model in between. 444
 regular units have two or more same-size generals, giving 451 such comparisons
-(`analysis/commander_within_unit.py`, report
+(`analysis/experiments/commander_within_unit.py`, report
 `analysis/output/commander_within_unit_report.md`).
 
 **Stars set the general's stat bonus on a fixed schedule**
@@ -650,7 +650,7 @@ pinned to train have no prediction.
 | Staff generals | 8.5 | 8.5 |
 | **All 12 492 predicted units** | **29.9 (4.0%)** | **27.3 (3.7%)** |
 
-`analysis/commander_stage.py` and its outputs keep the rejected stars-only
+`analysis/experiments/commander_stage.py` and its outputs keep the rejected stars-only
 model of §7.1, for the record.
 
 ### 7.5 Remaining weak spots
@@ -675,11 +675,11 @@ model of §7.1, for the record.
 | `analysis/output/extreme_pinning_report.md` | Extreme units: pinning, and how badly they are priced |
 | `analysis/output/class_structure_report.md` | §6: class structure variants, per-class V4 tables |
 | `analysis/output/class_structure_coefficients.csv` | Every V4 coefficient (per-class β, size powers, army × class cells) |
-| `analysis/output/faction_class_multipliers*.csv`, `.md` | The adopted model's army × class multipliers as tables (`analysis/fclass_table.py`) |
+| `analysis/output/faction_class_multipliers*.csv`, `.md` | The adopted model's army × class multipliers as tables (`analysis/experiments/fclass_table.py`) |
 | `analysis/calibre_onehot_results/`, `analysis/linear_results/` | The same pipeline with the cannon-type one-hot, and the fully linear model |
 | `analysis/commander_blind/REPORT.md` | §7.2: the commander blind study (brief, data, scripts, log in the same folder) |
-| `analysis/output/commander_within_unit_report.md` | §7.3: generals of the same unit compared (`analysis/commander_within_unit.py`) |
+| `analysis/output/commander_within_unit_report.md` | §7.3: generals of the same unit compared (`analysis/experiments/commander_within_unit.py`) |
 | `analysis/output/commander_model_report.md`, `commander_model_coefficients.csv` | §7.4: the final commander and combined models (`analysis/commander_model.py`) |
 | **`analysis/output/price_database.csv`** | **Every unit: true price and every model's out-of-fold prediction (§7.4)** |
-| `analysis/output/commander_stage_report.md`, `commander_coefficients.csv`, `commander_predictions.csv` | §7.1: the rejected stars-only model (`analysis/commander_stage.py`) |
+| `analysis/output/commander_stage_report.md`, `commander_coefficients.csv`, `commander_predictions.csv` | §7.1: the rejected stars-only model (`analysis/experiments/commander_stage.py`) |
 | `analysis/HANDOFF.md` | How to work on this further |

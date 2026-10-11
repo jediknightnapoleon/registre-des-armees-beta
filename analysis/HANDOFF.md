@@ -92,9 +92,9 @@ pricing analysis, which the app does not use.
 | `python analysis/unit_pricing.py` | `analysis/output/` (spline artillery) | ~50 min with 6 workers |
 | `python analysis/unit_pricing.py --artillery-cal projectile --out analysis/calibre_onehot_results` | cannon-type one-hot version | ~50 min |
 | `python analysis/unit_pricing.py --linear --out analysis/linear_results` | historical fully linear model | shorter (no power search) |
-| `python analysis/calibre_function.py` | `calibre_function_report.md` | ~12 min |
+| `python analysis/experiments/calibre_function.py` | `calibre_function_report.md` | ~12 min |
 | `python analysis/blind_ideas.py` | `blind_ideas_report.md` | ~8 min |
-| `python analysis/extreme_pinning.py` | `extreme_pinning_report.md` | ~5 min |
+| `python analysis/experiments/extreme_pinning.py` | `extreme_pinning_report.md` | ~5 min |
 | `python analysis/class_structure.py [--fresh]` | `class_structure_report.md` | ~40 min; checkpoints in `analysis/.cache/`, resumable |
 | `python analysis/export_optimiser_values.py` (then `tools/build_web_data.py`, then again with `--fixture`) | the in-app optimiser's data: `data/generated/ntw3_optimiser_values.csv`, `ntw3_optimiser_params.json`, the app's parity fixture (docs/HANDOFF.md §4.6) | ~15 s each |
 | `python analysis/ac_pricing.py --phase model\|staff\|commanders\|size\|database\|report …` | the AC pricing study: `analysis/output/ac/`, report tables `ac_pricing_results.md` (see `analysis/AC_PRICING_REPORT.md` → Commands) | minutes to ~90 min per arm; checkpoints in `analysis/.cache/ac/` |

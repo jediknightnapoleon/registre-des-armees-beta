@@ -130,11 +130,11 @@ its own level, so one curve still has to fit all sizes.
 ## Reproducing
 
 ```bash
-py -3.13 analysis/size_weighting.py diagnostics
-py -3.13 analysis/size_weighting.py run --model both --mode fixed --variant a1        # per variant; seconds
-py -3.13 analysis/size_weighting.py run --model V4 --mode nested --variant a1 --workers 5   # ~1–2 h per variant
-py -3.13 analysis/size_weighting.py report
-py -3.13 analysis/size_weighting_builds.py                                          # ~11 min
+py -3.13 analysis/experiments/size_weighting.py diagnostics
+py -3.13 analysis/experiments/size_weighting.py run --model both --mode fixed --variant a1        # per variant; seconds
+py -3.13 analysis/experiments/size_weighting.py run --model V4 --mode nested --variant a1 --workers 5   # ~1–2 h per variant
+py -3.13 analysis/experiments/size_weighting_report.py
+py -3.13 analysis/experiments/size_weighting_builds.py                                          # ~11 min
 ```
 
 - Checkpoints are in `analysis/.cache/size_weighting/` and runs resume from them.

@@ -37,7 +37,7 @@ class Settings:
     tolerance: float = 1e-10
     # --artillery-cal: "auto" screens every calibre representation, else F0 plus the named one.
     artillery_cal: str = "auto"
-    # Size-frequency row weights (analysis/size_weighting.py; unit_pricing.size_weights); None = off.
+    # Size-frequency row weights (analysis/experiments/size_weighting.py; unit_pricing.size_weights); None = off.
     size_weighting: dict | None = None
 
 
