@@ -4,6 +4,7 @@ scripts use from unit_pricing keep resolving."""
 
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 import unittest
@@ -53,6 +54,37 @@ class ApiTests(unittest.TestCase):
         for name in PICKLED:
             cls = getattr(up, name)
             self.assertEqual((cls.__module__, cls.__qualname__), ("unit_pricing", name))
+
+    def test_each_pricing_module_imports_on_its_own(self) -> None:
+        # A fresh interpreter per module: no module may rely on another having been imported first.
+        modules = sorted(p.stem for p in (ANALYSIS / "pricing").glob("*.py") if p.stem != "__init__")
+        code = "import sys; sys.path.insert(0, {a!r}); import importlib; importlib.import_module('pricing.' + {m!r})"
+        for m in modules:
+            r = subprocess.run([sys.executable, "-c", code.format(a=str(ANALYSIS), m=m)],
+                               capture_output=True, text=True, encoding="utf-8")
+            self.assertEqual(r.returncode, 0, f"pricing.{m}: {r.stderr[-600:]}")
+
+    def test_assigning_a_reexported_name_raises(self) -> None:
+        import unit_pricing as up
+        with self.assertRaisesRegex(AttributeError, "re-exported"):
+            up.FCLASS_GRID = {}
+        up.scratch_value = 1          # names the module does not export can still be set
+        del up.scratch_value
+
+    def test_final_is_shared(self) -> None:
+        import blind_ideas
+        import unit_pricing as up
+        from pricing.final import FINAL
+        self.assertIs(up.FINAL, FINAL)
+        self.assertIs(blind_ideas.FINAL, FINAL)
+
+    def test_cli_help_runs(self) -> None:
+        r = subprocess.run([sys.executable, str(ANALYSIS / "unit_pricing.py"), "--help"],
+                           capture_output=True, text=True, encoding="utf-8",
+                           env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+        self.assertEqual(r.returncode, 0, r.stderr[-600:])
+        self.assertIn("price = M × size^p", r.stdout)
+        self.assertIn("--artillery-cal", r.stdout)
 
 
 class SettingsTests(unittest.TestCase):
