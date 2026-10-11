@@ -84,11 +84,13 @@ def kappa_of(dataset: str, arm: str) -> float:
     return pickle.loads((cs.CACHE / f"v{cs.CACHE_VERSION}_{arm}_kappa.pkl").read_bytes())
 
 
-def v4_raw_and_oof(dataset: str, arm: str, units: list[up.Unit]) -> tuple[dict, dict]:
-    """V4 at corps 8 for every unit, and its out-of-fold errors as harmonise_by_size wants them."""
+def v4_raw_and_oof(dataset: str, arm: str, units: list[up.Unit],
+                   fitted: tuple[up.CVRun, dict[str, float]] | None = None) -> tuple[dict, dict]:
+    """V4 at corps 8 for every unit, and its out-of-fold errors as harmonise_by_size wants them.
+    `fitted` = (run, size powers) of another V4 fit (analysis/size_weighting.py); None = the cached one."""
     path = (ap.CACHE / f"v{ap.CACHE_VERSION}_s{SEEDS}_{arm}_v4.pkl") if dataset == "ac" \
         else (cs.CACHE / f"v{cs.CACHE_VERSION}_{arm}_V4.pkl")
-    run, p_of = pickle.loads(path.read_bytes())
+    run, p_of = fitted if fitted is not None else pickle.loads(path.read_bytes())
     spec = run.spec
     design = cs.segmented(up.design_for(spec, units, arm), units)
     ref = reference(units)
@@ -157,7 +159,7 @@ def stratum_table(units_by_arm: dict[str, list[up.Unit]], vals: dict[str, dict])
     return rows
 
 
-def replay_test(cards: dict[tuple[str, str], dict]) -> list[list[str]]:
+def replay_test(cards: dict[tuple[str, str], dict], versions: tuple[str, ...] = VERSIONS) -> list[list[str]]:
     """Ladder replays (blind-study split and controls, as cost_effective_builds.size_replay_check):
     does the part a version removes from raw value predict winning?"""
     data = up.ROOT / "analysis" / "build_blind" / "data"
@@ -181,20 +183,20 @@ def replay_test(cards: dict[tuple[str, str], dict]) -> list[list[str]]:
             w -= match_fac[a["match_id"]][(f, True)]
         p = (w + 100 * p_all) / (g + 100)
         cs_ = [cards[(f, k)] for k in a["unit_keys"].split() if (f, k) in cards]
-        s = {v: sum(c[v] - c["cost"] for c in cs_) / 1000 for v in ("raw",) + VERSIONS}
+        s = {v: sum(c[v] - c["cost"] for c in cs_) / 1000 for v in ("raw",) + versions}
         yy = int(a["result"] == "win")
         rated = a["player_rating_change"] != ""
         e = 0.5
         if rated:
             d = float(a["player_rating_change"]) / 24
             e = min(0.95, max(0.05, 1 - d if yy else -d))
-        X.append([np.log(p / (1 - p)), np.log(e / (1 - e))] + [s[v] for v in VERSIONS] + [s["raw"] - s[v] for v in VERSIONS])
+        X.append([np.log(p / (1 - p)), np.log(e / (1 - e))] + [s[v] for v in versions] + [s["raw"] - s[v] for v in versions])
         y.append(yy)
         tr.append(is_train and rated)
     X, y, tr = np.array(X), np.array(y), np.array(tr)
     rows = []
-    for i, v in enumerate(VERSIONS):
-        cols = [0, 1, 2 + i, 2 + len(VERSIONS) + i]
+    for i, v in enumerate(versions):
+        cols = [0, 1, 2 + i, 2 + len(versions) + i]
         A = np.column_stack([np.ones(tr.sum()), X[tr][:, cols]])
         beta = np.zeros(A.shape[1])
         for _ in range(50):
@@ -206,7 +208,7 @@ def replay_test(cards: dict[tuple[str, str], dict]) -> list[list[str]]:
                 break
         se = np.sqrt(np.diag(np.linalg.inv(H)))
         rows.append([v, f"{beta[3]:+.3f} ± {se[3]:.3f}", f"{beta[4]:+.3f} ± {se[4]:.3f} (z {beta[4] / se[4]:.1f})",
-                     f"{X[tr][:, 2 + len(VERSIONS) + i].std():.3f}"])
+                     f"{X[tr][:, 2 + len(versions) + i].std():.3f}"])
     return rows
 
 
@@ -220,7 +222,7 @@ def main() -> int:
     report: dict[str, object] = {}
     tables: dict[str, list] = {}
     for dataset in ("ac", "tow"):
-        vals: dict[str, dict] = {v: {} for v in ("raw",) + VERSIONS}
+        vals: dict[str, dict] = {v: {} for v in ("raw",) + versions}
         units_by_arm = {}
         metrics = {}
         oof_all: dict = {}
@@ -243,7 +245,7 @@ def main() -> int:
         # Commander versions, each pool's own commander model.
         if dataset == "ac":
             coef = json.loads((ap.OUT / "ac_commanders.json").read_text(encoding="utf-8"))["coefficients_ac"]
-            cmd = {v: commander_values(ap.OUT / "ac_commander_pairs.csv", coef, vals[v]) for v in ("raw",) + VERSIONS}
+            cmd = {v: commander_values(ap.OUT / "ac_commander_pairs.csv", coef, vals[v]) for v in ("raw",) + versions}
             with open(OUT / "values_ac.csv", "w", encoding="utf-8", newline="") as fh:
                 w = csv.writer(fh)
                 w.writerow(["faction_key", "unit_key", "kind"] + [f"value_{v}" for v in ("raw",) + VERSIONS])
@@ -263,7 +265,7 @@ def main() -> int:
                     w.writerow([k[0], k[1], "commander", f"{cmd_sb[k]:.3f}"])
             # Replay test on ToW cards (units + commanders), costs from the cards.
             tow_cards = {}
-            cmd_all = {v: commander_values(None, None, vals[v]) for v in ("raw",) + VERSIONS}
+            cmd_all = {v: commander_values(None, None, vals[v]) for v in ("raw",) + versions}
             for arm, units in units_by_arm.items():
                 for u in units:
                     k = (u.faction, u.key)

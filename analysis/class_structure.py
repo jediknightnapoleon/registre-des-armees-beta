@@ -139,10 +139,14 @@ def fit_class_p(spec: up.Spec, design: up.Design, units: list[up.Unit], rows: np
 
 
 def run_variant(label: str, spec: up.Spec, design: up.Design, sl: up.Slice, arm: str,
-                class_p: bool) -> tuple[up.CVRun, dict[str, float]]:
+                class_p: bool, fixed_p: dict[str, float] | None = None) -> tuple[up.CVRun, dict[str, float]]:
+    """`fixed_p` holds every fold's segment exponents at the given values instead of searching them
+    (analysis/size_weighting.py's quick screen); None keeps the search (or none, without class_p)."""
     units, folds = sl.units, sl.plan.folds
     everything = np.arange(len(units))
-    if class_p:
+    if fixed_p is not None:
+        fitted = [dict(fixed_p) for _ in range(len(folds) + 1)]
+    elif class_p:
         fitted = up.parallel_map(fit_class_p, [(spec, design, units, train) for train, _ in folds]
                                  + [(spec, design, units, everything)])
     else:

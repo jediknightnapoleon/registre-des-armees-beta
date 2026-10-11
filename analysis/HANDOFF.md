@@ -293,6 +293,10 @@ to `analysis/output/`, and never changes committed outputs):
    (`ac_builds.WIP_THEATRES`).
    - **Open:** the app side (phase B: AC in the Optimise panel, team suggestion in the Ordre de
      Bataille planner that refuses mixed pools) and teams of three.
+7. **Size-frequency weighting: tried, not adopted.** `analysis/SIZE_WEIGHTING_REPORT.md`. Weighting each
+   unit's error by the inverse frequency of its size barely moves the size curves, costs 2–9 gold on
+   infantry/artillery, and leaves the optimiser's size picks almost unchanged; Quality / size bands do the
+   job. `unit_pricing.SIZE_WEIGHTING` stays (off by default).
 
 ## 9. Gotchas
 

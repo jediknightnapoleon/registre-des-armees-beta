@@ -1078,6 +1078,7 @@ class SliceData:
     g: np.ndarray        # size^(p − 1)
     factions: np.ndarray
     fvals: dict[str, np.ndarray]
+    w: np.ndarray | None = None   # size-frequency row weights (SIZE_WEIGHTING), None = unweighted
 
 
 def size_of(u: Unit, kind: str) -> float:
@@ -1099,7 +1100,70 @@ def data_for(spec: Spec, units: Sequence[Unit]) -> SliceData:
         # Rating as a fixed divisor: price ∝ REF_RATING / rating, folded into g so
         # it scales the β part (c stays outside, like every multiplier).
         d = replace(d, g=d.g * REF_RATING / d.fvals["rating"].astype(float))
+    if SIZE_WEIGHTING is not None:
+        d = replace(d, w=size_weights(d.size, spec.size, SIZE_WEIGHTING)[0])
     return d
+
+
+# --- size-frequency weighting (analysis/size_weighting.py; analysis/SIZE_WEIGHTING_PLAN.md) ----------------
+# The fits are dominated by the commonest sizes (e.g. 2 005 AC infantry units of 100–140 models against 13
+# of 240+). With SIZE_WEIGHTING set, each row's squared error is multiplied by the inverse frequency of its
+# size band within the slice (one arm), (median band count / band count)^alpha, capped at `cap` (None = no
+# cap); bands under `min_band` units merge into the neighbour towards the commonest band. The weights
+# multiply the per-size loss PriceModel already minimises (total-price LS × 1/size²); counts come from the
+# whole slice (sizes are features, no target leakage); fit_on normalises them to mean 1 on its rows (ridge
+# κ is scale-free, so that is only cosmetic). None (the default) leaves every fit exactly as before.
+SIZE_WEIGHTING: dict | None = None
+SIZE_WEIGHT_BANDS = {"n": (40, 60, 80, 100, 140, 180, 240), "guns": (2, 3, 4, 5)}
+
+
+def size_band_labels(kind: str) -> list[str]:
+    edges = SIZE_WEIGHT_BANDS[kind]
+    return [f"0-{edges[0]}"] + [f"{a}-{b}" for a, b in zip(edges, edges[1:])] + [f"{edges[-1]}+"]
+
+
+def size_weights(size: np.ndarray, kind: str, setting: dict) -> tuple[np.ndarray, list[dict]]:
+    """Row weights for one slice and the per-band table (label, units, weight, share of total weight).
+    Band = [lo, hi) on SIZE_WEIGHT_BANDS[kind] (as ac_pricing.band_of)."""
+    labels = size_band_labels(kind)
+    band = np.searchsorted(np.array(SIZE_WEIGHT_BANDS[kind]), size, side="right")
+    groups = [[i] for i in range(len(labels))]               # band indices merged into each group
+    counts = lambda: [int(sum((band == b).sum() for b in g)) for g in groups]
+    min_band = int(setting.get("min_band", 1))
+    while True:
+        c = counts()
+        live = [i for i, x in enumerate(c) if x > 0]
+        small = [i for i in live if c[i] < min_band]
+        if not small or len(live) <= 1:
+            break
+        i = small[0]
+        top = int(np.argmax(c))
+        step = 1 if top > i else -1
+        j = i + step
+        while c[j] == 0 and 0 <= j + step < len(groups):
+            j += step
+        groups[j] = sorted(groups[j] + groups[i])
+        groups[i] = []
+    c = np.array(counts(), float)
+    ref = float(np.median(c[c > 0]))
+    weight_of = np.zeros(len(groups))
+    for gi, x in enumerate(c):
+        if x > 0:
+            weight_of[gi] = (ref / x) ** float(setting["alpha"])
+    if setting.get("cap") is not None:
+        weight_of = np.minimum(weight_of, float(setting["cap"]))
+    group_of_band = {b: gi for gi, g in enumerate(groups) for b in g}
+    w = np.array([weight_of[group_of_band[b]] for b in band])
+    total = w.sum()
+    table = [{"band": "+".join(labels[b] for b in g), "units": int(c[gi]), "weight": float(weight_of[gi]),
+              "weight_share": float(weight_of[gi] * c[gi] / total)}
+             for gi, g in enumerate(groups) if g and c[gi] > 0]
+    return w, table
+
+
+def kish_ess(w: np.ndarray) -> float:
+    """Kish effective sample size of a weighted fit."""
+    return float(w.sum() ** 2 / (w ** 2).sum())
 
 
 def sub(fvals: dict[str, np.ndarray], index: np.ndarray) -> dict[str, np.ndarray]:
@@ -1112,7 +1176,8 @@ IRLS_FLOOR = 1.0         # gold; |residual| floor in the IRLS weights
 
 def fit_on(spec: Spec, design: Design, d: SliceData, rows: np.ndarray) -> PriceModel:
     args = (design.X[rows], d.y[rows], d.inv[rows], d.g[rows], sub(d.fvals, rows), d.factions[rows])
-    model = PriceModel(spec).fit(*args)
+    sw = None if d.w is None else d.w[rows] / d.w[rows].mean()     # size-frequency weights (SIZE_WEIGHTING)
+    model = PriceModel(spec).fit(*args, weights=sw)
     if spec.loss == "lad":
         # Least absolute deviation on total price, Σ size·|y − ŷ|, by IRLS on the
         # per-size objective: w = size / |y − ŷ| = size² / |total residual|.
@@ -1120,7 +1185,8 @@ def fit_on(spec: Spec, design: Design, d: SliceData, rows: np.ndarray) -> PriceM
         X, y, inv, g, fvals, factions = args
         for _ in range(IRLS_STEPS):
             resid = size * np.abs(y - model.predict(X, inv, g, fvals, factions))
-            model = PriceModel(spec).fit(*args, weights=size ** 2 / np.maximum(resid, IRLS_FLOOR))
+            irls = size ** 2 / np.maximum(resid, IRLS_FLOOR)
+            model = PriceModel(spec).fit(*args, weights=irls if sw is None else irls * sw)
     return model
 
 
@@ -1334,7 +1400,8 @@ def structure_search(sl: Slice, kind: str, p: float) -> SearchResult:
 # worker never opens a pool of its own.
 
 WORKERS = max(1, min(6, (os.cpu_count() or 1) // 2))    # --workers; 1 = serial
-SHARED_SETTINGS = ("P_GRID", "POWER_GRID", "MAX_PASSES", "FINE_PASSES", "MAX_ITER", "TOLERANCE", "ARTILLERY_CAL")
+SHARED_SETTINGS = ("P_GRID", "POWER_GRID", "MAX_PASSES", "FINE_PASSES", "MAX_ITER", "TOLERANCE", "ARTILLERY_CAL",
+                   "SIZE_WEIGHTING")
 _POOL: ProcessPoolExecutor | None = None
 
 
