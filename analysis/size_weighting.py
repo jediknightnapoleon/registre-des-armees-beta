@@ -97,8 +97,7 @@ def run_one(dataset: str, arm: str, model: str, mode: str, variant: str) -> dict
 
 def run_batch(args, started: float) -> None:
     models = ["V4", "F6"] if args.model == "both" else [args.model]
-    up.SIZE_WEIGHTING = VARIANTS[args.variant]            # before any pool exists
-    up.WORKERS = args.workers
+    up.configure(size_weighting=VARIANTS[args.variant], workers=args.workers)
     for dataset in args.dataset:
         for model in models:
             mode = args.mode if model == "V4" else "full"

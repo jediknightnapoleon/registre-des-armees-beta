@@ -94,3 +94,9 @@ def numerics() -> dict:
         out[arm] = {"sse": repr(float(model.sse)), "weights_sha": sha(np.asarray(w, float).tobytes()),
                     "weight_table": table}
     return out
+
+
+def worker_settings(_: int = 0):
+    """The settings a pool worker computes with (a module-level function, so the pool can pickle it)."""
+    from pricing import config
+    return config.settings

@@ -193,7 +193,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--workers", type=int, default=4)
     args = parser.parse_args()
-    up.WORKERS = max(1, args.workers)
+    up.configure(workers=max(1, args.workers))
     started = time.time()
     OUT.mkdir(parents=True, exist_ok=True)
     report: dict[str, object] = {}

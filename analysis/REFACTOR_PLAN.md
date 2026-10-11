@@ -10,7 +10,7 @@
 - [x] R1. Test suite analysis/tests/ (passes on the old code).
 - [x] R2. common.py + checkpoints.py; callers switched.
 - [x] R3. Monkeypatching removed (FCLASS_GRID, in_scope/side_of, SIZE_BANDS, PAIRS).
-- [ ] R4. pricing/config.py Settings + up.configure; setters switched.
+- [x] R4. pricing/config.py Settings + up.configure; setters switched.
 - [ ] R5. unit_pricing split into analysis/pricing/ (3 moves) behind the facade.
 - [ ] R6. Pipeline scripts tidied.
 - [ ] R7. Experiments moved to analysis/experiments/; docs updated.
@@ -27,6 +27,8 @@
 - R2: analysis/common.py (paths, constants, WIP_THEATRES/theatre_of/is_wip, the 5 named size-band sets, log/table/write_csv/read_csv, atomic cached/save/load) + analysis/checkpoints.py (all checkpoint names + kappa_of); callers switched (unit_pricing log/table/paths/ARMS; cached in ac_pricing/class_structure/team_values; hard-coded v2_/tow_builds/sb names in cost_effective_builds/commander_model/commander_stage/team_search/export_team_builds/size_weighting; team_search cache now atomic and its side check a ValueError; theatre parsing ×7). Dropped dead WELLESLEY (kept LinearRegression: it IS used at the staff fit). Fixed a baseline bug: team_values main had `versions` in 3 lines from the size-weighting sed edit. Verified: tests 10/10; team_values/team_search/team_report_tables/export_optimiser_values(+build_web_data, --fixture)/export_team_builds/ac_builds (4 versions + no-rebates) → tracked outputs unchanged (only the date stamp, restored); 543 gitignored build files identical with timestamps masked; teams_tow.csv identical.
 
 - R3: monkeypatching removed — fclass_cv(grid=) (ac_pricing passes AC_JFC_GRID; the import-time up.FCLASS_GRID patch is gone), load(scope=, side=) + build_commander_pairs.build_pairs(out, scope, side) (no more up.in_scope/side_of swaps), band_of/with_bands/size_form_run(bands=) + common.SB_BANDS (no more ap.SIZE_BANDS["n"] swaps), commander_model.Pairs(path) (no more cm.PAIRS swaps; ac_pricing used to leave cm.PAIRS pointing at the AC file). New tests/test_api.py: importing the pipeline scripts changes no shared setting (fresh subprocess), public names resolve, pickled classes keep module unit_pricing. 13 tests OK. Re-ran ac_pricing commanders/database/report/model×3, team_values, build_commander_pairs → outputs unchanged.
+
+- R4: analysis/pricing/config.py — frozen Settings (workers, out_dir, p_grid, power_grid, max_passes, fine_passes, max_iter, tolerance, artillery_cal, size_weighting; defaults = the old globals) + configure(**kw) (unknown names raise). unit_pricing reads config.settings.<x> at call time; the module globals are gone, up.WORKERS etc. still read via module __getattr__, and assigning one raises AttributeError naming configure(). The pool passes the whole Settings to workers (workers=1 there) and is shut down when configure() changes a setting (before, a pool kept the values it started with). Setters switched: ac_pricing, team_values, size_weighting, unit_pricing.main, the HANDOFF smoke snippet. 4 new tests (17 OK). Re-ran team_values, team_search, export_optimiser_values, ac_pricing commanders/database/report → outputs unchanged; s3 smoke run (HANDOFF snippet, now via configure) byte-identical to the baseline smoke run (report identical up to timings).
 
 ## Plan (copy)
 

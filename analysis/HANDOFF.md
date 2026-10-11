@@ -105,11 +105,11 @@ pricing analysis, which the app does not use.
   `regression`, `profile`, `search`, `variant`, `adopted`, `fine`,
   `final models …`, `done`.
 - **Use a quick smoke run before a long run** whenever report or output code
-  changed. Monkeypatch the grids, then call `main`:
+  changed. Shrink the search grids with `configure`, then call `main`:
 
   ```python
   import sys; sys.path.insert(0, "analysis"); import unit_pricing as up
-  up.POWER_GRID = (1.0,); up.MAX_PASSES = 1; up.FINE_PASSES = 0; up.P_GRID = (0.75, 1.0, 1.1, 1.3)
+  up.configure(power_grid=(1.0,), max_passes=1, fine_passes=0, p_grid=(0.75, 1.0, 1.1, 1.3))
   sys.argv = ["x", "--seeds", "3", "--out", "<scratch dir>", "--artillery-cal", "spline"]
   up.main()
   ```

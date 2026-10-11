@@ -47,7 +47,6 @@ from __future__ import annotations
 import argparse
 import csv
 import itertools
-import os
 import re
 import sys
 import time
@@ -62,8 +61,8 @@ from sklearn.linear_model import LinearRegression
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import ARMS, CATALOG_CSV, DATA_CSV, ROOT, log, table  # noqa: E402  (re-exported as up.*)
-
-OUT_DIR = ROOT / "analysis" / "output"
+from pricing import config  # noqa: E402
+from pricing.config import Settings, configure  # noqa: E402,F401  (re-exported as up.*)
 
 # Dev/test corps: "1. Lordz", "Lordz", "0. Placeholder A/B". Prices of 500-9 500
 # that no real roster uses.
@@ -83,16 +82,13 @@ MIN_FLAG_ROWS = 5         # drop a 0/1 trait whose minority value covers fewer r
 MIN_STRATUM_GROUPS = 5    # collapse unit_class × speed to unit_class below this
 MIN_BALANCE_ROWS = 10     # smaller factions can't approach 20% and don't drive the max
 REF_RATING = 8            # rating at which the rating multiplier is 1 (the median corps)
-MAX_ITER = 300
-TOLERANCE = 1e-10
+# The tunable settings (search grids, iteration limits, workers, output dir, artillery calibre, size
+# weighting) live in pricing/config.py; change them with configure(...), read config.settings.<name>.
 
-# Size power profile: p from 0.40 to 2.40. Size kinds tried per arm (first = default).
-P_GRID = tuple(round(0.40 + 0.05 * i, 2) for i in range(41))
+# Size kinds tried per arm (first = default).
 SIZE_KINDS = {"infantry": ("n",), "cavalry": ("n",), "artillery": ("guns", "n")}
-# Stat-power coordinate descent: candidate powers per stat, and a ± window for p.
-POWER_GRID = (0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5, 3.0)
+# Stat-power coordinate descent: a ± window for p around the profile's best.
 P_WINDOW = 0.30
-MAX_PASSES = 4
 # Fine local refinement around the coarse powers: a ±half window at a fine step
 # per coordinate, re-centred (up to MAX_RECENTRE times) when the best value
 # lands on a window edge — so powers stuck at the coarse grid's limits can move.
@@ -100,7 +96,6 @@ FINE_STAT_STEP, FINE_STAT_HALF = 0.05, 10     # stats: ±0.50 in steps of 0.05
 FINE_P_STEP, FINE_P_HALF = 0.01, 15           # size power: ±0.15 in steps of 0.01
 MIN_POWER = 0.05
 MAX_RECENTRE = 4
-FINE_PASSES = 3
 # Powered stat columns are (stat / POWER_SCALE)^a, keeping large exponents
 # numerically tame; predictions are unchanged, only the coefficient's unit.
 POWER_SCALE = 100.0
@@ -725,7 +720,7 @@ class PriceModel:
         factor = {var: np.ones(len(y)) for var in mult}
         M = np.ones(len(y))
         previous = np.inf
-        for self.iterations in range(1, MAX_ITER + 1):
+        for self.iterations in range(1, config.settings.max_iter + 1):
             scale = M * g
             Z = np.hstack([scale[:, None], scale[:, None] * X] + ([inv[:, None]] if self.spec.const else []))
             if sw is None:
@@ -774,7 +769,7 @@ class PriceModel:
                 break
             if sse > previous * (1 + 1e-7) + 1e-9:
                 raise AssertionError(f"ALS objective rose: {previous} -> {sse} ({self.spec.describe()})")
-            if np.isfinite(previous) and previous - sse <= TOLERANCE * previous:
+            if np.isfinite(previous) and previous - sse <= config.settings.tolerance * previous:
                 break
             previous = sse
         self.sse = sse
@@ -1081,7 +1076,7 @@ class SliceData:
     g: np.ndarray        # size^(p − 1)
     factions: np.ndarray
     fvals: dict[str, np.ndarray]
-    w: np.ndarray | None = None   # size-frequency row weights (SIZE_WEIGHTING), None = unweighted
+    w: np.ndarray | None = None   # size-frequency row weights (size_weighting setting), None = unweighted
 
 
 def size_of(u: Unit, kind: str) -> float:
@@ -1103,20 +1098,19 @@ def data_for(spec: Spec, units: Sequence[Unit]) -> SliceData:
         # Rating as a fixed divisor: price ∝ REF_RATING / rating, folded into g so
         # it scales the β part (c stays outside, like every multiplier).
         d = replace(d, g=d.g * REF_RATING / d.fvals["rating"].astype(float))
-    if SIZE_WEIGHTING is not None:
-        d = replace(d, w=size_weights(d.size, spec.size, SIZE_WEIGHTING)[0])
+    if config.settings.size_weighting is not None:
+        d = replace(d, w=size_weights(d.size, spec.size, config.settings.size_weighting)[0])
     return d
 
 
 # --- size-frequency weighting (analysis/size_weighting.py; analysis/SIZE_WEIGHTING_PLAN.md) ----------------
 # The fits are dominated by the commonest sizes (e.g. 2 005 AC infantry units of 100–140 models against 13
-# of 240+). With SIZE_WEIGHTING set, each row's squared error is multiplied by the inverse frequency of its
+# of 240+). With the size_weighting setting on, each row's squared error is multiplied by the inverse frequency of its
 # size band within the slice (one arm), (median band count / band count)^alpha, capped at `cap` (None = no
 # cap); bands under `min_band` units merge into the neighbour towards the commonest band. The weights
 # multiply the per-size loss PriceModel already minimises (total-price LS × 1/size²); counts come from the
 # whole slice (sizes are features, no target leakage); fit_on normalises them to mean 1 on its rows (ridge
 # κ is scale-free, so that is only cosmetic). None (the default) leaves every fit exactly as before.
-SIZE_WEIGHTING: dict | None = None
 SIZE_WEIGHT_BANDS = {"n": (40, 60, 80, 100, 140, 180, 240), "guns": (2, 3, 4, 5)}
 
 
@@ -1179,7 +1173,7 @@ IRLS_FLOOR = 1.0         # gold; |residual| floor in the IRLS weights
 
 def fit_on(spec: Spec, design: Design, d: SliceData, rows: np.ndarray) -> PriceModel:
     args = (design.X[rows], d.y[rows], d.inv[rows], d.g[rows], sub(d.fvals, rows), d.factions[rows])
-    sw = None if d.w is None else d.w[rows] / d.w[rows].mean()     # size-frequency weights (SIZE_WEIGHTING)
+    sw = None if d.w is None else d.w[rows] / d.w[rows].mean()     # size-frequency weights (size_weighting setting)
     model = PriceModel(spec).fit(*args, weights=sw)
     if spec.loss == "lad":
         # Least absolute deviation on total price, Σ size·|y − ŷ|, by IRLS on the
@@ -1333,7 +1327,8 @@ class Profile:
 
 
 def profile_p(spec: Spec, sl: Slice, kinds: Sequence[str], consts: Sequence[bool],
-              grid: Sequence[float] = P_GRID) -> Profile:
+              grid: Sequence[float] | None = None) -> Profile:
+    grid = config.settings.p_grid if grid is None else grid
     design = design_for(spec, sl.units, sl.arm)
     curves: dict[tuple[str, bool], list] = {}
     best = None
@@ -1399,17 +1394,26 @@ def structure_search(sl: Slice, kind: str, p: float) -> SearchResult:
 # The nested power searches run one independent descent per outer fold plus one
 # on all rows; those jobs go to a process pool. Each job is a pure function of
 # its arguments, so results are identical to a serial run. Workers are spawned
-# fresh (Windows), so the tunable module settings are copied into them, and a
-# worker never opens a pool of its own.
+# fresh (Windows), so the whole Settings object is copied into them, and a
+# worker never opens a pool of its own (workers=1). A pool started under old
+# settings is shut down whenever configure() changes one, so it never computes
+# with stale values.
 
-WORKERS = max(1, min(6, (os.cpu_count() or 1) // 2))    # --workers; 1 = serial
-SHARED_SETTINGS = ("P_GRID", "POWER_GRID", "MAX_PASSES", "FINE_PASSES", "MAX_ITER", "TOLERANCE", "ARTILLERY_CAL",
-                   "SIZE_WEIGHTING")
 _POOL: ProcessPoolExecutor | None = None
 
 
-def _init_worker(settings: dict) -> None:
-    globals().update(settings, WORKERS=1)
+def _init_worker(settings: Settings) -> None:
+    config.install(replace(settings, workers=1))
+
+
+def _shutdown_pool(old: Settings, new: Settings) -> None:
+    global _POOL
+    if _POOL is not None and replace(old, out_dir=new.out_dir) != new:
+        _POOL.shutdown()
+        _POOL = None
+
+
+config.on_change(_shutdown_pool)
 
 
 def _call(job: tuple) -> object:
@@ -1418,13 +1422,13 @@ def _call(job: tuple) -> object:
 
 
 def parallel_map(fn: Callable, jobs: Sequence[tuple]) -> list:
-    """[fn(*job) for job in jobs], on the worker pool when WORKERS > 1."""
+    """[fn(*job) for job in jobs], on the worker pool when the workers setting is > 1."""
     global _POOL
-    if WORKERS <= 1 or len(jobs) <= 1:
+    workers = config.settings.workers
+    if workers <= 1 or len(jobs) <= 1:
         return [fn(*job) for job in jobs]
     if _POOL is None:
-        _POOL = ProcessPoolExecutor(WORKERS, initializer=_init_worker,
-                                    initargs=({k: globals()[k] for k in SHARED_SETTINGS},))
+        _POOL = ProcessPoolExecutor(workers, initializer=_init_worker, initargs=(config.settings,))
     return list(_POOL.map(_call, [(fn, tuple(job)) for job in jobs]))
 
 
@@ -1435,10 +1439,10 @@ def descend_powers(spec: Spec, units: Sequence[Unit], arm: str, rows: np.ndarray
     objective) over one power per numeric stat and the size power p.
 
     Each exponent (the design's power keys: additive stats, shooting-product
-    factors, the calibre column) is tried on POWER_GRID with the others held —
+    factors, the calibre column) is tried on the power grid with the others held —
     the gun fire-rate exponent also on 0, meaning "the gun's reload time doesn't
     matter" — then p on a 0.05 grid within ±P_WINDOW of the current p; up to
-    MAX_PASSES passes, stopping when a full pass changes nothing.
+    max_passes passes, stopping when a full pass changes nothing.
     Returns (powers, p, passes used)."""
     stats = design_for(spec, units, arm).power_keys
     powers = {s: spec.power_of(s) for s in stats}
@@ -1458,10 +1462,11 @@ def descend_powers(spec: Spec, units: Sequence[Unit], arm: str, rows: np.ndarray
         return fit_on(replace(spec, p=p_trial), design, d, rows).sse
 
     current = sse(powers, p)
-    for passes in range(1, MAX_PASSES + 1):
+    for passes in range(1, config.settings.max_passes + 1):
         changed = False
         for s in stats:
-            for a in ((0.0,) + POWER_GRID if s == "shoot:rate" else POWER_GRID):
+            grid = config.settings.power_grid
+            for a in ((0.0,) + grid if s == "shoot:rate" else grid):
                 if a == powers[s]:
                     continue
                 trial = {**powers, s: a}
@@ -1557,12 +1562,12 @@ def refine_powers(spec: Spec, units: Sequence[Unit], arm: str, rows: np.ndarray,
                   powers: dict[str, float], p: float) -> tuple[dict[str, float], float]:
     """Fine coordinate descent from a coarse solution: each stat on a ±0.5 window
     in steps of 0.05, then p on ±0.15 in steps of 0.01, windows re-centred at
-    edges; up to FINE_PASSES passes until nothing changes."""
+    edges; up to fine_passes passes until nothing changes."""
     objective = PowerObjective(spec, units, arm, rows)
     stats = design_for(spec, units, arm).power_keys
     powers = {s: powers.get(s, 1.0) for s in stats}
     current = objective(powers, p)
-    for _ in range(FINE_PASSES):
+    for _ in range(config.settings.fine_passes):
         changed = False
         for s in stats:
             a, value = line_search(lambda v: objective({**powers, s: v}, p), powers[s],
@@ -1687,8 +1692,7 @@ class VariantResult:
 
 
 # --artillery-cal: restrict the artillery calibre representations screened.
-# "auto" screens them all; otherwise F0 (the baseline) plus the named one.
-ARTILLERY_CAL = "auto"
+# "auto" (the artillery_cal setting) screens them all; otherwise F0 (the baseline) plus the named one.
 ARTILLERY_CAL_KEYS = {"calibre": "F1", "projectile": "F2", "spline": "F3"}
 
 
@@ -1703,8 +1707,9 @@ def shape_variants(arm: str) -> list[tuple[str, str, tuple[tuple[str, str], ...]
                 ("F1", "calibre", (("cal", "calibre"),)),
                 ("F2", "cannon type", (("cal", "projectile"),)),
                 ("F3", "range spline (df 5)", (("cal", "spline_r"), ("cal_df", "5")))]
-        if ARTILLERY_CAL != "auto":
-            reps = [r for r in reps if r[0] in ("F0", ARTILLERY_CAL_KEYS[ARTILLERY_CAL])]
+        cal = config.settings.artillery_cal
+        if cal != "auto":
+            reps = [r for r in reps if r[0] in ("F0", ARTILLERY_CAL_KEYS[cal])]
         per_type = {"F1": "calibre inside the shooting product", "F2": "shooting product per cannon type"}
     else:
         reps = [("F0", "range", ()), ("F1", "firearm one-hot", (("fire", "firearm"),))]
@@ -2317,7 +2322,6 @@ class Results:
 
 
 def main() -> int:
-    global OUT_DIR, ARTILLERY_CAL, WORKERS
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--seeds", type=int, default=500, help="split seeds to search (default 500)")
     parser.add_argument("--linear", action="store_true",
@@ -2325,13 +2329,13 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=None, help="output directory (default analysis/output)")
     parser.add_argument("--artillery-cal", choices=["auto", *ARTILLERY_CAL_KEYS], default="auto",
                         help="artillery calibre representations to screen: all (auto), or only F0 plus this one")
-    parser.add_argument("--workers", type=int, default=WORKERS,
-                        help=f"worker processes for the nested power searches (default {WORKERS}; 1 = serial)")
+    parser.add_argument("--workers", type=int, default=config.settings.workers,
+                        help="worker processes for the nested power searches "
+                             f"(default {config.settings.workers}; 1 = serial)")
     args = parser.parse_args()
     if args.out is not None:
-        OUT_DIR = args.out.resolve()
-    ARTILLERY_CAL = args.artillery_cal
-    WORKERS = args.workers
+        configure(out_dir=args.out.resolve())
+    configure(artillery_cal=args.artillery_cal, workers=args.workers)
     started = time.time()
 
     for path in (DATA_CSV, CATALOG_CSV):
@@ -2360,7 +2364,7 @@ def main() -> int:
     # 2. Size power profile on last run's final structure, with and without c.
     # In --linear mode the "profile" is the single point size = models, p = 1.
     kinds_for = (lambda arm: ("n",)) if args.linear else (lambda arm: SIZE_KINDS[arm])
-    grid = (1.0,) if args.linear else P_GRID
+    grid = (1.0,) if args.linear else config.settings.p_grid
     profiles = {}
     for arm in ARMS:
         spec, _ = PREVIOUS_FINAL[arm]
@@ -2535,22 +2539,23 @@ def main() -> int:
                   linear=args.linear, variants=variants, variant_detail=variant_detail, fclass=fclass)
     res.elapsed = time.time() - started
     write_outputs(res)
-    log(f"done → {OUT_DIR.relative_to(ROOT) if OUT_DIR.is_relative_to(ROOT) else OUT_DIR}", started)
+    out_dir = config.settings.out_dir
+    log(f"done → {out_dir.relative_to(ROOT) if out_dir.is_relative_to(ROOT) else out_dir}", started)
     return 0
 
 
 # --- Output -------------------------------------------------------------------
 
 def write_outputs(res: Results) -> None:
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    config.settings.out_dir.mkdir(parents=True, exist_ok=True)
     write_search(res)
     write_coefficients(res)
     write_oof(res)
-    (OUT_DIR / "unit_pricing_report.md").write_text("\n".join(report_lines(res)) + "\n", encoding="utf-8")
+    (config.settings.out_dir / "unit_pricing_report.md").write_text("\n".join(report_lines(res)) + "\n", encoding="utf-8")
 
 
 def write_search(res: Results) -> None:
-    with (OUT_DIR / "search_results.csv").open("w", encoding="utf-8", newline="") as handle:
+    with (config.settings.out_dir / "search_results.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle, lineterminator="\r\n")
         writer.writerow(["arm", "rank", "size", "p", "linear", "multiplicative", "const_c", "params", "mae_mean",
                          "mae_sd", "mape_mean", "r2_mean", "best", "headline"])
@@ -2563,7 +2568,7 @@ def write_search(res: Results) -> None:
 
 
 def write_coefficients(res: Results) -> None:
-    with (OUT_DIR / "coefficients.csv").open("w", encoding="utf-8", newline="") as handle:
+    with (config.settings.out_dir / "coefficients.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle, lineterminator="\r\n")
         writer.writerow(["model", "slice", "variant", "feature", "coefficient", "note"])
         for (arm, side), sl in res.slices.items():
@@ -2634,7 +2639,7 @@ def full_fit_prices(run: CVRun, units: Sequence[Unit], arm: str) -> np.ndarray:
 
 
 def write_oof(res: Results) -> None:
-    with (OUT_DIR / "oof_predictions.csv").open("w", encoding="utf-8", newline="") as handle:
+    with (config.settings.out_dir / "oof_predictions.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle, lineterminator="\r\n")
         writer.writerow(["model", "slice", "unit_key", "faction_key", "army_corps_name", "side", "rating",
                          "unit_class", "speed", "n_models", "guns", "cost", "fold",
@@ -2889,7 +2894,7 @@ def report_lines(res: Results) -> list[str]:
         header = ["p"] + [f"{'guns' if k == 'guns' else 'models'}{', + c' if c else ''}" for k, c in keys]
         minima = {key: min(curve, key=lambda t: t[1]) for key, curve in pr.curves.items()}
         rows = []
-        for i, p in enumerate(P_GRID):
+        for i, p in enumerate(config.settings.p_grid):
             if round(p * 100) % 10:
                 continue
             row = [f"{p:.1f}"]
@@ -3039,15 +3044,16 @@ def report_lines(res: Results) -> list[str]:
                 add("")
                 L += table(["column", "coefficient"], [[f"`{n}`", f"{c:+.4g}"] for n, c in kd["rows"]])
                 add("")
-        if ARTILLERY_CAL != "auto":
-            add(f"**Artillery was restricted** (`--artillery-cal {ARTILLERY_CAL}`): only F0 and "
-                f"{ARTILLERY_CAL_KEYS[ARTILLERY_CAL]} were screened, so this run fixes the calibre representation "
+        cal = config.settings.artillery_cal
+        if cal != "auto":
+            add(f"**Artillery was restricted** (`--artillery-cal {cal}`): only F0 and "
+                f"{ARTILLERY_CAL_KEYS[cal]} were screened, so this run fixes the calibre representation "
                 "rather than choosing it.")
             add("")
         add("The adopted variant then goes through the stat-power comparison and fine search below.")
         add("")
     if res.powers:
-        add(f"For each numeric stat, a power from {list(POWER_GRID)}, plus the size power p within ±{P_WINDOW}, is "
+        add(f"For each numeric stat, a power from {list(config.settings.power_grid)}, plus the size power p within ±{P_WINDOW}, is "
             "fitted by coordinate descent on the **training rows of each fold**, and that fold's test rows are then "
             "scored. The CV is therefore honest about the extra flexibility. The powers are kept only if they beat "
             "linear stats by more than one SE.")
@@ -3348,6 +3354,30 @@ def report_lines(res: Results) -> list[str]:
     add("- `search_results.csv` lists every searched structure. `oof_predictions.csv` carries out-of-fold "
         "predictions plus the final model's full-fit prediction, for hand checks against `coefficients.csv`.")
     return L
+
+
+# --- Settings access for importers ---------------------------------------------
+# The settings used to be module globals that importers reassigned (up.WORKERS = 4). Reading them under
+# their old names still works; assigning one raises, because it would no longer reach the code.
+SETTING_NAMES = {"WORKERS": "workers", "OUT_DIR": "out_dir", "P_GRID": "p_grid", "POWER_GRID": "power_grid",
+                 "MAX_PASSES": "max_passes", "FINE_PASSES": "fine_passes", "MAX_ITER": "max_iter",
+                 "TOLERANCE": "tolerance", "ARTILLERY_CAL": "artillery_cal", "SIZE_WEIGHTING": "size_weighting"}
+
+
+def __getattr__(name: str) -> object:
+    if name in SETTING_NAMES:
+        return getattr(config.settings, SETTING_NAMES[name])
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
+
+class _Module(type(sys)):
+    def __setattr__(self, name: str, value: object) -> None:
+        if name in SETTING_NAMES:
+            raise AttributeError(f"{name} is a setting: use unit_pricing.configure({SETTING_NAMES[name]}=...)")
+        super().__setattr__(name, value)
+
+
+sys.modules[__name__].__class__ = _Module
 
 
 if __name__ == "__main__":

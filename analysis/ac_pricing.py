@@ -755,7 +755,7 @@ def main() -> int:
     parser.add_argument("--workers", type=int, default=up.WORKERS)
     parser.add_argument("--fresh", action="store_true")
     args = parser.parse_args()
-    up.WORKERS = max(1, args.workers)
+    up.configure(workers=max(1, args.workers))
     started = time.time()
     if args.phase == "model":
         if not args.arm:
