@@ -6,8 +6,8 @@
 
 ## Checklist
 
-- [ ] R0. Baseline snapshots (golden metrics, load hashes, fit SSEs, size weights, gitignored outputs, s3 smoke runs).
-- [ ] R1. Test suite analysis/tests/ (passes on the old code).
+- [x] R0. Baseline snapshots (golden metrics, load hashes, fit SSEs, size weights, gitignored outputs, s3 smoke runs).
+- [x] R1. Test suite analysis/tests/ (passes on the old code).
 - [ ] R2. common.py + checkpoints.py; callers switched.
 - [ ] R3. Monkeypatching removed (FCLASS_GRID, in_scope/side_of, SIZE_BANDS, PAIRS).
 - [ ] R4. pricing/config.py Settings + up.configure; setters switched.
@@ -20,6 +20,9 @@
 ## Log
 
 - Plan approved.
+
+- Baseline commit 32c6fd63 (size-weighting work). R0: golden snapshots via analysis/tests/make_golden.py (checkpoint fingerprints are CANONICAL — sets sorted, because pickled set order follows PYTHONHASHSEED and varies per process), gitignored outputs + unit_pricing smoke run copied to the scratchpad refactor_baseline/. ac_pricing is verified by re-running its phases on the 500-seed checkpoints (an s3 run would overwrite tracked outputs).
+- R1: analysis/tests/ (support.py, test_golden.py, test_outputs.py): 6 tests, ~8 s, pass on the baseline. Run: `py -3.13 -m unittest discover -s analysis/tests -t analysis/tests`. The import-side-effect test comes with its fix in R3.
 
 ## Plan (copy)
 
