@@ -37,7 +37,6 @@ import argparse
 import csv
 import itertools
 import json
-import pickle
 import sys
 import time
 from collections import defaultdict
@@ -49,10 +48,11 @@ from scipy.stats import spearmanr
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import cost_effective_builds as ceb  # noqa: E402
+import checkpoints as ckpt  # noqa: E402
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 
 OUT = up.ROOT / "analysis" / "output" / "teams"
-CACHE = up.ROOT / "analysis" / ".cache" / "teams"
 VERSIONS = ("sb", "full", "noise")
 # web/src/domain/teamRule.ts CUSTOM_ARMY_SIDE, real armies only (the rest are dev placeholders).
 CUSTOM_SIDE = {"france": "imperial", "denmark": "imperial", "britain": "coalition", "ntw3_hre": "coalition",
@@ -90,10 +90,11 @@ def load_ac() -> list[Army]:
 
 def tow_builds(version: str, started: float) -> dict[str, dict]:
     """faction → {name, n, side, value, cost, cards [(key, copies)], staff} of its "four corps" build
-    in `version` (cached)."""
-    path = CACHE / f"tow_builds_v2_{version}.pkl"
-    if path.exists():
-        return pickle.loads(path.read_bytes())
+    in `version` (checkpointed: analysis/checkpoints.py tow_builds_path)."""
+    return common.cached(ckpt.tow_builds_path(version), lambda: compute_tow_builds(version, started))
+
+
+def compute_tow_builds(version: str, started: float) -> dict[str, dict]:
     mode = "noise" if version == "noise" else "full"
     by_faction, staff_of, top_star, army_of = ceb.load_cards(started, size_mode=mode)
     if version == "sb":
@@ -109,15 +110,13 @@ def tow_builds(version: str, started: float) -> dict[str, dict]:
     for f, cards in sorted(by_faction.items()):
         for _, chosen, general in ceb.army_builds(cards, staff_of[f], top_star[f], command, ("four corps",)):
             name, n, side = army_of[f]
-            if f in CUSTOM_SIDE:
-                assert CUSTOM_SIDE[f] == side, (f, side)
+            if f in CUSTOM_SIDE and CUSTOM_SIDE[f] != side:
+                raise ValueError(f"{f}: side {side} differs from the app's CUSTOM_ARMY_SIDE {CUSTOM_SIDE[f]}")
             out[f] = {"name": name, "n": int(n), "side": side,
                       "value": sum(c["value"] * k for c, k in chosen) + general["value"],
                       "cost": sum(c["cost"] * k for c, k in chosen) + general["cost"],
                       "cards": [(c["key"], k) for c, k in chosen], "staff": general["key"]}
         up.log(f"tow {version}: {army_of[f][0][:40]}", started)
-    CACHE.mkdir(parents=True, exist_ok=True)
-    path.write_bytes(pickle.dumps(out))
     return out
 
 

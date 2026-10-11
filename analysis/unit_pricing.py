@@ -60,9 +60,9 @@ from typing import Callable, Sequence
 import numpy as np
 from sklearn.linear_model import LinearRegression
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA_CSV = ROOT / "data" / "generated" / "ntw3_units_analysis.csv"
-CATALOG_CSV = ROOT / "data" / "generated" / "army_corps_catalog.csv"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from common import ARMS, CATALOG_CSV, DATA_CSV, ROOT, log, table  # noqa: E402  (re-exported as up.*)
+
 OUT_DIR = ROOT / "analysis" / "output"
 
 # Dev/test corps: "1. Lordz", "Lordz", "0. Placeholder A/B". Prices of 500-9 500
@@ -75,9 +75,7 @@ IMPERIAL_CUSTOM = frozenset({"france", "denmark"})
 POLAND = "ntw3_tow_c08_x8_048"
 # Wellesley in "[1809] 10. UK, España, Portugal" — known arbitrary price (8★ at
 # 1 746 vs an 8★ median of 1 197). Kept as a valid datapoint, reported.
-WELLESLEY = "ntw3_gen_staff_163_8_0195_tow_020"
 
-ARMS = ("infantry", "cavalry", "artillery")
 SIDES = ("imperial", "coalition", "merged")
 N_SPLITS = 5
 TEST_SHARE = 1 / N_SPLITS
@@ -2245,10 +2243,6 @@ def pm(run, metric: str, fmt: Callable[[float], str]) -> str:
     return f"{fmt(run.mean(metric))} ± {fmt(run.sd(metric))}"
 
 
-def table(header: Sequence[str], rows: Sequence[Sequence[object]]) -> list[str]:
-    out = ["| " + " | ".join(header) + " |", "| " + " | ".join("---" for _ in header) + " |"]
-    out += ["| " + " | ".join(str(c) for c in row) + " |" for row in rows]
-    return out
 
 
 def pct_resid(actual: np.ndarray, pred: np.ndarray) -> np.ndarray:
@@ -2312,8 +2306,6 @@ class Results:
     elapsed: float = 0.0
 
 
-def log(message: str, started: float) -> None:
-    print(f"[{time.time() - started:5.0f}s] {message}", flush=True)
 
 
 def main() -> int:

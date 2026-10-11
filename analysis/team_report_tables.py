@@ -21,6 +21,7 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 
 TEAMS = up.ROOT / "analysis" / "output" / "teams"
@@ -32,7 +33,7 @@ def theatre_names() -> dict[str, str]:
     with open(up.ROOT / "data" / "generated" / "army_corps_catalog.csv", encoding="utf-8-sig") as fh:
         for r in csv.DictReader(fh):
             if "_ac_" in r["faction_key"]:
-                names[r["faction_key"].split("_")[2]] = r["theatre_name"]
+                names[common.theatre_of(r["faction_key"])] = r["theatre_name"]
     return names
 
 

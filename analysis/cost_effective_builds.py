@@ -71,7 +71,6 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import pickle
 import re
 import sys
 import time
@@ -83,13 +82,14 @@ import numpy as np
 from scipy.optimize import Bounds, LinearConstraint, milp
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import checkpoints as ckpt  # noqa: E402
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 from blind_ideas import FINAL  # noqa: E402
 from class_structure import segmented, with_class_p  # noqa: E402
 from commander_model import Pairs, design as commander_design  # noqa: E402
 
 OUT = up.ROOT / "analysis" / "output"
-V4_CACHE = up.ROOT / "analysis" / ".cache" / "class_structure"
 BUDGET, MAX_CARDS, MAX_FOOT_ART, MAX_HEAVY_CAV = 10_000, 31, 2, 10
 MAX_UNITS = MAX_CARDS - 1          # the staff general takes one of the 31 cards (as the app counts)
 MAX_ROLL_CORPS = 4                 # NTW3AC.ToWFarmycorps: max_ac = 4
@@ -179,8 +179,8 @@ def normative_values(units: list[up.Unit]) -> dict[tuple[str, str], float]:
     out = {}
     for arm in ("infantry", "cavalry", "artillery"):
         arm_units = up.slice_units(units, arm, "merged")
-        kappa = pickle.loads((V4_CACHE / f"v2_{arm}_kappa.pkl").read_bytes())
-        run, p_of = pickle.loads((V4_CACHE / f"v2_{arm}_V4.pkl").read_bytes())
+        kappa = common.load_pickle(ckpt.tow_kappa_path(arm))
+        run, p_of = common.load_pickle(ckpt.tow_v4_path(arm))
         spec = up.joint_fclass_spec(FINAL[arm], kappa)
         d3 = segmented(up.design_for(spec, arm_units, arm), arm_units)
         norm = [replace(u, rating=up.REF_RATING, side="coalition", faction=NORM_FACTION) for u in arm_units]
@@ -337,8 +337,8 @@ def bodyguard_melee_bonus() -> float:
                    and up.num(r["melee_attack"]) > STANDARD_GENERAL_MELEE)
     arm = "cavalry"
     arm_units = up.slice_units(up.load(up.load_ratings())[0], arm, "merged")
-    kappa = pickle.loads((V4_CACHE / f"v2_{arm}_kappa.pkl").read_bytes())
-    run, p_of = pickle.loads((V4_CACHE / f"v2_{arm}_V4.pkl").read_bytes())
+    kappa = common.load_pickle(ckpt.tow_kappa_path(arm))
+    run, p_of = common.load_pickle(ckpt.tow_v4_path(arm))
     spec = up.joint_fclass_spec(FINAL[arm], kappa)
     diffs = []
     for cls in ("cavalry_light", "cavalry_standard"):

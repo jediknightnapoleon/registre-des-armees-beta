@@ -54,12 +54,14 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import class_structure as cs  # noqa: E402
+import checkpoints as ckpt  # noqa: E402
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 from blind_ideas import FINAL  # noqa: E402
 
-CACHE = up.ROOT / "analysis" / ".cache" / "ac"
+CACHE = ckpt.AC_DIR
 OUT = up.ROOT / "analysis" / "output" / "ac"
-CACHE_VERSION = 1
+CACHE_VERSION = ckpt.AC_VERSION
 # The ToW κ grid starts at 0.5; on AC a 3-seed smoke run chose 0.5 in every fold (the grid's
 # edge), so AC gets smaller values too. Only this process's copy of the grid is extended.
 AC_JFC_GRID = (0.05, 0.1, 0.2, 0.5, 1.0, 3.0, 10.0, 30.0)
@@ -107,15 +109,8 @@ def ac_only_factions() -> set[str]:
 
 
 def cached(name: str, compute, fresh: bool):
-    path = CACHE / f"v{CACHE_VERSION}_{name}.pkl"
-    if path.exists() and not fresh:
-        return pickle.loads(path.read_bytes())
-    value = compute()
-    CACHE.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(".tmp")
-    tmp.write_bytes(pickle.dumps(value))
-    tmp.replace(path)
-    return value
+    """This study's checkpoint `name` (analysis/checkpoints.py ac), computed and saved if missing."""
+    return common.cached(ckpt.ac(name), compute, fresh)
 
 
 # --- Model phase ---------------------------------------------------------------
@@ -248,7 +243,7 @@ def staff_phase(fresh: bool, seeds: int, started: float) -> None:
 #   F6  a free multiplier per class segment × size band (a size curve per class)
 # Every fitted size parameter is chosen on the training rows of each fold only.
 
-SIZE_BANDS = {"n": (40, 60, 80, 100, 140, 180, 240), "guns": (2, 3, 4, 5)}
+SIZE_BANDS = common.AC_STUDY_BANDS
 KNOTS = {"n": (60, 100, 160, 240), "guns": (2, 3, 4)}
 DELTA_GRID = tuple(round(-0.8 + 0.1 * i, 1) for i in range(17))
 

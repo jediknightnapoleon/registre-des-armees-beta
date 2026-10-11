@@ -36,7 +36,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import pickle
 import sys
 import time
 from dataclasses import replace
@@ -45,6 +44,8 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import checkpoints as ckpt  # noqa: E402
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 from blind_ideas import FINAL  # noqa: E402
 
@@ -53,28 +54,20 @@ P_COARSE = tuple(round(0.2 + 0.1 * i, 1) for i in range(15))          # 0.2 … 
 P_FINE_STEP, P_FINE_HALF = 0.05, 1                                     # then ±0.05 around the best
 P_PASSES = 2
 MIN_SEGMENT_UNITS = 20          # smaller segments keep the arm's exponent
-SIZE_BANDS = (0, 40, 60, 80, 100, 140, 180, 240, 1000)
+SIZE_BANDS = common.CLASS_STRUCTURE_BANDS
 ORDER = ("V0", "V1", "V2", "V3", "V4")
 LABELS = {"V0": "adopted: class additive in β·x", "V1": "class as a multiplier",
           "V2": "class multiplier + size exponent per class", "V3": "separate formula per class",
           "V4": "separate formula + size exponent per class"}
 REPORT = up.ROOT / "analysis" / "output" / "class_structure_report.md"
 COEFFICIENTS = up.ROOT / "analysis" / "output" / "class_structure_coefficients.csv"
-CACHE = up.ROOT / "analysis" / ".cache" / "class_structure"
-CACHE_VERSION = 2          # bump when a variant's definition changes
+CACHE = ckpt.CLASS_STRUCTURE_DIR
+CACHE_VERSION = ckpt.CLASS_STRUCTURE_VERSION   # see analysis/checkpoints.py before ever changing it
 
 
 def cached(name: str, compute, fresh: bool):
-    """Load a checkpoint, or compute and save it."""
-    path = CACHE / f"v{CACHE_VERSION}_{name}.pkl"
-    if path.exists() and not fresh:
-        return pickle.loads(path.read_bytes())
-    value = compute()
-    CACHE.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(".tmp")
-    tmp.write_bytes(pickle.dumps(value))
-    tmp.replace(path)
-    return value
+    """Load a checkpoint (analysis/checkpoints.py class_structure), or compute and save it."""
+    return common.cached(ckpt.class_structure(name), compute, fresh)
 
 
 def segment(u: up.Unit) -> str:

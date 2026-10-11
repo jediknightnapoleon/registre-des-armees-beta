@@ -56,7 +56,6 @@ commander_predictions.csv.
 from __future__ import annotations
 
 import csv
-import pickle
 import re
 import sys
 import time
@@ -67,12 +66,13 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import checkpoints as ckpt  # noqa: E402
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 from blind_ideas import FINAL  # noqa: E402
 from class_structure import segmented, with_class_p  # noqa: E402
 
 OUT = up.ROOT / "analysis" / "output"
-V4_CACHE = up.ROOT / "analysis" / ".cache" / "class_structure"
 BLIND_OUT = up.ROOT / "blind_study" / "out"
 MAX_STARS = 5
 STARS = tuple(range(MAX_STARS + 1))
@@ -175,14 +175,14 @@ def main() -> int:
         sl = up.make_slice(arm, "merged", up.slice_units(units, arm, "merged"), 500)
         regs[arm] = sl.units
         fc_oof = np.array([float(committed[(arm, u.faction, u.key)]["oof_final_faction_class"] or "nan") for u in sl.units])
-        v4_run, _ = pickle.loads((V4_CACHE / f"v2_{arm}_V4.pkl").read_bytes())
+        v4_run, _ = common.load_pickle(ckpt.tow_v4_path(arm))
         folds[arm] = np.where(np.isfinite(fc_oof), np.array([int(committed[(arm, u.faction, u.key)]["fold"] or 0)
                                                              for u in sl.units]), 0)
         if not np.array_equal(np.isfinite(fc_oof), np.isfinite(v4_run.oof)):
             raise SystemExit(f"{arm}: adopted and V4 out-of-fold rows differ — different folds?")
         # Full-data ("seen") fits of both models; κ and V4's size powers from the class_structure checkpoints.
-        kappa = pickle.loads((V4_CACHE / f"v2_{arm}_kappa.pkl").read_bytes())
-        _, p_of_class = pickle.loads((V4_CACHE / f"v2_{arm}_V4.pkl").read_bytes())
+        kappa = common.load_pickle(ckpt.tow_kappa_path(arm))
+        _, p_of_class = common.load_pickle(ckpt.tow_v4_path(arm))
         spec = up.joint_fclass_spec(FINAL[arm], kappa)
         d0 = up.design_for(spec, sl.units, arm)
         data = up.data_for(spec, sl.units)

@@ -24,7 +24,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import pickle
 import sys
 import time
 from pathlib import Path
@@ -35,10 +34,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ac_pricing as ap  # noqa: E402
 import class_structure as cs  # noqa: E402
 import team_values as tv  # noqa: E402
+import checkpoints as ckpt  # noqa: E402
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 from blind_ideas import FINAL  # noqa: E402
 
-CACHE = up.ROOT / "analysis" / ".cache" / "size_weighting"
+CACHE = ckpt.SIZE_WEIGHTING_DIR
 OUT = up.ROOT / "analysis" / "output"
 ARMS = ("artillery", "cavalry", "infantry")
 DATASETS = ("ac", "tow")
@@ -51,24 +52,18 @@ VARIANTS = {
 
 
 def checkpoint(dataset: str, arm: str, model: str, mode: str, variant: str) -> Path:
-    return CACHE / f"sw1_{dataset}_{arm}_{model}_{mode}_{variant}.pkl"
+    return ckpt.size_weighting(f"sw1_{dataset}_{arm}_{model}_{mode}_{variant}")
 
 
-def save(path: Path, value) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(".tmp")
-    tmp.write_bytes(pickle.dumps(value))
-    tmp.replace(path)
+save = common.save_pickle
 
 
 def baseline_v4(dataset: str, arm: str) -> tuple[up.CVRun, dict[str, float]]:
-    path = (ap.CACHE / f"v{ap.CACHE_VERSION}_s{tv.SEEDS}_{arm}_v4.pkl") if dataset == "ac" \
-        else (cs.CACHE / f"v{cs.CACHE_VERSION}_{arm}_V4.pkl")
-    return pickle.loads(path.read_bytes())
+    return common.load_pickle(ckpt.v4_path(dataset, arm))
 
 
 def baseline_f6(dataset: str, arm: str) -> tuple[up.CVRun, dict]:
-    return pickle.loads((tv.CACHE / f"sb_{dataset}_{arm}.pkl").read_bytes())
+    return common.load_pickle(ckpt.sb_path(dataset, arm))
 
 
 def slice_checked(dataset: str, arm: str) -> up.Slice:

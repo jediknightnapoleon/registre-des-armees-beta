@@ -37,7 +37,6 @@ Outputs (analysis/output/):
 from __future__ import annotations
 
 import csv
-import pickle
 import sys
 import time
 from collections import defaultdict
@@ -48,12 +47,13 @@ from scipy import sparse
 from scipy.optimize import linprog
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import checkpoints as ckpt  # noqa: E402
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 from blind_ideas import FINAL  # noqa: E402
 
 OUT = up.ROOT / "analysis" / "output"
 PAIRS = up.ROOT / "analysis" / "commander_blind" / "data" / "pairs.csv"
-V4_CACHE = up.ROOT / "analysis" / ".cache" / "class_structure"
 ARMS = ("infantry", "cavalry", "artillery")
 
 
@@ -134,7 +134,7 @@ def main() -> int:
     regular: dict[tuple[str, str], dict] = {}
     for arm in ARMS:
         sl = up.make_slice(arm, "merged", up.slice_units(units, arm, "merged"), 500)
-        v4_run, p_of_class = pickle.loads((V4_CACHE / f"v2_{arm}_V4.pkl").read_bytes())
+        v4_run, p_of_class = common.load_pickle(ckpt.tow_v4_path(arm))
         for i, u in enumerate(sl.units):
             r = merged[(arm, u.faction, u.key)]
             fc = float(r["oof_final_faction_class"] or "nan")

@@ -32,6 +32,7 @@ import ac_pricing as ap  # noqa: E402
 import cost_effective_builds as ceb  # noqa: E402
 import size_weighting as sw  # noqa: E402
 import team_values as tv  # noqa: E402
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 from blind_ideas import FINAL  # noqa: E402
 
@@ -98,7 +99,7 @@ def ac_counts(value_set: str) -> Counter:
             vals = {(r["faction_key"], r["unit_key"]): float(r["value_raw"]) for r in csv.DictReader(fh)}
     else:
         vals = values[{"quantity": "noise", "quality": "full", "sb": "sb"}[value_set]]
-    vals = {k: v for k, v in vals.items() if k[0].split("_")[2] not in ab.WIP_THEATRES}
+    vals = {k: v for k, v in vals.items() if not common.is_wip(k[0])}
     lam = ceb.COMMAND_LAMBDA["full" if value_set in ("quality", "sb") else "noise"]
     command = ceb.Command(lam, ceb.SPEED_BONUS, ceb.bodyguard_melee_bonus())
     bands = band_lookup("ac")

@@ -32,7 +32,6 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import pickle
 import sys
 import time
 from dataclasses import replace
@@ -45,26 +44,21 @@ import ac_pricing as ap  # noqa: E402
 import class_structure as cs  # noqa: E402
 import commander_model as cm  # noqa: E402
 import cost_effective_builds as ceb  # noqa: E402
+import checkpoints as ckpt  # noqa: E402
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 from blind_ideas import FINAL  # noqa: E402
 
 OUT = up.ROOT / "analysis" / "output" / "teams"
-CACHE = up.ROOT / "analysis" / ".cache" / "teams"
-SEEDS = 500
-SB_BANDS_N = (40, 60, 80, 100, 140, 180)      # models; 240+ merged into 180+
+CACHE = ckpt.TEAMS_DIR
+SEEDS = common.DEFAULT_SEEDS
+SB_BANDS_N = common.SB_BANDS_N               # models; 240+ merged into 180+
 VERSIONS = ("sb", "full", "noise")
 
 
 def cached(name: str, compute):
-    path = CACHE / f"{name}.pkl"
-    if path.exists():
-        return pickle.loads(path.read_bytes())
-    value = compute()
-    CACHE.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(".tmp")
-    tmp.write_bytes(pickle.dumps(value))
-    tmp.replace(path)
-    return value
+    """A team-study checkpoint (analysis/checkpoints.py teams), computed and saved if missing."""
+    return common.cached(ckpt.teams(name), compute)
 
 
 def reference(units: list[up.Unit]) -> list[up.Unit]:
@@ -73,24 +67,18 @@ def reference(units: list[up.Unit]) -> list[up.Unit]:
 
 
 def slice_of(dataset: str, arm: str) -> up.Slice:
-    name = f"v{ap.CACHE_VERSION}_s{SEEDS}_{arm}_slice.pkl" if dataset == "ac" \
-        else f"v{ap.CACHE_VERSION}_s{SEEDS}_tow_{arm}_slice.pkl"
-    return pickle.loads((ap.CACHE / name).read_bytes())
+    """The cached units and fold plan of an arm (ac_pricing's slices, AC or ToW)."""
+    return common.load_pickle(ckpt.slice_path(dataset, arm))
 
 
-def kappa_of(dataset: str, arm: str) -> float:
-    if dataset == "ac":
-        return pickle.loads((ap.CACHE / f"v{ap.CACHE_VERSION}_s{SEEDS}_{arm}_jfc.pkl").read_bytes()).full_kappa
-    return pickle.loads((cs.CACHE / f"v{cs.CACHE_VERSION}_{arm}_kappa.pkl").read_bytes())
+kappa_of = ckpt.kappa_of
 
 
 def v4_raw_and_oof(dataset: str, arm: str, units: list[up.Unit],
                    fitted: tuple[up.CVRun, dict[str, float]] | None = None) -> tuple[dict, dict]:
     """V4 at corps 8 for every unit, and its out-of-fold errors as harmonise_by_size wants them.
     `fitted` = (run, size powers) of another V4 fit (analysis/size_weighting.py); None = the cached one."""
-    path = (ap.CACHE / f"v{ap.CACHE_VERSION}_s{SEEDS}_{arm}_v4.pkl") if dataset == "ac" \
-        else (cs.CACHE / f"v{cs.CACHE_VERSION}_{arm}_V4.pkl")
-    run, p_of = fitted if fitted is not None else pickle.loads(path.read_bytes())
+    run, p_of = fitted if fitted is not None else common.load_pickle(ckpt.v4_path(dataset, arm))
     spec = run.spec
     design = cs.segmented(up.design_for(spec, units, arm), units)
     ref = reference(units)
@@ -222,7 +210,7 @@ def main() -> int:
     report: dict[str, object] = {}
     tables: dict[str, list] = {}
     for dataset in ("ac", "tow"):
-        vals: dict[str, dict] = {v: {} for v in ("raw",) + versions}
+        vals: dict[str, dict] = {v: {} for v in ("raw",) + VERSIONS}
         units_by_arm = {}
         metrics = {}
         oof_all: dict = {}
@@ -245,7 +233,7 @@ def main() -> int:
         # Commander versions, each pool's own commander model.
         if dataset == "ac":
             coef = json.loads((ap.OUT / "ac_commanders.json").read_text(encoding="utf-8"))["coefficients_ac"]
-            cmd = {v: commander_values(ap.OUT / "ac_commander_pairs.csv", coef, vals[v]) for v in ("raw",) + versions}
+            cmd = {v: commander_values(ap.OUT / "ac_commander_pairs.csv", coef, vals[v]) for v in ("raw",) + VERSIONS}
             with open(OUT / "values_ac.csv", "w", encoding="utf-8", newline="") as fh:
                 w = csv.writer(fh)
                 w.writerow(["faction_key", "unit_key", "kind"] + [f"value_{v}" for v in ("raw",) + VERSIONS])
@@ -265,7 +253,7 @@ def main() -> int:
                     w.writerow([k[0], k[1], "commander", f"{cmd_sb[k]:.3f}"])
             # Replay test on ToW cards (units + commanders), costs from the cards.
             tow_cards = {}
-            cmd_all = {v: commander_values(None, None, vals[v]) for v in ("raw",) + versions}
+            cmd_all = {v: commander_values(None, None, vals[v]) for v in ("raw",) + VERSIONS}
             for arm, units in units_by_arm.items():
                 for u in units:
                     k = (u.faction, u.key)

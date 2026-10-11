@@ -70,6 +70,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import ac_discounts as acd  # noqa: E402
 import cost_effective_builds as ceb  # noqa: E402
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 from tools import army_builder_rules as abr  # noqa: E402
 
@@ -84,7 +85,7 @@ LAMBDA = {"sb": ceb.COMMAND_LAMBDA["full"], "full": ceb.COMMAND_LAMBDA["full"], 
 VERSIONS = ("sb", "full", "noise", "price")
 # German Campaign 1813 (both sides) is still being built in the mod: only work-in-progress corps
 # (user, 2026-10-10). Left out of the builds and the team study.
-WIP_THEATRES = frozenset({"a16", "b16"})
+WIP_THEATRES = common.WIP_THEATRES
 MIP_GAP = 1e-6            # relative MIP gap of the model versions; the app's optimiser uses the same
 MIP_GAP_FACE = 1e-8       # `price` (the app's "Formation discount only"): whole-gold face values
 PRICE_TIEBREAK = 1e-5     # `price` version: × size-band value, < 1 gold over a whole build
@@ -307,7 +308,7 @@ def check(version: str, catalog, values, extra, t3, command, max_cards: int, sta
     cost (below only when a group the MILP did not count happens to complete too), and on small
     corps the optimum equals the best over every allowed pattern of group completions."""
     import itertools
-    faction_list = sorted({f for (f, _) in values if f.split("_")[2] not in WIP_THEATRES})
+    faction_list = sorted({f for (f, _) in values if not common.is_wip(f)})
     lower, equal, small = 0, 0, []
     for f in faction_list:
         res = solve_corps(f, catalog, values, extra, t3, command, max_cards, face_value=face)
@@ -357,7 +358,7 @@ def main() -> int:
         d = sum(sb_command.deficit(extra[(f, c.unit_key)]) * k for c, k in res["chosen"])
         return sum(values["sb"][(f, c.unit_key)] * k for c, k in res["chosen"]) + sb_command.constant(g) +             sb_command.slope(g) * d
 
-    factions = sorted({f for (f, _) in values["sb"]} - {f for (f, _) in values["sb"] if f.split("_")[2] in WIP_THEATRES})
+    factions = sorted({f for (f, _) in values["sb"] if not common.is_wip(f)})
     OUT.mkdir(parents=True, exist_ok=True)
     for version in args.versions:
         face = version == "price"
@@ -371,13 +372,13 @@ def main() -> int:
             res = solve_corps(f, catalog, values[version], extra, t3, command, args.max_cards, face_value=face,
                               rebates=not args.no_rebates)
             if res is None:
-                summary.append([f, names.get(f, f), ratings.get(f, ""), f.split("_")[2], "", "", "", "", "", "", "", "",
+                summary.append([f, names.get(f, f), ratings.get(f, ""), common.theatre_of(f), "", "", "", "", "", "", "", "",
                                 "", "no legal build"])
                 continue
             p = res["price"]
             if face:
                 res["value"] = p.base_cost                        # drop the sub-gold tie-break
-            summary.append([f, names[f], ratings[f], f.split("_")[2], len(res["order"]), p.base_cost,
+            summary.append([f, names[f], ratings[f], common.theatre_of(f), len(res["order"]), p.base_cost,
                             p.applied_discount, p.final_cost, f"{res['value']:.1f}",
                             f"{res['value'] / p.final_cost:.4f}", f"{value_sb(f, res):.1f}", len(res["completed"]),
                             res["combat"],

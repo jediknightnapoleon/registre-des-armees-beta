@@ -13,7 +13,7 @@ Value modes (the app's names → the analysis versions):
   model of the AC study (F6) — analysis/team_values.py. The user replaced Quality with Size bands
   for AC (2026-10-10). The third AC mode, "formationDiscount" (ac_builds.py `price`), values a card
   at its list price and needs no data beyond the size-band tie-break.
-German Campaign 1813 (ac_builds.WIP_THEATRES) is work in progress in the mod and gets no values.
+German Campaign 1813 (common.WIP_THEATRES) is work in progress in the mod and gets no values.
 
 Files (data/generated/, committed; rebuilding needs the analysis outputs and .cache checkpoints):
 - ntw3_optimiser_values.csv — every valued unit and commander card: faction_key, unit_key,
@@ -55,6 +55,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ac_builds as ab  # noqa: E402
 import cost_effective_builds as ceb  # noqa: E402
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 
 GENERATED = up.ROOT / "data" / "generated"
@@ -113,7 +114,7 @@ def ac_values() -> dict[tuple[str, str], dict[str, float]]:
     values = {}
     with open(TEAMS / "values_ac.csv", encoding="utf-8") as fh:
         for r in csv.DictReader(fh):
-            if r["faction_key"].split("_")[2] in ab.WIP_THEATRES:
+            if common.is_wip(r["faction_key"]):
                 continue
             values[(r["faction_key"], r["unit_key"])] = {mode: float(r[f"value_{version}"])
                                                          for mode, version in AC_MODES.items()}

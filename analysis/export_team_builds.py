@@ -23,7 +23,6 @@ from __future__ import annotations
 
 import csv
 import json
-import pickle
 import sys
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -33,12 +32,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import ac_discounts as acd  # noqa: E402
 import export_builds_for_app as eba  # noqa: E402
+import checkpoints as ckpt  # noqa: E402
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 from tools import army_builder_rules as abr  # noqa: E402
 
 TEAMS = up.ROOT / "analysis" / "output" / "teams"
 OUT = up.ROOT / "analysis" / "output"
-CACHE = up.ROOT / "analysis" / ".cache" / "teams"
 NOW = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
 
 
@@ -75,7 +75,7 @@ def ac_builds(version: str, catalog: abr.UnitCatalog) -> dict[str, dict]:
 
 
 def tow_builds(version: str) -> dict[str, dict]:
-    builds = pickle.loads((CACHE / f"tow_builds_v2_{version}.pkl").read_bytes())
+    builds = common.load_pickle(ckpt.tow_builds_path(version))
     return {f: {"army": b["name"], "N": b["n"], "staff": b["staff"],
                 "instances": [k for k, n in b["cards"] for _ in range(n)], "final": b["cost"], "value": b["value"]}
             for f, b in builds.items()}
