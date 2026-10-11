@@ -47,18 +47,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import unit_pricing as up  # noqa: E402
 
-# The committed final models (analysis/output/coefficients.csv, 2026-10-05 run).
-FINAL = {
-    "infantry": up.Spec(mult=frozenset({"rating", "side"}), size="n", p=1.09, powers=tuple(sorted({
-        "accuracy": 0.05, "ammo": 0.05, "charge_bonus": 0.05, "melee_attack": 1.4, "melee_defense": 1.15,
-        "morale": 2.25, "range": 4.0, "reload_skill": 3.1}.items()))),
-    "cavalry": up.Spec(mult=frozenset({"rank_depth", "rating"}), size="n", p=0.75),
-    "artillery": up.Spec(mult=frozenset({"rating"}), const=True, size="guns", p=1.3,
-                         extras=frozenset({"damage", "proj_reload"}),
-                         shape=(("cal", "spline_r"), ("cal_df", "5")), powers=tuple(sorted({
-                             "accuracy": 3.0, "charge_bonus": 0.25, "melee_attack": 2.5, "melee_defense": 3.0,
-                             "morale": 3.0, "reload_skill": 2.0}.items()))),
-}
+from pricing.final import FINAL  # noqa: E402  (the committed final models; moved to pricing/final.py)
 COMMITTED_OOF = up.ROOT / "analysis" / "output" / "oof_predictions.csv"
 BLIND_OUT = up.ROOT / "blind_study" / "out"
 BLIND_DATA = up.ROOT / "data" / "generated" / "ntw3_units_analysis.csv"
