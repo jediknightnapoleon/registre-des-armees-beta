@@ -62,8 +62,8 @@ ARMS = ("infantry", "cavalry", "artillery")
 class Pairs:
     """Column arrays of pairs.csv, in file order."""
 
-    def __init__(self) -> None:
-        with PAIRS.open(encoding="utf-8", newline="") as fh:
+    def __init__(self, path: Path | None = None) -> None:
+        with (PAIRS if path is None else path).open(encoding="utf-8", newline="") as fh:
             self.rows = list(csv.DictReader(fh))
         f = lambda k: np.array([float(r[k]) if r[k] != "" else np.nan for r in self.rows])  # noqa: E731
         self.n = len(self.rows)

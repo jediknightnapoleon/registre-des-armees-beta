@@ -63,9 +63,8 @@ CACHE = ckpt.AC_DIR
 OUT = up.ROOT / "analysis" / "output" / "ac"
 CACHE_VERSION = ckpt.AC_VERSION
 # The ToW κ grid starts at 0.5; on AC a 3-seed smoke run chose 0.5 in every fold (the grid's
-# edge), so AC gets smaller values too. Only this process's copy of the grid is extended.
+# edge), so AC gets smaller values too: passed to fclass_cv for the AC fits only.
 AC_JFC_GRID = (0.05, 0.1, 0.2, 0.5, 1.0, 3.0, 10.0, 30.0)
-up.FCLASS_GRID = {**up.FCLASS_GRID, "JFC": AC_JFC_GRID}
 
 
 # --- Data ----------------------------------------------------------------------
@@ -79,14 +78,8 @@ def ac_side(row: dict[str, str]) -> str:
 
 
 def ac_units() -> tuple[list[up.Unit], list[up.Staff]]:
-    """AC regular units and staff generals, loaded by unit_pricing.load with its scope and
-    side rules swapped for AC ones (restored afterwards; ToW loading is untouched)."""
-    saved = up.in_scope, up.side_of
-    up.in_scope, up.side_of = ac_scope, ac_side
-    try:
-        units, staff, unparsed, unrated = up.load(up.load_ratings())
-    finally:
-        up.in_scope, up.side_of = saved
+    """AC regular units and staff generals: unit_pricing.load with the AC scope and side rules."""
+    units, staff, unparsed, unrated = up.load(up.load_ratings(), scope=ac_scope, side=ac_side)
     if unrated:
         raise SystemExit(f"AC corps without a corps number: {sorted(unrated)[:5]}")
     return units, staff
@@ -152,7 +145,7 @@ def model_phase(arm: str, seeds: int, fresh: bool, started: float) -> None:
     fixed = replace(final, mult=final.mult - {"rating"}, fixed_rating=True)
     runs["fixed8N"] = cached(f"{tag}_fixed8N", lambda: up.cv_spec(fixed, sl.units, folds, arm, label="fixed8N"), fresh)
     up.log(f"{arm}: plain {runs['plain'].mean('mae'):.2f}, fixed8N {runs['fixed8N'].mean('mae'):.2f}", started)
-    jfc = cached(f"{tag}_jfc", lambda: up.fclass_cv("JFC", final, sl.units, folds, arm), fresh)
+    jfc = cached(f"{tag}_jfc", lambda: up.fclass_cv("JFC", final, sl.units, folds, arm, grid=AC_JFC_GRID), fresh)
     runs["jfc"] = jfc.run
     up.log(f"{arm}: jfc {jfc.run.mean('mae'):.2f} (κ per fold {jfc.kappas}, full {jfc.full_kappa})", started)
     v0 = up.joint_fclass_spec(final, jfc.full_kappa)
@@ -248,18 +241,20 @@ KNOTS = {"n": (60, 100, 160, 240), "guns": (2, 3, 4)}
 DELTA_GRID = tuple(round(-0.8 + 0.1 * i, 1) for i in range(17))
 
 
-def band_of(size: float, kind: str) -> str:
-    edges = SIZE_BANDS[kind]
+def band_of(size: float, kind: str, bands: dict[str, tuple] | None = None) -> str:
+    edges = (SIZE_BANDS if bands is None else bands)[kind]
     k = int(np.searchsorted(np.array(edges, float), size, side="right"))
     lo = 0 if k == 0 else edges[k - 1]
     return f"{lo}+" if k == len(edges) else f"{lo}-{edges[k]}"
 
 
-def with_bands(units: list[up.Unit], kind: str, per_class: bool) -> list[up.Unit]:
+def with_bands(units: list[up.Unit], kind: str, per_class: bool,
+               bands: dict[str, tuple] | None = None) -> list[up.Unit]:
     """Units whose `drill` attribute holds their size band (or class segment × band), so the
     model's multiplicative categorical machinery fits one free factor per band. `drill` is
-    unused by the committed final specs, which is what makes it free to carry this."""
-    return [replace(u, drill=(f"{cs.segment(u)}|" if per_class else "") + band_of(up.size_of(u, kind), kind))
+    unused by the committed final specs, which is what makes it free to carry this. `bands`
+    replaces SIZE_BANDS (team_values' size-band values merge the 240+ band)."""
+    return [replace(u, drill=(f"{cs.segment(u)}|" if per_class else "") + band_of(up.size_of(u, kind), kind, bands))
             for u in units]
 
 
@@ -331,10 +326,11 @@ def size_form_job(form: str, spec: up.Spec, design: up.Design, units: list[up.Un
     return {}
 
 
-def size_form_run(form: str, base: up.Spec, units: list[up.Unit], folds, arm: str) -> tuple[up.CVRun, dict]:
+def size_form_run(form: str, base: up.Spec, units: list[up.Unit], folds, arm: str,
+                  bands: dict[str, tuple] | None = None) -> tuple[up.CVRun, dict]:
     kind = base.size
     banded = form in ("F2", "F5", "F6")
-    use = with_bands(units, kind, per_class=form == "F6") if banded else units
+    use = with_bands(units, kind, per_class=form == "F6", bands=bands) if banded else units
     spec = replace(base, mult=base.mult | {"drill"}) if banded else base
     design = up.design_for(spec, use, arm)
     everything = np.arange(len(use))
@@ -413,15 +409,9 @@ def commander_phase(seeds: int, started: float) -> None:
     import build_commander_pairs as bcp
     import commander_model as cm
     pairs_csv = OUT / "ac_commander_pairs.csv"
-    saved = up.in_scope, up.side_of, bcp.OUT
-    up.in_scope, up.side_of, bcp.OUT = ac_scope, ac_side, pairs_csv
-    try:
-        OUT.mkdir(parents=True, exist_ok=True)
-        bcp.main()
-    finally:
-        up.in_scope, up.side_of, bcp.OUT = saved
-    cm.PAIRS = pairs_csv
-    c = cm.Pairs()
+    OUT.mkdir(parents=True, exist_ok=True)
+    bcp.build_pairs(pairs_csv, scope=ac_scope, side=ac_side)
+    c = cm.Pairs(pairs_csv)
     fold_of: dict[tuple[str, str], int] = {}
     for arm in up.ARMS:
         sl = pickle.loads((CACHE / f"v{CACHE_VERSION}_s{seeds}_{arm}_slice.pkl").read_bytes())

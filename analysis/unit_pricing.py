@@ -259,7 +259,12 @@ def num(text: str) -> float:
     return float(text) if text else 0.0
 
 
-def load(ratings: dict[str, int]) -> tuple[list[Unit], list[Staff], list[str], list[str]]:
+def load(ratings: dict[str, int], scope: Callable[[dict[str, str]], bool] | None = None,
+         side: Callable[[dict[str, str]], str] | None = None) -> tuple[list[Unit], list[Staff], list[str], list[str]]:
+    """Units and staff generals of the analysis dataset, with the rows in `scope` and their `side`:
+    ToW + Custom by default (in_scope, side_of); ac_pricing passes its Army Corps rules."""
+    scope = in_scope if scope is None else scope
+    side = side_of if side is None else side
     with DATA_CSV.open(encoding="utf-8-sig", newline="") as handle:
         rows = list(csv.DictReader(handle))
     missing = [c for c in ("skirmish", "projectile_damage", "rank_depth") if c not in rows[0]]
@@ -270,7 +275,7 @@ def load(ratings: dict[str, int]) -> tuple[list[Unit], list[Staff], list[str], l
     unparsed: list[str] = []
     unrated: set[str] = set()
     for row in rows:
-        if not in_scope(row):
+        if not scope(row):
             continue
         faction = row["faction_key"]
         if faction not in ratings:
@@ -281,7 +286,7 @@ def load(ratings: dict[str, int]) -> tuple[list[Unit], list[Staff], list[str], l
             if row["men_raw"] in ("32", "122"):
                 staff.append(Staff(
                     key=row["unit_key"], name=row["unit_name"], faction=faction,
-                    corps=row["army_corps_name"], side=side_of(row), rating=ratings[faction],
+                    corps=row["army_corps_name"], side=side(row), rating=ratings[faction],
                     stars=int(num(row["command_stars"])), cost=int(row["base_mp_cost"]),
                 ))
             continue
@@ -301,7 +306,7 @@ def load(ratings: dict[str, int]) -> tuple[list[Unit], list[Staff], list[str], l
         values["proj_reload"] = num(row["projectile_reload_time"])
         units.append(Unit(
             key=row["unit_key"], name=row["unit_name"], faction=faction, corps=row["army_corps_name"],
-            side=side_of(row), rating=ratings[faction],
+            side=side(row), rating=ratings[faction],
             arm=row["unit_class"].split("_")[0], unit_class=row["unit_class"],
             n=int(row["men_raw"]) / 2, cost=int(row["base_mp_cost"]),
             raw_tag=raw_tag, speed=("S" if letter == "GS" else letter) + tier, speed_code=row["speed_code"],
@@ -1949,10 +1954,13 @@ class FclassResult:
 
 
 def fclass_cv(variant: str, base: Spec, units: Sequence[Unit], folds: list[Fold], arm: str,
-              design: Design | None = None, kappas: Sequence[float] | None = None) -> FclassResult:
+              design: Design | None = None, kappas: Sequence[float] | None = None,
+              grid: Sequence[float] | None = None) -> FclassResult:
     """Faction × class variant with nested κ. `kappas` reuses per-fold κ (e.g. LAD
-    on the least-squares choice) instead of re-selecting them."""
-    make, grid = FCLASS_MAKERS[variant], FCLASS_GRID[variant]
+    on the least-squares choice) instead of re-selecting them; `grid` replaces the
+    variant's κ grid (FCLASS_GRID) for this call only."""
+    make = FCLASS_MAKERS[variant]
+    grid = FCLASS_GRID[variant] if grid is None else tuple(grid)
     design = design or design_for(base, units, arm)
     grid_runs = []
     for kappa in grid:

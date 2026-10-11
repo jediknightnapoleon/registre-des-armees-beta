@@ -51,6 +51,7 @@ def is_wip(faction_key: str) -> bool:
 # (results depend on them). Models for infantry / cavalry, guns for artillery.
 AC_STUDY_BANDS = {"n": (40, 60, 80, 100, 140, 180, 240), "guns": (2, 3, 4, 5)}   # ac_pricing F6, [lo, hi)
 SB_BANDS_N = (40, 60, 80, 100, 140, 180)          # team_values' size-band values: 240+ merged into 180+
+SB_BANDS = {"n": SB_BANDS_N, "guns": AC_STUDY_BANDS["guns"]}
 CLASS_STRUCTURE_BANDS = (0, 40, 60, 80, 100, 140, 180, 240, 1000)   # class_structure residual table, (lo, hi]
 HARMONISATION_STRATA = {"infantry": (40, 60, 80, 100, 120, 160, 200, 240),   # cost_effective_builds
                         "cavalry": (40, 60, 80, 100, 120, 160, 200, 240),

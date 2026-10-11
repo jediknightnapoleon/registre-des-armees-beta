@@ -33,10 +33,14 @@ FLAGS = ("can_form_square", "has_stamina", "is_shock_resistant", "can_inspire", 
 ARM = {"inf": "infantry", "cav": "cavalry", "art": "artillery"}
 
 
-def main() -> int:
+def build_pairs(out: Path = OUT, scope=None, side=None) -> None:
+    """Write the regular / commander pairs of the rows in `scope` (default: ToW + Custom,
+    unit_pricing.in_scope) with `side` (default unit_pricing.side_of) to `out`."""
+    scope = up.in_scope if scope is None else scope
+    side = up.side_of if side is None else side
     ratings = up.load_ratings()
     with up.DATA_CSV.open(encoding="utf-8-sig", newline="") as fh:
-        rows = [r for r in csv.DictReader(fh) if up.in_scope(r) and r["faction_key"] in ratings]
+        rows = [r for r in csv.DictReader(fh) if scope(r) and r["faction_key"] in ratings]
     regular = {(r["faction_key"], r["unit_key"]): r for r in rows if r["is_general"] != "true"}
     commanders = [r for r in rows if r["is_general"] == "true" and r["is_commander_variant"] == "true"]
     header = ["pair_id", "faction_key", "army_corps_name", "corps_number", "side", "arm", "unit_class",
@@ -45,9 +49,9 @@ def main() -> int:
               "speed_tag", "training_level", "regular_rank_depth", "commander_rank_depth"]
     header += [f"{side}_{s}" for s in STATS for side in ("regular", "commander")]
     header += [f"{side}_{f}" for f in FLAGS for side in ("regular", "commander")]
-    OUT.parent.mkdir(parents=True, exist_ok=True)
+    out.parent.mkdir(parents=True, exist_ok=True)
     unmatched = 0
-    with OUT.open("w", encoding="utf-8", newline="") as fh:
+    with out.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(header)
         for i, c in enumerate(sorted(commanders, key=lambda r: (r["faction_key"], r["unit_key"]))):
@@ -56,7 +60,7 @@ def main() -> int:
                 unmatched += 1
                 continue
             tag = up.SPEED_TAG_RE.search(r["unit_name"])
-            line = [i + 1, c["faction_key"], c["army_corps_name"], ratings[c["faction_key"]], up.side_of(c),
+            line = [i + 1, c["faction_key"], c["army_corps_name"], ratings[c["faction_key"]], side(c),
                     ARM[c["unit_key"].split("_")[1]], r["unit_class"], r["unit_key"], c["unit_key"], c["unit_name"],
                     int(up.num(c["command_stars"])), r["base_mp_cost"], c["base_mp_cost"], r["men_raw"], c["men_raw"],
                     r["guns"], c["guns"], tag.group(0).strip("[] ") if tag else "", r["unit_training_level"],
@@ -64,7 +68,11 @@ def main() -> int:
             line += [x[s] or "0" for s in STATS for x in (r, c)]
             line += [int(x[f] == "true") for f in FLAGS for x in (r, c)]
             w.writerow(line)
-    print(f"{len(commanders) - unmatched} pairs ({unmatched} commanders without a counterpart) → {OUT.relative_to(up.ROOT)}")
+    print(f"{len(commanders) - unmatched} pairs ({unmatched} commanders without a counterpart) → {out.relative_to(up.ROOT)}")
+
+
+def main() -> int:
+    build_pairs()
     return 0
 
 

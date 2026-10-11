@@ -89,12 +89,8 @@ def run_one(dataset: str, arm: str, model: str, mode: str, variant: str) -> dict
         run, p_of = cs.run_variant(f"V4 {variant}", v0, design, sl, arm, True, fixed_p=fixed)
         extra = {"p_of": p_of}
     else:
-        saved = ap.SIZE_BANDS["n"]
-        ap.SIZE_BANDS["n"] = tv.SB_BANDS_N
-        try:
-            run, extra = ap.size_form_run("F6", up.joint_fclass_spec(FINAL[arm], kappa), sl.units, sl.plan.folds, arm)
-        finally:
-            ap.SIZE_BANDS["n"] = saved
+        run, extra = ap.size_form_run("F6", up.joint_fclass_spec(FINAL[arm], kappa), sl.units, sl.plan.folds, arm,
+                                      bands=common.SB_BANDS)
     return {"run": run, "extra": extra, "weights": table, "ess": up.kish_ess(weights), "n": len(sl.units),
             "variant": variant, "setting": VARIANTS[variant]}
 

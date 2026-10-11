@@ -92,18 +92,13 @@ def v4_raw_and_oof(dataset: str, arm: str, units: list[up.Unit],
 
 def sb_values(dataset: str, arm: str, units: list[up.Unit], folds) -> tuple[dict, dict]:
     """The size-band model (F6, top band merged): CV metrics and the value at corps 8."""
-    saved = ap.SIZE_BANDS["n"]
-    ap.SIZE_BANDS["n"] = SB_BANDS_N
-    try:
-        base = up.joint_fclass_spec(FINAL[arm], kappa_of(dataset, arm))
-        run, extra = cached(f"sb_{dataset}_{arm}", lambda: ap.size_form_run("F6", base, units, folds, arm))
-        kind = base.size
-        banded = ap.with_bands(units, kind, per_class=True)
-        design = up.design_for(run.spec, banded, arm)
-        ref = reference(banded)
-        pred = up.predict_total(run.full, design, up.data_for(run.spec, ref), np.arange(len(units)))
-    finally:
-        ap.SIZE_BANDS["n"] = saved
+    base = up.joint_fclass_spec(FINAL[arm], kappa_of(dataset, arm))
+    run, extra = cached(f"sb_{dataset}_{arm}",
+                        lambda: ap.size_form_run("F6", base, units, folds, arm, bands=common.SB_BANDS))
+    banded = ap.with_bands(units, base.size, per_class=True, bands=common.SB_BANDS)
+    design = up.design_for(run.spec, banded, arm)
+    ref = reference(banded)
+    pred = up.predict_total(run.full, design, up.data_for(run.spec, ref), np.arange(len(units)))
     metrics = {"mae": run.mean("mae"), "se": run.se("mae"), "mape": run.mean("mape"), "bands": extra["bands"]}
     return {(u.faction, u.key): float(v) for u, v in zip(units, pred)}, metrics
 
@@ -112,13 +107,7 @@ def commander_values(pairs_csv: Path | None, coefficients: dict[str, float] | No
                      base: dict[tuple[str, str], float]) -> dict[tuple[str, str], float]:
     """The commander model at the regular unit's value (corps 8, coalition), per commander card.
     `pairs_csv` None = the ToW pairs; `coefficients` None = the ToW "given true P" fit."""
-    saved = cm.PAIRS
-    if pairs_csv is not None:
-        cm.PAIRS = pairs_csv
-    try:
-        c = cm.Pairs()
-    finally:
-        cm.PAIRS = saved
+    c = cm.Pairs(pairs_csv)
     if coefficients is None:
         with open(ceb.OUT / "commander_model_coefficients.csv", encoding="utf-8") as fh:
             coefficients = {r["term"]: float(r["coefficient"]) for r in csv.DictReader(fh) if r["model"] == "given true P"}
