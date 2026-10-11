@@ -43,7 +43,6 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import pickle
 import re
 import sys
 import time
@@ -57,11 +56,9 @@ import class_structure as cs  # noqa: E402
 import checkpoints as ckpt  # noqa: E402
 import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
-from blind_ideas import FINAL  # noqa: E402
+from pricing.final import FINAL  # noqa: E402
 
-CACHE = ckpt.AC_DIR
-OUT = up.ROOT / "analysis" / "output" / "ac"
-CACHE_VERSION = ckpt.AC_VERSION
+OUT = common.AC_OUT
 # The ToW κ grid starts at 0.5; on AC a 3-seed smoke run chose 0.5 in every fold (the grid's
 # edge), so AC gets smaller values too: passed to fclass_cv for the AC fits only.
 AC_JFC_GRID = (0.05, 0.1, 0.2, 0.5, 1.0, 3.0, 10.0, 30.0)
@@ -368,12 +365,12 @@ SIZE_FORMS = ("F0", "F1", "F2", "F3", "F4", "F5", "F6")
 def size_phase(dataset: str, arm: str, seeds: int, fresh: bool, started: float) -> None:
     final = FINAL[arm]
     if dataset == "ac":
-        sl = pickle.loads((CACHE / f"v{CACHE_VERSION}_s{seeds}_{arm}_slice.pkl").read_bytes())
-        kappa = pickle.loads((CACHE / f"v{CACHE_VERSION}_s{seeds}_{arm}_jfc.pkl").read_bytes()).full_kappa
+        sl = common.load_pickle(ckpt.slice_path("ac", arm, seeds))
+        kappa = common.load_pickle(ckpt.ac_jfc_path(arm, seeds)).full_kappa
     else:
         sl = cached(f"s{seeds}_tow_{arm}_slice",
                     lambda: up.make_slice(arm, "merged", up.slice_units(tow_units(), arm, "merged"), seeds), fresh)
-        kappa = pickle.loads((cs.CACHE / f"v{cs.CACHE_VERSION}_{arm}_kappa.pkl").read_bytes())
+        kappa = common.load_pickle(ckpt.tow_kappa_path(arm))
     base = up.joint_fclass_spec(final, kappa)
     results = {}
     for form in SIZE_FORMS:
@@ -414,7 +411,7 @@ def commander_phase(seeds: int, started: float) -> None:
     c = cm.Pairs(pairs_csv)
     fold_of: dict[tuple[str, str], int] = {}
     for arm in up.ARMS:
-        sl = pickle.loads((CACHE / f"v{CACHE_VERSION}_s{seeds}_{arm}_slice.pkl").read_bytes())
+        sl = common.load_pickle(ckpt.slice_path("ac", arm, seeds))
         for k, (_, test) in enumerate(sl.plan.folds, 1):
             for i in test:
                 fold_of[(sl.units[i].faction, sl.units[i].key)] = k
@@ -486,9 +483,9 @@ def report_phase(started: float) -> None:
     for arm in up.ARMS:
         s = json.loads((OUT / f"ac_summary_{arm}.json").read_text(encoding="utf-8"))
         for key in ("V0", "V4"):
-            path = cs.CACHE / f"v{cs.CACHE_VERSION}_{arm}_{key}.pkl"
+            path = ckpt.class_structure(f"{arm}_{key}")
             if path.exists():
-                tow_ref[(arm, key)] = pickle.loads(path.read_bytes())[0].mean("mae")
+                tow_ref[(arm, key)] = common.load_pickle(path)[0].mean("mae")
         for key, (mae, se) in s["mae"].items():
             ref = {"jfc": tow_ref.get((arm, "V0")), "v0": tow_ref.get((arm, "V0")), "v4": tow_ref.get((arm, "V4"))}.get(key)
             rows.append([arm, s["units"], MODEL_LABEL.get(key, key), f"{mae:.2f} ± {se:.2f}", f"{s['mape'][key]:.2f}",
@@ -674,7 +671,7 @@ def database_phase(started: float) -> None:
         w.writerow(header)
         for d in disc:
             key = (d["faction_key"], d["unit_key"])
-            arm = {"inf": "infantry", "cav": "cavalry", "art": "artillery"}.get(d["unit_key"].split("_")[1], "")
+            arm = common.ARM_SHORT.get(d["unit_key"].split("_")[1], "")
             general = ""
             if d["kind"] == "commander":
                 general = cmd.get(key, "")
@@ -697,7 +694,7 @@ def database_phase(started: float) -> None:
            f"best size forms {size_form} → {(OUT / 'ac_price_database.csv').relative_to(up.ROOT)}", started)
 
 
-BLIND = up.ROOT / "analysis" / "ac_blind"
+BLIND = common.ANALYSIS / "ac_blind"
 
 
 def blind_data_phase(seeds: int, started: float) -> None:
@@ -708,10 +705,10 @@ def blind_data_phase(seeds: int, started: float) -> None:
     slice's fold. `corps_holdout` marks the 17 AC-only corps (the unseen-corps test)."""
     fold: dict[tuple[str, str], int] = {}
     for arm in up.ARMS:
-        path = CACHE / f"v{CACHE_VERSION}_s{seeds}_{arm}_slice.pkl"
+        path = ckpt.slice_path("ac", arm, seeds)
         if not path.exists():
             raise SystemExit(f"{path.name} missing: run --phase model --arm {arm} first")
-        sl = pickle.loads(path.read_bytes())
+        sl = common.load_pickle(path)
         for (train, test), k in zip(sl.plan.folds, range(1, 6)):
             for i in test:
                 fold[(sl.units[i].faction, sl.units[i].key)] = k

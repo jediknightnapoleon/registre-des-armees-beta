@@ -34,7 +34,7 @@ import size_weighting as sw  # noqa: E402
 import team_values as tv  # noqa: E402
 import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
-from blind_ideas import FINAL  # noqa: E402
+from pricing.final import FINAL  # noqa: E402
 
 WEIGHTED = tuple(f"w:{v}" for v in sw.VARIANTS)
 SETS = ("raw", "quantity", "quality", "sb") + WEIGHTED

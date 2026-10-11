@@ -43,14 +43,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 
-OUT = up.ROOT / "analysis" / "output"
+OUT = common.OUTPUT
 SAVE_FORMAT_VERSION = 2          # web/src/state/saves.ts
 TOP = 5
 ORDER = {"artillery": 0, "cavalry": 1, "infantry": 2}
 STEM = "cost_effective_builds"
-MAX_CARDS = 31                   # the game's limit, staff general included
+MAX_CARDS = common.MAX_CARDS     # the game's limit, staff general included
 
 
 def slug(text: str) -> str:

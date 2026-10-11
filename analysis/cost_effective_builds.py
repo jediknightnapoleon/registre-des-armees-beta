@@ -85,11 +85,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import checkpoints as ckpt  # noqa: E402
 import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
-from blind_ideas import FINAL  # noqa: E402
+from pricing.final import FINAL  # noqa: E402
 from class_structure import segmented, with_class_p  # noqa: E402
 from commander_model import Pairs, design as commander_design  # noqa: E402
 
-OUT = up.ROOT / "analysis" / "output"
+OUT = common.OUTPUT
 BUDGET, MAX_CARDS, MAX_FOOT_ART, MAX_HEAVY_CAV = 10_000, 31, 2, 10
 MAX_UNITS = MAX_CARDS - 1          # the staff general takes one of the 31 cards (as the app counts)
 MAX_ROLL_CORPS = 4                 # NTW3AC.ToWFarmycorps: max_ac = 4

@@ -37,8 +37,8 @@ import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 from tools import army_builder_rules as abr  # noqa: E402
 
-TEAMS = up.ROOT / "analysis" / "output" / "teams"
-OUT = up.ROOT / "analysis" / "output"
+TEAMS = common.TEAMS_OUT
+OUT = common.OUTPUT
 NOW = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
 
 

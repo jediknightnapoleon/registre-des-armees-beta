@@ -58,11 +58,11 @@ import cost_effective_builds as ceb  # noqa: E402
 import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 
-GENERATED = up.ROOT / "data" / "generated"
+GENERATED = common.GENERATED
 VALUES_CSV = GENERATED / "ntw3_optimiser_values.csv"
 PARAMS_JSON = GENERATED / "ntw3_optimiser_params.json"
 ARMY_VALUES_CSV = GENERATED / "ntw3_optimiser_army_values.csv"
-TEAMS = up.ROOT / "analysis" / "output" / "teams"
+TEAMS = common.TEAMS_OUT
 PYTHON_BUILDS = ceb.OUT / "optimiser_parity_python.json"
 FACTIONS = up.ROOT / "web" / "public" / "data" / "factions"
 FIXTURE = up.ROOT / "web" / "src" / "state" / "__fixtures__" / "optimiser-parity.json"

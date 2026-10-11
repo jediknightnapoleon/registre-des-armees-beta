@@ -23,7 +23,7 @@ import numpy as np
 import size_weighting as sw
 import team_values as tv
 import unit_pricing as up
-from blind_ideas import FINAL
+from pricing.final import FINAL
 
 MODES = (("V4", "fixed"), ("V4", "nested"), ("F6", "full"))
 

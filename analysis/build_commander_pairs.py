@@ -23,14 +23,15 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 
-OUT = up.ROOT / "analysis" / "commander_blind" / "data" / "pairs.csv"
+OUT = common.COMMANDER_PAIRS
 STATS = ("morale", "melee_attack", "melee_defense", "charge_bonus", "accuracy", "reload_skill", "ammo", "range")
 FLAGS = ("can_form_square", "has_stamina", "is_shock_resistant", "can_inspire", "has_guerrilla_deployment",
          "can_place_stakes", "can_place_mines", "scares_enemies", "can_build_barricades",
          "guard_mode", "skirmish", "can_snipe", "pike_square")
-ARM = {"inf": "infantry", "cav": "cavalry", "art": "artillery"}
+ARM = common.ARM_SHORT
 
 
 def build_pairs(out: Path = OUT, scope=None, side=None) -> None:

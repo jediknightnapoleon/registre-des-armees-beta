@@ -47,7 +47,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import checkpoints as ckpt  # noqa: E402
 import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
-from blind_ideas import FINAL  # noqa: E402
+from pricing.final import FINAL  # noqa: E402
 
 SEGMENT_OF = {"infantry_irregulars": "infantry_militia", "cavalry_missile": "cavalry_light"}
 P_COARSE = tuple(round(0.2 + 0.1 * i, 1) for i in range(15))          # 0.2 … 1.6
@@ -59,10 +59,8 @@ ORDER = ("V0", "V1", "V2", "V3", "V4")
 LABELS = {"V0": "adopted: class additive in β·x", "V1": "class as a multiplier",
           "V2": "class multiplier + size exponent per class", "V3": "separate formula per class",
           "V4": "separate formula + size exponent per class"}
-REPORT = up.ROOT / "analysis" / "output" / "class_structure_report.md"
-COEFFICIENTS = up.ROOT / "analysis" / "output" / "class_structure_coefficients.csv"
-CACHE = ckpt.CLASS_STRUCTURE_DIR
-CACHE_VERSION = ckpt.CLASS_STRUCTURE_VERSION   # see analysis/checkpoints.py before ever changing it
+REPORT = common.OUTPUT / "class_structure_report.md"
+COEFFICIENTS = common.OUTPUT / "class_structure_coefficients.csv"
 
 
 def cached(name: str, compute, fresh: bool):

@@ -52,7 +52,7 @@ import checkpoints as ckpt  # noqa: E402
 import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 
-OUT = up.ROOT / "analysis" / "output" / "teams"
+OUT = common.TEAMS_OUT
 VERSIONS = ("sb", "full", "noise")
 # web/src/domain/teamRule.ts CUSTOM_ARMY_SIDE, real armies only (the rest are dev placeholders).
 CUSTOM_SIDE = {"france": "imperial", "denmark": "imperial", "britain": "coalition", "ntw3_hre": "coalition",

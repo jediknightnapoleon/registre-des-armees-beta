@@ -40,6 +40,15 @@ class CommonTests(unittest.TestCase):
         self.assertEqual(ckpt.tow_kappa_path("artillery").name, "v2_artillery_kappa.pkl")
         self.assertEqual(ckpt.sb_path("tow", "artillery").name, "sb_tow_artillery.pkl")
         self.assertEqual(ckpt.tow_builds_path("sb").name, "tow_builds_v2_sb.pkl")
+        self.assertEqual(ckpt.ac_jfc_path("artillery", 3).name, "v1_s3_artillery_jfc.pkl")
+        self.assertEqual(ckpt.class_structure("cavalry_V0").name, "v2_cavalry_V0.pkl")
+
+    def test_ac_discounts_self_checks_raise(self) -> None:
+        # ac_discounts validates the data and the rules port with check(), which python -O cannot strip.
+        import ac_discounts
+        ac_discounts.check(True, "fine")
+        with self.assertRaisesRegex(ValueError, "self-check failed: detail"):
+            ac_discounts.check(False, "detail")
 
 
 if __name__ == "__main__":

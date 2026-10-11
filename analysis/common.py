@@ -25,6 +25,10 @@ GENERATED = ROOT / "data" / "generated"
 DATA_CSV = GENERATED / "ntw3_units_analysis.csv"
 CATALOG_CSV = GENERATED / "army_corps_catalog.csv"
 BUILDER_CSV = GENERATED / "ntw3_army_builder_units.csv"
+SOURCE_TABLES = ROOT / "source" / "tables"     # the game's own database export (TSV)
+TEAMS_OUT = OUTPUT / "teams"                   # team study, AC builds, optimiser inputs
+AC_OUT = OUTPUT / "ac"                         # AC pricing study and the AC formation discounts
+COMMANDER_PAIRS = ANALYSIS / "commander_blind" / "data" / "pairs.csv"   # build_commander_pairs.py
 
 # --- game constants -------------------------------------------------------------------------------
 BUDGET = 10_000            # funds per army

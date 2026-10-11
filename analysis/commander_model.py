@@ -50,11 +50,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import checkpoints as ckpt  # noqa: E402
 import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
-from blind_ideas import FINAL  # noqa: E402
+from pricing.final import FINAL  # noqa: E402
 
-OUT = up.ROOT / "analysis" / "output"
-PAIRS = up.ROOT / "analysis" / "commander_blind" / "data" / "pairs.csv"
-ARMS = ("infantry", "cavalry", "artillery")
+OUT = common.OUTPUT
+PAIRS = common.COMMANDER_PAIRS
+ARMS = common.ARMS
 
 
 # --- The commander blind study's best model (FS7), as a function of P ----------

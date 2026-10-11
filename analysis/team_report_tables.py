@@ -24,8 +24,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 
-TEAMS = up.ROOT / "analysis" / "output" / "teams"
-REPORT = up.ROOT / "analysis" / "TEAM_BUILDS_REPORT.md"
+TEAMS = common.TEAMS_OUT
+REPORT = common.ANALYSIS / "TEAM_BUILDS_REPORT.md"
 
 
 def theatre_names() -> dict[str, str]:

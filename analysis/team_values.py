@@ -47,9 +47,9 @@ import cost_effective_builds as ceb  # noqa: E402
 import checkpoints as ckpt  # noqa: E402
 import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
-from blind_ideas import FINAL  # noqa: E402
+from pricing.final import FINAL  # noqa: E402
 
-OUT = up.ROOT / "analysis" / "output" / "teams"
+OUT = common.TEAMS_OUT
 CACHE = ckpt.TEAMS_DIR
 SEEDS = common.DEFAULT_SEEDS
 SB_BANDS_N = common.SB_BANDS_N               # models; 240+ merged into 180+

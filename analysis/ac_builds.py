@@ -74,9 +74,9 @@ import common  # noqa: E402
 import unit_pricing as up  # noqa: E402
 from tools import army_builder_rules as abr  # noqa: E402
 
-OUT = up.ROOT / "analysis" / "output" / "teams"
-BUILDER_CSV = up.ROOT / "data" / "generated" / "ntw3_army_builder_units.csv"
-BUDGET = 10_000
+OUT = common.TEAMS_OUT
+BUILDER_CSV = common.BUILDER_CSV
+BUDGET = common.BUDGET
 MAX_CUTS = 30
 # λ per value version (gold per star per unit of morale deficit; cost_effective_builds). The
 # size-band version is a "quality" scale like full harmonisation (team_values.py), so it uses

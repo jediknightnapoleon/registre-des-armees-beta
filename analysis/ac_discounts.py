@@ -45,7 +45,7 @@ Outputs (analysis/output/ac/)
 ``has_tow_copy``: some Theatre-of-War unit key, with its ``_tow_<n>`` component
 removed, equals this AC key (ToW commander keys put ``_tow_<n>`` before ``_com_<m>``).
 
-Self-checks (asserted; a summary is printed): row counts; Lua tags parse and match the
+Self-checks (check(), which raises ValueError; a summary is printed): row counts; Lua tags parse and match the
 builder's ``localisation_tag`` placements; independent group totals equal
 build_roster_totals; every eligible group, selected in full (every roster copy), makes
 calculate_army_cost return exactly the stated rebate, and one copy short does not
@@ -73,18 +73,28 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Sequence
 
-ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import common  # noqa: E402
+
+ROOT = common.ROOT
 sys.path.insert(0, str(ROOT))
 from tools import army_builder_rules as abr  # noqa: E402
 
-UNITS_CSV = ROOT / "data" / "generated" / "ntw3_army_builder_units.csv"
-CATALOG_CSV = ROOT / "data" / "generated" / "army_corps_catalog.csv"
-LAND_UNITS_TSV = ROOT / "source" / "tables" / "ntw3_land_units.tsv"
-LOCALISATION_TSV = ROOT / "source" / "tables" / "localisation.loc.tsv"
-OUT = ROOT / "analysis" / "output" / "ac"
+UNITS_CSV = common.BUILDER_CSV
+CATALOG_CSV = common.CATALOG_CSV
+LAND_UNITS_TSV = common.SOURCE_TABLES / "ntw3_land_units.tsv"
+LOCALISATION_TSV = common.SOURCE_TABLES / "localisation.loc.tsv"
+OUT = common.AC_OUT
 
 # web/src/rules/rules.ts MAX_BUILD_COST (the Python port has no such constant).
-MAX_BUILD_COST = 10_000
+MAX_BUILD_COST = common.BUDGET
+
+
+def check(condition: object, detail: object = None) -> None:
+    """A self-check on the data or the rules port. Unlike assert it also runs under `python -O`; a
+    failure raises ValueError with the detail (the failing line is in the traceback)."""
+    if not condition:
+        raise ValueError("self-check failed" + ("" if detail is None else f": {detail}"))
 
 # Expected sizes (analysis/AC_STUDY_PLAN.md, "Verification" 3).
 EXPECTED_COUNTS = {"unit": 7205, "commander": 5628, "staff": 283}
@@ -157,10 +167,10 @@ def load_cards() -> list[Card]:
     rule_cards = abr.load_unit_cards(UNITS_CSV)
     with UNITS_CSV.open(encoding="utf-8-sig", newline="") as handle:
         rows = list(csv.DictReader(handle))
-    assert len(rows) == len(rule_cards)
+    check(len(rows) == len(rule_cards))
     cards: list[Card] = []
     for row, rule in zip(rows, rule_cards):
-        assert (row["unit_key"], row["faction_key"]) == (rule.unit_key, rule.faction_key)
+        check((row["unit_key"], row["faction_key"]) == (rule.unit_key, rule.faction_key))
         if "_ac_" not in rule.faction_key:
             continue
         cards.append(
@@ -219,9 +229,9 @@ def lua_tags(unit_keys: Iterable[str]) -> dict[str, tuple[int, int]]:
                 description = text
                 break
         tag = lua_locate(description)
-        assert tag is not None, f"{unit_key}: the Lua could not parse its ACDV tag"
+        check(tag is not None, f"{unit_key}: the Lua could not parse its ACDV tag")
         regex = re.search(r"ACDV(\d+)B(\d+)", description)
-        assert tag == ((int(regex.group(1)), int(regex.group(2))) if regex else (0, 0))
+        check(tag == ((int(regex.group(1)), int(regex.group(2))) if regex else (0, 0)))
         tags[unit_key] = tag
     return tags
 
@@ -334,7 +344,7 @@ def analyse_corps(
         n = sum(c.cap for c in roster)
         if eligible:
             total = app_brigades[key]
-            assert (total.roster_cost, total.required_count) == (cost, n), (faction, key)
+            check((total.roster_cost, total.required_count) == (cost, n), (faction, key))
         rebate = abr.group_discount(abr.GroupTotal(cost, n)) if eligible else 0
         caps_ok, reason = caps_check(copies(roster), corps, faction)
         affordable = cost <= MAX_BUILD_COST
@@ -342,7 +352,7 @@ def analyse_corps(
             reason = "+".join(filter(None, [reason, "cost"]))
         brigades[key] = Group(key[0], key[1], n, cost, eligible, rebate, caps_ok,
                               caps_ok and affordable, reason)
-    assert set(app_brigades) <= set(brigades)
+    check(set(app_brigades) <= set(brigades))
 
     divisions: dict[int, Group] = {}
     brigade_orders: dict[int, tuple[tuple[int, int], ...]] = {}
@@ -352,14 +362,14 @@ def analyse_corps(
         n = sum(c.cap for c in members)
         if eligible:
             total = app_divisions[d]
-            assert (total.roster_cost, total.required_count) == (cost, n), (faction, d)
+            check((total.roster_cost, total.required_count) == (cost, n), (faction, d))
         rebate = abr.group_discount(abr.GroupTotal(cost, n)) if eligible else 0
         caps_ok, reason = caps_check(copies(members), corps, faction)
         keys = [k for k in sorted(brigades) if k[0] == d]
         found = best_brigade_order(
             [(brigades[k].roster_cost, brigades[k].rebate) for k in keys]
         )
-        assert found is not None
+        check(found is not None)
         order, peak = found
         brigade_orders[d] = tuple(keys[i] for i in order)
         affordable = peak <= MAX_BUILD_COST
@@ -367,7 +377,7 @@ def analyse_corps(
             reason = "+".join(filter(None, [reason, "cost"]))
         divisions[d] = Group(d, None, n, cost, eligible, rebate, caps_ok,
                              caps_ok and affordable, reason)
-    assert set(app_divisions) <= set(divisions)
+    check(set(app_divisions) <= set(divisions))
 
     # The Lua's roster (ntw3.lua 480-505): non-general cards, own ACDV tag, d>0, b>0.
     lua_div: dict[int, list[int]] = defaultdict(lambda: [0, 0])
@@ -452,15 +462,14 @@ def card_row(
     if placement is not None:
         brigade = result.brigades.get((placement.division_id, placement.brigade_id))
         division = result.divisions.get(placement.division_id)
-        assert brigade is not None and division is not None, (rule.faction_key, rule.unit_key)
+        check(brigade is not None and division is not None, (rule.faction_key, rule.unit_key))
 
     # The Lua's rebates for this card: its own tag, the Lua roster, the float floor.
     lua_d, lua_b = tag
     lua_brigade_rebate = lua_division_rebate = 0
     if lua_d > 0 and lua_b > 0:
-        assert lua_d in result.lua_divisions and (lua_d, lua_b) in result.lua_brigades, (
-            f"{rule.unit_key}: the Lua would index a missing roster group"
-        )
+        check(lua_d in result.lua_divisions and (lua_d, lua_b) in result.lua_brigades,
+              f"{rule.unit_key}: the Lua would index a missing roster group")
         lua_brigade_rebate = lua_price_cut(*result.lua_brigades[(lua_d, lua_b)])
         lua_division_rebate = lua_price_cut(*result.lua_divisions[lua_d])
     app_brigade_rebate = brigade.rebate if brigade else 0
@@ -475,7 +484,7 @@ def card_row(
         elif placement is not None and placement.division_id in result.support and lua_d > 0:
             note = "tagged_support_division"
         else:
-            raise AssertionError(f"unexplained Lua/app difference: {rule.unit_key}")
+            raise ValueError(f"unexplained Lua/app difference: {rule.unit_key}")
 
     row = {
         "faction_key": rule.faction_key,
@@ -539,11 +548,11 @@ def check_group_selections(results: dict[str, CorpsResult]) -> int:
                 members = [c for c in members if not abr._is_artillery(c)]
             selection = copies(members)
             price = abr.calculate_army_cost(selection, corps, faction)
-            assert price.normal_discount == group.rebate, (faction, key)
-            assert price.base_cost == group.roster_cost
-            assert len(price.completed_groups) == 1
+            check(price.normal_discount == group.rebate, (faction, key))
+            check(price.base_cost == group.roster_cost)
+            check(len(price.completed_groups) == 1)
             short = abr.calculate_army_cost(selection[:-1], corps, faction)
-            assert short.normal_discount == 0, (faction, key)
+            check(short.normal_discount == 0, (faction, key))
             checked += 1
         for d, group in result.divisions.items():
             if not group.eligible:
@@ -553,12 +562,12 @@ def check_group_selections(results: dict[str, CorpsResult]) -> int:
                 for c in members_of_brigade[k]
             )
             price = abr.calculate_army_cost(selection, corps, faction)
-            assert price.normal_discount == group.rebate, (faction, d)
-            assert [(g.group_type, g.division_id) for g in price.completed_groups] == [
+            check(price.normal_discount == group.rebate, (faction, d))
+            check([(g.group_type, g.division_id) for g in price.completed_groups] == [
                 ("division", d)
-            ]
+            ])
             short = abr.calculate_army_cost(selection[:-1], corps, faction)
-            assert all(g.group_type == "brigade" for g in short.completed_groups)
+            check(all(g.group_type == "brigade" for g in short.completed_groups))
             checked += 1
     return checked
 
@@ -597,9 +606,9 @@ def check_commander_substitution(results: dict[str, CorpsResult]) -> int:
             continue
         selection[index] = commander
         price = abr.calculate_army_cost(selection, result.corps, faction)
-        assert price.normal_discount == result.brigades[key].rebate, (faction, key)
+        check(price.normal_discount == result.brigades[key].rebate, (faction, key))
         checked += 1
-    assert checked >= COMMANDER_SAMPLE, checked
+    check(checked >= COMMANDER_SAMPLE, checked)
     return checked
 
 
@@ -622,10 +631,10 @@ def check_reachability(results: dict[str, CorpsResult]) -> tuple[int, int]:
                 )
             affordable = affordable_prefix(order, result.corps, faction)
             fits = len(affordable) == len(order)
-            assert fits == group.reachable, (faction, d, group)
+            check(fits == group.reachable, (faction, d, group))
             if fits:
                 final = abr.calculate_army_cost(order, result.corps, faction)
-                assert final.normal_discount == group.rebate
+                check(final.normal_discount == group.rebate)
             replayed += 1
             over_line += group.roster_cost > MAX_BUILD_COST
     return replayed, over_line
@@ -655,9 +664,9 @@ def check_5645_example() -> tuple[int, int]:
                 for i, c in enumerate([1003, 1003, 807, 807, 384, 384, 772])]
     selected.append(card("tagged_general", cost=845, general=True))
     result = abr.calculate_army_cost(selected, roster, faction)
-    assert (result.base_cost, result.normal_discount, result.final_cost) == (6005, 360, 5645)
+    check((result.base_cost, result.normal_discount, result.final_cost) == (6005, 360, 5645))
     group = result.completed_groups[0]
-    assert (group.group_type, group.roster_cost, group.required_count) == ("brigade", 5156, 8)
+    check((group.group_type, group.roster_cost, group.required_count) == ("brigade", 5156, 8))
     return result.final_cost, group.discount
 
 
@@ -669,7 +678,7 @@ def check_real_example(results: dict[str, CorpsResult]) -> tuple[int, int, int]:
     faction = "ntw3_ac_a11_x5_130"
     result = results[faction]
     group = result.brigades[(4, 2)]
-    assert (group.roster_cost, group.cap_total, group.rebate) == (5156, 8, 360)
+    check((group.roster_cost, group.cap_total, group.rebate) == (5156, 8, 360))
     by_key = {c.unit_key: c for c in result.corps}
     selection = [
         by_key["ntw3_inf_grena_130_999_0565"],
@@ -677,9 +686,9 @@ def check_real_example(results: dict[str, CorpsResult]) -> tuple[int, int, int]:
         *[by_key["ntw3_inf_light_130_999_1320"]] * 2,
         *[by_key["ntw3_inf_skirm_130_999_4805"]] * 4,
     ]
-    assert abr.check_known_limits(selection, faction, recruitable_cards=result.corps).valid
+    check(abr.check_known_limits(selection, faction, recruitable_cards=result.corps).valid)
     price = abr.calculate_army_cost(selection, result.corps, faction)
-    assert (price.base_cost, price.normal_discount, price.final_cost) == (4998, 360, 4638)
+    check((price.base_cost, price.normal_discount, price.final_cost) == (4998, 360, 4638))
     return price.base_cost, price.normal_discount, price.final_cost
 
 
@@ -700,10 +709,10 @@ def main() -> None:
     kinds = Counter(card.kind for card in cards)
     factions = sorted({card.rule.faction_key for card in cards})
     print(f"AC cards: {dict(kinds)}  corps: {len(factions)}")
-    assert dict(kinds) == EXPECTED_COUNTS, kinds
-    assert len(factions) == EXPECTED_CORPS
-    assert all((c.kind == "commander") == c.is_commander_variant for c in cards)
-    assert not any(abr.is_german_states(f) for f in factions)
+    check(dict(kinds) == EXPECTED_COUNTS, kinds)
+    check(len(factions) == EXPECTED_CORPS)
+    check(all((c.kind == "commander") == c.is_commander_variant for c in cards))
+    check(not any(abr.is_german_states(f) for f in factions))
 
     with CATALOG_CSV.open(encoding="utf-8-sig", newline="") as handle:
         catalog = {row["faction_key"]: row for row in csv.DictReader(handle)}
@@ -716,12 +725,12 @@ def main() -> None:
         rule = card.rule
         tag = tags[rule.unit_key]
         if rule.placement_source == "localisation_tag":
-            assert rule.placement is not None
-            assert tag == (rule.placement.division_id, rule.placement.brigade_id)
+            check(rule.placement is not None)
+            check(tag == (rule.placement.division_id, rule.placement.brigade_id))
         elif rule.placement_source == "reserve_support_division":
-            assert tag[0] == 0  # ACDV0B* or untagged: the Lua ignores both
+            check(tag[0] == 0)  # ACDV0B* or untagged: the Lua ignores both
         else:
-            assert tag == (0, 0), (rule.unit_key, rule.placement_source)
+            check(tag == (0, 0), (rule.unit_key, rule.placement_source))
     print("Lua tags: parsed for every card; equal to the builder's localisation_tag placements")
 
     by_faction: dict[str, list[abr.UnitCard]] = defaultdict(list)
@@ -735,15 +744,15 @@ def main() -> None:
     lua_groups = [g for r in results.values()
                   for g in (*r.lua_divisions.values(), *r.lua_brigades.values())]
     float_mismatch = [g for g in lua_groups if lua_price_cut(*g) != g[0] * (g[1] - 1) // 100]
-    assert not float_mismatch, float_mismatch
+    check(not float_mismatch, float_mismatch)
     print(f"Lua float floor == integer floor on all {len(lua_groups)} Lua groups")
 
     # (n - 1)% consequence, up to the floor.
     for result in results.values():
         for group in (*result.brigades.values(), *result.divisions.values()):
             if group.eligible:
-                assert group.cap_total - 1 - 100 / group.roster_cost < group.rebate_pct
-                assert group.rebate_pct <= group.cap_total - 1 + 1e-9
+                check(group.cap_total - 1 - 100 / group.roster_cost < group.rebate_pct)
+                check(group.rebate_pct <= group.cap_total - 1 + 1e-9)
 
     # --- per-card rows
     card_rows: list[dict[str, str]] = []
@@ -754,7 +763,7 @@ def main() -> None:
             card, results[rule.faction_key], tags[rule.unit_key], corps_number,
             rule.unit_key in copied,
         ))
-    assert len(card_rows) == sum(EXPECTED_COUNTS.values())
+    check(len(card_rows) == sum(EXPECTED_COUNTS.values()))
 
     # --- per-corps rows
     corps_rows: list[dict[str, str]] = []
@@ -775,7 +784,7 @@ def main() -> None:
         everything = copies(c for c in result.corps
                             if not c.is_general and c.placement is not None)
         price = abr.calculate_army_cost(everything, result.corps, faction)
-        assert price.normal_discount == full_rebate, faction
+        check(price.normal_discount == full_rebate, faction)
         rows = rows_by_faction[faction]
         corps_rows.append({
             "faction_key": faction,
@@ -816,7 +825,7 @@ def main() -> None:
     groups_checked = check_group_selections(results)
     print(f"full-group selections: {groups_checked} eligible groups, rebate exact, "
           f"one copy short never completes")
-    assert groups_checked >= 200
+    check(groups_checked >= 200)
     subs = check_commander_substitution(results)
     print(f"commander stand-in: {subs} sampled brigades still complete with the same rebate")
     replayed, over_line = check_reachability(results)
@@ -842,9 +851,9 @@ def main() -> None:
     print(f"ToW copies: {len(whole)} corps copied whole, {len(no_copy)} AC-only corps "
           f"({no_copy_units} regular units); {len(corps_rows) - len(corps_with_units)} corps "
           f"have no regular units at all")
-    assert len(no_copy) == 17 and no_copy_units == 612
-    assert len(whole) + len(no_copy) == len(corps_with_units)
-    assert sum(r["has_tow_copy"] == "true" for r in unit_rows) == 7205 - 612
+    check(len(no_copy) == 17 and no_copy_units == 612)
+    check(len(whole) + len(no_copy) == len(corps_with_units))
+    check(sum(r["has_tow_copy"] == "true" for r in unit_rows) == 7205 - 612)
 
     # --- Lua / app disagreements, group level
     print("\nLua/app disagreements (groups):")
@@ -863,7 +872,7 @@ def main() -> None:
                       f"caps_ok={app.caps_ok if app else None} "
                       f"({app.unreachable_reason if app else ''}); brigades "
                       f"(b, Lua, app, caps_ok): {brig}")
-    assert tagged_support == EXPECTED_TAGGED_SUPPORT, tagged_support
+    check(tagged_support == EXPECTED_TAGGED_SUPPORT, tagged_support)
     notes = Counter(r["lua_note"] for r in card_rows if r["lua_differs"] == "true")
     print(f"  cards with lua_differs: {dict(notes)}")
 
