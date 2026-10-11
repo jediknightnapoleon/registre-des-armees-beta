@@ -143,9 +143,11 @@ an Army Corps can field well over 10 000 of list value. You choose:
 
 - **a cap on the number of cards**, since fewer units are easier to control;
 - **how units are valued**: Quantity keeps the discount on very small and very
-  large units; Quality (Theatres of War and Custom Armies) doesn't; Size bands
-  (Army Corps) uses the size-band pricing model; and **Formation discount only**
-  (Army Corps) ignores stats and fields the most list value the discounts allow;
+  large units; Quality takes it out (for Army Corps it uses the size-band pricing
+  model); and **Formation discount only** (Army Corps) ignores stats and fields
+  the most list value the discounts allow. Quantity and Quality are just names
+  for how sizes are valued: a Quantity build won't necessarily have more cards or
+  more extreme-sized units, and a Quality build won't necessarily have fewer;
 - **whether to rebuild from scratch or fill what's left** of your current build;
 - **whether to stick to the units your filters show**;
 - **whether a build without a staff general is allowed**;

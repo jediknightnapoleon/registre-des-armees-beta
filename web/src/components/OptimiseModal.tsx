@@ -5,6 +5,11 @@ import { isTowFactionKey } from "../domain/tow";
 import { isArmyCorpsKey } from "../state/acOptimiser";
 import { type OptimiseSettings, type OptimiseSummary, allowedModes, normaliseMode } from "../state/optimiser";
 
+/** Shown under Quantity and Quality (here and in SuggestTeamModal): the names are only labels for
+ *  how unit sizes are valued, not targets the optimiser aims for (the user's request). */
+export const MODE_NAME_NOTE = "Quantity and Quality are just names for how unit sizes are valued: a Quantity build "
+  + "won't necessarily have more cards or more very large or very small units, and a Quality build won't necessarily have fewer.";
+
 const MODES: Record<OptimiserMode, { label: string; hint: string }> = {
   quantity: {
     label: "Quantity",
@@ -14,9 +19,11 @@ const MODES: Record<OptimiserMode, { label: string; hint: string }> = {
     label: "Quality",
     hint: "Removes the pricing model's size bias, so a unit's size alone never makes it look like a bargain.",
   },
+  // Army Corps "Quality" is the size-band model (mode key sizeBands); the user chose the
+  // familiar label (2026-10-10). Like Quality elsewhere it takes out most of the size discount.
   sizeBands: {
-    label: "Size bands",
-    hint: "Values units with the Army Corps pricing model that prices each size band of each class on its own, so mid-sized units are valued on their own curve.",
+    label: "Quality",
+    hint: "Values units with the Army Corps size-band pricing model, which takes out most of the price discount of small and very large units, so size alone rarely makes a unit look like a bargain.",
   },
   formationDiscount: {
     label: "Formation discount only",
@@ -128,6 +135,7 @@ export function OptimiseModal({
               </span>
             </div>
             <span className="opt-hint">{MODES[mode].hint}</span>
+            {mode !== "formationDiscount" && <span className="opt-hint">{MODE_NAME_NOTE}</span>}
           </div>
 
           <label className="opt-check">

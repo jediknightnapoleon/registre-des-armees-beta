@@ -51,7 +51,7 @@ async function optimise(cards: UnitCard[], over: Partial<OptimiseSettings> = {},
 const keys = (build: BuildState) => build.instances.map((i) => i.unitKey);
 
 describe("Army Corps optimiser", () => {
-  it("offers Quantity, Size bands and Formation discount only for AC; Quantity and Quality elsewhere", () => {
+  it("offers Quantity, Size bands (shown as Quality) and Formation discount only for AC; Quantity and Quality elsewhere", () => {
     expect(allowedModes(FK)).toEqual(["quantity", "sizeBands", "formationDiscount"]);
     expect(allowedModes("ntw3_tow_b06_x8_009")).toEqual(["quantity", "quality"]);
     expect(normaliseMode("quality", FK)).toBe("quantity");

@@ -96,7 +96,8 @@ export const DEFAULT_OPTIMISE_SETTINGS: OptimiseSettings = {
 };
 
 /** The modes an army's pool offers: ToW / Custom Quantity and Quality; Army Corps Quantity,
- *  Size bands and "Formation discount only" (the user's choice, 2026-10-10). */
+ *  Size bands (labelled "Quality" in the app) and "Formation discount only" (the user's
+ *  choices, 2026-10-10). */
 export function allowedModes(factionKey: string): OptimiserMode[] {
   return isArmyCorpsKey(factionKey) ? ["quantity", "sizeBands", "formationDiscount"] : ["quantity", "quality"];
 }

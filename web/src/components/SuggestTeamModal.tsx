@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { CorpsEntry, CorpsIndex, FactionRoster, ValueMode } from "../domain/types";
 import { type TeamKey, teamAnchor } from "../domain/teamRule";
 import { MAX_TOTAL_UNIT_CARDS } from "../rules/rules";
+import { MODE_NAME_NOTE } from "./OptimiseModal";
 import { DEFAULT_OPTIMISE_SETTINGS } from "../state/optimiser";
 import { type Plan, type TeamPlaceholder, applySuggestedTeam } from "../state/plan";
 import { corpsPoints } from "../state/planSummary";
@@ -24,7 +25,8 @@ import {
   teamPools,
 } from "../state/teamSuggest";
 
-const MODE_LABELS: Record<ValueMode, string> = { quantity: "Quantity", quality: "Quality", sizeBands: "Size bands" };
+// Army Corps show their size-band mode as "Quality" (see OptimiseModal).
+const MODE_LABELS: Record<ValueMode, string> = { quantity: "Quantity", quality: "Quality", sizeBands: "Quality" };
 
 interface Kept {
   slotId: string;
@@ -257,6 +259,7 @@ export function SuggestTeamModal({
                 ))}
               </span>
             </div>
+            <span className="opt-hint">{MODE_NAME_NOTE}</span>
           </div>
 
           <details className="opt-field">

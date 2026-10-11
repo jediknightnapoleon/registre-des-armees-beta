@@ -391,8 +391,9 @@ the same programme plus the formation discounts and the recruit-order rule (belo
 - **Max unit cards:** 2–31, staff general included.
 - **Value mode** (Quantity is the default everywhere; `allowedModes`):
   - ToW / Custom: **Quantity** / **Quality**;
-  - Army Corps: **Quantity** / **Size bands** / **Formation discount only**. The user
-    replaced Quality with the AC study's size-band model for AC; "Formation discount
+  - Army Corps: **Quantity** / **Quality** / **Formation discount only**. For AC,
+    "Quality" is the AC study's size-band model (mode key `sizeBands`; the user
+    replaced full harmonisation with it and kept the familiar label); "Formation discount
     only" values each card at its own list price (no model), so the build fields the
     most list value 10 000 reaches after discounts.
 - **Optimise remainder:** keep the current build and fill what is left; off by default.
