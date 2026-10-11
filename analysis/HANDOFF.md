@@ -30,7 +30,7 @@ pricing analysis, which the app does not use.
   | `880dd653` | Class-structure experiment (not adopted yet) |
   | *(this commit)* | `PRICING_MODEL_REPORT.md`, this file, refreshed module docstring |
 
-- **Adopted model:** `FCLASS_FORM = ("JFC", "ls")` in `unit_pricing.py`. CV
+- **Adopted model:** `FCLASS_FORM = ("JFC", "ls")` in `pricing/fclass.py`. CV
   MAE: infantry 27.4, cavalry 34.9, artillery 32.4. Staff generals use T3
   (8.6, or 2.3 with the faction modifier).
 - **Two model versions, both reported (user decision, October 2026):**
@@ -82,8 +82,8 @@ pricing analysis, which the app does not use.
 
 ## 3. Environment and commands
 
-- **Python and packages.** Python 3.13 (Windows Store build), numpy,
-  scikit-learn. No pandas, no psutil.
+- **Python and packages.** Python 3.13 (Windows Store build), numpy, scipy,
+  scikit-learn (`analysis/requirements.txt`). No pandas, no psutil.
 - **Run from the repository root** with `PYTHONIOENCODING=utf-8`, or
   non-ASCII army names crash prints on cp1252.
 
@@ -124,7 +124,7 @@ pricing analysis, which the app does not use.
     are joke or placeholder units.
   - `artillery_fixed` is excluded.
   - Commander variants (`unit_class = general` attached to a unit) are skipped by
-    `unit_pricing.load`. They are priced separately by `commander_stage.py`, which
+    `unit_pricing.load`. They are priced separately by `experiments/commander_stage.py`, which
     pairs each with its regular counterpart (same army, unit key minus `_com_<id>`;
     all 5 238 match).
   - Staff generals are modelled separately.
@@ -147,25 +147,35 @@ pricing analysis, which the app does not use.
   in every fold, so its out-of-fold prediction is NaN. Keep NaN handling when
   you add metrics.
 
-## 5. Code map — `analysis/unit_pricing.py`
+## 5. Code map
 
-| Section | Contents |
+**Pricing model — `analysis/unit_pricing.py` + `analysis/pricing/`.** `unit_pricing.py` is a front of
+~90 lines: scripts `import unit_pricing as up`, run it as before, and use the names it re-exports (add one
+there when a script needs it). The code is one module per stage, imported in this order (no cycles):
+
+| Module | Contents |
 | --- | --- |
-| Loading | `load_ratings`, `load` → `Unit` / `Staff` dataclasses |
-| Model specification | `Spec` (frozen): `linear`, `mult`, `const`, `extras`, `size`, `p`, `powers`, `faction`, `shape`, `fixed_rating`, `fclass`, `kappa`, `loss` |
-| Design matrix | `build_design` (features φ(x), shape options for firearm / calibre / shooting, `class_linear`), `natural_spline_basis`, `spline_knots`, `factor_values` |
-| Model | `PriceModel.fit`: ALS with optional IRLS weights, ridge on `GROUPING` factors, residual faction × class; `predict`, `n_params` |
-| Splits | `pinned_groups`, `assign_folds`, `search_splits(…, extra_pinned)`, `repair`, `restrict` |
-| Cross-validation | `CVRun`, `fit_on` (LAD via IRLS when `loss="lad"`), `cv_spec`, `make_slice(…, extra_pinned)` |
-| Structure search | `enumerate_specs`, `structure_search` (each variable out / in β·x / in M) |
-| Parallel workers | `parallel_map`, `WORKERS`, `SHARED_SETTINGS` |
-| Stat powers | `descend_powers` (coarse), `refine_powers` (fine), `nested_powers`, `nested_fine` |
-| Shape variants | `shape_variants`, `screen_variants`, `adopt_variant` (summation default), `ARTILLERY_CAL` |
-| Faction modifiers | `shared_modifier`, `shared_faction_runs` |
-| Faction × class | `FCLASS_FORM`, `residual_fclass_spec`, `joint_fclass_spec`, `inner_kappa`, `fold_run`, `fclass_cv`, `fclass_multiplier` |
-| Staff generals | `staff_cv` (S1…TF3), `staff_power_fit` / `staff_power_price` (T3), `staff_full` |
-| Main | Steps 1–8, listed below |
-| Output | `write_coefficients`, `write_oof`, `report_lines`, `fclass_report` |
+| `pricing/constants.py` | Fixed constants: dev corps, `POLAND`, split sizes, `NUMERIC` / `ABILITIES` / `CATEGORICAL` / `GROUPING`, `CANDIDATES`, `ABLATIONS`, `SHAPE_DEFAULTS`, fine-search steps |
+| `pricing/config.py` | `Settings` (workers, out_dir, p_grid, power_grid, max_passes, fine_passes, max_iter, tolerance, artillery_cal, size_weighting) and `configure(...)` |
+| `pricing/data.py` | `load_ratings`, `load(ratings, scope=, side=)` → `Unit` / `Staff`; `in_scope`, `side_of` |
+| `pricing/spec.py` | `Spec` (frozen): `linear`, `mult`, `const`, `extras`, `size`, `p`, `powers`, `faction`, `shape`, `fixed_rating`, `fclass`, `kappa`, `loss`; `with_powers` |
+| `pricing/design.py` | `build_design` (features φ(x), shape options for firearm / calibre / shooting, `class_linear`), `design_for`, `natural_spline_basis`, `spline_knots`, `factor_values` |
+| `pricing/model.py` | `PriceModel.fit`: ALS with optional IRLS weights, ridge on `GROUPING` factors, residual faction × class; `predict`, `n_params`; `metrics` |
+| `pricing/splits.py` | `pinned_groups`, `assign_folds`, `search_splits(…, extra_pinned)`, `repair`, `restrict`, `SplitPlan` |
+| `pricing/cv.py` | `CVRun`, `SliceData` / `data_for`, size-frequency weights (`size_weights`, `kish_ess`), `fit_on` (LAD via IRLS when `loss="lad"`), `predict_total`, `cv_spec`, `Slice`, `make_slice(…, extra_pinned)`, `slice_units`, `full_fit_prices` |
+| `pricing/pool.py` | `parallel_map`: the worker pool; workers get the whole `Settings` |
+| `pricing/search.py` | `profile_p`; `enumerate_specs`, `structure_search`; `descend_powers` (coarse), `refine_powers` (fine), `nested_powers`, `nested_fine`; `shape_variants`, `screen_variants`, `adopt_variant` |
+| `pricing/fclass.py` | `shared_modifier`, `shared_faction_runs`; `FCLASS_FORM`, `FCLASS_GRID`, `residual_fclass_spec`, `joint_fclass_spec`, `inner_kappa`, `fold_run`, `fclass_cv(…, grid=)`, `fclass_multiplier` |
+| `pricing/final.py` | `FINAL`: the committed final spec per arm, the starting point of every downstream study |
+| `pricing/staff.py` | `staff_cv` (S1…TF3), `staff_power_fit` / `staff_power_price` (T3), `staff_full`, `make_staff_slice` |
+| `pricing/diagnostics.py`, `formatting.py`, `results.py`, `report.py`, `outputs.py` | Data diagnostics; number formats; `Results`; `report_lines`, `fclass_report`; `write_search`, `write_coefficients`, `write_oof` |
+| `pricing/cli.py` | `main()`, steps below |
+| `pricing/pickling.py` | `@pickled_as_unit_pricing` (see §9) |
+
+**Settings.** Read them as `up.WORKERS` (old names still work) or `config.settings.workers`; change them
+only with `up.configure(workers=4, ...)`. Assigning `up.WORKERS = 4`, or any name `unit_pricing`
+re-exports, raises: the pricing modules would never see it. Never `from pricing.config import settings`
+(that copies the object as it is at import time).
 
 **What `main()` does, step by step:**
 
@@ -179,19 +189,33 @@ pricing analysis, which the app does not use.
 7. Imperial → coalition transfer.
 8. Staff generals.
 
-**Experiment drivers** (each imports `unit_pricing as up`, writes one report
-to `analysis/output/`, and never changes committed outputs):
+**Shared foundations.** `common.py`: paths, game constants (`BUDGET`, `MAX_CARDS`, `ARMS`, the WIP
+theatres), the five size-band sets (deliberately separate), `log` / `table` / CSV helpers and the atomic
+checkpoint cache `cached(path, compute, fresh)`. `checkpoints.py`: every checkpoint file name and the
+cache versions; build names there, never by hand.
 
-| Driver | Purpose |
+**Pipeline and studies** (in `analysis/`, each writes to `analysis/output/`):
+
+| Script | Purpose |
 | --- | --- |
-| `calibre_function.py` | Smooth calibre functions vs the cannon-type one-hot |
-| `blind_ideas.py` | Blind-study ideas; holds the hard-coded `FINAL` specs the other drivers import |
-| `extreme_pinning.py` | Pin extreme units to train |
-| `class_structure.py` | Class as a multiplier, per-class size power, per-class formulas; checkpointed |
+| `class_structure.py` | Class as a multiplier, per-class size power, per-class formulas (V4); checkpointed |
+| `blind_ideas.py` | Blind-study ideas on our folds; its regression assert checks `FINAL` against the committed run |
+| `ac_pricing.py`, `ac_discounts.py` | The AC pricing study; AC formation discounts (self-checks raise `ValueError`) |
+| `commander_model.py`, `build_commander_pairs.py` | Commander model and price database; the regular/commander pairs |
+| `cost_effective_builds.py` | ToW / Custom optimal builds (MILP) and size harmonisation |
+| `team_values.py`, `ac_builds.py`, `team_search.py`, `team_report_tables.py` | The team study: value bases, AC builds with formation rebates, best 4-corps teams |
+| `export_optimiser_values.py`, `export_team_builds.py`, `export_builds_for_app.py` | Files for the app (optimiser data, importable builds) |
 
-> `blind_ideas.FINAL` duplicates the committed final specs (powers, p, shape).
-> If a full rerun ever changes a final spec, update `FINAL` too. The regression
-> assert in `blind_ideas.py` catches a mismatch.
+**One-off experiments** are in `analysis/experiments/` (calibre functions, extreme pinning, commander
+stage, size weighting, replay usage, …); its README maps each script to its question and report. They run
+from the repository root (`python analysis/experiments/<script>.py`) and nothing else depends on them.
+
+**Tests** (`analysis/tests/`, unittest, ~30 s): `py -3.13 -m unittest discover -s analysis/tests -t
+analysis/tests`. They check that every checkpoint loads with its golden metrics, unit loads and fits are
+unchanged, recomputed values and builds equal the committed CSVs, the module contract (re-exports,
+pickled classes, settings, each module importable alone) and the shared helpers. Checkpoint-dependent tests
+skip without `analysis/.cache/`. `tests/make_golden.py` rewrites the golden files: only after a change
+that is meant to move numbers.
 
 ## 6. Verification checklist (expected values)
 
@@ -301,23 +325,30 @@ to `analysis/output/`, and never changes committed outputs):
 ## 9. Gotchas
 
 - **Windows multiprocessing uses spawn.**
-  - Workers re-import the module and see only *default* globals.
-    `SHARED_SETTINGS` copies the tunables into them. If you add a global that
-    affects fitting and set it from the CLI or a monkeypatch, add it there.
-  - Workers never open a pool of their own (`WORKERS = 1` inside a worker).
+  - Workers re-import the modules. The pool hands them the whole `Settings`
+    object, so anything that affects fitting must be a `Settings` field changed
+    with `configure`, never a module global. A pool started under old settings
+    is shut down when `configure` changes one.
+  - Workers never open a pool of their own (`workers = 1` inside a worker).
   - Driver scripts that use `parallel_map` need an `if __name__ == "__main__":`
     guard.
-- **Line endings and edits.** `unit_pricing.py` uses CRLF line endings. Exact
-  multi-line find-and-replace from LF strings fails silently on it; normalise,
-  edit, write back CRLF. Keep the file all-CRLF.
+- **Line endings and edits.** With git's autocrlf a working-tree file may be
+  CRLF or LF. Exact multi-line find-and-replace from LF strings fails silently
+  on a CRLF file; normalise, edit, and write back the file's own line endings.
+- **Pickled classes.** The checkpoints pickle ten classes as `unit_pricing.<Name>`
+  (`Unit`, `Staff`, `Spec`, `SplitPlan`, `PriceModel`, `CVRun`, `Slice`,
+  `FclassResult`, `StaffRun`, `StaffSlice`). They carry `@pickled_as_unit_pricing`
+  and `unit_pricing` re-exports them. Don't rename them or change their fields,
+  or hours of checkpoints stop loading.
 - **The ALS iteration cap.** The joint faction × class fit with a free rating
   factor plus a faction factor converges slowly: nested factors with a weak
   ridge. The adopted `JFC` drops both, using the fixed 8/N divisor plus cells
   only, and converges in about 50–130 iterations.
 - **Long runs.** `class_structure.py` V4 (per-class formulas plus per-class
   powers) is the slowest piece, about 35 minutes for infantry.
-  - Checkpoints are versioned (`CACHE_VERSION`); bump it when a variant's
-    definition changes, or pass `--fresh`.
+  - Checkpoints are versioned in `checkpoints.py` (`AC_VERSION`,
+    `CLASS_STRUCTURE_VERSION`); bump one when a variant's definition changes,
+    or pass `--fresh`.
   - A paused run (suspended processes) does not survive the end of a Claude
     Code session. Prefer checkpoints over pausing.
 - **Comparing with the blind study.** It used its own holdout and folds. Compare

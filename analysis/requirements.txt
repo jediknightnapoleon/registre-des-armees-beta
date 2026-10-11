@@ -1,0 +1,6 @@
+# The analysis scripts (analysis/, not the app). Python 3.13; versions are the ones the committed
+# results were computed with, as lower bounds. No pandas.
+#   py -3.13 -m pip install -r analysis/requirements.txt
+numpy>=2.4
+scipy>=1.17      # milp (AC and ToW build optimisers), linprog, sparse, stats
+scikit-learn>=1.8

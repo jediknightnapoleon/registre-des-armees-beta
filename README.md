@@ -71,7 +71,8 @@
 > | [`analysis/output/unit_pricing_report.md`](analysis/output/unit_pricing_report.md) | Full technical report of the current run |
 > | [`analysis/HANDOFF.md`](analysis/HANDOFF.md) | For whoever (or whichever AI) continues the work: rules, commands, code map, checks, next steps |
 >
-> **Running it** needs Python with numpy and scikit-learn. Run from the
+> **Running it** needs Python 3.13 with numpy, scipy and scikit-learn
+> (`py -3.13 -m pip install -r analysis/requirements.txt`). Run from the
 > repository root:
 >
 > ```bash

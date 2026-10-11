@@ -78,7 +78,10 @@ data/generated/    Pipeline output, COMMITTED (rebuilding needs local game files
 assets/            Converted icons, flags, UI sprites, COMMITTED
 web/               React + TypeScript + Vite PWA, also packaged as Electron (Windows)
 web/public/{data,assets}   Generated per build, GITIGNORED
-analysis/          Offline analyses (numpy + sklearn, no pandas); not part of the app.
+analysis/          Offline analyses (Python 3.13; numpy, scipy, scikit-learn; no pandas — analysis/requirements.txt);
+                   not part of the app. Code: unit_pricing.py (front) + pricing/ (the pricing model);
+                   shared paths/constants in common.py, checkpoint names in checkpoints.py; one-off studies in
+                   experiments/; tests in tests/.
                    Unit-pricing model: output/ (current), linear_results/, calibre_onehot_results/
                    Start with analysis/PRICING_MODEL_REPORT.md (the model) and analysis/HANDOFF.md (how to work on it)
 docs/HANDOFF.md    Full technical documentation
@@ -125,6 +128,8 @@ python analysis/team_search.py            # best 4-corps teams per points total 
 python analysis/export_optimiser_values.py  # in-app optimiser data → data/generated/ntw3_optimiser_{values.csv,params.json,army_values.csv};
                                           #   then build_web_data.py, then again with --fixture (parity fixture; HANDOFF §4.6)
 python -m pytest tools/tests              # from the repo root; tools/ is a package
+py -3.13 -m unittest discover -s analysis/tests -t analysis/tests   # analysis tests (~30 s; checkpoint
+                                          #   tests skip without analysis/.cache/)
 
 # App (from web/)
 npm ci
@@ -141,7 +146,8 @@ npm run stage:beta                        # stage GitHub Release assets
 ```
 
 Before pushing: `cd web && npm run typecheck && npm run lint && npm test`, plus
-`python -m pytest tools/tests` if anything under `tools/` changed. CI
+`python -m pytest tools/tests` if anything under `tools/` changed (and the analysis tests if anything
+under `analysis/` did). CI
 (`.github/workflows/deploy-web.yml`) runs exactly that and then deploys the PWA
 to GitHub Pages on every push to `main`.
 
