@@ -16,6 +16,7 @@ AC_DIR = CACHE_ROOT / "ac"                       # analysis/ac_pricing.py
 CLASS_STRUCTURE_DIR = CACHE_ROOT / "class_structure"
 TEAMS_DIR = CACHE_ROOT / "teams"                 # analysis/team_values.py, team_search.py
 SIZE_WEIGHTING_DIR = CACHE_ROOT / "size_weighting"
+VETERAN_DIR = CACHE_ROOT / "veteran"             # analysis/replays.py, veteran_builds.py, veteran_choice.py
 AC_VERSION = 1
 CLASS_STRUCTURE_VERSION = 2
 
@@ -36,6 +37,11 @@ def teams(name: str) -> Path:
 
 def size_weighting(name: str) -> Path:
     return SIZE_WEIGHTING_DIR / f"{name}.pkl"
+
+
+def veteran(name: str) -> Path:
+    """The replay study's checkpoints (parsed replays, fits); replay-derived, never committed."""
+    return VETERAN_DIR / f"{name}.pkl"
 
 
 # --- the named checkpoints scripts read from each other -------------------------------------------------
