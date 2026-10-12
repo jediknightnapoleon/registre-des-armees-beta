@@ -19,6 +19,11 @@ Army values are each army's best build in each value version (analysis/team_valu
   re-run here per version; `sb` swaps in team_values' size-band values. Cached in
   analysis/.cache/teams/.
 Values are normative gold at corps 8, so armies compare within a pool.
+AC also has `price`, the "Formation discount only" score (the user's, 2026-10-12): an army scores
+face / 10 000 × N, the list value of its best formation-discount build (ac_builds.py `price`, which
+maximises face value) per 10 000 funds, times its corps number. List prices carry the 8/N rating
+factor, so × N cancels it and the score compares across corps; an army fielding exactly 10 000 of
+list value scores N, so a team scoring above its points total T gains list value from discounts.
 
 Per team: T = Σ N, total value, weakest member, cost. Per pool × T × version: the best team by total
 and by weakest member (ties: the other criterion). Then what the report needs: balanced against
@@ -54,6 +59,7 @@ import unit_pricing as up  # noqa: E402
 
 OUT = common.TEAMS_OUT
 VERSIONS = ("sb", "full", "noise")
+AC_ONLY = ("price",)        # AC-only version: the formation-discount score (see above)
 # web/src/domain/teamRule.ts CUSTOM_ARMY_SIDE, real armies only (the rest are dev placeholders).
 CUSTOM_SIDE = {"france": "imperial", "denmark": "imperial", "britain": "coalition", "ntw3_hre": "coalition",
                "piedmont_savoy": "coalition"}
@@ -84,7 +90,10 @@ def load_ac() -> list[Army]:
     with open(OUT / "ac_build_summary_price.csv", encoding="utf-8") as fh:
         for r in csv.DictReader(fh):
             if r["cards"] and r["faction_key"] in armies:
-                armies[r["faction_key"]].value["face"] = float(r["list_cost"])
+                a = armies[r["faction_key"]]
+                a.value["face"] = float(r["list_cost"])
+                a.value["price"] = float(r["list_cost"]) / common.BUDGET * a.n
+                a.cost["price"] = float(r["final_cost"])
     return sorted(armies.values(), key=lambda a: a.faction)
 
 
@@ -178,10 +187,15 @@ def best_teams(teams: Teams, version: str, across_pools: bool) -> list[dict]:
                         "members": " + ".join(teams.armies[j].name for j in teams.idx[i]),
                         "factions": "|".join(teams.armies[j].faction for j in teams.idx[i]),
                         "Ns": "+".join(str(teams.armies[j].n) for j in teams.idx[i]),
-                        "total": round(float(tot[i]), 1), "weakest": round(float(weak[i]), 1),
+                        "total": round(float(tot[i]), digits(version)), "weakest": round(float(weak[i]), digits(version)),
                         "cost": round(float(teams.cost[version][i])),
                         "cell_median_total": round(float(np.median(tot[rows])), 1)})
     return out
+
+
+def digits(version: str) -> int:
+    """Decimals a version's values are written with: the formation-discount score is ~N, the rest gold."""
+    return 3 if version in AC_ONLY else 1
 
 
 def balance_test(teams: Teams, version: str) -> dict:
@@ -256,7 +270,8 @@ def write_team_table(teams: Teams, path: Path, keys: tuple[str, ...]) -> None:
         for i in range(len(teams.t)):
             w.writerow([teams.pool[i], int(teams.t[i]), "+".join(str(teams.armies[j].n) for j in teams.idx[i]),
                         f"{teams.spread[i]:.2f}", " | ".join(teams.armies[j].faction for j in teams.idx[i])] +
-                       [f"{teams.total[v][i]:.1f}" for v in keys] + [f"{teams.weakest[v][i]:.1f}" for v in keys] +
+                       [f"{teams.total[v][i]:.{digits(v)}f}" for v in keys] +
+                       [f"{teams.weakest[v][i]:.{digits(v)}f}" for v in keys] +
                        [f"{teams.cost[v][i]:.0f}" for v in keys])
 
 
@@ -291,15 +306,18 @@ def write_army_values(path: Path, pools: dict[str, list[Army]]) -> None:
     "Suggest a team" ranks teams with when nothing constrains the builds
     (analysis/export_optimiser_values.py ships it as data/generated/ntw3_optimiser_army_values.csv).
     AC rows are analysis/ac_builds.py's builds (rebates and recruit order included); ToW / Custom
-    rows the one-roll ("four corps") builds."""
+    rows the one-roll ("four corps") builds. `value_price` / `cost_price` (AC only): the formation-discount
+    score face / 10 000 × N and what that build spends after rebates (face − cost = the discount)."""
     with open(path, "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["faction_key", "kind", "pool", "N"] + [f"value_{v}" for v in VERSIONS] +
-                   [f"cost_{v}" for v in VERSIONS])
+                   [f"cost_{v}" for v in VERSIONS] + [f"value_{v}" for v in AC_ONLY] + [f"cost_{v}" for v in AC_ONLY])
         for kind, armies in pools.items():
             for a in armies:
                 w.writerow([a.faction, kind, a.pool, a.n] + [f"{a.value[v]:.3f}" for v in VERSIONS] +
-                           [f"{a.cost[v]:.0f}" for v in VERSIONS])
+                           [f"{a.cost[v]:.0f}" for v in VERSIONS] +
+                           [f"{a.value[v]:.3f}" if v in a.value else "" for v in AC_ONLY] +
+                           [f"{a.cost[v]:.0f}" if v in a.cost else "" for v in AC_ONLY])
 
 
 def main() -> int:
@@ -309,7 +327,7 @@ def main() -> int:
     k, started = args.team_size, time.time()
     suffix = "" if k == 4 else f"_k{k}"
     ac, tow = load_ac(), load_tow(started)
-    ac_keys = VERSIONS + tuple(v + "_norebate" for v in VERSIONS) + ("face",)
+    ac_keys = VERSIONS + tuple(v + "_norebate" for v in VERSIONS) + ("face",) + AC_ONLY
     kinds = {"ac": enumerate_teams(ac, k, False, ac_keys), "tow": enumerate_teams(tow, k, False, VERSIONS),
              "tow_repeats": enumerate_teams(tow, k, True, VERSIONS)}
     up.log(f"teams of {k}: AC {len(kinds['ac'].t)} over {len({a.pool for a in ac})} theatres; ToW/Custom "
@@ -321,7 +339,7 @@ def main() -> int:
 
     best = []
     for kind, teams in kinds.items():
-        for v in VERSIONS:
+        for v in VERSIONS + (AC_ONLY if kind == "ac" else ()):
             for across in (False, True):
                 best += [{"kind": kind, **r} for r in best_teams(teams, v, across)]
     with open(OUT / f"best_teams{suffix}.csv", "w", encoding="utf-8", newline="") as fh:

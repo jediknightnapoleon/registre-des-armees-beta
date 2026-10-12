@@ -25,7 +25,8 @@ Files (data/generated/, committed; rebuilding needs the analysis outputs and .ca
   λ per mode, σ, melee bonus) and the standard general's melee attack.
 - ntw3_optimiser_army_values.csv — every army's best-build value per mode (analysis/team_search.py
   army_values.csv: AC builds from ac_builds.py, ToW / Custom one-roll builds): the planner's
-  "Suggest a team" ranks teams with it when nothing constrains the builds.
+  "Suggest a team" ranks teams with it when nothing constrains the builds. AC rows also carry
+  value_formation_discount, the "Formation discount only" team score face / 10 000 × N.
 tools/build_web_data.py merges values and the pool's params into each faction JSON and the army
 values into corps-index.json.
 
@@ -70,6 +71,10 @@ FIXTURE = up.ROOT / "web" / "src" / "state" / "__fixtures__" / "optimiser-parity
 TOW_MODES = {"quality": "full", "quantity": "noise"}
 AC_MODES = {"quantity": "noise", "sizeBands": "sb"}
 MODE_COLUMN = {"quality": "value_quality", "quantity": "value_quantity", "sizeBands": "value_size_bands"}
+# Army values also rank AC teams in "Formation discount only": team_search.py's `price` score,
+# face / 10 000 × N of the best formation-discount build (no card values: a card is worth its price).
+ARMY_MODE_COLUMN = {**MODE_COLUMN, "formationDiscount": "value_formation_discount"}
+AC_ARMY_MODES = {**AC_MODES, "formationDiscount": "price"}
 # Parity armies. ToW / Custom: a ToW army with a cheap 2★ anchor general, a ToW army anchored on
 # Murat (C4), and a Custom army (no source corps). AC: Davout I.C 1812 (the support-division brigade
 # exception), Bonaparte / Italie.C (the verified division-5 placement override) and Eugène / Italie
@@ -185,11 +190,11 @@ def export(started: float) -> None:
         armies = list(csv.DictReader(fh))
     with ARMY_VALUES_CSV.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
-        w.writerow(["faction_key", *MODE_COLUMN.values()])
+        w.writerow(["faction_key", *ARMY_MODE_COLUMN.values()])
         for r in sorted(armies, key=lambda r: r["faction_key"]):
-            modes = AC_MODES if r["kind"] == "ac" else TOW_MODES
+            modes = AC_ARMY_MODES if r["kind"] == "ac" else TOW_MODES
             w.writerow([r["faction_key"], *(f"{float(r[f'value_{modes[mode]}']):.3f}" if mode in modes else ""
-                                            for mode in MODE_COLUMN)])
+                                            for mode in ARMY_MODE_COLUMN)])
 
     PYTHON_BUILDS.write_text(json.dumps(python_builds, indent=2) + "\n", encoding="utf-8")
     up.log(f"{len(values)} cards in {len({f for f, _ in values})} armies → {VALUES_CSV.relative_to(up.ROOT)}; "

@@ -58,5 +58,22 @@ class OutputTests(unittest.TestCase):
                 self.assertEqual(res["cuts"], 0)
 
 
+class FormationDiscountScoreTests(unittest.TestCase):
+    def test_score_is_face_per_10000_times_corps_number(self) -> None:
+        # The "Formation discount only" team score (team_search.py `price`): face / 10 000 × N of the
+        # best formation-discount build, for every AC army; ToW / Custom rows have none.
+        price = {r["faction_key"]: r for r in rows("ac_build_summary_price.csv") if r["cards"]}
+        scored = 0
+        for r in rows("army_values.csv"):
+            if r["kind"] != "ac":
+                self.assertEqual((r["value_price"], r["cost_price"]), ("", ""))
+                continue
+            s = price[r["faction_key"]]
+            self.assertEqual(r["value_price"], f"{int(s['list_cost']) / 10_000 * int(s['corps_number']):.3f}")
+            self.assertEqual(r["cost_price"], s["final_cost"])
+            scored += 1
+        self.assertGreater(scored, 200)
+
+
 if __name__ == "__main__":
     unittest.main()
