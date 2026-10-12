@@ -29,6 +29,9 @@ SOURCE_TABLES = ROOT / "source" / "tables"     # the game's own database export 
 TEAMS_OUT = OUTPUT / "teams"                   # team study, AC builds, optimiser inputs
 AC_OUT = OUTPUT / "ac"                         # AC pricing study and the AC formation discounts
 COMMANDER_PAIRS = ANALYSIS / "commander_blind" / "data" / "pairs.csv"   # build_commander_pairs.py
+# ToW ladder-replay data (armies.csv, split.json) for two optional report checks; no shipped value uses it.
+# When the folder is absent the checks are skipped (cost_effective_builds, team_values).
+LADDER_REPLAY_DATA = ANALYSIS / "build_blind" / "data"
 # Row-level replay-derived data (builds, player names, rankings): gitignored, never committed.
 LOCAL = ANALYSIS / "local"
 

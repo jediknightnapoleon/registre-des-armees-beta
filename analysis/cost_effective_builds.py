@@ -529,7 +529,7 @@ def size_replay_check(by_faction: dict[str, list[dict]], mode: str) -> tuple[lis
     from the decomposition fits, plus "ll_base", the faction + skill test log-loss)."""
     from sklearn.metrics import log_loss, roc_auc_score
     card = {(f, c["key"]): c for f, cs in by_faction.items() for c in cs}
-    data = up.ROOT / "analysis" / "build_blind" / "data"
+    data = common.LADDER_REPLAY_DATA
     cut = json.loads((data / "split.json").read_text(encoding="utf-8"))["cut_played_at"]
     with open(data / "armies.csv", encoding="utf-8") as fh:
         armies = [a for a in csv.DictReader(fh) if a["result"] in ("win", "loss")]
@@ -672,7 +672,11 @@ def run_version(mode: str, suffix: str, melee: float, started: float, max_cards:
                             "slot": f"{general['name']} ({general['cost']} gold, {general['stars']}★)"})
         up.log(f"{army_of[faction][0][:40]:40} done", started)
 
-    replay = size_replay_check(by_faction, mode) if SIZE_HARMONISATION else ([], {})
+    replay = ([], {})
+    if SIZE_HARMONISATION and common.LADDER_REPLAY_DATA.exists():
+        replay = size_replay_check(by_faction, mode)
+    elif SIZE_HARMONISATION:
+        up.log(f"replay cross-check skipped: {common.LADDER_REPLAY_DATA} not present (optional)", started)
     write_outputs(results, big_units, value, by_faction, started, command, max_cards=max_cards,
                   size=(size_table, raw_picks, replay), mode=mode, suffix=suffix)
 
@@ -873,6 +877,9 @@ def size_section(results, size, mode: str, cap: str = "") -> list[str]:
                      f"{sum(raw_picks[k] for k in keys) / len(keys):.3f} → {sum(picks[k] for k in keys) / len(keys):.3f}"])
     L += up.table(["arm", "size (models; guns for artillery)", "units", "model ÷ true", "bias", "noise",
                    "factor", "picks/card"], rows)
+    if not replay:
+        return L + ["", "*Replay cross-check skipped: the ladder replay data (analysis/build_blind/data) is not "
+                    "present. It is an optional check; no value in this report depends on it.*", ""]
     fmt = lambda t: f"{t[0]:+.2f} ± {t[1]:.2f} (z {t[0] / t[1]:.1f})"  # noqa: E731
     bias, both, sides = key["bias"]["bias part"], key["bias+noise"], key["sides"]
     L += ["", "**Replay cross-check: does what full harmonisation removes pay off in battle?** Ladder games on the "
